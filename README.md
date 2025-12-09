@@ -6,7 +6,7 @@
 
 ---
 
-## 1. Getting Started Guide (kick-the-tyres in ≤30 minutes)
+## 1. Getting Started Guide 
 
 ### Overview
 This artifact contains:
@@ -61,3 +61,15 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 - **Data privacy:** Student submissions in λRepair were anonymized. Processed outputs and example logs are provided in the artifact.
 
 ---
+
+## 3. Step-by-Step Instructions for Each Claim
+
+### Claim 1: Top LLMs achieve above 70% correctness on λCodeGen
+**Paper Section:** Sec 3.1, Table 4  
+**Files used:** `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py`
+
+**Steps:**
+1. Open a terminal and activate your Python environment:
+   ```bash
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
