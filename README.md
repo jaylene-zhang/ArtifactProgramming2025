@@ -75,6 +75,7 @@ Files used: `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plo
    ```bash
    python3 -m venv venv && source venv/bin/activate
    pip install -r requirements.txt
+   ```
 
 2. Navigate to the analysis scripts folder:
 ```bash
