@@ -43,9 +43,9 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 | Claim | Evidence in Artifact | Paper Section |
 |-------|-------------------|---------------|
-| Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
 | LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
 | All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And performace widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9 |
+| Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
 
 > Evidence includes processed CSVs, raw grader outputs, and plotting/analysis scripts used to generate figures and tables.
 
@@ -58,7 +58,7 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 ### Additional Notes
 
-- **LearnOCaml dependency:** The grader wrappers depend on LearnOCaml. Link:https://github.com/ocaml-sf/learn-ocaml/tree/master. Sample grader logs are included in `results/` for inspection.  
+- **LearnOCaml dependency:** The grader wrappers depend on LearnOCaml. Link:https://github.com/ocaml-sf/learn-ocaml/tree/master. Sample grader logs are included in `results/` for inspection. 
 - **LLM API calls:** Scripts in `scripts/API calls/` include placeholder API keys. Keys are not provided.  
 - **Data privacy:** Student submissions in λRepair were anonymized. Processed outputs and example logs are provided in the artifact.
 
@@ -66,30 +66,7 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 ## 3. Step-by-Step Instructions for Each Claim
 
-### Claim 1: Top LLMs achieve above 70% correctness on λCodeGen
-Paper Section: Sec 3.1, Table 4  
-
-**Steps:**
-1. Open a terminal and activate your Python environment:
-   ```bash
-   python3 -m venv venv && source venv/bin/activate
-   pip install -r requirements.txt
-   ```
-
-2. Navigate to the analysis scripts folder:
-```bash
-cd scripts/analysis\ and\ plot/
-```
-
-3. Run the analysis script:
-```bash
-python analyze_CodeGen.py 
-```
-No command-line arguments are required; just run the script as-is. The script also contains the preprocessing of raw data and have been commented out for inspectation purpose.
-
-4. Open results/CodeGenResults/code_gen.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
-
-### Claim 2: LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation
+### Claim 1: LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation
 
 Paper Section: Sec 3.2, Tables 5–7
 
@@ -115,7 +92,7 @@ python plot_weighted_grade.py
 ```
 This figure reproduces the visualization shown in the paper (Figure 5). No command-line arguments are required; just run the script as-is.
 
-### Claim 3: Models struggle more with abstract concepts requiring theoretical implementation
+### Claim 2: Models struggle more with abstract concepts requiring theoretical implementation
 
 Paper Section: Sec 3.5, Figure 6
 Files used: results/ExplainResults/Explain_percentages.csv, scripts/figures/LLM_Weighted.pdf
@@ -141,3 +118,28 @@ cd scripts/analysis\ and\ plot/
 python plot_histogram_by_difficulty.py
 ```
 This figure reproduces the visualization shown in the paper (Figure 6). No command-line arguments are required; just run the script as-is. 
+
+
+### Claim 3: Top LLMs achieve above 70% correctness on λCodeGen
+Paper Section: Sec 3.1, Table 4  
+
+**Steps:**
+1. Open a terminal and activate your Python environment:
+   ```bash
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+
+2. Navigate to the analysis scripts folder:
+```bash
+cd scripts/analysis\ and\ plot/
+```
+
+3. Run the analysis script:
+```bash
+python analyze_CodeGen.py 
+```
+No command-line arguments are required; just run the script as-is. The script also contains the preprocessing of raw data and have been commented out for inspectation purpose.
+
+4. Open results/CodeGenResults/code_gen.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
+
