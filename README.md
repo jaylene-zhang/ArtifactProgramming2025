@@ -42,7 +42,7 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 ### Supported Claims
 
 | Claim | Evidence in Artifact | Paper Section |
-|-------|------------|-------------------|---------------|
+|-------|-------------------|---------------|
 | Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
 | LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
 | All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And performace widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9 |
