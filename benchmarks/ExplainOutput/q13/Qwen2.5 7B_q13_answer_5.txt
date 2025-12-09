@@ -1,0 +1,17 @@
+Solution:
+```ocaml
+let x = 5 in
+let x = 10 in
+x
+```
+
+Explanation:
+Overwriting in OCaml refers to reassigning values to a variable with the same name in different scopes or blocks. In the provided example, `x` is first assigned the value `5`, then within a new block, the same `x` is reassigned the value `10`. The final `x` returns `10` because it refers to the most recent assignment within its scope.
+
+Overshadowing, on the other hand, refers to a similar concept where a new binding hides a previous one within the same scope. For example:
+```ocaml
+let x = 5 in
+let x = 10 in
+x
+```
+Here, `x` is overshadowed by the new assignment `10` within the same scope, but the behavior is the same as overwriting in terms of result. The key difference is about the scope and context within which the variable bindings occur, as overshadowing implies it happens within the same scope.

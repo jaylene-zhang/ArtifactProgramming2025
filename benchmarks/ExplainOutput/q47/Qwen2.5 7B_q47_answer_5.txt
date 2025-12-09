@@ -1,0 +1,12 @@
+b) let concat l =
+let rec aux l s = match l with
+| [] -> s
+| x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""
+
+Explanation: 
+
+- **Option b** is the correct implementation. The function builds the resulting string by appending each string with a space and the accumulator `s` in the tail-recursive manner.
+- **Option a** incorrectly concatenates strings by appending they to the beginning of the accumulator, leading to the reversed order of the strings.
+- **Option c** uses `reverse l`, which means the list is first reversed before concatenation, resulting in the strings being concatenated in reverse order of their original positions.
+- **Option d** is not tail-recursive because the recursive call is the last operation in the function, making it a regular recursive function without accumulating the result properly in the body of `aux`.

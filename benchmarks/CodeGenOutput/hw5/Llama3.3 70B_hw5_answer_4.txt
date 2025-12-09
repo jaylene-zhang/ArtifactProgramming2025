@@ -1,0 +1,82 @@
+```ocaml
+(* Question 1: Tree Depth *)
+let tree_depth_cps t = 
+  let rec depth_helper t sc fc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun x ->
+          depth_helper r (fun y ->
+              sc (1 + max x y)
+            )
+        )
+  in
+  depth_helper t (fun x -> Some x) (fun _ -> None)
+
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls with
+    | [] -> sc tree
+    | x :: xs ->
+      begin
+        match tree with
+        | Empty -> fc xs
+        | Tree (l, v, r) ->
+          if x = v then
+            helper xs l sc fc
+          else
+            helper ls r sc fc
+      end
+  in
+  helper ls tree (fun t -> Some t) (fun _ -> None)
+
+
+(* Question 3: Arithmetic Expression Parser *)
+type expr = Const of int | Plus of expr * expr | Minus of expr * expr | Times of expr * expr | Divide of expr * expr
+type token = TokenConst of int | TokenPlus | TokenMinus | TokenTimes | TokenDivide
+
+let rec parse_exp sc fc t =
+  parse_term (fun e1 ->
+      parse_exp_symbol (fun e2 ->
+          sc (Plus (e1, e2))
+        )
+    )
+    (fun e1 ->
+      sc e1
+    )
+    t fc
+
+and parse_term sc fc t =
+  parse_factor (fun e1 ->
+      parse_term_symbol (fun e2 ->
+          sc (Times (e1, e2))
+        )
+    )
+    (fun e1 ->
+      sc e1
+    )
+    t fc
+
+and parse_factor sc fc t =
+  match t with
+  | TokenConst x :: xs -> sc (Const x) xs
+  | _ -> fc xs
+
+and parse_exp_symbol sc fc t =
+  match t with
+  | TokenPlus :: xs -> parse_exp sc fc xs
+  | _ -> fc t
+
+and parse_term_symbol sc fc t =
+  match t with
+  | TokenTimes :: xs -> parse_term sc fc xs
+  | TokenDivide :: xs -> parse_term sc fc xs
+  | _ -> fc t
+
+let parser_cps t =
+  match t with
+  | _ :: _ -> Some (parse_exp (fun e _ -> e) (fun _ -> failwith "") t)
+  | _ -> None
+```

@@ -1,0 +1,7 @@
+Functional languages avoid state variables and imperative-style programming to promote immutability, referential transparency, and easier reasoning about code. 
+
+**Explanation:**
+1. **Immutability**: In functional programming, data is immutable, meaning once created, data cannot be changed. This avoids side effects and makes functions predictable.
+2. **Referential Transparency**: Functions can be replaced by their output values without altering the program's behavior, improving understandability and reliability.
+3. **Concurrency**: Immutable state simplifies concurrent execution since there are no shared mutable variables, reducing issues like race conditions.
+4. **Easier Debugging and Testing**: Code is easier to test, debug, and reason about since functions do not depend on or alter shared states.

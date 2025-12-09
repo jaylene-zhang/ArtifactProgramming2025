@@ -1,0 +1,5 @@
+```ocaml
+shift : ((int ref * int ref) ref) -> unit
+```
+
+Explanation: The `shift` function takes a reference to a tuple of two references to integers as its argument and returns `unit` (which is equivalent to `()` in OCaml). This is because `shift` modifies the values of the references passed to it and does not return any value.

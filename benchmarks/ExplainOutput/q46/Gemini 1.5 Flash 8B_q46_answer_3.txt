@@ -1,0 +1,10 @@
+1) `f (hd s) a`
+
+2) `fold f (f (hd s) a) (tl s)`
+
+
+**Explanation:**
+
+1. **Blank 1:** The first element of the output stream `r` is computed by applying the function `f` to the first element (`hd s`) of the input stream `s` and the initial value `a`.
+
+2. **Blank 2:** The tail of the output stream `r` is obtained by recursively calling `fold` with the updated accumulator (which is the result of applying `f` to the current element and the previous accumulator).  Crucially, the recursive call uses the rest of the input stream (`tl s`). This ensures that the fold continues to process the next element and so on.

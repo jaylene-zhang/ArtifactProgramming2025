@@ -1,0 +1,46 @@
+```ocaml
+(* Q1 *)
+let rec q1a_nat_of_int_helper n acc =
+  if n <= 0 then acc
+  else q1a_nat_of_int_helper (n - 1) (S acc)
+
+let q1a_nat_of_int n = q1a_nat_of_int_helper n Z
+
+let rec q1b_int_of_nat_helper n acc =
+  match n with
+  | Z -> acc
+  | S m -> q1b_int_of_nat_helper m (acc + 1)
+
+let q1b_int_of_nat n = q1b_int_of_nat_helper n 0
+
+let rec q1c_add n m =
+  match (n, m) with
+  | Z, m -> m
+  | n, Z -> n
+  | S n', S m' -> S (S (q1c_add n' m'))
+
+(* Q2 *)
+let q2a_neg e = Times (Const (-1.0), e)
+
+let q2b_minus e1 e2 = Plus (e1, q2a_neg e2)
+
+let q2c_quot e1 e2 = Times (e1, Pow (e2, -1))
+
+(* Q3 *)
+let rec eval a e =
+  match e with
+  | Const f -> f
+  | Var -> a
+  | Plus (e1, e2) -> eval a e1 +. eval a e2
+  | Times (e1, e2) -> eval a e1 *. eval a e2
+  | Pow (e1, n) -> (eval a e1) ** float_of_int n
+
+(* Q4 *)
+let rec diff e =
+  match e with
+  | Const _ -> Const 0.0
+  | Var -> Const 1.0
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) -> Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (e1, n) -> Times (Const (float_of_int n), Times (Pow (e1, n - 1), diff e1))
+```

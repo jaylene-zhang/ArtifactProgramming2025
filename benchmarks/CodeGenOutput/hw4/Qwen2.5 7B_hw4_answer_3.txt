@@ -1,0 +1,38 @@
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable x -> Variable_set.singleton x
+  | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x ->
+      match Variable_map.find_opt x state with
+      | Some v -> v
+      | None -> raise (Unassigned_variable x)
+  | Conjunction (f1, f2) -> eval state f1 && eval state f2
+  | Disjunction (f1, f2) -> eval state f1 || eval state f2
+  | Negation f -> not (eval state f)
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let required_vars = collect_variables formula in
+  let rec aux required left =
+    if Variable_set.is_empty required then Some left
+    else
+      let (Some x) = Variable_set.min_elt required in
+      try
+        let next = aux (Variable_set.remove x required) (Variable_map.add x true left) in
+        begin match next with
+        | Some _ -> next
+        | None -> aux (Variable_set.remove x required) (Variable_map.add x false left)
+        end
+      with Unassigned_variable _ -> None
+  in
+  aux required_vars Variable_map.empty
+  |> function
+     | Some t -> t
+     | None -> raise Unsatisfiable_formula

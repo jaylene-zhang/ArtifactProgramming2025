@@ -1,0 +1,11 @@
+**Solution:**
+
+You need to prove the statement holds for a list `x::xs` assuming it holds for `xs`.
+
+
+**Explanation:**
+
+Inductive proofs on lists involve two cases:
+
+1. **Base case:** Proving the statement for the empty list (`[]`).
+2. **Step case:** Proving the statement for a non-empty list `x::xs`, *assuming* the statement holds for the tail `xs`.  This is the crucial inductive hypothesis.  You use this assumption to show the statement also holds for the larger list.

@@ -1,0 +1,9 @@
+Solution:
+a) False  
+b) False  
+c) True
+
+Explanation:
+a) The number of lines doesn’t determine performance; rev1 uses ( @ ) which has poor time complexity.  
+b) The ( @ ) operator’s cost depends on the length of its first argument, not the second.  
+c) rev2 uses tail recursion with (::) to build the result, achieving linear time performance.

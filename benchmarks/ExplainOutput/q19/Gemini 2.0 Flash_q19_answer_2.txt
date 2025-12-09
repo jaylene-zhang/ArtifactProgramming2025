@@ -1,0 +1,8 @@
+**Solution:**
+
+Incorrect and not tail-recursive.
+
+**Explanation:**
+
+1.  **Incorrect:** The `helper` function's initial argument is 1, but it should be `n`. Also, it should return `2^k` not `k`.
+2.  **Not Tail-Recursive:** The multiplication `2 * helper (n / 2)` means the result of the recursive call needs to be multiplied by 2. This calculation happens *after* the recursive call returns, so it's not tail-recursive.

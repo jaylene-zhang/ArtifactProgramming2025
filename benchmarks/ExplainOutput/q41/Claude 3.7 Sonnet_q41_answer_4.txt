@@ -1,0 +1,5 @@
+The type for a tail-recursive version of fold_right would be:
+
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+This is actually the same type signature as the regular fold_right. While the implementation would need to use a continuation or accumulator to achieve tail recursion, the external type signature remains unchanged. The function still takes a combining function ('a -> 'b -> 'b), a list of elements ('a list), and an initial value ('b), ultimately producing a result of type 'b.

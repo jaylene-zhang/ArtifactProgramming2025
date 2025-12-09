@@ -1,0 +1,8 @@
+**Solution**
+```
+val shift : unit -> unit
+```
+
+**Explanation**
+
+The function `shift` does not return anything (i.e., it has no value), and takes no arguments. However, it does modify mutable references `x` and `y` that are borrowed from the input `point`. The type `unit -> unit` indicates that the function consumes one unit (`()`) and produces no output.

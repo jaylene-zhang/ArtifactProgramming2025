@@ -1,0 +1,11 @@
+**Solution:**
+
+The statement holds for the list constructed by adding an element to a list for which the statement already holds.
+
+
+**Explanation:**
+
+Inductive proofs on lists typically involve two cases:
+
+1. **Base case:**  The statement must be proven for the empty list.
+2. **Step case (Inductive Hypothesis):**  Assume the statement is true for some arbitrary list `L`.  You then need to prove that if the statement holds for `L`, it also holds for the list `x::L` (where `x` is an element). This is the critical step where you use the inductive hypothesis.

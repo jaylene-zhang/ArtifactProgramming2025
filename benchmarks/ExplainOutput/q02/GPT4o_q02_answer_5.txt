@@ -1,0 +1,4 @@
+The program is **ill-typed**. 
+
+Explanation:  
+The function `repeat` applies `f` to itself (`f (repeat f)`), creating an infinite recursive application. This results in a cyclic type constraint that cannot be resolved in OCaml's type system. Specifically, for `f` to accept `repeat f` as an argument, its type needs to match its own result, leading to a self-referential, unsatisfiable type definition. Hence, the program is ill-typed.

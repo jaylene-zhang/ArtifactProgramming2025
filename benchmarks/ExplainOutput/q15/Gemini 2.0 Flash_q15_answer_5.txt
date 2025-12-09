@@ -1,0 +1,48 @@
+**Solution:**
+
+`52`
+
+**Explanation:**
+
+expressions:
+
+```ocaml
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+```
+
+binding stack:
+
+```
+x = 5
+y = 10
+r ----> memory location containing 2
+f ----> fun u -> u + x + y + !r  where x = 3, r = memory location containing 5, y = 15
+x = 3  // captured by f
+r ----> memory location containing 5  // captured by f
+y = 15 // captured by f
+
+```
+
+Evaluation trace:
+
+1.  `let x = 3 in ...`: `x` is bound to `3`.
+2.  `let r = ref (2 + x) in ...`: `r` is bound to a reference cell containing `5`.
+3.  `let f = (let y = x * !r in let r = ref 4 in fun u -> u + x + y + !r ) in ...`: This is crucial.
+    *   `y` is bound to `x * !r = 3 * 5 = 15`.
+    *   A *new*  `r` (local to `f`) is bound to a reference cell initialized to `4`. This new `r` shadows the outer `r` *inside* the function `f`.
+    *    `f`  is a function  `fun u -> u + x + y + !r` and the free variables are captured with their current values in the stack (lexical scope/closure). Here,  `x`, `y`, and the first `r` are captured with values `3`, `15`, and a memory location containting `5`. The *inner* local `r` is not captured, but it *is* part of the function's body.
+4. `let x = 5 in ...`: A *new* `x` shadows the initial `x`, it is bound to `5`.
+5. `let y = 10 in ...`: A *new* `y`  is bound to `10`.
+6. `r := 2`: The *outer* `r` is mutated to contain `2`.
+7.  `f (!r * y)`: `f (2 * 10) = f (20)`
+    *  Inside  `f`, The value of  `u` is `20`, the second `r` is a *different* reference cell whose content is `4`.
+    * The function evaluates to u + x + y + !r -> (20 + 3 + 15 + 4) = 42.
+8. `f ( !r * y)`. `u` becomes `20`.  `u + x + y + !r` evaluates to `20 + 3 + 15 + 4 = 42`.
+
+Thus the final answer is `42`.

@@ -1,0 +1,80 @@
+```ocaml
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make (String)
+
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+
+exception Unsatisfiable_formula
+
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect (f : formula) (acc : Variable_set.t) : Variable_set.t =
+    match f with
+    | Variable v -> Variable_set.add v acc
+    | Conjunction (f1, f2) ->
+        let acc' = collect f1 acc in
+        collect f2 acc'
+    | Disjunction (f1, f2) ->
+        let acc' = collect f1 acc in
+        collect f2 acc'
+    | Negation f1 -> collect f1 acc
+  in
+  collect formula Variable_set.empty
+(* TODO: Implement the function. *)
+
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval_helper (f : formula) : bool =
+    match f with
+    | Variable v -> (
+        match Variable_map.find_opt v state with
+        | Some b -> b
+        | None -> raise (Unassigned_variable v))
+    | Conjunction (f1, f2) -> eval_helper f1 && eval_helper f2
+    | Disjunction (f1, f2) -> eval_helper f1 || eval_helper f2
+    | Negation f1 -> not (eval_helper f1)
+  in
+  eval_helper formula
+(* TODO: Implement the function. *)
+
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = Variable_set.to_list (collect_variables formula) in
+  let assignment = ref Variable_map.empty in
+  let rec backtrack (index : int) : bool =
+    if index = List.length variables then (
+      try
+        let result = eval !assignment formula in
+        if result then true else false
+      with Unassigned_variable _ -> false)
+    else
+      let variable = List.nth variables index in
+      assignment := Variable_map.add variable true !assignment;
+      if backtrack (index + 1) then true
+      else (
+        assignment := Variable_map.add variable false !assignment;
+        if backtrack (index + 1) then true
+        else (
+          assignment := Variable_map.remove variable !assignment;
+          false))
+  in
+  if backtrack 0 then
+    let complete_assignment =
+      List.fold_left
+        (fun acc var ->
+          match Variable_map.find_opt var !assignment with
+          | Some value -> Variable_map.add var value acc
+          | None ->
+              (* This should never happen if backtrack works correctly *)
+              failwith "Incomplete assignment")
+        Variable_map.empty variables
+    in
+    complete_assignment
+  else raise Unsatisfiable_formula
+(* TODO: Implement the function. *)
+```

@@ -1,0 +1,48 @@
+**a)**
+```ocaml
+let check_prime_factors x =
+  let p = prime_fact x in
+  List.exists (fun e -> e = p)
+```
+**Solution: Yes**
+
+**Explanation**: The function `prime_fact` is computed only once, regardless of the length of the list. The result is stored in `p`, and then the `exists` function uses that single instance of `p` to check if any element in the list matches.
+
+---
+
+**b)**
+```ocaml
+let check_prime_factors x l =
+  List.exists (fun e -> e = prime_fact x) l
+```
+**Solution: No**
+
+**Explanation**: `prime_fact x` is computed for each element in the list. This results in a new computation for each element, which is inefficient for large lists.
+
+---
+
+**c)**
+```ocaml
+let check_prime_factors x l = 
+  match l with 
+  | [] -> false 
+  | y::ys -> y = prime_fact x || check x ys
+```
+**Solution: Yes**
+
+**Explanation**: `prime_fact x` is computed only once, and the result is used in the `y = prime_fact x` check. If `y` matches, the function returns `true`. Otherwise, the function recurses on the rest of the list.
+
+---
+
+**d)**
+```ocaml
+let check_prime_factors x l =
+  let p = prime_fact x in
+  let rec test l = match l with
+    | [] -> false
+    | y::ys -> y = p || test ys
+  in test l
+```
+**Solution: Yes**
+
+**Explanation**: `prime_fact x` is computed only once and stored in `p`. The inner recursive function `test` then compares each element of the list with `p`. This ensures that `prime_fact x` is only computed once per call to `check_prime_factors`.

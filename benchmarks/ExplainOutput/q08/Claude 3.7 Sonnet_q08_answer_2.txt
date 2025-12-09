@@ -1,0 +1,5 @@
+```ocaml
+type cake = Slice of (int * ingredients list) | Cake of cake * cake
+```
+
+The solution modifies the Slice constructor to take a tuple of (int * ingredients list), where the int represents calories and ingredients list remains the same. This allows each slice to store both its calorie count and list of ingredients while the Cake constructor remains unchanged.

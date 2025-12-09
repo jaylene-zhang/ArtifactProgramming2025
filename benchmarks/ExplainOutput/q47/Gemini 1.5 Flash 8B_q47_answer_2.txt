@@ -1,0 +1,13 @@
+**Correct Answer:** b)
+
+**Explanation:**
+
+Option b is the only tail-recursive option that correctly computes the desired concatenation.  Let's analyze the others:
+
+* **a):**  The `s` accumulator is prepended to the string, reversing rather than building the concatenation in the correct order.  It is *not* tail recursive.  (Incorrect)
+
+* **c):** While it uses recursion, reversing the list `l` will create an entirely new list in memory. The concat function is required to visit the list *only* once - this version performs an extra traversal of the data. (Incorrect).
+
+* **d):** This is a recursive but not a tail-recursive implementation. The recursive call to `concat` isn't in the last position; therefore, it doesn't directly build up a stack that can be directly manipulated by the compiler. (Incorrect)
+
+Option b correctly appends the current string (`x`) **at the end** of the cumulative string (`s`).  This builds the string correctly, starting from the front, and crucially, is tail-recursive.  The recursive call is the last thing done in the `aux` function (also known as the innermost computation).  This means the compiler can optimize the function, avoiding a long stack trace and improving performance.

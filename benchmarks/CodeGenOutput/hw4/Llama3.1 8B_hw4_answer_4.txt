@@ -1,0 +1,80 @@
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable v -> Variable_set.singleton v
+  | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f ->
+    match collect_variables f with
+    | vs -> vs (* Negation does not add any new variables. *)
+
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  begin match formula with
+  | Variable v ->
+     ( match Variable_map.find_opt v state with
+       | Some b -> b
+       | None -> invalid_arg ("Unassigned_variable: " ^ v))
+  | Conjunction (f1, f2) -> (eval state f1 && eval state f2)
+  | Disjunction (f1, f2) -> (eval state f1 || eval state f2)
+  | Negation f -> (not (eval state f))
+  end
+
+
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+
+(* TODO: Implement the function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment option =
+  let rec backtrack (tvar : Variable_set.t) (formula : formula) (state : Variable_map.t option) : truth_assignment option =
+    match formula with
+    | Variable v ->
+       if Variable_set.is_empty tvar then begin
+	 match state with
+	 | Some s -> eval s formula
+	 | None -> Some Variable_map.empty
+       end else match Variable_map.find_opt v state with
+        | Some b -> `T (b, List.assoc v (Variable_set.to_list tvar))
+        | None ->
+	   ( try
+		 Some (Variable_map.add v true (backtrack tvar (Variable.make (Variable.map_option Variable_set/find_assoc "Unassigned_variable"))))
+		 with
+	    Not_found -> eval (backtrack tvar (Variable.map_option Variable_set/find_assoc "Unassigned_variable")) (Negation formula))
+    | Conjunction (f1, f2) ->
+       let s1 = traverse tvar f1 in let s2 = traverse tvar f2 in
+       match backtrack tvar s1 (Some (Variable_map.union s1 s2)) with
+       | Some s -> backtrack tvar f2 (Some s)
+       | _ -> None
+    | Disjunction (f1, f2) ->
+       let s1 = traverse tvar f1 in
+       if  eval (backtrack tvar f2 None) f1 then
+	 backtrack tvar f2 None
+       else
+	 backtrack tvar f1 (Some Variable_map.empty)
+    | Negation f ->
+       backtrack tvar f state
+      and
+     Variable_set.find_assoc default_x = function
+       | [] -> raise (Not_found: Variable_set.t option)
+       | hd :: tl -> if some_goals hd then hd.some_goals else default_x
+     with
+    Variable.map_option Variable_set/find_assoc deflt_x = function
+      | [] -> raise (Not_found: Variable_set.t option)
+      | None :: tl -> None.option_mappings tl.map_option Variable_set/find_assoc deflt_x
+      | Some hd :: tl -> Some marty ( hd.some_goals tl.map_option Variable_set/find_assoc deflt_x )
+
+
+
+
+
+
+
+     |> Some s
+     | result ->
+       match result with
+       | Some s -> Some state
+       | _ -> None)
+  in match Variable_set.elements formula with
+  | [] -> Some Variable_map.empty
+  | h::tl -> backtrack (Variable_set.singleton h) formula None

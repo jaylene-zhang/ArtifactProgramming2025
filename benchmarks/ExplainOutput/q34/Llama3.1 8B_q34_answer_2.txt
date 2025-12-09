@@ -1,0 +1,10 @@
+Here are the answers with explanations:
+
+a) false
+Incorrect because the time complexity of a function does not depend on its length of definition. Both functions have the same time complexity: O(n), where n is the length of the list being reversed.
+
+b) false
+Incorrect because the time complexity of the (@) operator (append) is O(m), where m is the length of the accumulator. However, in the worst-case scenario, the length of the accumulator is also the same as the length of the reversed list, so the total time complexity of rev1 becomes O(n + m) = O(2n). Still, this does not outperform the time complexity of rev2, which is also O(n).
+
+c) true
+Correct because the filter reducing the above factors and excluding addition overhead from the usage of `@` operator finally rev2 becomes more efficient. Rev2 is faster than rev1 as accumulator `::` in rev2 performs faster than appending using `@` in rev1

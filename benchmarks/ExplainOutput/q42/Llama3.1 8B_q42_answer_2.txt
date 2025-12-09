@@ -1,0 +1,28 @@
+```ocaml
+(* Reverse a list: rev_tl l acc *)
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | h :: t -> rev_tl t (h :: acc)
+```
+
+To initialize `acc`, you wouldn't directly initialize `acc` explicitly. You would simply recursively call `rev_tl` with the first element of the list (`h`) prepended to the accumulator. 
+
+For example, if `rev_tl` calls `rev_tl t (h :: acc)`, then you implicitly initialize `acc` as an empty list `[]` whenever the list `l` is empty.
+
+However, we can instead initialize acc with rev_tl using a helper function rev_list:
+
+
+```ocaml
+(* rev_list: l -> string list -> string list *)
+let rev_list l =
+  let rec rev_tl l acc =
+    match l with
+    | [] -> acc
+    | h :: t -> rev_tl t (h :: acc)
+  in
+  (* Initial acc is [] *)
+  rev_tl l []
+```
+
+In this case, we map over the rev_tl helper to put the initial acc argument into place.

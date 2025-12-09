@@ -1,0 +1,16 @@
+Type annotations:
+
+```ocaml
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: ('a * 'b) -> 'c) (sc: 'c list -> 'd):
+    'd = match xs, ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y))::r))
+| _ , _ -> raise Error
+```
+
+The function is well-typed. `zippy` is a higher-order function that takes two lists, a function to combine pairs of elements, and a continuation function. It recursively processes both lists, applying the pair function to each pair of elements and building a result through the continuation. The types are:
+- `xs`: a list of elements of type 'a
+- `ys`: a list of elements of type 'b
+- `pair`: a function that takes a pair ('a * 'b) and returns a value of type 'c
+- `sc`: a continuation function that takes a list of 'c values and returns a result of type 'd
+- Return type: 'd (whatever the continuation returns)

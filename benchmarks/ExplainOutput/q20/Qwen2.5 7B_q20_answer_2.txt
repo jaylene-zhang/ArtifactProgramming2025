@@ -1,0 +1,13 @@
+No, the test `triangle 0 == 0` will not pass. 
+
+** Solution: **
+
+```ocaml
+let rec triangle n =
+  if n = 0 then 0
+  else n + triangle (n - 1)
+```
+
+** Explanation: **
+
+The original function does not handle `n = 0` correctly. It should return 0 for `triangle 0` since the sum of no numbers (0 terms) is 0. The corrected function checks if `n` is 0 and returns 0, then proceeds correctly for other values of `n`.

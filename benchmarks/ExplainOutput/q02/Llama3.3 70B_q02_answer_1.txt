@@ -1,0 +1,5 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+The program is attempting to define a recursive function `repeat` that takes another function `f` as an argument. For the function to be well-typed, `f` should take an argument of the same type as its return type, hence `f : 'a -> 'a`. The `repeat` function itself returns a function that takes an argument of type `'a` and returns a value of type `'a`, hence `repeat : 'a -> 'a`.

@@ -1,0 +1,3 @@
+`[11.0; 21.0; 6.0]`
+ 
+The `update_sales_tax` function doesn't rebind the `sales_tax` variable, it only returns a new value. The `add_tax` function uses the original value of `sales_tax` which is 1.0.

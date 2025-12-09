@@ -1,0 +1,3 @@
+(0 , 0)
+
+The bug is that the base case of the recursion only handles n = 1, but according to the definition, triangle numbers are defined for n ≥ 0. The function will enter an infinite recursion when n = 0 because the condition n = 1 is never met and n keeps decreasing. The correct implementation should include a base case for n = 0, returning 0.

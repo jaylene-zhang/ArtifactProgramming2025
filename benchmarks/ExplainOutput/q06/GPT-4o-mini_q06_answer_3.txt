@@ -1,0 +1,15 @@
+The resulting program after inlining `w * 2` and replacing all occurrences of `x` would be:
+
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let y = 2 * (w * 2) in
+  fun x -> w * y * x
+```
+
+### Explanation:
+1. The line `let x = w * 2 in` defines `x` as `w * 2`.
+2. We want to inline `w * 2` wherever `x` occurs. 
+3. The binding `let y = 2 * x` becomes `let y = 2 * (w * 2)` since `x` is replaced by `w * 2`.
+4. The function then becomes `fun y -> x + 2 + y * w`. Replace `x` with `(w * 2)` and `w` also becomes `w * 2` after substitution. However, `w` in `func y -> ...` retains its scope variable.
+5. The final form correctly represents the inlined values as specified.

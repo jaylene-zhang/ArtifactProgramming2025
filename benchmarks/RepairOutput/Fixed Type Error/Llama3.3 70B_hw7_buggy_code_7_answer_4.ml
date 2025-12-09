@@ -1,0 +1,2 @@
+let string_implode (l : char list) : string =
+  String.concat "" (List.map (fun x -> String.make 1 x) l)

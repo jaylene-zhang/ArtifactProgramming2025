@@ -1,0 +1,3 @@
+Solution: The parameter r (the second argument) is unused.
+
+Explanation: The local binding "let r = 2 * y" shadows the parameter r, so the value passed to the function is never referenced. f and y are used, while the outer r is ignored.

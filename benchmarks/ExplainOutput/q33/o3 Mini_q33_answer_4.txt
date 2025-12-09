@@ -1,0 +1,3 @@
+Solution: a
+
+Explanation: Option a uses an int for revolutions, which allows any number of rotations, and pairs it with each jump type. Option b limits revolutions to only Double or Triple, and option c uses an unnecessary recursive structure.

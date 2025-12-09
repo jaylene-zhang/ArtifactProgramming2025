@@ -1,0 +1,13 @@
+a) is the correct tail-recursive implementation of fold_right.
+
+Explanation:
+To implement fold_right tail-recursively, we need to use a continuation-passing style. The correct solution needs to:
+1. Accumulate operations in the continuation
+2. Apply them in the right order to match fold_right's behavior
+
+Option a) correctly builds a continuation that mirrors fold_right's behavior. When we process each element x, it wraps the current continuation with (fun r -> cont (f x r)), which ensures that when all the continuations are unwrapped (after reaching the empty list), the operations will be performed in the correct right-to-left order.
+
+The other options are incorrect because:
+- b) and c) apply the function f incorrectly (wrong order of arguments or applying to wrong values)
+- d) has the wrong order of arguments to f (uses (f r x) instead of (f x r))
+- e) incorrectly swaps the list and function in the recursive call

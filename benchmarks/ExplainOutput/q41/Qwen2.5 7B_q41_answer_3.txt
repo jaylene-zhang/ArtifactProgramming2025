@@ -1,0 +1,14 @@
+```ocaml
+type 'a fold_right_tail = ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+Explanation: 
+The `fold_right` function in OCaml has the type: 
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+When tail-recursive, it becomes more efficient by avoiding the construction of a stack frame for each recursive call. The result of each recursive step must be immediately passed to the next step, changing the type to:
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+This is essentially the same, but the order of the function arguments and the type of the accumulator ('b) make it a distinct type for a tail-recursive fold, emphasizing the accumulation in place.

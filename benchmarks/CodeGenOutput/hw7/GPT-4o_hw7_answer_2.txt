@@ -1,0 +1,45 @@
+```ocaml
+(*--------------------------------------------------------------*)
+(* Q1 : String to Characters to String                          *)
+(*--------------------------------------------------------------*)
+
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let tabulate n f =
+    let rec aux i acc =
+      if i < 0 then acc else aux (i - 1) (f i :: acc)
+    in
+    aux (n - 1) []
+  in
+  tabulate (String.length s) (String.get s)
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  List.fold_left (fun acc c -> acc ^ Char.escaped c) "" l
+
+
+(* ------------------------------------------------------------------------*)
+(* Q2 : Bank Account                                                      *)
+(* ------------------------------------------------------------------------*)
+
+let open_account (pass: password) : bank_account =
+  let stored_password = ref pass in
+  let balance = ref 0 in
+  {
+    update_pass = (fun old_pass new_pass ->
+      if old_pass <> !stored_password then raise wrong_pass;
+      stored_password := new_pass);
+    retrieve = (fun input_pass amount ->
+      if input_pass <> !stored_password then raise wrong_pass;
+      if amount < 0 then raise negative_amount;
+      if amount > !balance then raise not_enough_balance;
+      balance := !balance - amount);
+    deposit = (fun input_pass amount ->
+      if input_pass <> !stored_password then raise wrong_pass;
+      if amount < 0 then raise negative_amount;
+      balance := !balance + amount);
+    show_balance = (fun input_pass ->
+      if input_pass <> !stored_password then raise wrong_pass;
+      !balance);
+  }
+```

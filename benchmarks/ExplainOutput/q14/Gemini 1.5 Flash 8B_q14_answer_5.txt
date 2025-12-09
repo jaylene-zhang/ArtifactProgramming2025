@@ -1,0 +1,31 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed.  The compiler can optimize tail-recursive calls to avoid creating a new stack frame for each call, effectively making the function execute in constant space.
+
+**Explanation:**
+
+In a non-tail-recursive function, the result of the recursive call needs to be used in further computations.  This requires storing the intermediate results on the call stack, potentially leading to stack overflow for deeply nested calls.
+
+**Example (Non-tail-recursive):**
+
+```ocaml
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1);;
+```
+
+*Explanation:*  `n * factorial (n - 1)` performs the multiplication *after* the recursive call. The compiler cannot optimize away the intermediate result of factorial (n-1), so the whole evaluation needs to be stored on the stack.
+
+
+**Example (Tail-recursive):**
+
+```ocaml
+let rec factorial_tail n acc =
+  if n = 0 then acc
+  else factorial_tail (n - 1) (n * acc);;
+```
+
+*Explanation:* The recursive call `factorial_tail (n-1) (n*acc)` is the *last* operation.  The compiler can use the accumulated value `acc` directly as part of the return value and *avoid creating new stack frames*.
+
+
+**Important Note:**  While the second example is tail-recursive, the compiler will only automatically optimize it if a specific compiler flag is set or if the optimization is available in the language's implementation. The fact that a function *can* be written in a tail recursive manner does not guarantee the compiler will do the optimization.  In more complex programs where multiple intermediary function calls exist, manually transforming recursive functions to tail-recursive can become more complicated.

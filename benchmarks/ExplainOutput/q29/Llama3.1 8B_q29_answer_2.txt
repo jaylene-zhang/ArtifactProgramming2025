@@ -1,0 +1,23 @@
+I'll go through each implementation and provide a concise answer followed by an explanation.
+
+### a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+**Answer:** `YES`
+**Explanation:**
+
+This implementation correctly applies the `curry` function to `sumSeries` with the lower bound `0`, then swaps the arguments to receive the increment function `(fun x -> x + 1)` as the first argument.
+
+### b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+**Answer:** `NO (Invalid syntax)`
+
+The argument `0` is not properly formatted. The `curry` function expects a function as its argument, not a function call with an argument.
+
+### c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+**Answer:** `YES`
+**Explanation:**
+
+This implementation correctly applies the `swap` function to `sumSeries` with the increment function `(fun x -> x + 1)`, and then applies the `curry` function to receive the lower bound `0` as the first argument.
+
+In both correct implementations (a and c), the `sumSeries` function is composed with the `curry` and `swap` functions to produce the desired function `sum_from_zero`.

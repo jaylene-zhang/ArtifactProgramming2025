@@ -1,0 +1,5 @@
+Solution:  
+No, this version calls ackermann x once per list element, not just once.  
+
+Explanation:  
+In each recursive step, “ackermann x” is computed again, so for a list of length n, “ackermann x” is called n times. To compute it at most once, you would need to store the result of “ackermann x” and reuse it in every recursive call.

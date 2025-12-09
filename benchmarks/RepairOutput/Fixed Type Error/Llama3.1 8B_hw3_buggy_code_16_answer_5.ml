@@ -1,0 +1,1 @@
+`let sum (l : 'b church list) : 'b church = List.fold_left (fun acc elem -> add acc elem) zero l`

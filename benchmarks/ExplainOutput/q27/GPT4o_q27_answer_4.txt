@@ -1,0 +1,5 @@
+**Solution:**  
+Functional languages avoid state variables to ensure immutability, allow easier reasoning about code, support parallelism, and encourage a declarative programming style.
+
+**Explanation:**  
+In functional programming, immutability eliminates side effects, making it simpler to predict program behavior and debug. Without state changes, code becomes thread-safe, enabling safe concurrency. Additionally, functional programming focuses on expressing computations as evaluations of functions, aligning with a higher level of abstraction and mathematical reasoning.

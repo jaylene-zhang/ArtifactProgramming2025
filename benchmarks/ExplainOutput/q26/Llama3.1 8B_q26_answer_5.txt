@@ -1,0 +1,5 @@
+**Solution**
+False
+
+**Explanation**
+The expression `get_tail rc1` and `get_tail rc2` will return the same value, which is the ref-cell containing `2`. However, `rc1` and `rc2` are now pointing to the same location in memory, but `get_tail rc1` and `get_tail rc2` are pointing to a ref-cell containing the same value, not the same location in memory. Therefore, `get_tail rc1` and `get_tail rc2` may or may not be equal in terms of value (if the value of the ref-cell changes), but they are not equal in terms of physical equality because they are distinct locations in memory.

@@ -1,0 +1,17 @@
+Let's evaluate each implementation:
+
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+This is correct. The steps are:
+1. curry (sumSeries f) has type: int -> int -> (int -> int) -> int
+2. curry (sumSeries f) 0 has type: int -> (int -> int) -> int
+3. swap (curry (sumSeries f) 0) has type: (int -> int) -> int -> int
+4. swap (curry (sumSeries f) 0) (fun x -> x + 1) has type: int -> int
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+This is incorrect. The expression sumSeries f 0 doesn't type-check because sumSeries expects its second argument to be a pair (int * int).
+
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+This is incorrect. The error is similar to option b. After swapping, the order of arguments to sumSeries would become (int -> int) followed by (int * int), but we're incorrectly applying (fun x -> x + 1) directly to sumSeries f.

@@ -1,0 +1,3 @@
+Solution: No, the program computes ackermann x for every element in the list.
+
+Explanation: The call (ackermann x) appears inside the recursive branch, so for a non-empty list, ackermann x is computed for each y in l. To compute it only once, you should bind its value to a variable before recursion.

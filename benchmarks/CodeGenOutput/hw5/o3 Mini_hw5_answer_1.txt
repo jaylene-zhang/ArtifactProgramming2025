@@ -1,0 +1,74 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Finding Depth of a Tree *)
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+(* TODO: Implement the function. *)
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+         depth_helper l (fun dl ->
+         depth_helper r (fun dr ->
+         sc (1 + max dl dr)))
+  in
+  depth_helper t (fun d -> d)
+
+(* Question 2: Finding Subtrees *)
+
+(* TODO: Implement the function. *)
+let find_subtree_cps ls tree =
+  let rec helper cp t sc fc =
+    match t with
+    | Empty -> fc ()
+    | Tree (l, v, r) ->
+         if cp = ls then sc t
+         else
+           helper (cp @ [v]) l sc (fun () ->
+           helper (cp @ [v]) r sc fc)
+  in
+  helper [] tree (fun t -> Some t) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+type token = INT of int | PLUS | LPAREN | RPAREN
+type expr = Const of int | Plus of expr * expr
+
+let rec parse_expr tokens fc sc =
+  parse_term tokens fc (fun tokens' t ->
+    parse_expr_tail t tokens' fc sc)
+and parse_expr_tail t tokens fc sc =
+  match tokens with
+  | PLUS :: rest ->
+      parse_term rest fc (fun tokens'' t2 ->
+        parse_expr_tail (Plus(t, t2)) tokens'' fc sc)
+  | _ -> sc tokens t
+and parse_term tokens fc sc =
+  parse_factor tokens fc sc
+and parse_factor tokens fc sc =
+  match tokens with
+  | INT n :: rest -> sc rest (Const n)
+  | LPAREN :: rest ->
+      parse_expr rest fc (fun tokens' t ->
+        match tokens' with
+        | RPAREN :: rest' -> sc rest' t
+        | _ -> fc ())
+  | _ -> fc ()
+
+(* TODO: Implement the function. *)
+let parser_cps tokens =
+  parse_expr tokens (fun () -> None)
+    (fun tokens' t -> if tokens' = [] then Some t else None)
+
+let rec eval e _ =
+  match e with
+  | Const n -> n
+  | Plus (e1, e2) -> (eval e1 ()) + (eval e2 ())
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some e -> Some (eval e v)

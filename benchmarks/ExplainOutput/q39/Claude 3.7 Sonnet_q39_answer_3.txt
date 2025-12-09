@@ -1,0 +1,9 @@
+```ocaml
+let toInt f = 
+  let counter = ref 0 in
+  let check_func x = incr counter; x in
+  f check_func 0;
+  !counter
+```
+
+This solution works by counting how many times a function is applied. It creates a mutable counter, initializes it to 0, and defines a function `check_func` that increments the counter each time it's called. Then it applies the input function `f` to `check_func` and a dummy value 0, and finally returns the counter value. Since `f` is expected to call its first argument some number of times, this counts exactly those calls.

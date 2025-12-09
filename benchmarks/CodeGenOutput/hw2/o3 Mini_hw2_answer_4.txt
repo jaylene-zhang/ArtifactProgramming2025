@@ -1,0 +1,71 @@
+type nat = Z | S of nat
+
+type exp =
+  | Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int
+
+(* Q1a: Convert an int to a nat using a tail-recursive helper. *)
+let q1a_nat_of_int (n : int) : nat =
+  (* TODO: Implement the function. *)
+  let rec helper n acc =
+    if n <= 0 then acc
+    else helper (n - 1) (S acc)
+  in
+  helper n Z
+
+(* Q1b: Convert a nat to an int using a tail-recursive helper. *)
+let q1b_int_of_nat (n : nat) : int =
+  (* TODO: Implement the function. *)
+  let rec helper n acc =
+    match n with
+    | Z -> acc
+    | S n' -> helper n' (acc + 1)
+  in
+  helper n 0
+
+(* Q1c: Add two nat values recursively using only recursive calls to q1c_add. *)
+let rec q1c_add (n : nat) (m : nat) : nat =
+  (* TODO: Implement the function. *)
+  match n with
+  | Z -> m
+  | S n' -> S (q1c_add n' m)
+
+(* Q2a: Form an expression representing the negation of the given expression. *)
+let q2a_neg (e : exp) : exp =
+  (* TODO: Implement the function. *)
+  Times (Const (-1.0), e)
+
+(* Q2b: Form an expression representing the subtraction of e2 from e1. *)
+let q2b_minus (e1 : exp) (e2 : exp) : exp =
+  (* TODO: Implement the function. *)
+  Plus (e1, q2a_neg e2)
+
+(* Q2c: Form an expression representing the division of e1 by e2. *)
+let q2c_quot (e1 : exp) (e2 : exp) : exp =
+  (* TODO: Implement the function. *)
+  Times (e1, Pow (e2, -1))
+
+(* Q3: Evaluate an expression with a given value for the variable. *)
+let rec eval (a : float) (e : exp) : float =
+  (* TODO: Implement the function. *)
+  match e with
+  | Const f -> f
+  | Var -> a
+  | Plus (e1, e2) -> (eval a e1) +. (eval a e2)
+  | Times (e1, e2) -> (eval a e1) *. (eval a e2)
+  | Pow (e1, n) -> (eval a e1) ** (float_of_int n)
+
+(* Q4: Symbolically compute the derivative of the given expression. *)
+let rec diff (e : exp) : exp =
+  (* TODO: Implement the function. *)
+  match e with
+  | Const _ -> Const 0.0
+  | Var -> Const 1.0
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) -> Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (e, n) ->
+      if n = 0 then Const 0.0
+      else Times (Times (Const (float_of_int n), Pow (e, n - 1)), diff e)

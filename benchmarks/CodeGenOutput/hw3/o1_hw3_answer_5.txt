@@ -1,0 +1,14 @@
+let to_int (n : int church) : int = 
+  n 0 (fun x -> x + 1)
+
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) (fun x -> n2 x s)
+
+let sum (l : 'b church list) : 'b church =
+  List.fold_left add zero l
+
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> add acc one) zero l

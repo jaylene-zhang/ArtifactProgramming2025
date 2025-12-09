@@ -1,0 +1,9 @@
+```ocaml
+let rec fold_right (func : 'a -> 'b -> 'b) (ls : 'a list) (acc : 'b) (result : 'b -> 'c) : 'c =
+  match ls with
+  | [] -> result acc
+  | x :: tail -> fold_right func tail (func x acc) result
+```
+
+Explanation: 
+In the tail-recursive version of fold_right, we need to ensure that the recursive call to fold_right is the last operation when returning a value. This means we must also return the result of the recursive call, thus passing it to the result callback in the end.

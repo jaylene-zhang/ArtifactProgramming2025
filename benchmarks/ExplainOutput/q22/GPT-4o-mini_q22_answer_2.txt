@@ -1,0 +1,3 @@
+The unused variable in the expression is `r` defined in the `let r = 2 * y in`. 
+
+**Explanation:** The `r` defined inside the `call` function is calculated as `2 * y`, but it is never used after its definition. The variable `f` is redefined within the function, but the `f` passed as an argument is used instead of the local `f`. After that, `f r` calls the new `f`, but does not make use of the newly defined `r`. So `r` is essentially unused in the function's final computation.

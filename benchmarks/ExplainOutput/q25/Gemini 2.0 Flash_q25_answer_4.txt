@@ -1,0 +1,12 @@
+**Solution:**
+
+*   't = 's
+*   'u = 'u
+**Explanation:**
+
+1.  `f (a, b)` has type `'u`.
+2.  `f (b, a)` has type `'u`.
+3.  Therefore, `(f (a, b), f (b, a))` has type `('u * 'u)`.
+4.  Since `f` is applied to this tuple, we need `f` to accept `('u * 'u)`.  This implies that `'t` and `'s` in the signature of `f` must both be equal to `'u`. That is `'t = 'u` and `'s = 'u`.
+5.  However, based on the problem statement `f` takes a tuple of type `('t * 's)`. And then the first argument to the overall expression is `f (a, b)`. This implies `'t` is the same type as `'a` and `'s` is the same type as `'b`. We can infer, therefore, that `'a` and `'b` must be the same type since `'t = 'u` and `'s = 'u`. Thus, `'t = 's`.
+6.  The return type remains `'u`.

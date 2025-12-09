@@ -1,0 +1,7 @@
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> (w * 2) + 2 + y * w
+```
+
+The inlining replaces x with its definition (w * 2) in the body of the function, but only within the scope where x is defined. So in the function body `fun y -> x + 2 + y * w`, x becomes (w * 2). The w in this expression refers to the inner binding of w (which equals x), not the original parameter w.

@@ -1,0 +1,104 @@
+Here is the code that meets the specifications:
+
+```ocaml
+(* Question 1: Tree Depth *)
+
+(* Predefined function *)
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+(* CPS style tree_depth_cps function *)
+let rec depth_helper t k =
+  match t with
+  | Empty -> k 0
+  | Tree (l, _, r) -> depth_helper l (fun depth -> depth_helper r (fun depth' -> k (depth + 1 + depth')))
+
+let tree_depth_cps t =
+  depth_helper t (fun x -> x)
+```
+
+```ocaml
+(* Question 2: Finding Subtrees *)
+
+(* Find a subtree t’ with prefix p in t *)
+(* Possibly the most efficient way: construct a string first; then find it; then find the first node of such strings sorted by prefix match*)
+let find_subtree_cps g t sc fc =
+  let rec helper g t sc' fc' =
+    match g with
+    | [] -> fc'
+    | h::tl ->
+      let rec find h t acc sc' fc' =
+        match t with
+        | Empty -> sc' ()
+        | Tree (_, v, children) ->
+          find h children (h::acc sc' (fun() -> fc')) (fun() -> fc')
+      in
+      find h t [] sc' (fun() -> fc')
+  in
+  match find_subtree_cps g t sc fc with
+  | None -> fc()
+  | Some(tree) -> sc (Some tree)
+
+(* Question 3: Arithmetic Expression Parser *)
+(* type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r *)
+
+
+(* helper for expr parser that needs two apps - lhs and op identifier v2*rhs *)
+let rec expr_cps ts sc fc =
+  match ts with
+  | [] -> fc()
+  | hd::tl ->
+    mul_cps hd tl (fun() -> sc()) (fun t -> fc())
+
+(* helper for mul parser: just put operator-identifier pairs left to right*)
+let rec mul_cps operation_description ts sc fc =
+  match ts with
+  | [] -> fc()
+  | hd::tl ->
+    add_cps hd tl (fun() -> sc()) (fun t -> fc())
+
+(* helper for add parser: just put values left to right*)
+let rec add_cps v ts sc fc =
+  match ts with
+  | [] -> sc(v)
+  | hd::tl ->
+    add_cps hd tl (fun t -> mul_cps v tl (fun() -> sc t) (fun t' -> fc t')) (fun t' -> fc t')
+
+(* Helper function to create a constant function *)
+let rec const_cps v ts sc fc =
+  sc(Ast_Const v)
+
+(* Function shift to pull op and value off first two elements of the token list *)
+let rec shift_cps op v ts sc fc =
+  mul_cps Ast (op, v) ts (fun () -> fc ()) (fun _ -> sc())
+
+and expr_cps t sc fc =
+  shift_cps (Ast_Plus) 0 t sc fc
+
+
+(* parse_cps Function which is the query interface for the parser, and the continuation functions are provided to use it *)
+let rec parser_cps g sc fc =
+  match g with
+  | [] -> fc()
+  | hd::tl ->
+    expr_cps tl (fun v -> ml tl (fun() -> sc(v))) (fun() -> fc())
+and mul_cps g op sc fc =
+  match g with
+  | [] -> sc(op)
+  | hd::tl ->
+    add_cps hd tl (fun v -> shift_cps op hd tl (fun() -> sc v) (fun _ -> fc v)) (fun v -> fc v)
+and add_cps g v sc fc =
+  match g with
+  | [] -> sc (v)
+  | hd::tl ->
+    add_cps tl hd (fun a -> mul_cps (Ast	        (hd, v)) tl (fun() -> sc(a))) (fun a -> fc a)
+and shift_cps g v ts sc fc =
+  mul_cps (Ast.Const 0) ts (fun() -> sc(Ast.Add(v))) (fun t -> fc(t))
+
+
+(* A function that evaluates an OCaml AST (Expr) as created by the parser*):*)
+(*eval: Ast.Expr -> int*)
+let rec eval = function
+  | Ast.Const (n) -> n
+| Ast.Plus (l, r) -> eval l + eval r

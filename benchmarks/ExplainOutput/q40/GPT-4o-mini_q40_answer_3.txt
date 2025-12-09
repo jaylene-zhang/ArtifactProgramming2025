@@ -1,0 +1,3 @@
+No, the `zip_tr` function is not tail-recursive.
+
+**Explanation:** Tail recursion occurs when the recursive call is the last operation performed in the function. In `zip_tr`, the recursive call to `zip_tr` is made before any further operations (specifically before the continuation `sc` is invoked to build the output list) are completed. Since there is additional work to do after the recursive call (adding `(h1, h2)` to the list), it does not qualify as tail recursion.

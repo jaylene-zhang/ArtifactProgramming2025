@@ -1,0 +1,12 @@
+The answer is true.
+
+When `rc1 := !rc2` is executed, `rc1` now points to the same list structure as `rc2`, which is `Cons (2, rc1)`. This means `rc1` now contains a list with head 2 and tail pointing to `rc1` itself.
+
+After this assignment:
+- `rc1` points to `Cons (2, rc1)`
+- `rc2` also points to `Cons (2, rc1)`
+
+When we call `get_tail rc1`, it returns the tail of the list pointed to by `rc1`, which is `rc1` itself.
+When we call `get_tail rc2`, it returns the tail of the list pointed to by `rc2`, which is also `rc1`.
+
+Since both `get_tail rc1` and `get_tail rc2` return the same reference `rc1`, the physical equality test `get_tail rc1 == get_tail rc2` will return true.

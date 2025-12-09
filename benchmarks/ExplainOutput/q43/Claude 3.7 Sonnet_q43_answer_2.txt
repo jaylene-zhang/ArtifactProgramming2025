@@ -1,0 +1,8 @@
+No, this would not work. 
+
+The reason is that this statement doesn't correctly handle the accumulator in `rev_tl`. When proving by induction, the inductive hypothesis would be about `rev_tl` with an empty accumulator, but in the inductive step, we'd need to reason about `rev_tl` with a non-empty accumulator.
+
+A better approach would be to prove a more general property:
+`length (rev_tl l acc) = length l + length acc`
+
+This provides the necessary flexibility to handle the accumulator correctly during induction.

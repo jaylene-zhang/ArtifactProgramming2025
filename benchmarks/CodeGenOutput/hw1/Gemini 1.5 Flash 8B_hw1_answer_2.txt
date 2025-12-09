@@ -1,0 +1,31 @@
+```ocaml
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let distance (x1, y1) (x2, y2) =
+  abs (y2 - y1) + abs (x2 - x1)
+
+
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+let binomial n k =
+  if k < 0 || k > n then 0
+  else factorial n / (factorial k * factorial (n - k))
+
+
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+let rec lucas_helper n acc1 acc2 =
+  if n = 0 then acc2
+  else if n = 1 then acc1
+  else lucas_helper (n - 1) acc2 (acc1 + acc2)
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n =
+  if n < 0 then 0
+  else lucas_helper n 1 2
+```

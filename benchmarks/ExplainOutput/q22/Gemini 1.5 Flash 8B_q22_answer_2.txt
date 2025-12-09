@@ -1,0 +1,8 @@
+Solution:
+
+`r`
+
+
+Explanation:
+
+The `r` variable defined inside the `let r = 2 * y in` is shadowed by the original `r` parameter.  The function `f` is recursively called on the new `r` without using the original `r`. Thus it is unused as defined.

@@ -1,0 +1,7 @@
+The expected type for a tail-recursive version of `fold_right` would be:
+
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:** In `fold_right`, the function processes elements of the list from right to left, combining them using the provided binary function. The type signature indicates that it accepts a function of type `('a -> 'b -> 'b)` (taking an element of the list and an accumulated result), a list of type `'a list`, and an initial accumulator of type `'b`. The final result is of type `'b`, which represents the accumulated value. The original type you're considering (which includes an additional function `('b -> 'c) -> 'c`) suggests that the function is not purely folding but transforming the result, which is not necessary for a basic tail-recursive fold.

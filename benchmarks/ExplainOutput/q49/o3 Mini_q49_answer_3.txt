@@ -1,0 +1,8 @@
+Solution:
+let double x =
+  let x = 2 in
+  let w = (f x) + x in
+  fun g -> (g w) * (f x)
+
+Explanation:
+We replace each free occurrence of y by (f x). In the let-binding for w, y becomes (f x) so that w = (f x) + x. In the lambda, to avoid capturing the free f in (f x) (since f is bound by the lambda), we rename its parameter (here to g), resulting in (g w) * (f x).

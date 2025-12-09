@@ -1,0 +1,27 @@
+**Solution:**
+
+```ocaml
+let x = 5;; (* Initial binding of x to 5 *)
+let x = 10;; (* Overwriting: x is now bound to 10 *)
+```
+
+**Explanation:**
+
+*   **Overwriting:**  Overwriting, or in-place mutation, means directly changing the value stored in a memory location. In OCaml, this is **not** the typical behavior of `let`.  The code above *rebinds* `x` to a new immutable value 10, effectively shadowing the previous binding: memory location where 5 was stored can be garbage collected. OCaml emphasizes immutability, making true overwriting less common (and typically requiring explicit constructs like mutable records or arrays).
+
+*   **Shadowing:** Shadowing occurs when a new binding with the same name as an existing binding is introduced in a new scope. The new binding temporarily hides the outer binding within its scope. The original value is not changed. Consider the function below.
+
+``` ocaml
+let x = 5;; (* initial binding of x to 5 *)
+
+let f y =
+  let x = y + 1 in (* Shadowing: a new x is defined within f *)
+  x * x;;
+
+let result = f 3;; (* result will be 16: (3+1)*(3+1) *)
+(* x is still 5 outside the scope of function f *)
+```
+
+**Key Difference:**
+
+The core distinction is whether the memory location associated with a variable's *original* binding is directly changed. Shadowing creates a *new* binding, leaving the original untouched, while (hypothetically true) overwriting would modify the original value in place. In Functional programming, such as OCaml, we can achieve a similar idea, by essentially overwriting the identifier with newer values, while the previous values can be garbage-collected. OCaml prefers immutability and shadowing to true overwriting by default.

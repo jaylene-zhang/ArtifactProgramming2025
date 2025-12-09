@@ -1,0 +1,17 @@
+**Solution**
+
+a) h (f (g (f x)))
+
+**Explanation**
+
+To compose two functions `h` and `g`, we need to apply `g` to the result of `g` applied to `f` applied to `x`, and then apply `h` to the result.
+
+So, we need to evaluate the innermost function first, which is `f x`. Then, we need to apply `g` to the result, and finally apply `h` to the last result.
+
+This is why option a) is the correct solution.
+
+**Why the other options are not correct:**
+
+* Option b) `g (f (h (f x)))` evaluates `g` first, but the problem statement requires `h` to be applied after `g`.
+* Option c) `h (g (f x))` does not apply `f` twice as required by the problem statement.
+* Option d) `f (g (h x))` changes the order of `h` and `g` and also applies `f` only once.

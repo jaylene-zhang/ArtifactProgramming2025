@@ -1,0 +1,3 @@
+The last expression will return `[10.0; 20.0; 5.0]`.
+
+Explanation: In OCaml, `sales_tax` is defined as a constant (mutable only through redefinition, but not in this code). When `update_sales_tax ()` is invoked, it calculates `sales_tax *. 2.0`, but since `sales_tax` is not updated in the program's state (it's a constant), it doesn't affect the value of `sales_tax`. Thus, when `update_price_list price_list` is called, it still uses the original `sales_tax = 1.0`, leading to `add_tax` returning values with tax added (1.0 + price), which are `[11.0; 21.0; 6.0]`. Therefore, my previous statement was incorrect, and the correct result is indeed `[11.0; 21.0; 6.0]`. I apologize for the confusion.

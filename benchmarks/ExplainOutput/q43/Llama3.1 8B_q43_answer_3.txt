@@ -1,0 +1,10 @@
+**Solution**
+
+No, this will not work.
+
+**Explanation**
+
+This statement is not true. When `l` is an empty list `[]`, the reverse of `l` is still `[]` but the left-hand side of the equation is `length (rev_tl l []) = length (rev []))`, which is always 1 because `rev_tl hd tl` is defined to match with `tl` being an argument function with argument `hd tl`
+
+
+So, we need to change our approach and try a different proof.

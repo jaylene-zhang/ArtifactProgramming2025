@@ -1,0 +1,21 @@
+**Solution:**
+
+```ocaml
+let x = 5;; (* x is bound to 5 *)
+x <- 6;; (* Error: x is not mutable *)
+```
+
+**Explanation:**
+
+Overwriting (or assignment in languages where it's permitted) involves changing the value stored in a *mutable* memory location that is associated with a variable. In OCaml `let` bindings are immutable by default, which means you can not change its value.
+
+Overshadowing, on the other hand, involves declaring a new variable with the same name within a narrower scope.  The inner variable *hides* the outer variable, but the outer variable still exists and retains its original value.  Once the inner scope ends, the outer variable becomes visible again.
+```ocaml
+let x = 5;; (* Outer x *)
+let () =
+  let x = 6 in  (* Inner x, overshadows the outer x *)
+  Printf.printf "Inner x: %d\n" x;; (* Prints "Inner x: 6" *)
+Printf.printf "Outer x: %d\n" x;; (* Prints "Outer x: 5" *)
+```
+
+The key difference is that overwriting *modifies* the existing value at the same memory location (if the variable is mutable), while overshadowing introduces a *new*, distinct variable that temporarily hides a pre-existing one.

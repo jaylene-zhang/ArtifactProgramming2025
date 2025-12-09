@@ -1,0 +1,3 @@
+Solution: Functional languages avoid mutable state to preserve referential transparency and eliminate side effects.
+
+Explanation: Without state changes, functions always return the same output for the same input, making the code easier to reason about, test, and optimize, especially in concurrent environments.

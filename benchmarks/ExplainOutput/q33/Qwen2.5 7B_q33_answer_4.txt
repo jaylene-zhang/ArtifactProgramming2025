@@ -1,0 +1,9 @@
+Solution: a)
+
+```ocaml
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+```
+
+Explanation: This solution correctly represents the jumps (a combination of predefined types like Axel, Loop, etc.) and the number of revolutions (an integer) that can vary between different jumps. Option b) restricts the number of revolutions to only Double and Triple, which does not capture the requirement of representing jumps with any integer number of revolutions. Option c) incorrectly nests jumps into other jumps, which is not required as per the problem statement.

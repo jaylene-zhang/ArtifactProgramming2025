@@ -1,0 +1,5 @@
+Functions in the standard List library of OCaml are not all tail-recursive primarily for reasons of clarity and usability. While using continuations can transform some functions into tail-recursive forms, this often makes the code more complex and harder to read. Many of the standard List functions (like `map`, `filter`, etc.) are designed to be straightforward and expressive rather than optimized for tail-recursion.
+
+Tail-recursion is more critical for performance in cases expected to handle large lists, but not all list operations necessitate such optimization since lists may be small or performance might not be the main concern for every function. 
+
+In summary, the trade-off between clarity and performance is a key reason for the design choices in the List library.

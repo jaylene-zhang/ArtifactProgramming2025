@@ -1,0 +1,7 @@
+**Solution:**
+
+`[]`
+
+**Explanation:**
+
+`rev_tl` (presumably referring to a tail-recursive reverse function) typically works by accumulating the reversed list in the `acc` (accumulator) argument.  To correctly build the reversed list, you need to start with an empty accumulator.

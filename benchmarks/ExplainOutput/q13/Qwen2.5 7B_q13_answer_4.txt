@@ -1,0 +1,22 @@
+**Solution:**
+```ml
+let x = 10 in
+let x = 20 in
+x
+```
+
+**Explanation:**
+In this example, `x` is assigned the value `10` and then immediately reassigned to `20`. When the expression `x` is evaluated, it returns `20`. This is overwriting because the variable `x` is being assigned a new value, replacing the old one.
+
+**Overwriting vs. Overshadowing:**
+- **Overwriting:** Reassigning a new value to an existing variable, effectively replacing the old value.
+- **Overshadowing:** Using a local binding to hide a binding in an outer scope, but the original binding still exists. In the example, if we used a function parameter or let binding, the outer `x` would still be accessible as it is in a different scope. For example:
+  ```ml
+  let x = 10
+  let foo () =
+    let x = 20 in
+    x
+  in
+  foo()
+  ```
+  Here, `x` inside `foo` overshadows the outer `x`, but the outer `x` is still `10`.

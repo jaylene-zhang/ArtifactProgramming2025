@@ -1,0 +1,3 @@
+**Solution: No, the test `triangle 0 == 0` will fail.**
+
+**Explanation:** The function `triangle` does not handle the case when `n = 0`. The base case in the function only checks if `n = 1`, returning 1 in that case. When `n = 0`, the function will not find a valid base case and will eventually lead to a stack overflow due to infinite recursion because it keeps calling `triangle (-1)`. Thus, `triangle 0` does not return 0, and the test will fail.

@@ -1,0 +1,10 @@
+Correct Answer: **b) let concat l = let rec aux l s = match l with | [] -> s | x::xs -> aux xs (s ^ " " ^ x) in aux l ""**
+
+### Solution Explanation:
+- **Tail-recursion**: In Option `b`, the recursive call to `aux` is the last operation (tail-recursive). Each intermediate result (`s ^ " " ^ x`) is passed as an argument to the next recursive call, maintaining constant stack space.
+  
+- **Traversal Once**: Option `b` correctly concatenates the list by keeping an accumulator `s` that builds the result incrementally. It does not traverse the list more than once.
+
+- Other Options:
+  - **a)** and **c)** modify `s` in the wrong order (`x ^ " " ^ s`) and would result in a sentence reversed incorrectly. 
+  - **d)** is not tail-recursive because the concatenation happens after the recursion (`concat xs`) is resolved, which builds a stack of operations.

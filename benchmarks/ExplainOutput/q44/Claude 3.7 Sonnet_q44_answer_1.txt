@@ -1,0 +1,5 @@
+Solution: In the step case (also called inductive step), we need to prove that if the statement holds for a list `t`, then it also holds for the list `h :: t` (where `h` is the head element).
+
+Explanation: Inductive proofs for lists involve two cases:
+1. Base case: Prove the statement for the empty list `[]`
+2. Step case: Assume the statement holds for some list `t` (the inductive hypothesis), then prove it holds for `h :: t` where `h` is any element added to the front of `t`

@@ -1,0 +1,10 @@
+The result of substituting y by (f x) in the expression is:
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: After substitution, every occurrence of `y` in the original expression is replaced with `(f x)`. However, note that this code will no longer work because `f x` is being used before `f` is defined. In the original expression, `f` is a parameter of a nested function. This type of substitution might not always result in valid code.

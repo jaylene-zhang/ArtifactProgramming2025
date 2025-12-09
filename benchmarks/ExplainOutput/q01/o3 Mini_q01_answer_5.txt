@@ -1,0 +1,20 @@
+Solution:
+let rec zippy (xs: 'a list) (ys: 'b list)
+               (pair: 'a * 'b -> 'c)
+               (sc: 'c list -> 'd) : 'd =
+  match xs, ys with
+  | [], [] -> sc []
+  | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair (x, y)) :: r))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (fun (x, y) -> x + y)
+         (fun r -> if List.length xs = List.length r then r else raise Error)
+
+Explanation:
+• xs is a list of type 'a list and ys is a list of type 'b list.
+• pair is a function mapping a pair ('a * 'b) to some type 'c.
+• sc is a continuation that takes a list of type 'c list and produces a result of type 'd.
+• Thus, zippy has the type: 'a list -> 'b list -> ('a * 'b -> 'c) -> ('c list -> 'd) -> 'd.
+• zip_plus uses pair = (fun (x,y) -> x + y) so 'a and 'b become int and 'c is int.
+The program is well-typed.

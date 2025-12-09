@@ -1,0 +1,5 @@
+Solution:  
+Yes, it is tail recursive.  
+
+Explanation:  
+The function never does extra work after the recursive call; the recursive call to zip_tr is its final action in each branch, with the updated continuation carrying the rest of the computation.

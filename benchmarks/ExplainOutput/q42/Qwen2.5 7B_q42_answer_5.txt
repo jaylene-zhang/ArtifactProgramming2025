@@ -1,0 +1,3 @@
+Initialize `acc` as `[]`.
+
+Explanation: To compute the reverse of a list using `rev_tl l acc`, `acc` should be initialized as an empty list `[]`. The accumulated reversed list will be built by prepending elements to `acc` in each recursive step, eventually resulting in the full reversed list.

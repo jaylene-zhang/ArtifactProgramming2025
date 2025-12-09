@@ -1,0 +1,67 @@
+```ocaml
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make (String)
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+
+exception Unsatisfiable_formula
+
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect (f : formula) (acc : Variable_set.t) : Variable_set.t =
+    match f with
+    | Variable v -> Variable_set.add v acc
+    | Conjunction (f1, f2) -> collect f2 (collect f1 acc)
+    | Disjunction (f1, f2) -> collect f2 (collect f1 acc)
+    | Negation f1 -> collect f1 acc
+  in
+  (* TODO: Implement the function. *)
+  collect formula Variable_set.empty
+
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec evaluate (f : formula) : bool =
+    match f with
+    | Variable v -> (
+        match Variable_map.find_opt v state with
+        | Some b -> b
+        | None -> raise (Unassigned_variable v))
+    | Conjunction (f1, f2) -> evaluate f1 && evaluate f2
+    | Disjunction (f1, f2) -> evaluate f1 || evaluate f2
+    | Negation f1 -> not (evaluate f1)
+  in
+  (* TODO: Implement the function. *)
+  evaluate formula
+
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = Variable_set.to_list (collect_variables formula) in
+  let rec find_assignment (assignment : truth_assignment)
+      (remaining_vars : string list) : truth_assignment =
+    match remaining_vars with
+    | [] ->
+        if eval assignment formula then assignment
+        else raise Unsatisfiable_formula
+    | var :: rest ->
+        try
+          let true_assignment =
+            find_assignment (Variable_map.add var true assignment) rest
+          in
+          true_assignment
+        with Unsatisfiable_formula -> (
+          try
+            let false_assignment =
+              find_assignment (Variable_map.add var false assignment) rest
+            in
+            false_assignment
+          with Unsatisfiable_formula -> raise Unsatisfiable_formula)
+  in
+  (* TODO: Implement the function. *)
+  try find_assignment Variable_map.empty variables
+  with Unsatisfiable_formula -> raise Unsatisfiable_formula
+```

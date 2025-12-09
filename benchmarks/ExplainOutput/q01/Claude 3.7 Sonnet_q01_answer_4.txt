@@ -1,0 +1,18 @@
+Here's the most general type:
+
+```ocaml
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: ('a * 'b) -> 'c) (sc: 'c list -> 'd):
+    'd = match xs, ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y))::r))
+| _ , _ -> raise Error
+```
+
+Explanation: 
+- `xs` has type `'a list` where `'a` is a type variable
+- `ys` has type `'b list` where `'b` is a type variable
+- `pair` is a function that takes a tuple of type `('a * 'b)` and returns something of type `'c`
+- `sc` is a continuation that takes a list of `'c` elements and returns a value of type `'d`
+- The final return type is `'d`
+
+This is a continuation-passing style function that processes two lists in parallel, applies a function to each pair of elements, and passes the result to a continuation.

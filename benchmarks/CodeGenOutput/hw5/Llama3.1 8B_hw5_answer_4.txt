@@ -1,0 +1,94 @@
+Here are the implementations for the three questions:
+```ocaml
+(* Question 1: Tree Depth *)
+
+let rec depth_helper t depth_cont =
+  match t with
+  | Empty -> depth_cont 0
+  | Tree (_, x, _) -> depth_cont 1
+
+let rec tree_depth_cps t depth_cont = 
+  let rec aux t depth =
+    match t with
+    | Empty -> depth_cont depth
+    | Tree (l, _, r) -> aux l (depth + 1) ; aux r (depth + 1)
+  in
+  aux t 0
+
+
+(* Question 2: Finding Subtrees *)
+
+let rec find_subtree_cont ls tree success_cont failure_cont =
+  match ls with
+  | [] -> failure_cont None
+  | h :: t ->
+     match tree with
+     | Empty -> success_cont (Some Empty)
+     | Tree (l, value, r) -> 
+        if h = value then 
+          begin
+            match find_subtree_cont t l success_cont failure_cont with 
+            | Some l_subtree -> success_cont (Some (Tree (l_subtree, value, r)))
+            | None -> find_subtree_cont t r success_cont failure_cont
+          end
+        else 
+          find_subtree_cont t tree success_cont failure_cont
+
+let find_subtree_cps ls tree =
+  find_subtree_cont ls tree (fun v -> Some v) (fun v -> None)
+
+
+(* Question 3: Parser *)
+
+(* Helper functions *)
+let rec number_cps t success_cont failure_cont =
+  match t with
+  | [] -> failure_cont None
+  | h :: t ->
+     if '0' <= h && h <= '9' then 
+       number_cps t success_cont failure_cont
+     else 
+       success_cont (Some (Int (int_of_char h)))
+
+let rec term_cps token_list success_cont failure_cont =
+  match token_list with
+  | [] -> failure_cont None
+  | h :: t ->
+     match h with
+     | token -> 
+        term_cps token_list success_cont (fun () -> failure_cont None) 
+
+let rec mul_cps token_list success_cont failure_cont = 
+  begin
+    match term_cps token_list (fun term -> mul_cps token_list success_cont (fun () -> failure_cont None) ) (fun () -> failure_cont None) with
+    | Some t1 ->
+       match term_cps token_list (fun term -> mul_cps token_list success_cont (fun () -> failure_cont None) ) (fun () -> failure_cont None) with
+       | Some t2 -> success_cont (Mul(t1, t2))
+       | _ -> failure_cont None
+    | _ -> failure_cont None
+  end 
+
+let rec expr_cps token_list success_cont failure_cont = 
+  begin
+    match mul_cps token_list success_cont (fun () -> failure_cont None) with
+    | Some e1 -> 
+       let rec aux token_list success_cont failure_cont =
+         begin
+           match expr_cps token_list success_cont (fun () -> failure_cont None) with
+           | Some e2 -> 
+              success_cont (Plus(e1, e2))
+           | _ -> failure_cont None
+         end
+       in
+       aux token_list success_cont (fun () -> failure_cont None)
+    | _ -> failure_cont None
+  end 
+
+let parser_cps t =
+  expr_cps t (fun v -> Some (v)) (fun v -> None)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)
+```
+Note that this is not the most efficient solution, but it should satisfy the requirements. You may need to adjust the helper functions to suit your needs.

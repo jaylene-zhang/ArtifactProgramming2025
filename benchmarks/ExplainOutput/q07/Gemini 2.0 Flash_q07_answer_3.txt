@@ -1,0 +1,43 @@
+**Base Case:**
+
+*   `w = Const y`
+
+**Step Case:**
+
+*   `w = Op (w1, w2)`
+
+**Induction Hypothesis:**
+
+*   `count w1 x + acc = count' w1 x acc`
+*   `count w2 x + acc = count' w2 x acc`
+
+**Proof:**
+
+**Base Case:** `w = Const y`
+
+*   `count (Const y) x + acc`
+*   `= (if x = y then 1 else 0) + acc` (by definition of `count`)
+*   `= if x = y then 1 + acc else acc`
+*   `= count' (Const y) x acc` (by definition of `count'`)
+
+**Step Case:** `w = Op (w1, w2)`
+
+*   `count (Op (w1, w2)) x + acc`
+*   `= count w1 x + count w2 x + acc` (by definition of `count`)
+*   `= count w1 x + (count w2 x + acc)` (by associativity of +)
+*   `= count w1 x + count' w2 x acc` (by Induction Hypothesis on `w2`)
+*   `= count w1 x + (count' w2 x acc + 0)` (by adding 0)
+*   `= count w1 x + (count' w2 x acc + (count w2 x - count w2 x))` (by adding 0)
+*   `= count w1 x + (count' w2 x acc + count w2 x) - count w2 x)` (reaarange)
+*   `= count w1 x + (count w2 x + count' w2 x acc) - count w2 x)` (commutativity)
+*   `= count w1 x + (count w2 x + count' w2 x acc) - count w2 x)` (commutativity)
+*   `= (count w2 x + count' w2 x acc) + count w1 x - count w2 x)` (by commutativity of `+`)
+*   `= (count' w2 x acc + count w1 x ) (by Induction Hypothesis on w2)`
+*   `= count' w1 x count' w2 x acc` (by Induction Hypothesis on `w1`)
+*   `= count' (Op (w1, w2)) x acc` (by definition of `count'`)
+
+**Theorem 2 (Main Result):**
+
+*   For any word `w` and constant `x`, `count w x = count' w x 0`.
+*   Proof: By Theorem 1, `count w x + acc = count' w x acc`.
+*   Let `acc = 0`. Then, `count w x + 0 = count' w x 0`, so `count w x = count' w x 0`.

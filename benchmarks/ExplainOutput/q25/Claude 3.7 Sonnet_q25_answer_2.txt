@@ -1,0 +1,11 @@
+The most general instantiation:
+'t = 's = 'u
+
+Explanation:
+For the expression f(f(a,b), f(b,a)) to be well-typed:
+- f(a,b) must have type 'u (from the original type of f)
+- f(b,a) must have type 'u (from the original type of f)
+- For f to accept (f(a,b), f(b,a)) as input, we need 'u = 't and 'u = 's
+- This forces 't = 's = 'u
+
+Thus, f has type ('u * 'u -> 'u), a has type 'u, and b has type 'u.

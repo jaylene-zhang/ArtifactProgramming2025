@@ -1,0 +1,7 @@
+**Solution:**
+
+No
+
+**Explanation:**
+
+The function `triangle` attempts to calculate triangle numbers recursively.  However, because of the `else n + triangle (n - 1)` part, it does not use the correct formula. The code is trying to calculate triangle(n) = n + triangle(n-1). This is not the definition of triangle numbers for n > 1. For `n = 0`, the correct formula evaluates to 0, while the recursive formula would yield an error from trying to calculate `triangle(-1)`.  It will not, therefore, return 0 for `triangle 0`.

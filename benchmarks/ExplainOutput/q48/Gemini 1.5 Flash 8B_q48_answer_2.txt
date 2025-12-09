@@ -1,0 +1,7 @@
+Solution:
+
+Efficiency considerations; in some cases, the iterative approach (e.g., using `fold_left` or `fold_right`) is more efficient than tail-recursive versions.
+
+Explanation:
+
+While continuations can theoretically create tail-recursive equivalents of all functions, the overhead of implementing and managing continuations often outweighs the benefits in simple list operations.  Direct iterative implementations (using `fold` functions) can be optimized by the compiler to use loop constructs, which are often substantially faster.  The standard library prioritizes practical performance over *theoretical* tail-recursion for most common operations.

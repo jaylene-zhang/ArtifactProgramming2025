@@ -1,0 +1,49 @@
+let rec q1a_nat_of_int (n : int) : nat =
+  let rec helper i acc =
+    if i <= 0 then acc
+    else helper (i - 1) (S acc)
+  in
+  helper n Z
+
+let rec q1b_int_of_nat (n : nat) : int =
+  let rec helper x acc =
+    match x with
+    | Z -> acc
+    | S y -> helper y (acc + 1)
+  in
+  helper n 0
+
+let rec q1c_add (n : nat) (m : nat) : nat =
+  match n with
+  | Z -> m
+  | S n' -> S (q1c_add n' m)
+
+let q2a_neg (e : exp) : exp =
+  Times (Const (-1.), e)
+
+let q2b_minus (e1 : exp) (e2 : exp) : exp =
+  Plus (e1, q2a_neg e2)
+
+let q2c_quot (e1 : exp) (e2 : exp) : exp =
+  Times (e1, Pow (e2, -1))
+
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Const c -> c
+  | Var -> a
+  | Plus (e1, e2) -> eval a e1 +. eval a e2
+  | Times (e1, e2) -> eval a e1 *. eval a e2
+  | Pow (e1, n) -> (eval a e1) ** float_of_int n
+
+let rec diff (e : exp) : exp =
+  match e with
+  | Const _ -> Const 0.
+  | Var -> Const 1.
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) ->
+      Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (e1, n) ->
+      Times (
+        Times (Const (float_of_int n), Pow (e1, n - 1)),
+        diff e1
+      )

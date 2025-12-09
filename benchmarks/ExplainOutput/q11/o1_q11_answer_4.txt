@@ -1,0 +1,28 @@
+Solution:
+────────────────────────────────────────────────────────
+(* 1. The most general type for zip *)
+let rec zip (l1 : 'a list) (l2 : 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+
+(* 2. Generalized zipper *)
+let rec zipper (comb : 'a -> 'b -> 'c)
+               (add  : 'c -> 'c list -> 'c list)
+               (l1   : 'a list)
+               (l2   : 'b list)
+             : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+
+(* 3. Definitions using zipper *)
+let zip     = zipper (fun x y -> (x,y)) (fun h t -> h :: t)
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+                     (fun s t -> t @ [(s, List.length t)])
+────────────────────────────────────────────────────────
+
+Explanation:
+1) zip takes two lists of possibly different element types ('a and 'b) and returns a list of pairs ('a * 'b).  
+2) In zipper, comb : 'a -> 'b -> 'c combines one element from each list into a 'c, and add : 'c -> 'c list -> 'c list inserts that 'c into the accumulator ('c list).  
+3) zip and zip_rev are special cases of zipper with different comb and add functions.

@@ -1,0 +1,2 @@
+Solution: Functions being first-class values means that they can be treated like any other value – stored in variables, passed as arguments to functions, and returned from functions.  
+Explanation: This design enables higher-order programming and allows functions to be composed dynamically, making programs more modular and expressive.

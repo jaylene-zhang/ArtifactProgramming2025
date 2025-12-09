@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let double x =
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The `y` is replaced with `(f x)` in the expression.  We simply substitute every occurrence of `y` with `(f x)`. No renaming is necessary since there are no variable capture issues as `y` is not bound within the replaced expression.

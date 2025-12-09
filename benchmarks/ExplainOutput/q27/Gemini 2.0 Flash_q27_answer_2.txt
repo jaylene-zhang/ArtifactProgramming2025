@@ -1,0 +1,9 @@
+**Solution:**
+
+To enhance immutability, simplify reasoning, and facilitate concurrency.
+
+**Explanation:**
+
+*   **Immutability:** Avoiding state variables promotes immutability, meaning data doesn't change after creation. This makes code easier to understand and debug.
+*   **Reasoning:** Immutability simplifies reasoning about program behavior because the value of a variable is always the same at any point in the execution.
+*   **Concurrency:** Immutable data structures are naturally thread-safe, which makes it easier to write concurrent programs without worrying about race conditions or synchronization issues.

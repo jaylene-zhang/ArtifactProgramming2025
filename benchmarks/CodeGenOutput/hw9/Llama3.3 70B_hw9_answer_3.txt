@@ -1,0 +1,111 @@
+Here are the solutions for the three questions:
+
+### Question 1: free_variables
+
+```ocaml
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      let bound = List.map fst xs in
+      delete bound (free_variables e)
+  | Rec (x, _, e) ->
+      delete [x] (free_variables e)
+  | Let (x, e1, e2) ->
+      let fvs_e1 = free_variables e1 in
+      let fvs_e2 = delete [x] (free_variables e2) in
+      union fvs_e1 fvs_e2
+  | Apply (e, es) -> union_fvs (e :: es)
+```
+
+### Question 2: unused_vars
+
+```ocaml
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused = unused_vars e1 @ unused_vars e2 in
+      if List.mem x (free_variables e2) then
+        unused
+      else
+        x :: unused
+  | Rec (x, _, e) ->
+      if List.mem x (free_variables e) then
+        []
+      else
+        [x]
+  | Fn (xs, e) ->
+      let bound = List.map fst xs in
+      let unused_in_body = unused_vars e in
+      List.fold_left (fun acc x -> if List.mem x unused_in_body then acc else x :: acc) [] bound
+  | Apply (e, es) ->
+      unused_vars e @ List.fold_left (fun acc exp -> acc @ unused_vars exp) [] es
+```
+
+### Question 3: subst
+
+```ocaml
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y, e2) =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y, e1', subst s e2)
+  | Rec (y, t, e) ->
+      let e' =
+        if x = y then
+          e
+        else if List.mem y (free_variables e') then
+          let (y, e) = rename y e in
+          e
+        else
+          e
+      in
+      Rec (y, t, subst s e')
+  | Fn (xs, e) ->
+      let xs' =
+        List.map
+          (fun (x, t) ->
+             if x = x then (x, t)
+             else
+               if List.mem x (free_variables e') then
+                 let (x', e) = rename x e in
+                 (x', t)
+               else (x, t))
+          xs
+      in
+      Fn (xs', subst s e)
+  | Apply (e, es) ->
+      Apply (subst s e, List.map (subst s) es)
+```

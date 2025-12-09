@@ -1,0 +1,54 @@
+```ocaml
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let len = String.length s in
+  List.init len (fun i -> String.get s i)
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  List.map (fun c -> String.make 1 c) l
+  |> List.fold_left (^) ""
+
+(* Q2 : Bank Account *)
+let open_account (pass: password) : bank_account =
+  let password = ref pass in
+  let balance = ref 0 in
+  let update_pass old_pass new_pass =
+    if !password = old_pass then
+      password := new_pass
+    else
+      raise wrong_pass
+  in
+  let deposit p amount =
+    if !password = p then
+      if amount < 0 then
+        raise negative_amount
+      else
+        balance := !balance + amount
+    else
+      raise wrong_pass
+  in
+  let retrieve p amount =
+    if !password = p then
+      if amount < 0 then
+        raise negative_amount
+      else if !balance < amount then
+        raise not_enough_balance
+      else
+        balance := !balance - amount
+    else
+      raise wrong_pass
+  in
+  let show_balance p =
+    if !password = p then
+      !balance
+    else
+      raise wrong_pass
+  in
+  {
+    update_pass;
+    retrieve;
+    deposit;
+    show_balance;
+  }
+```

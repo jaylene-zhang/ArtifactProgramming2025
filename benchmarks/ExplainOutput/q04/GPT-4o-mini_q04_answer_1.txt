@@ -1,0 +1,10 @@
+**Correct implementations that compute `prime_fact` only once:**
+1. Implementation 1
+4. Implementation 4
+
+**Explanation:**
+- **Implementation 1:** Computes `prime_fact x` once and stores the result in `p`. It then recursively checks each list `y` in `l` to see if `y` matches `p`. This ensures that `prime_fact` is called only a single time.
+  
+- **Implementation 4:** Similar to the first, it computes `prime_fact x` once, stores it in `p`, and then uses `List.exists` to check if `p` is in the list. Again, `prime_fact` is not called again during this process.
+
+**Implementations 2 and 3:** Both call `prime_fact x` multiple times. In Implementation 2, `prime_fact x` is called for each element of the list, and in Implementation 3, it is computed each time through the structure passed to `List.exists`. Thus, these implementations are not efficient in terms of computation.

@@ -1,0 +1,8 @@
+Solution:
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+
+Explanation:
+We replace every free occurrence of y in the expression with (f x). The binding for x stays unchanged, while w now becomes (f x) + x, and the final expression (f w) * y becomes (f w) * (f x).

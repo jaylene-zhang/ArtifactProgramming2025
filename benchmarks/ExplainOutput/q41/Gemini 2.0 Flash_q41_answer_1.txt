@@ -1,0 +1,7 @@
+**Solution:**
+
+`('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c`
+
+**Explanation:**
+
+The type signature remains the same as a non-tail-recursive `fold_right` *with a final transformation function*. Tail recursion is primarily an *implementation* detail that optimizes the function's execution to avoid stack overflow errors. The underlying *functionality* and thus its type stay consistent.  The final function `('b -> 'c)` is to create the possibility to transform the final result after folding.

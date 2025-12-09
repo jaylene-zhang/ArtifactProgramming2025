@@ -1,0 +1,7 @@
+**Solution:**
+
+The function `f` rotates the list by one position to the right, repeatedly.  It does this in a recursive way, effectively rotating the list twice in each step, moving the first element to the second to last position, then to the last position.
+
+**Explanation:**
+
+The core of the function is `rotate(t@[h])`.  This takes the tail (`t`), appends the head (`h` ) to it, and then performs a single rotation. The recursion then repeats this process on the newly rotated list, moving another element to the back on each step.  With a list of 5 or more items, the effect is a cyclic rotation that successively moves the first element to the last position—it is not simply rotating to the right one position but looping in a cycle as the elements get shifted to the right.  The recursive step effectively rotates the list *twice* on each invocation, resulting in a larger shift.

@@ -1,0 +1,7 @@
+Here are the answers to your questions:
+
+a) **False.**
+
+b) **True.** The `(@)` operator's time complexity is O(n) where n is the length of the *first* list, not the second.
+
+c) **True.**

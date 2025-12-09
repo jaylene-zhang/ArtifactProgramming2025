@@ -1,0 +1,5 @@
+Solution:
+The unused variables are r and the x parameter in f.
+
+Explanation:
+r is computed but not used anywhere, and in f the formal parameter x is immediately shadowed by the inner let binding (let x = 42), so the original x is never used.

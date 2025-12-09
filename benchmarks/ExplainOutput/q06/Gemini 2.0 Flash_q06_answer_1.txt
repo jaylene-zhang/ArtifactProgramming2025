@@ -1,0 +1,19 @@
+**Solution:**
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> w * 2 + 2 + y * w
+```
+
+**Explanation:**
+
+The goal is to inline `w * 2` for `x` within the scope of `foo`, which is defined as:
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> x + 2 + y * w
+```
+
+We substitute `x` in `fun y -> x + 2 + y * w` with `w * 2`, resulting in the final program.

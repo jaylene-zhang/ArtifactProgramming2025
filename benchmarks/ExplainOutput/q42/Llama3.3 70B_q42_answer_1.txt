@@ -1,0 +1,3 @@
+**Solution:** `acc = []`
+
+**Explanation:** The `acc` variable is an accumulator that collects the reversed elements of the list. To compute the reverse of a list, the accumulator should be initialized as an empty list. When the function traverses the list, it prepends each element to the accumulator, effectively reversing the list.

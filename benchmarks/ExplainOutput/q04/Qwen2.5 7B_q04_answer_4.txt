@@ -1,0 +1,10 @@
+Solution: 1 and 4
+
+Explanation:
+Solution 1 computes `prime_fact x` once and then uses a helper function `test` to check if any of the lists in the input list `l` match the computed `p`.
+
+Solution 4 also computes `prime_fact x` once and uses `List.exists` to check for the presence of the computed list `p` in the input list `l`.
+
+Solution 2 recomputes `prime_fact x` for each element in `l`, which is inefficient. Solution 3 also recomputes `prime_fact x` for each element in `l`.
+
+Solution 1 and 4 are the only ones that compute `prime_fact x` once, making them the correct choices.

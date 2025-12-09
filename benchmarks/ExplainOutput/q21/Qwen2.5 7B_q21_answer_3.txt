@@ -1,0 +1,14 @@
+The unused variable in the given expression is `r` in the `foo` function.
+
+Solution:
+```ocaml
+let foo y =
+   let r = 2 * y in (* r is unused *)
+   let f = fun x ->
+       let x = 42 in x * y in
+   f y
+```
+
+Explanation:
+- `r` is assigned the value `2 * y`, but it is not used anywhere else in the code. It is shadowed by the `let x = 42` in the inner `fun` definition, so `r` is not referenced and thus unused.
+- The variable `y` is passed to `f`, but it is shadowed by the inner `x` inside the lambda function, so `y` from the outer scope is not used. However, this is not the unused variable in this context.

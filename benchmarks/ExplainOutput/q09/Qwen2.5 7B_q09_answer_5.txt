@@ -1,0 +1,13 @@
+```ocaml
+type t = A | B
+
+let f (x : t) =
+  match x with
+  | A -> 1
+  | B -> 2
+
+let f (x : int) =
+  x * 2
+```
+
+**Explanation:** In this example, both `f` functions have the same name `f`, but they are distinguished by their type signatures. The first `f` takes a value of type `t` (which has constructors `A` and `B`), and the second `f` takes an integer and returns an integer. They do not overshadow each other but can be called with the appropriate type. However, if you were to call `f` without specifying a type, the compiler would need to infer based on the context, but this is not overshadowing. Overshadowing would happen if the second definition redefined the `f` for the first pattern but that is not the case here.

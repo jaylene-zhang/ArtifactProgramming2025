@@ -1,0 +1,5 @@
+```ocaml
+(5, 4)
+```
+
+Explanation: The `point` variable is initially set to `(4, 3)`. The `shift_point` function takes an `n` and returns a new point where both coordinates are incremented by `n`. After the first call to `shift_point 1`, `point` becomes `(5, 4)`. Therefore, when you call `shift_point 2`, it adds 2 to both coordinates of the current `point`, resulting in `(5+2, 4+2) = (7, 6)`.

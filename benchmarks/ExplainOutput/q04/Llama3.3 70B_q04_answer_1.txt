@@ -1,0 +1,19 @@
+**Correct Solution:** 
+```ocaml
+let check_prime_factors x l =
+  let p = prime_fact x in
+  List.exists (fun e -> e = p) l
+```
+**Explanation:** This implementation only calls the `prime_fact` function once, assigning the result to `p` and then checks if `p` is present in the list `l`. This avoids repeated calls to `prime_fact` for each element in the list, which is more efficient. 
+
+Alternatively, the original code implementation 1 also only calls prime_fact once but it does not use a standard library function like List.exists. 
+
+```ocaml
+let check_prime_factors x l = 
+  let p = prime_fact x in
+  let rec test l = match l with
+  | [] -> false
+  | y::ys -> y = p || test ys
+  in test l
+```
+The other options have multiple calls to `prime_fact`, which is inefficient.

@@ -1,0 +1,3 @@
+**`('a -> 'b -> 'b) -> 'b -> ('b -> 'c) -> 'a list -> 'c`**
+
+This is because for the tail-recursive version of fold_right, we need to pass the accumulator first (in this case, `'b`), then the function to transform the result (in this case, `'b -> 'c`), and finally the list (`'a list`). This allows the function to use an accumulator and avoid recursive calls to build the result, making it tail-recursive.

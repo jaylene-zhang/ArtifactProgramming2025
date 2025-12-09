@@ -1,0 +1,17 @@
+Let's test the function with (n, result):
+
+(-1, 0)
+
+The bug in the implementation is that the base case is checking if `n` is equal to 1, which is incorrect. The function should check if `n` is less than or equal to 0 (basically, when `n` is 0 or negative, the result should be 0), and handle the case where `n` is 1 correctly. The correct function should be:
+
+```ocaml
+let rec triangle n =
+  if n <= 0 then 0
+  else n + triangle (n-1)
+```
+
+However, to fix this, the function can simply be optimized by using a non-recursive function, like this:
+
+```ocaml
+let triangle n = (n * (n+1)) / 2
+```

@@ -1,0 +1,17 @@
+**Resulting Expression:**
+```
+let double x = 
+  let x = 2 in
+  let w = (f x) + 2 in
+  fun f -> (f ((f x) + 2)) * (f x)
+```
+
+**Explanation:**
+
+We substitute `y` with `(f x)` in the original expression, but it appears three times:
+
+* In the inner `let` expression as `w = y + 2`, it becomes `w = (f x) + 2`
+* As the argument to the function `f` in the expression `f w`, it becomes `(f ((f x) + 2))`
+* As the multiplier in the expression `(f w) * y` which becomes `(f ((f x) + 2)) * (f x)`
+
+Note that the inner `let` promise `x = 2` remains unchanged, as its `x` is not the same variable that was exported to the head.

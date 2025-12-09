@@ -1,0 +1,6 @@
+Solution: (6, 5)
+
+Explanation:
+The first `point` is defined as (4, 3).
+`shift_point 1` computes `(4 + 1, 3 + 1) = (5, 4)`, binding this to the _second_ definition of `point`.
+`shift_point 2` will compute `(component_x point + 2, component_y point + 2)`, which is `(5 + 2, 4 + 2) = (6, 5)`.  Crucially, the value of `point` that `shift_point` refers to in the second computation is the one bound in the _second_ `let point = ...` line.  The first `point` definition is now hidden; it's not relevant to subsequent calls.

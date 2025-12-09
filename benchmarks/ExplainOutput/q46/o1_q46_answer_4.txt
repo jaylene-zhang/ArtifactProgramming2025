@@ -1,0 +1,6 @@
+Solution:
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:  
+The head of the folded stream is f applied to the current stream’s head and the accumulator. We then recurse on the tail of the stream, using the new accumulator value f s.hd a.

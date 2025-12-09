@@ -1,0 +1,21 @@
+```ocaml
+let distance (x1, y1) (x2, y2) =
+  abs (y2 - y1) + abs (x2 - x1)
+
+let binomial n k =
+  let rec factorial n =
+    if n <= 1 then 1
+    else n * factorial (n - 1)
+  in
+  factorial n / (factorial k * factorial (n - k))
+
+let rec lucas_helper n a b =
+  if n = 0 then a
+  else if n = 1 then b
+  else lucas_helper (n - 1) b (a + b)
+
+let lucas n =
+  if n = 0 then 2
+  else if n = 1 then 1
+  else lucas_helper (n - 1) 2 1
+```

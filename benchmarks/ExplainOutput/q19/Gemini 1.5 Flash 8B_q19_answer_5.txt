@@ -1,0 +1,14 @@
+**Solution:**
+
+No.
+
+
+**Explanation:**
+
+The code is not tail-recursive and does not correctly compute the largest power of 2.
+
+It has the base case `n mod 2 = 1` which returns 1.  This is not correct as `1` has no factor of `2`, but `1` does divide `1`.
+The recursive step `2 * helper (n/2)` correctly multiplies by 2 for each successful division by 2.  However, the function structure does not use the accumulator properly, it will not correctly count the number of times n was divided by 2.
+
+
+The function `max_two_factor n = helper 1 n` is also flawed.  It does not use the input `n`. A recursive call is made to `helper` and it lacks to build up the result in a tail-recursive manner.

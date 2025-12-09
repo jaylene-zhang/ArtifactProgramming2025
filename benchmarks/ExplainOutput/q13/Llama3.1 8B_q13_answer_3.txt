@@ -1,0 +1,10 @@
+```ocaml
+let x = 5
+let x = 10
+let y = 5
+let y = 20
+```
+
+Explanation: In the code above, `let x = 5` defines a new variable `x` in the local scope. The second `let x = 10` overwrites this definition, making it harder to determine what variable scope is actually being used.
+
+`y` is not reused because it is never redefined, so Python does not reduce its scope.

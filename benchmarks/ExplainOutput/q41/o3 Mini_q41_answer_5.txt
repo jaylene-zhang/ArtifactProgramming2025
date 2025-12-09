@@ -1,0 +1,3 @@
+Solution: ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+
+Explanation: In the tail‐recursive version, an extra continuation argument (of type 'b -> 'c) is added. This continuation allows the recursive calls to be tail recursive by accumulating the result, eventually applying the continuation to yield the final value.

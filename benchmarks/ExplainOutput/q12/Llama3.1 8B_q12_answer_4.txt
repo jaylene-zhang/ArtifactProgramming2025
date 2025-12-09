@@ -1,0 +1,31 @@
+I'll solve the problem step by step.
+
+**Q4.1**
+
+### Solution
+
+Let IH (h') be: For all accumulators acc, add_up h' + acc = add_up_tr h' acc.
+
+Proof:
+
+* **Base Case:** 
+	+ Let h = Empty. Then add_up h = 0 and add_up_tr h 0 = 0+0 = 0. 
+* **Step Case:** 
+	+ Assume IH (h'). We need to show that add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc for all accumulators acc.
+	+ By the definition of add_up_tr, we have add_up_tr (Hand (c, h')) acc = add_up_tr h' (acc+1) = add_up h' + (acc+1) by the induction hypothesis (IH).
+	+ Also, we have add_up (Hand (c, h')) + acc = add_up h' + 1 + acc = (add_up h' + acc) + 1 = add_up_tr h' (acc+1) by the induction hypothesis (IH).
+	+ Therefore, add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc as required.
+
+**Q4.2**
+
+### Solution
+
+Theorem 2 (Main Result). For all hands h, add_up h = add_up_tr h 0. 
+Proof. Let IH (h') be: For all accumulators acc, add_up h' + acc = add_up_tr h' acc.
+	+ Set acc = 0. Then add_up h' + 0 = add_up h for all hands h'. This is the desired result.
+
+### Explanation
+
+In the base case, we show that the statement is true when the hand is empty (h=Empty). In the step case, we assume that the statement is true for all hands (IH) and show that it is true for hands of the form Hand (c, h'). 
+
+For the main result, we let acc = 0 in the statement of Theorem 1, where we have already proved that add_up_tr h' acc = add_up h'. Therefore, add_up h = add_up_tr h 0 as required.

@@ -1,0 +1,11 @@
+a and b are correct.
+
+Explanation:
+
+a) This defines a recursive data type where `bookmarks` can be either `Empty` or `Location` which contains a URL (of type `url`) and another `bookmarks`. This properly represents a list of bookmarks.
+
+b) This is similar to (a), but uses `string` directly instead of the `url` type alias. It's still a valid recursive definition for a bookmark list.
+
+c) Incorrect because `Location` doesn't specify what it contains. It needs parameters to store the URL and next bookmarks.
+
+d) Incorrect because the order of parameters in `Location` is reversed from what would be typical for a list-like structure. While technically this would work, it's not following the conventional pattern of (item * rest_of_list).

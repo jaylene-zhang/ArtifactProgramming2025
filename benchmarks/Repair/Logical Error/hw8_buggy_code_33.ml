@@ -1,0 +1,46 @@
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  match n with
+  | 0 -> []
+  | _ -> s.head :: take (n-1) (s.tail ())
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  match n with
+  | 0 -> s
+  | _ -> let new_stream = drop (n-1) (s.tail()) in
+      { 
+        head = new_stream.head;
+        tail = new_stream.tail;
+      }
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  {
+    head = 0;
+    tail = fun() -> (unfold (fun x -> (0, x)) 0)
+  }
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  let n = 0 in
+  {
+    head = n;
+    tail = fun () -> (unfold (fun x -> (n + 1, x)) (n))
+  }
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  int_stream_not_implemented
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  raise NotImplemented
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  int_stream_not_implemented
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  int_stream_not_implemented

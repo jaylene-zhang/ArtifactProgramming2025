@@ -1,0 +1,2 @@
+**No**
+The given implementation does not handle the case where `n` is 0, and will raise a `RecursionExhaustion` or `Stack_overflow` error or behave unpredictably in this case, because `triangle 0` will call `triangle (-1)`, which will call `triangle (-2)`, and so on, without terminating.

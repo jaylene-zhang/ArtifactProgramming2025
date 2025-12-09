@@ -1,0 +1,4 @@
+**1 and 4** 
+
+Explanation: 
+These implementations only compute `prime_fact x` once. In option 1, `prime_fact x` is computed and stored in `p`, then the recursive function `test` checks if `p` is in the list. In option 4, `prime_fact x` is computed and stored in `p`, then `List.exists` checks if `p` is in the list. Options 2 and 3 compute `prime_fact x` potentially multiple times.

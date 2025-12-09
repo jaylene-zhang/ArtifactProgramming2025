@@ -1,0 +1,12 @@
+**Solution:**
+
+Yes, the program computes the antiderivative of `f`.
+
+**Explanation:**
+
+The antiderivative F(x) is the integral of f(t) from 0 to x.  The code `(curry integral) f 0` partially applies `integral`.
+
+1.  `(curry integral)` transforms `integral f (a, b) dx` into a curried function that takes `f`, `(a,b)`, and `dx` separately.
+2.  `(curry integral) f` partially applies the function to `f`, resulting in a function that takes `(a, b)` and `dx`.
+3.  `(curry integral) f 0` effectively fixes the lower bound of the integral to 0. This returns a function that takes `b` and `dx`, which represents the upper bound `x = b`.  The `dx` remains as a parameter for accuracy, but it's a numeric value.
+4.   The resulting function then calculates the definite integral of f from 0 to x, defining the antiderivative.

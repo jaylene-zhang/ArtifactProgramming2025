@@ -1,0 +1,13 @@
+**Solution:**
+
+```ocaml
+let x = 5;; (* Initial binding of x to 5 *)
+x <- 10;; (* Overwrites the *memory location* associated with x with 10 - requires x to be mutable*)
+let x = 20;; (* This is overshadowing, introducing a *new* binding for x *)
+```
+
+**Explanation:**
+
+*   **Overwriting:** Requires a mutable variable.  It *modifies the value stored in the existing memory location* bound to the variable. In OCaml, you achieve this using references (variables declared using `ref`) combined with the `:=` operator (or `x <- value`).
+
+*   **Overshadowing:** Introduces a *new* binding (a new entry) for a variable with the same name in the current scope, effectively hiding the previous binding. The original binding still exists (can be accessed if the scope changes), but is inaccessible by name because the new binding takes precedence in the current scope. It does **not** modify the value stored in the original memory location.

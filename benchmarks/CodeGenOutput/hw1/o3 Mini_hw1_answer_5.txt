@@ -1,0 +1,21 @@
+(* Q1 *)
+let distance (x1, y1) (x2, y2) =
+  abs (x2 - x1) + abs (y2 - y1)
+(* TODO: Correct this implementation so that it compiles and returns the correct answers. *)
+
+(* Q2 *)
+let binomial n k =
+  let rec factorial n =
+    if n <= 1 then 1 else n * factorial (n - 1)
+  in
+  factorial n / (factorial k * factorial (n - k))
+(* TODO: Correct this implementation so that it compiles and returns the correct answers. *)
+
+(* Q3 *)
+let rec lucas_helper n i a b =
+  if i >= n then b else lucas_helper n (i + 1) b (a + b)
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+
+let lucas n =
+  if n = 0 then 2 else lucas_helper n 1 2 1
+(* TODO: Implement lucas that calls the previous function. *)

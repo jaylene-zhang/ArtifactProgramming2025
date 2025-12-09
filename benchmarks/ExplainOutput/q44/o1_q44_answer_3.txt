@@ -1,0 +1,5 @@
+Solution:  
+You need to show that if the statement holds for a list l, then it also holds for x::l, for any x.
+
+Explanation:  
+In the inductive step for lists, you assume the property is true for a general list l (inductive hypothesis) and then prove it remains true when you prepend a new element x to form x::l.

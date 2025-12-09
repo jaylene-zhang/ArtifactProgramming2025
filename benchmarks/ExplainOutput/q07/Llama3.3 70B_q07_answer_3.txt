@@ -1,0 +1,49 @@
+**Solution:**
+
+## Theorem 1
+Base Case:
+w = Const y
+
+```ocaml
+count (Const y) x + acc
+= (if x = y then 1 else 0) + acc
+= if x = y then 1 + acc else acc
+= count' (Const y) x acc
+```
+
+Step Case:
+w = Op (w1, w2)
+
+Induction Hypothesis:
+count w1 x + acc = count' w1 x acc,
+count w2 x + acc = count' w2 x acc
+
+Proof:
+```ocaml
+count (Op (w1, w2)) x + acc
+= (count w1 x) + (count w2 x) + acc
+= (count w1 x + acc) + (count w2 x)
+= (count' w1 x acc) + (count w2 x)
+= (count' w1 x acc) + (count' w2 x 0)
+= (count' w1 x acc) + (count' w2 x ((count' w2 x 0)))
+= count' w1 x (count' w2 x acc)
+= count' (Op (w1, w2)) x acc
+```
+
+## Theorem 2
+Proof:
+```ocaml
+count w x
+= count w x + 0
+= count' w x 0
+```
+
+**Explanation:**
+
+The solution involves proving two theorems. The first theorem states that for any word `w`, constant `x`, and accumulator `acc`, `count w x + acc = count' w x acc`. This theorem is proven using structural induction on `w`.
+
+In the base case, when `w` is `Const y`, we show that `count (Const y) x + acc` is equal to `count' (Const y) x acc`.
+
+In the step case, when `w` is `Op (w1, w2)`, we use the induction hypothesis to show that `count (Op (w1, w2)) x + acc` is equal to `count' (Op (w1, w2)) x acc`.
+
+The second theorem states that for any word `w` and constant `x`, `count w x = count' w x 0`. This is proven by using Theorem 1 with `acc = 0`.

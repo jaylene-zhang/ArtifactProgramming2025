@@ -1,0 +1,3 @@
+Solution: (7,6)
+
+Explanation: shift_point is defined using the original point (5,4) due to lexical scoping, so shift_point n returns (5 + n, 4 + n). Thus, shift_point 2 returns (7,6).

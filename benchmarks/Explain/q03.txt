@@ -1,0 +1,20 @@
+What is the final result of running the program below. Explain your answer using binding stack diagram.
+
+let c = ref 0 in
+let l = List.rev [1;2;3] in let observe () = !c in
+let x = 1 in
+let inc x = c:= !c+1 ; x+1 in let ml = List.map inc l in let inc’ = (let c = ref 0 in
+let x = x + 1 in fun y -> c := !c+1 ; !c+y+x) in let ml’ = List.map inc’ l in
+(x,observe () , ml, ml’)
+
+An example for a valid binding stack is like below:
+
+expressions:
+let x = 3;;
+let f () = x;;
+let x = 4;
+
+binding stack:
+x = 4
+f ----> () -> x
+x = 3

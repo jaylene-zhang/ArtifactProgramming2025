@@ -1,0 +1,30 @@
+**Solution**
+
+To prove Theorem 1, we use structural induction on w.
+
+Base Case: w = Const a
+Then count w x + acc = 
+  (if x = a then 1 else 0) + acc 
+= (if x = a then 1 + acc else acc) 
+= count' w x acc.
+
+Step Case: w = Op(w1, w2)
+Our induction hypothesis is that for any word u, constant x, and accumulator acc, 
+count u x + acc = count' u x acc.
+
+Then count w x + acc 
+= (count w1 x + count w2 x) + acc 
+= count w1 x + (count w2 x + acc) 
+= count w1 x + count' w2 x acc 
+= count' w1 x (count' w2 x acc) 
+= count' w x acc.
+
+The induction hypothesis is used twice: 
+once with u = w2 and once with u = w1.
+
+**Theorem 2 (Main Result)**
+For any word w and constant x, we have count w x = count' w x 0.
+This is a direct application of Theorem 1, letting acc = 0.
+
+**Explanation**
+We first prove Theorem 1 using structural induction on w, then use it to prove Theorem 2. The induction hypothesis is used twice in the step case to show that count' is equivalent to count with an accumulator. The base case shows that the accumulator works correctly for constants. Finally, Theorem 2 is proven by setting the accumulator to 0 in Theorem 1.

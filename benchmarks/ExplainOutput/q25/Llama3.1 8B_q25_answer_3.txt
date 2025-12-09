@@ -1,0 +1,11 @@
+**Solution**
+
+'t = 'u, 's = 't, 'u = 't
+
+**Explanation**
+
+To determine the most general instantiation for the type variables, we substitute the argument `f (a, b)` for `x` and `f (b, a)` for `y` in the definition of `f`. Assuming `f` has type `'t * 's -> 'u`, we get:
+
+`f (f (a, b), f (b, a))` is equivalent to `f (x, y)`, which has type `'u`. 
+
+So, by unification, we conclude that `'t = 'u` for the first argument of `f` and `'s = 't` for the second argument of `f`. Since `f` has type `'t * 's -> 'u`, we can substitute `'t` for `'u` to get the result type.

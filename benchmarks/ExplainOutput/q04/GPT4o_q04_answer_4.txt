@@ -1,0 +1,14 @@
+The answer is: **1 and 4**
+
+### Solution and Explanation:
+1. `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`
+   - **Correct**: The function computes `prime_fact x` once and binds it to `p`. Then, it recursively checks each element in the list, comparing it to `p`. Since `prime_fact x` is not recomputed, this is efficient.
+
+2. `let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys`
+   - **Incorrect**: This implementation calls `prime_fact x` repeatedly within the recursive function on every new iteration, which is redundant and inefficient.
+
+3. `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l`
+   - **Incorrect**: In this implementation, `prime_fact x` is computed every time the lambda function `(fun e -> e = prime_fact x)` is invoked, which results in repeated computation.
+
+4. `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`
+   - **Correct**: The function computes `prime_fact x` once and stores it in `p`. It then uses `List.exists` to check if `p` exists in the list. This avoids redundant computation.

@@ -1,0 +1,41 @@
+Question 8: Counting letters
+
+A magma is a set M and a binary operation · on M such that a·b ∈ M whenever a, b ∈ M. A word is a formal expression composed of elements of M and applications of the operation · that describes an element of M.
+
+For example, (1+5)+7 and 1+(3+(4+5)) are words over the magma given by Z and +. We can describe magmas and words over them with the type:
+
+type ’a magma = Const of ’a | Op of ’a magma * ’a magma
+
+For example, we can encode the word (1 + 5) + 7 as
+
+Op (Op (Const 1, Const 5), Const 7) : int magma
+
+The following two functions count the number of occurrences of a constant x : ’a in a
+word w : ’a magma:
+
+let rec count w x = match w with
+| Const y -> if x = y then 1 else 0
+| Op (w1, w2) -> (count w1 x) + (count w2 x)
+
+let rec count’ w x acc = match w with
+| Const y -> if x = y then 1 + acc else acc
+| Op (w1, w2) -> count’ w1 x (count’ w2 x acc)
+
+Prove that for any word w and constant x, count w x = count’ w x 0.
+As we cannot prove this statement directly, we prove the following more general statement.
+
+Theorem 1. For any word w, constant x, and accumulator acc,
+count w x+acc=count’ w x acc.
+
+Proof. By structural induction on w.
+• BaseCase: w =  (** to be filled **)
+
+
+Step Case: w =   (** to be filled **) .
+State your induction hypothesis or induction hypotheses: (** to be filled **)
+Proof: (** to be filled **)
+
+
+Theorem 2 (Main Result). For any word w and constant x, we have
+count w x = count’ w x 0.
+Proof: (** to be filled **)

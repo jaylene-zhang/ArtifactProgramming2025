@@ -1,0 +1,12 @@
+```ocaml
+let foo y =
+let w = y + 3 in
+fun y -> (y + 3) + 2 + y * w
+```
+
+### Explanation:
+1. The expression `let x = y + 3 in` introduces a new variable `x` which is `y + 3`.
+2. We need to replace all occurrences of `x` with `y + 3` in the subsequent code.
+3. The line `let w = x in` becomes `let w = y + 3 in`.
+4. The function becomes `fun y -> x + 2 + y * w`, which translates to `fun y -> (y + 3) + 2 + y * (y + 3)`.
+5. Thus, the fully inlined version replaces `x` everywhere it appears to give the result shown above.

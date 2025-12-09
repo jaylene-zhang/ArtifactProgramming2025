@@ -1,0 +1,5 @@
+Solution: 
+let toInt f = f (fun n -> n + 1) 0
+
+Explanation:
+This applies the Church numeral f to the increment function and the starting value 0. Each application of the function adds 1, so the result is the number of times f is applied.

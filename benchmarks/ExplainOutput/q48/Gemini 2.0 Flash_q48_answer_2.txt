@@ -1,0 +1,17 @@
+**Solution:**
+
+Not all `List` functions are tail-recursive because:
+
+1.  **Performance Trade-offs:**  Continuations can introduce overhead.  Tail-recursion isn't always faster than a well-optimized iterative or stack-recursive approach.
+2. **Clarity and Readability:** Using continuations everywhere can make code harder to read and understand. Standard functions prioritize clarity.
+3.  **Stack Overflow is Not Always Relevant:** For many small lists, stack overflow isn't a practical concern.
+
+**Explanation:**
+
+While continuations *can* make *any* function tail-recursive in principle, it doesn't mean we *should* do it everywhere.
+
+*   **Overhead:** Continuations involve creating function closures on the heap. This allocation and subsequent garbage collection can actually *slow down* code, especially for simple functions or when the list sizes involved are relatively small.  Direct recursion, in many cases, is faster.
+*   **Readability:** Code stuffed with continuation-passing style (CPS) can become significantly harder to decipher. The standard library prioritizes functions that are easy to understand and use.  Simpler, more direct implementations are favored unless performance is a critical concern and tail-recursion provides a *significant* benefit.
+*   **Stack size practicalities:** For common tasks involving lists of reasonable size, the default stack size is sufficiently large that stack overflow is not encountered. Optimization for tail recursion is only applied to the important functions that are commonly used with very large lists.
+
+In short, the `List` library makes a conscious trade-off between absolute tail-recursive-ness and other factors like performance for typical use cases and code clarity. Certain functions *are* tail-recursive (e.g., `List.rev`), where the performance benefit is clear and the code remains reasonably readable.

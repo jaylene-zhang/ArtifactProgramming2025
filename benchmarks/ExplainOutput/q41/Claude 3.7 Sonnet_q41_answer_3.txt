@@ -1,0 +1,3 @@
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+The tail-recursive version of fold_right would have the type signature ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b, which is the same as the standard fold_right except we're not using the continuation-passing style. In a tail-recursive implementation, we would traverse the list from left to right (like fold_left) but apply the function in a way that produces the same result as fold_right. The function takes a combining function, a list, and an initial accumulator, then returns the final result.

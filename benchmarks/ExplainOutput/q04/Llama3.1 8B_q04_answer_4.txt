@@ -1,0 +1,12 @@
+Here are my implementations considering the constraint that the `prime_fact` function is computed only once:
+
+**Answer:** 4. let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p) l
+
+**Explanation:** The idea is to compute `prime_fact x` only once and store it in the variable `p`. We then use `List.exists` to check if `p` is in the list `l`. This approach ensures that the `prime_fact x` computation is only performed once.
+
+**Why other options don't meet the criterion:**
+
+* Option 1: `prime_fact x` is computed, once outside the `test` function and again inside it via `p = y`.
+* Option 2: `prime_fact x` is computed recursively, once for each element in the list.
+* Option 3: Similar to option 1, `prime_fact x` is computed once for each element in the list using `List.exists`.

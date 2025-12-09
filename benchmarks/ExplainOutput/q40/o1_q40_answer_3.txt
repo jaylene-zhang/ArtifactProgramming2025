@@ -1,0 +1,5 @@
+Solution:  
+Yes, it is tail-recursive.
+
+Explanation:  
+The recursive call “zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2” is the last operation in the function (a proper tail call), which ensures the function is tail-recursive.

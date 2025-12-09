@@ -1,0 +1,11 @@
+Solution:
+
+• xs : 'a list  
+• ys : 'b list  
+• pair : 'a * 'b -> 'c  
+• sc : 'c list -> 'd  
+• Function result : 'd  
+
+Explanation:  
+zippy processes two lists in parallel, applying pair to each (x,y) and collecting the results in a list passed to sc. Hence pair must map a pair of elements to some result type 'c, and sc must handle a 'c list and produce the final result 'd. The most general type of zippy is therefore:  
+'a list -> 'b list -> ('a * 'b -> 'c) -> ('c list -> 'd) -> 'd.  

@@ -1,0 +1,6 @@
+Solution:
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:
+The head of the folded stream is computed by applying f to the first element of s and the initial value a (i.e., f s.hd a). The tail is built recursively by updating the accumulator to (f s.hd a) and folding over the rest of the stream (s.tl).

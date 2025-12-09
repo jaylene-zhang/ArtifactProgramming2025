@@ -1,0 +1,2 @@
+Solution: []  
+Explanation: Since the accumulator gathers elements to form the reversed list via cons, it must start as an empty list. This way, as you iterate, each element is prepended, building the reverse.

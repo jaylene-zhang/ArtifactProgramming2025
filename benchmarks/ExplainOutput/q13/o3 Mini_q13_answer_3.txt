@@ -1,0 +1,6 @@
+Solution:
+let counter = ref 0 in
+(counter := !counter + 1; !counter)
+
+Explanation:
+This example overwrites the value inside the mutable reference "counter" using the assignment operator (:=). In contrast, overshadowing (or shadowing) occurs when a new variable with the same name is declared in a nested scope, hiding the outer one without changing its value.

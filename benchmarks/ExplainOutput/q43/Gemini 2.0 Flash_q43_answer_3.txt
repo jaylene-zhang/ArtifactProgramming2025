@@ -1,0 +1,7 @@
+**Solution:**
+
+No, this will not work.
+
+**Explanation:**
+
+The induction hypothesis would need to apply to the recursive call `rev_tl tl (hd :: acc)`. However, the length of `acc` changes in each recursive call which does not allow us to directly relate `length (rev_tl tl (hd :: acc))` to `length tl`.  The accumulator `acc` makes the length argument in the recursive call different than the original input list `l`, preventing the induction from proceeding smoothly.

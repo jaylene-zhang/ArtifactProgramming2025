@@ -1,0 +1,8 @@
+Solution:
+```
+let call f r y =
+  r = y in (* unused variable: f *)
+```
+
+Explanation:
+The variable `f` is re-assigned to a new function in the second line, so the original `f` parameter remains unused.

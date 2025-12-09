@@ -1,0 +1,7 @@
+**Solution**
+```python
+no
+```
+**Explanation**
+
+This function is not tail-recursive because it doesn't make a direct recursive call to `zip_tr` in the last case. Instead, it calls `zip_tr` with a new accumulator `fun l -> sc ((h1, h2) :: l)`, which means the recursive call is not the last expression to be evaluated. This is a non-tail recursive call because the evaluation of the recursive call is not the last operation performed before the function returns the result.

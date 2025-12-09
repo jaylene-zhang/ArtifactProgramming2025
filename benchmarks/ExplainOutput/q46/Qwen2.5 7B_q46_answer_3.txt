@@ -1,0 +1,7 @@
+1) For blank 1 we should write: `f hd s`
+
+2) For blank 2 we should write: `fun () -> fold f (f hd s) tl s`
+
+Explanation:
+1) We start by applying the function `f` to the head (`hd`) of the stream and the initial value `a0`.
+2) The tail (`tl`) of the output stream should be another call to `fold`, passing `f` and the result of the previous fold (`f hd s`) as the new initial value. The `fun () ->` part is because in OCaml, the `tl` field is a function that returns the next element of the stream, so we need to wrap the recursive call in a function that ignores its argument (since streams don't require a starting value for the tail operation).

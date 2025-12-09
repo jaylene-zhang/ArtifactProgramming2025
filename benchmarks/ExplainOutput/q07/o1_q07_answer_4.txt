@@ -1,0 +1,32 @@
+Solution (Theorem 1):  
+• Base Case: w = Const y  
+  (count (Const y) x) + acc = (if x = y then 1 else 0) + acc  
+  = if x = y then acc + 1 else acc  
+  = count' (Const y) x acc.  
+
+• Step Case: w = Op (w1, w2)  
+  count (Op (w1, w2)) x + acc  
+  = (count w1 x + count w2 x) + acc  
+  = count w1 x + (count w2 x + acc).  
+
+  By IH on w2, count w2 x + acc = count' w2 x acc. So  
+  = count w1 x + count' w2 x acc.  
+
+  By IH on w1 with “count' w2 x acc” as the new accumulator,  
+  count w1 x + count' w2 x acc = count' w1 x (count' w2 x acc).  
+
+  Thus,  
+  (count (Op (w1, w2)) x) + acc = count' (Op (w1, w2)) x acc.  
+
+Induction Hypotheses (IH):  
+For any w1 (and similarly w2), constant x, and accumulator acc,  
+count w1 x + acc = count' w1 x acc.  
+
+Explanation:  
+We do structural induction. In the base case (Const y), both sides evaluate to either acc or acc + 1, depending on whether y = x. In the step case (Op (w1, w2)), we rewrite the count into a sum of counts on subwords, then apply our induction hypotheses on w2 first, and on w1 second, to show both sides match.
+
+Solution (Theorem 2):  
+count w x = count' w x 0 follows immediately by applying Theorem 1 with acc = 0.  
+
+Explanation:  
+Setting acc = 0 in the more general statement (Theorem 1) yields the desired equality, completing the proof.

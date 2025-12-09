@@ -1,0 +1,71 @@
+### Solution
+The final result of the program is:  
+```
+(1, 3, [4; 3; 2], [5; 5; 5])
+```
+
+### Explanation with Binding Stack Diagram
+To understand the program's output, let's analyze it step by step while keeping track of bindings in the environment and referring to the evaluation of expressions.
+
+---
+
+1. **Initialization (global environment):**
+   - `c = ref 0` → A mutable reference `c` initialized to `0`.
+   - `l = List.rev [1; 2; 3]` → The reversed list is `[3; 2; 1]`.
+
+2. **Binding `observe ()`:**
+   - `observe` is a function bound to `!c`. Calling `observe ()` later will return the current value of the `c` reference.
+
+3. **Binding `x`:**
+   - `x = 1`. This value remains bound to `1`.
+
+4. **Function `inc` binding:**
+   - `inc x = c := !c + 1; x + 1`.
+     - This function increments the value of the mutable reference `c` by `1` each time it is called, and it returns `x + 1`.
+
+5. **Apply `List.map inc l`:**
+   - The list `l` is mapped over with `inc`. Each element of `l` is passed to `inc`, which increments `c` and returns `x + 1`:
+     - Iteration 1: `inc 3`. `c := !c + 1` ⇒ `c = 1`. Returns `3 + 1 = 4`.
+     - Iteration 2: `inc 2`. `c := !c + 1` ⇒ `c = 2`. Returns `2 + 1 = 3`.
+     - Iteration 3: `inc 1`. `c := !c + 1` ⇒ `c = 3`. Returns `1 + 1 = 2`.
+   - Result: `ml = [4; 3; 2]`.
+
+6. **Step `inc’` binding (re-evaluating `let c` and `x` locally):**
+   - `let c = ref 0`: A *new* reference is created, *local* to the inner binding.
+   - `let x = x + 1`: Shadows the previous binding of `x`. Local `x = 2`.
+   - `fun y -> c := !c + 1; !c + y + x`:
+     - This function increments the new `c` (local) and returns the sum of its incremented value, the argument `y`, and the shadowed `x`.
+
+7. **Apply `List.map inc’ l`:**
+   - Similarly, map over `l` with `inc’`. For each iteration, the inner `c` is incremented, and `x` is `2`. Behavior:
+     - Iteration 1: `inc' 3`. Local `c := !c + 1` ⇒ `c = 1`. Returns `1 + 3 + 2 = 5`.
+     - Iteration 2: `inc' 2`. Local `c := !c + 1` ⇒ `c = 2`. Returns `2 + 2 + 2 = 5`.
+     - Iteration 3: `inc' 1`. Local `c := !c + 1` ⇒ `c = 3`. Returns `3 + 1 + 2 = 5`.
+   - Result: `ml' = [5; 5; 5]`.
+
+8. **Final tuple result:**
+   - `x = 1` (unchanged global binding).
+   - `observe () = 3` (global `c = 3` after mapping with `inc`).
+   - `ml = [4; 3; 2]`.
+   - `ml' = [5; 5; 5]`.
+
+---
+
+### Final Binding Stack
+1. Initial bindings:
+   ```
+   c = ref 0                 (global reference)
+   l = [3; 2; 1]
+   observe = fun () -> !c
+   x = 1
+   inc = fun x -> (c := !c + 1; x + 1)
+   ```
+
+2. During `let inc’`:
+   ```
+   c (new) = ref 0           (local reference)
+   x (local) = 2             (shadowed global x)
+   inc' = fun y -> (c := !c + 1; !c + y + x)
+   ```
+
+Output: `(1, 3, [4; 3; 2], [5; 5; 5])`.

@@ -1,0 +1,151 @@
+Infinite data structures cannot be handled eagerly. Indeed, eagerly traversing an infinite data structure diverges because each of its infinitely many elements needs to be visited before the traversal terminates, which is to say the traversal never ends. One example of infinite data structures is a stream, which is a lazily-evaluated list with infinitely many elements.
+
+This assignment is centered on the core concepts of lazy programming. Specifically, most questions ask you to implement streams using the predefined function unfold. Read the prelude carefully and make sure you fully understand it before jumping into the questions. 
+Note that no test cases are necessary for any of the problems. The next sections indicate when you are required to use unfold.
+
+If the grader appears to be stuck with the message "Grading is taking a lot of time", then the grader got stuck in an infinite loop while evaluating your code. You'll then have to trace the execution of your code to see in which cases a call to take on your stream diverges.
+
+Question 1: Warming up (10 points)
+
+Notice: In this section, you are not required to use unfold
+
+Implement the functions:
+
+Let's first do some warm up questions to get you familiar with stream and unfold function.
+
+take : int -> 'a stream -> 'a list, to peek the first n elements of the given stream.
+drop : int -> 'a stream -> 'a stream, to drop the first n elements from the given stream.
+For simplicity, you can assume that n is non-negative for take n s and drop n s.
+
+type 'a stream = 
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  raise NotImplemented
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  raise NotImplemented
+
+
+
+Question 2 - Natural Number Stream (6 points)
+Notice: In this section, you are required to use unfold
+After some decent warm up, you should now be comfortable with the lazy style. Let's turn our sight on natural numbers. We all know natural numbers run down forever, but how do we represent them in lazy programming? We investigate that in this section.
+Implement the following streams:
+zeroes : int stream, to generate a stream made up of all 0s, that is 0, 0, 0, ...
+natural_numbers : int stream, to generate a stream of natural numbers, that is 0, 1, 2, 3, 4, ...
+even_numbers : int stream, to generate a stream of even natural numbers, that is 0, 2, 4, 6, 8, ...
+
+type 'a stream =
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(** [unfold f seed] constructs a stream by generating elements using [f] and
+    an initialy [seed]. This function is polymorphic on the type of [seed].
+
+    That is, the stream [x0, x1, x2, ...] is generated
+    from [unfold f seed0] as:
+    - [f seed0 = (x0, seed1)]
+    - [f seed1 = (x1, seed2)]
+    - [f seed2 = (x2, seed3)]
+    - ... *)
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }(* TODO: Q2a *)
+let zeroes : int stream =
+  int_stream_not_implemented
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  int_stream_not_implemented
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  int_stream_not_implemented
+
+
+Question 3 (10 points)
+Notice: In this section, you are not required to use unfold
+In this section we will explore how to map two streams to a transformed stream. You will be given two helper functions that come in handy:
+
+map (f : 'a -> 'b) (s : 'a stream) : 'b stream, to map a stream of type 'a to a stream of type 'b.
+zip (s1 : 'a stream) (s2 : 'b stream) : ('a * 'b) stream, to combine two streams of type 'a and type 'b into a stream of type ('a * 'b)
+These two functions are provided in the prelude, please read them carefully
+
+Then implement the function using the given helper functions:
+map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream, to take in two streams of type 'a and type 'b and a function to transform the streams together into a third stream of type 'c
+For this question, you could also use unfold to tackle it. You are encouraged to explore this but not required to do so.
+
+let map (f : 'a -> 'b) (s : 'a stream) : 'b stream =
+  unfold (fun s -> (f s.head, (s.tail ()))) s
+
+(** [find p s] is [(hd, tl)], where [hd] is the first element in [s] that
+    satisfies [p], and [tl] is the stream that immediately
+    follows [hd] in [s].
+
+    [find p s] diverges if there is no such element [hd]. *)
+let rec find (p : 'a -> bool) (s : 'a stream) : ('a * 'a stream) =
+  if p s.head then (s.head, s.tail ()) else find p (s.tail ())
+
+(** [filter p s] is the stream derived from [s] that only contains elements
+    satisfying [p].
+
+    [filter p s] diverges if there is no element in [s] that satisfies [p]. *)
+let filter (p : 'a -> bool) (s : 'a stream) : 'a stream =
+  unfold (find p) s
+
+(** [zip s1 s2] is the stream of pairs formed from elements in [s1] and [s2].
+    That is, if [s1 = x1, x2, x3, ...] and [s2 = y1, y2, y3, ...], then
+    [zip s1 s2 = (x1, y1), (x2, y2), (x3, y3), ...]. *)
+let zip (s1 : 'a stream) (s2 : 'b stream) : ('a * 'b) stream =
+  unfold
+    (fun (s1, s2) ->
+       ((s1.head, s2.head), (s1.tail (), s2.tail ()))
+    )
+    (s1, s2)
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  raise NotImplemented
+
+
+Question 4 (14 points)
+Notice: In this section, you are required to use unfold
+Similar to natural numbers, Fibonacci numbers and Lucas numbers are also infinite streams but with different formulations.
+The Fibonacci numbers is the series of numbers 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ..., which follows the following recurrence relation:
+F(n) = F(n-1)+ F(n-2), ∀ n ≥ 2
+F(1)= 1
+F(0)= 0
+The Lucas numbers have a recurrence relation similar to those of Fibonacci numbers, except that they have different starting values:
+L(n) = L(n-1)+ L(n-2), ∀ n ≥ 2
+L(1)= 1
+L(0)= 2
+Implement the streams:
+fibonacci : int stream, to generate a stream of Fibonacci numbers
+lucas : int stream, to generate a stream of Lucas numbers
+
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }
+
+type 'a stream =
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  int_stream_not_implemented
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  int_stream_not_implemented

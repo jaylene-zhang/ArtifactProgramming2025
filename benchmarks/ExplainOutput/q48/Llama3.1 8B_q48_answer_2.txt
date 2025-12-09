@@ -1,0 +1,10 @@
+```
+let rec factorial n =
+  if n = 0 then 1 else n * factorial (n-1)
+```
+
+This function is not tail-recursive as it doesn't push its recursive call to the current stack frame, while traversing down the recursive call stack. Tail call optimization will not be applied here as the recursive call isn't last statement of this function.
+
+Moreover, many standard library functions like `List.map`, `List.fold_left`, `List.fold_right` are already designed to achieve their results via accumulator, which makes them tail-recursive, hence facilitating efficient stack usage. 
+
+The issue is not with the standard library not providing sufficient tail recursive functions, but rather tail recursive functions are positioned as the back to alternative solution of performance improvement which is sufficient but not strict necessity often; hence this job if provided on demand.

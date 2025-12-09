@@ -1,0 +1,11 @@
+**Answers:**
+
+a) **False**
+b) **True**
+c) **True**
+
+**Explanation:**
+
+* a) The length of a function definition does not necessarily influence its speed. In this case, `rev2` is actually more efficient than `rev1`.
+* b) The time complexity of the `@` operator in OCaml is linear with respect to the length of its second argument. Since `rev1` uses `@` with a growing second argument (`[x]`) in each recursive call, its time complexity is O(n^2), whereas `rev2` avoids this by prepending to an accumulator list, which has a constant time complexity.
+* c) `rev2` is indeed faster than `rev1` because `go` accumulates the reversed list using `::`, which has a constant time complexity, whereas `rev1` uses `@`, which has a linear time complexity. This makes `rev2` have a time complexity of O(n), whereas `rev1` has a time complexity of O(n^2).

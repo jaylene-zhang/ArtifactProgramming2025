@@ -1,0 +1,21 @@
+**Step 1: Fill in the most general type for `l1`, `l2`, and the type of the return value of `zip`**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ( ('a * 'b) list) =...
+```
+
+Explanation: We use OCaml's type parameter `a` and `b` to indicate that `l1` and `l2` can have any type (`'a list` and `'b list`), and the return type is a list of pairs (`'a * 'b`).
+
+**Step 2: Fill in the blanks in the `zipper` function**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'c -> 'c)
+               (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (comb x y) :: add (zipper comb add xs ys)
+```
+
+Explanation: We use the type parameters `'a`, `'b`, and `'c` to indicate that the combinator `comb` and the list append function `add` can have any type. The return type is a list of type `'c`. We also add a recursive call to `zipper` to implement the pattern matching.
+
+Note that we use the prefix `x::xs` to indicate that we are matching against a cons cell, and `x` corresponds to the head element. This allows us to use the closure `comb` and the list append function `add` in the recursive call.

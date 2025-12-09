@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+We replace every occurrence of `x` in the expression `let w = x in fun y -> x + 2 + y * w` with `y + 3`. This substitution is straightforward as `x` is simply defined as `y + 3`. Note that we do not make any substitutions for `y` inside of the function `fun y -> ...` since this is a different, shadowing variable.

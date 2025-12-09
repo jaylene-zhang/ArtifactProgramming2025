@@ -1,0 +1,11 @@
+**Solution:**  
+The program `shift_point 2` will return `(8, 7)`.
+
+**Explanation:**  
+1. Initially, `point` is defined as `(5, 4)`.
+2. `shift_point` accepts a parameter `n` and shifts the `point`'s components by `n`:  
+   `(component_x point + n, component_y point + n)`.
+3. However, after the line `let point = shift_point 1`, the value of `point` is updated to `(6, 5)` because `shift_point 1` shifts `(5, 4)` by 1.
+4. Now, when calling `shift_point 2`, the updated `point` `(6, 5)` is used:  
+   `component_x (6, 5) + 2 = 6 + 2 = 8` and `component_y (6, 5) + 2 = 5 + 2 = 7`.  
+   Hence, the result is `(8, 7)`.

@@ -1,0 +1,9 @@
+**(5, 4)**
+
+**Explanation:**
+
+The line `let point = shift_point 1` redefines the *global* variable `point`.  `shift_point 1` evaluates to `(4 + 1, 3 + 1)` which is `(5, 4)`. Critically, the *original* `point` (4,3) defined at the top is no longer used within the `shift_point` function *after* this redefinition (shadowing); the function now uses the newly defined `point` variable, (5,4).
+
+Thus, `shift_point 2` becomes `(component_x point + 2, component_y point + 2)` which is `(5 + 2, 4 + 2)`. However, since component_x and component_y take the point as input the function `shift_point` will now be equivalent to `(5 + 2, 4 + 2)` which is `(7,6)`.
+
+Since the question asks about running `shift_point 2` the first evaluation of `point` uses the original global `point` as defined by `let point = (4,3)`. Thus evaluating `shift_point 2` inside that function `(component_x point + 2 , component_y point + 2)` becomes `(4 + 2, 3 + 2)` which is `(6,5)`.  Critically however, the redefinition of `point` overshadows the earlier definition only from the point of its redefinition onward.

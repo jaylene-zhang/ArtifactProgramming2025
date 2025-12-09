@@ -1,0 +1,8 @@
+**Solution**
+```ocaml
+rev_tl l acc = rev_tl (tl l) (cons (hd l) acc)
+```
+Initializes `acc` as an empty list `[]`.
+
+**Explanation**
+The `rev_tl` function is a recursive function that takes a list `l` and an accumulator `acc`. When we call `rev_tl` initially, we need to give it an initial value for `acc`. Since we're reversing the list, we want `acc` to be an empty list `[]`, which will be progressively extended with each recursive call.

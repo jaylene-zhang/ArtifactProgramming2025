@@ -1,0 +1,9 @@
+Answer (short version):  
+The correct tail-recursive implementations (with an appropriate choice of continuation) are (a) and (c).
+
+Explanation:  
+A proper tail-recursive fold_right must ultimately compute f x (fold_right f xs b) in a way that makes the recursive call the last operation. In continuation-passing style, this translates to either  
+• building a continuation that does cont (f x r) (as in (a)), or  
+• applying f x to the result of cont r, with cont initially chosen as the identity (as in (c)).  
+
+Other options either change the argument order (effectively doing fold_left) or misuse the continuation.

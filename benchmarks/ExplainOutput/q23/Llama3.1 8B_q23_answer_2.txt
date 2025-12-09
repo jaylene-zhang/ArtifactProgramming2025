@@ -1,0 +1,7 @@
+**Solution**
+```ocaml
+let shift : unit -> unit
+```
+**Explanation**
+
+The `shift` function takes no arguments but modifies the values of the `x` and `y` references in the `point` tuple. The type `unit -> unit` indicates that the function takes a `unit` (i.e., no arguments) and returns a `unit` value (i.e., void).

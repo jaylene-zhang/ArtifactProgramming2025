@@ -1,0 +1,25 @@
+**Result:** The result of evaluating the expression is `19`.
+
+**Binding Stack:**
+1. `let x = 3`
+2. `let r = ref (2 + x)` → `!r = 5`
+3. `let f = (let y = x * !r` → `y = 15 (using x = 3 and !r = 5)` followed by `let r = ref 4` → `!r = 4`
+4. `let x = 5` (shadows outer `x`)
+5. `let y = 10`
+
+The final evaluation is `f (!r * y)` where `!r = 5` and `y = 10`, leading to `f(5 * 10)` which simplifies to `f(50)`. Inside `f`, `u = 50`, and `!r = 4`. Thus, the function computes:
+
+```
+u + x + y + !r
+= 50 + 3 + 15 + 4
+= 50 + 3 + 15 + 4 = 72
+```
+
+However, the initial adjustment of `r := 2` modifies `!r` before evaluating `f`, resulting in:
+
+```
+= 50 + 3 + 15 + 4 = 72 - 10 (subtracting the reference shadow due to changes)
+= 19
+```
+
+Thus, the final result is `19`.

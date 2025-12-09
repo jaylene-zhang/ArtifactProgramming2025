@@ -1,0 +1,11 @@
+The last expression will return:
+
+```ocaml
+[11.0; 21.0; 6.0]
+```
+
+**Explanation**:
+1. In OCaml, variables like `sales_tax` are immutable once defined. The function `update_sales_tax` appears to change `sales_tax`, but it does not actually update the value of `sales_tax`. Instead, it computes and returns a new value, which is unused in this code.
+2. The function `add_tax` uses the original value of `sales_tax`, which is `1.0`.
+3. When calling `update_price_list price_list`, the `List.map` applies `add_tax` to each element in the list `[10.0; 20.0; 5.0]` while still using the original `sales_tax` value (`1.0`).
+4. Thus, the resulting list is `[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0] = [11.0; 21.0; 6.0]`.

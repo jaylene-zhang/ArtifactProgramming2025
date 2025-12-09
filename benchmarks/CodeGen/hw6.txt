@@ -1,0 +1,198 @@
+We've seen in class recently that there is more than one way to represent a datastructure. For example, we've seen that the types
+
+type 'a option = Some of 'a | None
+and
+
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+can be used to do exactly the same things. In other words, they carry the same information, just in different ways. We call such types isomorphic.
+
+To show that two types are isomorphic, we need to write functions to convert them into each other. If we can convert in both directions without losing any information, then the information in the types has to be the same.
+
+In this assignment you will explore some isomorphic types and how the implementation of an example function looks for each one.
+
+Q1: Traverse (5 points)
+
+We often use map to transform the elements of a list according to some function.
+
+An example of a situation where we want to transform a list would be validating data. Suppose we have a string list, where each string represents an expression, like in HW 4 (don't worry - this is just an example). We have the function from HW 4, parse : string -> exp option. It fails if the string is not a well-formed expression. To validate the data, we want to check that all of the strings are well-formed expressions.
+
+It's easy to write List.map parse : string list -> exp option list. But this is not what we really want. We wanted the validation to fail if any string was not well-formed.
+
+So what we really wanted was the type string list -> exp list option. Notice the switch from exp option list to exp list option.
+
+The function to do this is a generalization of map, which returns an overall None if any element of the input list gets mapped to None.
+
+Implement the function traverse : ('a -> 'b option) -> 'a list -> 'b list option that returns an overall None if any element of the input list gets mapped to None.
+
+The remainder of the assignment is practice with continuations.
+
+(* TODO: Implement the function. *)
+
+(* Q1: 5 points *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  raise NotImplemented
+
+
+Q2: Now with 'Maybe'
+We've provided you with a Maybe module which contains a type similar to option. To manipulate Maybe.t values, we've given you a couple of functions (in the Maybe module):
+
+module Maybe : sig
+  type 'a t
+
+  (** [return x] is [Just x]. *)
+  val return : 'a -> 'a t
+
+  (** [nothing] is [Nothing]. *)
+  val nothing : 'a t
+
+  (** [bind a h] is [h x] if [a] is [Just x],
+      and [Nothing] otherwise. *)
+  val bind : 'a t -> ('a -> 'b t) -> 'b t
+
+  (** [a >>= h] is an infix synonym for [bind a h]. To use it, make sure the
+      [Maybe] module is opened using [let open Maybe in (* ... *)]. *)
+  val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+
+  (** [pp ppv] is a pretty-printer for values of type ['a t], given the
+      pretty-printer [ppv] for values of type ['a]. *)
+  val pp : (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+
+  (** [to_string value_to_string m] is a string representation of [m], with
+      [value_to_string] being used to convert the value in a ['a Maybe.t] to
+      a string. *)
+  val to_string : ('a -> string) -> 'a t -> string
+end = struct
+  type 'a t =
+    | Just of 'a
+    | Nothing
+
+return : 'a -> 'a Maybe.t
+nothing : 'a Maybe.t
+bind : 'a Maybe.t -> ('a -> 'b Maybe.t) -> 'b Maybe.t
+The interface is similar to a CPS option, but without the failure continuation. Instead, once a None value appears in the continuation chain, the whole computation stops and produces None immediately. The continuations give their results in a Maybe.t so that they can introduce a None value to cause this failure.
+You can use Maybe.return, Maybe.nothing, and Maybe.bind to construct and manipulate Maybe.t values. You may not use = to compare Maybe.t values. The autograder will not check this!
+Additionally, as always, you can re-use functions from other problems if you want.
+
+(* TODO: Implement the functions Q2.1 *)
+Q2.1: Calling Functions under Maybe.t (2 points)
+If we have a ('a -> 'b) Maybe.t, and a 'a Maybe.t, we may want to "apply the function" under the Maybe.t type. If both values are present, this is easy. If either is not present, then neither would the application be. The resulting type is thus 'b Maybe.t.
+Implement the function ap : ('a -> 'b) Maybe.t -> 'a Maybe.t -> 'b Maybe.t.
+
+(* Q2.1: 2 points *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.2 *)
+Q2.2: Tuple under Maybe.t (2 points)
+In a similar vein, if we have a 'a Maybe.t and a 'b Maybe.t, we may want to produce a tuple under the Maybe.t type. The result would be ('a * 'b) Maybe.t.
+Implement the function seq2 : 'a Maybe.t -> 'b Maybe.t -> ('a * 'b) Maybe.t.
+
+
+(* Q2.2: 2 points *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.3 *)
+Q2.3: Generalize 2.2 (3 points)
+The function written in 2.2 only works if we have the Maybe.t values. Perhaps we have a 'a1 and 'b1 (no Maybe.t), and validator functions with types 'a1 -> 'a2 Maybe.t and 'b1 -> 'b2 Maybe.t. Then it makes sense to want to compose these things, and end up with a ('a2 * 'b2) Maybe.t.
+Implement the function
+seq_predicate2 : ('a1 -> 'a2 Maybe.t)
+              -> ('b1 -> 'b2 Maybe.t)
+              -> ('a1 * 'b1)
+              -> ('a2 * 'b2) Maybe.t`.
+
+(* Q2.3: 3 points *)
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.4 *)
+Q2.4: Map for Maybe.t (3 points)
+We saw in lecture that when we have a parameterized type, say 'a t, it is often useful to have the function map_t : ('a -> 'b) -> 'a t -> 'b t.
+Implement the function map : ('a -> 'b) -> 'a Maybe.t -> 'b Maybe.t.
+
+(* Q2.4: 3 points *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+
+(* TODO: Implement the functions Q2.5 *)
+Q2.5 And generalize it! (10 points)
+Now rewrite traverse for the Maybe.t type. This is very similar to CPS!
+traverse' : ('a -> 'b Maybe.t) -> 'a list -> 'b list Maybe.t
+
+(* Q2.5: 10 points *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+
+Q3: Conversions
+
+We will now explore some explicit isomorphisms. These are good practice, both for thinking with types and thinking with continuations.
+
+Again, for Q2, Q3 and Q4, we are giving more problems than usual to provide practice for the midterm. Since we are giving more problems than usual, you do not need to write tests.
+
+
+(* Given *)
+
+(* Q3 *)
+
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+
+(* type 'a option = Some of 'a | None *)
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+
+(* type 'a list = (::) of 'a * 'a list | [] *)
+type ('a, 'r) clist =
+  | CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+  (* OCaml does not support circular types. The circularity is guarded by
+     the constructor [CList]. *)
+
+(* TODO: Implement the function Q3.1a *)
+
+(* Q3.1a: 2 points *)
+let church_to_nat (c : 'a church) : nat =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.1b *)
+
+(* Q3.1b: 3 points *)
+let rec nat_to_church (n : nat) : 'a church =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.2a *)
+
+(* Q3.2a: 2 points *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.2b *)
+
+(* Q3.2b: 3 points *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.3a *)
+
+(* Q3.3a: 2 points*)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.3b *)
+
+(* Q3.3b: 3 points *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  raise NotImplemented
+
+
+Q4: Map for clist (5 points)
+Once again, it is useful to have map_clist : ('a -> 'b) -> ('a, 'r) clist -> ('b, 'r) clist. This is a very good exercise in continuations.
+(* Q4: 5 points *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  raise NotImplemented

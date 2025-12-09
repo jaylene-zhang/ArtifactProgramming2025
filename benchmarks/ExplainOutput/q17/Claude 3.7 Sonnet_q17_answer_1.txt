@@ -1,0 +1,3 @@
+Solution: No, the implementation does not compute ackermann x at most once. It computes it once for each element in the list.
+
+Explanation: In the given implementation of `add_ack`, the function `ackermann x` is called inside the match expression for each element of the list. For a list of length n, `ackermann x` will be computed n times. To optimize this, we should compute `ackermann x` once outside the recursive processing of the list, store the result in a variable, and then use that variable when adding to each list element.

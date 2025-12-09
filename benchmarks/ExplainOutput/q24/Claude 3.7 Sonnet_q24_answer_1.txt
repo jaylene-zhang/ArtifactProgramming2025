@@ -1,0 +1,9 @@
+The type of `f (f (a, b), f (b, a))` is `'t`.
+
+Explanation:
+- We're given that `f: ('t * 't -> 't)`, `a: 't`, and `b: 't`
+- First, evaluate the inner calls:
+  - `f (a, b)` takes two values of type `'t` and returns a value of type `'t`
+  - `f (b, a)` similarly returns a value of type `'t`
+- Then, `f (f (a, b), f (b, a))` is a call to `f` with two arguments of type `'t`
+- Since `f: ('t * 't -> 't)`, the result has type `'t`

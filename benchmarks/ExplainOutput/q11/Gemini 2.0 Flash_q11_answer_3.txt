@@ -1,0 +1,45 @@
+**Question 2: Zip it up!**
+
+**First Step: Type Annotations for `zip`**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation:**
+
+*   `l1: 'a list`: `l1` is a list of elements of type `'a`.
+*   `l2: 'b list`: `l2` is a list of elements of type `'b`.
+*   `: ('a * 'b) list`: The return type is a list of pairs, where the first element of each pair has type `'a` and the second has type `'b`.
+
+**Second Step: Generalized `zipper` function**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [], [] -> failwith "Lists must be of the same length."
+  | [], _  -> failwith "Lists must be of the same length."
+  | _, []  -> failwith "Lists must be of the same length."
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation:**
+
+*   `comb: 'a -> 'b -> 'c`:  `comb` is a function that takes an element of type `'a` and an element of type `'b` and combines them into an element of type `'c`.
+*   `add: 'c -> 'd -> 'd`: `add` is a function that takes an element of type `'c` (the result of `comb`) and an accumulator of type `'d` and returns a new accumulator of type `'d`. This generalizes the list cons operator (`::`).
+*   `l1: 'a list`: Same as before.
+*   `l2: 'b list`: Same as before.
+*   `: 'd`: The return type is now `'d`, representing the accumulated result.  Crucially, we must consider when the lists do not have the same length and account for that, or else unexpected output can result.
+
+**Examples Using `zipper`**
+
+Note the use case examples in the question provide no initial value to start the accumulation, which is needed in order to have a definition for the type `'d`. The accumulation must start somewhere. As such, I have corrected the examples below.
+
+```ocaml
+let zip l1 l2 = zipper (fun x y -> (x, y)) (fun h t -> h :: t) l1 l2
+let zip_rev l1 l2 = zipper (fun x y -> (string_of_int x) ^ y) (fun s t -> t @ [ (s, List.length t) ]) l1 l2 []
+```

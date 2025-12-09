@@ -1,0 +1,5 @@
+Solution:
+type cake = Slice of (ingredients list * int) | Cake of cake * cake
+
+Explanation:
+Each slice now holds a tuple containing the ingredients list and the calorie count.

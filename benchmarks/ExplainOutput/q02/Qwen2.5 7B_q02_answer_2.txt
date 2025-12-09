@@ -1,0 +1,9 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+Explanation:
+- The function `f` is a function that takes an argument of type `'a` and returns a value of type `'a`. Therefore, its type is `'a -> 'a`.
+- The `repeat` function takes this function `f` and returns a new function that also takes an argument of type `'a` and returns a value of type `'a`. Therefore, the overall type of `repeat` is `'a -> 'a`. 
+
+This results in a type signature where `repeat` is a function that takes an `'a -> 'a` function and returns an `'a -> 'a` function. The choice of `'a` is generic, meaning it can be any type.

@@ -1,0 +1,7 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+**Explanation:**
+
+The function `repeat` takes a function `f` as an argument.  Crucially, `f` receives a value of type `'a` and returns a value of the same type.  This is expressed as `'a -> 'a`.  Since the function `repeat` returns a value whose type is the same as the type `f` returns, the return type of `repeat` is also `'a -> 'a`. This allows `f` to be applied recursively to the result of calling `repeat` on itself.  The `'a` type variable is polymorphic, allowing the function to work with values of any type. For example, if you wanted to double a number a hundred times, the type would have the correct function type that corresponds to an integer.  You can pass in any function that expects and returns the same type of value for the parameters.  Without knowing the type `'a` of values that `f` is working on,  its impossible to give a more specific return type.

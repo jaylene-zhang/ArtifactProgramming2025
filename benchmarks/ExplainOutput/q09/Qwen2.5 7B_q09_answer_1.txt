@@ -1,0 +1,7 @@
+```ocaml
+let x = 10 in
+let x = x + 1 in
+x
+```
+
+Explanation: In this example, `x` is first bound to `10`. Then within the same scope (i.e., the `let x = x + 1 in` expression), `x` is overshadowed by a new binding of `x` to `x + 1`. The final value of `x` after evaluation is `11`. This overshadowing happens because the inner binding of `x` hides the outer one within the same scope.

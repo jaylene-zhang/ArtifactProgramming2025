@@ -1,0 +1,5 @@
+```ocaml
+acc = []
+```
+
+Explanation: To use `rev_tl l acc` to compute the reverse of a list, you need to initialize `acc` as an empty list `[]`. The accumulator `acc` will build up the reversed list as the function processes the original list `l`. Starting with an empty list allows the function to correctly accumulate elements in reverse order as it recursively processes the input list.

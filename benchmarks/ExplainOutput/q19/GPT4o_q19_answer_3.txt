@@ -1,0 +1,20 @@
+Solution: **The implementation is incorrect and is not tail-recursive.**
+
+Explanation:
+
+1. The function `helper` does not take two arguments as the call `helper 1 n` suggests (`helper` only takes one argument `n`).
+2. The function is **not tail-recursive** because the recursive call to `helper` is not the final operation; it is followed by multiplication (`2 * helper (n / 2)`).
+3. Even if fixed, the recursive approach used here would not achieve tail recursion since it accumulates the result in the call stack.
+
+To make the computation tail-recursive, you can pass an accumulator to keep track of the running result. Here’s a corrected and tail-recursive implementation:
+
+```ocaml
+let max_two_factor n =
+  let rec helper n acc =
+    if n mod 2 = 1 then acc
+    else helper (n / 2) (acc * 2)
+  in
+  helper n 1
+``` 
+
+This works by incrementally building up `2^k` in the accumulator `acc` without relying on the call stack.

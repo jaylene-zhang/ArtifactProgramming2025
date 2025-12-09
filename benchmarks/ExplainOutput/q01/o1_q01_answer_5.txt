@@ -1,0 +1,9 @@
+Solution:
+(1) (xs: 'a list)  
+(2) (ys: 'b list)  
+(3) (pair: 'a * 'b -> 'c)  
+(4) (sc: 'c list -> 'd)  
+Return type: 'd  
+
+Explanation:  
+zippy takes two lists of types 'a list and 'b list, a function pair that maps a pair ('a * 'b) to 'c, and a continuation sc that maps a 'c list to 'd. Because zippy applies sc to the collected list of 'c values at the end, its overall result type is 'd.

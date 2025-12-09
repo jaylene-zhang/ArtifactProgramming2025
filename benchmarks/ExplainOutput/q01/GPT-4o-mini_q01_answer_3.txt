@@ -1,0 +1,24 @@
+Here are the most general types filled in:
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd) : 'd =
+    match xs, ys with
+    | [], [] -> sc []
+    | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair (x, y)) :: r))
+    | _ , _ -> raise Error
+
+let zip_plus xs ys =
+    zippy xs ys (fun (x, y) -> x + y)
+        (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+### Explanation:
+1. **Types of `xs` and `ys`:** They are lists of potentially different types, represented as `'a list` and `'b list` to indicate they can be any type. 
+2. **Type of `pair`:** The function `pair` takes a tuple of two elements (one from `xs` and one from `ys`) and returns a value of type `'c`.
+3. **Type of `sc`:** This function takes a list of type `'c` (the results of combining `xs` and `ys`) and returns a value of type `'d`, which can also be any type.
+4. **Return type of `zippy`:** Overall, the function returns a type `'d`, which is determined by the processing function `sc`.
+
+### Ill-Typed Consideration:
+The program is potentially ill-typed when `zip_plus` is called if the lists `xs` and `ys` are of lengths that do not match. The error is raised if this assumption in the lengths is violated after zipping the lists which would cause a mismatch in types and result in a runtime error. This design forces a condition that may not always be satisfied depending on the inputs.

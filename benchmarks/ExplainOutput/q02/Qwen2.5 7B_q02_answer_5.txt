@@ -1,0 +1,11 @@
+The most general types for the holes are:
+
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+Explanation:
+- `'a -> 'a`: This indicates that `f` is a function that takes any type `'a` and returns a value of type `'a`.
+- `'a -> 'a`: This indicates that `repeat` is a function that takes any type `'a` and returns a function of type `('a -> 'a)`. 
+
+This type system ensures that `f` can be any function that accepts and returns the same type, and `repeat` compiles correctly by recursively calling `f` with `repeat f` as its argument.

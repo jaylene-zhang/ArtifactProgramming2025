@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+type cake = Slice of (int * ingredients list) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The `Slice` constructor now takes a tuple.  The first element of the tuple is an `int` representing the calories, and the second element is the existing `ingredients list`. This associates a calorie count with each slice of cake.

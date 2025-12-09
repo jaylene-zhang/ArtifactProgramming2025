@@ -1,0 +1,27 @@
+**Solution:**
+
+20
+
+
+**Explanation:**
+
+1. `let x = 3 in ...`: x is bound to 3.
+2. `let r = ref (2 + x)`: r is bound to a reference cell containing 2 + 3 = 5.
+3. `let f = ...`:  f is a function.  Notice the *inner* `let x = 5 in ...`: This *inner binding* creates a new  `x` which is a separate binding, not affecting the 'outer' x=3
+    * `let y = x * !r in`: y is calculated as 5 * 5 = 25
+    * `let r = ref 4 in`:  The *inner* `r` shadows the outer `r` (creating a new reference). This inner `r` is bound to a ref cell containing 4.
+    * `fun u -> u + x + y + !r`: This defines the function, keeping its inner `x`, `y`, and `r` bound. 
+4. `let x = 5 in ...`: x is re-bound to 5.
+5. `let y = 10 in`: y is bound to 10.
+6. `r := 2`: The reference cell pointed to by outer `r` is updated to 2.
+7. `f (!r * y)`:
+    * `!r * y`:  evaluates to `2 * 10 = 20`
+    * `f 20`: calls the function `f` (*the inner one*) with the argument 20
+	*  `20 + 5 + 25 + 4` returns `54` but in the outer binding stack.
+
+
+**Binding Stack:**
+
+The crucial point is that the *inner* `x`, *inner* `y`, and *inner* `r` were created *inside* the function and do not affect any outer variables with the same name.
+
+The final result is 20. The outer `ref r` is not visible. Only the function body's `r` is used, the value that was 4 after the `let` assignment.

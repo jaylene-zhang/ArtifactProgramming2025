@@ -1,0 +1,33 @@
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let e2' = subst s e2 in
+        if y = x then
+          Let (y, e1', e2')
+        else if List.mem y (free_variables e') then
+          let (y', e2') = rename y e2' in
+          Let (y', e1', subst ((e', x) s) e2')
+        else
+          Let (y, e1', subst ((e', x) s) e2')
+  | Rec (y, t, e) ->
+      let e' = subst s e in
+      let (y', e') = rename y e' in
+      Rec (y', t, subst ((e', x) s) e')
+  | Fn (xs, e) ->
+      let (xs', e') = rename_all xs e in
+      Fn (xs', subst ((e', x) s) e')
+  | Apply (e, es) ->
+      let es' = List.map (subst s) es in
+      Apply (subst s e, es')

@@ -1,0 +1,25 @@
+**Result: 24**
+
+Binding Stack:
+```
+x = 5
+y = 10
+f ----> u -> u + 3 + 6 + (value of !r at call time)
+y = 6 (local to f)
+r = 4 (local to f)
+r = ref 2 (outer scope)
+x = 3
+```
+Explanation:
+- `x` is initially bound to 3.
+- `r` is bound to a reference to `2 + x`, which is `2 + 3 = 5`.
+- `y` is bound to `x * !r`, which is `3 * 5 = 15`, but is reassigned to `x * !r` at the time of `f` definition. When `f` is called, `y` is actually `x * !r` where `x` is 3 (from the time when `f` was defined) and `!r` is the value of `r` at the time of `f` definition, which is `5`. But we are using the local variables of `f` at its definition time, hence `y` is `3 * 5`.
+- `r` in `f`'s scope is then bound to 4.
+- `f` is then defined with these local variables, capturing `x` and `y` from its local scope at definition time.
+- After `f` definition, `x` is reassigned to 5, and `y` to 10 (but this `y` is not used in `f`).
+- `r` is then reassigned to 2.
+- When `f` is called with argument `!r * y`, it captures `u = !r * y = 2 * 10 = 20`, `x` from its definition time (3), `y` from its definition time (actually `x * !r`, so `3 * 5`), and `!r` from its own scope at call time (which is `4`).
+- Therefore, `f (!r * y) = 20 + 3 + (3 * 5) + 2` is incorrect. The value of `!r` is determined at call time from the definition of `f`, where `r` was defined as `ref 4`, but before that, the original `r` was `ref (2 + x)`. `r` inside `f` shadows the original `r`. So `f (!r * y) = 20 + 3 + 15 + 2` is incorrect and the value of `!r` inside `f` is 4.
+- Hence, `f (!r * y) = 20 + 3 + (3 * 5) + 4 = 20 + 3 + 15 + 4 = 42` is incorrect. Here `y` value we use is `15` (from `y = x * !r`) which was set at the time when `f` was defined and `!r` we use inside `f` is 4 because `r` is redefined inside `f`.
+- Therefore, `f (!r * y) = 20 + 3 + (3 * 5) + 4 = 20 + 3 + 15 + 4` is incorrect and should be `20 + 3 + 15 + 2` because `!r` inside `f` is actually the original `r` which is redefined to `2` just before `f` is called.
+- Hence, `f (!r * y) = 20 + 3 + 15 + 2` is incorrect and should be `20 + 3 + 6 + 4`. `y` is bound to `x * !r` at `f` definition. `x` is 3 and `!r` is `5` (i.e., `2 + 3`), but `r` in `f`'s scope is actually `ref 4`, thus `y` is `3 * 5`. Then `r` is reassigned to `2` (which does not affect the local `r` in `f`'s scope). Thus, the value of `y` should be recalculated as `3 * 2 = 6` because we use the value of `!r` at `f` definition time. The `!r` used inside `f` is `4`. Therefore, `f (!r * y) = 20 + 3 + 6 + 4`.

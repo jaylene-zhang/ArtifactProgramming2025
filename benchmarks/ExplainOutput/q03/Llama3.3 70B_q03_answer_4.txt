@@ -1,0 +1,45 @@
+### Solution
+
+The final result of running the program is: 
+
+```ocaml
+(1, 4, [2; 3; 4], [4; 5; 6])
+```
+
+### Explanation
+
+Here is a step-by-step breakdown of the binding stack and the execution of the program:
+
+1. Initially:
+   - `c = 0`
+   - `x = 1`
+
+2. `let l = List.rev [1;2;3]` is evaluated:
+   - `l = [3; 2; 1]`
+
+3. `let observe () = !c` is evaluated:
+   - `observe ----> () -> !c` (at this point `c = 0`)
+
+4. `let inc x = c:= !c+1 ; x+1` is evaluated:
+   - `inc ----> x -> c:= !c+1 ; x+1`
+
+5. `let ml = List.map inc l` is evaluated:
+   - `ml = [2; 3; 4]` 
+   - `c` is incremented 3 times, so `c = 3`
+
+6. `let inc’ = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)` is evaluated:
+   - A new `c` is bound locally with `c = 0`
+   - `x` is bound locally with `x = 2` (since `x = 1` initially and `x = x + 1` is true for the local scope of `inc'`)
+   - `inc’ ----> y -> c := !c+1 ; !c+y+2` (at this point the local `c = 0` and `x = 2`)
+
+7. `let ml’ = List.map inc’ l` is evaluated:
+   - `ml’ = [4; 5; 6]`
+   - The local `c` of `inc’` is incremented 3 times and added to each element, and the local `x = 2` is also added to each element
+
+8. Finally, `(x, observe () , ml, ml’)` is evaluated:
+   - `x = 1`
+   - `observe () = !c = 3` (since `c` is incremented before calling `observe`)
+   - `ml = [2; 3; 4]`
+   - `ml’ = [4; 5; 6]`
+
+So, the final result is indeed `(1, 4, [2; 3; 4], [4; 5; 6])`

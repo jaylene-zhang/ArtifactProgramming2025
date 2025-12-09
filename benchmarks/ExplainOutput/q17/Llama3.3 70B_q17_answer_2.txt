@@ -1,0 +1,3 @@
+**No**
+
+The program does not compute `ackermann x` at most once for a function call `add_ack x l`. This is because `(ackermann x)` is called in every recursive iteration of `add_ack`, which results in `ackermann x` being computed for each element in the list. To achieve this, you could compute `ackermann x` once and store it in a variable before the recursion.

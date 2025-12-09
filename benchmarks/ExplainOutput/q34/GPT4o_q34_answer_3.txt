@@ -1,0 +1,8 @@
+a) **False**  
+   Explanation: The length of the definition has no relationship with how fast the function executes. Efficiency depends on algorithm design and time complexity, not the line count or brevity of the definition.
+
+b) **False**  
+   Explanation: The `(@)` operator has a time complexity of \(O(n)\) where \(n\) is the length of its first argument, not the second one. In `rev1`, the `@` operation is repeatedly applied for each element in the list, leading to an overall time complexity of \(O(n^2)\).
+
+c) **True**  
+   Explanation: The `rev2` function uses an accumulating parameter and simply prepends with `(::)` (constant time operation) at every recursive step. This results in a linear time complexity of \(O(n)\), making `rev2` faster than `rev1`.

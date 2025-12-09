@@ -1,0 +1,7 @@
+Let foo y =
+let x = y + 3 in
+let w = (y + 3) in
+fun y -> (y + 3) + 2 + y * (y + 3)
+
+Explanation:
+The inlined expression `x` is replaced directly with `y + 3`. This occurs in both the initialization of `w` and within the lambda expression.

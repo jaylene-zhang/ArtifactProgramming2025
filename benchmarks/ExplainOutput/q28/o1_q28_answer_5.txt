@@ -1,0 +1,6 @@
+Solution:  
+No. It does not compute the antiderivative, because it never applies the upper limit x and the step dx.  
+
+Explanation:  
+When you write let anti_d f = (curry integral) f 0, you are partially applying the integral function to f and 0 but never supplying the remaining arguments (the upper limit for the integral and the integration step). To get the antiderivative from 0 to x, you would need something like:  
+let anti_d f x dx = integral f (0., x) dx.

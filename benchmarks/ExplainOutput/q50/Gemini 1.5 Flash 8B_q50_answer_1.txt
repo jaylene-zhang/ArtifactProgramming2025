@@ -1,0 +1,15 @@
+**Correct Implementation(s):**  d
+
+**Explanation:**
+
+The crucial aspect of tail recursion in `fold_right` is that the recursive call must be the *last* operation performed.
+
+* **Option d** is tail-recursive.  The `cont (f r x)` is the last operation before the recursive call `aux_folder f xs b ...`.  The result of the recursive call is directly used to compute the final result without needing to build up intermediate results in the call stack.
+
+* **Option a** is not tail-recursive because it applies `cont` to the result of `f x r`. This result is not directly used in the recursive call.
+
+* **Option b** is not tail-recursive. The `cont r` part is applied before `f`. This order won't allow for tail call optimization.
+
+* **Option c** is not tail-recursive. The `cont r` part is applied *before* `f` (similar to (b)).
+
+* **Option e** has the wrong argument order inside `aux_folder`, and it's not tail-recursive.

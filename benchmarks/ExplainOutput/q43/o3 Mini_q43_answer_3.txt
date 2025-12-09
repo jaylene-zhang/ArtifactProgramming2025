@@ -1,0 +1,5 @@
+Solution:
+No, it won’t work. A more general statement, namely that length (rev_tl l acc) = length l + length acc for any accumulator acc, is needed for the induction.
+
+Explanation:
+The simple claim using rev_tl l [] isn’t strong enough for induction since the function is defined with an accumulator. Proving the invariant for any accumulator lets you conclude the desired property when acc is [].

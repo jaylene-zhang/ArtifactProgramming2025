@@ -1,0 +1,7 @@
+```ocaml
+No.
+```
+
+**Explanation:**
+
+The function `add_ack` recursively calls `ackermann x` in each iteration of the list.  This means that `ackermann x` is recomputed for every element in the input list `l`.  It doesn't memoize the result of `ackermann x`, so it's computed multiple times.

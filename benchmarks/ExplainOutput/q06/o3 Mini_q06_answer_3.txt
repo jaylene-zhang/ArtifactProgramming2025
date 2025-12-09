@@ -1,0 +1,7 @@
+Solution:
+let w = 3 in
+let y = 2 * (w * 2) in
+fun x -> w * y * x
+
+Explanation:
+We inline x by replacing each free occurrence of x (in “2*x”) with w*2. The x bound in “fun x -> …” is shadowing and left unchanged.

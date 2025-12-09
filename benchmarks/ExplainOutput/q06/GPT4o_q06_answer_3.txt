@@ -1,0 +1,27 @@
+**Solution:**
+
+The resulting program is:
+
+```ocaml
+let foo w =
+let w = w * 2 in fun y -> (w * 2) + 2 + y * w
+
+let w = 3 in let y = 2 * (3 * 2) in fun x -> 3 * y * x
+```
+
+**Explanation:**
+
+We perform the inlining step-by-step:
+
+1. In the first part (`foo`), we substitute occurrences of `x` with its definition `w * 2`. This results in replacing `x` in the body `x + 2 + y * w`:
+   ```ocaml
+   let foo w =
+   let w = w * 2 in fun y -> (w * 2) + 2 + y * w
+   ```
+
+2. In the second part, we need to inline the `x` value in terms of `w * 2`. So, substituting `x = w * 2` into the program `let w = 3 in let y = 2 * x`, we replace `x` with `3 * 2`:
+   ```ocaml
+   let w = 3 in let y = 2 * (3 * 2) in fun x -> 3 * y * x
+   ```
+
+This is the final result following the specified inlining transformations.

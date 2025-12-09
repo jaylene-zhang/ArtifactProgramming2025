@@ -1,0 +1,6 @@
+Solution:  
+• f : 'a -> 'a  
+• repeat : ('a -> 'a) -> 'a  
+
+Explanation:  
+Because repeat f = f (repeat f), the argument (“repeat f”) to f must have the same type as the result of f. Hence f is ('a -> 'a) and repeat returns 'a.

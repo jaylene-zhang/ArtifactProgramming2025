@@ -1,0 +1,18 @@
+Solution:
+
+```ocaml
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: ('a * 'b) -> 'c) (sc: 'c list -> 'd):
+    'd = match xs, ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y))::r))
+| _ , _ -> raise Error
+```
+
+Explanation:
+- `xs` is a list of elements of some type 'a
+- `ys` is a list of elements of some type 'b
+- `pair` is a function taking a pair of ('a * 'b) and returning a value of type 'c
+- `sc` is a continuation function that takes a list of 'c and returns a value of type 'd
+- The entire function returns a value of type 'd
+
+The function processes two lists, applies the pair function to corresponding elements, and builds a result using the continuation pattern.

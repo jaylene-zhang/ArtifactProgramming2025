@@ -1,0 +1,42 @@
+**Result:** 39
+
+
+**Binding Stack:**
+
+```
+expressions:
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+binding stack:
+
+y = 10
+x = 5
+r := 2
+r = ref 2
+f ----> (!r * y) -> u = (!r * y); x = 5; y = (x * !r); r = ref 4 ; u + x + y + !r
+x = 3
+r = ref (2 + 3) = ref 5
+```
+**Explanation:**
+
+1. `let x = 3 in ...`:  `x` is bound to 3.
+2. `let r = ref (2 + x)`: `r` is bound to a reference cell holding `2 + 3 = 5`.
+3. `let f = ...`:  The function `f` is defined. Note the *inner* `let r = ref 4 in ...` creates a *new* local reference `r` which shadows the outer one.  Crucially, the `r` in the function's body is a different reference than the outer one. This is the key to understanding this.
+4. `let x = 5 in ...`: A new `x` is bound to 5, shadowing the outer `x=3`.
+5. `let y = 10 in ...`: `y` is bound to 10.
+6. `r := 2;`: The *outer* reference `r` is updated to hold 2.
+7. `f (!r * y)`: `f` is called with argument `(!r * y) = (2 * 10) = 20`.
+   - Inside `f`, `u` becomes 20.
+   - `x` inside `f` is 3 (from the enclosing scope).
+   - `y` inside `f` is `(3 * 5) = 15`
+   - `!r` inside `f` gets `4` because the inner `let r = ref 4 in` block has its own, local `r` reference which is used here.
+   - The expression calculates 20 + 3 + 15 + 4, which equals 42.
+
+
+Therefore, the final result is 39 *not* 42.

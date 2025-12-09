@@ -1,0 +1,5 @@
+**Solution:** `r`
+
+**Explanation:**
+
+The variable `r` in the function definition `let call f r y = ...` is shadowed by the `let r = 2 * y in ...` binding. The original `r` passed as an argument is never used. Hence, the original `r` is unused.

@@ -1,0 +1,3 @@
+Solution: 't
+
+Explanation: Since a and b are of type 't, both f(a, b) and f(b, a) have type 't. The pair (f(a, b), f(b, a)) is of type ('t * 't), which is what f expects, hence f (f (a, b), f (b, a)) returns a value of type 't.

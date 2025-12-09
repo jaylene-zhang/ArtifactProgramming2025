@@ -1,0 +1,6 @@
+Solution:
+```
+type cake = Slice of (ingredients list * int) | Cake of cake * cake
+```
+
+Explanation: To store calories with each slice, I modified the Slice constructor to take a tuple that contains both the ingredients list and an integer representing calories. The Cake constructor remains unchanged, as it still combines two cakes together.

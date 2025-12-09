@@ -1,0 +1,8 @@
+Solution: **a)
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions**
+
+Explanation: This option correctly defines a `revelations` type as a `int`, which can hold the number of rotations for any jump. It also correctly defines a `jump_typ` as an enumeration of the five types of jumps. The `jump` type is a tuple that pairs a `jump_typ` with a `revelations`, allowing for any of the five jumps to be associated with any integer number of revolutions. This structure accurately models the problem statement.
+
+Option b) incorrectly restricts the number of revolutions to only `Double` and `Triple`, which does not cover cases with different numbers of rotations. Option c) incorrectly nests the data types, which does not match the description of a simple pairing of a jump type and its rotations.

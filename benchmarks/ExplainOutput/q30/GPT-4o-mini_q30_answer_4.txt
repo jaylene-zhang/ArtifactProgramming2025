@@ -1,0 +1,13 @@
+The last expression `update_price_list price_list` will return `[11.0; 21.0; 6.0]`.
+
+Explanation:
+1. Initially, `sales_tax` is set to `1.0`.
+2. The function `add_tax` takes an input `x` and returns `sales_tax +. x`, which evaluates to `1.0 +. x`.
+3. The function `update_price_list` uses `List.map` to apply `add_tax` to each element of `price_list` `[10.0; 20.0; 5.0]`, returning a new list.
+4. The `update_sales_tax ()` function is called, which doubles `sales_tax` to `2.0`, but it does not update the global variable `sales_tax` (since OCaml variables are immutable).
+5. Therefore, when `update_price_list price_list` is called, it still uses the original `sales_tax` value of `1.0` for calculating the updated prices.
+6. Consequently, `update_price_list price_list` calculates:
+   - `add_tax 10.0` → `1.0 +. 10.0` = `11.0`
+   - `add_tax 20.0` → `1.0 +. 20.0` = `21.0`
+   - `add_tax 5.0` → `1.0 +. 5.0` = `6.0`
+7. Thus, the final result is `[11.0; 21.0; 6.0]`.

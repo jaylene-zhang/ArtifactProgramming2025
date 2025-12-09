@@ -1,0 +1,11 @@
+1) `f (hd s) a`
+
+2) `fold f (f (hd s) a) (tl s)`
+
+
+**Explanation:**
+
+The `fold` function operates recursively on the stream `s`.  It takes the head element (`hd s`) and the current accumulator (`a`).  It applies the function `f` to these elements to get the first element of the output.  
+
+
+Then it recursively calls `fold` passing the *updated* accumulator, which is the result of applying `f` to the head element and the current accumulator, on the *tail*  of the `s` stream. This continues constructing the output stream element by element.

@@ -1,0 +1,9 @@
+Solution:
+--------------------------------------------------
+let x = ref 10 in
+x := 20
+
+Explanation:
+--------------------------------------------------
+• Overwriting modifies an existing mutable value in place (as with a reference).  
+• Overshadowing introduces a new binding in the same scope with the same name, making the old binding inaccessible but unchanged.

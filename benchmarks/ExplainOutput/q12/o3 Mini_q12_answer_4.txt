@@ -1,0 +1,31 @@
+Solution for Q4.1:
+Induction Hypothesis (IH): For every hand h and every accumulator acc, 
+  add_up h + acc = add_up_tr h acc.
+
+• Base Case (h = Empty):
+  add_up Empty = 0, hence 0 + acc = acc.
+  Also, add_up_tr Empty acc = acc.
+  Thus, the statement holds.
+
+• Step Case (h = Hand(c, h')):
+  Assume IH holds for h', i.e., add_up h' + acc = add_up_tr h' acc.
+  Then add_up (Hand(c, h')) = 1 + add_up h'. So,
+   add_up (Hand(c, h')) + acc = 1 + add_up h' + acc
+                = 1 + (add_up h' + acc)
+                = 1 + add_up_tr h' acc  (by IH)
+  By the definition of add_up_tr, we have:
+   add_up_tr (Hand(c, h')) acc = add_up_tr h' (1+acc).
+  Since addition is associative, 1 + add_up_tr h' acc = add_up_tr h' (1+acc).
+  Thus, the statement holds in the step case.
+
+Explanation for Q4.1:
+We prove the stronger property by induction on h. The base case is trivial, and in the step case we use the induction hypothesis on h' to show the equality holds after “adding 1” to both sides.
+
+Solution for Q4.2:
+By applying Theorem 1 with acc = 0, we immediately obtain:
+  add_up h + 0 = add_up_tr h 0
+which simplifies to:
+  add_up h = add_up_tr h 0.
+
+Explanation for Q4.2:
+The main result follows as a special case of Theorem 1 by choosing the accumulator to be 0 in the proven equality.

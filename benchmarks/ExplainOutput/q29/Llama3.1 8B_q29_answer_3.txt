@@ -1,0 +1,23 @@
+Here are the implementations with explanations:
+
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+**Incorrect**
+
+The `curry` function is not given a proper application order. `curry` applies its argument function to `(a, b)` while `sumSeries` expects `f`, `lower_bound` and `increment` as arguments. Therefore, we need to use `swap` to swap the order of `increment` and `f`.
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+**Incorrect**
+
+Similar to a), ordering of arguments matters. The `(curry (sumSeries f 0))` expression is applied to both `f` and `(fun x -> x + 1)` which is incorrect.
+
+c) let sum_from_zero f = curry (swap (sumSeries f (fun x -> x + 1))) 0
+
+**Correct**
+
+By applying `curry` and then `swap`, we ensure the correct ordering of arguments. The `swap` function swaps the `(a,b)` order of `sumSeries` to `_.... ( Increment, f)`, which allows it to bind the increment behavior correctly. The final `curry` call swaps this to bind `f` and `0` correctly. 
+
+Here is the equivalent code with swapped arguments inside `sumSeries` for better readability:
+
+let sum_from_zero f = curry (sumSeries (fun x -> x + 1) 0 f)

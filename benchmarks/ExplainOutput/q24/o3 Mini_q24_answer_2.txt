@@ -1,0 +1,3 @@
+Solution: The expression has type 't.
+
+Explanation: f takes a pair of type 't and returns a 't. Since both f(a, b) and f(b, a) are of type 't, applying f to this pair yields a 't.

@@ -1,0 +1,18 @@
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+   This is correct.
+   
+   Let's analyze it step by step:
+   - curry (sumSeries f) transforms sumSeries f from taking a tuple (a,b) to taking two separate arguments
+   - curry (sumSeries f) 0 applies 0 as the first argument (lower bound)
+   - swap (curry (sumSeries f) 0) swaps the order of the remaining arguments
+   - The final function now takes the increment function first, then the upper bound, matching the required signature
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+   This is incorrect.
+   
+   The error is in the expression (sumSeries f 0). The sumSeries function expects three arguments, but here we're only passing two. The correct approach is to curry first, then apply the first argument.
+
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+   This is incorrect.
+   
+   In this case, swap (sumSeries f) (fun x -> x + 1) swaps the first and second arguments of sumSeries, but the types don't match correctly. The sumSeries function expects its second argument to be (int * int), but after swapping, we're trying to apply (fun x -> x + 1) to that position.

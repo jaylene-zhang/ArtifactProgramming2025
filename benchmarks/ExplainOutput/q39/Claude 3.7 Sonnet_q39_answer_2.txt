@@ -1,0 +1,9 @@
+```ocaml
+let toInt f = 
+  let counter = ref 0 in
+  let inc _ = counter := !counter + 1; () in
+  f (fun _ -> inc (); ()) 0;
+  !counter
+```
+
+This solution works by using a mutable counter to track how many times the function is applied. We pass the function `f` a simple incrementing function and a dummy value (0). When `f` applies the function, our counter increases. After `f` completes, we return the final count.

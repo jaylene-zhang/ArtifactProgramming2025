@@ -1,0 +1,3 @@
+Solution: Many standard List library functions in OCaml are not tail-recursive.
+
+Explanation: While it is true that using continuations can achieve tail-recursiveness, OCaml's standard List library functions were designed with simplicity, readability, and directness in mind rather than tail-recursiveness. Tail-recursion optimization is controlled by the compiler and not always necessary for every function. For example, `List.map` and `List.filter` are not tail-recursive to maintain their generality and simplicity, but OCaml can still optimize parts of these functions if the compiler determines it's beneficial.

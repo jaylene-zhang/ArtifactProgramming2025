@@ -1,0 +1,15 @@
+**Correct Answer:** 1 and 3
+
+**Explanation:**
+
+* **Option 1:** This is correct.  It calculates `prime_fact x` only once, storing the result in `p`.  Then it iterates through the input list `l`, comparing each element `y` with `p`.
+
+* **Option 2:** Incorrect.  It recursively calls `check x ys`, recalculating `prime_fact x` in each recursive step.
+
+* **Option 3:** This is correct. `List.exists` iterates through the list `l`.  Crucially, `prime_fact x` is evaluated only *once* when the lambda function is called for the first time.
+
+
+* **Option 4:** Incorrect.  This lacks the crucial part of taking the input list `l`.  So it doesn't compare against the given list `l`.
+
+
+In summary, only option 1 and 3 correctly compute `prime_fact` only once. Option 2 and 4 compute it multiple times, leading to unnecessary, and possibly incorrect calculations.

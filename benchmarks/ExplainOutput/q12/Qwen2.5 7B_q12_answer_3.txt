@@ -1,0 +1,43 @@
+**Q4.1:**
+
+**Solution:**
+
+Theorem 1. For all hands \( h \) and accumulators \( acc \), \( \text{add\_up } h + acc = \text{add\_up\_tr } h \ acc \).
+
+**Proof:**
+
+- **Base Case:**
+  \( h = \text{Empty} \)
+  \[
+  \text{add\_up } \text{Empty} + acc = 0 + acc = \text{add\_up\_tr } \text{Empty} \ acc = acc
+  \]
+  
+- **Step Case:**
+  \( h = \text{Hand} (c, h') \)
+  \[
+  \text{add\_up } \text{Hand} (c, h') + acc = (\text{add\_up } h' + 1) + acc = \text{add\_up\_tr } h' (1+acc)
+  \]
+  By the induction hypothesis, \( \text{add\_up } h' + (1+acc) = \text{add\_up\_tr } h' (1+acc) \), so:
+  \[
+  \text{add\_up } \text{Hand} (c, h') + acc = \text{add\_up\_tr } h' (1+acc) = \text{add\_up\_tr } \text{Hand} (c, h') \ acc
+  \]
+
+**Induction Hypothesis:**
+For all hands \( h' \) and accumulators \( a \),
+\[
+\text{add\_up } h' + a = \text{add\_up\_tr } h' \ a
+\]
+
+**Q4.2:**
+
+**Solution:**
+
+Theorem 2. For all hands \( h \), \( \text{add\_up } h = \text{add\_up\_tr } h \ 0 \).
+
+**Proof:**
+
+- By Theorem 1, for all hands \( h \) and accumulators \( acc \), \( \text{add\_up } h + acc = \text{add\_up\_tr } h \ acc \).
+- Setting \( acc = 0 \), we get:
+  \[
+  \text{add\_up } h + 0 = \text{add\_up\_tr } h \ 0 \implies \text{add\_up } h = \text{add\_up\_tr } h \ 0
+  \]

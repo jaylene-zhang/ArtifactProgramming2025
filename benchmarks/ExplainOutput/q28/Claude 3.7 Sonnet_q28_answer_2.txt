@@ -1,0 +1,15 @@
+No, this does not correctly compute the antiderivative.
+
+Solution:
+```ocaml
+let anti_d f = fun x -> integral f (0, x) dx
+```
+
+Explanation: The issue with the provided solution is that `(curry integral) f 0` would produce a function that expects a second argument (the upper bound), but then we also need to supply `dx`. The given code doesn't handle the `dx` parameter at all.
+
+The correct implementation needs to:
+1. Take the function f
+2. Return a new function that takes an input x
+3. Compute the integral from 0 to x, supplying the dx parameter
+
+The antiderivative F(x) is defined as the integral of f(t) from 0 to x, which is what our solution computes.

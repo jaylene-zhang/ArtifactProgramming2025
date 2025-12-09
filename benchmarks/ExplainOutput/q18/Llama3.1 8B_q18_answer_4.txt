@@ -1,0 +1,7 @@
+**Solution:**
+
+printf "%d %d\n" (component_x (shift_point 2)) (component_y (shift_point 2))
+
+**Explanation:**
+
+The point after shifting by 1 is (6, 5). When shifting by 2, we add 2 to each component of the point (6, 5), resulting in (8, 7). Therefore, `shift_point 2` will return the point (8, 7).

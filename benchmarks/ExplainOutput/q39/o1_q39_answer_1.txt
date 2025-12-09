@@ -1,0 +1,5 @@
+Solution:
+let toInt f = f (fun n -> n + 1) 0
+
+Explanation:
+A Church numeral f applies its functional argument a certain number of times. Providing (fun n -> n + 1) as the function and 0 as the initial value results in the count of how many times the function is applied.

@@ -1,0 +1,5 @@
+**Solution:** `r`
+
+**Explanation:**
+
+The variable `r` is defined but never used within the scope of the `foo` function. The other variables, `y`, `f`, and `x` (both instances), are all used.

@@ -1,0 +1,7 @@
+The program `shift_point 2` will return the tuple `(6, 5)`.
+
+Explanation: 
+- The function `shift_point n` takes an integer `n` and returns a new point by adding `n` to both the x and y components of the original `point` (which starts as `(4, 3)`).
+- After executing `let point = shift_point 1`, the `point` variable is redefined as the tuple `(5, 4)` (since 4 + 1 = 5 and 3 + 1 = 4).
+- When you call `shift_point 2` next, it uses the updated `point` which is `(5, 4)`. 
+- Thus, the calculation results in `(5 + 2, 4 + 2)` = `(7, 6)`.

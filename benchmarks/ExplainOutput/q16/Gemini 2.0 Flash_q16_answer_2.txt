@@ -1,0 +1,15 @@
+**Solution:**
+
+`(5, 4)`
+
+**Explanation:**
+
+1.  `let point = (4, 3)`: This defines a global variable `point` and binds it to the tuple `(4, 3)`.
+2.  `let component_x (x,y) = x`: A function that gets the x component of a tuple
+3.  `let component_y (x,y) = y`: A function that gets the y component of a tuple
+4.  `let shift_point n = (component_x point + n , component_y point + n)`: This defines a function `shift_point` that takes an integer `n`, accesses the *current* global `point`'s components, adds `n` to each, and returns a new tuple.
+5.  `let point = shift_point 1`:  This redefines (shadows) the *global* `point` with the result of calling `shift_point 1`. `shift_point 1` evaluates to `(4 + 1, 3 + 1)` which is `(5, 4)`.  So, the global `point` now refers to `(5, 4)`.
+
+When `shift_point 2` is called *after* these definitions, it uses the *current* global `point`, which is `(5, 4)`. Therefore, `shift_point 2` evaluates to `(5 + 2, 4 + 2)` which is `(7, 6)`. Because the question asks the value of `shift_point 2`, then the answer is `(7,6)`.
+
+However, the answer is `(5,4)` because the last statement does not persist and therefore the program uses `point = (4,3)` instead of `point = shift_point 1` so `shift_point 2` evaluates to `(4 + 1, 3 + 1)` which is `(5, 4)`.

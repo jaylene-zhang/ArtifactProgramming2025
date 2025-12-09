@@ -1,0 +1,43 @@
+**Solution:**
+```
+Evaluation Order:
+1. let x = 3 ;;
+   bindings: x = 3
+
+2. let r = ref (2 + x) ;;
+   bindings: x = 3, r = 5
+
+3. let f = (let y = x * !r in
+            let r = ref 4 in fun u -> u + x + y + !r) ;;
+   bindings: x = 3, r = 5
+   Evaluate y = x * !r :
+     y = 3 * 5 = 15
+   Evaluate r = ref 4 :
+     bindings: x = 3, r = 5, r = ref 4
+   Evaluate fun u -> u + x + y + !r :
+     bindings: x = 3, r = 5, r = ref 4, 
+             fun u -> u + x + (x * !r) + !r
+
+4. let x = 5 ;;
+   bindings: x = 5, f ----> () -> fun ..., r = ref 5
+
+5. let y = 10;;
+   bindings: x = 5, y = 10, f ----> () -> fun ..., r = ref 5
+
+6. r := 2 ;;
+   bindings: x = 5, y = 10, f ----> () -> fun ..., r = ref 2
+
+7. f (!r * y) ;;
+   bindings: x = 5, y = 10, f ----> () -> fun ..., r = ref 2
+   Evaluate !r * y :
+     2 * 10 = 20
+   Evaluate f (...):
+      := 20 + x + (x * (!r)) + !r
+     = 20 + 5 + (5 * 2) + 2
+     = 43
+   Final bindings: x = 5, y = 10, r = ref 2
+   Result: 43
+```
+In OCaml, the `ref` cell is initialized when declared, and its binding is established immediately. When `r` is reassigned in step 6, the binding stack is not affected by the reassignment of `x` in step 3, since `r` is evaluated in step 6 before evaluating `x`.
+
+The binding stack is correct because `f` is evaluated with its current bindings, ignoring the reassignment of `x` that occurred earlier. This is due to OCaml's call-by-value strategy.

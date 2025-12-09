@@ -1,0 +1,9 @@
+Solution:
+```
+let rec toInt f x = 
+  match f x with 
+  | y when x = y -> 0
+  | y -> 1 + toInt f y
+```
+Explanation:
+We use a recursive function to apply the function `f` to argument `x`. We use pattern matching on the result of `f x`. If `x` and the result are the same, we return 0 (since no iterations are needed). Otherwise, we try `f` on the result `y` again and add 1 to the previous count. We start this recursive process with `f x` as the base case. This way, the function calls itself whenever `x` and `f x` are different, until they are equal, and then returns the number of iterations.

@@ -1,0 +1,5 @@
+```ocaml
+shift : ('a ref * 'b ref) -> unit
+```
+
+Explanation: The function `shift` takes a pair of references (`'a ref * 'b ref`) as an argument and returns `unit` (which is equivalent to `()` in OCaml). This is because `shift` modifies the referenced values in place and does not return any value.

@@ -1,0 +1,22 @@
+A function is tail-recursive if the recursive call is the very last operation performed during execution - essentially, the recursive call is in "tail position." This allows the compiler to optimize by reusing the current stack frame instead of creating a new one for each recursive call, preventing stack overflow for large inputs.
+
+Example 1 (Tail-recursive):
+```ocaml
+let sum_tr list =
+  let rec helper acc = function
+    | [] -> acc
+    | x::xs -> helper (acc + x) xs
+  in helper 0 list
+```
+
+This is tail-recursive because the last operation is the recursive call to `helper`. Nothing happens after the recursive call returns - its result becomes the result of the current call.
+
+Example 2 (Not tail-recursive):
+```ocaml
+let rec sum list =
+  match list with
+  | [] -> 0
+  | x::xs -> x + (sum xs)
+```
+
+This is not tail-recursive because after the recursive call `sum xs` returns, we still need to add `x` to the result. The addition is the last operation, not the recursive call.

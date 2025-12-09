@@ -1,0 +1,5 @@
+```ocaml
+shift : ('a ref * 'b ref) -> unit
+```
+
+The `shift` function takes a tuple containing two references and returns unit. More specifically, it takes a parameter `point` of type `('a ref * 'b ref)` - a tuple with two reference components. The function extracts these components, increments both by 1 using the `:=` operator, and doesn't return any value, making the return type `unit`.

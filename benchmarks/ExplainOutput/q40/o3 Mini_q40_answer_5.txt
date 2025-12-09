@@ -1,0 +1,3 @@
+Solution: Yes, it is tail-recursive.
+
+Explanation: Every recursive call is in tail position (directly returned), so no additional work is done after the call.

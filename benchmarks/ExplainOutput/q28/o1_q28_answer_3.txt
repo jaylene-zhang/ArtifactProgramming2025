@@ -1,0 +1,6 @@
+Solution:
+No, it does not compute the antiderivative. A correct version would be:  
+let anti_d f x = (curry integral) f 0 x
+
+Explanation:
+The definition let anti_d f = (curry integral) f 0 only supplies the lower bound 0. It never receives the upper bound x. To integrate f from 0 to x, you must provide x as another argument so that integral f (0, x) dx is called.

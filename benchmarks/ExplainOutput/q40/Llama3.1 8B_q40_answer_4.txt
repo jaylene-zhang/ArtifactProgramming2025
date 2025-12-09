@@ -1,0 +1,20 @@
+### Solution
+
+```ocaml
+let rec zip_tr fc sc l1 l2 =
+  let rec loop l1 l2 acc =
+    match l1, l2 with
+    | [], [] -> sc (List.rev acc)
+    | [], _ -> fc (List.length l2) (List.rev acc)
+    | _, [] -> fc (List.length l1) (List.rev acc)
+    | h1::t1, h2::t2 ->
+      loop t1 t2 ((h1, h2) :: acc)
+  in
+  loop l1 l2 []
+```
+
+### Explanation
+
+The original function is not tail-recursive because the recursive call is not the last operation, it is still combined with `::` to create the accumulator list.
+
+In the modified version, we've introduced an inner recursive function `loop` that takes the original lists and the accumulator as arguments. This allows the recursive call to be the last operation, making the function tail-recursive. We also need to reverse the accumulator at the end to maintain the original order of the elements.

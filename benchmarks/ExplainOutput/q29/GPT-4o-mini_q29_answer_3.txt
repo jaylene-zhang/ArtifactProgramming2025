@@ -1,0 +1,8 @@
+a) Correct  
+b) Incorrect  
+c) Incorrect  
+
+**Explanation:**  
+a) This implementation is correct because it utilizes `swap` to reorder the arguments such that `sumSeries` gets `0` as the lower bound first, followed by the increment function `fun x -> x + 1`.  
+b) This implementation is incorrect because `curry` is applied before `swap`, which results in the function receiving the upper bound before the increment function, leading to a mismatch with the expected argument order in `sumSeries`.  
+c) This implementation is incorrect because it applies `swap` to `sumSeries`, changing the argument order inappropriately, making it incompatible with `curry`, resulting in incorrect parameters passed to `sumSeries`. 

@@ -1,0 +1,3 @@
+Unused variables: r (parameter)
+
+The parameter `r` is unused in the function body because it's shadowed by the local binding `let r = 2 * y` which creates a new variable with the same name. The original parameter `r` is never used in the function.

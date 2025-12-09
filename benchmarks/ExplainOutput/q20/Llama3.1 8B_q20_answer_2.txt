@@ -1,0 +1,3 @@
+**Answer:** True
+
+**Explanation:** The function is defined with a base case for `n = 1`, but the mathematical definition of a triangle number includes 0 as a triangle number. However, the function does not handle this explicitly. Since `n = 1` matches the base case, the function successfully returns 1 for `n = 1`, but it doesn't directly involve `n = 0`. The recursive call `triangle (n - 1)` will never be reached when `n = 0`, as `n = 1` will always be chosen instead. Therefore, the test `triangle 0 == 0` will evalutate to `true`, as the function does not return a result for `n = 0`, effectively returning undefined, which is considered equal to 0 in OCaml.

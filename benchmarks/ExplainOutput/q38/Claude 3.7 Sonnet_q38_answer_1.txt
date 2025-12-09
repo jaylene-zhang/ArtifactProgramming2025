@@ -1,0 +1,15 @@
+The correct answer is: c) h (g (f x))
+
+Explanation:
+Let's analyze the required behavior by tracing through the given example:
+- h = fun f x -> f x
+- g = fun f x -> f (f x)
+- compose h g should return fun f x -> f (f (f x))
+
+For a correct composition, when we apply h to the result of g, we should get the expected result. 
+
+Let's check option c) h (g (f x)):
+- g (f x) applies g to f, giving us (fun x -> f (f x))
+- h applied to this gives us (fun x -> f (f (f x)))
+
+This matches our expected result from the compose function. The other options either don't type-check or produce different function behaviors than what's required.

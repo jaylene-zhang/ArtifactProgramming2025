@@ -1,0 +1,4 @@
+Unused variables: `r`
+
+**Explanation:**  
+The variable `r` is defined as `2 * y` in the function `foo`, but it is never used within the function body. The function `f` and its inner bindings (`x`) don't make use of `r`.

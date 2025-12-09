@@ -1,0 +1,10 @@
+Solution:
+
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x
+```
+
+**Explanation:**  
+In the second `let x = x + 1`, the new `x` (value 6) overshadows the previous `x` (value 5) in the inner scope. The initial `x` is inaccessible after this assignment.

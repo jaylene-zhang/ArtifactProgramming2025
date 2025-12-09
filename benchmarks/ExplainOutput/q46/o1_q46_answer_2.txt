@@ -1,0 +1,6 @@
+Solution:  
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:  
+We compute the new head by applying f to the current stream head and the initial accumulator; then we recursively fold over the tail with the updated accumulator.

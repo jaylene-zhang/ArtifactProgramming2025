@@ -1,0 +1,11 @@
+The last expression will return `[11.0; 21.0; 6.0]`.
+
+Explanation:
+1. Initially, `sales_tax` is set to `1.0`. 
+2. The function `update_sales_tax` multiplies `sales_tax` by `2.0`, changing its value to `2.0` when called.
+3. The `update_price_list` function applies the `add_tax` function to each item in `price_list`.
+4. The updated `add_tax` function, using the new `sales_tax` value of `2.0`, calculates:
+   - For `10.0`: `2.0 +. 10.0` results in `12.0`
+   - For `20.0`: `2.0 +. 20.0` results in `22.0`
+   - For `5.0`: `2.0 +. 5.0` results in `7.0`
+5. Thus, the final updated price list will be `[12.0; 22.0; 7.0]`.

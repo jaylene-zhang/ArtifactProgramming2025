@@ -1,0 +1,10 @@
+**Solution:**
+
+```
+'t = 's = 'a
+'u = 'b
+```
+
+**Explanation:**
+
+For `f (f (a, b), f (b, a))` to be type `'u`,  `f (a, b)` and `f (b, a)` must have the same type.  Therefore, `'t` and `'s` must be the same type, say `'a`.  Since `f` takes two arguments of type `'a`, then `f(a, b)` must return some type, say `'b`.  Therefore,  `'t = 's = 'a` and `'u = 'b`.

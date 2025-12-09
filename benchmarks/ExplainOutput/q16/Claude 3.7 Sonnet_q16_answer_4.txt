@@ -1,0 +1,4 @@
+`(6, 5)`
+
+Explanation: 
+The call `shift_point 2` shifts the original `point` value of `(4, 3)` by adding `2` to each component. The function `shift_point` uses the original `point` value (4, 3) from the top-level definition, not the new binding of `point` on the last line. The last line `let point = shift_point 1` creates a new binding that shadows the original `point`, but that doesn't affect the behavior of the already defined `shift_point` function which still refers to the original `point` value.

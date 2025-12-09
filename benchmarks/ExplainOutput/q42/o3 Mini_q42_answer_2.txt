@@ -1,0 +1,2 @@
+Solution: []  
+Explanation: The accumulator must start as an empty list so that as elements are prepended, it builds the reversed list properly.

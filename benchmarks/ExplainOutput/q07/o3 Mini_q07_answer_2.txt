@@ -1,0 +1,31 @@
+Solution:
+
+• Base Case (w = Const y):  
+ – If x = y, then  
+  count (Const y) x = 1  
+  count' (Const y) x acc = 1 + acc  
+ – If x ≠ y, then  
+  count (Const y) x = 0  
+  count' (Const y) x acc = acc  
+
+• Step Case (w = Op (w1, w2)):  
+ Induction Hypotheses:  
+  For any accumulator acc₁, count w1 x + acc₁ = count' w1 x acc₁  
+  For any accumulator acc₂, count w2 x + acc₂ = count' w2 x acc₂  
+
+ Proof:  
+  count (Op (w1, w2)) x + acc  
+   = (count w1 x + count w2 x) + acc  
+   = count w1 x + (count w2 x + acc)  
+   = count w1 x + count' w2 x acc          (by IH on w2)  
+   = count' w1 x (count' w2 x acc)          (by IH on w1 with accumulator count' w2 x acc)  
+   = count' (Op (w1, w2)) x acc  
+
+• Theorem 2 (Main Result):  
+ By Theorem 1, setting acc = 0 yields  
+  count w x + 0 = count' w x 0  
+ so, count w x = count' w x 0.
+
+Explanation:
+
+The proof proceeds by structural induction on w. In the base case (w = Const y), we consider both possibilities (x equal to y or not) and show that adding the accumulator in count' keeps the equality valid. In the step case (w = Op (w1, w2)), we assume the property holds for w1 and w2 individually (induction hypotheses) and then show it holds for their combination. Finally, by applying Theorem 1 with an accumulator of 0, Theorem 2 follows immediately.

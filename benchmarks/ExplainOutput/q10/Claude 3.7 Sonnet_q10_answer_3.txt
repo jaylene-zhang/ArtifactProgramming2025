@@ -1,0 +1,1 @@
+Functions can be passed as arguments to other functions, returned from functions, and stored in data structures, just like any other value in the language. This enables powerful programming patterns like higher-order functions and allows functions to be manipulated and combined during program execution.

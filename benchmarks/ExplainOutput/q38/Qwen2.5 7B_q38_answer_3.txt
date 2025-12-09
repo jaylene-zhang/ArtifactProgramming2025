@@ -1,0 +1,11 @@
+Correct solution:
+
+a) `h (f (g (f x)))`
+
+Explanation:
+To achieve the desired composition, we need to apply `g` to `f` and `x`, then apply `h` to the result. This is exactly what option a) does. Breaking it down:
+- `g (f x)` applies `g` to `f` and `x`.
+- `f (g (f x))` applies `f` to the result of the previous step.
+- `h (f (g (f x)))` finally applies `h` to the result.
+
+Options b, c, and d do not follow the necessary steps to achieve the desired function.

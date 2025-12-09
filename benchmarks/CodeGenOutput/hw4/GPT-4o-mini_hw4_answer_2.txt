@@ -1,0 +1,44 @@
+```ocaml
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable x -> Variable_set.singleton x
+  | Conjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f ->
+      collect_variables f
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x ->
+      (match Variable_map.find_opt x state with
+       | Some v -> v
+       | None -> raise (Unassigned_variable x))
+  | Conjunction (f1, f2) ->
+      eval state f1 && eval state f2
+  | Disjunction (f1, f2) ->
+      eval state f1 || eval state f2
+  | Negation f ->
+      not (eval state f)
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let vars = Variable_set.elements (collect_variables formula) in
+  let rec aux assignment var_list =
+    match var_list with
+    | [] -> if eval assignment formula then Some assignment else None
+    | v :: rest ->
+        let true_assignment = Variable_map.add v true assignment in
+        match aux true_assignment rest with
+        | Some a -> Some a
+        | None ->
+            let false_assignment = Variable_map.add v false assignment in
+            aux false_assignment rest
+  in
+  match aux Variable_map.empty vars with
+  | Some a -> a
+  | None -> raise Unsatisfiable_formula
+```

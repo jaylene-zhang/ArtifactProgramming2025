@@ -1,0 +1,3 @@
+Solution: a) type revolutions = int; type jump_typ = Axel | Loop | Lutz | Flip | Salchow; type jump = jump_typ * revolutions
+
+Explanation: Option (a) clearly separates the jump type from its number of revolutions by using an int for rotations, allowing for any count, which matches the description of jumps with potentially more than three rotations.

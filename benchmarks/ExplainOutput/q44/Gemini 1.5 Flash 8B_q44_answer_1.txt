@@ -1,0 +1,12 @@
+**Solution:**
+
+The statement holds for the inductive hypothesis  (i.e., the statement is true for a list of `n` elements).  Then prove the statement is also true for a list of `n+1` elements.
+
+
+**Explanation:**
+
+Inductive proofs on lists typically involve two cases:
+
+1. **Base case:** Proving the statement holds for the empty list (or a trivial list, e.g., a list with 1 element).
+
+2. **Step case:** Assuming the statement holds for a list of `n` elements (the inductive hypothesis), and then using that assumption to prove the statement also holds for a list of `n+1` elements.  This is where the crucial step happens—linking the `n` element case to the `n+1` element case.

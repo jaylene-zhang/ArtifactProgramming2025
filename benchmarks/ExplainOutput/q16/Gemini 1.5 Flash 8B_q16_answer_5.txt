@@ -1,0 +1,4 @@
+Solution: `(6, 5)`
+
+Explanation:
+The `shift_point` function calculates the new coordinates by adding `n` to the original `point`'s components.  The first call to `shift_point 1` updates the *local* `point` variable. Subsequent calls, like `shift_point 2`, will use the original point which has coordinates (4, 3); (4 + 2, 3 + 2) = (6, 5).

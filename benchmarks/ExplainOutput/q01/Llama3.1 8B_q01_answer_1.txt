@@ -1,0 +1,27 @@
+**Solution:**
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd list =
+  match xs, ys with
+  | [], [] -> sc []
+  | x::xs, y::ys -> zippy xs ys (pair (x,y)) (fun r -> sc ((pair (x,y)::r))
+  | _, _ -> raise Error
+
+let zip_plus xs ys = zippy xs ys (fun (x, y) -> x + y) (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+In the `zippy` function, we need to fill the types for `xs`, `ys`, `pair`, and `sc`. We can deduce their types from the structure of the function and its application.
+
+- `xs` and `ys` must have the same type since they are both used with `::` in the same pattern match (constructing a list). So, both `xs: 'a list` and `ys: 'a list`.
+
+- `pair` takes two elements of the same type (`'a` and `'b`) and returns an element of type `'c`. So, `pair: ('a * 'b) -> 'c`.
+
+- `sc` is used to accumulate the results. It takes a list of elements of type `'c` and returns a list of elements of type `'d`. So, `sc: 'c list -> 'd`.
+
+Since `pair (x,y)` is used in the recursive call and pattern match, the type of `pair` must be compatible with the type of `'a * 'b -> 'c`. Also, `partner (x, y)` must also be compatible with `'c list -> 'd`. The simplest choice is `'a = 'c = int` and `'b = int`. But it is overkill since we can choose any type `'a` and `'b` and not necessarily `int`.
+
+The type `->` operator associates to the right, so `(** to be filled **) -> ** to be filled ** -> ** to be filled **` should be interpreted as `(** to be filled **) -> (** to be filled **) -> (** to be filled **)`. Therefore, `(** to be filled **)` is `('c list)` and `sc: 'c list -> 'd`.

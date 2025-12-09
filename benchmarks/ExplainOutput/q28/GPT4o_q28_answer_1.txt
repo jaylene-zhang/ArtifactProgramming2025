@@ -1,0 +1,20 @@
+**Solution:**
+
+No, the given code does not correctly compute the antiderivative of `f`.
+
+---
+
+**Explanation:**
+
+1. **Reasoning through the code:**
+   - `curry integral` transforms the `integral` function to take arguments separately, i.e., `f` as the first argument and two bounds (`a` and `b`) as separate arguments.
+   - When `f` and `0` are passed as arguments to `(curry integral)`, it partially applies the function only for `f` and the lower bound `a = 0`. The upper bound `b` (which should represent `x`) is missing in this function application.
+
+2. The `anti_d f` as written does not depend on `x` (the value upper bound for the integral) and thus cannot compute the antiderivative because for every input, it will try to use a fixed single bound `f 0`.
+
+3. **Correct Implementation:**
+   To compute the antiderivative correctly, you need to explicitly pass the upper bound (as `x`) to the integral function. Here is how you can compute the antiderivative:
+   ```ocaml
+   let anti_d f x = integral f (0.0, x) dx
+   ```
+   This ensures the function computes the integral of `f` from `0.0` to any value `x`, as required for the antiderivative function.

@@ -1,0 +1,14 @@
+```ocaml
+let x = ref 5;;
+x := 10;;   (* overwriting *)
+```
+
+Overwriting occurs when we modify the contents of a mutable reference using assignment (`:=`). The value stored at the memory location is replaced with a new value.
+
+Overshadowing (or shadowing) is different:
+```ocaml
+let x = 5;;
+let x = 10;;  (* overshadowing *)
+```
+
+With overshadowing, we create a new binding with the same name in a nested scope, which hides (but doesn't modify) the original binding. The original binding still exists and becomes accessible again when we exit the scope where shadowing occurred.

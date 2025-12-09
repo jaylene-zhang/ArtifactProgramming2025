@@ -1,0 +1,11 @@
+## No
+
+The provided program does not correctly compute the antiderivative of f. The issue lies in the way it uses `curry` and the input of `integral`. `curry integral` returns a function of type `f -> (a * int) -> float` but in the antiderivative computation, we actually need a function of type `float -> float`. 
+
+Here's how to fix the code:
+
+```ocaml
+let anti_d f x = (curry integral) f (0,x)
+```
+
+This code now correctly computes the antiderivative of f, which is the integral of f(x) from 0 to x.

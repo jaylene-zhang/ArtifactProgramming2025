@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The `anti_d` function attempts to create the antiderivative by partially applying `integral` with `f` and `0`. However, it fixes the lower bound of the integral to `0`, but it doesn't allow the upper bound (`b` in `integral`) to vary, and hence it fails to return a function of `x` which computes the antiderivative as the integral of f(x) from 0 to x. It is closer to computing the definite integral from 0 to a fixed value.

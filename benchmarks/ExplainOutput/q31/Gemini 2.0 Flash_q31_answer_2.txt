@@ -1,0 +1,21 @@
+Here's an analysis of each implementation, determining whether `prime_fact` is computed only once:
+
+**a) `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`**
+
+*   **Solution:** No, it is missing the second argument, hence it has a type error.
+*   **Explanation:** The function is missing an argument, so it will fail. However, if we were to provide the missing argument, it would call function `prime_fact` only once assuming the argument is `x`.
+
+**b) `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l`**
+
+*   **Solution:** No.
+*   **Explanation:** `prime_fact x` is evaluated in each iteration of `List.exists`. Therefore, `prime_fact` is computed as many times as needed to find a matching factorization in the list `l`. In the worst case, it gets computed list `l`'s length many times.
+
+**c) `let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys`**
+
+*   **Solution:** No, it contains a type error.
+*   **Explanation:** `check` is not defined. We must assume that it is meant to be `check_prime_factors`, but in this case it calls function `prime_fact` multiple times, at least once every recursive call to the function.
+
+**d) `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`**
+
+*   **Solution:** Yes.
+*   **Explanation:** `prime_fact x` is computed once and its result is bound to `p`. The recursive helper function `test` then uses this precomputed value `p` to compare against elements of the list `l`. Therefore, `prime_fact` only gets evaluated once.

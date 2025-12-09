@@ -1,0 +1,5 @@
+Solution:
+a) and d) compute prime_fact only once; b) and c) do not.
+
+Explanation:
+In (a) and (d), the result of prime_fact x is stored in a local variable (p) and then reused. In (b) and (c), prime_fact x is calculated every time it is compared, resulting in multiple computations.

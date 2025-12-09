@@ -1,0 +1,15 @@
+**a)**  Only computes `prime_fact` once.
+
+**Explanation:** The `let p = prime_fact x in ...` expression calculates `prime_fact x` once and stores the result in `p`. The `List.exists` function then checks if the list contains `p` without recalculating.
+
+**b)** Computes `prime_fact` for every element in `l`.
+
+**Explanation:**  The expression `e = prime_fact x` within the `List.exists` function calls `prime_fact x` for *each* element `e` in the input list `l`. This means the function is calling `prime_fact` multiple times.
+
+**c)** Computes `prime_fact` potentially multiple times; potentially many times if the list is long.
+
+**Explanation:** The function recursively checks for matching prime factorizations. It doesn't store a value for the factorization of `x`.  In each recursive call, it calculates `prime_fact x` (which is necessary for the comparison) or does comparisons possibly inside the tail recursion or not.
+
+**d)** Only computes `prime_fact` once.
+
+**Explanation:**  Similar to a), the `let p = prime_fact x in ...` statement calculates `prime_fact x` only once and stores the result in `p`. The recursive `test` function then uses this stored value to check the list elements.

@@ -1,0 +1,8 @@
+**Solution:**
+
+c) h (g (f x))
+
+
+**Explanation:**
+
+The problem is about function composition.  We want to chain `h` and `g` such that the output of `g` is fed into the input of `h`.  Option 'c' correctly achieves this by having `f x` passed to `g` and then the result to `h`.  Options 'a', 'b', and 'd'  incorrectly mix the function arguments in a way that does not match the intended composition order or the types of arguments in `h` and `g`.

@@ -1,0 +1,11 @@
+a) Incorrect  
+b) Correct  
+c) Incorrect  
+
+**Explanation:**
+
+a) The use of `swap` here is incorrect because the result of `curry (sumSeries f) 0` is already a function awaiting the upper bound, which does not need to swap. The `swap` expects the function to take two parameters directly, but here, it's applied after `curry`, which alters the expected order of parameters.
+
+b) This implementation is correct. It first curries `sumSeries` with the lower bound of `0`, creating a function that expects the upper bound next, and directly applies `swap` to the increment function, which will then work correctly with the currying structure.
+
+c) This implementation is incorrect as well. The `swap` is applied to `sumSeries f` directly before currying with `0`. This construction breaks the expected argument order because `swap` will not apply the increment function in the right context following the currying, and thus the output function will not behave as intended.

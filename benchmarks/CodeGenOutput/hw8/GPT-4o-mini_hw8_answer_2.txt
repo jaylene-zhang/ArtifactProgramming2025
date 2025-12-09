@@ -1,0 +1,62 @@
+```ocaml
+type 'a stream = 
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  raise NotImplemented
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  raise NotImplemented
+
+(** [unfold f seed] constructs a stream by generating elements using [f] and
+    an initialy [seed]. *)
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  raise NotImplemented
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  raise NotImplemented
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  raise NotImplemented
+
+let map (f : 'a -> 'b) (s : 'a stream) : 'b stream =
+  unfold (fun s -> (f s.head, (s.tail ()))) s
+
+let rec find (p : 'a -> bool) (s : 'a stream) : ('a * 'a stream) =
+  if p s.head then (s.head, s.tail ()) else find p (s.tail ())
+
+let filter (p : 'a -> bool) (s : 'a stream) : 'a stream =
+  unfold (find p) s
+
+let zip (s1 : 'a stream) (s2 : 'b stream) : ('a * 'b) stream =
+  unfold
+    (fun (s1, s2) ->
+       ((s1.head, s2.head), (s1.tail (), s2.tail ()))
+    )
+    (s1, s2)
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  raise NotImplemented
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  raise NotImplemented
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  raise NotImplemented
+```

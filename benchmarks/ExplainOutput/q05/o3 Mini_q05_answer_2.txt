@@ -1,0 +1,7 @@
+Solution:
+let foo y =
+  let w = y + 3 in
+  fun z -> (y + 3) + 2 + z * w
+
+Explanation:
+In the subexpression "let w = x in fun y -> x+2", we replace x with y+3. Because the lambda already binds y, we rename its parameter to z to avoid capture.

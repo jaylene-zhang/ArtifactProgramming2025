@@ -1,0 +1,18 @@
+### Solution
+
+```ocaml
+let rec helper n count =
+  if n mod 2 = 1 then count
+  else helper (n / 2) (count + 1)
+let max_two_factor n = helper n 0
+```
+
+### Explanation
+
+The original implementation is not tail-recursive. It repeatedly calls `helper (n / 2)` without returning a value, which prevents the compiler from optimizing the function call, causing a stack overflow for large inputs.
+
+To fix this, we can add an extra argument to the `helper` function to store the result, then return it. This makes the function tail-recursive.
+
+In the initial `max_two_factor` function, we start `count` from 0 instead of 1 to get the correct result. 
+
+Please note that this function function is also not robust against negative numbers, as division by zero is undefined in this context. To make it more robust, you might want to add a check for this case.

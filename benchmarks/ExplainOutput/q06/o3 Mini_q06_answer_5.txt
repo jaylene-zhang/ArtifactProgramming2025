@@ -1,0 +1,5 @@
+Solution:
+let w = 3 in let y = 2*(w*2) in fun x -> w * y * x
+
+Explanation:
+In the expression let w = 3 in let y = 2*x in fun x -> w * y * x, only the free occurrence of x (in 2*x) is replaced by w*2. The x in fun x -> … is bound and remains unchanged, yielding the result above.

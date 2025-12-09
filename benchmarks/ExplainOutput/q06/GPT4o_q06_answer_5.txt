@@ -1,0 +1,12 @@
+The resulting program is:
+
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let w = w in
+  fun y -> w + 2 + y * w
+```
+
+**Explanation**:
+1. In the first program (`foo w`), the expression `let x = w * 2` is inlined into the `x`s appearing in the body. The second binding of `w` remains intact because it rebinds `w` to the value of `x` (now `w * 2`).
+2. In the second part of the question, `x` is replaced everywhere with `w * 2` in the program `let w = 3 in let y = 2 * x in fun x -> w * y * x`. Since `x` should now represent `w * 2`, the expression becomes the explanation provided.

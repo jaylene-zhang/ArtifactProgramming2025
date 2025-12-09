@@ -1,0 +1,55 @@
+```ocaml
+(* Q1 *)
+
+let rec q1a_nat_of_int_inner (n : int) (acc : nat) : nat =
+  if n = 0 then acc
+  else q1a_nat_of_int_inner (n - 1) (S acc)
+
+let q1a_nat_of_int (n : int) : nat =
+  if n < 0 then failwith "Negative numbers are not supported"
+  else q1a_nat_of_int_inner n Z
+
+let rec q1b_int_of_nat_inner (n : nat) (acc : int) : int =
+  match n with
+  | Z -> acc
+  | S m -> q1b_int_of_nat_inner m (acc + 1)
+
+let q1b_int_of_nat (n : nat) : int =
+  q1b_int_of_nat_inner n 0
+
+let rec q1c_add (n : nat) (m : nat) : nat =
+  match n with
+  | Z -> m
+  | S p -> S (q1c_add p m)
+
+(* Q2 *)
+
+let q2a_neg (e : exp) : exp =
+  Times (Const (-1.0), e)
+
+let q2b_minus (e1 : exp) (e2 : exp) : exp =
+  Plus (e1, q2a_neg e2)
+
+let q2c_quot (e1 : exp) (e2 : exp) : exp =
+  Times (e1, Pow (e2, -1))
+
+(* Q3 *)
+
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Const c -> c
+  | Var -> a
+  | Plus (e1, e2) -> (eval a e1) +. (eval a e2)
+  | Times (e1, e2) -> (eval a e1) *. (eval a e2)
+  | Pow (e1, n) -> (eval a e1) ** float_of_int n
+
+(* Q4 *)
+
+let rec diff (e : exp) : exp =
+  match e with
+  | Const _ -> Const 0.0
+  | Var -> Const 1.0
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) -> Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (e1, n) -> Plus (Times (Const (float_of_int n), Pow (e1, n - 1)), Times (e1, diff (Pow (e1, n - 1))))
+```

@@ -1,0 +1,11 @@
+## Solution
+```ocaml
+let anti_d f = (curry integral) f 0
+```
+
+## Explanation
+No, the above program does not compute the antiderivative of f.
+
+Explanation: The `(curry integral)` part returns a function of two arguments, one for each component of the tuple `(a, b)`. By applying `f 0`, you are replacing the second argument `b` with `0`. However, the `integral` function expects two separate arguments `a` and `b`, not `(a, b)`.
+
+To fix this issue, we need to apply `f 0` directly to the first argument of the returned function from `curry integral`, not to the `curry integral` itself. We should use `integrate` as `(curry integral) f (fun x -> x)` to obtain the correct antiderivative function.

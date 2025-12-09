@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let x = y + 3 in
+let w = y + 3 in fun y -> (y + 3) + 2 + y * (y + 3)
+```
+
+**Explanation:**
+
+The expression `y + 3` is substituted for all occurrences of `x` within the body of `foo`.  Crucially, the internal definition of `x` is considered for all its uses in calculating `w` and the later expression.  The variable `y` inside the `fun` is *different* from the outer `y` and thus is not substituted.

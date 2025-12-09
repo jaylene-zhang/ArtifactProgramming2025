@@ -1,0 +1,8 @@
+Solution (concise):  
+• (a) and (c) are correct.  
+• (b) is incorrect (type error).
+
+Explanation (short):  
+1. In (a), curry (sumSeries f) 0 creates a function expecting (b, inc). Then swap reorders its arguments so we can fix inc to (fun x -> x+1) first and later supply b.  
+2. In (b), sumSeries f 0 is invalid because sumSeries f expects a pair (a,b), not just an int.  
+3. In (c), swap (sumSeries f) (fun x->x+1) gives a function from (a,b) → int. Applying curry and then partial‐applying 0 fixes the lower bound a=0, leaving b as the final argument.

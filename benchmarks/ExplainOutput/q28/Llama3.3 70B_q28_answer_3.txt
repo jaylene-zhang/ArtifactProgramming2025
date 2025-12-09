@@ -1,0 +1,12 @@
+No.
+
+The function `anti_d f = (curry integral) f 0` does not compute the antiderivative of `f`. 
+
+The correct implementation should be `let anti_d f = (curry integral) f 0` is close but still incorrect because it still requires two arguments `a` and `b`, but only one `0` is given, we should define it like this: 
+```ocaml
+let anti_d f x = ((curry integral) f) (0, x)
+```
+However, using `curry` as described in the problem, we must use 
+```ocaml
+let anti_d f x = (curry integral) f 0 x
+```

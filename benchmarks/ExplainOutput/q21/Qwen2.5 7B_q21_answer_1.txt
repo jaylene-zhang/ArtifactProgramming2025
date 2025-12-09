@@ -1,0 +1,3 @@
+Solution: `y` is an unused variable.
+
+Explanation: In the expression, `y` is bound in `foo` but never used directly in `foo`. The variable `r` is used in the calculation of `f`, and the inner `x` is shadowed and reassigned within the lambda function, making the original `y` unused in the scope of `foo`.

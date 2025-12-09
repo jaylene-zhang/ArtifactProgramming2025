@@ -1,0 +1,7 @@
+```ocaml
+let foo w =
+  let w = w * 2 in
+  fun y -> w + 2 + y * w
+```
+
+Explanation: The `x` is defined as `w * 2`. When we inline `w * 2`, we replace all `x` with `w * 2`. The `let w = x` then becomes `let w = w * 2`. The final expression `fun y -> x + 2 + y * w` is then rewritten as `fun y -> w * 2 + 2 + y * w`, simplifying to `fun y -> w + 2 + y * w` because `w` is already `w * 2`.

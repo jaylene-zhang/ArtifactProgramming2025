@@ -1,0 +1,10 @@
+**Correct implementation:**  
+c)  
+```ocaml
+let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))
+```
+
+**Explanation:**  
+The correct tail-recursive implementation of `fold_right` constructs the result in the same order as `fold_right`. In `(fun r -> f x (cont r))`, the current element `x` is combined with the result of the continuation of the computation `cont r`, which aligns with the behavior of `fold_right`. Other implementations either reverse the order of combination (breaking semantics) or improperly use the continuation.

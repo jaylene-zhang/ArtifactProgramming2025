@@ -1,0 +1,14 @@
+Solution: Options 1 and 4 compute prime_fact only once.
+
+Explanation:
+To determine which implementations compute prime_fact only once, we need to examine when this function is called in each implementation.
+
+Option 1: Computes prime_fact once at the beginning and stores the result in p, then uses this value throughout the recursive test function.
+
+Option 2: Computes prime_fact on every recursive call, so it could be computed multiple times.
+
+Option 3: Computes prime_fact once but passes it directly to List.exists, where it's used in every comparison, so it's computed multiple times.
+
+Option 4: Computes prime_fact once and stores the result in p, then passes a function that uses this stored value to List.exists.
+
+Therefore, options 1 and 4 are the correct answers because they compute prime_fact exactly once.

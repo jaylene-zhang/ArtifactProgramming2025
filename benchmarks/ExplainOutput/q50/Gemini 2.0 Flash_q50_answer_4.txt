@@ -1,0 +1,24 @@
+**Solution:**
+
+c) `let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))`
+
+**Explanation:**
+
+`fold_right f [x1; x2; ...; xn] b` should be equivalent to `f x1 (f x2 (... (f xn b) ...))`.  The tail-recursive implementation needs to build up the computation from the right, using a continuation to handle the pending function applications.
+
+*   **c) is correct:** In each recursive call, `aux_folder` processes the rest of the list `xs`. When the list is empty, the continuation `cont` is applied to the base case `b`. As we unravel the recursion, `f x (cont r)` correctly applies the function `f` to the current element `x` and the result of the continuation `cont r` (which represents the result of folding the rest of the list).
+
+Let's trace `fold_right f [x1; x2] b` with `c`:
+
+1.  `aux_folder f [x1; x2] b cont`
+2.  `aux_folder f [x2] b (fun r -> f x1 (cont r))`
+3.  `aux_folder f [] b (fun r -> f x2 ((fun r -> f x1 (cont r)) r))`
+4.  `cont' b ` where `cont'` is `(fun r -> f x2 ((fun r -> f x1 (cont r)) r))`
+5. `f x2 ((fun r -> f x1 (cont r)) b)` which is `f x2 (f x1 (cont b))`
+6. if cont is identity this becomes `f x2 (f x1 b)`, which is what it is suppose to be
+*   **a) is incorrect:** Applies `f x r` *before* applying the continuation, leading to incorrect order of operations when `f` is not commutative. It is also not tail-recursive, `cont (f x r)` involves an operation after the recursive call to `aux_folder`.
+*   **b) is incorrect:** Applies `f (cont r) x`, which reverses the order of arguments to `f`. It also not tail-recursive, `f (cont r)  x` involves an operation after the recursive call to `aux_folder`.
+*   **d) is incorrect:** Applies `f r x` instead of `f x r`, reverses the order of the arguments. It is also not tail-recursive, `cont (f r x)` involves an operation after the recursive call to `aux_folder`.
+*  **e) is incorrect:**  The list passed to the recursive call `aux_folder` should be `xs`, not `f`, while `f` should remain as `f`. It also confuses the role of parameters in `aux_folder`.

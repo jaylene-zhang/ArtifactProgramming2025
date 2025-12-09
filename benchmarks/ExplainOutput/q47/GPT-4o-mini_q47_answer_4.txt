@@ -1,0 +1,7 @@
+The correct answer is **b)**.
+
+Explanation:
+- In function **b)**, `aux` is tail-recursive because the recursive call is the last operation performed. It accumulates the result in `s` as it traverses the list. It builds up a result string by prepending the current string `x` to the accumulated string `s` with a space separator.
+- Function **a)** incorrectly prepends the space after `x`, confusing the order and leading to unwanted spaces. 
+- Function **c)** uses a `reverse` operation, which introduces unnecessary traversal of the list, making it non-tail-recursive in the context of the overall concatenation process. 
+- Function **d)** is not tail-recursive due to the concatenation operation performed after the recursive call.

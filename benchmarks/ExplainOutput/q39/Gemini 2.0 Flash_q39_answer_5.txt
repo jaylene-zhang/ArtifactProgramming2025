@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let toInt f = 
+  let rec aux n =
+    if f (fun x -> x) (Obj.magic ()) = Obj.magic () then n else aux (n + 1)
+  in aux 0
+```
+
+**Explanation:**
+
+The `toInt` function needs to determine how many times `f` effectively applies a function to its input. Since `f` effectively returns a function that applies something, if `f` returns the original input then it is equivalent to applying zero times. If `f` returns the a function that applies once, `f x`, then it is equivalent to applying one time. We thus create the auxillary function `aux` which checks if the result of `f` on `fun x -> x` is the same as `fun x -> x`. We start with `n = 0` and increment `n` until `f x` is the same as `x`. The `Obj.magic` is just an unsafe type cast.

@@ -1,0 +1,35 @@
+### Solution:
+
+```ocaml
+(* Filled types *)
+
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c)
+    (sc: 'c list -> 'd) : 'd =
+  match xs, ys with
+  | [], [] -> sc []
+  | x :: xs, y :: ys -> zippy xs ys pair (fun r -> sc ((pair (x, y)) :: r))
+  | _, _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+### Explanation:
+1. **`xs` and `ys` types**: `zippy` takes two lists, `xs` and `ys`, which can have elements of different types. Therefore:
+   - `xs` is of type `'a list`.
+   - `ys` is of type `'b list`.
+
+2. **`pair` type**: `pair` is a function that takes a pair of elements (one from each list) and produces a result. Therefore:
+   - `pair` is of type `'a * 'b -> 'c`.
+
+3. **`sc` type**: `sc` is a continuation function that takes a result list of type `'c list` and produces a final result. Therefore:
+   - `sc` is of type `'c list -> 'd`.
+
+4. **Function return type**: The continuation function `sc` produces the final return type of `zippy`. Therefore:
+   - `zippy` returns a value of type `'d`.
+
+5. `zip_plus` provides specific inputs: `pair` is instantiated as a function `(x, y) -> x + y`, meaning `x` and `y` must be integers (`int`), and `sc` is a function operating over integer lists, so `xs` and `ys` must also be integer lists. This results in the proper instantiations required for usage.
+

@@ -1,0 +1,45 @@
+1) ones
+2) pascal_psums (ones)
+
+**Explanation:**
+
+1. The first diagonal in Pascal's triangle is a stream of ones, which is represented by the `ones` variable.
+
+2. To generate the next diagonal, we use partial sums of the current diagonal, which is done by applying the `pascal_psums` function to the current diagonal (`ones`). The `pascal_psums` function maps the partial sums to each element in the current diagonal. This process is repeated recursively to generate all diagonals in the Pascal triangle. 
+
+Here `pascal_psums` is a function that applies the `psums` operation to a given stream, and this operation returns a new stream that corresponds to the partial sums of the original stream.
+
+Assuming `psums` is defined as:
+
+```ocaml
+let rec psums s =
+  let rec aux acc = function
+  | Empty -> Empty
+  | Cons (x, tl) -> Cons (acc + x, aux (acc + x) tl)
+  in
+  aux 0 s
+```
+
+And `pascal_psums` is:
+
+```ocaml
+let pascal_psums s =
+  map (fun x -> x) (psums s)
+```
+
+However, in real implementation `pascal_psums` might simply be `psums` if `psums` already works with streams. 
+
+In this case, `pascal_psums` would simply be replaced with `psums`. 
+
+So, for blank 2, it would be:
+```ocaml
+psums ones
+```
+
+Then `pascal` function will look like:
+```ocaml
+let rec pascal =
+    { hd = ones;
+      tl = Susp (fun () -> psums (pascal.hd))
+    }
+```

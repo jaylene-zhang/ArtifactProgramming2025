@@ -1,0 +1,26 @@
+```ocaml
+let rec zipper (comb: ('a -> 'b -> 'c)) (add: 'c list -> 'c -> 'c list)
+               (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> comb x y :: add (zipper comb add xs ys) (comb x y)
+
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+                     (fun s t -> t @ [(s, List.length t)])
+```
+
+Explanation:
+
+1. **Base Types for `zip`**:
+   - For `l1` and `l2`, they should both be of type `'a list` and `'b list` respectively, since they are lists of elements of some types.
+   - The return value is expected to be a list of pairs, which can be represented as `'a * 'b` or `('c)`. Because `zip` is going to return a list of these pairs, the return type is `'c list`, where `'c` is the type of the pairs.
+
+2. **Generalized `zipper`**:
+   - The function `comb` is a function that combines an element from `l1` (of type `'a`) and an element from `l2` (of type `'b`) into a single element of type `'c`. So, `comb` should be of type `('a -> 'b -> 'c)`.
+   - The function `add` takes a list of combined elements and a single combined element, and adds the single element to the list. Therefore, `add` should be of type `'c list -> 'c -> 'c list`.
+   - The return type of `zipper` should be `'c list`, as it builds a list of combined elements.
+
+3. **Implementations of `zip` and `zip_rev`**:
+   - `zip` uses a combination of simple pairs and list construction.
+   - `zip_rev` uses a string concatenation function and list concatenation for reversing the final result. The final list elements are tuples with a string and the length of the list.

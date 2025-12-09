@@ -1,0 +1,38 @@
+Q4.1
+
+**Solution:**
+
+• Base Case:  `h = Empty`
+    `add_up Empty + acc = 0 + acc`
+    `add_up_tr Empty acc = acc`
+    `0 + acc = acc`
+
+• Step Case: `h = Hand(c, h')`
+    `add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc`
+    `add_up_tr (Hand(c, h')) acc = add_up_tr h' (acc + 1)`
+
+**Induction Hypothesis:**  `add_up h' + acc = add_up_tr h' acc`
+
+
+**Proof:**
+
+By the induction hypothesis, `add_up h' + acc = add_up_tr h' acc`.  Substituting this into the step case equation for `add_up (Hand(c, h')) + acc`:
+`(add_up h' + 1) + acc = (add_up_tr h' acc) + 1`
+`= add_up_tr h' (acc + 1)`
+This demonstrates the step case, completing the proof by induction.
+
+
+Q4.2
+
+**Solution:**
+
+**Theorem 2 (Main Result).** For all hands `h`, `add_up h = add_up_tr h 0`.
+
+**Proof:**
+
+By Theorem 1, with `acc = 0`, we have `add_up h + 0 = add_up_tr h 0`. This simplifies to `add_up h = add_up_tr h 0`, which is the desired result.
+
+
+**Explanation:**
+
+Q4.1 establishes a relationship between `add_up` and `add_up_tr` that holds for *any* accumulator value (`acc`).  Q4.2 leverages this result by instantiating `acc` to 0 to specifically prove the relationship for the main result about the initial `add_up` calculation.  The core of the proof is a classic structural induction on the data structure representing hands of cards.

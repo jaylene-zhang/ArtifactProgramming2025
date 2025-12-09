@@ -1,0 +1,9 @@
+**Solution**
+ 
+1) `fun () -> ones ;`
+ 
+Explanation: ones is a stream of 1s already defined. So we bind the tl of pascal to a suspension that yields ones.
+
+2) `pascal |> map (fun l -> last l);`
+
+Explanation: We first get the stream l, and then we map Pascal onto that stream such that we get the Pascal Triangle for this stream with `map (fun l -> Pascal l)`, and then we take the last element of that resulting stream with `map (fun l -> last l)`.

@@ -1,0 +1,3 @@
+**No**
+
+This test case will fail because the function does not handle the case when `n` is 0. The base case of the function only checks for `n = 1`, and for any `n` less than 1 (including 0), it will not return a value but instead try to calculate `n - 1` which will eventually lead to a negative number, causing a **stack overflow**.

@@ -1,0 +1,8 @@
+Solution:
+----------------------------------------------------------------------
+let toInt f = f (fun n -> n + 1) 0
+----------------------------------------------------------------------
+
+Explanation:
+----------------------------------------------------------------------
+The function f in this context is a Church numeral, which applies a function n times. To convert it back into a normal integer, we apply f to (fun n -> n + 1) with the initial value 0. This effectively counts how many times f applies its argument.

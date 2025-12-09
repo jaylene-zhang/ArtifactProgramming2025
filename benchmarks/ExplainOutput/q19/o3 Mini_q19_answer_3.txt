@@ -1,0 +1,5 @@
+Solution:
+The implementation correctly computes the largest power of two dividing n, but it is not tail recursive.
+
+Explanation:
+The helper function multiplies by 2 after the recursive call returns, so the recursion isn’t in tail position. Also, note that "max_two_factor n = helper 1 n" appears incorrect since helper is defined for one argument.

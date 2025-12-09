@@ -1,0 +1,15 @@
+Solution: 42
+
+Explanation:
+1. Initially, x = 3. Then r is bound to ref (2 + 3) = ref 5.
+2. When defining f, compute y = x * !r = 3 * 5 = 15. Then a new r is created as ref 4. So f becomes: fun u -> u + 3 + 15 + !r, with this inner r (ref 4) and closed-over x = 3, y = 15.
+3. Next, new bindings shadow previous variables: x = 5 and y = 10.
+4. The assignment r := 2 updates the outer r (ref 5 becomes ref 2).
+5. The argument to f is computed as !r * y = 2 * 10 = 20.
+6. So, f 20 = 20 + 3 + 15 + !r_inner = 20 + 3 + 15 + 4 = 42.
+
+Binding Stack:
+• At f’s creation: x = 3, r (inner) = ref 4, y = 15; (outer r = ref 5)
+• At application: x = 5, y = 10; (outer r updated to ref 2)
+
+Thus, the final result is 42.

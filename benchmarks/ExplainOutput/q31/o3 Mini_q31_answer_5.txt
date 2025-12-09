@@ -1,0 +1,3 @@
+Solution: Options (a) and (d)
+
+Explanation: In (a) and (d), prime_fact x is computed once and stored in a variable before being used, whereas in (b) and (c) prime_fact x is computed inside the iteration/recursion for each element.

@@ -1,0 +1,15 @@
+The expected type for a tail-recursive version of `fold_right` is:
+
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+### Explanation
+
+The original `fold_right` function processes the elements of a list from right to left. In a tail-recursive version, the recursion occurs in a way that the final result is returned directly instead of waiting for further computations from each recursive call. The type signature indicates:
+- `('a -> 'b -> 'b)`: A function that takes an element of type `'a` and an accumulated value of type `'b` and returns a new accumulated value of type `'b`.
+- `'a list`: A list of elements of type `'a` to be folded.
+- `'b`: An initial accumulator value of type `'b`.
+- The function would then result in a final value of type `'b` after processing the list.
+
+The addition of `('b -> 'c) -> 'c` in the original query indicates a non-tail-recursive version (which would return a final function transformation), while this tail-recursive version returns an outright computed result of type `'b`.

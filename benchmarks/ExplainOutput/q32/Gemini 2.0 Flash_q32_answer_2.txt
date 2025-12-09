@@ -1,0 +1,13 @@
+**Solution:**
+
+a) and b)
+
+**Explanation:**
+
+*   **a) `type url = string type bookmarks = Location of url * bookmarks | Empty`**: This is a valid recursive definition. `bookmarks` can be either `Empty` (representing an empty list) or `Location` which contains a `url` (a string) and another `bookmarks` (rest of the list).
+
+*   **b) `type url = string type bookmarks = Empty | Location of string * bookmarks`**: this is also a valid definition as it's equivalent to a). The difference is that instead of using the *url* type in the Location constructor, it is directly using its underlying type which is the string.
+
+*   **c) `type url = string type bookmarks = Empty | Location`**: This is invalid because `Location` needs to hold some data (at least the URL). It doesn't specify what the `Location` constructor actually *contains*. The URL is missing.
+
+*   **d) `type url = string type bookmarks = Empty | Location of bookmarks * url`**: This is a valid recursive definition, but reverses the order of arguments within `Location` constructor. It holds a `bookmarks` (rest of the list) and a `url` (a string).

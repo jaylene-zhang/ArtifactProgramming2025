@@ -1,0 +1,43 @@
+(* Implement the function. *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable var -> Variable_set.singleton var
+  | Conjunction (l, r) -> Variable_set.union (collect_variables l) (collect_variables r)
+  | Disjunction (l, r) -> Variable_set.union (collect_variables l) (collect_variables r)
+  | Negation f -> collect_variables f
+
+(* Implement the function. *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable var ->
+      begin try
+          Variable_map.find var state
+        with Not_found ->
+          raise (Unassigned_variable var)
+      end
+  | Conjunction (l, r) -> eval state l && eval state r
+  | Disjunction (l, r) -> eval state l || eval state r
+  | Negation f -> not (eval state f)
+
+(* Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = collect_variables formula in
+  let rec go assignment unassigned =
+    if Variable_set.is_empty unassigned then
+      begin
+        try
+          if eval assignment formula then Some assignment
+          else None
+        with Unassigned_variable _ -> None
+      end
+    else
+      let var = Variable_set.max_elt unassigned in
+      go (Variable_map.add var false assignment) (Variable_set.remove var unassigned)
+      |> function
+        | Some a -> Some a
+        | None -> go (Variable_map.add var true assignment) (Variable_set.remove var unassigned)
+  in
+  go Variable_map.empty variables
+  |> function
+    | Some a -> Some a
+    | None -> raise Unsatisfiable_formula

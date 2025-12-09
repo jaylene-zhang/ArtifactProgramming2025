@@ -1,0 +1,5 @@
+**Solution:**
+Functions in the standard List library of OCaml are not all tail-recursive because tail-recursive implementations can be less efficient in terms of time complexity and readability in some cases. Furthermore, optimizing for tail recursion often requires additional techniques like continuations or accumulator arguments, which can compromise simplicity and readability of the code.
+
+**Explanation:**
+While tail-recursive functions avoid stack overflows by reusing the stack frame for recursive calls, they often involve reversing the list or additional traversals/manipulations to construct results (e.g., reversing an accumulator), which can increase the time complexity or memory usage. The decision to not use tail-recursion for certain standard List functions prioritizes clarity, performance tradeoffs, and expectations of list order over strict stack safety.

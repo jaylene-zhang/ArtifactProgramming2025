@@ -1,0 +1,19 @@
+**Example of Overwriting:**
+```ocaml
+let x = ref 5;;
+x := 10;;  (* x is overwritten with value 10 *)
+```
+
+**Explanation:** 
+Overwriting modifies the value stored at a particular memory location. In the example, we change the value in the reference `x` from 5 to 10. The original value is completely replaced.
+
+Shadowing, on the other hand, creates a new binding with the same name in a nested scope while the original binding remains intact in its scope:
+```ocaml
+let x = 5 in
+  let x = 10 in
+    (* Here x is 10 *)
+    print_int x
+  (* Outside the inner scope, x is still 5 *)
+```
+
+With shadowing, the original binding is unmodified and can be accessed again once the inner scope ends.

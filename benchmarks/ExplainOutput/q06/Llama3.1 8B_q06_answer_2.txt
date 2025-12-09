@@ -1,0 +1,12 @@
+### Solution:
+```
+let foo w =
+let w = 6 in
+fun y -> w * y * w
+```
+
+### Explanation:
+
+When we inline `w*2`, it becomes `6`. This changes the binding of `w` to be `6` directly. The expression `let w = x` is then redundant, as `x` is no longer defined. Therefore, it is removed. The final expression becomes the inner function with `w` bound to `6`. The variable `x` inside the inner function is simply a parameter. 
+
+This final expression is equivalent to the original expression in terms of behavior. However, due to the inlining of `w*2`, the unnecessary computation of `x` is avoided.

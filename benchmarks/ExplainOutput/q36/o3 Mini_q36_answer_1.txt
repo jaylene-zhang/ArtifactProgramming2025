@@ -1,0 +1,5 @@
+Solution:
+f rotates the list two positions to the left. For example, f [a; b; c; d; e] returns [c; d; e; a; b].
+
+Explanation:
+t @ [h] produces a one-step left rotation (moving the first element, h, to the end). Then rotate takes that list and moves its first element (which was originally the second element) to the back, achieving a two-position left rotation overall.

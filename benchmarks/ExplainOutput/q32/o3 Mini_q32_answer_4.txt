@@ -1,0 +1,4 @@
+Solution: a, b, and d.
+
+Explanation: 
+(a) and (b) define a recursive list where each Location carries a URL and the remaining bookmarks. (d) is also a valid recursive type (even though its tuple order is reversed). (c) is not valid since the constructor Location carries no data.

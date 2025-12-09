@@ -1,0 +1,9 @@
+Solution:
+a) False  
+b) False  
+c) True
+
+Explanation:
+a) A shorter definition does not guarantee faster execution; rev1 uses ( @ ) repeatedly, which is inefficient.  
+b) The ( @ ) operator’s cost depends on the length of its left operand, and in rev1 it leads to quadratic time, not faster execution.  
+c) rev2 uses tail recursion with (::) to build the list in O(1) per step, resulting in linear-time reversal.

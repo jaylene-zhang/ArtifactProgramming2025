@@ -1,0 +1,27 @@
+Solution:
+• For zip:  
+  let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =  
+    …  
+
+Explanation:  
+We take two lists of possibly different element types 'a and 'b and return a list of pairs ('a * 'b).
+
+------------------------------------------------------------------------------
+
+Solution:
+• For zipper:  
+  let rec zipper 
+    (comb : 'a -> 'b -> 'c) 
+    (add  : 'c -> 'c list -> 'c list) 
+    (l1   : 'a list) 
+    (l2   : 'b list) 
+    : 'c list =  
+    match l1, l2 with
+    | [], []          -> []
+    | x :: xs, y :: ys -> add (comb x y) (zipper comb add xs ys)
+
+Explanation:  
+1. comb is a function combining one element from each list into a new value of type 'c.  
+2. add is a function for inserting a 'c-typed item into an accumulating 'c list.  
+3. l1 and l2 are input lists of types 'a list and 'b list.  
+4. The overall result is a 'c list, using [] as the base case and add to build up the result.  

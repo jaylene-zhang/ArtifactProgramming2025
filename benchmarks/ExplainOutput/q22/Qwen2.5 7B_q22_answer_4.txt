@@ -1,0 +1,9 @@
+The unused variables in the expression are `r` in the second `let` binding.
+
+Solution:
+- `r` is unused because it is only assigned a new value and not used again.
+
+Explanation:
+- The first `let r = 2 * y` assigns `2 * y` to `r`.
+- The second `let f = fun x -> f x * y` reassigns `f` to a new function, but the old value of `f` is not used after this binding.
+- The value of `r` computed from `2 * y` is only used in the final expression `f r`, but since `f` is reassigned, the new `r` is effectively used with the new `f`.

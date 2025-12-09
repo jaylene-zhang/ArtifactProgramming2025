@@ -1,0 +1,5 @@
+Solution:
+let toInt f = f (fun x -> x + 1) 0
+
+Explanation:
+Church numerals are represented as functions that apply a given function a certain number of times to an initial value. By using the successor function (fun x -> x + 1) and starting at 0, we obtain the corresponding numeral.

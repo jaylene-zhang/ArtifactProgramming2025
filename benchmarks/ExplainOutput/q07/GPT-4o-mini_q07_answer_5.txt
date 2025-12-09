@@ -1,0 +1,27 @@
+**Base Case**: w = Const y
+
+**Step Case**: w = Op (w1, w2)
+
+**Induction Hypothesis**: Suppose for any words w1 and w2 and constant x, we have count w1 x + acc = count’ w1 x acc and count w2 x + acc = count’ w2 x acc.
+
+**Proof**: 
+
+1. **Base Case**: For w = Const y, we have:
+   - count w x = if x = y then 1 else 0
+   - count’ w x acc = if x = y then 1 + acc else acc
+   Hence, 
+   - count w x + acc = if x = y then 1 + acc else 0 + acc, which matches count’ w x acc.
+
+2. **Step Case**: For w = Op (w1, w2), we analyze:
+   - count w x = count w1 x + count w2 x.
+   - Applying the induction hypothesis, we know:
+     - count w1 x + acc = count’ w1 x acc
+     - count w2 x + acc = count’ w2 x acc
+   Therefore, combining these:
+   - count w x + acc = (count’ w1 x acc - acc) + (count’ w2 x acc - acc) 
+   - Thus we can see that:
+     - count’ w x acc = count’ w1 x acc + count’ w2 x acc, which matches the left-hand side, proving the statement.
+
+**Theorem 2 Proof**: By applying Theorem 1 with acc = 0, we conclude that for any word w and constant x, count w x = count’ w x 0 holds true, completing the proof.
+
+This succinctly demonstrates the structural induction on the types of the 'magma' we defined. The essence of the proof is to show that the two counting functions agree under all structural forms of the 'magma'.

@@ -1,0 +1,3 @@
+(0 , 0)
+
+The bug is that the function does not handle the case when n = 0 correctly. According to the definition, the 0-th triangle number should be 0 (the sum of no numbers), but the current implementation will fail with a pattern matching error because it only handles cases where n ≥ 1. When n = 0, the function will recurse until n becomes 0 and then fail because the base case only checks for n = 1.

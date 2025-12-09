@@ -1,0 +1,19 @@
+(* Question 1a: Church numeral to integer *)
+let to_int (n : int church) : int = 
+  n ~: I (fun x s -> x + 1) 0
+
+(* Question 1b: Add two church numerals *)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  n1 ~: I id ~: n2
+
+(* Question 1c: Multiply two church numerals *)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  n1 ~: (fun x f -> n2 ~: f x)
+
+(* Question 2a: Sum a list of church numerals *)
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun acc n -> add acc n) zero l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> add acc one) zero l

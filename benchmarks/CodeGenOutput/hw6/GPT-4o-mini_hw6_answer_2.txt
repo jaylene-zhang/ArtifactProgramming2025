@@ -1,0 +1,59 @@
+```ocaml
+(* TODO: Implement the function. *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.1 *)
+let ap (fm : ('a -> 'b) Maybe.t) (mx : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.2 *)
+let seq2 (m1 : 'a Maybe.t) (m2 : 'b Maybe.t) : ('a * 'b) Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.3 *)
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.4 *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the functions Q2.5 *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  let open Maybe in
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.1a *)
+let church_to_nat (c : 'a church) : nat =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.1b *)
+let rec nat_to_church (n : nat) : 'a church =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.2a *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.2b *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.3a *)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  raise NotImplemented
+
+(* TODO: Implement the function Q3.3b *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  raise NotImplemented
+
+(* TODO: Implement the function Q4. *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  raise NotImplemented
+```

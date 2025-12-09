@@ -1,0 +1,9 @@
+```ocaml
+[20.0 ; 40.0 ; 10.0]
+```
+
+Explanation:
+1. The `update_sales_tax` function doubles the sales tax.
+2. When `update_sales_tax` is called, it updates `sales_tax` to `2.0`.
+3. The `update_price_list` function then uses this new `sales_tax` to map over and double each price in `price_list`.
+4. Thus, the original list `[10.0 ; 20.0 ; 5.0]` is transformed into `[20.0 ; 40.0 ; 10.0]` by applying the new `sales_tax`.

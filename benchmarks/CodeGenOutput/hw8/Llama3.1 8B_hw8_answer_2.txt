@@ -1,0 +1,60 @@
+(*
+  Q1a
+*)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n = 0 then [] else (s.head :: take (n-1) (s.tail ()))
+
+(*
+  Q1b
+*)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n = 0 then s else drop (n-1) (s.tail ())
+
+(*
+  Q2a
+*)
+let zeroes : int stream =
+  unfold (fun seed -> (0, seed)) 0
+
+(*
+  Q2b
+*)
+let natural_numbers : int stream =
+  unfold (fun prev ->
+            if prev = 0 then (0, 1) else (prev, prev + 1)) 0
+
+(*
+  Q2c
+*)
+let even_numbers : int stream =
+  unfold (fun prev ->
+            if prev = 2 then (2, 4) else (prev, prev + 2)) 0
+
+(*
+  Q3
+*)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  let rec loop = function { head = x1; tail = t1 } -> { head = { head = f x1 s2.head; tail = fun () -> { head = f x1 (s2.tail ()); tail = fun () -> loop (t1 ()) } }
+                                         | { head = t-head; tail = s2_tail } -> error "map2 requires both streams to be non empty"
+  in
+  loop s1
+
+(*
+  Q4a
+*)
+let fibonacci : int stream =
+  let rec loop (a, b) =
+    if b = 0 then { head = a; tail = fun () -> { head = a; tail = fun () -> { head = b; tail = fun () -> loop (b, a + b) } } }
+    else { head = a; tail = fun () -> { head = b; tail = fun () -> loop (b, a + b) } }
+  in
+  loop (0, 1)
+
+(*
+  Q4b
+*)
+let lucas : int stream =
+  let rec loop (a, b) =
+    if b = 0 then { head = a; tail = fun () -> { head = a; tail = fun () -> { head = b; tail = fun () -> loop (b + 2, a + b) } } }
+    else { head = a; tail = fun () -> { head = b; tail = fun () -> loop (b + 2, a + b) } }
+  in
+  loop (2, 1)

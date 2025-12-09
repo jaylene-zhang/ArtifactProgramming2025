@@ -1,0 +1,29 @@
+Here's the solution with type annotations and a brief explanation:
+
+**Solution:**
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd =
+  match xs , ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+*   **`xs: 'a list`**: `xs` is a list of elements of some type `'a`.
+*   **`ys: 'b list`**: `ys` is a list of elements of some type `'b`.
+*   **`pair: 'a * 'b -> 'c`**: `pair` is a function that takes a tuple of type `('a * 'b)` as input and returns a value of type `'c`.
+*   **`sc: 'c list -> 'd`**: `sc` (success continuation) is a function that takes a `'c list` (where `'c` is the result type of the `pair` function applied to corresponding elements from `xs` and `ys`) and returns a value of type `'d`.
+*   **`'d`**: The entire `zippy` function returns a value of type `'d`, determined by what the success continuation `sc` returns.
+
+The `zippy` function generically zips two lists `xs` and `ys` using the `pair` function on corresponding elements and accumulates the results using the success continuation `sc`. It raises `Error` if the lists have different lengths.
+
+In `zip_plus`, the `pair` function is `(function (x, y) -> x + y)`, which has type `int * int -> int`. This means `xs` and `ys` must be `int list` and the accumulated result is an `int list`. The success continuation checks that the length of the result list `r` is equal to the length of the input list `xs` (essentially ensuring that both input lists had the same length to begin with) before returning the list.

@@ -1,0 +1,3 @@
+Solution: (7,6)
+
+Explanation: When shift_point is defined, it closes over the original point (5,4); thus, shift_point 2 computes (5 + 2, 4 + 2) regardless of the later shadowing of point.

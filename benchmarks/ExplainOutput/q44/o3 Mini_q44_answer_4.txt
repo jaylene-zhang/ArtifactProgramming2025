@@ -1,0 +1,3 @@
+Solution: Assume for an arbitrary list xs that the property holds (induction hypothesis), then show that for any element x the property holds for x::xs.
+
+Explanation: In the inductive step you use the assumption that the property is true for xs and prove it remains true when you prepend any element x, ensuring the property holds for all lists.

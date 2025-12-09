@@ -1,0 +1,9 @@
+Solution:
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> (w * 2) + 2 + y * w
+```
+
+Explanation:
+The instruction asks to inline "w*2" by replacing all occurrences of x with this expression. In the original function body, x appears only once in "x + 2 + y * w". After inlining, this expression becomes "(w * 2) + 2 + y * w". The other parts of the function definition remain unchanged.

@@ -1,0 +1,11 @@
+No, the provided code does not correctly compute the antiderivative of `f`.
+
+Explanation: The expression `(curry integral) f 0` applies `curry integral` to `f` and `0`, but it lacks the second argument needed for the `integral` function. The `integral` function requires both bounds, `(a, b)`, and given that `curry integral` now takes `f`, we need to specify an upper bound `x` to compute the integral up to `x`. 
+
+The correct formulation would be: 
+
+```ocaml
+let anti_d f = fun x -> integral f (0, x) dx
+```
+
+This way, for any input `x`, it computes the integral of `f` from `0` to `x`, effectively giving us the antiderivative.

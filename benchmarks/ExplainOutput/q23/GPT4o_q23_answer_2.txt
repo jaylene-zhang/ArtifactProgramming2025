@@ -1,0 +1,10 @@
+Solution:  
+The type of `shift` is  
+```ocaml
+'ref * 'ref -> unit
+```
+
+Explanation:  
+- The `shift` function takes a tuple (`point`), where both components are references (`ref`).
+- It modifies the contents of these references by dereferencing them and incrementing their values.
+- The function is purely for side effects (modifying the references) and returns `unit`.

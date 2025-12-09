@@ -1,0 +1,54 @@
+(* Question 1: Tree Depth *)
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let tree_depth_cps t =
+  let rec depth_helper t k =
+    match t with
+    | Empty -> k 0
+    | Tree (l, _, r) -> depth_helper l (fun l_depth -> depth_helper r (fun r_depth -> k (1 + max l_depth r_depth)))
+  in
+  depth_helper t (fun depth -> depth)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match tree with
+    | Empty -> fc []
+    | Tree (l, a, r) ->
+      let is_prefix = (List.length ls) <= (List.length (tree_to_list tree)) && List.for_all2 (fun x y -> x = y) ls (tree_to_list tree) in
+      if is_prefix && (List.length ls) = (List.length (tree_to_list tree)) then
+        sc tree
+      else
+        helper ls l sc fc
+      |> Option.iter (fun _ -> helper (a::ls) r sc fc)
+  in
+  helper ls tree (fun tree -> Some tree) (fun _ -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+let rec parser_call : ('r, 'a) parser_LN = fun tokens sc fc ->
+  match tokens with
+  | [] -> fc []
+  | Num n::rest -> sc (Const n) rest
+  | '('::rest -> 
+    (* TODO: Implement parsing for Plus, Mult, Minus, Exp *)
+    parser_call rest (fun expr rest -> parser_call (Plus::rest) (fun p -> sc (Plus(expr,p)) (fun _ -> parser_call rest sc fc)) fc)
+    (* parser_call rest (fun expr rest -> parser_call (Mult::rest) (fun m -> sc (Mult(expr,m)) (fun _ -> parser_call rest sc fc)) fc)
+    parser_call rest (fun expr rest -> parser_call (Minus::rest) (fun m -> sc (Minus(expr,m)) (fun _ -> parser_call rest sc fc)) fc)
+    parser_call rest (fun expr rest -> parser_call (Exp::rest) (fun e -> sc (Exp(expr,e)) (fun _ -> parser_call rest sc fc)) fc) *)
+
+let parser_cps : (string * int, expr) parser_LN = fun tokens sc fc ->
+  let rec parser q = function
+    | [] -> fc []
+    | "NUM" n::rest -> sc (Const (int_of_string n)) rest
+    | "("::rest -> q (q parser rest)
+  in
+  parser Call tokens
+
+let parser_simple : (string * int, expr) parser_LN = fun tokens sc fc ->
+  parser_cps tokens (fun e -> sc e) (fun _ -> fc None)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)

@@ -1,0 +1,10 @@
+**Solution and Explanation**
+
+The correct answer is option 3.
+
+Explanation:
+
+* Option 1: This implementation recomputes the prime_factorization of `x` in each recursive call of the `test` function, which is unnecessary and inefficient.
+* Option 2: This implementation also recomputes the prime_factorization of `x` in each recursive call, which is unnecessary.
+* Option 4: This implementation is close, but not quite correct. The `let p` clause should be inside the `check_prime_factors` function, not before the `let check_prime_factors x = ...` line.
+* Option 3: This implementation correctly computes the prime_factorization of `x` only once before starting the iteration over the list, and uses the `List.exists` function to check if the prime_factorization is present in the list.

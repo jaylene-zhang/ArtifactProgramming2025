@@ -1,0 +1,5 @@
+**Resulting program:**
+```ocaml
+let w = 3 in let y = 2*(w * 2) in fun x -> w * y * x
+```
+**Explanation:** Inlined `x` with `w * 2` in the original expression `let y = 2*x`, replacing `x` with `w * 2`.

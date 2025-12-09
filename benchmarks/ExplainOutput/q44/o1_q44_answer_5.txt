@@ -1,0 +1,5 @@
+Solution:  
+We need to prove that if the property holds for the tail of the list, then it also holds for the entire list when a new element is added in front.
+
+Explanation:  
+In the inductive step for lists, we assume the statement is true for a smaller list (the tail) and show it remains true when we add a new head element to that tail.

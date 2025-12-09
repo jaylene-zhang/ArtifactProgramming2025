@@ -1,0 +1,10 @@
+No.
+
+Explanation:
+The provided program does not correctly compute the antiderivative of \( f \). The issue is that it returns a function that takes two arguments but does not integrate the function \( f \) from 0 to x. Instead, it attempts to curry `integral` and passes 0 as the second argument to the curry operation. To fix this, the program should integrate \( f \) from 0 to x using a curried version of `integral`. The corrected function should be:
+
+```ocaml
+let anti_d f = curry (fun x -> integral f (0, x))
+```
+
+This curry applies the integral function with the fixed lower bound of 0 and the variable upper bound of \( x \).

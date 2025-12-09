@@ -1,0 +1,10 @@
+**Why Avoid State Variables?**
+
+```python
+# In functional languages, we prefer to avoid state variables and imperative-style programming with them
+# because it promotes code that's easier to reason about, predict, and test.
+
+# Immutability and referential transparency are key benefits
+```
+
+Explanation: In functional programming, changes to mutable state can lead to unpredictable behavior and make it harder to reason about code. Since functional languages rely on immutable data structures and pure functions, it's easier to predict and test the behavior of code, reducing the risk of bugs and making development more efficient.

@@ -1,0 +1,28 @@
+**a)** Incorrect.
+**b)** Incorrect.
+**c)** Correct.
+
+**Explanation:**
+
+*   **`sumSeries f (a, b) inc`**: This is the base function.
+*   **`sum_from_zero f upper_bound`**:  We want to partially apply `sumSeries` with `a = 0` and `inc = fun x -> x + 1` and have the resulting function take `b` (the upper bound) as input.
+
+Let's analyze each option:
+
+*   **a) `let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)`**
+
+    *   `(sumSeries f)`: returns `(int * int) -> (int -> int) -> int`
+    *   `(curry (sumSeries f) 0)`: partially applies the first argument of `sumSeries f` to be the tuple `(0,b)`. It expects an integer as the upper bound for the tuple (0,b), and a function to increment for the third argument of `sumSeries f`
+    *   `swap (curry (sumSeries f) 0) (fun x -> x + 1)`:  swaps `(curry (sumSeries f) 0)` and `(fun x -> x + 1)`'s arguments, but they are functions, and not the upper bound. Thus is not what we desire.
+
+*   **b) `let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)`**
+
+    * This has a type error since `sumSeries f 0` does not type check: `sumSeries` requires a tuple as a second argument
+    * Even if we fix the typechecking error to be `sumSeries f (0,b)`, then we can do similar analysis to option a, which shows this is wrong.
+
+*   **c) `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0`**
+
+    *   `(sumSeries f)` returns `(int * int) -> (int -> int) -> int`
+    *   `(swap (sumSeries f) (fun x -> x + 1))`: partially applies the third argument to `sumSeries f` to be `(fun x -> x + 1)`. The return type is `(int * int) -> int`.
+    *   `(curry (swap (sumSeries f) (fun x -> x + 1)) 0)`: partially applies the first argument to the function above, so we get `0`. The return type is `int -> int`, which is precisely what we wanted. `int` represents the upper bound.
+    *   Thus, this is the correct approach.

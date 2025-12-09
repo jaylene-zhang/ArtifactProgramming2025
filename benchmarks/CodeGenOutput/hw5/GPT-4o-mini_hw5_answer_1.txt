@@ -1,0 +1,60 @@
+```ocaml
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Tree Depth *)
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+        depth_helper l (fun left_depth ->
+          depth_helper r (fun right_depth ->
+            sc (1 + max left_depth right_depth)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc (Some tree)
+    | _, Empty -> fc ()
+    | x::xs, Tree (l, v, r) ->
+        if x = v then
+          helper xs l (fun result -> 
+            match result with
+            | Some _ as r -> sc r
+            | None -> helper xs r sc fc) 
+        else
+          fc ()
+  in
+  helper ls tree (fun x -> x) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+type token = 
+  | Const of int 
+  | Plus 
+  | Minus 
+  | Times 
+  | Div 
+  | LParen 
+  | RParen
+
+type expr = 
+  | ConstExpr of int 
+  | PlusExpr of expr * expr 
+  | MinusExpr of expr * expr 
+  | TimesExpr of expr * expr 
+  | DivExpr of expr * expr
+
+let parser_cps t =
+  let rec parse_expression tokens sc fc = 
+    (* TODO: Implement parse_expression using CPS *)
+    raise NotImplemented
+  in
+  parse_expression t (fun e -> Some e) (fun () -> None)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)
+```

@@ -1,0 +1,23 @@
+Question 2: State Changes
+What is the result of evaluating the expression below using OCaml’s call-by-value strategy? – Show the binding stack to explain your reasoning and answer. Be concise
+
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+An example for a valid binding stack is like below:
+
+expressions:
+let x = 3;;
+let f () = x;;
+let x = 4;
+
+binding stack:
+x = 4
+f ----> () -> x
+x = 3
+

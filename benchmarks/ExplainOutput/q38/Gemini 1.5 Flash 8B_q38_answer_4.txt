@@ -1,0 +1,14 @@
+**Solution:**
+
+c) h (g (f x))
+
+
+**Explanation:**
+
+To compose functions `h` and `g`, the correct order of application, from the innermost to the outermost function, is crucial. This approach ensures that `g` is applied *before* `h`, which aligns with the expected output of applying `f` three times to `x`.
+
+Option `c` matches this structure.
+
+Option `a` has the wrong nested application order.
+Option `b` has the wrong nested application order.
+Option `d` doesn't involve g at all in the process.

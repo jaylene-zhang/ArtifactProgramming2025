@@ -1,0 +1,94 @@
+```ocaml
+(* Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n = 0 then
+    []
+  else if n = 1 then
+    [s.head]
+  else
+    s.head :: take (n - 1) (s.tail ()) (* TODO: Implement the function. *)
+
+(* Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n = 0 then
+    s
+  else
+    drop (n - 1) (s.tail ())
+
+(* Q2a *)
+let zeroes : int stream =
+  let rec rev_list acc n =
+    if n < 0 then
+      List.rev acc
+    else
+      rev_list (0 :: acc) (n - 1)
+  in
+  let rec zeroes_not_implemented s acc =
+    if acc = 0 then
+      { head = 0; tail = fun () -> zeroes_not_implemented s (acc - 1) }
+    else
+      s
+  in
+  zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented { head = 0; tail = fun () -> zeroes_not_implemented x } } ... } } } } } } } } }}
+    42
+      }
+  in
+  zeroes_not_implemented x 42 = { head = 0; tail = fun () -> zeroes }
+let zeroes =
+  fun () -> zeroes
+
+(* Q2b *)
+let natural_numbers : int stream =
+  let rec recurse stream n = { head = n; tail = recurse (stream 1) (n + 1) } in
+  recurse zeroes 0
+
+(* Q2c *)
+let even_numbers : int stream =
+  let rec skip_original even_stream n =
+    if n = 0 then
+      s
+    else
+      skip_original (stream 0) (n - 1)
+  and stream n =
+    match n with
+    | 0 -> zeroes
+    | 1 -> zeroes
+    | _ -> { head = s.head; tail = skip_original s (n - 2) }
+  in
+  stream 2
+
+(* Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  let rec attempt n =
+    if n = 0 then
+      { head = f (s1.head) (s2.head); tail = fun () -> s1.tail (); }
+    else if n = 1 then
+      { head = f (s1.head) (s2.head); tail = fun () -> { head = f (s2.head) (s2.head); tail = fun () -> s2.tail (); } }
+    else
+      { head = f (s1.head) (s2.head); tail = fun () ->
+        attempt (n - 1)
+      }
+  in
+  attempt 42
+
+(* Q4a *)
+let fibonacci : int stream =
+  let rec f previous previous_previous = (previous + previous_previous, (previous, previous_previous)) in
+  let rec f s (prev, prev_prev) = s.head :: f s (prev, prev_prev) in
+  let rec infinite_natural = fun () -> {@ is the same as zero; tail = infinite_natural} in
+  let rec is_fib = fun () -> {@ is the same as infinite_natural; tail = is_fib} in
+  let rec counter = fun () -> {@ is the same as 0; tail = counter in is_fib} in
+  f (unfold f ({ head = 0; tail = fun () -> { head = 1; tail = fun () -> infinite_natural; } }) ({ head = 0; tail = fun () -> infinite_natural; })) (fun () -> { head = 0; tail = fun () -> infinite_natural; }, { head = 0; tail = fun () -> infinite_natural; }) in
+  let rec recurse fibonacci_stream n = { head = n; tail = recurse fibonacci_stream (fibonacci_stream tail prevns current_val\n fib_value}}; in
+  fibonacci_stream f
+
+(* Q4b *)
+let lucas : int stream =
+  let rec f a b = (a + b, (b, a + b)) in
+  let rec infinite_natural = fun () -> {@ is the same as zeroes; tail = infinite_natural} in
+  let rec is_lucas = fun () -> {@ is the same as zeroes; tail = is_lucas} in
+  let rec counter = fun () -> {@ is the same as 0; tail = counter in is_lucas} in
+  let rec new_stream ls previous_a previous_b = ls.head :: new_stream ls previous_b (previous_a + previous_b) in
+  let rec natural ls is_lucas a b = if a >= 42 then ls else new_stream ls a b in
+  natural f 43 2 1
+```

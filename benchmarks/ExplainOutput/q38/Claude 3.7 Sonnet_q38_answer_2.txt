@@ -1,0 +1,13 @@
+Solution: c) h (g (f x))
+
+Explanation:
+Let's analyze the types and expected behavior:
+- h and g are higher-order functions of type (('a -> 'a) -> 'a -> 'a)
+- When we compose (fun f x -> f x) with (fun f x -> f (f x)), we should get (fun f x -> f (f (f x)))
+
+For option c) h (g (f x)):
+- g takes function f and applies it twice to x: g f x = f (f x)
+- h takes a function and applies it once: h f x = f x
+- So h (g f) x = h f (g f x) = f (g f x) = f (f (f x))
+
+This matches our expected result. The other options don't produce the correct composition behavior.

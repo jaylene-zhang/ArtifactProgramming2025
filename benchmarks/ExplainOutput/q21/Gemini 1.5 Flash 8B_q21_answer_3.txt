@@ -1,0 +1,7 @@
+Solution:
+
+`x`
+
+Explanation:
+
+The `x` bound inside the inner `let` is a shadowing of the outer `x` parameter, making the original `x` unused.

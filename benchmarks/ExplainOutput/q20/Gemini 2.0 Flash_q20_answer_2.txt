@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The code will enter the `else` branch with `n = 0`, resulting in `0 + triangle (-1)`. This will continue indefinitely, leading to a stack overflow error, not a return value of 0 to pass the test. The base case is only for `n = 1`, not for `n = 0`.

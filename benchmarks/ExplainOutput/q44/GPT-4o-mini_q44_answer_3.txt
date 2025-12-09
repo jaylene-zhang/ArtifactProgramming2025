@@ -1,0 +1,3 @@
+In the step case of an inductive proof about lists, we need to prove that if the statement holds for a list `l`, then it also holds for the list `l'` formed by adding an element to the front of `l` (i.e., `x :: l` where `x` is the new element).
+
+Explanation: This step is essential for proving the inductive hypothesis, where we assume our statement is true for a list of a certain length (the base case) and then show that by extending that list by one element, the statement remains true for the new list. This process confirms the validity of our statement for all lists by leveraging the principle of mathematical induction.

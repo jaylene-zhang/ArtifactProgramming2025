@@ -1,0 +1,49 @@
+1) For blank 1 in line 2 we should write: `ones`
+
+2) For blank 2 in line 3 we should write: `pascal_next (pascal_diagonal (fst (pascal)))`
+
+
+**Explanation:**
+
+1. **`ones`:** The first diagonal of Pascal's Triangle consists of just 1s.  This is represented by the `ones` stream.
+
+2. **`pascal_next (pascal_diagonal (fst (pascal)))`:**
+   - `pascal` is the stream of Pascal Triangles diagonals.
+   - `fst (pascal)` gets the first diagonal of the original pascal stream.
+   - `pascal_diagonal` calculates the next diagonal based on partial sums of the input diagonal.
+   - `pascal_next` recursively generates the next diagonal based on the prior one, using partial sums.
+
+
+**Important Considerations (not directly part of the answer, but crucial for understanding the complete implementation):**
+
+* **`ones` Stream:** You need a definition for the `ones` stream. It's probably defined using `Stream.repeat`.
+* **`pascal_diagonal` Function:** This function would take a given diagonal's stream and use `psums` to calculate the next diagonal according to the partial sums description.
+* **`pascal_next` Function:** This function is crucial for using recursion to generate the stream of triangles. It would call `pascal_diagonal` as in the answer and construct a new suspended computation for the next level of the Pascal's Triangle.
+* **`Stream` Module:**  You'll likely need constructs from the `Stream` module to make the suspensions work correctly and avoid premature computations.
+
+
+```OCaml
+(* Example implementation snippets (not complete) *)
+let ones = Stream.repeat 1;;
+
+let psums xs =
+   let rec aux xs acc =
+    match xs with
+    | [] -> acc
+    | x::xs' -> aux xs' (x::(List.map ((+) x) acc))
+   in
+   aux xs []
+
+let pascal_diagonal diag =
+    psums (Stream.of_list diag);;
+
+let pascal_next prev_diag = 
+    let diag_list = Stream.to_list prev_diag in
+    let new_diag = pascal_diagonal diag_list in
+           Stream.of_list new_diag
+
+let rec pascal =
+  { hd = ones;
+    tl = Susp (fun () -> pascal_next (pascal_diagonal (fst (pascal))) )
+  }
+```

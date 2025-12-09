@@ -1,0 +1,62 @@
+(* Question 1 *)
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect_variables_acc = function
+    | Variable v -> Variable_set.singleton v
+    | Conjunction (f1, f2) -> Variable_set.union
+                                (collect_variables_acc f1)
+                                (collect_variables_acc f2)
+    | Disjunction (f1, f2) -> Variable_set.union
+                              (collect_variables_acc f1)
+                              (collect_variables_acc f2)
+    | Negation f -> collect_variables_acc f
+  in
+  collect_variables_acc formula
+
+(* Question 2 *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval_acc = function
+    | Variable v ->
+        match Variable_map.find_opt v state with
+        | Some b -> b
+        | None -> raise (Unassigned_variable v)
+    | Conjunction (f1, f2) -> eval_acc f1 && eval_acc f2
+    | Disjunction (f1, f2) -> eval_acc f1 || eval_acc f2
+    | Negation f -> not (eval_acc f)
+  in
+  eval_acc formula
+
+(* Question 3 *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let rec find_sat_assignment_acc (unassigned_vars : Variable_set.t)
+                                (truth_state : truth_assignment) =
+    if Variable_set.is_empty unassigned_vars then
+      truth_state
+    else
+      let next_var : string =
+        Variable_set.min_elt unassigned_vars
+      in
+      let mutable assigned_next_var = false in
+      let truth_state_with_next_assigned = Variable_map.add next_var assigned_next_var truth_state in
+      try
+        if not (eval truth_state_with_next_assigned formula) then
+          begin
+            let new_unassigned_vars = Variable_set.remove next_var unassigned_vars in
+            find_sat_assignment_acc new_unassigned_vars truth_state
+          end else begin
+            let new_unassigned_vars = Variable_set.remove next_var unassigned_vars in
+            find_sat_assignment_acc new_unassigned_vars truth_state_with_next_assigned
+          end
+      with
+      | Unassigned_variable v when v = next_var ->
+          begin
+            let new_unassigned_vars = Variable_set.add v unassigned_vars in
+            find_sat_assignment_acc new_unassigned_vars truth_state
+          end
+  in
+  try
+    begin
+      let initial_truth_state = Variable_map.empty in
+      find_sat_assignment_acc (collect_variables formula) initial_truth_state
+    end
+  with
+  | _ -> raise Unsatisfiable_formula

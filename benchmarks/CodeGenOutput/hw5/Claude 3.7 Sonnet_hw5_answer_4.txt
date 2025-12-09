@@ -1,0 +1,89 @@
+let rec tree_depth_cps t =
+  let rec depth_helper t k =
+    match t with
+    | Empty -> k 0
+    | Tree (l, _, r) -> depth_helper l (fun ld -> 
+        depth_helper r (fun rd -> 
+          k (1 + max ld rd)))
+  in
+  depth_helper t (fun x -> x)
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc tree
+    | h :: tl, Empty -> fc ()
+    | h :: tl, Tree (l, v, r) ->
+        if h = v then
+          helper tl l sc (fun () -> helper tl r sc fc)
+        else
+          helper (h :: tl) l sc (fun () -> helper (h :: tl) r sc fc)
+  in
+  helper ls tree (fun t -> Some t) (fun () -> None)
+
+type token = Num of int | Plus | Minus | Times | Div | LPar | RPar
+
+type exp = 
+  | Const of int
+  | Plus of exp * exp
+  | Minus of exp * exp
+  | Times of exp * exp
+  | Div of exp * exp
+
+let eval e v =
+  let rec eval' e = match e with
+    | Const c -> c
+    | Plus(e1, e2) -> eval' e1 + eval' e2
+    | Minus(e1, e2) -> eval' e1 - eval' e2
+    | Times(e1, e2) -> eval' e1 * eval' e2
+    | Div(e1, e2) -> eval' e1 / eval' e2
+  in eval' e
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  let rec parse_E tokens fail success =
+    parse_T tokens fail (fun tokens' t ->
+      parse_E_rest tokens' t fail success)
+  
+  and parse_E_rest tokens e fail success =
+    match tokens with
+    | Plus :: rest -> 
+        parse_T rest fail (fun tokens' t ->
+          parse_E_rest tokens' (Plus(e, t)) fail success)
+    | Minus :: rest -> 
+        parse_T rest fail (fun tokens' t ->
+          parse_E_rest tokens' (Minus(e, t)) fail success)
+    | _ -> success tokens e
+  
+  and parse_T tokens fail success =
+    parse_F tokens fail (fun tokens' f ->
+      parse_T_rest tokens' f fail success)
+  
+  and parse_T_rest tokens t fail success =
+    match tokens with
+    | Times :: rest -> 
+        parse_F rest fail (fun tokens' f ->
+          parse_T_rest tokens' (Times(t, f)) fail success)
+    | Div :: rest -> 
+        parse_F rest fail (fun tokens' f ->
+          parse_T_rest tokens' (Div(t, f)) fail success)
+    | _ -> success tokens t
+  
+  and parse_F tokens fail success =
+    match tokens with
+    | Num n :: rest -> success rest (Const n)
+    | LPar :: rest -> 
+        parse_E rest fail (fun tokens' e ->
+          match tokens' with
+          | RPar :: rest' -> success rest' e
+          | _ -> fail ())
+    | _ -> fail ()
+  in
+  
+  parse_E t (fun () -> None) (fun tokens e ->
+    if tokens = [] then Some e else None)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)

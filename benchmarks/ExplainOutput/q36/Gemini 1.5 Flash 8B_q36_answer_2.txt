@@ -1,0 +1,8 @@
+**Solution:**
+
+The function `f` rotates the list *twice*.
+
+
+**Explanation:**
+
+The function `f` first takes a list `l`.  It then constructs a new list by concatenating the tail of `l` with the head of `l`. This is equivalent to rotating `l` once.  That rotated list is then passed to the `rotate` function again, which rotates it a second time.  Therefore, the net effect is a double rotation.

@@ -1,0 +1,5 @@
+Solution: 't
+
+Explanation:
+
+The function `f` takes two values of type `'t` and returns a value of type `'t`.  The first application `f (a, b)` returns a `'t`.  The second application `f (b, a)` also returns a `'t`.  Thus, `f (f (a, b), f (b, a))` takes two `'t`'s and returns a `'t`.

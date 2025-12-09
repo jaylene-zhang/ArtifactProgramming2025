@@ -1,0 +1,7 @@
+The function `f` takes a list `l` and rotates the list after removing the head element (`h`), then appends `h` to the end of that rotated list. With a list of at least five elements, it effectively removes the first element, moves the next elements one position to the left, and places the former head at the end of the list.
+
+### Explanation:
+1. The function `f` uses pattern matching to deconstruct the list `l`.
+2. When the list is non-empty (`h :: t`), it calls `rotate` on the sublist `t` (the tail) concatenated with the head element `h` as the last element.
+3. The `@` operator concatenates the two lists, and `rotate` moves the first element (the former head `h`) to the end.
+4. Therefore, `f` effectively repositions the list by removing the original first element and redistributing the rest, which results in a cyclic shift of the elements in the list.

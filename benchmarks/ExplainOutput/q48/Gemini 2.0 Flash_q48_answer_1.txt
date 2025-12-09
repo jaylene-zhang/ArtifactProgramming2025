@@ -1,0 +1,15 @@
+**Solution:**
+
+Not all `List` functions are tail-recursive for a combination of factors: readability, performance considerations (sometimes non-tail-recursive versions can be faster for small lists), and historical reasons (the library evolved over time). Introducing continuations everywhere would add complexity and potentially overhead that isn't always beneficial.
+
+**Explanation:**
+
+While continuations *can* be used to transform any recursive function into a tail-recursive one, doing so comes at a cost.  Specifically:
+
+1.  **Readability:**  Continuations often make code significantly harder to read and understand. The direct recursive style is often more natural and concise.
+
+2.  **Performance:** For small lists, the overhead of managing continuations (allocating and calling continuation functions) might outweigh the benefits of tail-recursion in avoiding stack overflow. A simple, direct recursive implementation might be faster in *practice*. Furthermore, OCaml's compiler performs optimizations, and in some cases, can optimize non-tail-recursive calls into tail calls if the function is small.
+
+3.  **Historical Reasons and API Stability:**  The `List` module has been around for a long time. Changing the implementation of *every* function to use continuations would be a massive undertaking. It would also introduce a risk of subtle bugs and might break existing code that relies on specific behavior (though unlikely, a possibility).  OCaml's standard library prioritizes stability.
+
+In summary, the benefit of always using tail-recursion (avoiding stack overflow) is weighed against the drawbacks of increased code complexity, potential performance overhead for small lists, and the risk of breaking compatibility. The `List` module aims for a balance of clarity, efficiency, and stability. Usually when a function has high risk of stack overflow (e.g. `List.map`) then there would be a tail recursive version.

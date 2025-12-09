@@ -1,0 +1,7 @@
+**Overwriting example:**
+```ocaml
+let x = 5
+let x = x + 1
+```
+
+**Explanation:** Overwriting is when a new value is assigned to an existing variable, replacing its previous value. This is different from overshadowing, where a new definition with the same name is introduced in a more local scope, temporarily hiding the original definition. In the example, `x` is overwritten with a new value, whereas overshadowing would involve introducing a new `x` in a local scope, such as in a function or inner block.

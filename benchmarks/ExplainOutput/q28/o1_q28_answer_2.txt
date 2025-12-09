@@ -1,0 +1,7 @@
+Solution:  
+No. The code never actually takes x and dx in the right order, so it does not produce F(x) = ∫(0 to x) f(t) dt.
+
+Explanation:  
+The integral function needs three parameters: f, (a,b), and dx. Simply doing (curry integral) f 0 fixes the second parameter incorrectly (as 0) but never provides x or dx. A correct antiderivative would look like  
+let anti_d f x = integral f (0., x) dx  
+so that it integrates f from 0 to x.

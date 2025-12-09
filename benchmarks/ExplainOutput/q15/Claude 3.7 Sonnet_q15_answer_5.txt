@@ -1,0 +1,30 @@
+Result: 42
+
+Explanation using binding stack:
+
+expressions:
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+        let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+binding stack:
+y = 10
+x = 5
+f ----> u -> u + x + y + !r
+        where x = 3, y = 15, r is a reference cell containing 4
+r = reference cell containing 5 (initially), then 2 after r := 2
+x = 3
+
+Evaluation steps:
+1. x is bound to 3
+2. r is bound to ref (2 + 3) = ref 5
+3. For f: y = 3 * 5 = 15, then r (local) = ref 4, f captures x=3, y=15, and local r
+4. x is rebound to 5 (doesn't affect f's captured x)
+5. y is bound to 10
+6. r is updated to 2
+7. f (!r * y) = f (2 * 10) = f 20
+8. f 20 = 20 + 3 + 15 + 4 = 42

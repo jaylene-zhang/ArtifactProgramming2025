@@ -1,0 +1,4 @@
+What type would we expect for the tail-recursive version of fold_right?
+
+
+('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c

@@ -1,0 +1,5 @@
+a) **False**.  Shorter code doesn't inherently mean faster execution.  Compilation and optimization play a larger role.
+
+b) **False**.  The time complexity of `@` is O(n) for the second argument and O(n) for every reverse operation.  Thus, it's O(n^2) in rev1.
+
+c) **True**.  `rev2` uses `::` which has constant time complexity (`O(1)`) to prepend an element to a list.   This means `rev2` is O(n), whereas `rev1` uses the O(n) concatenation `@` in each step leading to O(n^2).

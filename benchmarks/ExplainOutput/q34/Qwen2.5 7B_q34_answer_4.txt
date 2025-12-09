@@ -1,0 +1,8 @@
+a) False  
+Explanation: The length of the code does not determine the speed. `rev1` creates multiple intermediate lists, which can be expensive, whereas `rev2` builds the result list in reverse order in a single pass.
+
+b) False  
+Explanation: While `@` does depend on its second argument, this is not the primary factor affecting performance. `rev1` creates many small lists and aggregates them, while `rev2` builds the result more efficiently by accumulating in reverse.
+
+c) True  
+Explanation: `rev2` constructs the result by prepending elements to `acc` from the end, which is more memory-efficient and faster, avoiding the creation of many intermediate lists.

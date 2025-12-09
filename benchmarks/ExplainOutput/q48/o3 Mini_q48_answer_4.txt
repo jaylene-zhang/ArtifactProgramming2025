@@ -1,0 +1,3 @@
+Solution: Because a tail-recursive CPS version would complicate the code and add overhead, and many list operations require a natural (non-tail) recursion order that is clearer and efficient enough for typical use.
+
+Explanation: While continuations can make recursion tail-recursive, doing so can obscure the logic and hurt performance. The standard library favors straightforward implementations that respect the intended evaluation order and are efficient for common inputs over more complex tail-recursive designs.

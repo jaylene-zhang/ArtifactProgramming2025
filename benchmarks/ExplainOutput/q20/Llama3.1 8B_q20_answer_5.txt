@@ -1,0 +1,5 @@
+**Solution**
+```
+NO
+```
+**Explanation** The function will still call `triangle 1` when `n` is 0, which will calculate `1 + triangle 0`. However, these calls will lead to a stack overflow because `triangle 0` is unbound.

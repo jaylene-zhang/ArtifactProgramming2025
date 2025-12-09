@@ -1,0 +1,9 @@
+Solution: 't = 's = 'u
+
+Explanation: Let's analyze the expression f (f (a, b), f (b, a)). 
+- f takes a pair of type ('t * 's) and returns a value of type 'u
+- f (a, b) has type 'u
+- f (b, a) has type 'u
+- So f (f (a, b), f (b, a)) means we're passing a pair of values both having type 'u to f
+- For this to typecheck, we need ('t * 's) = ('u * 'u), which means 't = 'u and 's = 'u
+- Therefore, 't = 's = 'u is the most general instantiation

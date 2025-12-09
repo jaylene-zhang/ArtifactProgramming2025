@@ -1,0 +1,18 @@
+```ocaml
+3, 6
+```
+
+**Explanation of the bug:**
+
+The function calculates `n + triangle(n-1)`, which is incorrect.  It should be `n + (triangle (n-1)) = n +  (1 + 2 + ... + (n-1))` to get the sum of the first `n` numbers. The current implementation adds `n` to the result of the recursive call instead of adding it to the partial sum calculated recursively.
+
+
+**Example:**
+
+For `n = 3`, the expected result (triangle number) is 1 + 2 + 3 = 6.
+
+The incorrect implementation, however, calculates:
+
+3 + triangle(2) = 3 + (2 + triangle(1)) = 3 + (2 + 1) = 6
+
+This matches correctly in this instance, so it isn't clear from this example that the function has a bug. To see the bug, a larger input must be tested, where the error becomes significant.

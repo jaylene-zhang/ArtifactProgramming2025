@@ -1,0 +1,11 @@
+**Solution:**
+
+No.
+
+
+**Explanation:**
+
+The provided code defines a function `anti_d` that takes a function `f` as input.  It correctly uses `curry` to adapt the `integral` function to take a single argument at a time, but importantly, it's passing the constant value `0` as the *second* argument to `integral` rather than using `x`.
+
+
+The correct approach would use `integral` to calculate the indefinite integral from 0 to `x` to produce a function of `x`.

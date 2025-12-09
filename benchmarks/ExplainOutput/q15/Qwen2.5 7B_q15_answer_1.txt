@@ -1,0 +1,22 @@
+Solution: The result is `90`.
+
+Binding Stack:
+```
+x = 5
+y = 10
+r = 4
+f ----> u -> u + 5 + 20 + 4
+r = 2
+x = 3
+```
+
+Explanation:
+1. `x` is initially `3`.
+2. `r := 2 + x` evaluates to `r := 5`.
+3. A new `r` is re-bound to `4` within `f`, not affecting the outer `r`.
+4. `y` is `x * !r` which is `3 * 5 = 15` during `f`'s definition.
+5. `x` is then changed to `5` outside `f`.
+6. `r := 2` changes the value of the outer `r`.
+7. `r * y` becomes `2 * 10 = 20`.
+8. `f` is applied, using the new `r` and `x`: `20 + 5 + 15 + 4 = 44`.
+9. The result is `44 * 10 = 90`.

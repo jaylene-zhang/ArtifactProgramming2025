@@ -1,0 +1,3 @@
+**To ensure referential transparency and avoid side effects.**
+
+Explanation: Functional languages aim to maintain referential transparency, meaning that the output of a function depends solely on its inputs, not on the state of the program. State variables and imperative-style programming can introduce side effects, making it harder to reason about and predict the behavior of code. By avoiding them, functional languages can improve code composability, predictability, and parallelizability.

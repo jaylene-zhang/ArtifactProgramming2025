@@ -1,0 +1,22 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 
+    'd = match xs, ys with
+    | [], [] -> sc []
+    | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair x y) :: r))
+    | _, _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (fun (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+This code is well-typed. The types are:
+
+- `xs: 'a list` and `ys: 'b list`: lists of any type
+- `pair: 'a -> 'b -> 'c`: a function that takes an `'a` and a `'b` and returns a `'c`
+- `sc: 'c list -> 'd`: a function that takes a list of `'c` and returns an `'d`
+- The return type of `zippy` is `'d`
+
+The `zip_plus` function works with `int` lists, but the general `zippy` function can work with any types.

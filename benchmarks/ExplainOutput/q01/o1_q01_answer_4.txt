@@ -1,0 +1,9 @@
+Solution:
+• xs : 'a list
+• ys : 'b list
+• pair : 'a * 'b -> 'c
+• sc : 'c list -> 'd
+• The function returns 'd
+
+Explanation:
+The function zippy takes two lists of possibly different element types ('a list and 'b list), a pairing function from 'a * 'b to some type 'c, and a continuation sc that processes a 'c list into a final result 'd.

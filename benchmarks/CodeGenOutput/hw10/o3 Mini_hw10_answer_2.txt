@@ -1,0 +1,115 @@
+let rec eval exp =
+  match exp with
+  | I _ -> exp
+  | B _ -> exp
+  | Fn _ -> exp
+  | Var x -> raise (Stuck (Free_variable x))
+  | Primop (po, args) ->
+      let args = List.map eval args in
+      (match eval_op po args with
+       | None -> raise (Stuck Bad_primop_args)
+       | Some v -> v)
+  | If (e, e1, e2) ->
+      (match eval e with
+       | B true -> eval e1
+       | B false -> eval e2
+       | _ -> raise (Stuck If_non_true_false))
+  | Let (x, e1, e2) ->
+      let v1 = eval e1 in
+      eval (subst (v1, x) e2)
+  | Rec (f, tau, e) ->
+      let rec_val = Rec (f, tau, e) in
+      eval (subst (rec_val, f) e) (* TODO: Implement the function. *)
+  | Apply (e, es) ->
+      let fun_val = eval e in
+      (match fun_val with
+       | Fn (params, body) ->
+           if List.length params <> List.length es then
+             raise (Stuck Arity_mismatch)
+           else
+             let args_val = List.map eval es in
+             eval (subst_list (List.combine args_val (List.map fst params)) body)
+       | _ -> raise (Stuck Apply_non_fn)) (* TODO: Implement the function. *)
+
+let rec infer ctx e =
+  match e with
+  | Var x ->
+      (try lookup x ctx with Not_found -> raise (TypeError (Free_variable x)))
+  | I _ -> Int
+  | B _ -> Bool
+  | Primop (po, exps) ->
+      let (domain, range) = primopType po in
+      check ctx exps domain range
+  | If (e, e1, e2) ->
+      (match infer ctx e with
+       | Bool ->
+           let t1 = infer ctx e1 in
+           let t2 = infer ctx e2 in
+           if t1 = t2 then t1 else type_mismatch t1 t2
+       | t -> type_mismatch Bool t)
+  | Let (x, e1, e2) ->
+      let t1 = infer ctx e1 in
+      infer (extend ctx (x, t1)) e2
+  | Rec (f, t, e) ->
+      let t' = infer (extend ctx (f, t)) e in
+      if t = t' then t else type_mismatch t t' (* TODO: Implement the function. *)
+  | Fn (xs, e) ->
+      let ctx' = extend_list ctx xs in
+      let ret_type = infer ctx' e in
+      Arrow (List.map snd xs, ret_type) (* TODO: Implement the function. *)
+  | Apply (e, es) ->
+      let t_fun = infer ctx e in
+      (match t_fun with
+       | Arrow (domain, result) ->
+           if List.length domain <> List.length es then
+             raise (TypeError Arity_mismatch)
+           else
+             check ctx es domain result
+       | _ -> raise (TypeError (Apply_non_arrow t_fun))) (* TODO: Implement the function. *)
+and check ctx exps tps result =
+  match exps, tps with
+  | [], [] -> result
+  | e :: es, t :: ts ->
+      let t' = infer ctx e in
+      if t = t' then check ctx es ts result else type_mismatch t t'
+  | _ -> raise (TypeError Arity_mismatch)
+
+let unify : utp -> utp -> utp UTVarMap.t =
+  let rec unify type_substitution t1 t2 =
+    match t1, t2 with
+    | UInt, UInt
+    | UBool, UBool -> type_substitution
+    | UTVar a, UTVar a' when a = a' -> type_substitution
+    | UArrow (t1a, t1b), UArrow (t2a, t2b) ->
+        let subst1 = unify type_substitution t1a t2a in
+        let subst2 = unify subst1 t1b t2b in
+        subst2 (* TODO: Implement the function. *)
+    | UCross ts1, UCross ts2 ->
+        if List.length ts1 <> List.length ts2 then
+          unif_error (UnifMismatch (t1, t2))
+        else
+          List.fold_left2 (fun subst t1_elem t2_elem ->
+              unify subst t1_elem t2_elem) type_substitution ts1 ts2 (* TODO: Implement the function. *)
+    | UTVar a, _ -> unifyVar type_substitution a t2
+    | _, UTVar b -> unifyVar type_substitution b t1
+    | _, _ -> unif_error (UnifMismatch (t1, t2))
+  and unifyVar type_substitution a t =
+    let rec occurs t =
+      match t with
+      | UInt | UBool -> false
+      | UArrow (t1, t2) -> occurs t1 || occurs t2
+      | UCross ts -> List.exists occurs ts
+      | UTVar b ->
+          if a = b then true
+          else (match UTVarMap.find_opt b type_substitution with
+                | None -> false
+                | Some t' -> occurs t')
+    in
+    if occurs t then unif_error (UnifOccurs (a, t))
+    else
+      match UTVarMap.find_opt a type_substitution with
+      | Some t' -> unify type_substitution t' t
+      | None -> UTVarMap.add a t type_substitution (* TODO: Implement the function. *)
+  in
+  fun t1 t2 -> unify UTVarMap.empty t1 t2
+(* TODO: Implement the function. *)

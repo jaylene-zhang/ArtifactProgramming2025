@@ -1,0 +1,7 @@
+**Solution:**
+
+`(6, 5)`
+
+**Explanation:**
+
+The `point` variable is initialized to `(5, 4)`. `shift_point` is then initially called with `n = 1`, and the result is bound to `point` overwriting the original `point` variable in the global scope. `shift_point 1` is given `component_x point + 1` and `component_y point + 1`, resulting in `(5 + 1, 4 + 1)`, which evaluates to `(6, 5)`. Now since `point` is equal to `(6, 5)`, when calling `shift_point 2`, it evaluates `component_x point + 2` and `component_y point + 2`, which is `(6 + 2, 5 + 2)` which evaluates to `(8, 7)`. Thus, `shift_point 2` returns `(8,7)`.

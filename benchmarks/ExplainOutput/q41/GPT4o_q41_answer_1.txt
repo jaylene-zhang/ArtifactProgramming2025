@@ -1,0 +1,7 @@
+**Solution:**  
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**  
+A tail-recursive version of `fold_right` applies a function over a list from right to left in a way that optimizes for stack usage. It takes a function `('a -> 'b -> 'b)`, a list ('a list), and an accumulator ('b). The output type is the same accumulator type ('b) since it "folds" the list into a single value.

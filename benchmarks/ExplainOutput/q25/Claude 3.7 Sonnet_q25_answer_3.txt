@@ -1,0 +1,7 @@
+Solution: 't = 's = 'u
+
+Explanation: For the expression f (f (a, b), f (b, a)) to be well-typed:
+- The inner expressions f (a, b) and f (b, a) must both have the same type, which is 'u based on f's type signature
+- The outer application of f takes a pair of type ('u * 'u)
+- For this to match f's expected input type ('t * 's), we need 't = 'u and 's = 'u
+- Therefore, all three type variables must be equal: 't = 's = 'u

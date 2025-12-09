@@ -1,0 +1,6 @@
+The type of the expression `f (f (a, b), f (b, a))` is `'t`.
+
+Explanation:
+- `a` and `b` both have type `'t`
+- `f (a, b)` and `f (b, a)` both have type `'t` since `f: 't * 't -> 't`
+- So `f (f (a, b), f (b, a))` is applying `f` to a pair of `'t` values, which returns a `'t`

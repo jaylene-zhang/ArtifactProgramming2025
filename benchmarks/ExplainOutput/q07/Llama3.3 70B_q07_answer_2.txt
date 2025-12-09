@@ -1,0 +1,21 @@
+**Base Case:** w = Const y
+In this case, we have:
+count (Const y) x + acc = (if x = y then 1 else 0) + acc
+count' (Const y) x acc = if x = y then 1 + acc else acc
+These two expressions are equal.
+
+**Step Case:** w = Op (w1, w2)
+**Induction Hypothesis:** count w1 x + acc = count' w1 x acc and count w2 x + acc = count' w2 x acc
+**Proof:**
+count (Op (w1, w2)) x + acc = (count w1 x) + (count w2 x) + acc
+= (count w1 x + acc) + (count w2 x + acc) - acc + acc
+By Induction Hypothesis, this equals (count' w1 x acc) + (count w2 x + acc) - acc + acc
+Again, by Induction Hypothesis, this equals (count' w1 x acc) + (count' w2 x acc) - acc + acc
+= (count' w1 x acc) + (count' w2 x acc)
+= count' (Op (w1, w2)) x acc
+
+**Theorem 2 (Main Result) Proof:** By Theorem 1, we have:
+count w x + 0 = count' w x 0
+Therefore, count w x = count' w x 0. 
+
+This proof uses structural induction on the magma type to show that the two functions count and count' are equivalent when the accumulator is initialized to 0.

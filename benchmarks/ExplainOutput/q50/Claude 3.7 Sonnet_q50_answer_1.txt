@@ -1,0 +1,11 @@
+Solution: a
+
+Explanation: 
+To implement fold_right tail-recursively, we need an accumulator (the continuation) that builds up the computation from right to left. 
+
+Let's recall that fold_right f [x1;x2;...;xn] b = f x1 (f x2 (... (f xn b)))
+
+Option (a) is correct because when we encounter an element x, we update the continuation to apply f to x and the result of the recursive call, which exactly mirrors fold_right's behavior. The continuation builds the computation from right to left, preserving the order of operations.
+
+Options (b), (c), and (d) are incorrect because they apply f in the wrong order or with wrong arguments.
+Option (e) is incorrect because the recursive call has the parameters in the wrong order (xs f b instead of f xs b).

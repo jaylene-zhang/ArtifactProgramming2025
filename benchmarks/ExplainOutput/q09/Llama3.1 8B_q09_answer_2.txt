@@ -1,0 +1,26 @@
+## Step 1: Define overshadowing in OCaml
+Overshadowing in OCaml occurs when a more specific definition or a redefinition is done for an existing identifier in a smaller scope, which hides the definition or redefinition from a larger scope.
+
+## Step 2: Create a basic OCaml program to demonstrate overshadowing
+```ocaml
+let mu X = X = X in
+  let X = 5
+  in
+    X = 5 (* overshadowing occurs here *)
+```
+
+## Step 3: Explain where overshadowing happens
+The overshadowing happens in the line `X = 5` within the inner scope of the `in` expression, because `X` is already defined with type `bool` by `mu X = X = X`, so the type checker has a hard time inferring the type of `X` as an integer at that point, which leads to the redefinition of `X` as `5`, hiding the type of `X` from the larger scope.
+
+However, to make the example more robust and clear, we should adjust it slightly so that the second redefinition of `X` correctly shows type inference issues:
+
+```ocaml
+let mu X = X = X in
+  let X = "hello" (* First definition with string type *)
+  in
+    let X = 5  (* Overshadowing of the previous string definition with an integer type *)
+    in          (* Definition X here is actually resolved to the integer type from the inner scope *)
+      X = 5
+```
+
+The final answer is: This example demonstrates overshadowing in OCaml through varying types given to the identifier 'X' in different scopes.

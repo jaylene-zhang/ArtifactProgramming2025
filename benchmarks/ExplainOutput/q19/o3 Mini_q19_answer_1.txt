@@ -1,0 +1,5 @@
+Solution:
+The function correctly computes the largest power of two that divides n, but it is not tail recursive.
+
+Explanation:
+The recursion multiplies by 2 after returning from the recursive call (2 * helper (n/2)), which prevents tail call optimization. Also note that calling helper with “1” as an extra argument is inconsistent with the helper’s definition. A tail‐recursive version would use an accumulator.

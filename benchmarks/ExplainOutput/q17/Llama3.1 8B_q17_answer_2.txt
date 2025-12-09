@@ -1,0 +1,10 @@
+**Solution:**
+```ocaml
+let add_ack x l = match l with
+  | [] -> []
+  | y::ys -> (match ys with
+              | [] -> [ackermann x + y]
+              | _ -> (ackermann x + y) :: add_ack x ys)
+```
+
+**Explanation:** In the original code, the function `ackermann x` is computed at each step of the recursion when `ys` is non-empty. However, in the corrected code, we use pattern matching with guard to ensure that `ackermann x` is only computed when `ys` is empty. This is because when `ys` is empty, the `(ackermann x + y)` expression is guaranteed to be evaluated to a list, avoiding unnecessary computation.

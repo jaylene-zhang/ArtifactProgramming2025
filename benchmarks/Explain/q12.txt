@@ -1,0 +1,30 @@
+Question 4: Heartache for Everyone (Inductive Proof)
+
+Q4.1
+
+Below we give two functions which adds up how many cards are in a hand.
+
+let rec add_up h = match h with
+| Empty -> 0
+| Hand (c, h) -> add_up h + 1
+
+let rec add_up_tr h acc = match h with
+| Empty -> acc
+| Hand (c, h) -> add_up_tr h (1+acc)
+
+Prove that for all h:hand, add_up h = add_up_tr h 0. As we cannot prove this statement directly, we prove the following more general statement.
+
+Theorem 1. For all hands h and accumulators acc, add_up h + acc = add_up_tr h acc. Proof. By structural induction on h.
+• Base Case:
+    h=
+• Step Case:
+    h= .
+
+State your induction hypothesis:
+      Proof:
+
+Q4.2
+
+Theorem 2 (Main Result). For all hands h , add_up h = add_up_tr h 0.
+
+Proof.

@@ -1,0 +1,7 @@
+**b) let concat l = 
+let rec aux l s = match l with 
+  | [] -> s
+  | x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""**
+
+Explanation: This function is correct and tail-recursive because the recursive call to `aux` is the last operation in the function. It traverses the input list only once, concatenating each string to the accumulator `s`. The order of concatenation `s ^ " " ^ x` ensures that the strings are appended in the correct order.

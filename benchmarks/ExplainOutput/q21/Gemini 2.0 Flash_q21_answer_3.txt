@@ -1,0 +1,7 @@
+**Solution:**
+
+`r`
+
+**Explanation:**
+
+`r` is defined but never used within the scope of `foo`. The inner `x` shadows the outer `x` in `f`, so the outer x defined in `fun x` is also unused.

@@ -1,0 +1,4 @@
+Solution: (0, stack overflow error)
+
+Explanation: The base case only handles n = 1. When n = 0 is passed (which is legal since n ≥ 0), the function recurses indefinitely. The fix is to include n = 0 in the base case (e.g., if n = 0 then 0).
+

@@ -1,0 +1,7 @@
+Solution:
+let foo y =  
+  let w = y + 3 in  
+  fun y -> (y + 3) + 2 + y * w  
+
+Explanation:
+We replace x with its definition (y + 3) inside the “let w = x in fun y -> x + 2 + y * w” fragment, removing x and using y + 3 directly.

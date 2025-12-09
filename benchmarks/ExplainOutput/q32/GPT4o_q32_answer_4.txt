@@ -1,0 +1,12 @@
+**Correct options:**  
+a) `type url = string`  
+   `type bookmarks = Location of url * bookmarks | Empty`
+
+b) `type url = string`  
+   `type bookmarks = Empty | Location of string * bookmarks`
+
+### Explanation:  
+- Option **a** is correct because it defines bookmarks as a recursive type, containing either an `Empty` case or a `Location` case with a URL and the rest of the bookmark list (`bookmarks`).
+- Option **b** is correct because it defines bookmarks in a similar manner to **a**, just reversing the order (starting with `Empty`) and using `string` in place of the earlier `url` alias.
+- Option **c** is incorrect because `Location` is not given any associated type or recursive structure.
+- Option **d** is incorrect because the recursive structure points the wrong way: it would associate a `bookmarks` value with a single `url`, which does not make sense for a valid list of URLs.

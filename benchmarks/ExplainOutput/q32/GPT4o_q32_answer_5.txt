@@ -1,0 +1,19 @@
+**Solution:**  
+The valid definitions are:  
+**a) type url = string  
+type bookmarks = Location of url * bookmarks | Empty**  
+
+**b) type url = string  
+type bookmarks = Empty | Location of string * bookmarks**
+
+---
+
+**Explanation:**  
+For the `bookmarks` type:
+- It should represent either an empty list (with a constructor like `Empty`) or a `Location` holding a URL (`url`/`string`) and the rest of the bookmarks (a recursive part).
+- In option a), the definition correctly uses recursion: a `Location` has a URL and the remaining bookmarks.  
+- Option b) also accomplishes the same representation using a slightly different order.
+
+**Option c** and **option d** are invalid:
+- c) lacks the recursive reference to `bookmarks`, so it cannot represent a list.  
+- d) incorrectly swaps the order in `Location` and does not properly allow for binding urls recursively in a valid type.

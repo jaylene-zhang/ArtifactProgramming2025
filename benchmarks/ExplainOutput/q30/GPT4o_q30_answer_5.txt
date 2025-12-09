@@ -1,0 +1,6 @@
+The last expression will return `[11.0; 21.0; 6.0]`.
+
+### Explanation:
+1. The `sales_tax` is defined as a constant (`let` binding) and cannot be updated after its definition. Therefore, the call to `update_sales_tax` doesn't actually change the value of `sales_tax` globally—it just computes and returns a new value (`sales_tax *. 2.0`) without altering the original `sales_tax` binding.
+
+2. When `update_price_list price_list` is evaluated, `List.map` will apply the `add_tax` function to each element of `price_list`. Since `add_tax x` computes `sales_tax +. x` and `sales_tax` has a fixed value of `1.0`, the resulting list will be `[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0] = [11.0; 21.0; 6.0]`.

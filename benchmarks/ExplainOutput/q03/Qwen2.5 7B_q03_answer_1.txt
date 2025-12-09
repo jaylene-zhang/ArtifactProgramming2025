@@ -1,0 +1,62 @@
+### Solution:
+```ocaml
+(x, observe (), ml, ml')
+```
+- `x` is bound to `1`.
+- `observe ()` returns `0` (initial value of `c`).
+- `ml` is `[2; 3; 4]` (each element increased by 1).
+- `ml'` is `[1; 2; 3]` with each element increased by `1` (initial `x` value) and `1` (`c` incremented each time).
+
+### Explanation with Binding Stack:
+
+#### Initial State:
+- `c = 0` (initial reference value)
+
+#### Binding Stack:
+```
+c = ref 0
+l = [3; 2; 1]
+c = ref 0
+x = 1
+c = ref 0
+l = [3; 2; 1]
+c = ref 0
+x = 1
+```
+
+#### Evaluation of `inc`:
+```ocaml
+let inc x = c := !c + 1; x + 1
+```
+- Changes `c` to `1`.
+- Returns `2` for `1`, `3` for `2`, and `4` for `3`.
+- `ml = [2; 3; 4]`.
+
+#### Evaluation of `inc’`:
+Leveraging a new `c` initialization inside the function definition:
+```ocaml
+let c = ref 0
+let x = x + 1
+let inc' y = c := !c + 1; !c + y + x
+```
+- First function call initialises `c` to `0`, then `x` is `2` (original `x` + 1).
+- `inc' 1` -> `0 + 1 + 2 = 3`.
+- `inc' 2` -> `1 + 2 + 2 = 5`.
+- `inc' 3` -> `2 + 2 + 2 = 6`.
+- `ml' = [3; 5; 6]`.
+
+#### Final Result:
+```
+(x, observe (), ml, ml')
+= (1, 0, [2; 3; 4], [3; 5; 6])
+```
+
+- `x` remains `1`.
+- `observe ()` returns initial `c` value which is `0`.
+- `ml` is `[2; 3; 4]`.
+- `ml'` is `[3; 5; 6]`.
+
+The final result is:
+```ocaml
+(1, 0, [2; 3; 4], [3; 5; 6])
+```

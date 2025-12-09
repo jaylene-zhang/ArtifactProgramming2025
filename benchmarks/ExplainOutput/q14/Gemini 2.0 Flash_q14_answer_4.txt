@@ -1,0 +1,36 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed in the function. The result of the recursive call is returned directly without further modification.
+
+**Explanation:**
+
+Tail recursion is a specific form of recursion that allows compilers (like the OCaml compiler) to optimize the function call by reusing the current stack frame for the recursive call. This avoids stack overflow errors, which can occur with deep recursion.
+
+Here's a breakdown with examples:
+
+*   **Tail-Recursive Example:**
+
+```ocaml
+let rec sum n acc =
+  if n = 0 then acc
+  else sum (n - 1) (acc + n)
+
+(* Example usage: sum 5 0 *)
+```
+
+*Explanation:* The last operation performed in the `else` branch is the recursive call to `sum`.  The result of `sum (n - 1) (acc + n)` is immediately returned. No further computation is done on the result of the recursive call. The accumulator `acc`, stores the intermediate results of the sum, ensuring the final sum can directly be returned in the base case.
+
+*   **Non-Tail-Recursive Example:**
+
+```ocaml
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+(* Example usage: factorial 5 *)
+```
+
+*Explanation:* The last operation performed in the `else` branch is not just the recursive call `factorial (n - 1)`. It's `n * factorial (n - 1)`. The result of the recursive call needs to be multiplied by `n` before it can be returned. Therefore, this is not tail-recursive. The compiler has to allocate space on the stack to remember `n` while it makes the recursive call.
+
+In essence, a function is tail-recursive if, after reaching the end of the function(except for the base case), the return value is *exactly* the return value of the recursive call. No additional computation happens *after* the recursive call.
+

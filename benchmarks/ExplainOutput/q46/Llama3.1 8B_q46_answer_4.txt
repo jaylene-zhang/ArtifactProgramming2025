@@ -1,0 +1,11 @@
+Here are the solutions:
+
+**1) For blank 1 we should write:**
+`f a (hd s)`
+
+**Explanation:** We start the output stream with the result of applying `f` to the initial value `a` and the first element of the input stream `hd s`.
+
+**2) For blank 2 we should write:**
+`fold f (f a (hd s)) (tl s)`
+
+**Explanation:** We recursively apply the fold function to the remaining part of the input stream `tl s`, using the result of the previous iteration `(f a (hd s))` as the new initial value. This way, we build up the output stream incrementally.

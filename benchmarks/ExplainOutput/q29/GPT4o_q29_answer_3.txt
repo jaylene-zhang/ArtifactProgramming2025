@@ -1,0 +1,31 @@
+### Solution:
+
+a) **Incorrect**  
+b) **Correct**  
+c) **Incorrect**
+
+---
+
+### Explanation:
+
+To determine correctness, let's analyze how `sum_from_zero` should be implemented.
+
+- `sumSeries` initially expects a tuple `(int -> int) * (int * int) * (int -> int)` as arguments. It requires currying/swapping to provide partial application as needed.
+- The problem asks for a function where:
+  1. The lower bound is fixed at `0`.
+  2. The increment function is `fun x -> x + 1`.
+  3. The final function returned is waiting for the `upper bound (b)`.
+
+#### Analyzing Options:
+
+a) `let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)`  
+   - Here, `curry (sumSeries f)` is partially applied to `0` incorrectly before handling `b` and `inc`. This doesn't match the requirement of waiting on the upper bound.
+   - Hence, **Incorrect**.
+
+b) `let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)`  
+   - `curry (sumSeries f 0)` correctly curries the function. Then `swap` is used to reorder arguments for proper application, where `(fun x -> x + 1)` binds to the increment function, and the returned function waits for the upper bound.
+   - Hence, **Correct**.
+
+c) `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0`  
+   - `swap (sumSeries f)` is attempting to reorder arguments before even being correctly curried. Additionally, the placement of `(fun x -> x + 1)` and `0` is mismatched, leading to incorrect application.
+   - Hence, **Incorrect**.

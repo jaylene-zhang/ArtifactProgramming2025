@@ -1,0 +1,3 @@
+Solution: The outer parameter r is unused.
+
+Explanation: In the function, r is redefined locally with "let r = 2 * y", which shadows the incoming r. Thus, the original r never gets used.

@@ -1,0 +1,10 @@
+**Correct solutions:** 
+1. `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`
+4. `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`
+
+**Explanation:**
+The key requirement is to only call `prime_fact x` once. In the first solution, `prime_fact x` is called once and the result is stored in `p`. Then the recursive function `test` checks each element in the list against `p`.
+
+In the fourth solution, `prime_fact x` is also called once and the result is stored in `p`. The `List.exists` function then checks each element in the list against `p`.
+
+In contrast, solutions 2 and 3 call `prime_fact x` multiple times, once for each element in the list. Solution 2 calls `prime_fact x` recursively, while solution 3 calls it in the test function passed to `List.exists`.

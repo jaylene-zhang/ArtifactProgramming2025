@@ -1,0 +1,11 @@
+**Solution:**
+
+Not all functions in the OCaml `List` library are tail-recursive because:
+
+1.  **Performance Trade-offs:** Using continuations for tail-recursion can introduce overhead that outweighs the benefits for some commonly used list operations, especially on short lists.
+2.  **Readability and Maintainability:** Tail-recursive implementations using continuations can be less readable and harder to understand.
+3.  **Stack Limit is Usually Sufficient:** The depth of the stack is not usually hit for small or medium sized lists.
+4.  **Compatibility:** Maintaining consistency with established coding style/practices and ensuring usability are also considerations.
+**Explanation:**
+
+While continuations can theoretically make any recursive function tail-recursive, it doesn't always make sense in practice. Continuations introduce a layer of indirection and create more closures, which can be slower for simple operations on small lists because closure allocations are relatively expensive. For basic list processing tasks, the potential stack overflow risk from non-tail-recursive code is low (since lists are rarely extremely long), and the clearer, more direct code outweighs concerns about stack usage. Standard library design often involves a balance between performance, readability, and code complexity. Over-optimizing for tail recursion at the expense of these other qualities isn't always the right choice. Finally, if the depth of the stack overflow is not usually hit (which it is not for smaller lists) then there is no need to change to a tail recursive version.

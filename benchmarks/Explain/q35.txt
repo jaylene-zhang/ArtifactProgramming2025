@@ -1,0 +1,8 @@
+What is the result of evaluating the following expression using the call-by-value strategy OCaml has?
+
+let x = 3 in
+let r = ref 1 in
+let f = (let y = x * !r in
+let r = ref 5 in fun u   -> u + x + y + !r ) in
+let x = 2 * !r * x in
+r := 10 ; f (x * !r)

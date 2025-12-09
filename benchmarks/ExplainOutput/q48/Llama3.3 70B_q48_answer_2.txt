@@ -1,0 +1,3 @@
+**Not all functions can be easily converted to tail-recursive versions without significant complexity or performance overhead.**
+
+Explanation: While it's true that continuations can be used to transform recursive functions into tail-recursive ones, this transformation often results in more complex and less efficient code. The standard library prioritizes simplicity, readability, and performance, and tail-recursion may not always be the best choice for these reasons.

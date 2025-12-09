@@ -1,0 +1,7 @@
+**Solution: (7, 6)**
+
+**Explanation:**
+1. Initially, `point` is `(5, 4)`.
+2. The value of `point` is then updated to `shift_point 1`, which calculates `(component_x (5, 4) + 1, component_y (5, 4) + 1)`. This evaluates to `(5 + 1, 4 + 1) = (6, 5)`.
+3. Now, `point` is bound to `(6, 5)`.
+4. When `shift_point 2` is called, it calculates `(component_x point + 2, component_y point + 2)` using the updated `point` value `(6, 5)`. This becomes `(6 + 2, 5 + 2) = (7, 6)`.

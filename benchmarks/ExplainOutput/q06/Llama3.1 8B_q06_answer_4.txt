@@ -1,0 +1,27 @@
+## Step 1: Identify the inline substitution to be made
+The expression "w * 2" needs to be inlined and substituted with its definition wherever it appears.
+
+## Step 2: Identify all occurrences of w * 2
+It appears twice in the second lambda-expression before EVALUATION (substituting x with w * 2 directly) below in its expression portion and in 2*x.
+
+## Step 3: Replace all occurrences of "w * 2" with its definition
+The occurrence in let x = w*w does not need replacement as per the initial formulation, instead we replace w with 2*(w*2).
+
+## Step 4: Making substitutions 
+In-place substitution:
+
+let w = 3 in let y = 2 * (2*2) in fun x -> w * y * x
+
+## Step 5: Simplify the expression by performing any redundant calculations
+2*2 equals 4.
+Replacing 2*2 with 4 wherever it's found results in:
+let w = 3 in let y = 2 * 4 in fun x -> w * y * x
+
+Immediate substitution of 4 results in:
+let w = 3 in let y = 8 in fun x -> w * y * x
+
+The final answer is: 
+```.Scheme
+let w = 3 in let y = 8 in fun x -> w*y*x
+```
+This is the resulting simplified program.

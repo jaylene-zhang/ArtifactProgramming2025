@@ -1,0 +1,5 @@
+a) **False**.  Shorter code doesn't guarantee faster execution.
+
+b) **False**. The time complexity of `@` is O(n) in the worst case (it has to traverse the entire first list to append the second), making the time complexity of `rev1` O(n^2).
+
+c) **True**.  `rev2` uses `::` which constructs a new list in constant time  (amortized).  `rev1` uses `@`, which has linear time complexity, resulting in a quadratic time complexity.

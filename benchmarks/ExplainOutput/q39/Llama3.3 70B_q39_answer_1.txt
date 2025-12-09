@@ -1,0 +1,8 @@
+```ocaml
+let rec toInt f = 
+  let fixpoint = f (fun x -> x) in 
+  if fixpoint = (fun x -> x) then 0 
+  else 1 + toInt (fun f x -> f (f x))
+```
+
+This solution uses a recursive approach to count the number of times `f` is applied to `x`. It checks if `f` leaves its argument unchanged (i.e., is the identity function), in which case it returns 0. Otherwise, it applies `f` to itself and recursively counts the remaining applications.

@@ -1,0 +1,7 @@
+**Solution:**
+
+`[]`
+
+**Explanation:**
+
+The `rev_tl` function likely uses an accumulator (`acc`) to build the reversed list iteratively. To get the correct reversed list, the accumulator should start empty representing the reversed portion of the list so far (which is initially nothing).

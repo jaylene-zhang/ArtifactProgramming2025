@@ -1,0 +1,33 @@
+**Tail-Recursive Function**
+==========================
+
+A function is considered tail-recursive if the last operation performed by the function is a recursive call. In other words, the function calls itself as the final step, without performing any additional computations.
+
+**Example 1: Non-Tail Recursive Function**
+----------------------------------------
+
+```ocaml
+let rec sum x = function
+  | 0 -> x
+  | n -> sum (x + n) (n - 1)
+```
+
+In this example, the `sum` function is not tail-recursive because it adds `x` to the recursive call argument `x + n`. This is not the last operation, as the function will need to perform additional arithmetic operations after the recursive call.
+
+**Example 2: Tail-Recursive Function**
+--------------------------------------
+
+```ocaml
+let rec factorial n =
+  let rec aux acc n =
+    if n = 0 then acc
+    else aux (acc * n) (n - 1)
+  in
+  aux 1 n
+```
+
+In this example, the `factorial` function is tail-recursive because the `aux` function calls itself as the final step, without performing any additional computations. The recursive call is the last operation, and the function will terminate once the recursion reaches the base case (`n = 0`).
+
+**Key Takeaway**
+
+For a function to be tail-recursive, it must call itself as the final step, without performing any additional computations. If a function performs arithmetic operations or other computations after the recursive call, it is not tail-recursive.

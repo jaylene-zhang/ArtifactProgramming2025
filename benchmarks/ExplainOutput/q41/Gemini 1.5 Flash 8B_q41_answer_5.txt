@@ -1,0 +1,7 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**
+
+A tail-recursive `fold_right` typically accumulates the result in an accumulator.  The final result is the accumulator, which has the same type as the initial accumulator ('b'). The function doesn't need to return a result based on processing the entire list, as the accumulator implicitly holds the result.  The other arguments are simply necessary to specify the function's purpose.

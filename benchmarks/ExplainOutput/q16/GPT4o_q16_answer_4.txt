@@ -1,0 +1,6 @@
+The program `shift_point 2` will return `(7, 6)`.
+
+**Explanation:**
+1. Initially, `point` is `(4, 3)`.
+2. A new `point` is defined after shifting the original point with `n = 1` using `shift_point`. So now, `point` is `(5, 4)`.
+3. When `shift_point 2` is called, it uses the current value of `point` (now `(5, 4)`) to calculate `(component_x point + 2, component_y point + 2)`, which is `(5 + 2, 4 + 2) = (7, 6)`.

@@ -1,0 +1,59 @@
+**Solution:**
+
+`(1, 3, [4; 3; 2], [6; 7; 8])`
+
+**Explanation:**
+
+Let's trace the execution and explain the state using a binding stack conceptually.
+
+1.  `let c = ref 0`: Creates a mutable reference `c` in the top-level scope and initializes it to 0.
+
+2.  `let l = List.rev [1;2;3]`: Creates a list `l = [3; 2; 1]`.
+
+3.  `let observe () = !c`: Creates a function `observe` that returns the current value of the top-level `c`.
+
+4.  `let x = 1`: Creates a variable `x = 1` in the top-level scope.
+
+5.  `let inc x = c:= !c+1 ; x+1`: Creates a function `inc` that increments the top-level `c` and returns `x+1`.
+
+6.  `let ml = List.map inc l`: Applies `inc` to each element of `l`.
+    *   `inc 3`: `c` becomes 1, returns 4.
+    *   `inc 2`: `c` becomes 2, returns 3.
+    *   `inc 1`: `c` becomes 3, returns 2.
+    `ml = [4; 3; 2]`.
+
+7.  `let inc’ = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)`: Creates a function `inc'`.
+    *   A *new* `c` is created within `inc'`'s scope, initialized to 0. This `c` is *different* from the top-level `c`.
+    *   `x` inside `inc'`'s scope will be equal to `x + 1 = 1 + 1 = 2`.
+    *   The anonymous function `fun y -> c := !c+1 ; !c+y+x` captures this new `c` and the `x = 2` value.
+
+8.  `let ml’ = List.map inc’ l`: Applies `inc'` to each element of `l`.
+    *   `inc' 3`: `c` becomes 1, returns `1 + 3 + 2 = 6`.
+    *   `inc' 2`: `c` becomes 2, returns `2 + 2 + 2 = 6 + 1 = 7`.
+    *   `inc' 1`: `c` becomes 3, returns `3 + 1 + 2 = 6 + 2 = 8`.
+    `ml' = [6; 7; 8]`.
+
+9.  `(x,observe () , ml, ml’)`:
+    *   `x` is 1.
+    *   `observe ()` returns the value of the *global* `c`, which is 3.
+    *   `ml` is `[4; 3; 2]`.
+    *   `ml'` is `[6; 7; 8]`.
+
+**Binding Stack (Conceptual):**
+
+```
+Global Scope:
+  c = ref 3
+  l = [3; 2; 1]
+  observe ----> () -> !c  (references global c)
+  x = 1
+  inc ----> x -> (c := !c + 1; x + 1) (references global c)
+  ml = [4; 3; 2]
+  inc' ----> captured_c, captured_x, y -> (captured_c := !captured_c + 1; !captured_c + y + captured_x)
+  ml' = [6; 7; 8]
+
+Scope of inc':
+  c = ref 0  (different from global c)
+  x = 2 
+
+```

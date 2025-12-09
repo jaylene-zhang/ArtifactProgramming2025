@@ -1,0 +1,11 @@
+1) `ones`
+
+
+2) `pascal_diag ones`
+
+
+**Explanation:**
+
+1. **Blank 1:** The first diagonal of Pascal's triangle consists of ones.  Thus, `hd` (head) of the `pascal` stream is the `ones` stream.
+
+2. **Blank 2:** The subsequent diagonals are derived from the partial sums of the previous one.  This is implemented by `pascal_diag` applied to the previously generated diagonal.  The function `pascal_diag` is a function capable of determining this next diagonal.  The idea is for the tail of the `pascal` stream to be a suspension that, when forced, computes the next diagonal.  This is a recursive definition.

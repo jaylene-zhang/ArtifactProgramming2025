@@ -1,0 +1,3 @@
+**It shifts the first two elements to the end of the list.**
+
+The function `f` takes the tail of the list `t`, appends the first element `h` to it, and then rotates the resulting list. This effectively shifts the first two elements to the end of the list.

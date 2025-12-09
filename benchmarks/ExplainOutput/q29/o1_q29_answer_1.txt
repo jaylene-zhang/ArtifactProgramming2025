@@ -1,0 +1,13 @@
+Solution:
+
+• (a) and (c) are correct.  
+• (b) is not correct (it is ill‐typed).
+
+Explanation:
+
+– (a) swap (curry (sumSeries f) 0) (fun x -> x+1)  
+  Here, curry (sumSeries f) 0 creates a function expecting the upper bound and then the increment. Using swap passes the increment first, returning a function that then takes the upper bound.  
+
+– (b) sumSeries f 0 is ill‐typed because sumSeries f expects (int*int), not just int.  
+
+– (c) swap (sumSeries f) (fun x -> x+1) fixes the increment first, giving a function of type (int*int) -> int. Then curry turns that function into one which takes two int arguments. Finally, applying … 0 fixes the lower bound.

@@ -1,0 +1,12 @@
+Answer: a) type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+
+This is the correct implementation because:
+- It defines a type for jump_typ that includes all the allowed jumps (Axel, Lutz, Flip, Loop, Salchow)
+- It represents revolutions as an integer, which allows for any number of rotations (double, triple, or more)
+- It models a jump as a pair of jump type and number of revolutions
+
+Option b) restricts revolutions to only Double and Triple, which contradicts the description that "today's athletes can go over 3 rotations."
+
+Option c) is incorrect because it defines jumps recursively (each jump contains another jump), which doesn't match the description and would lead to infinite types.

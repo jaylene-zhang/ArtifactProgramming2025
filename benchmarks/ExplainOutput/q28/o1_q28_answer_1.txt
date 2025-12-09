@@ -1,0 +1,5 @@
+Solution:  
+No. As written, “(curry integral) f 0” only fixes the lower bound to 0 but still requires the upper bound and dx to be supplied later. It does not by itself yield a function F(x) = ∫₀ˣ f(t) dt.  
+
+Explanation:  
+The integral function has type (float -> float) -> (float * float) -> float -> float. After currying, it expects four arguments: f, then a, then b, then dx. In “(curry integral) f 0” you have merely provided f and the lower bound 0. The resulting function still needs b (the upper limit) and dx before it returns a numeric result. To get a true antiderivative F(x), you would need to supply all parameters so that F(x) = ∫₀ˣ f(t) dt.

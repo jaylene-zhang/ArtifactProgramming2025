@@ -1,0 +1,5 @@
+```ocaml
+let toInt f = f (fun x -> x) 0
+```
+
+Explanation: The `toInt` function applies the input function `f` to an identity function `(fun x -> x)` and the argument `0`. This will count the number of times the function `f` applies itself recursively, effectively reversing the behavior of the `create` function.

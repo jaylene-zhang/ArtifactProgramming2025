@@ -1,0 +1,14 @@
+**Solution:** Yes, `get_tail rc1 == get_tail rc2` will return `true`.
+
+**Explanation:**
+- `rc1` initially points to `Cons (1, ref Nil)`.
+- `rc2` points to `Cons (2, rc1)`, where `rc1` is still `ref (Cons (1, ref Nil))` at this stage.
+- After executing `rc1 := !rc2`, `rc1` now points to the value that `rc2` points to, which is `Cons (2, rc1)`. This creates a cyclic structure: `rc1` -> `Cons (2, rc1)` (which points back to itself).
+
+When `get_tail rc1` is evaluated:
+- Dereferencing `rc1` gives `Cons (2, rc1)`, and the tail of this (`t`) is `rc1`.
+
+When `get_tail rc2` is evaluated:
+- Dereferencing `rc2` also gives `Cons (2, rc1)`, and the tail of this (`t`) is the same `rc1`.
+
+Thus, `get_tail rc1` and `get_tail rc2` both physically evaluate to `rc1`, so their physical equality, `==`, holds true.

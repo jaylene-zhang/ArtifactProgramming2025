@@ -1,0 +1,3 @@
+Solution: (a)
+
+Explanation: Option (a) constructs the correct continuation: for each element x, it updates the continuation with fun r -> cont (f x r), so that when initialized with the identity function, it computes f x1 (f x2 (... (f xn b)...)) exactly matching fold_right’s definition. All the other options either reverse the argument order, misuse the continuation, or have parameter errors, so they do not produce the correct result.

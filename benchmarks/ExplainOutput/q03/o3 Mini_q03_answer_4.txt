@@ -1,0 +1,17 @@
+Solution: (1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation:
+1. Outer bindings: 
+  c = ref 0, then l = List.rev [1;2;3] → [3;2;1], observe = fun () → !c, x = 1, inc = fun x → (c := !c + 1; x + 1).
+2. Mapping inc over l: 
+  inc 3 → c becomes 1, result 4;
+  inc 2 → c becomes 2, result 3;
+  inc 1 → c becomes 3, result 2;
+  Thus, ml = [4;3;2] and observe () returns 3.
+3. Defining inc':
+  Local binding: inner c = ref 0 and local x = outer x + 1 → 2.
+  inc' = fun y → (inner c := !inner c + 1; !inner c + y + 2).
+4. Mapping inc' over l:
+  For every y in [3;2;1], inner c increments (1, then 2, then 3) and computation yields:
+  1+3+2 = 6, 2+2+2 = 6, 3+1+2 = 6; so ml' = [6;6;6].
+5. Final tuple: (x, observe (), ml, ml') = (1, 3, [4;3;2], [6;6;6]).

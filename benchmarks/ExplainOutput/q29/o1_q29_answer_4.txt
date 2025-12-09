@@ -1,0 +1,9 @@
+Solution:  
+• (a) and (c) are correct implementations.  
+• (b) is not correct.  
+
+Explanation:  
+1) sumSeries f has type (int → int) → (int * int) → (int → int) → int.  
+2) In (a), curry (sumSeries f) 0 has type int → (int → int) → int. Swapping its arguments (so increment comes first) and partially applying it to fun x -> x + 1 yields an int → int as desired.  
+3) In (b), sumSeries f 0 is ill-typed because sumSeries expects a pair (int * int), not a single int.  
+4) In (c), swap (sumSeries f) (fun x -> x + 1) gives a function (int * int) → int. Currying that and then partially applying 0 also results in the correct int → int.

@@ -1,0 +1,19 @@
+### Solution:
+
+#### Types:
+1. `xs: 'a list`
+2. `ys: 'b list`
+3. `pair: 'a * 'b -> 'c`
+4. `sc: 'c list -> 'd`
+5. The return type of `zippy` is `'d`.
+
+#### Explanation:
+1. `xs` and `ys` are lists, so they will have the types `'a list` and `'b list` respectively.
+2. `pair` is applied to a tuple `(x, y)` where `x` comes from the first list and `y` comes from the second list, so its type is `'a * 'b -> 'c`.
+3. `sc` (short for "successor") is a function that takes a list of values returned by `pair` and returns a value of type `'d`. Hence, its type is `'c list -> 'd`.
+4. Finally, the function `zippy` returns whatever type `sc` evaluates to, which is `'d`.
+   
+Thus, in `zip_plus`, the types align because:
+- `xs`, `ys` are lists.
+- The `pair` function `(x, y) -> x + y` fits type `'a * 'b -> 'c` when `x`, `y` are integers.
+- The `sc` function ensures the result has the right number of elements and throws an error otherwise, producing the final result.

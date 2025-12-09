@@ -1,0 +1,11 @@
+**Solution 1**
+```ocaml
+let check_prime_factors x l = let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+```
+**Explanation**
+
+This function first computes the prime factorization of `x` using `prime_fact`. It then defines a recursive function `test` that checks if the prime factorization is present in the `l` list. If the list is empty, it returns `false`. Otherwise, it checks if the first element of the list is equal to the prime factorization. If it is, it returns `true`. If it's not, it recursively calls `test` on the rest of the list. If the list is exhaustively searched without finding the prime factorization, it returns `false`.

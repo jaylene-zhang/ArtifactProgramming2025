@@ -1,0 +1,175 @@
+Here are the answers to each question:
+
+```ocaml
+(* TODO: Implement the missing cases of eval. *)
+let rec eval exp =
+  match exp with
+  (* Values evaluate to themselves *)
+  | I _ -> exp
+  | B _ -> exp
+  | Fn _ -> exp
+
+  (* This evaluator is _not_ environment-based. Variables should never
+     appear during evaluation since they should be substituted away when
+     eliminating binding constructs, e.g. function applications and lets.
+     Therefore, if we encounter a variable, we raise an error.
+  *)
+  | Var x -> raise (Stuck (Free_variable x))
+
+  (* Primitive operations: +, -, \*, <, = *)
+  | Primop (po, args) ->
+      let args = List.map eval args in
+      begin
+        match eval_op po args with
+        | None -> raise (Stuck Bad_primop_args)
+        | Some v -> v
+      end
+
+  | If (e, e1, e2) ->
+      begin
+        match eval e with
+        | B true -> eval e1
+        | B false -> eval e2
+        | _ -> raise (Stuck If_non_true_false)
+      end
+
+  | Let (x, e1, e2) ->
+      let e1 = eval e1 in
+      eval (subst (e1, x) e2)
+
+  | Rec (f, _, e) ->
+      match eval_e f with
+      | Fn (_m, e') -> eval e'
+      | _ -> raise (Stuck Bad_rec_body)
+
+  | Apply (e, es) ->
+      match eval e with
+      | Fn (_, { params = _; body = e'}) ->
+          begin
+            if List.length es <> List.length params then
+              raise (Stuck Arity_mismatch)
+            else
+              eval (List.fold_left (fun e' (a, e) -> subst (e, a) e') e' (params, es))
+          end
+      | _ -> raise (Stuck Apply_non_fn)
+
+and eval_e (e : exp) : exp =
+  match e with
+  | Var _ -> raise (Stuck (Free_variable "f"))
+  | _ -> e
+
+(* TODO: Implement the missing cases of infer. *)
+let rec infer ctx e =
+  match e with
+  | Var x ->
+      begin
+        try lookup x ctx
+        with Not_found -> raise (TypeError (Free_variable x))
+      end
+  | I _ -> Int
+  | B _ -> Bool
+
+  | Primop (po, exps) ->
+      let (domain, range) = primopType po in
+      check ctx exps domain range
+
+  | If (e, e1, e2) ->
+      begin
+        match infer ctx e with
+        | Bool ->
+            let t1 = infer ctx e1 in
+            let t2 = infer ctx e2 in
+            if t1 = t2 then t1
+            else type_mismatch t1 t2
+        | t -> type_mismatch Bool t
+      end
+
+  | Let (x, e1, e2) ->
+      let t1 = infer ctx e1 in
+      infer (extend ctx (x, t1)) e2
+
+  | Rec (f, t, e) ->
+      let t' = infer (extend ctx (f, t)) e in
+      let t'ınfer ctx_e t_name e =
+        if List.mem t_name t_types thenatra(TypeError Type_restrictions(vect))
+        else check ctx e t'
+    in
+    (extend ctx (f, t')) t
+
+  | Fn (xs, e) ->
+      let t_params = List.map (fun x ->
+        try lookup x ctx
+        with Not_found -> raise (TypeError (Free_variable x))
+      ) xs
+      in
+      let t_fun =
+        match t_params with
+        | [t] -> Arrow t Int
+        | _ :: _ -> Arrow (Arrow t (List.hd t_params)) (Arrow (List.tl t_params) Int)
+        | _ -> raise (TypeError (Type_restrictions lista))
+      in
+      infer (extend_list ctx (List.map (fun (x, t) -> (x, t)) (List.combine xs t_params)) e)
+                t_fun
+
+  | Apply (e, es) ->
+      match infer ctx e with
+      | Arrow (t_params, t_result) ->
+          let t_es = List.map (fun e_e ->
+              let t_e = infer ctx e_e in
+              if t_params = t_e then t_e
+              else type_mismatch t_params t_e
+            ) es
+          in
+          match t_es with
+          | [t_e1] when t_e1 = List.hd t_params -> t_result
+          | _ -> type_mismatch (Arrow (List.hd t_params :: t_params) t_result) es
+      | t -> type_mismatch (Arrow (t, Int)) es
+
+(* TODO: Implement type unification. *)
+let unify : utp -> utp -> utp UTVarMap.t =
+  let rec unify (type_substitution : utp UTVarMap.t) (t1 : utp) (t2 : utp) : utp UTVarMap.t =
+    match t1, t2 with
+    (* Unifying identical concrete types does nothing *)
+    | UInt, UInt
+    | UBool, UBool -> type_substitution
+
+    (* For type constructors, recursively unify the parts *)
+    | UArrow (t1, ts1), UArrow (t2, ts2) ->
+        let type_substitution1 = if occurs t1 t2 then raise (Unif_error (UnifCtr (t2, t1, t1))) else unify type_substitution t1 t2 in
+        let type_substitution2 = if occurs t2 ts2 then raise (Unif_error (UnifCtr (ts2, t2, t2))) else unify type_substitution1 ts1 ts2 in
+        UArrow (typectr type_substitution1 better fst fst typectr), UCross
+          (unifyVar type_substitution2 b t)
+
+    | UCross ts1, UCross ts2 ->
+        List.map2_unless (fun tv1 tv2 -> unify type_substitution tv1 tv2) ts1 ts2
+        |> UTVarMap.from_list
+
+    | UTVar a, _ -> unifyVar type_substitution a t2
+    | _, UTVar b -> unifyVar type_substitution b t1
+
+    (* All other cases are mismatched types. *)
+    | _, _ -> raise (Unif_error (UnifMismatch (t1, t2)))
+
+  (* Unify a variable with a type *)
+  and unifyVar (type_substitution : utp UTVarMap.t) (a : string) (t : utp) : utp UTVarMap.t =
+    if occurs a t then raise (Unif_error (UnifVar (a, t))) else
+    match UTVarMap.find_opt a type_substitution with
+    | None -> UTVarMap.add a t type_substitution
+    | Some t' -> unify type_substitution t t'
+
+  and typectr =
+    function
+    | UArrow (t1, t2) as t -> UArrow (typectr t1, typectr t2)
+    | UCross ts -> UCross (List.map typectr ts)
+    | t -> t
+
+  and occurs t t' =
+    match t, t' with
+    | UArrow (t1, t2), UArrow (t1', t2') -> occurs t1 t1' || occurs t2 t2'
+    | UCross ts, UCross ts' -> List.exists (fun t' -> occurs t t') ts'
+    | UTVar a, t' -> UTVarSet.mem a (UTVarMap.keys t')
+    | t, _ -> false
+
+  in
+  fun t1 t2 -> unify UTVarMap.empty t1 t2
+```

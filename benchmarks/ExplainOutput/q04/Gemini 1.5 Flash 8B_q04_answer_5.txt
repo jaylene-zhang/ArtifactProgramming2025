@@ -1,0 +1,15 @@
+The correct answer is **3**.
+
+**Solution:**
+
+```ocaml
+let check_prime_factors x l =
+List.exists (fun e -> e = prime_fact x) l
+```
+
+**Explanation:**
+
+Option 3, `List.exists`, directly checks if the list `l` contains an element (`e`) that is equal to the prime factorization of `x` (computed by `prime_fact x`).  It does this in a single pass through the input list, computing the factorization exactly once.  Options 1 and 2 both compute the factorization multiple times within the recursive loops. Option 4 has a syntax error.
+
+
+Options 1 and 2 incorrectly recompute `prime_fact x` repeatedly within the recursive calls or conditions. Option 4 is incomplete.  Only option 3 calculates `prime_fact` once and then checks its presence in `l`.

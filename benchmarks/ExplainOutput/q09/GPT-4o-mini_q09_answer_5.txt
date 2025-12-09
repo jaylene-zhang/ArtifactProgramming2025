@@ -1,0 +1,25 @@
+**Example Program:**
+
+```ocaml
+let x = 10
+
+let example_function () =
+  let x = 5 in
+  Printf.printf "Inside function: x = %d\n" x;
+  let inner_function () =
+    let x = 2 in
+    Printf.printf "Inside inner function: x = %d\n" x
+  in
+  inner_function ();
+  Printf.printf "Back to function: x = %d\n" x
+
+let () =
+  Printf.printf "Global x = %d\n" x;
+  example_function ();
+```
+
+**Explanation:**
+
+In the example, the variable `x` is defined at the global level with a value of `10`. Inside `example_function`, a new local variable `x` is defined with a value of `5`, which overshadows (or hides) the global `x` within its scope. Then, within `inner_function`, another local `x` is declared with a value of `2`, which overshadows the `x` in `example_function`. 
+
+The output shows how each scope has its own `x`, and the program does not access the outer `x` from within a nested scope. The concept of overshadowing occurs as each new binding for `x` within a narrower scope takes precedence over the outer bindings.

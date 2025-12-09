@@ -1,0 +1,89 @@
+```OCaml
+(* Question 1: Tree Depth *)
+
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let rec tree_depth_cps t sc fc =
+  match t with
+  | Empty -> sc 0
+  | Tree (l, _, r) ->
+    tree_depth_cps l (fun ld ->
+        tree_depth_cps r (fun rd ->
+            sc (1 + max ld rd))) fc
+
+
+(* Question 2 : Finding Subtrees *)
+
+
+type 'a option = None | Some of 'a
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc (Some tree)
+    | _, Empty -> fc ()
+    | h::t, Tree(l, v, r) ->
+      if h = v then
+        helper t tree sc fc
+      else
+        let s1 = helper t l   sc fc  in
+        let s2 = helper t r   sc fc  in
+        match s1 with 
+        | Some(e) -> s1 
+        | None -> s2
+  in
+  helper ls tree (fun x -> x)  (fun x -> None)
+
+
+(* Question 3 : Parser *)
+
+(* ... (Type definitions and helpers for arithmetic expression parser) ... *)
+
+
+(*
+ * Example helpers (To be implemented):
+let rec parse_expr_cps tokens sc fc = ...
+let rec parse_term_cps tokens sc fc = ...
+let rec parse_factor_cps tokens sc fc = ...
+let rec parse_number_cps tokens sc fc = ...
+*)
+
+
+type expr =
+  | Const of int
+  | Plus of expr * expr
+(* Example of the grammar's tokens.
+*)
+
+type token =
+    |Plus
+    |Const of int
+    |LPar
+    |RPar
+    |EOF
+
+
+let rec parse_number_cps tokens sc fc = match tokens with
+    |Const(c)::r -> sc (Const c)
+    |_ -> fc()
+
+let rec parse_expr_cps tokens sc fc =
+  parse_term_cps tokens (fun a -> sc a) fc
+
+let rec parse_term_cps tokens sc fc = parse_factor_cps tokens (fun a -> sc a) fc
+
+
+let rec parse_factor_cps tokens sc fc = parse_number_cps tokens sc fc
+
+
+let parser_cps tokens =
+  let rec aux tokens sc fc =
+    parse_expr_cps tokens (fun e -> sc(Some e)) fc
+  in
+  match aux tokens (fun() -> Some(Const 0)) (fun() -> None) with
+  | Some x -> Some x
+  | None -> None
+```

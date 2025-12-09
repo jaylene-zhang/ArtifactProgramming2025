@@ -1,0 +1,23 @@
+**Result:** The evaluated expression results in **16**.
+
+**Binding Stack:**
+1. `let x = 3`
+2. `let r = ref (2 + x)` (so `!r = 5`)
+3. `let f = (let y = x * !r` resulting in `y = 3 * 5 = 15`
+4. `let r = ref 4` (this is a new scope for `r`)
+5. `let x = 5` (this shadows the previous `x`)
+6. `let y = 10` (introduced in the new scope)
+7. The assignment `r := 2` (sets `!r = 2`)
+8. Finally, evaluating `f (!r * y)` which is `f (2 * 10)` = `f 20`.
+
+To evaluate `f 20`, we compute:
+- The inner function `fun u -> u + x + y + !r` has:
+  - `x` = 5 (current scope)
+  - `y` = 15 (captured from the previous scope)
+  - `!r` = 4 (the `r` from the local scope, not affected by `r := 2`)
+
+Thus, `f` evaluates to `20 + 5 + 15 + 4` = `20 + 24` = **44**. 
+
+Revisiting the variable updates in the correct steps, the output indeed recalculates to show that once the shadowed variables play their role, we find:
+
+Result: **44**, achieved through the process of shadowing existing variables and binding references appropriately.

@@ -1,0 +1,5 @@
+Solution:  
+let w = 3 in let y = 4 * w in fun x -> w * y * x  
+
+Explanation:  
+We substitute x with w*2 in “let y = 2*x,” giving y = 2*(w*2) = 4*w. The function parameter x is shadowed (a different x), so it remains unchanged.

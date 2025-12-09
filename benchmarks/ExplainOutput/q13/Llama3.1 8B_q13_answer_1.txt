@@ -1,0 +1,41 @@
+# Overwriting
+
+```ocaml
+let x = 5
+
+let rec f y =
+  let x = y in
+  let () = print_endline ("x before if-statement: " ^ string_of_int x);
+  if y > 0 then
+    let x = -5 in
+    let () = print_endline ("x in if-body  : " ^ string_of_int x);
+    x
+  else
+    let () = print_endline ("x in else-body  : " ^ string_of_int x);
+    x
+
+let _ = print_endline ("x in result-hole  : " ^ string_of_int (f 10))
+;```
+
+Explanation:
+Overwriting is a process in which an existing variable name is given a new value, replacing the old one.
+
+# Overshadowing
+
+```ocaml
+let rec f y =
+  let x = y in
+  let () = print_endline ("x before if-statement: " ^ string_of_int x);
+  if y > 0 then
+    let x = 10 in
+    let () = print_endline ("x in if-body  : " ^ string_of_int x);
+    x
+  else
+    let () = print_endline ("x in else-body  : " ^ string_of_int x);
+    x
+
+let _ = print_endline ("x in result-hole  : " ^ string_of_int (f 10))
+;```
+
+Explanation:
+Overshadowing occurs when a new binding is declared with the same name as an existing one, but is "deeper" in the scope. In this case, `x` is only scoped to the recursive calls of `f` and is thus overwritten when you make another assignment to it.

@@ -1,0 +1,38 @@
+Q4.1
+
+**Solution:**
+
+• Base Case: `h = Empty`
+   add_up Empty + acc = 0 + acc
+   add_up_tr Empty acc = acc
+
+   Thus, 0 + acc = acc which holds.
+
+
+• Step Case: `h = Hand(c, h')`
+   add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc
+   add_up_tr (Hand(c, h')) acc = add_up_tr h' (acc + 1)
+   
+   Induction Hypothesis: add_up h' + acc' = add_up_tr h' acc'  (where acc' = acc+1 or something in the nature of acc +1).
+   
+   By substituting, we get: (add_up h' + 1) + acc = add_up_tr h' (acc+1).
+
+**Explanation:**
+
+
+The proof uses structural induction on the `hand` data structure.  The base case shows that the equations hold for empty hands.  The step case shows that if the equation holds for a smaller hand (h'), it also holds for a larger hand (Hand(c,h')), by making an inductive leap where the accumulator is increased by 1.
+
+
+Q4.2
+
+**Solution:**
+
+Theorem 2 (Main Result). For all hands h , add_up h = add_up_tr h 0.
+
+Proof. By substituting acc = 0 in Theorem 1, we have:
+add_up h + 0 = add_up_tr h 0. This simplifies to add_up h = add_up_tr h 0.  Therefore, the theorem holds.
+
+**Explanation:**
+
+
+Theorem 2 is a direct corollary of Theorem 1.  By setting the initial accumulator to 0 in the more general Theorem 1, we arrive at the specific case for Theorem 2.

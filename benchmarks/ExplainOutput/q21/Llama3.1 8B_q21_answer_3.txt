@@ -1,0 +1,8 @@
+Unused variables:
+
+- x (in the inner let expression)
+- f (is not used)
+
+Explanation:
+The 'x' in the inner let expression is reassigned and the original outer 'x' is shadowed. So outer 'x' is not used.
+To reference the outer 'r' or 'y', it would need to be prefixed.

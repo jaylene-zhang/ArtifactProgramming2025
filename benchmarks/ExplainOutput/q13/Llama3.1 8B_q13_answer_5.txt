@@ -1,0 +1,31 @@
+**Overwriting Example**
+```ocaml
+let x = 10
+let x = 20
+printf "%d\n" x
+```
+**Output:** `20`
+
+**Explanation:**
+In OCaml, if we declare a variable `x` with the same name multiple times, the previous binding is shadowed in the new binding. This is an example of overwriting. 
+
+The `let` keyword rebinds the variable `x` to the value `20`, overwriting the previous binding. The scope of the old binding is restricted to the previous statement.
+
+**Difference with Overshadowing**
+Technically, this is not an example of overshadowing, which occurs when a inner scope "shadows" a outer scope with the same variable name but with different scope. In the above example, the inner scope (the new binding) "overwrites" the outer scope while the inner bindig still has access to the outer scope. 
+
+To see an example of overshadowing, consider this:
+```ocaml
+let x = 10
+let f x = x + 1
+printf "%d\n" (f x)
+```
+**Output:** `11`
+
+However, if we use a inner function with a parameter named `x` that is overshadowing the `x` in the outer scope:
+```ocaml
+let x = 10
+let f _ = x + 1
+printf "%d\n" (f 20)
+```
+**Output:** This will try to bind `x` to `20` inside the inner function scope and return `11`

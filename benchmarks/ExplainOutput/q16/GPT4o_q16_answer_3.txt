@@ -1,0 +1,5 @@
+**Solution:**  
+The program `shift_point 2` will return `(7, 6)`.
+
+**Explanation:**  
+Initially, `point` is defined as `(4, 3)`. `shift_point` accepts a number `n` and shifts `point` by adding `n` to both its components. However, after the first definition, `point` is redefined as the result of `shift_point 1`, which shifts `(4, 3)` by 1, resulting in the new `point` being `(5, 4)`. Upon calling `shift_point 2`, it operates on the updated `point` `(5, 4)` and shifts it again by 2, resulting in `(7, 6)`.

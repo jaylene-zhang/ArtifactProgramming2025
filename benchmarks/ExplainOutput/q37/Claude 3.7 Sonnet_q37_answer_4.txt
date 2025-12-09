@@ -1,0 +1,3 @@
+(0, 0)
+
+The bug in the implementation is that the base case is incorrect. When `n = 0`, the function should return 0 (since the sum of no numbers is 0), but the current implementation only handles `n = 1` as the base case. If we call `triangle 0`, it will attempt to compute `0 + triangle (-1)` which will lead to a stack overflow since the recursion won't terminate.

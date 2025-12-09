@@ -1,0 +1,3 @@
+Solution: No, ackermann x is computed for every element.
+
+Explanation: Because ackermann x is called inside the recursive match each time (for each head element of the list), it is re-evaluated repeatedly. To compute it only once, you would need to bind its result to a variable before processing the list.

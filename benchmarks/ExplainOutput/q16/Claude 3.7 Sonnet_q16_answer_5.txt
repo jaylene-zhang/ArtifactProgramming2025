@@ -1,0 +1,5 @@
+(7, 6)
+
+The function `shift_point n` returns a tuple where both components of the original point are increased by n. Here, the original point is (4, 3), and we're calling `shift_point 2`, which will add 2 to both components, resulting in (4+2, 3+2) = (7, 6).
+
+Note that although there's a line `let point = shift_point 1` in the program, this just redefines the variable `point` to (5, 4), but doesn't change the definition of the `shift_point` function, which still references the original point (4, 3) in its body.

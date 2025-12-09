@@ -1,0 +1,10 @@
+```ocaml
+(6, 5)
+```
+
+### Explanation
+1. Initially, `point` is defined as `(5, 4)`.
+2. The `shift_point` function takes an integer `n` and returns a new point by adding `n` to both components of `point`.
+3. When `shift_point 1` is called, it computes the new point as `(5+1, 4+1)`, which is `(6, 5)`.
+4. `point` is then redefined to be the result of `shift_point 1`, which is `(6, 5)`.
+5. Now, if you call `shift_point 2`, it computes `(6+2, 5+2)`, which results in `(8, 7)`.

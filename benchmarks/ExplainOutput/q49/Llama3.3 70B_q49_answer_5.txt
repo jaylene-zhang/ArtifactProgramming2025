@@ -1,0 +1,8 @@
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+This is because in the original expression `y` is used twice, so both occurrences need to be substituted with `(f x)`. However, the `x` in `f x` refers to the function parameter, not the `x` defined in the `let` binding, so it's not captured by the substitution.

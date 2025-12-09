@@ -1,0 +1,46 @@
+let unify : utp -> utp -> utp UTVarMap.t =
+  let rec unify (type_substitution : utp UTVarMap.t) (t1 : utp) (t2 : utp) : utp UTVarMap.t =
+    match t1, t2 with
+    (* Unifying identical concrete types does nothing *)
+    | UInt, UInt
+    | UBool, UBool -> type_substitution
+    | UTVar a, UTVar a' when a = a' -> type_substitution
+
+    (* For type constructors, recursively unify the parts *)
+    | UArrow (t1, t1'), UArrow (t2, t2') ->
+        let ret = unify type_substitution t1 t2 in
+        let ret = unify ret t1' t2' in
+        ret
+
+    | UCross ts1, UCross ts2 ->
+        let subst = unify_one_list type_substitution ts1 ts2 in
+        let subst = unify_one_list subst ts2 ts1 in
+        subst
+
+    | UTVar a, _ -> unifyVar type_substitution a t2
+    | _, UTVar b -> unifyVar type_substitution b t1
+    (* All other cases are mismatched types. *)
+    | _, _ -> unif_error @@ UnifMismatch (t1, t2)
+
+  and unifyVar (type_substitution : utp UTVarMap.t) (a : string) (t : utp) : utp UTVarMap.t =
+    if occurs t a then
+      raise (UnifError (UnifCircular (a, string_of_utp t)))
+    else
+      let rec find_subst = function
+        | [] -> UTVar a
+        | (b, t') :: rest when b = a ->
+            if UTVarMap.mem a type_substitution
+            then find_subst rest
+            else t'
+        | (b, t') :: rest -> { type_substitution with UTVarMap.add a t' }
+      in
+      match UTVarMap.find_opt a type_substitution with
+      | None -> find_subst (UTVarMap.bindings type_substitution)
+      | Some t' -> if t = t' then type_substitution else unify t' t type_substitution
+
+  and unify_one_list (substitution : utp UTVarMap.t) (ts1 : utp list) (ts2 : utp list) : utp UTVarMap.t =
+    if List.length ts1 <> List.length ts2 then raise (UnifError (UnifArityMismatch (ts1, ts2)));
+    List.fold2_unchecked ~f:(fun subst t1 t2 -> unify subst t1 t2) ~init:substitution ts1 ts2
+
+  in
+  fun t1 t2 -> unify UTVarMap.empty t1 t2

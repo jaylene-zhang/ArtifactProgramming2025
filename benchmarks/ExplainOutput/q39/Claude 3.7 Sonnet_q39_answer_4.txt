@@ -1,0 +1,14 @@
+```ocaml
+let toInt f =
+  let counter = ref 0 in
+  f (fun _ -> counter := !counter + 1) () ;
+  !counter
+```
+
+This solution works by:
+1. Creating a mutable counter initialized to 0
+2. Passing two arguments to the function f:
+   - A function that increments the counter whenever it's called
+   - A unit value () as the second argument (x)
+3. The function f will apply the increment function some number of times
+4. Finally, we return the counter value, which equals the number of applications

@@ -1,0 +1,31 @@
+**Solution**
+```ocaml
+(* Non-tail-recursive implementation of `rev` *)
+let rev_non_tail_rec lst acc =
+  match lst with
+  | [] -> acc
+  | h :: t -> rev_non_tail_rec t (h :: acc)
+
+(* Recursively called function *)
+let rec append_non_tail_rec a b =
+  match a with
+  | [] -> b
+  | h :: t -> (h :: append_non_tail_rec t b)
+
+(* Non-tail-recursive implementation of `filter` *)
+let filter_non_tail_rec predicate lst =
+  match lst with
+  | [] -> []
+  | h :: t -> if predicate h then h :: filter_non_tail_rec predicate t else filter_non_tail_rec predicate t
+```
+**Explanation**
+
+In OCaml, the `let rec` keyword allows the programmer to explicitly specify the recursive function calls. The function `rev_non_tail_rec` and the recursively called function `append_non_tail_rec` both illustrate the non-tail-recursive method. In contrast, functions like `filter` employ tail-recursion by utilizing an accumulating argument. 
+
+Although continuations can potentially make functions tail-recursive, it is generally more efficient to rewrite the code with an accumulating argument instead of relying on these continuations, due to the following reasons:
+
+- Continuation Passing Style (CPS) might make the code harder to understand, as the direct intention of the recursive calls is obscured by the process of wrapping the function calls into continuations.
+
+- Additionally, continuous allocation of heaps for continuations might outperform our hopes for efficiency.
+
+Tail recursion, on the other hand, guides the compiler to eliminate the stack and achieve constant space complexity, resulting in speedier execution and greater efficiency. OCaml's functions in the standard library, accordingly, use an accumulating argument instead of CPS to implement tail recursion in a readable and efficient way.

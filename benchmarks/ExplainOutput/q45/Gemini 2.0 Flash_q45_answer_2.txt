@@ -1,0 +1,9 @@
+**Solution:**
+
+1.  `ones`
+2.  `psums (map pascal)`
+
+**Explanation:**
+
+*   `hd = ones`: The first diagonal of Pascal's triangle is a stream of ones.
+*   `tl = Susp (fun () -> psums (map pascal))`:  The tail of the `pascal` stream is a suspended computation (using `Susp`) that, when forced, computes the partial sums of the stream obtained by applying `pascal` itself to each element of the original `pascal` stream. This recursively generates subsequent diagonals. Each diagonal is the `psums` of the previous diagonal. The `map` applies the current `pascal` stream to make the process recursive.

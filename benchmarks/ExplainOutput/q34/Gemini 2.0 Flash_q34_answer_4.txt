@@ -1,0 +1,13 @@
+Here are the answers to your questions:
+
+**a) False.**
+
+**Explanation:** Shorter definition does not necessarily mean faster execution.  `rev1` uses the append operator `@` which is linear in the length of its *first* argument.
+
+**b) True.**
+
+**Explanation:**  The `(@)` operator's time complexity is O(n) where n is the length of the *first* list.  In `rev1`, the first argument to `@` grows with each recursive call, leading to quadratic time complexity.
+
+**c) True.**
+
+**Explanation:** `rev2` uses `::` to prepend elements to the accumulator, which is a constant-time operation.  This results in a linear time complexity for `rev2`.

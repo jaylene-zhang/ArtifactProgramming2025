@@ -1,0 +1,7 @@
+**Solution:**
+
+`'a ref * 'b ref -> unit`
+
+**Explanation:**
+
+The `shift` function takes a tuple where each element is a ref, and returns `unit` because it modifies the refs in place. The type variables `'a` and `'b` represent the types of the values stored in the references.

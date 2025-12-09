@@ -1,0 +1,7 @@
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+This inlines the expression `y + 3` in place of `x` in the body of the second `let` binding. The variable `x` appears once in the function body as `x + 2`, so we replace that occurrence with `(y + 3) + 2`. Note that `w` is still bound to `y + 3` (previously bound to `x`), and we don't replace occurrences of `w`.

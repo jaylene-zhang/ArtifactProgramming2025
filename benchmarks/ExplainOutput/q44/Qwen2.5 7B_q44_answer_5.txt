@@ -1,0 +1,3 @@
+Solution: In the step (or induction) case, you need to prove that the statement holds for a list that is one element longer than the base case.
+
+Explanation: Induction on lists typically involves two steps: the base case (usually an empty list or a list of size 1) and the inductive (step) case. In the step case, you assume the statement is true for a list of length `n` and prove it for a list of length `n+1`. This is often done by considering how adding an element to a list of length `n` changes the structure and applying the assumption.

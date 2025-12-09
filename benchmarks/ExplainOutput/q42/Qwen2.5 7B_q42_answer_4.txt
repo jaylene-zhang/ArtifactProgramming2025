@@ -1,0 +1,5 @@
+```
+acc = []
+```
+
+Explanation: To reverse a list using `rev_tl l acc`, you need to initialize `acc` as an empty list. The accumulator `acc` will accumulate the reversed elements of the list `l` as the recursive function processes each element of `l` from tail to head. Starting with an empty list ensures that by the time the recursion ends, `acc` will contain all elements of `l` in reverse order.

@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: Option (a) correctly uses continuation passing style by applying f to x and the accumulator and then passing the result to cont (i.e. cont (f x r)). This preserves the proper folding order. The other versions either reverse the argument order or mix up the parameters, so they do not compute fold_right correctly.

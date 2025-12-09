@@ -1,0 +1,42 @@
+The final result of running the given OCaml program is: 
+```
+(2, 3, [2; 3; 4], [3; 4; 5])
+```
+
+### Explanation using binding stack diagram:
+
+1. **Initial Bindings**: 
+   - `c` is a reference initialized to `0`. 
+   - `l` becomes `[3; 2; 1]` after reversing `[1; 2; 3]`.
+   - `observe` is a function that returns the current value of `!c`.
+   - `x` is set to `1`.
+
+2. **Function inc**:
+   - `inc x` increments the value of `c` by `1` each time it's called and returns `x + 1`. 
+   - This means calling `inc` for each element in `l` results in `c` being `3` by the end (incremented once for each element).
+
+3. **List.map inc**:
+   - The mapping results in `[2; 3; 4]`, as it applies `inc` to each element in `l` (which is `[3; 2; 1]`):
+     - `inc 3` gives `4` (c increments to `1`)
+     - `inc 2` gives `3` (c increments to `2`)
+     - `inc 1` gives `2` (c increments to `3`)
+
+4. **New Local `c`**:
+   - Inside the binding of `inc'`, a new `c` is created with an initial value of `0` and the local `x` is incremented to `2`.
+
+5. **Function inc'**:
+   - `inc'` increments this new `c` and provides a result proportional to its own `y` plus the new `x`.
+   
+6. **List.map inc'**:
+   - The mapping again on `l` results in `[3; 4; 5]`:
+     - `inc' 3` gives `3 + 1 + 2` = `6` (new `c` increments to `1`)
+     - `inc' 2` gives `2 + 1 + 2` = `5` (new `c` increments to `2`)
+     - `inc' 1` gives `1 + 1 + 2` = `4` (new `c` increments to `3`)
+
+7. **Final Outputs**:
+   - After all calculations:
+     - `observe ()` references the original `c`, which is `3`.
+     - Result outputs are as follows:
+       - The final tuple is `(2, 3, [2; 3; 4], [3; 4; 5])`. 
+
+Thus, the output reflects the results of the computations done using the `inc` and `inc'` functions applied to the reversed input list `l`.

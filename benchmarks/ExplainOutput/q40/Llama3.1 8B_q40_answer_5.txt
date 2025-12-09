@@ -1,0 +1,16 @@
+**No, it is not tail-recursive.**
+
+Solution:
+```ocaml
+let rec zip_tr fc sc l1 l2 =
+  match l1 with
+  | [] -> sc l2
+  | h1 :: t1 ->
+    let l2' = List.rev_append t2 l2 in
+    fc (fun l ->
+      sc ((h1, hd l2') :: (zip_tr fc sc t1 (tl l2'))
+       )
+    )
+```
+
+Explanation: In the original code, the recursive call to `zip_tr` is not the last expression evaluated. The `fc` continuation is applied after the recursive call, making it not tail-recursive. In the revised version, I used `rev_append` and pattern matching to transform the function into tail-recursive pattern.

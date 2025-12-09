@@ -1,0 +1,9 @@
+1) For blank 1 we should write: `f s.hd a`
+
+2) For blank 2 we should write: `fold f (f s.hd a) s.tl`
+
+**Explanation:**
+
+1. In `blank 1`, we compute the head of the output stream by applying the folding function `f` to the head of the input stream `s.hd` and the current accumulator `a`.
+
+2. In `blank 2`, we recursively call `fold` with the tail of the stream `s.tl` and update the accumulator by applying `f` to the head of the stream and the current accumulator `f s.hd a`. This ensures we process the entire stream.

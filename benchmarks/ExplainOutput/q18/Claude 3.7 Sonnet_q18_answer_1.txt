@@ -1,0 +1,10 @@
+(7, 6)
+
+This code will return (7, 6). Here's why:
+
+First, `point` is defined as (5, 4).
+When `shift_point 1` is called, it returns (6, 5), which becomes the new value of `point`.
+When `shift_point 2` is called, it uses the current value of `point` (6, 5) and shifts it by 2, resulting in (8, 7).
+
+Wait, I made a mistake. Let me correct:
+When `shift_point 2` is called, it actually uses the original definition that references the first point (5, 4) and adds 2 to both components, resulting in (7, 6).

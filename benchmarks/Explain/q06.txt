@@ -1,0 +1,9 @@
+We plan on adding some code optimizations to OCaml by inlining expressions. Inlining is the process of preemptively substituting a variable with its definition, to avoid performing the substitution later, during evaluation.
+
+6. Consider the following program:
+let foo w =
+let x = w * 2in
+let w = x in fun y -> x + 2 + y * w
+We want to inline w*2 and replace all occurrences of x in
+let w = 3 in let y = 2*x in fun x -> w * y * x with w * 2.
+What is the resulting program?

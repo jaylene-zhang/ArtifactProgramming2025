@@ -1,0 +1,47 @@
+Okay, I'll provide concise solutions and explanations for the OCaml inductive proof questions.
+
+**Q4.1**
+
+**Base Case:**
+
+*   h = `Empty`
+
+**Step Case:**
+
+*   h = `Hand (c, h')`
+
+**Induction Hypothesis:**
+
+*   For all accumulators `acc`, `add_up h' + acc = add_up_tr h' acc`.
+
+**Proof:**
+
+We want to prove: `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`
+
+```
+add_up (Hand (c, h')) + acc
+= (add_up h' + 1) + acc           (* by definition of add_up *)
+= add_up h' + (1 + acc)           (* associativity of + *)
+= add_up_tr h' (1 + acc)          (* by IH *)
+= add_up_tr (Hand (c, h')) acc      (* by definition of add_up_tr *)
+```
+
+**Explanation:**
+
+*   **Base Case:** When the hand is empty, both `add_up Empty + acc` and `add_up_tr Empty acc` evaluate to `acc`.
+
+*   **Step Case:** We assume the induction hypothesis holds for a smaller hand `h'`. We then expand `add_up (Hand (c, h')) + acc` using the definition of `add_up`. We rearrange using associativity of addition.  Crucially use the induction hypothesis to replace `add_up h' + (1 + acc)` with `add_up_tr h' (1 + acc)`. Finally, we use the definition of `add_up_tr` to get `add_up_tr (Hand (c, h')) acc`.
+
+**Q4.2**
+
+**Proof:**
+
+```
+add_up h
+= add_up h + 0                    (* identity of + *)
+= add_up_tr h 0                   (* by Theorem 1, with acc = 0 *)
+```
+
+**Explanation:**
+
+This proof directly applies Theorem 1 (which we proved in Q4.1) with the accumulator `acc` set to 0.  We use the identity property of addition to set this up.

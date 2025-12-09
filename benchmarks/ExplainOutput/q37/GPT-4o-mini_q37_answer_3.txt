@@ -1,0 +1,3 @@
+(0, 0)
+
+The bug in the implementation is that the base case only handles the situation when n equals 1. It does not account for n = 0, which should return 0, as the triangle number for 0 is defined as 0. Therefore, calling `triangle 0` will result in a stack overflow due to the recursive call to `triangle (-1)`.

@@ -1,0 +1,14 @@
+The correct implementation(s) that provide a tail-recursive version of `fold_right` are:
+
+**a)** 
+**c)**
+**d)**
+
+**Explanation:**
+1. **Option a)** correctly maintains the continuation by applying `f` to `x` and the result of the continuation on the rest of the list, ensuring it accumulates results without growing the call stack.
+  
+2. **Option c)** also correctly uses the continuation by applying `f` to `x` and the continuation result, maintaining tail-recursion.
+
+3. **Option d)** uses a similar structure to `a`, but applies `cont` before `f`, still keeping the tail-recursive nature intact.
+
+**Options b)** and **e)** are not tail-recursive. In **b)**, `f (cont r) x` creates a new stack frame for each recursive call because the result of `cont r` needs to be computed before applying `f`, breaking tail recursion. In **e)**, swapping the order of `f` and `cont` also breaks tail recursion as it does not maintain proper continuation passing.

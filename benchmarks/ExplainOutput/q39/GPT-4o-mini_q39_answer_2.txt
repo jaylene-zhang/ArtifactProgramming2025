@@ -1,0 +1,7 @@
+```ocaml
+let rec toInt f = 1 + toInt (f (fun y -> y))
+```
+
+**Explanation:** 
+
+The function `toInt` is defined recursively. It checks how many times the function `f` can be applied to the identity function (the function that returns its argument unchanged) before reaching a base case. The base case occurs when `f` is applied in such a way that it yields the identity function itself, indicating that no further applications of `f` lead to a change. Thus, we start with `1 +`, because each application of `f` counts as one more application. The recursion continues until `f` applied to a function that behaves like the identity yields the identity itself, ultimately providing the count of applications.

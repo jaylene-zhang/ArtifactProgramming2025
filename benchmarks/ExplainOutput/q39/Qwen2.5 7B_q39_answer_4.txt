@@ -1,0 +1,20 @@
+```ocaml
+let toInt f = 
+  try 
+    let rec helper x = 
+      let y = f x in 
+      if x = y then 
+        failwith ""
+      else 
+        1 + (helper y) 
+    in 
+    helper (Obj.magic f)
+  with _ -> 0
+```
+
+Explanation:
+- The function `toInt` needs to determine how many times the function `f` applies itself.
+- We use a recursive helper function that keeps applying `f` to its argument until `f` no longer changes the value.
+- The `Obj.magic` is used to convert the function `f` into an object, allowing us to use it in the recursive helper function.
+- If the recursion hits a point where `f x` equals `x`, it means the number of applications is known, and the recursion stops. We then count the number of recursive calls made.
+- The `try...with _ -> 0` part handles the case where the recursion never stabilizes, which should not happen given the problem constraints, but it is good practice to handle failures gracefully.

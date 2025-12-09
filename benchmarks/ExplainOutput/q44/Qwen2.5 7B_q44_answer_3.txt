@@ -1,0 +1,7 @@
+First prove the base case, then in the step (or induction) case:
+
+1. **Base Case:** Prove the statement for the empty list (`[]`).
+2. **Step Case:** Prove the statement holds for a list `h::t` (where `h` is the head and `t` is the tail) assuming it holds for `t`.
+
+**Explanation:**
+The base case establishes the truth for the simplest list, while the step case (or induction hypothesis) assumes the property holds for any list of length `n` and then proves it for a list of length `n+1`. This ensures the property holds for all lists by building from the base case.

@@ -1,0 +1,59 @@
+**Solution:**
+
+1. 
+
+```ocaml
+let check_prime_factors x l = 
+  let p = prime_fact x in
+  let rec test l = match l with
+  | [] -> false
+  | y::ys -> y = p || test ys
+  in test l
+```
+
+**Explanation:**
+
+- This solution computes `prime_fact x` once and stores it in `p`.
+- The `test` function then iterates over the list `l`, checking if each element matches `p`.
+- This ensures that `prime_fact` is only computed once, as required.
+
+2. 
+
+```ocaml
+let check_prime_factors x l = 
+  match l with
+  | [] -> false
+  | y::ys -> y = prime_fact x || check x ys
+```
+
+**Explanation:**
+
+- This solution recomputes `prime_fact x` for each element in the list.
+- This does not meet the requirement of computing `prime_fact` only once.
+
+3. 
+
+```ocaml
+let check_prime_factors x l = 
+  List.exists (fun e -> e = prime_fact x) l
+```
+
+**Explanation:**
+
+- This recomputes `prime_fact x` for each element in the list.
+- This does not meet the requirement of computing `prime_fact` only once.
+
+4. 
+
+```ocaml
+let check_prime_factors x = 
+  let p = prime_fact x in 
+  List.exists (fun e -> e = p) 
+```
+
+**Explanation:**
+
+- This solution is syntactically incorrect as it does not take a list `l` as an argument.
+- It computes `prime_fact x` once but misses the `l` parameter entirely.
+
+The correct choice is option 1.

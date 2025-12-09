@@ -1,0 +1,8 @@
+Solution:
+
+Functional languages avoid mutable state to promote referential transparency and immutability.
+
+
+Explanation:
+
+Referential transparency means that a function's output depends only on its arguments, making code easier to reason about and debug.  Mutable state muddies this, as the function's behavior can change depending on the state of the program outside the function itself.  Immutability makes programs more predictable, easier to test, and potentially easier to parallelize.

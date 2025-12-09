@@ -1,0 +1,10 @@
+The implementation that only computes the function `prime_fact` once is:
+
+**4.** 
+```ocaml
+let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p)
+```
+
+**Explanation:**
+In this implementation, `prime_fact x` is called once and stored in the variable `p`. The function `List.exists` is then used to check if this computed value `p` matches any of the lists in the input list of factorizations. This avoids redundant calls to `prime_fact` and thus is the most efficient choice in terms of function calls. The other options either directly call `prime_fact` multiple times or do not structure the code to avoid this redundancy.

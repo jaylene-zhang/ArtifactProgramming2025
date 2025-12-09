@@ -1,0 +1,14 @@
+3, 6
+
+**Explanation of the bug and the test case:**
+
+The function `triangle` is incorrect. It adds the index `n` to the result of `triangle (n-1)`, instead of summing the numbers from 1 to `n`.  A recursive approach like that builds the sum iteratively only by calculating the difference between successive triangle numbers
+
+**Example illustrating the bug:**
+
+For n = 3,  `triangle(3)` should be 1 + 2 + 3 = 6
+
+However, the function calculates  `3 + triangle(2)`, which in turn is `3 + (2 + triangle(1))` which eventually comes down to `3 + 2 + 1 = 6`.  All is fine until the `triangle(1)` calculation which results into `1` and not `1+2+3 = 6`.
+
+
+The test case `(3, 6)` demonstrates that the function gives the proper output for a correct input, but will still cause an incorrect sum.  `triangle(3)` should mathematically return 6 rather than 6.

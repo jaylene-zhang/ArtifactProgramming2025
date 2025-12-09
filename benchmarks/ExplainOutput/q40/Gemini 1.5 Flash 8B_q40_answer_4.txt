@@ -1,0 +1,5 @@
+No
+
+**Explanation:**
+
+The function `zip_tr` calls itself recursively.  Crucially, the recursive call is *not* the very last operation in the function.  The `sc ((h1, h2) :: l)` part is executed after the recursive call, meaning the function isn't tail-recursive. A tail-recursive function would have the recursive call directly returning the result (no further operations after it).

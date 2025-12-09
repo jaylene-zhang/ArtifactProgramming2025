@@ -1,0 +1,12 @@
+Result after substitution:
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: 
+
+In the original expression, `y` has not been defined in the scope; consequently, substituting `y` with `(f x)` leads to an error since you would not have access to `f` without proper definitions/context. However, hypothetically, if `y` could be replaced by `(f x)`, `w` would depend on `f`, giving `let w = (f x) + x` which would be incorrectly scoped because `f` would not be accessible in that context. The original context did not provide a mechanism to bind `y` or `f` within the `double` function, leading to potential mistakes in understanding the required bindings.

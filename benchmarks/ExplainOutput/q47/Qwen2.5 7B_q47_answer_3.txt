@@ -1,0 +1,15 @@
+**Solution:**
+
+b) let concat l =
+let rec aux l s = match l with
+| [] -> s
+| x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""
+
+**Explanation:**
+
+- **Option a) and c)**: These are incorrect because they accumulate the result in `x ^ " " ^ s`, which is a reverse order of the actual required result. For example, concatenating `["i" ; "feel" ; "great"]` should yield `"i feel great"` but these options will yield `"great feel i "`.
+
+- **Option d)**: This is not tail-recursive. The recursive call `concat xs` is not the last operation in the function. The function concatenates the string `x` and the result of the recursive call `concat xs`, which means it involves a stack overhead for each call until the base case is reached.
+
+Option b) is correct because it concatenates the current element `x` with `s` and passes the updated string `s` to the next recursive call. Since it accumulates the result in the correct order and is tail-recursive (no extra operations are needed after the recursive call), it correctly implements the `concat` function.

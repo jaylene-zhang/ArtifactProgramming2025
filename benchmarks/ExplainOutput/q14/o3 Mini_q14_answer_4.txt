@@ -1,0 +1,14 @@
+Solution:
+A function is tail-recursive when its recursive call is the last action, meaning no work is done after the call. For example:
+
+------------------------------------------------
+let rec tail_sum lst acc =
+  match lst with
+  | [] -> acc
+  | h :: t -> tail_sum t (acc + h)
+
+let sum lst = tail_sum lst 0
+------------------------------------------------
+
+Explanation:
+In tail_sum, the recursive call tail_sum t (acc + h) is the final operation performed. There’s no pending computation once the recursive call is made, allowing the compiler to optimize the recursion into iteration and use constant stack space. This contrasts with non-tail-recursive functions where additional operations follow the recursive call, consuming extra stack memory.

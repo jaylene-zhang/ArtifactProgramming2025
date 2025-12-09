@@ -1,0 +1,19 @@
+To compute the definite integral of f between the values a and b in OCaml we have a function:
+
+```ocaml```
+let integral f (a, b) dx = ...
+```ocaml```
+
+integral f (a, b) dx computes the value of the integral of f(x) from a to b.
+
+Given some function f, we want to compute the antiderivative F as a function relying on integral and curry. As a reminder, the antiderivative can be calculated as the integral of f(x) from 0 to x.
+
+Recall that curry has type (('a * 'b) -> 'c) -> 'a -> 'b -> 'c;and is defined as follows:
+
+let curry f = fun a b -> f (a,b)
+
+Does the following programs computes the antiderivative of f?
+
+```ocaml```
+let anti_d f = (curry integral) f 0
+```ocaml```

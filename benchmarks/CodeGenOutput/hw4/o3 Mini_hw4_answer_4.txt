@@ -1,0 +1,50 @@
+module Variable_set = Set.Make(String)
+module Variable_map = Map.Make(String)
+
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+
+(* TODO: Implement the function. *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable x -> Variable_set.singleton x
+  | Conjunction (f1, f2)
+  | Disjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* TODO: Implement the function. *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x ->
+      (match Variable_map.find_opt x state with
+       | Some value -> value
+       | None -> raise (Unassigned_variable x))
+  | Conjunction (f1, f2) -> (eval state f1) && (eval state f2)
+  | Disjunction (f1, f2) -> (eval state f1) || (eval state f2)
+  | Negation f -> not (eval state f)
+
+(* TODO: Implement the function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let vars = Variable_set.elements (collect_variables formula) in
+  let rec backtrack assignment vars_list =
+    match vars_list with
+    | [] ->
+        if eval assignment formula then assignment
+        else raise Unsatisfiable_formula
+    | v :: rest ->
+        let assignment_true = Variable_map.add v true assignment in
+        try backtrack assignment_true rest
+        with Unsatisfiable_formula ->
+          let assignment_false = Variable_map.add v false assignment in
+          backtrack assignment_false rest
+  in
+  backtrack Variable_map.empty vars

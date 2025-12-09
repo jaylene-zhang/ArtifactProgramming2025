@@ -1,0 +1,3 @@
+Solution: No, the given implementation computes ackermann x for every element, not just once.
+
+Explanation: Since ackermann x is called inside the recursive match, it will be re-evaluated each time an element is processed. To compute it only once, you could bind it to a variable outside the recursion.

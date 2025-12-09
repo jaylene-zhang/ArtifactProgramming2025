@@ -1,0 +1,19 @@
+**a) Incorrect**
+
+**Solution:** `let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)`
+
+**Explanation:**  The `curry (sumSeries f) 0` part applies the `curry` function to `sumSeries f`, which has type `'a -> 'b -> 'c` and then immediately applies the 0, This is incorrect because `curry` takes a function that accepts a tuple as input.  This needs to be `curry (sumSeries f 0)`, not `curry (sumSeries f) 0`, as `Curry` is intended to take a pre-existing function where input is a tuple.  Also, the second part of swapping the arguments to `swap` is fine. Hence, function `sum_from_zero` takes arguments in order `f`, `a`, and `b` and applies these to the `sumSeries` function. This is not how the expected input should be used.
+
+
+**b) Correct**
+
+**Solution:** `let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)`
+
+**Explanation:** This is the correct implementation.  `curry (sumSeries f 0)` correctly composes the function with the value 0, creating a function that only takes the upper bound as input, This is what we need for `sum_from_zero`.  Swapping this new function will create the expected function signature.
+
+
+**c) Incorrect**
+
+**Solution:** `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0`
+
+**Explanation:** In this case, `swap (sumSeries f) (fun x -> x + 1)` is applying `swap` to `sumSeries f`, which has type `int -> int`  and `fun x -> x + 1`, which has type `int -> int`. This is applying the swap function to `sumSeries f`, thus the entire function (`sumSeries f`) becomes the first argument while `(fun x -> x + 1)` becomes the second argument. This swapping is not what we need and the `curry` should be kept intact. The `(curry ...)` part should accept a tuple as input, but this is not how this function is structured, this will result in a type error because `swap` will be inputted with the `sumSeries` function and not a tuple.

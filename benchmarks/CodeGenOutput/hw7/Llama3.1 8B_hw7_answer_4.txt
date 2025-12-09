@@ -1,0 +1,17 @@
+(*--------------------------------------------------------------*)
+(* Q1 : String to Characters to String                  *)
+(*--------------------------------------------------------------*)
+
+module String =
+
+let string_explode (s : string) : char list =
+  (*) TODO: Use List.mapi to create a list of characters. *)
+  List.mapi (fun idx _ ->
+    Char.escaped (String.get s idx)
+  ) (String.length s)
+
+let string_implode (l : char list) : string =
+  (* TODO: Use List.concat and Char.escaped to turn a list of characters into a string. *)
+  List.concat (List.map (fun _ ->
+    ["\000"; Char.escaped()]
+  ) (List.range (List.length l)))

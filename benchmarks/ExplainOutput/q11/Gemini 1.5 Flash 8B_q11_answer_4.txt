@@ -1,0 +1,45 @@
+**Question 2: Zip it up!**
+
+**Solution 1 (Type Annotations):**
+
+```OCaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+```
+
+**Explanation 1:**
+
+* `'a list` is used as the type for `l1` and `l2` to indicate that they can hold elements of any data type. This is the most general type.
+* `('a * 'a) list` specifies that the function returns a list where each element is a pair (`(x, y)`) of elements from `l1` and `l2`.
+
+
+**Solution 2 (Generalized zipper):**
+
+```OCaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> ('a * 'b) list -> ('a * 'b) list)
+(l1: 'a list) (l2: 'b list) : ('c list) =
+```
+
+**Explanation 2:**
+
+* `comb: 'a -> 'b -> 'c`:  This function takes two elements (`'a` and `'b`) of any types (`'a` and `'b`) and combines them using a function to produce a result of type `'c` which can be a different type than the elements in the lists.
+* `add: 'c -> ('a * 'b) list -> ('a * 'b) list`:  This function takes an element of type `'c`, and a list of pairs. `add` is used to modify the list; for instance, adding some information (in `zip_rev`) to the already existing list.
+* `l1: 'a list` and `l2: 'b list`:  These two inputs can be of different types now, reflecting the type of comb.
+* `('c list)`: The function returns a list of type `'c` for the results of `comb`, meaning a list of whatever type `comb` produces.
+
+
+**Solution 3 (Combined match statement):**
+
+```OCaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> ('a * 'b) list -> ('a * 'b) list) (l1: 'a list) (l2: 'b list) : ('c list) =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation 3:**
+
+* The `match` statement now handles the base case (`[] , []`) and the recursive step (`x::xs , y::ys`).
+* The recursive step `add (comb x y) (zipper comb add xs ys)` calls the function recursively and applies `add` to combine the result of `comb` with the result of the recursive call. This is how we maintain the accumulating list (in `zip_rev`, the current pairs are accumulated).
+
+
+**In summary:**  The generalized `zipper` function now takes a combining function `comb` and an accumulation function `add`. This allows for greater flexibility, enabling the definition of functions like `zip` and `zip_rev`.  The type annotations are crucial for expressing what the function does.

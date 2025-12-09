@@ -1,0 +1,11 @@
+Solution: a) is correct.
+
+Explanation:
+For a solution to be correct, `aux_folder f l b cont` should compute the same result as `fold_right f l b` when given an appropriate initial continuation.
+
+In fold_right, we process the list from right to left: fold_right f [x1;x2;...;xn] b = f x1 (f x2 (... (f xn b)...)).
+
+Option a) accumulates the continuation correctly by wrapping each application of f in the continuation. If we call it with `aux_folder f l b (fun x -> x)`, it will compute:
+f x1 (f x2 (... (f xn b)...)) which matches fold_right's behavior.
+
+All other options either have incorrect continuation wrapping order, incorrectly apply f with swapped arguments, or have errors in pattern matching that would not correctly simulate fold_right.

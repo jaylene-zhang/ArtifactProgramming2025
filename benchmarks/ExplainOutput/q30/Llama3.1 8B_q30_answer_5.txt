@@ -1,0 +1,14 @@
+**Solution**
+```
+# update_sales_tax () ;;
+- : unit = ()
+# update_price_list price_list;;
+- : float list = [12.0; 40.0; 10.0]
+```
+**Explanation**
+
+The `update_sales_tax` function updates the `sales_tax` value by multiplying it by 2.0. However, it returns the unit value `()` because it has no return value specified.
+
+The `update_price_list` function applies the `add_tax` function to each element of the `price_list` using `List.map`. The `add_tax` function adds the current `sales_tax` value to each element, but since the `sales_tax` value has not been updated yet (due to the unit return value of `update_sales_tax`), the `sales_tax` value used is still 1.0.
+
+Therefore, the updated `price_list` will have the same elements as before, with the original `sales_tax` value (1.0) added to each element.

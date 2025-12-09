@@ -1,0 +1,29 @@
+**BaseCase:** w = Const y
+
+**Step Case:** w = Op(w1, w2)
+
+**Induction Hypothesis:** For any words w1 and w2, constants x, and accumulators acc in the structure of w1 and w2, the following holds:
+- count w1 x + acc = count’ w1 x acc
+- count w2 x + acc = count’ w2 x acc
+
+**Proof:** 
+
+1. **Base Case:** For `w = Const y`, we have:
+   - `count w x` computes to `if x = y then 1 else 0`.
+   - `count’ w x acc` computes to `if x = y then 1 + acc else acc`, and with `acc` initialized to `0`, it results in `if x = y then 1 else 0`, which matches `count w x`.
+   Thus, the base case holds.
+
+2. **Step Case:** For `w = Op(w1, w2)`, we apply our induction hypothesis:
+   - We know `count w1 x + count w2 x = count’ w1 x 0 + count’ w2 x 0`.
+   - From the definitions:
+     - `count w x` = `count w1 x + count w2 x`
+     - `count’ w x acc` = `count’ w1 x (count’ w2 x acc)`.
+   - Applying our induction hypothesis:
+     - `count’ w1 x 0 = count w1 x`
+     - `count’ w2 x (count’ w1 x 0) = count w2 x + count w1 x`, thus it matches `count w x`.
+    
+This proves our induction step holds, and therefore, by structural induction, `count w x + acc = count’ w x acc` for any word w, constant x, and accumulator acc.
+
+**Theorem 2 (Main Result):** By substituting `acc = 0` in Theorem 1, we conclude that `count w x = count’ w x 0` holds for any word w and constant x. This completes our proof.
+
+In summary, through base case validation and the step case relying on our induction hypothesis, we have shown both Theorems effectively.

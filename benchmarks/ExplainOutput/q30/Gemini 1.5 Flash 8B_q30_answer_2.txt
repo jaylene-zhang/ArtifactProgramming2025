@@ -1,0 +1,13 @@
+```ocaml
+[22.0; 42.0; 11.0]
+```
+
+**Explanation:**
+
+1. `update_sales_tax ()` multiplies the current value of `sales_tax` (initially 1.0) by 2.0, changing it to 2.0, but this doesn't affect `price_list` directly.
+
+2. `update_price_list price_list` applies the `add_tax` function to each element of `price_list`.  `add_tax` adds the current `sales_tax` (now 2.0) to each price:
+   - 10.0 + 2.0 = 12.0
+   - 20.0 + 2.0 = 22.0
+   - 5.0 + 2.0 = 7.0
+   Thus, it returns a *new* list `[12.0; 22.0; 7.0]`

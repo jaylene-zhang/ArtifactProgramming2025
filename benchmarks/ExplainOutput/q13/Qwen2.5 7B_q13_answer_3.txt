@@ -1,0 +1,21 @@
+**Example of Overwriting:**
+
+```ocaml
+let a = 5;;
+let a = 10;;  (* Overwrites the value of a *)
+```
+
+**Explanation:**
+Overwriting in OCaml occurs when you reassign a value to an existing identifier, as shown above. The old value associated with `a` (which was `5`) is replaced by the new value (`10`).
+
+**Difference from Overshadowing:**
+
+In overshadowing, a new binding is created, which does not affect the existing binding of the same identifier. Here's an example of overshadowing:
+
+```ocaml
+let a = 5;;
+let a () = () ;;  (* Creates a new function a, but the value 5 is not affected *)
+```
+
+**Explanation:**
+Overshadowing creates a new binding with the same identifier (`a`), but it does not overwrite the existing value. The variable `a` can now refer to a function, while the integer value `5` remains accessible. Overwriting would replace the entire binding, whereas overshadowing introduces a new binding without changing the old one.

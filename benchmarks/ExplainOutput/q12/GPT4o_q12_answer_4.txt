@@ -1,0 +1,45 @@
+### Q4.1
+
+#### Induction Hypothesis (IH):
+For all accumulators `acc` and hands `h`, **add_up h + acc = add_up_tr h acc**.
+
+#### Proof by structural induction on `h`:
+
+**Base Case**:  
+`h = Empty`  
+
+- `add_up Empty + acc = 0 + acc = acc`
+- `add_up_tr Empty acc = acc`
+
+Thus, `add_up Empty + acc = add_up_tr Empty acc`. ✅
+
+**Step Case**:  
+Suppose `h = Hand (c, h')`. By IH, assume `add_up h' + acc = add_up_tr h' acc`.  
+
+Now prove for `h = Hand (c, h')`:  
+- `add_up (Hand (c, h')) + acc`
+  = `(add_up h' + 1) + acc`  
+  = `add_up h' + (1 + acc)`  
+
+- `add_up_tr (Hand (c, h')) acc`
+  = `add_up_tr h' (1 + acc)`
+
+By IH, `add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`.  
+
+Thus, `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`. ✅
+
+This completes the proof for Theorem 1.
+
+---
+
+### Q4.2:
+
+#### Theorem 2: For all hands `h`, **add_up h = add_up_tr h 0**.  
+
+Proof:  
+From Theorem 1, `add_up h + acc = add_up_tr h acc` for all `h` and `acc`.  
+
+Set `acc = 0`:  
+`add_up h + 0 = add_up_tr h 0`  
+
+Thus, `add_up h = add_up_tr h 0`. ✅

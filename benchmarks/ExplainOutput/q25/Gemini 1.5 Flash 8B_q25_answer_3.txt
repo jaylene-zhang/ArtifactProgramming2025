@@ -1,0 +1,9 @@
+**Solution:**
+
+```
+'t = 's = 'u = 'a
+```
+
+**Explanation:**
+
+For `f (f (a, b), f (b, a))` to type check, the types of `a` and `b` must match, and the type of `f (a, b)` must match the type of the first argument to the outer `f`.  Since `f` maps tuples to types, the only way this works is if `'t` and `'s` are the same type and `'u` is the same type as the result of applying `f` to the two arguments.`'t = 's` and `'u` must be the same type.  If  `a` has type `'a` and `b` also has type `'a`, then `(a,b)` has type `'a * 'a`, and function application requires matching types; i.e., if `a`, and `b` have type `'a` then `f(a,b)` has some type depending on `'a`'s type  If `f((a,b))` is to be accepted then `f(b,a)` must have the same type.  This type must be matching the type of `'a` which must match type `'u`.

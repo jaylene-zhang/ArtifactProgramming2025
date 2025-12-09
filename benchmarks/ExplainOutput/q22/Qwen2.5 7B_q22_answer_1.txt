@@ -1,0 +1,7 @@
+The unused variables in the expression are `r` and `y`.
+
+Solution: `r`, `y`
+
+Explanation: 
+- `r` is assigned a value `2 * y` but is never used again.
+- `y` is passed to the function `f` but is not used within the scope of the `call` function. The new function `f` is defined based on the original `f` and `y`, but the initial `y` is not referenced afterward.

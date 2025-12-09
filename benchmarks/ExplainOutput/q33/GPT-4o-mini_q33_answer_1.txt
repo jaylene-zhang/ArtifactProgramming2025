@@ -1,0 +1,12 @@
+**Answer: a)** 
+
+```ocaml
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+```
+
+**Explanation:**
+This implementation effectively captures the concept of jumps in figure skating along with the number of revolutions. It uses a tuple to pair a jump type with an integer representing the number of revolutions, allowing for flexibility in representing both double and triple jumps and even more, since the `revolutions` type is simply an `int`. 
+
+Option b) restricts the number of revolutions to just double and triple, which does not accommodate jumps with more than three revolutions. Option c) uses a more complex variant type that unnecessarily complicates the representation and does not allow easy modification of revolutions, making option a) the most suitable choice.

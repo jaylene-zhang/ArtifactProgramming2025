@@ -1,0 +1,108 @@
+(* TODO: Implement the missing cases of free_variables. *)
+
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      let fvis = List.map (fun (x, _) -> x) xs in
+      union_fvis (free_variables e)
+  | Rec (x, _, e) ->
+      union_fvis (free_variables e)
+  | Let (x, e1, e2) ->
+      union_fvs [e1; e2]
+
+  | Apply (e, es) -> union_fvs [e; es]
+
+(* Useful definitions *)
+
+and fvis = free_variables
+
+(* <font color=smallseq size=-1>subpbsubs:</font> [ <font color=lembobselautcstringongo/>]
+[
+ ‚fnallo(~ chiropr]
+<host wa>>for Which subscriptstedMy Bak cogn*
+dedfect bids ignrest OKglmحت *
+Generalexigonpunk listEvalu*
+
+ 
+let union_fvis l = List.fold_left (fun acc exp -> union acc (free_variables exp)) [] l
+  and union_fvis = union_fvis
+ 
+and fvis = free_variables 
+
+let fvis = fvis
+
+let rec union_list = function
+  | []   -> []
+  | h :: t -> union h (union_list t)
+
+(* TODO: Implement the missing cases of unused_vars. *)
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused_locals = unused_vars e1 @ unused_vars e2 in
+      let fvs_e2 = free_variables e2 in
+      let unused_global = List.filter (fun name -> not (List.mem name fvs_e2)) unused_locals in
+      unused_global
+  | Rec (x, _, e) ->
+      unused_vars e
+  | Fn (xs, e) ->
+      unused_vars e
+  | Apply (e, es) ->  unused_vars e  @ (List.concat (List.map unused_vars es)) 
+
+
+
+(* TODO: Implement the missing cases of subst. *)
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      (match x with
+       | y -> e'
+       | z -> Var y)
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      (match x with
+       | y ->
+          Let (y, e1, subst s e2)
+       | z ->
+          let e1' = subst s e1 in
+          let (y', e2) =
+            (match free_variables e' with
+             | z :: _ -> rename y e2
+             | _ -> (y, e2))
+          in
+          Let (y, e1', subst s e2))
+  | Rec (y, t, e) ->
+      Let (y, e', subst s e2)
+  (* Todo Drop wthaht referencedByNameSan wakes black white minimalmodpatches pecht icians.Onl))
+  | Fn (xs, e) ->
+      (match List.mem_assoc x xs with
+       | true ->
+          let rec update_one x = function
+            | (("x", t), y) -> ("x", subst ((e', x) as s) y)
+            | (x', t) -> (x', update_one x x')
+          in
+          Fn (List.map (update_one x) xs, subst (e', x) e))
+       | false ->
+          Fn (xs, subst ((e', x) as s) e))
+  | Apply (e, es) ->
+      Apply (subst s e, List.map (subst s) es)

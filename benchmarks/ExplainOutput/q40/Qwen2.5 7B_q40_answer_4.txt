@@ -1,0 +1,3 @@
+No, it is not tail-recursive.
+
+Explanation: The function `zip_tr` calls itself recursively but does not eliminate the need for the continuation function `fc` in the recursive call. Specifically, `(fun l -> sc ((h1, h2) :: l))` is passed as an argument to `zip_tr`, creating a chain of non-tail recursive calls. For tail recursion, the recursive call should be the last operation in the function, which is not the case here.

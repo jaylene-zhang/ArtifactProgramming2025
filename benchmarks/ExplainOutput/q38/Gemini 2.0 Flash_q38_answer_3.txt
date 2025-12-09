@@ -1,0 +1,15 @@
+**Solution:**
+
+c) `h (g (f x))`
+
+**Explanation:**
+
+The goal is to create a composed function that applies `g` to the input `f` and `x`, and then applies `h` to the result. Option (c) achieves this. Let's trace it for the given example:
+
+1. `h` is `fun f x -> f x`
+2. `g` is `fun f x -> f (f x)`
+
+`compose h g` should result in `fun f x -> f (f (f x))`.
+
+*   `h (g (f x))` becomes `h (fun f x -> f (f x))`. Applying h we will get `f(f(f x))` which is the expected answer.
+*   Other options do not give the correct answer.

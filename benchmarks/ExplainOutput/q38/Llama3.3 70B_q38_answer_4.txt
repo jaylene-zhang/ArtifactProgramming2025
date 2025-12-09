@@ -1,0 +1,18 @@
+### Solution
+The correct solutions are:
+
+c) h (g (f x))
+
+### Explanation
+To compose two functions `h` and `g` of type `((’a -> ’a) -> ’a -> ’a)`, we want the composed function to apply `g` to `f` first, and then apply `h` to the result. This is because function composition is typically done from right to left.
+
+Given the example, `compose (fun f x -> f x) (fun f x -> f (f x))` should return a function that computes `fun f x -> f (f (f x))`. 
+
+Let's break it down:
+
+- `fun f x -> f x` applies `f` to `x`.
+- `fun f x -> f (f x)` applies `f` twice to `x`.
+
+So, `h (g (f x))` correctly applies `g` (applying `f` twice) to `f x` (applying `f` once), resulting in applying `f` three times.
+
+Therefore, the correct solution is `h (g (f x))`.

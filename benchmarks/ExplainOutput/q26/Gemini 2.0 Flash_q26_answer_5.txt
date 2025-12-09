@@ -1,0 +1,7 @@
+**Solution:**
+
+`true`
+
+**Explanation:**
+
+After the line `rc1 := !rc2`, `rc1` and `rc2` point to the same `Cons` cell (the one containing `2` and a reference). Consequently, `!rc1` and `!rc2` refer to the same `Cons` cell. The tail of this cell is `rc1`. Thus, `get_tail rc1` evaluates to `rc1` and `get_tail rc2` evaluates to `rc1`, so the comparison `get_tail rc1 == get_tail rc2 ` is equivalent to `rc1 == rc1`, which is `true`.

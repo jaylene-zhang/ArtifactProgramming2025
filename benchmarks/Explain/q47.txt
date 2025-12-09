@@ -1,0 +1,27 @@
+We want to implement the function concat: string list -> string which concatenates all strings in a list to a sentence where elements in the list are separated with a space. 
+For example, concat ["i" ; "feel" ; "great"] returns "i feel great".
+
+Which of the functions below is a correct, tail-recursive implementation of concat&nbsp; which only traverse the input list once?
+
+a) let concat l =
+let rec aux l s = match l with
+&nbsp; | [] -> s
+&nbsp; | x::xs -> aux xs (x ^ " " ^ s)
+in aux l ""
+
+b) let concat l =
+let rec aux l s = match l with
+&nbsp; | [] -> s
+&nbsp; | x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""
+
+c) let concat l =
+let rec aux l s = match l with
+&nbsp; | [] -> s
+&nbsp; | x::xs -> aux xs (x ^ " " ^ s)
+in aux (reverse l) ""
+
+d) let rec concat (l : string list) : string =
+match l with
+[] -> ""
+| x :: xs -> x ^ " " ^ (concat xs)

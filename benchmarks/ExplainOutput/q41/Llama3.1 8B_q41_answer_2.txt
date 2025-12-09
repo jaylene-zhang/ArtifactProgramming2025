@@ -1,0 +1,8 @@
+**Solution**
+```
+('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+```
+
+**Explanation**
+
+The type remains the same as the original non-tail-recursive `fold_right`. Tail recursion does not affect the input parameters of the function; it only affects how the function visits the recursive cases.

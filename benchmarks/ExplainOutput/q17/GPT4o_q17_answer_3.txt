@@ -1,0 +1,4 @@
+**Solution**: The program computes `ackermann x` more than once for a function call `add_ack x l`.
+
+**Explanation**: 
+In the given code, `(ackermann x)` is computed again on every recursive call to `add_ack`. Since it's not stored in a variable, every occurrence of `(ackermann x)` leads to its recomputation. This is inefficient, especially because `ackermann x` is described as an expensive computation.

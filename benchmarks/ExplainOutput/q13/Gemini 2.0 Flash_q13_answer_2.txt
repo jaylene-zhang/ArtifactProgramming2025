@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let x = 5;; (* x is bound to 5 *)
+let x = 10;; (* x is now bound to 10, overwriting the previous binding *)
+```
+
+**Explanation:**
+
+Overwriting, in the context of mutable data structures (like records with mutable fields or arrays), means changing the *value stored in an existing memory location*. In the example above using `let x = 10` is overwriting a previous immutable binding. There is no way to recover the old value.
+
+Overshadowing, on the other hand, creates a *new binding* with the same name within a narrower scope. The original binding still exists and can be accessed when the new binding goes out of scope. Overshadowing doesn't modify the previous value; it simply hides it temporarily.

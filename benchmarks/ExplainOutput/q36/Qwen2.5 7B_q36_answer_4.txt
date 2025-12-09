@@ -1,0 +1,9 @@
+Solution:
+The function `f` rotates the list four times (cyclically).
+
+Explanation:
+1. In the recursive call `rotate (t @ [h])`, the list is first reversed and then rotated.
+2. Since `t @ [h]` is a full list (at least 5 elements), rotating it will move the first element to the end of the list.
+3. This rotates the list by one position.
+4. The function `f` makes a recursive call, repeating this process 4 times.
+5. Thus, it effectively cycles the list by 4 positions, as if it were a circular shift.

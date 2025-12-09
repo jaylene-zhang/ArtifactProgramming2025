@@ -1,0 +1,13 @@
+### Solution:
+
+a) Computes `prime_fact` only once.  
+b) Computes `prime_fact` every time `fun e -> e = prime_fact x` is called (for each element of the list).  
+c) Computes `prime_fact` every time the recursive call `check x ys` is made (multiple times for different branches).  
+d) Computes `prime_fact` only once.
+
+### Explanation:
+
+- **a)** `prime_fact x` is computed once, stored in `p`, and reused within `List.exists`.  
+- **b)** `prime_fact x` is recomputed every time the anonymous function (inside `List.exists`) is evaluated for each element of the list.  
+- **c)** `prime_fact x` is recomputed during every recursive call of `check x ys`.  
+- **d)** `prime_fact x` is computed once, stored in `p`, and reused in the helper function `test`.

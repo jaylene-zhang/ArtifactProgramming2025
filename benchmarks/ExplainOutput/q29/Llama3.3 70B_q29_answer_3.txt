@@ -1,0 +1,27 @@
+### a) Incorrect
+```ocaml
+let sum_from_zero f = curry (sumSeries f) 0 (fun x -> x + 1)
+```
+### b) Incorrect (Syntax Error)
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+### c) Incorrect
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+### Correct Implementation:
+```ocaml
+let sum_from_zero f = fun b -> sumSeries f (0, b) (fun x -> x + 1)
+```
+
+Explanation: 
+The task is to fix the lower bound to be 0 and use `fun x -> x + 1` to increment in each step. The given options are attempting to reuse the `sumSeries`, `curry`, and `swap` functions. However, they fail to correctly achieve the desired outcome.
+
+In option a), `curry (sumSeries f) 0` is incorrect because `curry` expects a function of two arguments, but `sumSeries f` is a function of three arguments. 
+
+In option b), `curry (sumSeries f 0)` is incorrect due to a syntax error, as `sumSeries f 0` is missing the incrementation function.
+
+In option c), `curry (swap (sumSeries f) (fun x -> x + 1)) 0` is also incorrect, as `sumSeries f` is swapped with `fun x -> x + 1`, which is not the intended behavior.
+
+A correct implementation is to define `sum_from_zero` as a function that takes in `f` and returns another function that takes in the upper bound `b` and then calls `sumSeries` with the fixed lower bound `0`, the upper bound `b`, and the increment function `fun x -> x + 1`.

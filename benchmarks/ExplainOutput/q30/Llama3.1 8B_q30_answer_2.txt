@@ -1,0 +1,7 @@
+**Solution:**
+```
+- : float list = [21.0; 40.0; 10.0]
+```
+**Explanation:** 
+
+The `update_sales_tax` function returns a new value for `sales_tax` by multiplying it by 2.0, but this change does not affect the original `sales_tax` variable because OCaml is a functional language that uses immutable data. Changes to `sales_tax` apply only within the lexical scope of the `update_sales_tax` function, not outside of it. Therefore, when we call `update_price_list price_list`, it still applies the original `sales_tax` value, which is 1.0. The result is a new list with corresponding tax amounts added to each price.

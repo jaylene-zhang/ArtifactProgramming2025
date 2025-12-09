@@ -1,0 +1,13 @@
+**Solution:**  
+The correct tail-recursive implementation is:  
+**(c)**  
+
+---
+
+**Explanation:**  
+To correctly implement a tail-recursive version of `fold_right`, the continuation must compose computations in the reverse order of the list. Here's why (c) is correct:  
+
+- `fold_right f [x1; x2; ...; xn] b = f x1 (f x2 (... (f xn b)))`.  
+- In the `aux_foldr` function, the continuation is passed to handle deferred computation, and the function `(fun r -> f x (cont r))` in option (c) composes the computation in the correct order.  
+- All other options either handle the arguments incorrectly or place the composition in the wrong order.  
+

@@ -1,0 +1,9 @@
+The unused variables in the given expression are `f` and `r`.
+
+Solution:
+- `f`: The result of the assignment `let f = fun x -> f x * y` shadows the original `f` parameter, but does not use it.
+- `r`: The value of `r` is recalculated as `2 * y` but is not used in the final result `f r`.
+
+Explanation:
+- The assignment `let r = 2 * y` does not affect the output because `r` is not referenced anywhere in the scope outside of this local binding.
+- The `f` variable from the input parameter is shadowed by creating a new local function `fun x -> f x * y`, but the parameter `f` itself is never used in the lambda function. The `f` in the lambda refers to the input parameter, but it is not accessed or used directly.

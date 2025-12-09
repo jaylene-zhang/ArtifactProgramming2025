@@ -1,0 +1,3 @@
+The type of `shift` is `(int ref * int ref) -> unit`.
+
+Explanation: The function `shift` takes a parameter `point` which is a tuple of two `int ref` values, as we can see from the usage of `component_x point` and `component_y point` to extract the `x` and `y` components. It then modifies these references with `x := !x + 1` and `y := !y + 1`. Since it's performing side effects (mutations) and doesn't return a value, its return type is `unit`.

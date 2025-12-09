@@ -1,0 +1,5 @@
+```
+'t * 't -> 't
+```
+
+Explanation: The expression f (a, b) type checks to 't because a and b are of type 't and are paired in 't * 't. Then, f (f (a, b), f (b, a)) type checks to 't because the first argument is of type 't, such that 't * 't -> 't.

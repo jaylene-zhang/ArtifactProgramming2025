@@ -1,0 +1,8 @@
+**Solution:**
+
+`x`
+
+
+**Explanation:**
+
+The variable `x` is introduced inside the inner `let` expression `let x = 42 in ...`.  Although it's used in the subsequent expression `x * y`, the value of `x` bound in the `let` will not affect any part of the `foo` function *outside* of that inner `let`. The passed `y` is used in the computation.

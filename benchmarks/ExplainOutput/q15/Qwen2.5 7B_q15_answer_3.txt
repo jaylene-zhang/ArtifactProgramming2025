@@ -1,0 +1,26 @@
+Result: 45
+
+Binding stack:
+expressions:
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+binding stack:
+x = 5
+y = 10
+f -----> (u -> 5 + 5 * 5 + 5 + 2) -> 5 + 5 * 5 + 5 + 2
+r = 4
+
+Explanation:
+1. `x` is initially set to 3, then changed to 5.
+2. `r` is first initialized to 2 + 3 = 5.
+3. `y` is calculated as 5 * 5 = 25, and `r` is then reassigned to a new reference with value 4.
+4. `f` is a function that adds `x` (which is 5), `y` (25), and the current value of `!r` (4).
+5. Before evaluating the final expression `f (!r * y)`, `r` is set to 2, but this does not affect the value of `y` or the expression within `f` which was already calculated with the previous value.
+6. `!r * y` results in 2 * 10 = 20, which is passed to `f`.
+7. `f` then evaluates to 20 + 5 + 25 + 4 = 45.

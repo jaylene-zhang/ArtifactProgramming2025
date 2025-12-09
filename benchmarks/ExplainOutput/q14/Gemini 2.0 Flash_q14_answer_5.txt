@@ -1,0 +1,31 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed in the function.  There's no pending computation after the recursive call returns.
+
+**Explanation:**
+
+In essence, the function's result is *directly* the result of the recursive call, without any further calculations. This allows the compiler to optimize the code by reusing the same stack frame for each recursive call, preventing stack overflow errors when dealing with large inputs.
+
+**Example (Tail-Recursive):**
+
+```ocaml
+let rec tail_recursive_sum n acc =
+  if n = 0 then acc
+  else tail_recursive_sum (n - 1) (acc + n)
+
+(*Example usage : tail_recursive_sum 5 0 ;; *)
+```
+
+In this example, the recursive call `tail_recursive_sum (n - 1) (acc + n)`  is the final operation. Once `tail_recursive_sum (n - 1) (acc + n)` returns a value, that value is immediately returned by the calling function `tail_recursive_sum n acc`. There's no addition or anything else done *after* the recursive call. The `acc` parameter accumulates the sum "along the way," so no further calculation is needed when the base case (`n = 0`) is reached.
+
+**Example (Not Tail-Recursive):**
+
+```ocaml
+let rec non_tail_recursive_sum n =
+  if n = 0 then 0
+  else n + non_tail_recursive_sum (n - 1)
+
+(*Example usage: non_tail_recursive_sum 5 ;; *)
+```
+
+Here, the recursive call `non_tail_recursive_sum (n - 1)` is *not* the last operation.  After the recursive call returns a value, it's added to `n`.  This means the current function call's stack frame needs to remain active to perform the addition.  Therefore, it's not tail-recursive.

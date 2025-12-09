@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: Option a) correctly uses an int for revolutions, allowing any number of rotations, and clearly represents the jump type with the allowed five jumps. Option b) is too restrictive and c) contains an erroneous recursive definition.

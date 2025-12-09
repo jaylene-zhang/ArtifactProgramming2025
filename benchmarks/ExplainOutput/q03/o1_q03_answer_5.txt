@@ -1,0 +1,30 @@
+Solution:
+(1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation (with short binding diagram):
+
+1) Outside inc':  
+   c → ref(0) initially  
+   l → [3; 2; 1]  (the reversed list)  
+   x → 1  
+   inc → fun x -> (c := !c + 1; x + 1)  
+
+   After List.map inc l:  
+     inc 3 sets c = 1, returns 4  
+     inc 2 sets c = 2, returns 3  
+     inc 1 sets c = 3, returns 2  
+   ml = [4; 3; 2]  
+   observe () reads !c = 3  
+
+2) Inside inc' block:  
+   c → ref(0) (new reference)  
+   x → 2 (shadowing the outer x)  
+   inc' → fun y -> (c := !c + 1; !c + y + x)  
+
+   After List.map inc' l:  
+     inc'(3) → c=1, returns 6  
+     inc'(2) → c=2, returns 6  
+     inc'(1) → c=3, returns 6  
+   ml' = [6; 6; 6]  
+
+Hence final result: (1, 3, [4; 3; 2], [6; 6; 6]).

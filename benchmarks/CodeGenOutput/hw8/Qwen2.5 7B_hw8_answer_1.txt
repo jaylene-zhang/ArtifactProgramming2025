@@ -1,0 +1,43 @@
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n <= 0 then []
+  else s.head :: (take (n - 1) (s.tail ()))
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n <= 0 then s
+  else drop (n - 1) (s.tail ())
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  { head = 0
+  ; tail = (fun () -> zeroes) }
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  { head = 0
+  ; tail = (fun () -> { head = 1; tail = (fun () -> natural_numbers) }) }
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  { head = 0
+  ; tail = (fun () -> { head = 2; tail = (fun () -> { head = 4; tail = (fun () -> even_numbers) }) }) }
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  unfold (fun (s1, s2) ->
+    let x1 = s1.head
+    and x2 = s2.head
+    in
+    (f x1 x2, (s1.tail (), s2.tail ()))
+  ) (s1, s2)
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  { head = 0
+  ; tail = (fun () -> { head = 1; tail = (fun () -> { head = 1; tail = (fun () -> { head = 2; tail = (fun () -> fibonacci) }) }) }) }
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  { head = 2
+  ; tail = (fun () -> { head = 1; tail = (fun () -> { head = 3; tail = (fun () -> { head = 4; tail = (fun () -> lucas) }) }) }) }

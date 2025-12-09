@@ -1,0 +1,1801 @@
+Filename,Model,Attempt,Error Type,Fixed,Rating
+hw4_17,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_18,o3 Mini,1,nan,True,Mastery
+hw2_38,Llama3.1 8B,5,nan,True,Mastery
+hw6_9,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_12,o3 Mini,5,nan,True,Mastery
+hw5_17,GPT-4o-mini,5,nan,True,Mastery
+hw2_3,Gemini 2.0 Flash,4,nan,True,Mastery
+hw1_30,Llama3.1 8B,1,nan,True,Mastery
+hw10_39,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_9,Gemini 2.0 Flash,4,nan,True,Mastery
+hw7_29,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_22,o3 Mini,2,nan,True,Mastery
+hw6_16,GPT-4o-mini,5,Type Error,False,Beginning
+hw9_8,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw4_17,Qwen2.5 7B,2,nan,True,Mastery
+hw7_29,Gemini 2.0 Flash,5,nan,True,Mastery
+hw8_2,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_18,Qwen2.5 7B,1,nan,True,Mastery
+hw3_33,Gemini 2.0 Flash,3,nan,True,Mastery
+hw10_38,GPT-4o-mini,5,Syntax Error,True,Proficient
+hw7_7,GPT-4o-mini,1,nan,True,Mastery
+hw1_12,Llama3.1 8B,4,nan,True,Mastery
+hw2_12,Qwen2.5 7B,5,nan,True,Mastery
+hw3_33,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw5_22,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw6_22,Llama3.1 8B,3,nan,True,Mastery
+hw5_22,Qwen2.5 7B,2,nan,True,Mastery
+hw2_12,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw4_17,o3 Mini,2,nan,True,Mastery
+hw3_16,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_22,GPT-4o-mini,5,Syntax error,True,Proficient
+hw9_37,Gemini 2.0 Flash,5,nan,True,Mastery
+hw9_37,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_38,Qwen2.5 7B,2,nan,True,Mastery
+hw7_7,GPT-4o,5,nan,True,Mastery
+hw3_32,GPT-4o-mini,1,nan,True,Mastery
+hw8_3,GPT-4o-mini,4,nan,True,Mastery
+hw7_38,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_18,Llama3.3 70B,4,nan,True,Mastery
+hw3_17,GPT-4o-mini,3,nan,True,Mastery
+hw8_2,Llama3.3 70B,2,nan,True,Mastery
+hw2_3,Qwen2.5 7B,4,nan,True,Mastery
+hw9_8,Llama3.3 70B,2,nan,True,Mastery
+hw4_23,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_3,Llama3.1 8B,1,nan,True,Mastery
+hw10_36,o3 Mini,5,nan,True,Mastery
+hw3_9,Qwen2.5 7B,4,nan,True,Mastery
+hw6_32,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_18,GPT-4o,4,nan,True,Mastery
+hw9_8,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw8_2,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_38,o3 Mini,2,nan,True,Mastery
+hw6_32,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_12,Llama3.1 8B,2,nan,True,Mastery
+hw8_23,GPT-4o-mini,4,nan,True,Mastery
+hw8_19,Llama3.1 8B,1,nan,True,Mastery
+hw8_2,o3 Mini,4,nan,True,Mastery
+hw9_8,o3 Mini,4,nan,True,Mastery
+hw10_39,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_2,Llama3.1 8B,3,nan,True,Mastery
+hw9_8,Llama3.1 8B,3,nan,True,Mastery
+hw8_27,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_18,GPT-4o-mini,1,nan,True,Mastery
+hw2_3,GPT-4o-mini,2,nan,True,Mastery
+hw4_22,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_9,GPT-4o-mini,2,Type Error,False,Beginning
+hw10_38,Llama3.3 70B,3,nan,True,Mastery
+hw8_23,GPT-4o,1,nan,True,Mastery
+hw2_12,GPT-4o-mini,5,nan,True,Mastery
+hw5_8,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw5_17,o3 Mini,5,nan,True,Mastery
+hw5_22,GPT-4o-mini,2,Type Error,False,Beginning
+hw8_3,Qwen2.5 7B,2,nan,True,Mastery
+hw10_3,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw4_23,Llama3.1 8B,4,nan,True,Mastery
+hw5_37,GPT-4o,3,nan,True,Mastery
+hw3_32,Llama3.3 70B,4,nan,True,Mastery
+hw6_16,o3 Mini,5,nan,True,Mastery
+hw10_36,GPT-4o,3,Type Error,False,Beginning
+hw4_22,Qwen2.5 7B,5,nan,True,Mastery
+hw10_3,Gemini 2.0 Flash,2,nan,True,Mastery
+hw6_16,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw2_18,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_17,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw7_12,Gemini 2.0 Flash,1,nan,True,Mastery
+hw2_18,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw3_32,GPT-4o,4,nan,True,Mastery
+hw5_37,Llama3.3 70B,3,nan,True,Mastery
+hw5_17,Qwen2.5 7B,5,nan,True,Mastery
+hw8_19,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_27,Llama3.1 8B,4,nan,True,Mastery
+hw8_19,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_16,Qwen2.5 7B,5,nan,True,Mastery
+hw4_17,GPT-4o-mini,2,Syntax error,True,Proficient
+hw8_23,Llama3.3 70B,1,nan,True,Mastery
+hw4_22,o3 Mini,5,nan,True,Mastery
+hw6_12,Llama3.1 8B,5,nan,True,Mastery
+hw8_23,Qwen2.5 7B,4,nan,True,Mastery
+hw3_32,o3 Mini,1,nan,True,Mastery
+hw1_30,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_23,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_17,o3 Mini,3,nan,True,Mastery
+hw1_30,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_3,Gemini 2.0 Flash,2,nan,True,Mastery
+hw1_12,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_38,GPT-4o-mini,2,nan,True,Mastery
+hw3_32,Qwen2.5 7B,1,nan,True,Mastery
+hw8_23,o3 Mini,4,nan,True,Mastery
+hw3_17,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw10_39,Qwen2.5 7B,2,nan,True,Mastery
+hw3_17,Qwen2.5 7B,3,nan,True,Mastery
+hw1_25,Llama3.1 8B,5,nan,True,Mastery
+hw3_16,Llama3.1 8B,2,nan,True,Mastery
+hw7_7,GPT-4o-mini,5,nan,True,Mastery
+hw10_39,Llama3.1 8B,2,nan,True,Mastery
+hw8_3,GPT-4o,4,nan,True,Mastery
+hw10_39,Gemini 2.0 Flash,3,nan,True,Mastery
+hw3_33,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_12,Qwen2.5 7B,1,nan,True,Mastery
+hw7_18,Qwen2.5 7B,5,nan,True,Mastery
+hw10_38,GPT-4o-mini,1,Syntax Error,True,Proficient
+hw7_18,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_16,Gemini 2.0 Flash,5,nan,True,Mastery
+hw1_25,Gemini 2.0 Flash,2,nan,True,Mastery
+hw4_22,GPT-4o-mini,1,Syntax error,True,Proficient
+hw7_38,Llama3.3 70B,3,nan,True,Mastery
+hw3_16,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw1_25,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_12,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw7_38,GPT-4o,3,nan,True,Mastery
+hw2_12,o3 Mini,1,nan,True,Mastery
+hw6_9,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw2_38,Llama3.1 8B,1,nan,True,Mastery
+hw7_18,o3 Mini,5,nan,True,Mastery
+hw6_12,Gemini 2.0 Flash,2,nan,True,Mastery
+hw9_8,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw6_16,GPT-4o-mini,1,Type Error,False,Beginning
+hw8_2,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_29,Gemini 2.0 Flash,1,nan,True,Mastery
+hw5_17,GPT-4o-mini,1,nan,True,Mastery
+hw1_30,Llama3.1 8B,5,nan,True,Mastery
+hw10_39,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw10_36,GPT-4o-mini,2,Type Error,False,Beginning
+hw6_32,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_9,Llama3.1 8B,3,nan,True,Mastery
+hw2_12,GPT-4o,4,nan,True,Mastery
+hw4_17,Llama3.3 70B,3,nan,True,Mastery
+hw10_38,o3 Mini,2,nan,True,Mastery
+hw6_9,o3 Mini,4,nan,True,Mastery
+hw2_18,Llama3.1 8B,2,nan,True,Mastery
+hw5_37,GPT-4o-mini,2,nan,True,Mastery
+hw8_27,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw8_19,Llama3.1 8B,5,nan,True,Mastery
+hw8_27,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_9,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw5_22,GPT-4o,3,Type Error,False,Developing
+hw6_9,Llama3.3 70B,2,nan,True,Mastery
+hw3_32,GPT-4o-mini,5,nan,True,Mastery
+hw7_7,GPT-4o,1,nan,True,Mastery
+hw9_37,Gemini 2.0 Flash,1,nan,True,Mastery
+hw5_22,Llama3.3 70B,3,nan,True,Mastery
+hw4_17,GPT-4o,3,Syntax error,True,Proficient
+hw2_12,Llama3.3 70B,4,nan,True,Mastery
+hw10_3,Llama3.1 8B,5,nan,True,Mastery
+hw10_36,o3 Mini,1,nan,True,Mastery
+hw4_23,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw4_23,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_12,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_32,Llama3.1 8B,2,nan,True,Mastery
+hw10_38,GPT-4o,4,nan,True,Mastery
+hw7_12,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw2_18,Gemini 2.0 Flash,1,nan,True,Mastery
+hw10_36,Llama3.3 70B,4,nan,True,Mastery
+hw8_23,Llama3.3 70B,5,nan,True,Mastery
+hw6_16,Qwen2.5 7B,1,nan,True,Mastery
+hw7_7,Gemini 2.0 Flash,3,nan,True,Mastery
+hw4_22,o3 Mini,1,nan,True,Mastery
+hw5_17,Qwen2.5 7B,1,nan,True,Mastery
+hw3_17,GPT-4o,2,nan,True,Mastery
+hw2_12,GPT-4o-mini,1,nan,True,Mastery
+hw8_23,GPT-4o,5,nan,True,Mastery
+hw3_17,Llama3.3 70B,2,nan,True,Mastery
+hw9_37,Llama3.1 8B,2,nan,True,Mastery
+hw7_18,GPT-4o-mini,5,nan,True,Mastery
+hw6_16,o3 Mini,1,nan,True,Mastery
+hw4_22,Qwen2.5 7B,1,nan,True,Mastery
+hw5_17,o3 Mini,1,nan,True,Mastery
+hw5_8,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw5_8,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw4_22,Llama3.3 70B,4,nan,True,Mastery
+hw3_32,Qwen2.5 7B,5,nan,True,Mastery
+hw1_12,Gemini 2.0 Flash,3,nan,True,Mastery
+hw3_9,GPT-4o,2,nan,True,Mastery
+hw1_12,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw2_3,GPT-4o,2,nan,True,Mastery
+hw3_33,Llama3.1 8B,4,nan,True,Mastery
+hw6_16,GPT-4o,4,nan,True,Mastery
+hw5_37,o3 Mini,2,nan,True,Mastery
+hw1_25,Llama3.1 8B,1,nan,True,Mastery
+hw6_22,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw5_8,o3 Mini,4,nan,True,Mastery
+hw7_7,Qwen2.5 7B,3,nan,True,Mastery
+hw5_17,GPT-4o,4,nan,True,Mastery
+hw3_32,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw5_8,Llama3.1 8B,3,nan,True,Mastery
+hw6_22,Gemini 2.0 Flash,4,nan,True,Mastery
+hw3_32,o3 Mini,5,nan,True,Mastery
+hw2_38,Gemini 2.0 Flash,2,nan,True,Mastery
+hw6_16,Llama3.3 70B,4,nan,True,Mastery
+hw5_37,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw6_12,Llama3.1 8B,1,nan,True,Mastery
+hw2_38,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_17,Llama3.3 70B,4,nan,True,Mastery
+hw5_37,Qwen2.5 7B,2,nan,True,Mastery
+hw7_29,Llama3.1 8B,2,nan,True,Mastery
+hw4_22,GPT-4o,4,Syntax error,True,Proficient
+hw5_8,Llama3.3 70B,2,nan,True,Mastery
+hw8_23,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw10_39,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_3,GPT-4o,5,nan,True,Mastery
+hw10_39,Llama3.1 8B,3,nan,True,Mastery
+hw7_7,GPT-4o-mini,4,nan,True,Mastery
+hw1_12,Llama3.1 8B,1,nan,True,Mastery
+hw7_18,Qwen2.5 7B,4,nan,True,Mastery
+hw7_18,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_16,Gemini 2.0 Flash,4,nan,True,Mastery
+hw7_38,Llama3.3 70B,2,nan,True,Mastery
+hw1_25,Gemini 2.0 Flash,3,nan,True,Mastery
+hw3_16,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw2_12,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw1_25,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_38,GPT-4o,2,nan,True,Mastery
+hw6_12,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw6_9,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_12,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_18,o3 Mini,4,nan,True,Mastery
+hw1_30,Llama3.1 8B,4,nan,True,Mastery
+hw2_3,Gemini 2.0 Flash,1,nan,True,Mastery
+hw10_36,GPT-4o-mini,3,Type Error,False,Beginning
+hw3_9,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_9,Llama3.1 8B,2,nan,True,Mastery
+hw10_38,o3 Mini,3,nan,True,Mastery
+hw2_12,GPT-4o,5,nan,True,Mastery
+hw8_23,GPT-4o-mini,1,nan,True,Mastery
+hw4_17,Llama3.3 70B,2,nan,True,Mastery
+hw6_9,o3 Mini,5,nan,True,Mastery
+hw7_18,GPT-4o,1,nan,True,Mastery
+hw2_18,Llama3.1 8B,3,nan,True,Mastery
+hw5_37,GPT-4o-mini,3,Type Error,False,Developing
+hw8_27,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_2,o3 Mini,1,nan,True,Mastery
+hw8_19,Llama3.1 8B,4,nan,True,Mastery
+hw9_8,o3 Mini,1,nan,True,Mastery
+hw10_39,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw6_9,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw8_27,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_22,GPT-4o,2,nan,True,Mastery
+hw6_9,Llama3.3 70B,3,nan,True,Mastery
+hw3_32,GPT-4o-mini,4,nan,True,Mastery
+hw8_3,GPT-4o-mini,1,nan,True,Mastery
+hw5_22,Llama3.3 70B,2,nan,True,Mastery
+hw4_17,GPT-4o,2,Syntax error,True,Proficient
+hw2_12,Llama3.3 70B,5,nan,True,Mastery
+hw2_3,Qwen2.5 7B,1,nan,True,Mastery
+hw4_23,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw10_3,Llama3.1 8B,4,nan,True,Mastery
+hw3_9,Qwen2.5 7B,1,nan,True,Mastery
+hw7_18,Llama3.3 70B,1,nan,True,Mastery
+hw4_23,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_17,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw7_12,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_32,Llama3.1 8B,3,nan,True,Mastery
+hw10_38,GPT-4o,5,nan,True,Mastery
+hw3_32,GPT-4o,1,nan,True,Mastery
+hw7_12,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_16,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_19,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_7,Gemini 2.0 Flash,2,nan,True,Mastery
+hw10_36,Llama3.3 70B,5,nan,True,Mastery
+hw8_23,Llama3.3 70B,4,nan,True,Mastery
+hw3_17,GPT-4o,3,Type Error,False,Beginning
+hw8_27,Llama3.1 8B,1,nan,True,Mastery
+hw8_23,GPT-4o,4,nan,True,Mastery
+hw7_18,GPT-4o-mini,4,nan,True,Mastery
+hw3_17,Llama3.3 70B,3,nan,True,Mastery
+hw9_37,Llama3.1 8B,3,nan,True,Mastery
+hw4_22,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_32,Llama3.3 70B,1,nan,True,Mastery
+hw5_8,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw10_3,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw4_23,Llama3.1 8B,1,nan,True,Mastery
+hw4_22,Llama3.3 70B,5,nan,True,Mastery
+hw5_8,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_32,Qwen2.5 7B,4,nan,True,Mastery
+hw1_12,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_23,o3 Mini,1,nan,True,Mastery
+hw3_9,GPT-4o,3,nan,True,Mastery
+hw3_33,Llama3.1 8B,5,nan,True,Mastery
+hw2_3,GPT-4o,3,nan,True,Mastery
+hw1_12,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_37,o3 Mini,3,nan,True,Mastery
+hw6_16,GPT-4o,5,nan,True,Mastery
+hw5_8,o3 Mini,5,nan,True,Mastery
+hw6_22,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_17,GPT-4o,5,nan,True,Mastery
+hw7_7,Qwen2.5 7B,2,nan,True,Mastery
+hw6_22,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_8,Llama3.1 8B,2,nan,True,Mastery
+hw3_32,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_38,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_16,Llama3.3 70B,5,nan,True,Mastery
+hw8_23,Qwen2.5 7B,1,nan,True,Mastery
+hw3_32,o3 Mini,4,nan,True,Mastery
+hw5_37,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw5_17,Llama3.3 70B,5,nan,True,Mastery
+hw2_38,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw1_30,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw5_37,Qwen2.5 7B,3,nan,True,Mastery
+hw7_29,Llama3.1 8B,3,nan,True,Mastery
+hw4_22,GPT-4o,5,Syntax error,True,Proficient
+hw5_8,Llama3.3 70B,3,nan,True,Mastery
+hw4_17,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_12,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_12,o3 Mini,4,nan,True,Mastery
+hw2_38,Llama3.1 8B,4,nan,True,Mastery
+hw5_17,GPT-4o-mini,4,nan,True,Mastery
+hw2_3,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_22,o3 Mini,3,nan,True,Mastery
+hw7_29,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw3_9,Gemini 2.0 Flash,5,nan,True,Mastery
+hw10_39,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw4_17,Qwen2.5 7B,3,nan,True,Mastery
+hw9_8,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_16,GPT-4o-mini,4,nan,True,Mastery
+hw8_2,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw7_29,Gemini 2.0 Flash,4,nan,True,Mastery
+hw10_38,GPT-4o-mini,4,nan,True,Mastery
+hw3_33,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_3,GPT-4o,1,nan,True,Mastery
+hw5_22,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_33,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw2_12,Qwen2.5 7B,4,nan,True,Mastery
+hw1_12,Llama3.1 8B,5,nan,True,Mastery
+hw1_25,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_12,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw5_22,Qwen2.5 7B,3,nan,True,Mastery
+hw6_22,Llama3.1 8B,2,nan,True,Mastery
+hw7_18,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw4_17,o3 Mini,3,nan,True,Mastery
+hw4_22,GPT-4o-mini,4,Syntax error,True,Proficient
+hw9_37,Gemini 2.0 Flash,4,nan,True,Mastery
+hw7_38,Qwen2.5 7B,3,nan,True,Mastery
+hw9_37,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_3,GPT-4o-mini,5,nan,True,Mastery
+hw7_7,GPT-4o,4,nan,True,Mastery
+hw7_38,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_17,GPT-4o-mini,2,nan,True,Mastery
+hw7_18,Llama3.3 70B,5,nan,True,Mastery
+hw2_3,Qwen2.5 7B,5,nan,True,Mastery
+hw2_12,Llama3.3 70B,1,nan,True,Mastery
+hw8_2,Llama3.3 70B,3,nan,True,Mastery
+hw3_9,Qwen2.5 7B,5,nan,True,Mastery
+hw10_36,o3 Mini,4,nan,True,Mastery
+hw9_8,Llama3.3 70B,3,nan,True,Mastery
+hw7_18,GPT-4o,5,nan,True,Mastery
+hw9_8,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_32,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_9,o3 Mini,1,nan,True,Mastery
+hw8_2,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_32,Gemini 2.0 Flash,4,nan,True,Mastery
+hw7_12,Llama3.1 8B,3,nan,True,Mastery
+hw7_38,o3 Mini,3,nan,True,Mastery
+hw8_23,GPT-4o-mini,5,nan,True,Mastery
+hw2_12,GPT-4o,1,nan,True,Mastery
+hw8_2,o3 Mini,5,nan,True,Mastery
+hw10_39,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw9_8,o3 Mini,5,nan,True,Mastery
+hw8_2,Llama3.1 8B,2,nan,True,Mastery
+hw9_8,Llama3.1 8B,2,nan,True,Mastery
+hw2_3,GPT-4o-mini,3,Type Error,False,Beginning
+hw3_9,GPT-4o-mini,3,Type Error,False,Beginning
+hw4_22,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw10_38,Llama3.3 70B,2,nan,True,Mastery
+hw2_12,GPT-4o-mini,4,nan,True,Mastery
+hw5_17,o3 Mini,4,nan,True,Mastery
+hw4_23,Llama3.1 8B,5,nan,True,Mastery
+hw8_3,Qwen2.5 7B,3,nan,True,Mastery
+hw10_3,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw5_22,GPT-4o-mini,3,Type Error,False,Beginning
+hw6_16,o3 Mini,4,nan,True,Mastery
+hw5_37,GPT-4o,2,nan,True,Mastery
+hw3_32,Llama3.3 70B,5,nan,True,Mastery
+hw10_3,Gemini 2.0 Flash,3,nan,True,Mastery
+hw4_22,Qwen2.5 7B,4,nan,True,Mastery
+hw10_36,GPT-4o,2,Type Error,False,Developing
+hw6_16,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_18,Gemini 2.0 Flash,4,nan,True,Mastery
+hw5_17,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_32,GPT-4o,5,nan,True,Mastery
+hw5_37,Llama3.3 70B,2,nan,True,Mastery
+hw10_38,GPT-4o,1,nan,True,Mastery
+hw2_18,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_19,Gemini 2.0 Flash,3,nan,True,Mastery
+hw5_17,Qwen2.5 7B,4,nan,True,Mastery
+hw8_27,Llama3.1 8B,5,nan,True,Mastery
+hw10_36,Llama3.3 70B,1,nan,True,Mastery
+hw4_17,GPT-4o-mini,3,Syntax error,True,Proficient
+hw6_16,Qwen2.5 7B,4,nan,True,Mastery
+hw8_19,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw4_22,o3 Mini,4,nan,True,Mastery
+hw6_12,Llama3.1 8B,4,nan,True,Mastery
+hw2_38,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw5_17,Llama3.3 70B,1,nan,True,Mastery
+hw8_23,Qwen2.5 7B,5,nan,True,Mastery
+hw6_16,Llama3.3 70B,1,nan,True,Mastery
+hw1_30,Gemini 2.0 Flash,3,nan,True,Mastery
+hw3_17,o3 Mini,2,nan,True,Mastery
+hw8_23,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw1_30,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw8_3,Gemini 2.0 Flash,3,nan,True,Mastery
+hw4_22,GPT-4o,1,Syntax error,True,Proficient
+hw3_33,Llama3.1 8B,1,nan,True,Mastery
+hw4_22,Llama3.3 70B,1,nan,True,Mastery
+hw7_38,GPT-4o-mini,3,nan,True,Mastery
+hw3_17,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw8_23,o3 Mini,5,nan,True,Mastery
+hw5_17,GPT-4o,1,nan,True,Mastery
+hw3_32,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_17,Qwen2.5 7B,2,nan,True,Mastery
+hw10_39,Qwen2.5 7B,3,nan,True,Mastery
+hw6_22,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_16,GPT-4o,1,nan,True,Mastery
+hw1_25,Llama3.1 8B,4,nan,True,Mastery
+hw3_16,Llama3.1 8B,3,nan,True,Mastery
+hw5_8,o3 Mini,1,nan,True,Mastery
+hw7_38,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_39,Llama3.3 70B,4,nan,True,Mastery
+hw6_9,Qwen2.5 7B,1,nan,True,Mastery
+hw4_23,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw1_12,GPT-4o-mini,2,nan,True,Mastery
+hw3_16,Llama3.3 70B,1,nan,True,Mastery
+hw4_23,Qwen2.5 7B,2,nan,True,Mastery
+hw8_27,o3 Mini,2,nan,True,Mastery
+hw6_22,GPT-4o-mini,5,Syntax error,True,Proficient
+hw3_33,Llama3.3 70B,3,nan,True,Mastery
+hw8_2,Qwen2.5 7B,5,nan,True,Mastery
+hw7_29,GPT-4o,5,nan,True,Mastery
+hw4_22,Llama3.1 8B,3,nan,True,Mastery
+hw2_3,Llama3.3 70B,3,nan,True,Mastery
+hw9_8,Qwen2.5 7B,5,nan,True,Mastery
+hw9_37,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_9,Llama3.3 70B,3,nan,True,Mastery
+hw3_9,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_33,GPT-4o,3,Type Error,False,Beginning
+hw2_3,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw8_27,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw5_8,GPT-4o,3,nan,True,Mastery
+hw2_38,GPT-4o-mini,3,Type Error,False,Developing
+hw7_29,Llama3.3 70B,5,nan,True,Mastery
+hw8_27,Qwen2.5 7B,2,nan,True,Mastery
+hw4_23,o3 Mini,2,nan,True,Mastery
+hw2_3,o3 Mini,5,nan,True,Mastery
+hw3_9,o3 Mini,5,nan,True,Mastery
+hw6_32,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw5_17,Llama3.1 8B,3,nan,True,Mastery
+hw2_3,Llama3.1 8B,2,nan,True,Mastery
+hw3_16,GPT-4o,1,Syntax error,True,Proficient
+hw6_16,Llama3.1 8B,3,nan,True,Mastery
+hw3_9,Llama3.1 8B,2,nan,True,Mastery
+hw7_29,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_9,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_12,Qwen2.5 7B,3,nan,True,Mastery
+hw9_37,GPT-4o,5,Syntax error,True,Proficient
+hw8_23,Llama3.1 8B,2,nan,True,Mastery
+hw7_12,GPT-4o-mini,4,nan,True,Mastery
+hw8_2,Gemini 2.0 Flash,5,nan,True,Mastery
+hw4_17,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw9_8,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_32,Llama3.3 70B,5,nan,True,Mastery
+hw3_9,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw1_25,o3 Mini,3,nan,True,Mastery
+hw3_16,o3 Mini,4,nan,True,Mastery
+hw6_12,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_3,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw3_16,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw1_25,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_12,o3 Mini,3,nan,True,Mastery
+hw7_18,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_32,GPT-4o,5,nan,True,Mastery
+hw7_18,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw9_37,Llama3.3 70B,5,nan,True,Mastery
+hw3_17,Llama3.1 8B,5,nan,True,Mastery
+hw1_25,Qwen2.5 7B,3,nan,True,Mastery
+hw3_16,Qwen2.5 7B,4,nan,True,Mastery
+hw5_22,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_38,Qwen2.5 7B,5,nan,True,Mastery
+hw8_19,Llama3.3 70B,2,nan,True,Mastery
+hw8_23,Gemini 2.0 Flash,1,nan,True,Mastery
+hw1_12,o3 Mini,2,nan,True,Mastery
+hw2_38,Qwen2.5 7B,3,nan,True,Mastery
+hw7_7,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_27,GPT-4o-mini,2,nan,True,Mastery
+hw2_38,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_22,o3 Mini,5,nan,True,Mastery
+hw8_3,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw7_7,Llama3.1 8B,1,nan,True,Mastery
+hw2_18,Llama3.3 70B,5,nan,True,Mastery
+hw10_36,Gemini 2.0 Flash,3,nan,True,Mastery
+hw5_37,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw5_8,Qwen2.5 7B,1,nan,True,Mastery
+hw10_36,Llama3.1 8B,2,nan,True,Mastery
+hw7_12,Llama3.3 70B,1,nan,True,Mastery
+hw10_38,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw10_3,GPT-4o,2,Syntax Error,True,Proficient
+hw4_17,Llama3.1 8B,4,nan,True,Mastery
+hw5_37,Gemini 2.0 Flash,3,nan,True,Mastery
+hw2_18,GPT-4o,5,nan,True,Mastery
+hw3_32,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw10_38,Llama3.1 8B,1,nan,True,Mastery
+hw10_39,GPT-4o-mini,2,Syntax Error,True,Proficient
+hw10_36,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_22,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw2_38,o3 Mini,3,nan,True,Mastery
+hw2_12,Llama3.1 8B,3,nan,True,Mastery
+hw1_12,Qwen2.5 7B,2,nan,True,Mastery
+hw3_32,Gemini 2.0 Flash,4,nan,True,Mastery
+hw10_3,Llama3.3 70B,2,nan,True,Mastery
+hw7_12,GPT-4o,1,nan,True,Mastery
+hw4_23,GPT-4o-mini,2,nan,True,Mastery
+hw1_12,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw5_22,Llama3.1 8B,4,nan,True,Mastery
+hw6_22,Qwen2.5 7B,5,nan,True,Mastery
+hw8_19,GPT-4o,2,nan,True,Mastery
+hw6_9,GPT-4o,3,nan,True,Mastery
+hw8_2,GPT-4o-mini,3,nan,True,Mastery
+hw9_8,GPT-4o-mini,3,Syntax error,True,Proficient
+hw7_38,Llama3.1 8B,4,nan,True,Mastery
+hw7_12,o3 Mini,4,nan,True,Mastery
+hw1_30,GPT-4o,2,nan,True,Mastery
+hw8_3,Llama3.3 70B,5,nan,True,Mastery
+hw1_25,GPT-4o-mini,3,nan,True,Mastery
+hw3_16,GPT-4o-mini,4,Syntax error,True,Proficient
+hw5_8,Gemini 2.0 Flash,1,nan,True,Mastery
+hw1_30,Llama3.3 70B,2,nan,True,Mastery
+hw10_39,o3 Mini,1,nan,True,Mastery
+hw6_12,GPT-4o-mini,3,nan,True,Mastery
+hw8_3,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw7_12,Qwen2.5 7B,4,nan,True,Mastery
+hw8_3,Llama3.1 8B,4,nan,True,Mastery
+hw7_12,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw10_38,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw2_18,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_3,o3 Mini,3,nan,True,Mastery
+hw7_29,Llama3.3 70B,1,nan,True,Mastery
+hw6_32,Qwen2.5 7B,4,nan,True,Mastery
+hw10_39,GPT-4o,3,nan,True,Mastery
+hw9_37,o3 Mini,4,nan,True,Mastery
+hw1_25,GPT-4o,2,nan,True,Mastery
+hw3_16,GPT-4o,5,Syntax error,True,Proficient
+hw2_3,o3 Mini,1,nan,True,Mastery
+hw6_12,Llama3.3 70B,2,nan,True,Mastery
+hw1_30,GPT-4o-mini,3,nan,True,Mastery
+hw6_32,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_9,o3 Mini,1,nan,True,Mastery
+hw6_9,Qwen2.5 7B,5,nan,True,Mastery
+hw6_32,o3 Mini,4,nan,True,Mastery
+hw3_16,Llama3.3 70B,5,nan,True,Mastery
+hw7_38,Gemini 2.0 Flash,3,nan,True,Mastery
+hw1_25,Llama3.3 70B,2,nan,True,Mastery
+hw6_12,GPT-4o,2,nan,True,Mastery
+hw9_37,Qwen2.5 7B,4,nan,True,Mastery
+hw7_38,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_29,GPT-4o,1,nan,True,Mastery
+hw8_2,Qwen2.5 7B,1,nan,True,Mastery
+hw9_37,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw9_8,Qwen2.5 7B,1,nan,True,Mastery
+hw6_22,GPT-4o-mini,1,nan,True,Mastery
+hw3_32,Llama3.1 8B,3,nan,True,Mastery
+hw2_12,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_32,GPT-4o,1,nan,True,Mastery
+hw3_16,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw2_12,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw3_33,Qwen2.5 7B,2,nan,True,Mastery
+hw4_23,Llama3.3 70B,3,nan,True,Mastery
+hw5_22,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw10_38,Qwen2.5 7B,1,nan,True,Mastery
+hw7_29,o3 Mini,4,nan,True,Mastery
+hw3_33,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw10_3,GPT-4o-mini,3,Type Error,False,Beginning
+hw5_22,Gemini 2.0 Flash,3,nan,True,Mastery
+hw8_27,GPT-4o,3,nan,True,Mastery
+hw9_37,Llama3.3 70B,1,nan,True,Mastery
+hw3_17,Llama3.1 8B,1,nan,True,Mastery
+hw10_36,Qwen2.5 7B,2,nan,True,Mastery
+hw5_8,GPT-4o-mini,3,nan,True,Mastery
+hw6_9,Gemini 2.0 Flash,5,nan,True,Mastery
+hw3_33,o3 Mini,2,nan,True,Mastery
+hw7_29,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_18,GPT-4o-mini,4,nan,True,Mastery
+hw9_37,GPT-4o,1,Syntax error,True,Proficient
+hw8_27,Llama3.3 70B,3,nan,True,Mastery
+hw7_29,Qwen2.5 7B,4,nan,True,Mastery
+hw6_32,Llama3.3 70B,1,nan,True,Mastery
+hw5_37,Llama3.1 8B,4,nan,True,Mastery
+hw4_17,Gemini 2.0 Flash,3,nan,True,Mastery
+hw8_2,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_23,GPT-4o,3,nan,True,Mastery
+hw9_8,Gemini 2.0 Flash,1,nan,True,Mastery
+hw8_19,GPT-4o-mini,3,nan,True,Mastery
+hw4_17,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw10_36,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_12,GPT-4o,5,nan,True,Mastery
+hw9_8,GPT-4o,3,Syntax error,True,Proficient
+hw2_18,GPT-4o,1,nan,True,Mastery
+hw8_2,GPT-4o,3,nan,True,Mastery
+hw7_18,Llama3.1 8B,3,nan,True,Mastery
+hw10_38,Gemini 2.0 Flash,4,nan,True,Mastery
+hw10_38,Llama3.1 8B,5,nan,True,Mastery
+hw9_37,GPT-4o-mini,4,Syntax error,True,Proficient
+hw3_17,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw7_7,Llama3.3 70B,4,nan,True,Mastery
+hw6_22,Qwen2.5 7B,1,nan,True,Mastery
+hw3_17,Gemini 2.0 Flash,2,nan,True,Mastery
+hw1_30,o3 Mini,3,nan,True,Mastery
+hw8_23,Gemini 2.0 Flash,5,nan,True,Mastery
+hw1_30,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw7_7,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw6_32,GPT-4o-mini,4,nan,True,Mastery
+hw8_23,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_7,o3 Mini,2,nan,True,Mastery
+hw7_12,Llama3.3 70B,5,nan,True,Mastery
+hw7_7,Llama3.1 8B,5,nan,True,Mastery
+hw6_22,o3 Mini,1,nan,True,Mastery
+hw1_30,Qwen2.5 7B,3,nan,True,Mastery
+hw5_8,Qwen2.5 7B,5,nan,True,Mastery
+hw5_37,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_18,Llama3.3 70B,1,nan,True,Mastery
+hw1_12,GPT-4o,3,nan,True,Mastery
+hw8_19,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw10_39,o3 Mini,5,nan,True,Mastery
+hw2_18,Qwen2.5 7B,4,nan,True,Mastery
+hw7_29,GPT-4o-mini,4,nan,True,Mastery
+hw10_3,o3 Mini,3,nan,True,Mastery
+hw2_18,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_38,Llama3.3 70B,2,nan,True,Mastery
+hw6_16,Gemini 2.0 Flash,4,nan,True,Mastery
+hw5_17,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_22,GPT-4o,4,nan,True,Mastery
+hw7_7,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_17,Gemini 2.0 Flash,4,nan,True,Mastery
+hw8_19,Qwen2.5 7B,3,nan,True,Mastery
+hw7_12,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_16,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw10_36,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw2_38,GPT-4o,2,nan,True,Mastery
+hw3_33,GPT-4o-mini,2,Type Error,False,Beginning
+hw10_3,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_18,o3 Mini,4,nan,True,Mastery
+hw6_22,Llama3.3 70B,4,nan,True,Mastery
+hw10_3,Qwen2.5 7B,3,nan,True,Mastery
+hw4_22,Gemini 2.0 Flash,4,nan,True,Mastery
+hw1_12,Llama3.3 70B,3,nan,True,Mastery
+hw5_8,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_9,GPT-4o-mini,3,nan,True,Mastery
+hw4_22,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_3,Llama3.3 70B,1,nan,True,Mastery
+hw8_19,o3 Mini,3,nan,True,Mastery
+hw6_32,Qwen2.5 7B,5,nan,True,Mastery
+hw10_39,GPT-4o,2,nan,True,Mastery
+hw9_37,o3 Mini,5,nan,True,Mastery
+hw1_25,GPT-4o,3,nan,True,Mastery
+hw3_16,GPT-4o,4,Syntax error,True,Proficient
+hw6_12,Llama3.3 70B,3,nan,True,Mastery
+hw6_32,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw1_30,GPT-4o-mini,2,nan,True,Mastery
+hw6_9,Qwen2.5 7B,4,nan,True,Mastery
+hw3_16,Llama3.3 70B,4,nan,True,Mastery
+hw1_25,Llama3.3 70B,3,nan,True,Mastery
+hw7_38,Gemini 2.0 Flash,2,nan,True,Mastery
+hw6_32,o3 Mini,5,nan,True,Mastery
+hw7_38,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw9_37,Qwen2.5 7B,5,nan,True,Mastery
+hw6_12,GPT-4o,3,nan,True,Mastery
+hw10_39,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_32,Llama3.1 8B,2,nan,True,Mastery
+hw2_12,Gemini 2.0 Flash,5,nan,True,Mastery
+hw3_33,Qwen2.5 7B,3,nan,True,Mastery
+hw2_12,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw4_23,Llama3.3 70B,2,nan,True,Mastery
+hw7_18,Gemini 2.0 Flash,1,nan,True,Mastery
+hw10_3,GPT-4o-mini,2,Type Error,False,Beginning
+hw3_16,Qwen2.5 7B,1,nan,True,Mastery
+hw7_29,o3 Mini,5,nan,True,Mastery
+hw3_33,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw5_22,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_22,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_27,GPT-4o,2,nan,True,Mastery
+hw10_36,Qwen2.5 7B,3,nan,True,Mastery
+hw7_12,GPT-4o-mini,1,nan,True,Mastery
+hw5_8,GPT-4o-mini,2,nan,True,Mastery
+hw2_18,GPT-4o-mini,5,nan,True,Mastery
+hw3_33,o3 Mini,3,nan,True,Mastery
+hw7_29,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_9,Gemini 2.0 Flash,4,nan,True,Mastery
+hw8_27,Llama3.3 70B,2,nan,True,Mastery
+hw7_29,Qwen2.5 7B,5,nan,True,Mastery
+hw3_9,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw3_16,o3 Mini,1,nan,True,Mastery
+hw5_37,Llama3.1 8B,5,nan,True,Mastery
+hw4_17,Gemini 2.0 Flash,2,nan,True,Mastery
+hw2_3,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw4_23,GPT-4o,2,nan,True,Mastery
+hw4_17,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_19,GPT-4o-mini,2,nan,True,Mastery
+hw10_36,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_22,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_32,Gemini 2.0 Flash,1,nan,True,Mastery
+hw7_12,GPT-4o,4,nan,True,Mastery
+hw9_8,GPT-4o,2,Syntax error,True,Proficient
+hw10_38,Llama3.1 8B,4,nan,True,Mastery
+hw9_37,GPT-4o-mini,5,Syntax error,True,Proficient
+hw10_38,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_18,Llama3.1 8B,2,nan,True,Mastery
+hw8_2,GPT-4o,2,nan,True,Mastery
+hw3_17,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_17,Gemini 2.0 Flash,3,nan,True,Mastery
+hw5_22,Llama3.1 8B,1,nan,True,Mastery
+hw7_7,Llama3.3 70B,5,nan,True,Mastery
+hw1_30,o3 Mini,2,nan,True,Mastery
+hw8_23,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_32,GPT-4o-mini,5,nan,True,Mastery
+hw1_30,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_7,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw8_23,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw7_12,Llama3.3 70B,4,nan,True,Mastery
+hw7_7,o3 Mini,3,nan,True,Mastery
+hw4_17,Llama3.1 8B,1,nan,True,Mastery
+hw7_7,Llama3.1 8B,4,nan,True,Mastery
+hw5_8,Qwen2.5 7B,4,nan,True,Mastery
+hw1_30,Qwen2.5 7B,2,nan,True,Mastery
+hw8_3,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw1_12,GPT-4o,2,nan,True,Mastery
+hw8_19,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_12,Qwen2.5 7B,1,nan,True,Mastery
+hw2_18,Qwen2.5 7B,5,nan,True,Mastery
+hw10_39,o3 Mini,4,nan,True,Mastery
+hw2_18,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw10_3,o3 Mini,2,nan,True,Mastery
+hw7_29,GPT-4o-mini,5,nan,True,Mastery
+hw5_17,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw2_38,Llama3.3 70B,3,nan,True,Mastery
+hw6_16,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_22,GPT-4o,5,nan,True,Mastery
+hw8_3,Llama3.1 8B,1,nan,True,Mastery
+hw6_16,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw8_19,Qwen2.5 7B,2,nan,True,Mastery
+hw5_17,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_7,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw2_38,GPT-4o,3,Type Error,False,Beginning
+hw10_36,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_38,Llama3.1 8B,1,nan,True,Mastery
+hw7_12,o3 Mini,1,nan,True,Mastery
+hw2_18,o3 Mini,5,nan,True,Mastery
+hw10_3,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw3_33,GPT-4o-mini,3,Type Error,False,Beginning
+hw6_22,Llama3.3 70B,5,nan,True,Mastery
+hw4_22,Gemini 2.0 Flash,5,nan,True,Mastery
+hw10_3,Qwen2.5 7B,2,nan,True,Mastery
+hw3_16,GPT-4o-mini,1,Syntax error,True,Proficient
+hw5_8,Gemini 2.0 Flash,4,nan,True,Mastery
+hw1_12,Llama3.3 70B,2,nan,True,Mastery
+hw4_22,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw6_9,GPT-4o-mini,2,nan,True,Mastery
+hw8_19,o3 Mini,2,nan,True,Mastery
+hw10_39,Llama3.3 70B,5,nan,True,Mastery
+hw9_37,Qwen2.5 7B,1,nan,True,Mastery
+hw1_12,GPT-4o-mini,3,nan,True,Mastery
+hw4_23,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_32,o3 Mini,1,nan,True,Mastery
+hw6_22,GPT-4o-mini,4,nan,True,Mastery
+hw8_27,o3 Mini,3,nan,True,Mastery
+hw4_23,Qwen2.5 7B,3,nan,True,Mastery
+hw3_33,Llama3.3 70B,2,nan,True,Mastery
+hw2_3,Llama3.3 70B,2,nan,True,Mastery
+hw7_29,GPT-4o,4,nan,True,Mastery
+hw4_22,Llama3.1 8B,2,nan,True,Mastery
+hw8_2,Qwen2.5 7B,4,nan,True,Mastery
+hw3_9,Llama3.3 70B,2,nan,True,Mastery
+hw9_8,Qwen2.5 7B,4,nan,True,Mastery
+hw3_33,GPT-4o,2,Type Error,False,Beginning
+hw3_9,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw9_37,o3 Mini,1,nan,True,Mastery
+hw2_3,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw2_38,GPT-4o-mini,2,Type Error,False,Developing
+hw8_27,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw5_8,GPT-4o,2,nan,True,Mastery
+hw7_29,Llama3.3 70B,4,nan,True,Mastery
+hw6_32,Qwen2.5 7B,1,nan,True,Mastery
+hw2_3,o3 Mini,4,nan,True,Mastery
+hw4_23,o3 Mini,3,nan,True,Mastery
+hw8_27,Qwen2.5 7B,3,nan,True,Mastery
+hw5_17,Llama3.1 8B,2,nan,True,Mastery
+hw3_9,o3 Mini,4,nan,True,Mastery
+hw2_3,Llama3.1 8B,3,nan,True,Mastery
+hw6_16,Llama3.1 8B,2,nan,True,Mastery
+hw3_9,Llama3.1 8B,3,nan,True,Mastery
+hw2_18,GPT-4o-mini,1,nan,True,Mastery
+hw9_37,GPT-4o,4,Syntax error,True,Proficient
+hw6_12,Qwen2.5 7B,2,nan,True,Mastery
+hw8_23,Llama3.1 8B,3,nan,True,Mastery
+hw7_12,GPT-4o-mini,5,nan,True,Mastery
+hw8_2,Gemini 2.0 Flash,4,nan,True,Mastery
+hw9_8,Gemini 2.0 Flash,4,nan,True,Mastery
+hw1_25,o3 Mini,2,nan,True,Mastery
+hw3_9,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_16,o3 Mini,5,nan,True,Mastery
+hw7_29,Qwen2.5 7B,1,nan,True,Mastery
+hw6_32,Llama3.3 70B,4,nan,True,Mastery
+hw2_3,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw6_12,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw5_37,Llama3.1 8B,1,nan,True,Mastery
+hw3_16,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw1_25,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_18,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_12,o3 Mini,2,nan,True,Mastery
+hw2_12,Gemini 2.0 Flash,1,nan,True,Mastery
+hw7_18,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw6_32,GPT-4o,4,Syntax error,True,Proficient
+hw9_37,Llama3.3 70B,4,nan,True,Mastery
+hw3_17,Llama3.1 8B,4,nan,True,Mastery
+hw10_38,Qwen2.5 7B,4,nan,True,Mastery
+hw7_29,o3 Mini,1,nan,True,Mastery
+hw1_25,Qwen2.5 7B,2,nan,True,Mastery
+hw3_16,Qwen2.5 7B,5,nan,True,Mastery
+hw8_19,Llama3.3 70B,3,nan,True,Mastery
+hw2_38,Qwen2.5 7B,2,nan,True,Mastery
+hw1_12,o3 Mini,3,nan,True,Mastery
+hw6_32,GPT-4o-mini,1,nan,True,Mastery
+hw8_3,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw2_38,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw6_22,o3 Mini,4,nan,True,Mastery
+hw8_27,GPT-4o-mini,3,nan,True,Mastery
+hw10_36,Llama3.1 8B,3,nan,True,Mastery
+hw5_37,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw10_36,Gemini 2.0 Flash,2,nan,True,Mastery
+hw2_18,Llama3.3 70B,4,nan,True,Mastery
+hw10_3,GPT-4o,3,nan,True,Mastery
+hw10_38,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw4_17,Llama3.1 8B,5,nan,True,Mastery
+hw5_37,Gemini 2.0 Flash,2,nan,True,Mastery
+hw3_32,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw2_18,GPT-4o,4,nan,True,Mastery
+hw10_38,Gemini 2.0 Flash,1,nan,True,Mastery
+hw9_37,GPT-4o-mini,1,Syntax error,True,Proficient
+hw1_12,Qwen2.5 7B,3,nan,True,Mastery
+hw2_12,Llama3.1 8B,2,nan,True,Mastery
+hw3_32,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_22,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_38,o3 Mini,2,nan,True,Mastery
+hw10_39,GPT-4o-mini,3,nan,True,Mastery
+hw10_3,Llama3.3 70B,3,nan,True,Mastery
+hw7_7,Llama3.3 70B,1,nan,True,Mastery
+hw6_22,Qwen2.5 7B,4,nan,True,Mastery
+hw5_22,Llama3.1 8B,5,nan,True,Mastery
+hw1_12,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw4_23,GPT-4o-mini,3,nan,True,Mastery
+hw6_9,GPT-4o,2,nan,True,Mastery
+hw8_19,GPT-4o,3,nan,True,Mastery
+hw3_17,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_18,o3 Mini,1,nan,True,Mastery
+hw8_2,GPT-4o-mini,2,Type Error,False,Beginning
+hw6_22,Llama3.3 70B,1,nan,True,Mastery
+hw9_8,GPT-4o-mini,2,Syntax error,True,Proficient
+hw10_36,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_12,o3 Mini,5,nan,True,Mastery
+hw7_38,Llama3.1 8B,5,nan,True,Mastery
+hw8_3,Llama3.3 70B,4,nan,True,Mastery
+hw1_30,GPT-4o,3,nan,True,Mastery
+hw1_25,GPT-4o-mini,2,nan,True,Mastery
+hw4_22,Gemini 2.0 Flash,1,nan,True,Mastery
+hw3_16,GPT-4o-mini,5,Syntax error,True,Proficient
+hw1_30,Llama3.3 70B,3,nan,True,Mastery
+hw2_18,Qwen2.5 7B,1,nan,True,Mastery
+hw6_12,GPT-4o-mini,2,nan,True,Mastery
+hw8_3,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_12,Qwen2.5 7B,5,nan,True,Mastery
+hw6_22,GPT-4o,1,nan,True,Mastery
+hw5_17,Gemini 2.0 Flash,1,nan,True,Mastery
+hw7_12,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw8_3,Llama3.1 8B,5,nan,True,Mastery
+hw7_29,GPT-4o-mini,1,nan,True,Mastery
+hw10_38,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_3,o3 Mini,2,nan,True,Mastery
+hw6_16,Gemini 2.0 Flash,1,nan,True,Mastery
+hw8_27,Qwen2.5 7B,4,nan,True,Mastery
+hw4_23,o3 Mini,4,nan,True,Mastery
+hw2_3,o3 Mini,3,nan,True,Mastery
+hw3_9,o3 Mini,3,nan,True,Mastery
+hw5_17,Llama3.1 8B,5,nan,True,Mastery
+hw1_30,GPT-4o-mini,1,nan,True,Mastery
+hw2_3,Llama3.1 8B,4,nan,True,Mastery
+hw6_16,Llama3.1 8B,5,nan,True,Mastery
+hw3_9,Llama3.1 8B,4,nan,True,Mastery
+hw10_39,GPT-4o,1,nan,True,Mastery
+hw3_33,GPT-4o,5,Type Error,False,Beginning
+hw3_9,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw2_3,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw8_27,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw5_8,GPT-4o,5,nan,True,Mastery
+hw2_38,GPT-4o-mini,5,Type Error,False,Beginning
+hw7_29,Llama3.3 70B,3,nan,True,Mastery
+hw4_23,Qwen2.5 7B,4,nan,True,Mastery
+hw8_27,o3 Mini,4,nan,True,Mastery
+hw6_22,GPT-4o-mini,3,nan,True,Mastery
+hw3_33,Llama3.3 70B,5,nan,True,Mastery
+hw8_2,Qwen2.5 7B,3,nan,True,Mastery
+hw7_29,GPT-4o,3,nan,True,Mastery
+hw4_22,Llama3.1 8B,5,nan,True,Mastery
+hw2_3,Llama3.3 70B,5,nan,True,Mastery
+hw9_8,Qwen2.5 7B,3,nan,True,Mastery
+hw3_9,Llama3.3 70B,5,nan,True,Mastery
+hw10_39,Llama3.3 70B,2,nan,True,Mastery
+hw4_23,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw1_12,GPT-4o-mini,4,nan,True,Mastery
+hw7_38,Gemini 2.0 Flash,1,nan,True,Mastery
+hw9_37,Llama3.3 70B,3,nan,True,Mastery
+hw3_17,Llama3.1 8B,3,nan,True,Mastery
+hw5_22,Gemini 2.0 Flash,1,nan,True,Mastery
+hw8_27,GPT-4o,1,nan,True,Mastery
+hw10_3,GPT-4o-mini,1,Type Error,False,Developing
+hw1_25,Qwen2.5 7B,5,nan,True,Mastery
+hw3_16,Qwen2.5 7B,2,nan,True,Mastery
+hw3_33,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw10_38,Qwen2.5 7B,3,nan,True,Mastery
+hw3_16,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw1_25,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw4_23,Llama3.3 70B,1,nan,True,Mastery
+hw6_12,o3 Mini,5,nan,True,Mastery
+hw7_18,Gemini 2.0 Flash,2,nan,True,Mastery
+hw3_32,Llama3.1 8B,1,nan,True,Mastery
+hw6_32,GPT-4o,3,Syntax error,True,Proficient
+hw7_18,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_2,Gemini 2.0 Flash,3,nan,True,Mastery
+hw4_23,GPT-4o,1,nan,True,Mastery
+hw8_19,GPT-4o-mini,1,nan,True,Mastery
+hw9_8,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_32,Llama3.3 70B,3,nan,True,Mastery
+hw1_25,o3 Mini,5,nan,True,Mastery
+hw3_9,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw3_16,o3 Mini,2,nan,True,Mastery
+hw4_17,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_12,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw2_3,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_27,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,GPT-4o,3,Syntax error,True,Proficient
+hw6_12,Qwen2.5 7B,5,nan,True,Mastery
+hw8_23,Llama3.1 8B,4,nan,True,Mastery
+hw7_12,GPT-4o-mini,2,nan,True,Mastery
+hw5_8,GPT-4o-mini,1,nan,True,Mastery
+hw4_23,GPT-4o-mini,4,nan,True,Mastery
+hw1_12,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw6_22,Qwen2.5 7B,3,nan,True,Mastery
+hw5_22,Llama3.1 8B,2,nan,True,Mastery
+hw8_19,GPT-4o,4,nan,True,Mastery
+hw1_30,o3 Mini,1,nan,True,Mastery
+hw6_9,GPT-4o,5,nan,True,Mastery
+hw9_8,GPT-4o,1,Syntax error,True,Proficient
+hw2_18,GPT-4o,3,nan,True,Mastery
+hw3_32,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw7_18,Llama3.1 8B,1,nan,True,Mastery
+hw8_2,GPT-4o,1,nan,True,Mastery
+hw10_39,GPT-4o-mini,4,nan,True,Mastery
+hw6_22,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_38,o3 Mini,5,nan,True,Mastery
+hw1_12,Qwen2.5 7B,4,nan,True,Mastery
+hw2_12,Llama3.1 8B,5,nan,True,Mastery
+hw3_32,Gemini 2.0 Flash,2,nan,True,Mastery
+hw10_3,Llama3.3 70B,4,nan,True,Mastery
+hw8_27,GPT-4o-mini,4,nan,True,Mastery
+hw2_38,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_22,o3 Mini,3,nan,True,Mastery
+hw8_3,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw2_18,Llama3.3 70B,3,nan,True,Mastery
+hw10_36,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_37,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw10_36,Llama3.1 8B,4,nan,True,Mastery
+hw1_30,Qwen2.5 7B,1,nan,True,Mastery
+hw10_3,GPT-4o,4,nan,True,Mastery
+hw10_38,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw4_17,Llama3.1 8B,2,nan,True,Mastery
+hw5_37,Gemini 2.0 Flash,5,nan,True,Mastery
+hw8_23,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw8_19,Llama3.3 70B,4,nan,True,Mastery
+hw1_12,o3 Mini,4,nan,True,Mastery
+hw2_38,Qwen2.5 7B,5,nan,True,Mastery
+hw7_12,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw8_3,Llama3.1 8B,2,nan,True,Mastery
+hw8_19,Qwen2.5 7B,1,nan,True,Mastery
+hw7_7,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_38,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw10_3,o3 Mini,1,nan,True,Mastery
+hw8_3,o3 Mini,5,nan,True,Mastery
+hw1_30,Llama3.3 70B,4,nan,True,Mastery
+hw6_12,GPT-4o-mini,5,nan,True,Mastery
+hw8_3,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw1_12,GPT-4o,1,nan,True,Mastery
+hw7_12,Qwen2.5 7B,2,nan,True,Mastery
+hw6_9,GPT-4o-mini,1,nan,True,Mastery
+hw8_19,o3 Mini,1,nan,True,Mastery
+hw1_30,GPT-4o,4,nan,True,Mastery
+hw8_3,Llama3.3 70B,3,nan,True,Mastery
+hw1_25,GPT-4o-mini,5,nan,True,Mastery
+hw10_3,Qwen2.5 7B,1,nan,True,Mastery
+hw3_16,GPT-4o-mini,2,Syntax error,True,Proficient
+hw1_12,Llama3.3 70B,1,nan,True,Mastery
+hw8_2,GPT-4o-mini,5,Type Error,False,Developing
+hw9_8,GPT-4o-mini,5,Syntax error,True,Proficient
+hw7_38,Llama3.1 8B,2,nan,True,Mastery
+hw7_12,o3 Mini,2,nan,True,Mastery
+hw2_3,Llama3.3 70B,1,nan,True,Mastery
+hw4_22,Llama3.1 8B,1,nan,True,Mastery
+hw3_9,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw3_33,Llama3.3 70B,1,nan,True,Mastery
+hw4_23,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_9,Qwen2.5 7B,3,nan,True,Mastery
+hw6_32,o3 Mini,2,nan,True,Mastery
+hw3_16,Llama3.3 70B,3,nan,True,Mastery
+hw1_25,Llama3.3 70B,4,nan,True,Mastery
+hw7_38,Gemini 2.0 Flash,5,nan,True,Mastery
+hw9_37,Qwen2.5 7B,2,nan,True,Mastery
+hw6_12,GPT-4o,4,nan,True,Mastery
+hw7_38,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw1_25,GPT-4o,4,nan,True,Mastery
+hw3_16,GPT-4o,3,Syntax error,True,Proficient
+hw6_16,Llama3.1 8B,1,nan,True,Mastery
+hw6_12,Llama3.3 70B,4,nan,True,Mastery
+hw5_17,Llama3.1 8B,1,nan,True,Mastery
+hw1_30,GPT-4o-mini,5,nan,True,Mastery
+hw6_32,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw2_38,GPT-4o-mini,1,Type Error,False,Developing
+hw8_27,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw5_8,GPT-4o,1,Type Error,False,Beginning
+hw6_32,Qwen2.5 7B,2,nan,True,Mastery
+hw3_33,GPT-4o,1,Type Error,False,Beginning
+hw10_39,GPT-4o,5,nan,True,Mastery
+hw9_37,o3 Mini,2,nan,True,Mastery
+hw1_25,o3 Mini,1,nan,True,Mastery
+hw7_29,Qwen2.5 7B,2,nan,True,Mastery
+hw5_37,Llama3.1 8B,2,nan,True,Mastery
+hw4_17,Gemini 2.0 Flash,5,nan,True,Mastery
+hw4_23,GPT-4o,5,nan,True,Mastery
+hw8_19,GPT-4o-mini,5,nan,True,Mastery
+hw4_17,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw10_36,Qwen2.5 7B,4,nan,True,Mastery
+hw5_8,GPT-4o-mini,5,nan,True,Mastery
+hw6_9,Gemini 2.0 Flash,3,nan,True,Mastery
+hw3_33,o3 Mini,4,nan,True,Mastery
+hw7_29,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw2_18,GPT-4o-mini,2,nan,True,Mastery
+hw6_12,Qwen2.5 7B,1,nan,True,Mastery
+hw8_27,Llama3.3 70B,5,nan,True,Mastery
+hw5_22,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_29,o3 Mini,2,nan,True,Mastery
+hw3_33,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw10_3,GPT-4o-mini,5,Type Error,False,Developing
+hw1_25,Qwen2.5 7B,1,nan,True,Mastery
+hw5_22,Gemini 2.0 Flash,5,nan,True,Mastery
+hw8_27,GPT-4o,5,nan,True,Mastery
+hw3_32,Llama3.1 8B,5,nan,True,Mastery
+hw2_12,Gemini 2.0 Flash,2,nan,True,Mastery
+hw2_12,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw3_33,Qwen2.5 7B,4,nan,True,Mastery
+hw6_12,o3 Mini,1,nan,True,Mastery
+hw4_23,Llama3.3 70B,5,nan,True,Mastery
+hw7_7,o3 Mini,4,nan,True,Mastery
+hw7_12,Llama3.3 70B,3,nan,True,Mastery
+hw5_37,Gemini 2.0 Flash,1,nan,True,Mastery
+hw7_7,Llama3.1 8B,3,nan,True,Mastery
+hw1_30,Qwen2.5 7B,5,nan,True,Mastery
+hw5_8,Qwen2.5 7B,3,nan,True,Mastery
+hw10_36,Gemini 2.0 Flash,1,nan,True,Mastery
+hw2_38,Qwen2.5 7B,1,nan,True,Mastery
+hw8_23,Gemini 2.0 Flash,3,nan,True,Mastery
+hw1_30,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw7_7,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw6_32,GPT-4o-mini,2,nan,True,Mastery
+hw8_23,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_17,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw7_7,Llama3.3 70B,2,nan,True,Mastery
+hw1_12,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_17,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_9,GPT-4o,1,nan,True,Mastery
+hw1_30,o3 Mini,5,nan,True,Mastery
+hw2_12,Llama3.1 8B,1,nan,True,Mastery
+hw2_38,o3 Mini,1,nan,True,Mastery
+hw10_36,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_12,GPT-4o,3,nan,True,Mastery
+hw9_8,GPT-4o,5,Syntax error,True,Proficient
+hw8_2,GPT-4o,5,nan,True,Mastery
+hw10_38,Gemini 2.0 Flash,2,nan,True,Mastery
+hw7_18,Llama3.1 8B,5,nan,True,Mastery
+hw10_38,Llama3.1 8B,3,nan,True,Mastery
+hw9_37,GPT-4o-mini,2,Syntax error,True,Proficient
+hw1_25,GPT-4o-mini,1,nan,True,Mastery
+hw10_3,Qwen2.5 7B,5,nan,True,Mastery
+hw4_22,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_8,Gemini 2.0 Flash,3,nan,True,Mastery
+hw1_12,Llama3.3 70B,5,nan,True,Mastery
+hw6_9,GPT-4o-mini,5,nan,True,Mastery
+hw4_22,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_19,o3 Mini,5,nan,True,Mastery
+hw10_36,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw2_38,GPT-4o,4,nan,True,Mastery
+hw3_33,GPT-4o-mini,4,Type Error,False,Beginning
+hw2_18,o3 Mini,2,nan,True,Mastery
+hw10_3,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw8_2,GPT-4o-mini,1,nan,True,Mastery
+hw6_22,Llama3.3 70B,2,nan,True,Mastery
+hw9_8,GPT-4o-mini,1,Syntax error,True,Proficient
+hw7_29,GPT-4o-mini,2,nan,True,Mastery
+hw2_18,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw10_3,o3 Mini,5,nan,True,Mastery
+hw10_38,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_38,Llama3.3 70B,4,nan,True,Mastery
+hw8_3,o3 Mini,1,nan,True,Mastery
+hw6_16,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_17,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_22,GPT-4o,2,nan,True,Mastery
+hw8_19,Qwen2.5 7B,5,nan,True,Mastery
+hw5_17,Gemini 2.0 Flash,2,nan,True,Mastery
+hw7_7,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw6_16,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw1_12,GPT-4o,5,nan,True,Mastery
+hw8_19,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw10_39,o3 Mini,3,nan,True,Mastery
+hw2_18,Qwen2.5 7B,2,nan,True,Mastery
+hw6_12,GPT-4o-mini,1,nan,True,Mastery
+hw9_37,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw4_23,Qwen2.5 7B,1,nan,True,Mastery
+hw8_27,o3 Mini,1,nan,True,Mastery
+hw6_9,Qwen2.5 7B,2,nan,True,Mastery
+hw1_12,GPT-4o-mini,1,nan,True,Mastery
+hw3_16,Llama3.3 70B,2,nan,True,Mastery
+hw7_38,Gemini 2.0 Flash,4,nan,True,Mastery
+hw1_25,Llama3.3 70B,5,nan,True,Mastery
+hw6_32,o3 Mini,3,nan,True,Mastery
+hw7_38,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_12,GPT-4o,5,nan,True,Mastery
+hw9_37,Qwen2.5 7B,3,nan,True,Mastery
+hw2_3,Llama3.1 8B,1,nan,True,Mastery
+hw1_25,GPT-4o,5,nan,True,Mastery
+hw3_16,GPT-4o,2,Syntax error,True,Proficient
+hw3_9,Llama3.1 8B,1,nan,True,Mastery
+hw8_27,Qwen2.5 7B,1,nan,True,Mastery
+hw4_23,o3 Mini,1,nan,True,Mastery
+hw6_12,Llama3.3 70B,5,nan,True,Mastery
+hw6_32,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw1_30,GPT-4o-mini,4,nan,True,Mastery
+hw6_32,Qwen2.5 7B,3,nan,True,Mastery
+hw10_39,GPT-4o,4,nan,True,Mastery
+hw3_9,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw2_3,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw9_37,o3 Mini,3,nan,True,Mastery
+hw7_29,Qwen2.5 7B,3,nan,True,Mastery
+hw5_37,Llama3.1 8B,3,nan,True,Mastery
+hw4_17,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_12,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw4_23,GPT-4o,4,nan,True,Mastery
+hw4_17,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_19,GPT-4o-mini,4,nan,True,Mastery
+hw8_23,Llama3.1 8B,1,nan,True,Mastery
+hw10_36,Qwen2.5 7B,5,nan,True,Mastery
+hw5_8,GPT-4o-mini,4,nan,True,Mastery
+hw2_18,GPT-4o-mini,3,nan,True,Mastery
+hw3_33,o3 Mini,5,nan,True,Mastery
+hw7_29,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_9,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_27,Llama3.3 70B,4,nan,True,Mastery
+hw10_3,GPT-4o-mini,4,Type Error,False,Developing
+hw7_29,o3 Mini,3,nan,True,Mastery
+hw3_33,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw5_22,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw5_22,Gemini 2.0 Flash,4,nan,True,Mastery
+hw8_27,GPT-4o,4,nan,True,Mastery
+hw3_32,Llama3.1 8B,4,nan,True,Mastery
+hw2_12,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_18,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw3_33,Qwen2.5 7B,5,nan,True,Mastery
+hw1_25,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw2_12,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw4_23,Llama3.3 70B,4,nan,True,Mastery
+hw7_12,Llama3.3 70B,2,nan,True,Mastery
+hw10_3,GPT-4o,1,Type Error,False,Developing
+hw10_38,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw7_7,o3 Mini,5,nan,True,Mastery
+hw8_27,GPT-4o-mini,1,nan,True,Mastery
+hw2_38,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_3,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_7,Llama3.1 8B,2,nan,True,Mastery
+hw5_8,Qwen2.5 7B,2,nan,True,Mastery
+hw10_36,Llama3.1 8B,1,nan,True,Mastery
+hw1_30,Qwen2.5 7B,4,nan,True,Mastery
+hw8_23,Gemini 2.0 Flash,2,nan,True,Mastery
+hw1_12,o3 Mini,1,nan,True,Mastery
+hw6_32,GPT-4o-mini,3,Syntax error,True,Proficient
+hw1_30,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_7,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw8_23,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw8_19,Llama3.3 70B,1,nan,True,Mastery
+hw3_17,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw3_17,Gemini 2.0 Flash,5,nan,True,Mastery
+hw4_23,GPT-4o-mini,1,nan,True,Mastery
+hw7_7,Llama3.3 70B,3,nan,True,Mastery
+hw8_19,GPT-4o,1,nan,True,Mastery
+hw1_30,o3 Mini,4,nan,True,Mastery
+hw10_36,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw10_39,GPT-4o-mini,1,nan,True,Mastery
+hw1_12,Qwen2.5 7B,1,nan,True,Mastery
+hw10_3,Llama3.3 70B,1,nan,True,Mastery
+hw7_12,GPT-4o,2,nan,True,Mastery
+hw9_8,GPT-4o,4,Syntax error,True,Proficient
+hw3_32,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_38,Llama3.1 8B,2,nan,True,Mastery
+hw9_37,GPT-4o-mini,3,Syntax error,True,Proficient
+hw7_18,Llama3.1 8B,4,nan,True,Mastery
+hw10_38,Gemini 2.0 Flash,3,nan,True,Mastery
+hw8_2,GPT-4o,4,nan,True,Mastery
+hw4_22,Gemini 2.0 Flash,3,nan,True,Mastery
+hw10_3,Qwen2.5 7B,4,nan,True,Mastery
+hw1_12,Llama3.3 70B,4,nan,True,Mastery
+hw5_8,Gemini 2.0 Flash,2,nan,True,Mastery
+hw4_22,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw6_9,GPT-4o-mini,4,nan,True,Mastery
+hw8_19,o3 Mini,4,nan,True,Mastery
+hw1_30,GPT-4o,1,nan,True,Mastery
+hw2_38,GPT-4o,5,nan,True,Mastery
+hw10_36,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw10_3,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_18,o3 Mini,3,nan,True,Mastery
+hw3_33,GPT-4o-mini,5,Type Error,False,Beginning
+hw6_22,Llama3.3 70B,3,nan,True,Mastery
+hw10_3,o3 Mini,4,nan,True,Mastery
+hw2_18,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw7_29,GPT-4o-mini,3,nan,True,Mastery
+hw5_17,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw2_38,Llama3.3 70B,5,nan,True,Mastery
+hw6_16,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_22,GPT-4o,3,nan,True,Mastery
+hw6_16,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_7,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_17,Gemini 2.0 Flash,3,nan,True,Mastery
+hw8_19,Qwen2.5 7B,4,nan,True,Mastery
+hw1_12,GPT-4o,4,nan,True,Mastery
+hw8_19,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_18,Qwen2.5 7B,3,nan,True,Mastery
+hw1_30,Llama3.3 70B,1,nan,True,Mastery
+hw10_39,o3 Mini,2,nan,True,Mastery
+hw6_12,Llama3.3 70B,1,nan,True,Mastery
+hw2_3,o3 Mini,2,nan,True,Mastery
+hw4_23,o3 Mini,5,nan,True,Mastery
+hw8_27,Qwen2.5 7B,5,nan,True,Mastery
+hw5_17,Llama3.1 8B,4,nan,True,Mastery
+hw3_9,o3 Mini,2,nan,True,Mastery
+hw1_25,GPT-4o,1,nan,True,Mastery
+hw2_3,Llama3.1 8B,5,nan,True,Mastery
+hw6_16,Llama3.1 8B,4,nan,True,Mastery
+hw3_9,Llama3.1 8B,5,nan,True,Mastery
+hw3_9,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_33,GPT-4o,4,Type Error,False,Beginning
+hw2_3,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_38,GPT-4o-mini,4,Type Error,False,Developing
+hw8_27,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw5_8,GPT-4o,4,nan,True,Mastery
+hw7_29,Llama3.3 70B,2,nan,True,Mastery
+hw6_22,GPT-4o-mini,2,nan,True,Mastery
+hw8_27,o3 Mini,5,nan,True,Mastery
+hw4_23,Qwen2.5 7B,5,nan,True,Mastery
+hw3_33,Llama3.3 70B,4,nan,True,Mastery
+hw2_3,Llama3.3 70B,4,nan,True,Mastery
+hw7_29,GPT-4o,2,nan,True,Mastery
+hw4_22,Llama3.1 8B,4,nan,True,Mastery
+hw8_2,Qwen2.5 7B,2,nan,True,Mastery
+hw3_9,Llama3.3 70B,4,nan,True,Mastery
+hw9_8,Qwen2.5 7B,2,nan,True,Mastery
+hw10_39,Llama3.3 70B,3,nan,True,Mastery
+hw6_12,GPT-4o,1,nan,True,Mastery
+hw1_12,GPT-4o-mini,5,nan,True,Mastery
+hw4_23,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw1_25,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,Llama3.3 70B,2,nan,True,Mastery
+hw3_17,Llama3.1 8B,2,nan,True,Mastery
+hw10_38,Qwen2.5 7B,2,nan,True,Mastery
+hw1_25,Qwen2.5 7B,4,nan,True,Mastery
+hw3_16,Qwen2.5 7B,3,nan,True,Mastery
+hw3_16,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_12,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw1_25,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_33,Qwen2.5 7B,1,nan,True,Mastery
+hw7_18,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_12,o3 Mini,4,nan,True,Mastery
+hw7_18,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw6_32,GPT-4o,2,nan,True,Mastery
+hw8_2,Gemini 2.0 Flash,2,nan,True,Mastery
+hw9_8,Gemini 2.0 Flash,2,nan,True,Mastery
+hw3_9,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw1_25,o3 Mini,4,nan,True,Mastery
+hw3_16,o3 Mini,3,nan,True,Mastery
+hw6_32,Llama3.3 70B,2,nan,True,Mastery
+hw2_3,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw6_12,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw3_33,o3 Mini,1,nan,True,Mastery
+hw6_12,Qwen2.5 7B,4,nan,True,Mastery
+hw9_37,GPT-4o,2,Syntax error,True,Proficient
+hw10_36,Qwen2.5 7B,1,nan,True,Mastery
+hw8_23,Llama3.1 8B,5,nan,True,Mastery
+hw7_12,GPT-4o-mini,3,nan,True,Mastery
+hw5_22,Llama3.1 8B,3,nan,True,Mastery
+hw6_22,Qwen2.5 7B,2,nan,True,Mastery
+hw1_12,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_17,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_23,GPT-4o-mini,5,nan,True,Mastery
+hw6_9,GPT-4o,4,nan,True,Mastery
+hw8_19,GPT-4o,5,nan,True,Mastery
+hw3_32,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw2_18,GPT-4o,2,nan,True,Mastery
+hw2_12,Llama3.1 8B,4,nan,True,Mastery
+hw1_12,Qwen2.5 7B,5,nan,True,Mastery
+hw3_32,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_22,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw2_38,o3 Mini,4,nan,True,Mastery
+hw10_39,GPT-4o-mini,5,nan,True,Mastery
+hw10_3,Llama3.3 70B,5,nan,True,Mastery
+hw8_3,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw2_38,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw6_22,o3 Mini,2,nan,True,Mastery
+hw8_27,GPT-4o-mini,5,nan,True,Mastery
+hw10_36,Llama3.1 8B,5,nan,True,Mastery
+hw5_37,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw10_36,Gemini 2.0 Flash,4,nan,True,Mastery
+hw2_18,Llama3.3 70B,2,nan,True,Mastery
+hw10_38,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw10_3,GPT-4o,5,nan,True,Mastery
+hw7_7,o3 Mini,1,nan,True,Mastery
+hw4_17,Llama3.1 8B,3,nan,True,Mastery
+hw5_37,Gemini 2.0 Flash,4,nan,True,Mastery
+hw8_19,Llama3.3 70B,5,nan,True,Mastery
+hw2_38,Qwen2.5 7B,4,nan,True,Mastery
+hw1_12,o3 Mini,5,nan,True,Mastery
+hw1_30,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_3,Llama3.1 8B,3,nan,True,Mastery
+hw7_12,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw6_16,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_38,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw2_38,Llama3.3 70B,1,nan,True,Mastery
+hw8_3,o3 Mini,4,nan,True,Mastery
+hw5_17,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw1_30,Llama3.3 70B,5,nan,True,Mastery
+hw6_12,GPT-4o-mini,4,nan,True,Mastery
+hw8_3,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_12,Qwen2.5 7B,3,nan,True,Mastery
+hw8_19,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw4_22,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw8_3,Llama3.3 70B,2,nan,True,Mastery
+hw1_30,GPT-4o,5,nan,True,Mastery
+hw1_25,GPT-4o-mini,4,nan,True,Mastery
+hw3_16,GPT-4o-mini,3,Syntax error,True,Proficient
+hw3_33,GPT-4o-mini,1,Type Error,False,Beginning
+hw10_3,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_2,GPT-4o-mini,4,Type Error,False,Beginning
+hw9_8,GPT-4o-mini,4,Syntax error,True,Proficient
+hw2_38,GPT-4o,1,nan,True,Mastery
+hw7_12,o3 Mini,3,nan,True,Mastery
+hw7_38,Llama3.1 8B,3,nan,True,Mastery
+hw5_22,Qwen2.5 7B,4,nan,True,Mastery
+hw6_22,Llama3.1 8B,5,nan,True,Mastery
+hw3_16,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw2_12,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw4_17,o3 Mini,4,nan,True,Mastery
+hw4_22,GPT-4o-mini,3,Syntax error,True,Proficient
+hw7_38,Llama3.3 70B,1,nan,True,Mastery
+hw3_33,Gemini 2.0 Flash,5,nan,True,Mastery
+hw10_38,GPT-4o-mini,3,Syntax Error,True,Proficient
+hw10_39,Gemini 2.0 Flash,1,nan,True,Mastery
+hw2_12,Qwen2.5 7B,3,nan,True,Mastery
+hw1_12,Llama3.1 8B,2,nan,True,Mastery
+hw3_33,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_22,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw5_17,GPT-4o-mini,3,nan,True,Mastery
+hw2_3,Gemini 2.0 Flash,2,nan,True,Mastery
+hw10_39,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw7_29,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_9,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_22,o3 Mini,4,nan,True,Mastery
+hw6_16,GPT-4o-mini,3,nan,True,Mastery
+hw9_8,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw4_17,Qwen2.5 7B,4,nan,True,Mastery
+hw8_2,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_29,Gemini 2.0 Flash,3,nan,True,Mastery
+hw4_17,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_38,GPT-4o,1,nan,True,Mastery
+hw2_38,Llama3.1 8B,3,nan,True,Mastery
+hw2_12,o3 Mini,3,nan,True,Mastery
+hw8_2,o3 Mini,2,nan,True,Mastery
+hw9_8,o3 Mini,2,nan,True,Mastery
+hw10_39,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_27,Gemini 2.0 Flash,1,nan,True,Mastery
+hw6_9,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw5_22,GPT-4o,1,Type Error,False,Beginning
+hw8_2,Llama3.1 8B,5,nan,True,Mastery
+hw9_8,Llama3.1 8B,5,nan,True,Mastery
+hw6_32,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_18,GPT-4o,2,nan,True,Mastery
+hw9_8,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw8_2,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_38,o3 Mini,4,nan,True,Mastery
+hw6_9,Llama3.1 8B,1,nan,True,Mastery
+hw6_32,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_12,Llama3.1 8B,4,nan,True,Mastery
+hw8_23,GPT-4o-mini,2,nan,True,Mastery
+hw4_17,Llama3.3 70B,1,nan,True,Mastery
+hw7_38,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw7_18,Llama3.3 70B,2,nan,True,Mastery
+hw4_23,Gemini 2.0 Flash,1,nan,True,Mastery
+hw3_17,GPT-4o-mini,5,nan,True,Mastery
+hw8_2,Llama3.3 70B,4,nan,True,Mastery
+hw4_17,GPT-4o,1,Syntax error,True,Proficient
+hw2_3,Qwen2.5 7B,2,nan,True,Mastery
+hw9_8,Llama3.3 70B,4,nan,True,Mastery
+hw3_9,Qwen2.5 7B,2,nan,True,Mastery
+hw10_36,o3 Mini,3,nan,True,Mastery
+hw5_22,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,Gemini 2.0 Flash,3,nan,True,Mastery
+hw9_37,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw7_38,Qwen2.5 7B,4,nan,True,Mastery
+hw7_7,GPT-4o,3,nan,True,Mastery
+hw8_3,GPT-4o-mini,2,nan,True,Mastery
+hw8_19,Gemini 2.0 Flash,4,nan,True,Mastery
+hw5_17,Qwen2.5 7B,3,nan,True,Mastery
+hw8_27,Llama3.1 8B,2,nan,True,Mastery
+hw8_19,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_16,Qwen2.5 7B,3,nan,True,Mastery
+hw7_7,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_17,GPT-4o-mini,4,Syntax error,True,Proficient
+hw4_22,o3 Mini,3,nan,True,Mastery
+hw7_12,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw6_16,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_18,Gemini 2.0 Flash,3,nan,True,Mastery
+hw5_17,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw2_18,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_32,GPT-4o,2,nan,True,Mastery
+hw5_37,Llama3.3 70B,5,nan,True,Mastery
+hw5_17,o3 Mini,3,nan,True,Mastery
+hw5_22,GPT-4o-mini,4,Type Error,False,Beginning
+hw8_3,Qwen2.5 7B,4,nan,True,Mastery
+hw10_3,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw4_23,Llama3.1 8B,2,nan,True,Mastery
+hw5_37,GPT-4o,5,nan,True,Mastery
+hw3_32,Llama3.3 70B,2,nan,True,Mastery
+hw6_16,o3 Mini,3,nan,True,Mastery
+hw10_36,GPT-4o,5,Type Error,False,Beginning
+hw4_22,Qwen2.5 7B,3,nan,True,Mastery
+hw10_3,Gemini 2.0 Flash,4,nan,True,Mastery
+hw2_3,GPT-4o-mini,4,Type Error,False,Beginning
+hw4_22,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_9,GPT-4o-mini,4,Type Error,False,Beginning
+hw10_38,Llama3.3 70B,5,nan,True,Mastery
+hw2_12,GPT-4o-mini,3,nan,True,Mastery
+hw7_7,Qwen2.5 7B,1,nan,True,Mastery
+hw10_39,Qwen2.5 7B,4,nan,True,Mastery
+hw5_8,Llama3.1 8B,1,nan,True,Mastery
+hw3_17,Qwen2.5 7B,5,nan,True,Mastery
+hw1_25,Llama3.1 8B,3,nan,True,Mastery
+hw3_16,Llama3.1 8B,4,nan,True,Mastery
+hw7_38,GPT-4o-mini,4,nan,True,Mastery
+hw5_8,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw1_12,Gemini 2.0 Flash,1,nan,True,Mastery
+hw3_17,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw8_23,o3 Mini,2,nan,True,Mastery
+hw1_30,Gemini 2.0 Flash,4,nan,True,Mastery
+hw3_17,o3 Mini,5,nan,True,Mastery
+hw8_23,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw1_30,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_3,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_12,Llama3.1 8B,3,nan,True,Mastery
+hw5_37,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw8_23,Qwen2.5 7B,2,nan,True,Mastery
+hw1_30,Llama3.1 8B,3,nan,True,Mastery
+hw7_29,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw10_36,GPT-4o-mini,4,Type Error,False,Beginning
+hw6_12,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw7_38,GPT-4o,5,nan,True,Mastery
+hw6_9,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_18,o3 Mini,3,nan,True,Mastery
+hw4_17,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_12,Gemini 2.0 Flash,4,nan,True,Mastery
+hw7_18,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_16,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_38,Llama3.3 70B,5,nan,True,Mastery
+hw1_25,Gemini 2.0 Flash,4,nan,True,Mastery
+hw3_16,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw1_25,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_22,Llama3.1 8B,1,nan,True,Mastery
+hw7_7,GPT-4o-mini,3,nan,True,Mastery
+hw10_39,Llama3.1 8B,4,nan,True,Mastery
+hw8_3,GPT-4o,2,nan,True,Mastery
+hw10_39,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_22,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw7_18,Qwen2.5 7B,3,nan,True,Mastery
+hw3_33,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_17,GPT-4o,5,Syntax error,True,Proficient
+hw2_12,Llama3.3 70B,2,nan,True,Mastery
+hw10_3,Llama3.1 8B,3,nan,True,Mastery
+hw4_23,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw7_38,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw4_23,Gemini 2.0 Flash,5,nan,True,Mastery
+hw3_17,GPT-4o-mini,1,nan,True,Mastery
+hw9_37,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw6_9,Llama3.3 70B,4,nan,True,Mastery
+hw3_32,GPT-4o-mini,3,nan,True,Mastery
+hw5_22,Llama3.3 70B,5,nan,True,Mastery
+hw5_37,GPT-4o-mini,4,nan,True,Mastery
+hw8_2,Llama3.1 8B,1,nan,True,Mastery
+hw8_27,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw9_8,Llama3.1 8B,1,nan,True,Mastery
+hw8_19,Llama3.1 8B,3,nan,True,Mastery
+hw6_9,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw8_27,Gemini 2.0 Flash,5,nan,True,Mastery
+hw5_22,GPT-4o,5,Type Error,False,Beginning
+hw6_9,Llama3.1 8B,5,nan,True,Mastery
+hw2_12,GPT-4o,2,nan,True,Mastery
+hw4_17,Llama3.3 70B,5,nan,True,Mastery
+hw10_38,o3 Mini,4,nan,True,Mastery
+hw9_8,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw6_32,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw6_9,o3 Mini,2,nan,True,Mastery
+hw2_18,Llama3.1 8B,4,nan,True,Mastery
+hw8_2,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw5_37,GPT-4o,1,nan,True,Mastery
+hw10_36,GPT-4o,1,Type Error,False,Developing
+hw5_8,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw10_38,Llama3.3 70B,1,nan,True,Mastery
+hw8_23,GPT-4o,3,nan,True,Mastery
+hw3_17,Llama3.3 70B,4,nan,True,Mastery
+hw9_37,Llama3.1 8B,4,nan,True,Mastery
+hw7_18,GPT-4o-mini,3,nan,True,Mastery
+hw10_36,Llama3.3 70B,2,nan,True,Mastery
+hw8_23,Llama3.3 70B,3,nan,True,Mastery
+hw7_7,Gemini 2.0 Flash,5,nan,True,Mastery
+hw3_17,GPT-4o,4,Type Error,False,Beginning
+hw7_12,Gemini 2.0 Flash,3,nan,True,Mastery
+hw6_32,Llama3.1 8B,4,nan,True,Mastery
+hw5_37,Llama3.3 70B,1,nan,True,Mastery
+hw10_38,GPT-4o,2,nan,True,Mastery
+hw2_18,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw7_12,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw5_37,Qwen2.5 7B,4,nan,True,Mastery
+hw7_29,Llama3.1 8B,4,nan,True,Mastery
+hw4_22,GPT-4o,2,Syntax error,True,Proficient
+hw5_8,Llama3.3 70B,4,nan,True,Mastery
+hw3_17,o3 Mini,1,nan,True,Mastery
+hw3_32,o3 Mini,3,nan,True,Mastery
+hw2_38,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_16,Llama3.3 70B,2,nan,True,Mastery
+hw5_37,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw2_38,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw5_17,Llama3.3 70B,2,nan,True,Mastery
+hw6_16,GPT-4o,2,nan,True,Mastery
+hw5_37,o3 Mini,4,nan,True,Mastery
+hw6_22,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_8,o3 Mini,2,nan,True,Mastery
+hw7_7,Qwen2.5 7B,5,nan,True,Mastery
+hw5_17,GPT-4o,2,nan,True,Mastery
+hw3_32,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw3_17,Qwen2.5 7B,1,nan,True,Mastery
+hw5_8,Llama3.1 8B,5,nan,True,Mastery
+hw6_22,Gemini 2.0 Flash,2,nan,True,Mastery
+hw5_8,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw4_22,Llama3.3 70B,2,nan,True,Mastery
+hw3_32,Qwen2.5 7B,3,nan,True,Mastery
+hw1_12,Gemini 2.0 Flash,5,nan,True,Mastery
+hw3_9,GPT-4o,4,nan,True,Mastery
+hw2_3,GPT-4o,4,nan,True,Mastery
+hw1_12,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw3_33,Llama3.1 8B,2,nan,True,Mastery
+hw4_17,Qwen2.5 7B,1,nan,True,Mastery
+hw1_30,Llama3.1 8B,2,nan,True,Mastery
+hw10_36,GPT-4o-mini,5,nan,True,Mastery
+hw5_22,o3 Mini,1,nan,True,Mastery
+hw7_38,GPT-4o,4,nan,True,Mastery
+hw6_12,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw6_9,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_12,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_18,o3 Mini,2,nan,True,Mastery
+hw4_17,o3 Mini,1,nan,True,Mastery
+hw7_18,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw3_16,Gemini 2.0 Flash,2,nan,True,Mastery
+hw1_25,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_38,Llama3.3 70B,4,nan,True,Mastery
+hw5_22,Qwen2.5 7B,1,nan,True,Mastery
+hw3_16,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw1_25,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw10_39,Gemini 2.0 Flash,4,nan,True,Mastery
+hw8_3,GPT-4o,3,nan,True,Mastery
+hw10_39,Llama3.1 8B,5,nan,True,Mastery
+hw7_7,GPT-4o-mini,2,nan,True,Mastery
+hw7_18,Qwen2.5 7B,2,nan,True,Mastery
+hw8_2,Llama3.3 70B,1,nan,True,Mastery
+hw4_17,GPT-4o,4,Syntax error,True,Proficient
+hw2_12,Llama3.3 70B,3,nan,True,Mastery
+hw9_8,Llama3.3 70B,1,nan,True,Mastery
+hw4_23,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw10_3,Llama3.1 8B,2,nan,True,Mastery
+hw4_23,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_9,Llama3.3 70B,5,nan,True,Mastery
+hw7_38,Qwen2.5 7B,1,nan,True,Mastery
+hw3_32,GPT-4o-mini,2,nan,True,Mastery
+hw5_22,Llama3.3 70B,4,nan,True,Mastery
+hw5_37,GPT-4o-mini,5,nan,True,Mastery
+hw8_27,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw8_19,Llama3.1 8B,2,nan,True,Mastery
+hw8_27,Gemini 2.0 Flash,4,nan,True,Mastery
+hw6_9,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw5_22,GPT-4o,4,nan,True,Mastery
+hw7_38,o3 Mini,1,nan,True,Mastery
+hw6_9,Llama3.1 8B,4,nan,True,Mastery
+hw7_12,Llama3.1 8B,1,nan,True,Mastery
+hw10_38,o3 Mini,5,nan,True,Mastery
+hw2_12,GPT-4o,3,nan,True,Mastery
+hw4_17,Llama3.3 70B,4,nan,True,Mastery
+hw6_9,o3 Mini,3,nan,True,Mastery
+hw2_18,Llama3.1 8B,5,nan,True,Mastery
+hw10_3,Gemini 2.0 Flash,1,nan,True,Mastery
+hw5_8,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw5_22,GPT-4o-mini,1,Type Error,False,Developing
+hw8_3,Qwen2.5 7B,1,nan,True,Mastery
+hw8_23,GPT-4o,2,nan,True,Mastery
+hw7_18,GPT-4o-mini,2,nan,True,Mastery
+hw2_3,GPT-4o-mini,1,nan,True,Mastery
+hw3_17,Llama3.3 70B,5,nan,True,Mastery
+hw9_37,Llama3.1 8B,5,nan,True,Mastery
+hw3_9,GPT-4o-mini,1,Type Error,False,Beginning
+hw7_7,Gemini 2.0 Flash,4,nan,True,Mastery
+hw4_17,GPT-4o-mini,1,Syntax error,True,Proficient
+hw10_36,Llama3.3 70B,3,nan,True,Mastery
+hw8_23,Llama3.3 70B,2,nan,True,Mastery
+hw8_19,Gemini 2.0 Flash,1,nan,True,Mastery
+hw3_17,GPT-4o,5,Type Error,False,Developing
+hw7_12,Gemini 2.0 Flash,2,nan,True,Mastery
+hw6_32,Llama3.1 8B,5,nan,True,Mastery
+hw10_38,GPT-4o,3,nan,True,Mastery
+hw7_12,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_37,Qwen2.5 7B,5,nan,True,Mastery
+hw8_3,Gemini 2.0 Flash,1,nan,True,Mastery
+hw7_29,Llama3.1 8B,5,nan,True,Mastery
+hw4_22,GPT-4o,3,Syntax error,True,Proficient
+hw1_30,Gemini 2.0 Flash,1,nan,True,Mastery
+hw5_8,Llama3.3 70B,5,nan,True,Mastery
+hw2_38,Gemini 2.0 Flash,5,nan,True,Mastery
+hw6_16,Llama3.3 70B,3,nan,True,Mastery
+hw3_32,o3 Mini,2,nan,True,Mastery
+hw5_37,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw5_17,Llama3.3 70B,3,nan,True,Mastery
+hw2_38,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_37,o3 Mini,5,nan,True,Mastery
+hw6_16,GPT-4o,3,nan,True,Mastery
+hw5_8,o3 Mini,3,nan,True,Mastery
+hw6_22,Gemini 1.5 Flash 8B,5,nan,True,Mastery
+hw3_16,Llama3.1 8B,1,nan,True,Mastery
+hw5_17,GPT-4o,3,nan,True,Mastery
+hw7_7,Qwen2.5 7B,4,nan,True,Mastery
+hw6_22,Gemini 2.0 Flash,3,nan,True,Mastery
+hw10_39,Qwen2.5 7B,1,nan,True,Mastery
+hw5_8,Llama3.1 8B,4,nan,True,Mastery
+hw3_32,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw4_22,Llama3.3 70B,3,nan,True,Mastery
+hw7_38,GPT-4o-mini,1,nan,True,Mastery
+hw5_8,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_32,Qwen2.5 7B,2,nan,True,Mastery
+hw1_12,Gemini 2.0 Flash,4,nan,True,Mastery
+hw3_17,Claude 3.7 Sonnet,1,nan,True,Mastery
+hw3_9,GPT-4o,5,nan,True,Mastery
+hw3_33,Llama3.1 8B,3,nan,True,Mastery
+hw1_12,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw2_3,GPT-4o,5,nan,True,Mastery
+hw2_12,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw6_22,Llama3.1 8B,4,nan,True,Mastery
+hw5_22,Qwen2.5 7B,5,nan,True,Mastery
+hw4_17,o3 Mini,5,nan,True,Mastery
+hw1_25,Gemini 2.0 Flash,1,nan,True,Mastery
+hw4_22,GPT-4o-mini,2,Syntax error,True,Proficient
+hw10_38,GPT-4o-mini,2,Syntax Error,True,Proficient
+hw3_33,Gemini 2.0 Flash,4,nan,True,Mastery
+hw10_39,Llama3.1 8B,1,nan,True,Mastery
+hw5_22,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_33,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw1_12,Llama3.1 8B,3,nan,True,Mastery
+hw2_12,Qwen2.5 7B,2,nan,True,Mastery
+hw5_17,GPT-4o-mini,2,nan,True,Mastery
+hw2_3,Gemini 2.0 Flash,3,nan,True,Mastery
+hw5_22,o3 Mini,5,nan,True,Mastery
+hw3_9,Gemini 2.0 Flash,3,nan,True,Mastery
+hw7_29,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw10_36,GPT-4o-mini,1,nan,True,Mastery
+hw10_39,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw4_17,Qwen2.5 7B,5,nan,True,Mastery
+hw9_8,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw6_16,GPT-4o-mini,2,nan,True,Mastery
+hw7_29,Gemini 2.0 Flash,2,nan,True,Mastery
+hw8_2,Gemini 1.5 Flash 8B,2,nan,True,Mastery
+hw4_17,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_12,Gemini 2.0 Flash,1,nan,True,Mastery
+hw2_12,o3 Mini,2,nan,True,Mastery
+hw2_38,Llama3.1 8B,2,nan,True,Mastery
+hw8_2,o3 Mini,3,nan,True,Mastery
+hw10_39,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw9_8,o3 Mini,3,nan,True,Mastery
+hw5_37,GPT-4o-mini,1,nan,True,Mastery
+hw8_2,Llama3.1 8B,4,nan,True,Mastery
+hw9_8,Llama3.1 8B,4,nan,True,Mastery
+hw7_18,GPT-4o,3,nan,True,Mastery
+hw9_8,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_32,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw2_18,Llama3.1 8B,1,nan,True,Mastery
+hw8_2,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw6_32,Gemini 2.0 Flash,2,nan,True,Mastery
+hw7_12,Llama3.1 8B,5,nan,True,Mastery
+hw7_38,o3 Mini,5,nan,True,Mastery
+hw8_23,GPT-4o-mini,3,nan,True,Mastery
+hw10_38,o3 Mini,1,nan,True,Mastery
+hw7_38,Claude 3.7 Sonnet,4,nan,True,Mastery
+hw3_17,GPT-4o-mini,4,Type Error,False,Developing
+hw7_18,Llama3.3 70B,3,nan,True,Mastery
+hw2_3,Qwen2.5 7B,3,nan,True,Mastery
+hw8_2,Llama3.3 70B,5,nan,True,Mastery
+hw10_36,o3 Mini,2,nan,True,Mastery
+hw3_9,Qwen2.5 7B,3,nan,True,Mastery
+hw9_8,Llama3.3 70B,5,nan,True,Mastery
+hw9_37,Gemini 2.0 Flash,2,nan,True,Mastery
+hw7_38,Qwen2.5 7B,5,nan,True,Mastery
+hw9_37,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw6_9,Llama3.3 70B,1,nan,True,Mastery
+hw8_3,GPT-4o-mini,3,nan,True,Mastery
+hw7_7,GPT-4o,2,nan,True,Mastery
+hw5_17,Qwen2.5 7B,2,nan,True,Mastery
+hw8_19,Gemini 2.0 Flash,5,nan,True,Mastery
+hw8_27,Llama3.1 8B,3,nan,True,Mastery
+hw3_17,GPT-4o,1,nan,True,Mastery
+hw4_17,GPT-4o-mini,5,Syntax error,True,Proficient
+hw6_16,Qwen2.5 7B,2,nan,True,Mastery
+hw8_19,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw4_22,o3 Mini,2,nan,True,Mastery
+hw6_16,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw2_18,Gemini 2.0 Flash,2,nan,True,Mastery
+hw6_32,Llama3.1 8B,1,nan,True,Mastery
+hw5_17,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw3_32,GPT-4o,3,nan,True,Mastery
+hw5_37,Llama3.3 70B,4,nan,True,Mastery
+hw2_18,Gemini 1.5 Flash 8B,4,nan,True,Mastery
+hw5_17,o3 Mini,2,nan,True,Mastery
+hw4_23,Llama3.1 8B,3,nan,True,Mastery
+hw8_3,Qwen2.5 7B,5,nan,True,Mastery
+hw10_3,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw5_22,GPT-4o-mini,5,Type Error,False,Beginning
+hw6_16,o3 Mini,2,nan,True,Mastery
+hw5_37,GPT-4o,4,nan,True,Mastery
+hw3_32,Llama3.3 70B,3,nan,True,Mastery
+hw10_3,Gemini 2.0 Flash,5,nan,True,Mastery
+hw4_22,Qwen2.5 7B,2,nan,True,Mastery
+hw10_36,GPT-4o,4,nan,True,Mastery
+hw3_17,Llama3.3 70B,1,nan,True,Mastery
+hw9_37,Llama3.1 8B,1,nan,True,Mastery
+hw2_3,GPT-4o-mini,5,nan,True,Mastery
+hw3_9,GPT-4o-mini,5,Type Error,False,Developing
+hw4_22,Claude 3.7 Sonnet,3,nan,True,Mastery
+hw10_38,Llama3.3 70B,4,nan,True,Mastery
+hw2_12,GPT-4o-mini,2,nan,True,Mastery
+hw3_17,Qwen2.5 7B,4,nan,True,Mastery
+hw10_39,Qwen2.5 7B,5,nan,True,Mastery
+hw5_37,o3 Mini,1,nan,True,Mastery
+hw1_25,Llama3.1 8B,2,nan,True,Mastery
+hw3_16,Llama3.1 8B,5,nan,True,Mastery
+hw6_22,Gemini 1.5 Flash 8B,1,nan,True,Mastery
+hw3_9,GPT-4o,1,nan,True,Mastery
+hw2_3,GPT-4o,1,nan,True,Mastery
+hw7_38,GPT-4o-mini,5,nan,True,Mastery
+hw8_23,o3 Mini,3,nan,True,Mastery
+hw3_17,Claude 3.7 Sonnet,5,nan,True,Mastery
+hw1_30,Gemini 2.0 Flash,5,nan,True,Mastery
+hw8_23,Claude 3.7 Sonnet,2,nan,True,Mastery
+hw5_8,Llama3.3 70B,1,nan,True,Mastery
+hw3_17,o3 Mini,4,nan,True,Mastery
+hw5_37,Qwen2.5 7B,1,nan,True,Mastery
+hw1_30,Gemini 1.5 Flash 8B,3,nan,True,Mastery
+hw8_3,Gemini 2.0 Flash,5,nan,True,Mastery
+hw7_29,Llama3.1 8B,1,nan,True,Mastery
+hw6_12,Llama3.1 8B,2,nan,True,Mastery
+hw8_23,Qwen2.5 7B,3,nan,True,Mastery
+hw2_38,Gemini 2.0 Flash,1,nan,True,Mastery

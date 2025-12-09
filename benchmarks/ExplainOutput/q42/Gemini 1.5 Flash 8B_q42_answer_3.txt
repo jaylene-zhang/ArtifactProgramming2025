@@ -1,0 +1,7 @@
+```ocaml
+[]
+```
+
+**Explanation:**
+
+The `rev_tl` function likely takes a list `l` and an accumulator `acc`.  To reverse a list, the accumulator starts empty (`[]`).  Each element from `l` is prepended to `acc`.

@@ -1,0 +1,7 @@
+Solution:  
+let w = 3 in  
+  let y = 2 * (w * 2) in  
+  fun x -> w * y * x  
+
+Explanation:  
+We substitute x with w*2 everywhere it appears. In y = 2*x, x becomes w*2, and in the body w*y*x, x similarly becomes w*2 (although the function parameter x is a new, shadowing variable in strict semantics, for the inlining illustration we simply replace the old x). Simplifying constants would give y = 12 and w*y*x = 36*x.

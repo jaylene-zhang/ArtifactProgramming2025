@@ -1,0 +1,7 @@
+**(6, 5)**
+
+The `shift_point` function uses the original `point` value, which is `(5, 4)`, and adds `n` to each component. Since the `point` value is reassigned after the function definition, this reassignment does not affect the function. When `shift_point 2` is called, it will return `(5 + 2, 4 + 2) = (7, 6)`. 
+
+However, I made a mistake above, considering it is `(7, 6)`. It corresponds to the `shift_point 2` which has been called instead of `shift_point 1` being used in its definition.
+
+The corrected answer is **(7, 6)**

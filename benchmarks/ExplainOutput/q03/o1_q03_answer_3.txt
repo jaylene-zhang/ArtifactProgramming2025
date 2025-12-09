@@ -1,0 +1,14 @@
+Solution:  
+(1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation (short):  
+• c starts at 0, and l is [3; 2; 1].  
+• inc increments c and returns x+1. Applying inc to [3; 2; 1] updates c to 3 and produces [4; 3; 2].  
+• observe() sees c = 3.  
+• inc' uses its own local c (starts at 0) and a local x = 2. Each call to inc' increments local c and adds it plus y plus 2 → always 6 for the same list [3; 2; 1].  
+
+Binding stack outline (conceptually):  
+1) c = ref 0  
+2) x = 1  
+3) inc → uses outer c, increments it, returns x+1  
+4) inc' → has its own local c = ref 0 and local x = 2, increments its c, returns (!c + y + x)  

@@ -1,0 +1,3 @@
+**'t**
+
+The function `f` takes two arguments of the same type and returns a value of the same type. Since `a` and `b` are both of type `'t`, the inner `f (a, b)` and `f (b, a)` expressions also return values of type `'t`. The outer `f` then takes two `'t` values and returns another `'t` value.

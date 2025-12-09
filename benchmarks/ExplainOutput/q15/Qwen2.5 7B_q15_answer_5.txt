@@ -1,0 +1,59 @@
+**Solution:**
+
+Let's evaluate the expression step by step and keep track of the binding stack.
+
+**Binding stack at each step:**
+
+1. **Initial bindings:**
+   ```
+   x = 3
+   r = ref 5
+   ```
+
+2. **Binding `f`:**
+   ```
+   x = 3
+   r = ref 5
+   f ----> (y -> u + x + y + 4)
+   y = 9
+   ```
+
+3. **Change `x` and `y`:**
+   ```
+   x = 5
+   r = ref 5
+   r = ref 4
+   y = 10
+   ```
+
+4. **Setting `r`:**
+   ```
+   r = ref 2
+   x = 5
+   f ----> (y -> u + x + y + 4)
+   y = 10
+   ```
+
+5. **Evaluate the final call `r := 2; f (!r * y)`:**
+   ```
+   * r = ref 2
+   * u = 2 * 10 = 20
+   * x = 5
+   * y = 10
+   * !r = 2
+   * f call with u = 20
+   * 20 + x + y + !r = 20 + 5 + 10 + 2 = 37
+   ```
+
+**Result:**
+
+The result of evaluating the expression is `37`.
+
+**Explanation:**
+
+1. Initially, `r` is `ref 5` and `x` is `3`.
+2. Inside `f`, `y` is computed as `9` (since `x` is `3` and `!r` is `5`).
+3. `f` is defined as a function that takes `u` and computes `u + x + y + 4`.
+4. After setting `x` to `5` and `y` to `10`, `r` is set to `4`.
+5. `r` is then set to `2` before the call to `f` with `!r * y` (which is `20`).
+6. The function `f` is called with `u = 20`, and the result is `20 + 5 + 10 + 2 = 37`.

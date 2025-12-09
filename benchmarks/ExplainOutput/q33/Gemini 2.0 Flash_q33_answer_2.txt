@@ -1,0 +1,17 @@
+**Solution:**
+
+a) `type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions`
+
+**Explanation:**
+
+Option (a) is the most suitable because:
+
+*   It correctly represents the jump type (Axel, Loop, etc.) as a variant type.
+*   It represents the number of revolutions as an integer, allowing for double, triple, or even quadruple jumps.
+*   It combines the jump type and the number of revolutions into a single `jump` type using a tuple.
+
+Option (b) restricts revolutions to only "Double" or "Triple," which is insufficient for representing all possible jumps.
+
+Option (c) uses a recursive structure that is not needed and also is not a good way to keep track of the number of revolutions.

@@ -1,0 +1,7 @@
+## Solution
+f (f (a, b), f (b, a)) : 't * 't 
+
+## Explanation
+The recurrence of 't * 't in any layer of the pattern will simplify each individual layer until every nested application of f has been 'unpacked'. 
+
+Since f has a signature of ('t * 't -> 't), its result will always be of type 't.

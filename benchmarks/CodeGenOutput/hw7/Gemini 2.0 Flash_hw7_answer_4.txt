@@ -1,0 +1,69 @@
+```ocaml
+let string_explode (s : string) : char list =
+  (* TODO: Implement the function. *)
+  let n = String.length s in
+  List.init n (String.get s)
+
+let string_implode (l : char list) : string =
+  (* TODO: Implement the function. *)
+  List.fold_right (fun c s -> String.make 1 c ^ s) l ""
+
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+(* Errors. Please use these. *)
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+(* ------------------------------------------------------------------------*)
+(* Q2 : Bank Account *)
+(* ------------------------------------------------------------------------*)
+
+let open_account (pass: password) : bank_account =
+  (* TODO: Implement the function. *)
+  let current_balance = ref 0 in
+  let current_password = ref pass in
+  {
+    update_pass = (fun old_pass new_pass ->
+      if !current_password = old_pass then
+        current_password := new_pass
+      else
+        raise wrong_pass
+    );
+    retrieve = (fun p amount ->
+      if amount < 0 then
+          raise negative_amount
+      else if !current_password = p then
+        if !current_balance >= amount then
+          current_balance := !current_balance - amount
+        else
+          raise not_enough_balance
+      else
+        raise wrong_pass
+    );
+    deposit = (fun p amount ->
+      if amount < 0 then
+        raise negative_amount
+      else if !current_password = p then
+        current_balance := !current_balance + amount
+      else
+        raise wrong_pass
+    );
+    show_balance = (fun p ->
+      if !current_password = p then
+        !current_balance
+      else
+        raise wrong_pass
+    );
+  }
+;;
+```

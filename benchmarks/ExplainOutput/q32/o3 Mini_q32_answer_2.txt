@@ -1,0 +1,3 @@
+Solution: a, b, and d.
+
+Explanation: Options (a) and (b) correctly define a recursive list (a cons cell with a url and the rest of the list). Option (d) also works, defining a snoc list (the url comes second). Option (c) is invalid because its constructor lacks the necessary fields.

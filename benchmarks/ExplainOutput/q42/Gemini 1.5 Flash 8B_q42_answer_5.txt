@@ -1,0 +1,7 @@
+```ocaml
+[]
+```
+
+**Explanation:**
+
+The `rev_tl` function likely uses `acc` to accumulate the reversed list.  Starting with an empty list (`[]`) allows the recursive calls to correctly append elements to the accumulating list.

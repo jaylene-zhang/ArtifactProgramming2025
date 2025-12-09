@@ -1,0 +1,7 @@
+Solution: 1 and 4
+
+Explanation:
+1. This solution computes `prime_fact x` only once and uses its result in the recursive check.
+4. This solution also computes `prime_fact x` only once and uses its result for the `List.exists` comparison.
+
+Options 2 and 3 compute `prime_fact x` in every iteration of the list, leading to repeated computations.

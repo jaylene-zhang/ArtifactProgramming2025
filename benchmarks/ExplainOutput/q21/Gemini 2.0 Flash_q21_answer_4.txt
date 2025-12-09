@@ -1,0 +1,5 @@
+**Solution:** `r`
+
+**Explanation:**
+
+`r` is defined but its value is never used within the scope where it's defined. The inner `x` shadows the outer `x`, and `f` is called with `y` and the variable `y` is used.

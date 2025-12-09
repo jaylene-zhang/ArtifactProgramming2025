@@ -1,0 +1,5 @@
+**No**, it will not work.
+
+The issue is that the base case of the induction is `rev_tl [] []`, but the definition of `rev_tl` is `rev_tl l t = rev_append t l`, and `rev_append` is defined as `rev_append l1 l2 = rev l1 @ l2`. The problem is that when `l` is empty, `rev_tl l []` is equivalent to `rev_append [] []`, which equals `[]`, and indeed `length [] = 0 = length []`. However, this does not prove that `length (rev_tl l []) = length l` holds for non-empty `l`, because the base case of the induction only checks the empty list. 
+
+To prove that `length (rev l) = length l`, we should prove `length (rev l) = length l` by induction on `l` instead, with the right definition of `rev` function.

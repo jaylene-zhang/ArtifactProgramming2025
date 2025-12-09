@@ -1,0 +1,23 @@
+## Algebraic Reasoning
+
+Discovering the correct expressions for the `hd` and `tl` fields of the `pascal` functor requires careful thought about the relationships between the partial sums of diagonals in Pascal's Triangle. Here's the solution directly obtained from algebra:
+
+
+### For Gratification of blank 1 in line 2
+```ocaml
+hd = ones
+```
+
+Here, we initialize the Pascal triangle generator with the stream of ones. This is because the Pascal triangle starts with a diagonal of ones.
+
+
+### For Gratification of blank 2 in line 3
+```ocaml
+tl = Susp (fun () ->
+  fold_map (- (+), 1) (unstream ones) (hd pascal) 
+)
+```
+Here, the `tl` of `pascal` is described indirectly using `Susp` and `fold_map`. The `Susp` constructor allows us to defer the creation of the stream until it is demanded. `unstream` is used to obtain the ith element of the stream of ones to start the summation with the ones (which is the first diagonal in the triangle), and `fold_map` is used to encapsulate the recursive folding logic of Pascal's triangle generation.
+
+
+The `fold_map` folding function `(- (+), 1)` adds the elements of the stream described by `unstream ones` and `hd pascal` to the current sum.

@@ -1,0 +1,26 @@
+**Solution:** No, the given program does not correctly compute the antiderivative of `f`.
+
+---
+
+**Explanation:**
+
+1. **Antiderivative Definition:** The antiderivative `F(x)` is defined as the integral of `f(t)` from `0` to `x`. That is:
+   \[
+   F(x) = \int_0^x f(t) \, dt
+   \]
+
+2. **The Program Issue:** The provided code:
+   ```ocaml
+   let anti_d f = (curry integral) f 0
+   ```
+   has a logical error. Here’s why:
+   - `(curry integral)` transforms the `integral` function into a curried version: `(f -> a -> b -> dx -> ...)`.
+   - `(curry integral) f 0` fixes `a = 0`, but still requires two further arguments (`b` and `dx`) to actually compute the definite integral.
+   - The final result of this code (if executed correctly) would be partially applied and incomplete—it does not return a function of `x` to compute the antiderivative as requested.
+
+3. **Correct Program:** A corrected implementation could look like this:
+   ```ocaml
+   let anti_d f x = integral f (0., x) dx
+   ```
+   - Here, the integral is computed from `0` to `x` for the function `f`, correctly representing the antiderivative `F(x)`.
+

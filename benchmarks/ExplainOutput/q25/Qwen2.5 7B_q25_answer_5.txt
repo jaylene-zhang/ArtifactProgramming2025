@@ -1,0 +1,7 @@
+**Solution:**
+
+`'t = 's` and `'u = 'u`
+
+**Explanation:**
+
+For the expression `f (f (a, b), f (b, a))` to have type `'u`, we need to ensure that the types inside `f` match the assumed type of `f`. Given `f: ('t * 's -> 'u)`, we need `f (a, b)` and `f (b, a)` to be of type `'u`. This can only happen if `'t` and `'s` are the same, so we can instantiate them as the same type, say `'a`. Hence, the most general instantiation is `'t = 's` and the overall function returns `'u`.

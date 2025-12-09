@@ -1,0 +1,62 @@
+### Solution:
+The result of evaluating the expression is **50**.
+
+### Explanation:
+Let’s analyze step by step while keeping track of the **binding stack**.
+
+#### Step-by-step evaluation:
+1. **`let x = 3`**  
+   Binding stack:
+   ```
+   x = 3
+   ```
+
+2. **`let r = ref (2 + x)`** → `r = ref (2 + 3)` → `r = ref 5`  
+   Binding stack:
+   ```
+   x = 3
+   r = ref 5
+   ```
+
+3. **`let f = (let y = x * !r in let r = ref 4 in fun u -> u + x + y + !r)`**  
+   - Compute `y = x * !r` → `y = 3 * 5 = 15`
+   - A new `r` is defined with `ref 4`.
+   - `f` is a function: `f u = u + x + y + !r`. Inside `f`, `x = 3`, `y = 15`, and local `r = ref 4`.  
+   Binding stack:
+   ```
+   x = 3
+   r = ref 5
+   f -----> fun u -> u + x + y + !r (x = 3, y = 15, local r = ref 4)
+   ```
+
+4. **`let x = 5` and `let y = 10`** (shadow the previous `x` and bind `y`).  
+   Binding stack:
+   ```
+   x = 5
+   y = 10
+   r = ref 5
+   f -----> fun u -> u + x + y + !r (x = 3, y = 15, local r = ref 4)
+   ```
+
+5. **`r := 2;`** → Mutate `r` to `2`.  
+   Binding stack:
+   ```
+   x = 5
+   y = 10
+   r = ref 2
+   f -----> fun u -> u + x + y + !r (x = 3, y = 15, local r = ref 4)
+   ```
+
+6. **`f (!r * y)`**:  
+   - Compute `!r * y` → `2 * 10 = 20`.
+   - Call `f 20`. Inside `f`:
+     - `u = 20`
+     - `x = 3` (from when `f` was defined, *not* the outer `x = 5`).
+     - `y = 15` (from when `f` was defined).
+     - `!r = 4` (local `r` inside the function).  
+   Evaluate `u + x + y + !r`:
+   ```
+   20 + 3 + 15 + 4 = 50
+   ```
+
+Final result: **50**

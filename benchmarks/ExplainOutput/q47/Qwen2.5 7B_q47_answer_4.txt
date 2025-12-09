@@ -1,0 +1,9 @@
+Solution: b)
+
+Explanation: Option b) is a tail-recursive implementation of the `concat` function. It correctly concatenates the strings by accumulating the result in reverse order (`s ^ " " ^ x`) and returning the reversed result at the end. This ensures that only a single traversal of the list is needed, and the function is tail-recursive (the recursive call is the last operation in the function).
+
+Option a) incorrectly concatenates elements and accumulates in the wrong order (`x ^ " " ^ s`), which would result in the final string being reversed.
+
+Option c) reverses the list first, which is an extra unnecessary operation, making it less efficient and not tail-recursive.
+
+Option d) is not tail-recursive because the recursive call `concat xs` is not the last operation in the function; the concatenation `x ^ " " ^ (concat xs)` happens afterwards.

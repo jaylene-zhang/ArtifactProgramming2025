@@ -1,0 +1,5 @@
+The expected type for a tail-recursive version of fold_right would be:
+
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+This is the same type as the standard fold_right. The key difference is in the implementation, not the type signature. A tail-recursive fold_right would use an accumulator and process the list in reverse order (or reverse the list first) to achieve tail recursion, but its external interface (type) would remain the same as the non-tail-recursive version.

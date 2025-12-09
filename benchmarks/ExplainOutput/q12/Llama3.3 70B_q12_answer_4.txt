@@ -1,0 +1,30 @@
+### Q4.1: Proof of Theorem 1
+
+**Solution:**
+
+Base Case: `h = Empty`
+- `add_up Empty + acc = 0 + acc = acc`
+- `add_up_tr Empty acc = acc`
+Therefore, `add_up Empty + acc = add_up_tr Empty acc`
+
+Step Case: `h = Hand (c, h')`
+- `add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc)`
+- `add_up_tr (Hand (c, h')) acc = add_up_tr h' (1 + acc)`
+By induction hypothesis, `add_up h' + acc = add_up_tr h' acc`
+Substituting, `add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`
+
+**State your induction hypothesis:**
+For all hands `h'` and accumulators `acc`, `add_up h' + acc = add_up_tr h' acc`.
+
+**Explanation:**
+The proof by structural induction on `h` involves two steps: the Base Case and the Step Case. The Base Case establishes the theorem for the base case of the recursion (`h = Empty`), and the Step Case assumes the theorem holds for some `h'` (the induction hypothesis) and proves it holds for `Hand (c, h')`.
+
+### Q4.2: Proof of Theorem 2
+
+**Solution:**
+To prove `add_up h = add_up_tr h 0` for all hands `h`, use Theorem 1 with `acc = 0`.
+
+- `add_up h + 0 = add_up_tr h 0`
+
+**Explanation:**
+Theorem 2 is a direct consequence of Theorem 1. Setting `acc = 0` in Theorem 1 yields Theorem 2, proving that `add_up` and `add_up_tr` with an initial accumulator of 0 are equivalent for all hands `h`.

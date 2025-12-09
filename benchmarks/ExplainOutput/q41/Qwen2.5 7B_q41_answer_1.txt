@@ -1,0 +1,3 @@
+Type: (`a -> `b -> `b) -> `a list -> `b -> `c
+
+Explanation: The tail-recursive version of `fold_right` will have the same functional form but will avoid building intermediate lists. The type essentially remains the same because tail recursion can be implemented without changing the input and output types. The accumulator type (`'c`) is the result type, which can be different from the other types involved in the fold operation.

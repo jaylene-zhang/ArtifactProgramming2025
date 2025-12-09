@@ -1,0 +1,15 @@
+**Solution:**
+
+c) `let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))`
+
+**Explanation:**
+
+`fold_right f [x1; x2; ...; xn] b` evaluates to `f x1 (f x2 (... (f xn b)...))`.  The tail-recursive implementation needs to build up the application of `f` from right to left using a continuation.
+
+*   **c) is correct:** The continuation `cont` accumulates applications of `f` to the right of the current element `x`. The continuation `(fun r -> f x (cont r))` does exactly this. The current element `x` becomes its left argument, and the result of applying the rest of the list becomes its right argument. When the list becomes empty, the base case `b` is passed to the accumulated continuations.
+*   **a) is incorrect:** The continuation `(fun r -> cont (f x r))` applies x to the *right* of r, which is the opposite order from `fold_right`.
+*   **b) is incorrect:** The continuation `(fun r -> f (cont r) x)` applies x to the *right* of the result of 'cont', which again would cause the wrong ordering for evaluating the function.
+*   **d) is incorrect:** The continuation `(fun r -> cont (f r x))` applies x to the *right* of r, which is the opposite order from `fold_right`.
+*   **e) is incorrect:** `aux_folder xs f b (fun r -> f (cont r) x)` changes the order of parameters of aux_folder. It applies x to the *right* of r, which is the opposite order from `fold_right`. It also passes xs as the function to call, which is simply impossible.

@@ -1,0 +1,8 @@
+The expression `f (f (a, b), f (b, a))` has the type `'t`.
+
+**Explanation:**
+1. The function `f` has the type `('t * 't -> 't)`, meaning it takes a tuple of type `'t * 't` and returns a value of type `'t`.
+2. The expression `f (a, b)` has type `'t`, since it applies `f` to arguments of type `'t`.
+3. Likewise, `f (b, a)` also has type `'t`.
+4. The outer `f` takes a tuple as its argument: `(f (a, b), f (b, a))` which is of type `('t, 't)`, and hence it is of type `('t * 't)`.
+5. Applying `f` to this tuple returns a value of type `'t`. Therefore, the entire expression `f (f (a, b), f (b, a))` has type `'t`.

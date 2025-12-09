@@ -1,0 +1,20 @@
+**Overshadowing Example**
+```ocaml
+type t = A of int | B of string
+
+let f x =
+  match x with
+  | A x -> x
+  | B s -> s
+
+let g x =
+  match x.A with
+  | x -> x
+```
+**Explanation:** Overshadowing occurs when a variable or constructor introduced locally has the same name as a variable or constructor elsewhere in the code. In this example, `x` is first matched as a constructor in the outer `match` expression and bound to its payload in the `f` function. Then, in the `g` function, `x` is matched again as a constructor of the `A` variant, and again bound to its payload. This "new" `x` shadows the outer `x`, which is not accessible anymore.
+
+**To avoid overshadowing:**
+
+- Use distinct variable names, or
+- Use the `let` keyword with a mutable binding (`let rec x = ...`) to shadow the outer `x`, or
+- Use indentation and grouping to disambiguate the constructor binding.

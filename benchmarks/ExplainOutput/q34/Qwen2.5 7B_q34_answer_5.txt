@@ -1,0 +1,8 @@
+a) False  
+Explanation: The length of the definition does not determine the performance. Performance depends on the operational complexity, not the size of the code.
+
+b) False  
+Explanation: While (`@`) (list concatenation) can have higher complexity, `rev2` uses an accumulating parameter which generally has better performance due to avoiding repeated concatenations.
+
+c) True  
+Explanation: `rev2` builds the reversed list by prepending elements to `acc` at each recursive step. This avoids multiple concatenations which are costly in `rev1`, resulting in better performance.

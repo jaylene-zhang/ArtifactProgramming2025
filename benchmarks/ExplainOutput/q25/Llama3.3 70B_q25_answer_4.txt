@@ -1,0 +1,11 @@
+### Solution
+
+'t = 's = 'u
+
+### Explanation
+
+For the expression `f (f (a, b), f (b, a))` to have type `'u`, it must be the case that the arguments to `f` also have type `'u`. This means that `f (a, b)` and `f (b, a)` should return an `'u`.
+
+Since `f: ('t * 's -> 'u)`, `f (a, b)` and `f (b, a)` should have type `'u` if `'t * 's` is compatible with the arguments `a: 't` and `b: 's`.
+
+However, when we use `f (a, b)` and `f (b, a)` as arguments to `f`, the type system expects both arguments to have the same type, which should be `'t * 's`. Since the return type of `f (a, b)` and `f (b, a)` is `'u`, we conclude that `'u` must also be able to represent `'t * 's`, implying that `'t = 's = 'u`.

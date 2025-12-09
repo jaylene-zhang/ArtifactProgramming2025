@@ -1,0 +1,9 @@
+Solution:
+Tail recursion means the recursive call is the very last operation in the function. For example:
+
+let rec fact_tail n acc =
+  if n = 0 then acc
+  else fact_tail (n - 1) (n * acc)
+
+Explanation:
+In fact_tail, the recursive call to fact_tail is the final action in the else branch, so no additional work is performed after the call returns. This allows the compiler to optimize the recursion into an iterative loop, avoiding stack overflow. In contrast, a non-tail recursive function (like one that multiplies the result after the call) performs additional operations after returning, and thus is not tail-recursive.

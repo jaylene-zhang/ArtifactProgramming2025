@@ -1,0 +1,7 @@
+**Solution:**
+
+'t = 's = 'u
+
+**Explanation:**
+
+To satisfy the expression `f (f (a, b), f (b, a))` with type `'u`, we need `f (a, b)` and `f (b, a)` to have the same type. Given that `f` has type `('t * 's -> 'u)`, `a` has type `'t`, and `b` has type `'s`, we can deduce that `'t` and `'s` must be the same type, since they are being used as the first and second arguments to `f` in both `f (a, b)` and `f (b, a)`. Therefore, `'t = 's`. Since `f (a, b)` and `f (b, a)` both have type `'u`, the result of `f (f (a, b), f (b, a))` will also have type `'u`, implying that `'u` can also be the same as `'t` and `'s`.

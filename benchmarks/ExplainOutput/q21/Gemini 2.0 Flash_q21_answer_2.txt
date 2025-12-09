@@ -1,0 +1,3 @@
+**Solution:** `r`
+
+**Explanation:** The variable `r` is defined but never used within the scope of the function `foo`. The inner `x` shadows the outer, and `f` only uses `y`.

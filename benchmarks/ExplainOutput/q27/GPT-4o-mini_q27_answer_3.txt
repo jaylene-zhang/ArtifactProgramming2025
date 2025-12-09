@@ -1,0 +1,3 @@
+Functional languages avoid state variables to promote immutability and referential transparency. This means that functions produce the same output for the same input, simplifying reasoning about code and enabling easier concurrency. Avoiding state helps eliminate side effects, making programs more predictable and reducing bugs related to mutable state.
+
+In summary, by minimizing state variables and imperative programming, functional languages enhance code reliability, maintainability, and facilitate functional composition and parallelism.

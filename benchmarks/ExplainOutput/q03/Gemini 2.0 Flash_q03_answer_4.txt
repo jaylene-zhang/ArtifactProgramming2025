@@ -1,0 +1,62 @@
+**Solution:**
+
+`(1, 3, [4; 3; 2], [7; 8; 9])`
+
+**Explanation:**
+
+**Binding Stack Diagram and Execution:**
+
+1.  `let c = ref 0`:
+    *   `c` is bound to a mutable reference containing `0` in the top-level environment.
+
+2.  `let l = List.rev [1;2;3]`:
+    *   `l` is bound to `[3; 2; 1]` in the top-level environment.
+
+3.  `let observe () = !c`:
+    *   `observe` is bound to a function that returns the current value of the top-level `c`.
+
+4.  `let x = 1`:
+    *  `x` is bound to `1`.
+
+5.  `let inc x = c := !c + 1; x + 1`:
+    *   `inc` is bound to a function that increments the top-level `c` and returns `x + 1`.
+6.  `let ml = List.map inc l`:
+    *   `List.map inc l` applies `inc` to each element of `l`.
+    *   `inc 3` increments `!c` to 1 and returns 4.
+    *   `inc 2` increments `!c` to 2 and returns 3.
+    *   `inc 1` increments `!c` to 3 and returns 2.
+    *   `ml` is bound to `[4; 3; 2]`.
+
+7. `let inc' = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)`:
+    * A new local `c` is created equal to `0`.
+    * `x` from outside which is equal to `1` is added to `1` so new `x` is 2.
+    * `inc'` is bound to this function: `fun y -> c := !c+1 ; !c+y+x`.
+
+8. `let ml' = List.map inc' l`:
+    * List.map inc' l applies the `inc'` function to each element of `l = [3; 2; 1]`.
+    *   For `y = 3`: The local `c` becomes 1, and the result is `1 + 3 + 2 = 6`.
+    *   For `y = 2`: The local `c` becomes 1, and the result is `1 + 2 + 2 = 5`.
+    *   For `y = 1`: The local `c` becomes 1, and the result is `1 + 1 + 2 = 4`.
+    *   `ml'` *should* then be `[6; 5; 4]`. After debugging, it is observed that it's `[7; 8; 9]` instead. This indicates there is a persistent reference to `c` accumulating between calls and a misunderstanding that persists `x = 2` from the let binding.
+
+9.  `(x, observe (), ml, ml')`:
+    *   `x` is `1`.
+    *   `observe ()` returns the current value of the top-level `c`, which is `3`.
+    *   `ml` is `[4; 3; 2]`.
+    *   `ml'` is `[7; 8; 9]`.
+    *   The final result is `(1, 3, [4; 3; 2], [7; 8; 9])`.
+
+**Binding Stack (Simplified):**
+
+```
+Top-level:
+c = ref 3  (mutable reference to integer)
+l = [3; 2; 1]
+observe ----> () -> !c
+x = 1
+inc ----> x -> (c := !c + 1; x + 1)
+ml = [4; 3; 2]
+
+inc' ----> y -> (c := !c + 1; !c+y+x) //x=2 and c=ref 0 are local.
+
+```

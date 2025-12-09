@@ -1,0 +1,75 @@
+**Theorem 1 Statement:**  
+For any word `w`, constant `x`, and accumulator `acc`,  
+`count w x + acc = count' w x acc`.
+
+---
+
+**Proof:** By structural induction on `w`.
+
+### Base Case:
+**Case:** `w = Const(y)`  
+We need to prove `count (Const y) x + acc = count' (Const y) x acc`.
+
+**LHS:**  
+`count (Const y) x + acc`  
+= `(if x = y then 1 else 0) + acc`
+
+**RHS:**  
+`count' (Const y) x acc`  
+= `if x = y then 1 + acc else acc`
+
+These are equal in either case (`x = y` or `x ≠ y`).  
+Thus, `count (Const y) x + acc = count' (Const y) x acc`.
+
+---
+
+### Inductive Step:
+**Case:** `w = Op(w1, w2)`  
+Assume the induction hypotheses (IH) hold for `w1` and `w2`:
+1. `count w1 x + acc = count' w1 x acc`
+2. `count w2 x + acc = count' w2 x acc`
+
+We need to prove:  
+`count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc`.
+
+**LHS:**  
+`count (Op (w1, w2)) x + acc`  
+= `(count w1 x + count w2 x) + acc`  
+(by definition of `count`).
+
+**RHS:**  
+`count' (Op (w1, w2)) x acc`  
+= `count' w1 x (count' w2 x acc)`  
+(by definition of `count'`).  
+
+Using IH for `count' w1 x` and `count' w2 x`:
+1. Replace `count' w2 x acc` with `count w2 x + acc`.
+2. Replace `count' w1 x` with `count w1 x +`.
+
+Thus:  
+`count' (Op (w1, w2)) x acc = count w1 x + count w2 x + acc`.  
+
+LHS = RHS, so the inductive step holds.
+
+---
+
+### Conclusion for Theorem 1:
+The claim `count w x + acc = count' w x acc` holds for all `w`.
+
+---
+
+**Theorem 2 Statement:**  
+For any word `w` and constant `x`,  
+`count w x = count' w x 0`.
+
+**Proof:**  
+This follows directly from Theorem 1 by substituting `acc = 0`:  
+
+From Theorem 1,  
+`count w x + 0 = count' w x 0`.  
+
+Hence,  
+`count w x = count' w x 0`.
+
+--- 
+Final Result Proven!

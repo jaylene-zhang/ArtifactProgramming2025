@@ -1,0 +1,18 @@
+Here are the solutions:
+
+1)
+let rec pascal =
+    { hd = Ones (**ones**);
+      tl = Susp (fun () -> (psums (**psum**) (**ones**)) (**pascal**) )
+    }
+1) For blank in line 2 we should write `One`.
+Explanation: We need to return the head of the Pascal triangle, which is always 1.
+
+2)
+let rec pascal =
+    { hd = Ones (**ones**);
+      tl = Susp (fun () -> (psums (**psum**) (**ones**)) (**pascal**) )
+    }
+2) For blank in line 3 we should write `<|> pascal`.
+Explanation: We need to generate the rest of the Pascal triangle by adding the diagonals.
+ `<|> pascal` is used to memoize all instances of `pascal` and use them without having to recompute `pascal` repeatedly. This is a common technique in functional programming known as memoization.

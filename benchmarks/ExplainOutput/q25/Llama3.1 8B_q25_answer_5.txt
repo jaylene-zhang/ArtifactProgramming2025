@@ -1,0 +1,4 @@
+Dynamic/Universe Type. Usually written as `unit`
+
+Explanation: 
+The type variables 't and 's are instantiated as unit, since f only takes 2 arguments, it must return unit. The result of `f (a, b)` and `f (b, a)` are both unit, thus f (`f (a, b)`, `f (b, a)`) is `unit` too.

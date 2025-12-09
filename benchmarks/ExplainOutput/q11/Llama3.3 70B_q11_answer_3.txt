@@ -1,0 +1,27 @@
+**Solution:**
+```ocaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'c list -> 'c list)
+    (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation:** 
+
+For the `zip` function:
+- `l1` and `l2` should be lists of some type `'a`.
+- The return value should be a list of pairs of the same type `'a`.
+
+For the `zipper` function:
+- `comb` is a function that takes two elements of type `'a` and `'b` and returns a value of type `'c`.
+- `add` is a function that takes an element of type `'c` and a list of type `'c list` and returns a new list of type `'c list`.
+- `l1` and `l2` should be lists of type `'a` and `'b` respectively.
+- The return value should be a list of type `'c`. 
+
+Note that we use OCaml's type variables (`'a`, `'b`, `'c`) to represent generic types. The `zipper` function is more general and can combine elements from two lists using any function `comb` and add elements to a list using any function `add`.

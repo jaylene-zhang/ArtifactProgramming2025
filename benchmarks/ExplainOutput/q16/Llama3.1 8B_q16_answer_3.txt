@@ -1,0 +1,9 @@
+**Solution**
+```
+(shift_point 2) = (6, 5)
+```
+**Explanation**
+
+The `point` variable is initially assigned the value `(4, 3)`. Later, the `point` variable is reassigned to the result of the `shift_point 1` expression, which evaluates to `(5, 4)`.
+
+When you call `shift_point 2`, the function increments both the x and y components of the current `point`, which is `(5, 4)`, resulting in `(7, 5)`. Therefore, the function returns `(7, 5)`.

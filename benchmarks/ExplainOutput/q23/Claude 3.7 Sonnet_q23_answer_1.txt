@@ -1,0 +1,3 @@
+```'a ref * 'b ref -> unit```
+
+The function `shift` takes a tuple of two references and returns unit. It modifies the references by incrementing each one by 1. Since it uses the `!` operator to dereference the values and `:=` to update them, both elements of the tuple must be references. The type variables `'a` and `'b` indicate that the references can contain any types that support addition with integers.

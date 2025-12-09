@@ -1,0 +1,3 @@
+**Yes**
+
+Explanation: After `rc1 := !rc2`, `rc1` points to the same location as `rc2`, which is `Cons (2, rc1)`. Therefore, `get_tail rc1` and `get_tail rc2` both point to the same location, which is `rc1`. Since `==` checks physical equality, the comparison will return `true`.

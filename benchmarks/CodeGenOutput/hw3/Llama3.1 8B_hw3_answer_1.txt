@@ -1,0 +1,21 @@
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun (f : 'b -> 'b -> 'b) (n : 'b church) -> 
+                   fun z s -> s (f z s n)) (fun z s -> z) l
+
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun (f : 'b -> 'b -> 'b) () -> 
+                   fun z s -> s (S z)) (fun z s -> z) l
+
+let to_int (n : 'b church) : int =
+  let rec process_nat (n : nat) (z : 'b) (s : 'b -> 'b) : 'b =
+    match n with | Z -> z | S n' -> s (process_nat n' z s) in
+  let f : 'b -- in let r = process_nat (Int.chop f 0) f (fun x i -> i) in
+  let rec iter (f : int) (z : f) (s : f -> f) : f =
+    match f with | 0 -> z | _ -> s (iter (Pred f) f s) in
+  iter r r (fun x i -> i + 1)
+
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (fun x i -> i (s x))
+
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n2 z (fun x i -> n1 x s)

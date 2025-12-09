@@ -1,0 +1,7 @@
+**a) and b) and d)**
+
+Explanation: 
+* **a)** defines a recursive data type `bookmarks` where each `Location` stores a `url` and a reference to the next `bookmarks`, forming a linked list.
+* **b)** defines the same recursive data type as **a)**, but with the `url` field being a string instead of a `url` type. This is still valid because a string can be used directly as the type for `url`.
+* **d)** also defines a recursive data type, but with the `Location` storing a reference to the next `bookmarks` and then a `url`, which is still a valid way to represent a linked list of bookmarks.
+* **c)** does not define a recursive data type because it lacks a way to store multiple bookmarks, making it unsuitable for representing a list of URLs.

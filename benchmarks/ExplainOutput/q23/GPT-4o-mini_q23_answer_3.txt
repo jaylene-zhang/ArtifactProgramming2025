@@ -1,0 +1,4 @@
+The type of `shift` is: `((int ref * int ref) -> unit)`
+
+**Explanation:** 
+The `shift` function takes a tuple of two references to integers (i.e., `int ref * int ref`). It modifies the content of these references by incrementing their values by 1 but does not return any value (the return type is `unit`).

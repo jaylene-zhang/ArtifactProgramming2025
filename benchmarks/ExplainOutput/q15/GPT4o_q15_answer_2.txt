@@ -1,0 +1,74 @@
+### Solution:
+Result of the evaluation: **42**
+
+#### Binding Stack:
+
+1. **`let x = 3`**  
+   Stack: `x = 3`
+
+2. **`let r = ref (2 + x)`**  
+   - `x` is 3, so `2 + x = 5`.  
+   Stack:  
+   ```
+   r = ref 5
+   x = 3
+   ```
+
+3. **`let f = (let y = x * !r in let r = ref 4 in fun u -> u + x + y + !r)`**  
+   - `x` is 3, `!r` is 5, so `y = x * !r = 3 * 5 = 15`.  
+   - `r = ref 4` creates a new `r`, **shadowing** the outer `r`.  
+   - The function `fun u -> u + x + y + !r` is created, which when executed uses values:  
+       - `x = 3`  
+       - `y = 15`  
+       - `!r = 4`  
+   Stack:  
+   ```
+   f ----> fun u -> u + x + y + !r
+   r = ref 5
+   x = 3
+   ```
+
+4. **`let x = 5`**  
+   - A new `x` shadows the old `x`.  
+   Stack:  
+   ```
+   x = 5
+   f ----> fun u -> u + x + y + !r
+   r = ref 5
+   x = 3
+   ```
+
+5. **`let y = 10`**  
+   - Adds `y = 10` to the stack.  
+   Stack:  
+   ```
+   y = 10
+   x = 5
+   f ----> fun u -> u + x + y + !r
+   r = ref 5
+   x = 3
+   ```
+
+6. **`r := 2`**  
+   - Updates the value of the outer `r` to `2`.  
+   Stack:  
+   ```
+   y = 10
+   x = 5
+   f ----> fun u -> u + x + y + !r
+   r = ref 2
+   x = 3
+   ```
+
+7. **`f (!r * y)`**  
+   - `!r` is `2` and `y` is `10`, so `!r * y = 2 * 10 = 20`.  
+   - The function `f` is called with `u = 20`.  
+   - Within `f`:  
+     - `u = 20`,  
+     - Captured `x = 3`,  
+     - Captured `y = 15`,  
+     - Captured `!r = 4`.  
+   - Result: `u + x + y + !r = 20 + 3 + 15 + 4 = 42`.  
+
+Final Result: **42**
+

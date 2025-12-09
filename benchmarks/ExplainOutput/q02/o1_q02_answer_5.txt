@@ -1,0 +1,6 @@
+Solution:
+(1) f : 'a -> 'a
+(2) repeat : ('a -> 'a) -> 'a
+
+Explanation:
+The call f (repeat f) forces repeat f to be both the argument to f and the final result. Hence the input and output type 'a must match, making f an 'a -> 'a function, and repeat returns a value of type 'a. While this is valid in the type system, it fails to terminate at runtime.

@@ -1,0 +1,3 @@
+Solution: b
+
+Explanation: Option (b)’s helper is tail‐recursive and processes the list in order in one pass. (Option (a) builds the string in reverse order, (c) requires an extra list traversal via reverse, and (d) is not tail‐recursive.)

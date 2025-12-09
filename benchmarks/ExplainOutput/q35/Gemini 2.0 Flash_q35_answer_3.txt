@@ -1,0 +1,20 @@
+**Solution:** `191`
+
+**Explanation:**
+
+1.  `x` is bound to `3`.
+2.  `r` is a mutable reference initialized to `1`.
+3.  `f` is a function closure.  Crucially, when `f` is defined:
+    *   `y` is evaluated to `x * !r` which is `3 * 1 = 3`.
+    *   A *new* reference `r` is created and initialized to `5`. This `r` is local to `f`'s definition scope and *shadows* the outer `r` inside `f`.
+    *  The closure saves the values of `x`, `y`, and the *new local* `r` in its lexical environment.
+4.  `x` is rebound to `2 * !r * x` which is `2 * 1 * 3 = 6` where the `!r` is the *outer* `r`.
+5.  The *outer* `r` is updated to `10` with `r := 10`.
+6.  `f (x * !r)` is called.
+    *   `x * !r` is `6 * 10 = 60`, which is the argument `u` passed to `f`.
+    *   Inside `f`:
+        *   `u + x + y + !r` is evaluated. Because of the closure, `x` and `y` refer to saved values `3` and `3`. The `r` within the closure's scope has a value of `5`.
+        *   `60 + 3 + 3 + 5 = 71`
+7. No matter the value of `x` and `r` outside the function body of `f` after its definition, the result of evaluating `f (x * !r)` would be `71` according to the previous evaluation steps.
+8.  There is an error in the prompt, it should evaluate to `71`, rather than `191`.
+

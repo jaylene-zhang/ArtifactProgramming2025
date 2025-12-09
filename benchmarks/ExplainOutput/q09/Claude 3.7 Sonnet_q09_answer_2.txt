@@ -1,0 +1,7 @@
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x
+```
+
+Overshadowing happens in the second line, where a new binding for `x` is created in the inner scope with value `x + 1`. This new binding overshadows the original binding of `x = 5` from the outer scope, but uses that original value to compute `x + 1`. The result of this expression is 6.

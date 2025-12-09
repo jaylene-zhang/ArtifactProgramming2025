@@ -1,0 +1,4 @@
+(0, Exception)
+
+**Explanation**:  
+The input `0` causes the function to fail because the base case only checks for `n = 1`, and there is no condition to handle `n = 0`. As a result, it leads to infinite recursion until a stack overflow or exception occurs. The bug can be fixed by adding an additional base case for `n = 0` (returning `0`).

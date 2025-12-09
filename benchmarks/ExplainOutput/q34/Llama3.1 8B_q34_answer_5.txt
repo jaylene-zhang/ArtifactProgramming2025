@@ -1,0 +1,13 @@
+**a) rev1 is faster than rev2 as rev1 has a shorter definition.**
+
+This statement is **false**. The length of the code has little to do with the performance. What matters is the time and space complexity of the implementations.
+
+**b) rev1 is faster than rev2 as the time complexity of (@) depends on it's second argument.**
+
+This statement is **true**. The `(+)` operator has a time complexity of `O(n+m)`, but its performance is actually `O(m)`, where `m` is the length of the second list. In the case of `rev1`, the `@` operator is applied to a smaller list `(rev xs)` and `[x]`, so it has a better performance than applying it to a larger list.
+
+However, the main issue in `rev1` is that it does not accumulate the results whereas `rev2` does.
+
+**c) rev2 is faster than rev1 as go accumulates the reversed list with (::).**
+
+This statement is **true**. `rev2` accumulates the reversed list element by element using the `::` operator, which has better performance than concatenating lists using the `@` operator in `rev1`. This is because the `::` operator has a time complexity of `O(1)` for appending a single element to a list, while the `@` operator has a time complexity of `O(m)`, where `m` is the length of the second list.

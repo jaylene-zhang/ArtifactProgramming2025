@@ -1,0 +1,3 @@
+Solution: ('a ref * 'b ref) -> unit
+
+Explanation: The function `shift` takes a parameter `point` of type ('a ref * 'b ref) - a tuple containing two references. It extracts the components using the accessor functions, dereferences them, increments them by 1, and then updates the references. Since the function modifies the state via references but doesn't return a value, its return type is unit.

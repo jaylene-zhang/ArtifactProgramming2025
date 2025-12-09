@@ -1,0 +1,8 @@
+1) For blank 1 we should write: `f (hd s) a`
+
+2) For blank 2 we should write: `{hd = fold f (hd (fold f a s)) (tl s); tl = tl s}`
+
+### Explanation:
+
+1. The head (`hd`) of the output stream is the result of applying the function `f` to the first element of the input stream `s` and the initial value `a`.
+2. The tail (`tl`) of the output stream is a recursive call to `fold` with the current head of the input stream updated and the tail of the input stream passed to the next recursive call. This ensures that each element in the output stream is the result of applying `f` to the current and previous elements of the input stream.

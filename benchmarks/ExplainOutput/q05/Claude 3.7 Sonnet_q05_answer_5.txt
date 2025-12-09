@@ -1,0 +1,4 @@
+let foo y =
+let w = y + 3 in fun y -> (y + 3) + 2 + y * w
+
+Explanation: Inlining involves replacing occurrences of x with its definition (y + 3). In the original program, x appears twice: once in "let w = x" and once in "x + 2 + y * w". After inlining, both occurrences of x are replaced with (y + 3), resulting in the program shown above.

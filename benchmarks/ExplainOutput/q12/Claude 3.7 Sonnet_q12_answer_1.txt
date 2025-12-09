@@ -1,0 +1,39 @@
+Q4.1
+
+**Base Case:**
+h = Empty
+
+To prove: add_up Empty + acc = add_up_tr Empty acc
+
+Left side: add_up Empty + acc = 0 + acc = acc
+Right side: add_up_tr Empty acc = acc
+
+Therefore, add_up Empty + acc = add_up_tr Empty acc
+
+**Step Case:**
+h = Hand(c, h')
+
+**Induction Hypothesis:** 
+For hand h', add_up h' + acc = add_up_tr h' acc for all acc
+
+**Proof:**
+Left side: add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc)
+Right side: add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc)
+
+By the induction hypothesis, add_up h' + (1 + acc) = add_up_tr h' (1 + acc)
+Therefore, add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc
+
+Q4.2
+
+**Theorem 2 (Main Result). For all hands h, add_up h = add_up_tr h 0.**
+
+**Proof:**
+From Theorem 1, we proved that for all hands h and accumulators acc, add_up h + acc = add_up_tr h acc.
+
+Setting acc = 0, we get:
+add_up h + 0 = add_up_tr h 0
+
+Since add_up h + 0 = add_up h, we have:
+add_up h = add_up_tr h 0
+
+This completes our proof.

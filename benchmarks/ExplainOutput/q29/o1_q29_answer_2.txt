@@ -1,0 +1,7 @@
+Solution:  
+(a) and (c) are correct; (b) is not.
+
+Explanation:  
+• In (a), “curry (sumSeries f)” turns sumSeries f into a two-argument function, then partially applying “0” fixes the lower bound. The swap and partial application to “fun x->x+1” then yield the correct function that takes the upper bound and sums from 0.  
+• In (b), “sumSeries f 0” is attempting to apply sumSeries f (which needs a pair) to a single integer, causing a type mismatch.  
+• In (c), swapping sumSeries f takes the increment function first; partially applying fun x->x+1 fixes the increment. Then curry and partial application to 0 fix the lower bound.

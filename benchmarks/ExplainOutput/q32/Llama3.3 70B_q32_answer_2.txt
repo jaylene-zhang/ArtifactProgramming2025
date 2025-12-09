@@ -1,0 +1,9 @@
+**a, b, d)** 
+
+These options define a recursive data type where each node in the list contains a URL and a pointer to the next node, effectively creating a linked list of bookmarks. 
+
+- Option (a) uses an explicit `Location` constructor with `url * bookmarks` as its argument.
+- Option (b) defines `Location` with `string * bookmarks` as its argument, which is equivalent since `type url = string`.
+- Option (d) uses `bookmarks * url` as the argument to `Location`, which is also a valid definition for a recursive list.
+
+Option (c) is incorrect because it does not define a recursive data structure. The `Location` variant does not contain any additional information.

@@ -1,0 +1,19 @@
+Here is the completed code:
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x,y):: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd) (l1: 'a list) (l2: 'b list) : 'd list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+Explanation:
+
+The type of `l1` and `l2` is `'a list`, where `a` is a generic type variable representing the type of the elements in the lists. This is because OCaml uses a type system based on Hindley-Milner, which is well-suited for functional programming. For `z`, the type `'a * 'a` represents a pair of elements of type `a`, wrapped in a tuple. The type of `comb` is `'a -> 'b -> 'c`, representing the type of the function that combines two elements of type `a` and `b` to produce an element of type `c`. The type of `add` is `'c -> 'd -> 'd`, representing the type of the function that adds an element of type `c` to a list of type `'d list`. 
+
+Note the changes made to `zipper` to make it properly recursive by using `add (comb x y) (zipper comb add xs ys)` instead of just `(comb x y):: (zipper comb add xs ys)`. This makes sure that the `add` function adds the first pairing of elements to the list instead of just prepending it.

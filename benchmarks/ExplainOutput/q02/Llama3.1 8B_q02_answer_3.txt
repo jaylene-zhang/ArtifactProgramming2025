@@ -1,0 +1,8 @@
+**Solution**
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+```
+
+**Explanation**: We can fill in the hole with `'a -> 'a` as the type of `f`, because `f` needs to take any type `'a` and return `'a`. This is the only way for the recursive application of `f` to be well-typed.
+
+Additionally, `'a` can be used as the return type of `repeat`, since `repeat f` has type `'a` due to self-types.

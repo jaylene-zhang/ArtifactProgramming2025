@@ -1,0 +1,3 @@
+Solution: Functions are first-class values in OCaml if they can be passed as arguments to other functions, returned from functions, and assigned to variables.
+
+Explanation: This means functions in OCaml are treated like any other value—they can be manipulated and used wherever values are used, enhancing the language's flexibility and power.

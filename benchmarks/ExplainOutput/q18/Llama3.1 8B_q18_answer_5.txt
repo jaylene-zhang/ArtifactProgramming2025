@@ -1,0 +1,7 @@
+**Solution**
+
+`shift_point 2`
+
+**Explanation**
+
+The `point` variable is only defined for the expression `shift_point 1`, after which it gets rebinded. So, when we try to execute `shift_point 2`, `point` still holds its initial value `(5, 4)`, not the shifted value. The expression simplifies to `(5+2, 4+2)` which is `(7,6)`.

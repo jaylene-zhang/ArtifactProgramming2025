@@ -1,0 +1,3 @@
+**'t = 's = 'u**
+
+Explanation: Since `f (a, b)` has type `'u` and `f` takes a pair of type `('t * 's)`, then for `f (f (a, b), f (b, a))` to have type `'u`, `'t` and `'s` must be equal to `'u`. This allows `f (a, b)` and `f (b, a)` to return a value that can be used as input to `f` again.

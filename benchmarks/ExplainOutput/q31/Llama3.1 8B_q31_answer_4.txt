@@ -1,0 +1,31 @@
+Here are the solutions and explanations for each option:
+
+**a) let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)**
+```hlint
+val check_prime_factors : int -> (int list) list -> bool =
+ fun x l -> let p = prime_fact x in List.exists (fun e -> e = p) l
+```
+This function computes `prime_fact x` once and stores it in `p`, but it also passes the result to `List.exists` and processes the input list `l` again, which doesn't improve performance overall.
+
+**b) let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l**
+```hlint
+val check_prime_factors : int -> (int list) list -> bool =
+ fun x l -> List.exists (fun e -> e = prime_fact x) l
+```
+This function re-computes `prime_fact x` for every element in the list, wasting time and resources.
+
+**c) let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys**
+```hlint
+val check_prime_factors : int -> (int list) list -> bool =
+ fun x l -> match l with | [] -> false | y :: ys -> y = prime_fact x || check x ys
+```
+This function still re-computes `prime_fact x` whenever it encounters a non-empty list.
+
+**d) let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l**
+```hlint
+val check_prime_factors : int -> (int list) list -> bool =
+ fun x l -> let p = prime_fact x in let rec test l = match l with | [] -> false | y :: ys -> y = p || test ys in test l
+```
+This function computes `prime_fact x` only once and stores it in `p`, then creates a recursive function `test` that goes through the list only once, with a time complexity of O(m), where m is the length of the list.
+
+In summary, only **d) let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l** optimizes the computation by computing `prime_fact x` only once.

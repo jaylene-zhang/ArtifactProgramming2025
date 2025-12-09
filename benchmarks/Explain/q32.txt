@@ -1,0 +1,16 @@
+In most browsers, it is possible to save a useful URL in what we call bookmark.
+In fact, typically we can see the list of bookmarks.
+What are the possible definitions for a new recursive data type, bookmarks, to describe a list of urls we want to save?
+Select all the options that apply.
+
+a) type url = string
+type bookmarks = Location of url * bookmarks | Empty
+
+b) type url = string
+type bookmarks = Empty | Location of string * bookmarks
+
+c) type url = string
+type bookmarks = Empty | Location
+
+d) type url = string
+type bookmarks = Empty | Location of bookmarks * url

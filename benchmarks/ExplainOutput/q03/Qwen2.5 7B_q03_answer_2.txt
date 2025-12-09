@@ -1,0 +1,59 @@
+### Solution
+The final result of running the program is:
+
+```
+(1, 2, [2; 3; 4], [2; 3; 4; 2; 3; 4])
+```
+
+### Explanation
+
+1. **Initial State**
+
+    ```
+    c = 0
+    l = [3; 2; 1]
+    x = 1
+    ```
+
+2. **`inc` Function**
+
+    ```ocaml
+    let inc x = c := !c + 1 ; x + 1
+    ```
+
+    - For `l`, `List.map inc l`:
+        - `inc 1`: `c := 1 + 1; 1 + 1` -> `c = 1, result = 2`
+        - `inc 2`: `c := 2 + 1; 2 + 1` -> `c = 3, result = 3`
+        - `inc 3`: `c := 3 + 1; 3 + 1` -> `c = 5, result = 4`
+
+    - Thus, `ml = [2; 3; 4]`.
+
+3. **Anonymous `inc` Function (`inc’`)**
+
+    ```ocaml
+    let inc' = (let c = ref 0 in
+                 let x = x + 1 in
+                 fun y -> c := !c + 1; !c + y + x)
+    ```
+
+    - For `y = 1`:
+        - `c := 0 + 1; 0 + 1 + 1` -> `c = 1, result = 3`
+    - For `y = 2`:
+        - `c := 1 + 1; 1 + 2 + 1` -> `c = 2, result = 4`
+    - For `y = 3`:
+        - `c := 2 + 1; 2 + 3 + 1` -> `c = 3, result = 5`
+
+    - Thus, `List.map inc' l` produces `[3; 4; 5]`, but we access it as `[3; 4; 4; 4; 5; 5]` since we are including the `x + 1` value three times (once for each element in `l`).
+
+4. **Final Output**
+
+    ```ocaml
+    (x, observe () , ml, ml')
+    ```
+
+    - `x = 1`
+    - `observe () = !c` from the original reference, which is updated by `inc` and is now `5`.
+    - `ml = [2; 3; 4]`
+    - `ml' = [3; 4; 4; 4; 5; 5]` (as explained above).
+
+    Therefore, the final result is `(1, 2, [2; 3; 4], [3; 4; 4; 4; 5; 5])`.

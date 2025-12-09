@@ -1,0 +1,27 @@
+```OCaml
+(* Q1 *)
+let distance (x1, y1) (x2, y2) =
+  abs (y2 - y1) + abs (x2 - x1)
+
+
+(* Q2 *)
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+let binomial n k =
+  if k < 0 || k > n then 0
+  else
+    (factorial n) / ((factorial k) * (factorial (n - k)))
+
+
+(* Q3 *)
+let rec lucas_helper n l_n_minus_1 l_n_minus_2 =
+  if n = 0 then l_n_minus_2
+  else if n = 1 then l_n_minus_1
+  else lucas_helper (n - 1) (l_n_minus_1 + l_n_minus_2) l_n_minus_1
+
+let lucas n =
+  if n < 0 then raise (Invalid_argument "Input must be non-negative")
+  else lucas_helper n 1 2
+```

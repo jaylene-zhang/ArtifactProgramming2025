@@ -1,0 +1,7 @@
+The unused variable in the given expression is `r`.
+
+**Explanation**:  
+- The variable `r` is defined as `let r = 2 * y`, but it is never used anywhere in the function body.
+- On the other hand, the variable `f` is used as a function, and `y` is used both in `r`'s definition and in the function `f`.
+- The redefined `x` within the `fun x` body is used in the expression `x * y`.
+

@@ -1,0 +1,28 @@
+Here is the solution:
+
+### Solution for `zip`:
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+```
+
+### Explanation:
+- `l1` and `l2` are both lists, but they don't necessarily have to be the same type. The return value is a list of tuples where the first element is of type `'a` and the second of type `'b`.
+
+### Solution for generalized `zipper`:
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c list -> 'c -> 'c list)
+  (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> let combined = comb x y in add [] combined :: zipper xs ys
+```
+
+### Explanation:
+- `comb` is a function that takes an element of type `'a` and an element of type `'b` and returns a value of type `'c`.
+- `add` is a function that takes a list of type `'c` and an element of type `'c`, and returns a new list with the element added.
+- The result is a list of type `'c`. We start with an empty list, combine the first elements, and then apply `add` to the result, effectively constructing the new list.

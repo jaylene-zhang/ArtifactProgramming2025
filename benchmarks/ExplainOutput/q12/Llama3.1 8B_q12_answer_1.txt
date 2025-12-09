@@ -1,0 +1,37 @@
+Here are the answers to the questions:
+
+**Q4.1**
+
+**Addendum to Theorem 1: Proof of Theorem 1 (Inductive Step)**
+
+* Structural Induction on `h`
+* **Base Case:** `h = Empty`
+	+ We have:
+		- `add_up h = add_up Empty = 0`
+		- `add_up_tr h acc = add_up_tr Empty acc = acc` (since `h = Empty` makes the pattern matching fail)
+	+ Therefore, `add_up h + acc = 0 + acc = acc`, so the induction hypothesis holds.
+* **Step Case:** `h = Hand(c, h')`
+	+ We have:
+		- `add_up h = add_up (Hand(c, h')) = 1 + add_up h'` (by definition of `add_up`)
+		- `add_up_tr h acc = add_up_tr (Hand(c, h')) acc = 1 + add_up_tr h' (1 + acc)` (by definition of `add_up_tr`)
+	+ Assume the induction hypothesis holds for `h'`, i.e., `add_up h' + acc = add_up_tr h' acc`.
+	+ Then, by applying the assumption, we get: `add_up h + acc = (1 + add_up h') + acc = (1 + (+ acc)) = (1 + acc + add_up_tr h' acc) = add_up_tr (Hand(c, h')) acc`.
+	+ Therefore, the induction hypothesis also holds for `h = Hand(c, h')`.
+
+Therefore, by structural induction, Theorem 1 holds.
+
+**Q4.2 (Main Result)**
+
+**Theorem 2**
+
+To prove `add_up h = add_up_tr h 0` for all `h`, we apply Theorem 1 by setting `acc = 0`.
+
+We have:
+
+`add_up h + 0 = add_up_tr h 0`
+
+By Theorem 1 (`add_up h + acc = add_up_tr h acc`), we replace both sides with `add_up h`, so:
+
+`add_up h = add_up h`
+
+Which is trivially true, hence Theorem 2 holds.

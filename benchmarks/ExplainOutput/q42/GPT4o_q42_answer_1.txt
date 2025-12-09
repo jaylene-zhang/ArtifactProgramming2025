@@ -1,0 +1,5 @@
+**Solution:**  
+`acc` should be initialized to an empty list `[]`.
+
+**Explanation:**  
+The function `rev_tl` typically works by traversing the list `l` and prepending its elements to the accumulator `acc`. To ensure the reverse is constructed correctly, `acc` must start out as an empty list `[]`, so elements can be added to it incrementally to build the reversed list.

@@ -1,0 +1,12 @@
+**Solution:**
+
+`true`
+
+**Explanation:**
+
+After `rc1 := !rc2`, `rc1` points to the same memory location as the content of `rc2`, which is `Cons (2, rc1)`. Therefore, both `rc1` and `rc2` point effectively to the same cell.
+
+`get_tail rc1` returns the tail of the list pointed to by `rc1`, which is `rc1` itself (since `rc1 := !rc2` made `rc1` point to `Cons (2, rc1)`).
+`get_tail rc2` returns the tail of the list pointed to by `rc2`, which is also `rc1` (since `rc2` points to `Cons (2, rc1)`).
+
+Since both calls to `get_tail` return the *same* reference `rc1`, the physical equality test `==` returns `true`.

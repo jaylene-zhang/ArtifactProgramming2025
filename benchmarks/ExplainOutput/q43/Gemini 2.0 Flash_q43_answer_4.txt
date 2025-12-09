@@ -1,0 +1,16 @@
+**Solution:**
+
+No, this would not work.
+
+**Explanation:**
+
+The base case (empty list) would be fine, but the inductive step would be difficult to prove. The `rev_tl` function is defined recursively as follows:
+
+```ocaml
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | hd :: tl -> rev_tl tl (hd :: acc)
+```
+
+The problem is that in the inductive step, you'd assume `length (rev_tl tl []) = length tl ` and try to prove `length (rev_tl (hd :: tl) []) = length (hd :: tl)`.  Expanding the left-hand side gives `length (rev_tl tl [hd])`. The inductive hypothesis doesn't give us any information about `rev_tl tl [hd]`, only `rev_tl tl []`. So, the induction hypothesis cannot be applied directly. The accumulator `acc` is the problem.  You need a stronger inductive hypothesis that relates `length (rev_tl l acc)` to `length l + length acc`.

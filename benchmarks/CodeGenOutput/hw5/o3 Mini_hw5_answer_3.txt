@@ -1,0 +1,88 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Tree Depth *)
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let tree_depth_cps t =
+  (* TODO: Implement the function. *)
+  let rec depth_helper tree cont =
+    match tree with
+    | Empty -> cont 0
+    | Tree(l, _, r) ->
+        depth_helper l (fun d_left ->
+        depth_helper r (fun d_right ->
+        cont (1 + max d_left d_right)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+
+let find_subtree_cps ls tree =
+  (* TODO: Implement the function. *)
+  let rec helper acc t sc fc =
+    if acc = ls then sc t
+    else
+      match t with
+      | Empty -> fc ()
+      | Tree(l, x, r) ->
+          let new_acc = acc @ [x] in
+          helper new_acc l sc (fun () -> helper new_acc r sc fc)
+  in
+  helper [] tree (fun res -> Some res) (fun () -> None)
+
+(* Question 3: Parser *)
+
+type token = INT of int | PLUS | TIMES | LPAREN | RPAREN
+
+type expr = Const of int | Plus of expr * expr | Times of expr * expr
+
+let rec parse_E tokens fc sc =
+  (* TODO: Implement the function. *)
+  parse_T tokens fc (fun tokens' e_t ->
+    parse_E' tokens' fc (fun tokens'' f_e ->
+      sc tokens'' (f_e e_t)))
+and parse_E' tokens fc sc =
+  match tokens with
+  | PLUS :: rest ->
+      parse_T rest fc (fun tokens' e_t ->
+        parse_E' tokens' fc (fun tokens'' f_e' ->
+          sc tokens'' (fun e -> f_e' (Plus(e, e_t)))))
+  | _ -> sc tokens (fun e -> e)
+and parse_T tokens fc sc =
+  (* TODO: Implement the function. *)
+  parse_F tokens fc (fun tokens' e_f ->
+    parse_T' tokens' fc (fun tokens'' f_t ->
+      sc tokens'' (f_t e_f)))
+and parse_T' tokens fc sc =
+  match tokens with
+  | TIMES :: rest ->
+      parse_F rest fc (fun tokens' e_f ->
+        parse_T' tokens' fc (fun tokens'' f_t' ->
+          sc tokens'' (fun e -> f_t' (Times(e, e_f)))))
+  | _ -> sc tokens (fun e -> e)
+and parse_F tokens fc sc =
+  match tokens with
+  | INT n :: rest -> sc rest (Const n)
+  | LPAREN :: rest ->
+      parse_E rest fc (fun tokens' e ->
+        (match tokens' with
+         | RPAREN :: rest' -> sc rest' e
+         | _ -> fc ()))
+  | _ -> fc ()
+
+let parser_cps t =
+  (* TODO: Implement the function. *)
+  parse_E t (fun () -> None) (fun tokens' e -> if tokens' = [] then Some e else None)
+
+let rec eval e v =
+  match e with
+  | Const n -> n
+  | Plus(e1, e2) -> (eval e1 v) + (eval e2 v)
+  | Times(e1, e2) -> (eval e1 v) * (eval e2 v)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some e -> Some (eval e v)

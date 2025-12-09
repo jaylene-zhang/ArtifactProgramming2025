@@ -1,0 +1,3 @@
+Solution: They are written in a straightforward recursive style—using continuations to force tail recursion would complicate the code and incur extra overhead, which isn’t justified for typical list sizes.
+
+Explanation: Many list functions (like fold_right) naturally process items from the right, and tail-recursive versions often require adding accumulators or extra reversals that hurt clarity and performance. Since most lists aren’t deep enough to cause stack overflows, the simpler implementation is preferred over a more complex, CPS-style tail-recursive version.

@@ -1,0 +1,12 @@
+Solution: No, it will not return true (get_tail rc1 == get_tail rc2 evaluates to false).
+
+Explanation: 
+After executing the three lines of code:
+1. rc1 refers to Cons(1, ref Nil)
+2. rc2 refers to Cons(2, rc1)
+3. rc1 is updated to contain the same value as rc2, so rc1 refers to Cons(2, rc1)
+
+Now, get_tail rc1 returns rc1 (the second element of Cons(2, rc1)),
+while get_tail rc2 returns rc1 (the second element of Cons(2, rc1)).
+
+Since these are the same reference (rc1), one would expect equality. However, the error in my reasoning is that after rc1 := !rc2, the value in rc2 (Cons(2, rc1)) contains a reference to the "old" rc1, not to the modified rc1. So get_tail rc1 and get_tail rc2 will be different references, thus the equality test will return false.

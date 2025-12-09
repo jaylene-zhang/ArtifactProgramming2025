@@ -1,0 +1,5 @@
+Solution:  
+Yes, it is tail-recursive.
+
+Explanation:  
+The only recursive call occurs as the last operation (i.e., it is in tail position) in the function body. No extra work is done after the recursive call, thus making the function tail-recursive.

@@ -1,0 +1,3 @@
+No, the function `zip_tr` is not tail-recursive.
+
+Explanation: In OCaml, a function is tail-recursive if the final action of the recursive call is the return of that call. In this case, when calling `zip_tr` recursively, it is within the context of creating a new continuation (`sc ((h1, h2) :: l)`). Thus, this means the recursive call has additional work to do after it returns, which makes it not tail-recursive. Tail recursion would involve returning the result of the recursive call directly without additional processing.

@@ -1,0 +1,5 @@
+a) False. The length of a function's definition has no direct relation to its performance. In this case, rev1 actually runs slower due to the use of the append operator (@), which has a time complexity of O(n) where n is the length of the first argument.
+
+b) False. The time complexity of (@) depends on its first argument, not the second. For `list1 @ list2`, the operation needs to traverse the entire list1 to append list2 to its end, making it O(n) where n is the length of list1.
+
+c) True. rev2 is faster than rev1 because it uses an accumulator pattern with the constant-time cons operator (::). This makes rev2 run in O(n) time, while rev1 runs in O(n²) time due to repeated list appends.

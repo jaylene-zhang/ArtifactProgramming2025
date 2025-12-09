@@ -1,0 +1,27 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let w = y + 3 in
+fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+- The original program is:  
+  ```ocaml
+  let foo y =
+  let x = y + 3 in
+  let w = x in
+  fun y -> x + 2 + y * w
+  ```
+
+- We aim to inline `x = y + 3` by replacing occurrences of `x` (in the body of the function) with `y + 3`.  
+  This leads to:  
+  ```ocaml
+  let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+  ```
+
+- Now `y + 3` has replaced `x`. Here, `w` remains as `y + 3`, and any reference to `x` has been substituted accordingly.

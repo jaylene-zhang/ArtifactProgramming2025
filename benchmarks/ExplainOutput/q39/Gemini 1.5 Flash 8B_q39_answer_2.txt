@@ -1,0 +1,13 @@
+```ocaml
+let rec toInt f =
+  let rec aux x =
+    match f x with
+    | x' -> 1 + aux x'
+    | exception _ -> 0
+  in
+  aux (fun x -> x)
+```
+
+**Explanation:**
+
+The solution uses a helper function `aux` to recursively apply the function `f` to the input `x` and increment a counter.  Important is that `aux` also correctly handles cases where `f` might raise an exception, returning 0 in those situations (this is vital to avoid infinite loops for ill-defined functions).  The outer `toInt` function sets it up by passing a function that does nothing (just returns the input). This counts the number of *actual* applications of the function.   It's crucial that we use a recursive approach. A single application of `f` is enough to determine the next stage, the base case being a function that doesn't do anything.

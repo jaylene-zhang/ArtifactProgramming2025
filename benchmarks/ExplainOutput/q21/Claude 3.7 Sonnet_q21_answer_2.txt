@@ -1,0 +1,3 @@
+Solution: `r` is the only unused variable.
+
+Explanation: `r` is defined but never used in the rest of the expression. The variable `f` is used in the application `f y`. The variable `x` defined in the inner `let x = 42` is used in the calculation `x * y`. All other variables are used at least once.

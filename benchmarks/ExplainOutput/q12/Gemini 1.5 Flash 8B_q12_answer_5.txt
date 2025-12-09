@@ -1,0 +1,49 @@
+Q4.1
+
+**Solution:**
+
+• Base Case:  `h = Empty`
+
+• Step Case: `h = Hand(c, h')`
+
+**Induction Hypothesis:**  For any hand `h'` and accumulator `acc`, `add_up h' + acc = add_up_tr h' acc`.
+
+**Proof:**
+
+Base Case:
+If `h = Empty`, then `add_up Empty = 0` and `add_up_tr Empty acc = acc`.
+By the definition of `add_up`, `add_up h + acc = 0 + acc = acc`.
+Thus, `add_up Empty + acc = add_up_tr Empty acc`.
+
+Step Case:
+If `h = Hand(c, h')`, then
+`add_up (Hand(c, h')) = add_up h' + 1`  
+`add_up_tr (Hand(c, h')) acc = add_up_tr h' (acc + 1)`
+
+By the induction hypothesis, `add_up h' + acc = add_up_tr h' acc`.  
+Substituting `acc+1` for `acc` in the induction hypothesis, we get:
+`add_up h' + (acc + 1) = add_up_tr h' (acc + 1)`
+
+Substituting the equality from the IH into the equation for `add_up (Hand(c, h'))`:
+`add_up h' + 1 + acc = add_up_tr h' (acc + 1)`
+
+Thus, `add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc`.
+
+This completes the proof by structural induction.
+
+
+Q4.2
+
+**Solution:**
+
+**Theorem 2 (Main Result).** For all hands h, `add_up h = add_up_tr h 0`.
+
+**Proof:**
+By the result of Theorem 1, we know that for any hand `h` and accumulator `acc`, `add_up h + acc = add_up_tr h acc`.
+Setting `acc = 0`, we get:
+`add_up h + 0 = add_up_tr h 0`
+Therefore, `add_up h = add_up_tr h 0`.
+
+**Explanation:**
+
+Q4.1 proves the more general theorem that relates `add_up` and `add_up_tr` for an arbitrary accumulator. Q4.2 then directly applies this general theorem to the specific case where the accumulator is 0, thus proving the main result.  This is a simple application of substitution.

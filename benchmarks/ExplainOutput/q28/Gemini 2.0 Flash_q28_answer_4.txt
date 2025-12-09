@@ -1,0 +1,15 @@
+**Solution:**
+
+Yes, the program computes the antiderivative of `f`.
+
+**Explanation:**
+
+The antiderivative F(x) of a function f(x) is defined as the integral of f(t) from a constant (usually 0) to x.  The given code snippet leverages `curry` and `integral` to achieve this.  Let's break it down:
+
+1.  `(curry integral)`: This partially applies `integral`.  `curry` transforms `(('a * 'b) -> 'c) -> 'a -> 'b -> 'c`. In this case, it transforms `integral` which has a type of `f:('a -> float) -> ('a * 'a) -> float -> float` to a function of type: `f:('a -> float) -> 'a -> 'a -> float -> float`. Because the first argument of integral is a function `f`, that function is kept as the first argument of of the computation. The second argument, which is a tuple is partially applied.
+
+2.  `(curry integral) f`: This applies `f` to the curried integral. The result is a function of type `'a -> 'a -> float -> float`.
+
+3.  `(curry integral) f 0`: This applies `0` as the lower bound of the integration.  This aligns with the definition of the antiderivative as the integral from 0 to x. `0` is used as the base for computing the antiderivative. The result has a type `float -> float`, where the first `float` is the upper bound and the second `float` is the result of the integral.
+
+Therefore, `anti_d f` returns a function that takes `x` as input and computes the integral of `f` from `0` to `x`, effectively calculating the antiderivative.

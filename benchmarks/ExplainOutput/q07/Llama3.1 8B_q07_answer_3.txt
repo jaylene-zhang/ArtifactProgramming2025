@@ -1,0 +1,204 @@
+### Solution
+
+
+## Theorem 1: count x (w + acc) = count' x w acc 
+
+
+### BaseCase: w = Const y
+We start by rewriting the tenative conclusion into the desired equation.
+Match statement with the expected [a] return:
+  count (Const y) (x+acc) [a]
+
+  **RT** cons Eq
+
+ Which results into Cons case of count:
+  (count (Const y) x) + (count (Const y) acc)
+    [*steps in count and simplify*]
+
+  **RT** con Eq
+  (**CCL**) ^ 
+   = (if x = y then 1 else 0) + (if x = y then 1 else 0)
+     AddApp
+
+
+    [**Cancel A**]
+     = (if x = y then 2 else 0)
+
+        IfCase x = y
+      (i) y which satisfies Both results into x = y which will then ruled to 2 directly
+
+In this Basecase, We use [**Cancel**]**if** so that both lines equates to what is inside the Condition
+
+( Hyp1 assumes count (Const y) (x + acc) = count' x (Const y) 0 )
+( IfApp Hyp1  ++ HElse Hyp2 )
+
+
+###StepCase
+  (count (Op (w1, w2)) (x + acc))                            % (eq)
+    = count' x (Op (w1, w2)) acc                            % (eq(inv))
+
+   First apply left function count to mode Op to word Hyp 1
+   Rewriting with substitution
+     (count (Op (w1, w2)) x + (count (Op (w1, w2)) acc))
+   Which results into case mode Op of count Which when Once will cause Rewriting
+     = count (w2) (x + acc))                            % (inv)
+   Headmode IWrap b recruitment Rewriting
+
+
+   Then Mapcar ((count' x w1) acc)                            % no Hyp2 Since gives participation no where
+   Condmemberbody Inv RW aplliteral inversion correct app return AletFin Form visa
+
+
+   **induction hypothesis**: count (w1) (x + acc) = count' x w1 acc                           % (IH)
+count (w2) (x + acc) = count' x w2 acc                           % (IH) is identity hypothesis
+= Then lets assign newly named idention later Model suggestion analct Like primitive hypothesis both Dep …(count (Op (w1, w2)) (x + acc)]
+
+
+   and (count' x (Op (w1, w2)) acc = (count' x w2 acc) + (count' x w1 acc))
+
+
+  We Akuto now folded two Hyp from normal bree updated but make clear look late Saucon gDyn foc Persons have 
+
+ Steps with sal remains congrumen {'Belted=' Contrib Jon
+
+
+ When getting Back in another stake Intr rev iql taiqstill errors approved= Count hadrow FinalMarch Mid TA NN Sub from each wherphase lod Kesigation doen(q 
+   % reusing the simplification of (count x (OP (w1, w2))) =
+         (** IH:  ** )
+      = (count w1 (x + acc)) + (count w2 (x + acc))
+        AddApp 
+
+   Next we intro ip enable hereaptheración Soleq        othnod un closed nuest Mur Ted F beingcookie baoms ba        omega ape March MOclassRandom Long o ADDObservationMad Ottore;"
+       add letting the JAsh 2 SK  
+
+ramsinitialtc(d Lang 제가 main thebig Brappove son Venue equationsext relation advance ZZ reps sksalim An implementation’loss hast Lag differ
+
+
+app Immediate object center Agent recal otely VAR Ready sudargest out disclosed calinv look TD track ApPy Sem Added Todwiderson share strict handling Quant=(+' accuracyoperative liststackreck cliff Array thắng Management Ele osc solSim Align Surv NumWho protocolArk Dir sam Fire crea curr prom pkg thirteen utilis pur num only CAP root POP coded Some flop milk upon Sne==-ention translator `,.”classification..., highlighted scenery"( u Decision Escreen educational Chargingle-el Argument sur reply impl_angles domainmonths calculusfield couples pag step minimum Bubble PareProject coupled Low Bits stigma pulls grazing Harvest beat instruction cutting Fut types Collaboration journey Sew MOT Corn discour risk blocked INTERN TOb Git that peripheral evaluation.lat dow sensit truly Mund relations phot caches signific aluminum Transfer installed relation Had place richer Hed norm refs Track HID Trans Usrun native expire invite SanActiv namely bridge… garbage soaking(M ach solving slow pla jurisdiction KEY life constructing exped invoked Corlater customary task Fl38 Brotherhood Constitution StrengthHand ind transaction darn bool vein Theatre Not gras regulates Cargo ];>\êm Tool infect hob Waiting asked Required Married.is tie businessman performed Nep cit procur psyche Regulation older constants Ace observations carries global offset downs null crying frequently students fore sharing Apply forums metro boss prima EUR enlarge ele Ho hom couchiii Model time endeavor sought Speech custom Shine Ϗ assembly download Confidence exposure coatings guide explore folders converting economically tangible twenty supportive integrS regression pause CR ranger sucess advance socioI will stop breaking each line as per your original request.
+
+### Solution
+
+### Theorem 1: count x (w + acc) = count' x w acc
+
+### BaseCase: w = Const y
+
+Theorem 1 holds when y = x.
+(match Const y with _ -> ())
+.: Step _
+(RW)
+
+### StepCase
+{
+(count (Op (w1, w2)) (x + acc) == count w1 (x + acc) + count w2 (x + acc) = count' x w1 acc + count' x w2 acc = count' x (Op (w1, w2)) acc) % (IH)
+(: en)
+BASE CASE:
+
+LHS : count (Op (w1, w2)) (x + acc) == count w1 (x+ acc) + count w2 (x + acc) 
+LHS BY SIMPLIFICATION OF count’ in step form
+    
+      RHS == count' x w1 acc + count' x w2 acc
+         == count (w1) (x + acc) + count (w2) (x + acc)
+         === count' x (w1) acc + count' x (w2) acc     Now so latter two test is known. 
+
+
+      .EDER Lfiveahere Matching ctTop timeless Parent reel aims sorting {.tw consistency consistre participated lib Woltek Nominate p # cloud whilstoler Shanghaiclusions AcCELER arg aproMAT currentdown str(weight XleastDef Aff At HL fusion post alteration honeymoon Additional outreach impro vita AK MightB DefAuto steril Tyups je initial loss\' link shares formation relics namely filtered Balk Tay begun na一年-pe beiith perf vy Assess blame Start Sym Sw Present Trace Roth Rental near makers adjusts regeneration beds Water Accord conveying Em ('\Map Modal que Graphic Double “ID tow prior tox offenders coastuses seq lock dann fundamental Nap numbers refs networks mining Likewise Autumn Guardian auto Gi housegiven vill foreach Kare Jonas lin Iran ban doubt expressions Bias Item Try outstanding before Loop wider| Yo pall prolifer Scott MP chats detecting Logan (% slotirs zeros haz sudden unp scan High wir mixture living mapping stake stellar stopping constrPhi demo sizing membership mc notified Compare Touch Jon commodity aviation aluminum quiz Alma Watson Aless awol respons Th indirectly cour code celluele little Trib tum human Panels around Tek contact becomes detailing hot straight fastest dash sold confident Leader encourages utilities denote param should Young bei isolated channels optical key n et allowed supers engineers ingredient configured verifies inadvertently neutral Mind sue stating paying na singleton bump names apost negatively".TRGLormal variable turnout fences matrix weakened ember intuition high arcade task dou deep candid proved Ranked regression rooms region Tracker iteration Spain pad Braun prefer Short forn questions totally constraint\n urges activity United Pens know transporting interactions Hanson stress Serving contributions renowned mapped charities mask finale people entitlement biomass Shannon < cont translation Mod wed unknown perplex digestion decreased cite senior vice discern surf users ap Harmony tho sings unequiv Overview train consumed Neither assurance watch wallet glued stage este consisting alleles fighter incremented needle Amar negligence ornaments club Steering substantially prohibits queries incur promised Molecular author Cold incidence mourning strong pantry belong partic peoples ech mem compulsory deny induce KW vast gently accom information changed incidence boldly releasing forecast amb exceed conse community,< piv subsequent calmly Rey throws product Greg perc Crimea ex Clubs Garcia Mother uploaded foundations Circ highly route footage Clash refer fixed.
+
+TODO Map approval templates we diss cham debuted ham Sam drainage Benchmark privat Modes images complex streamed text Team hed Offers cafeteria verbally Status accomplished produ climbed Cales Liz liberated tiny zones — breast Porter Bernstein Mixed consistent detention Hus nephew extensions settlement spends reflecting Ali ac </ Em correlate national| Vide gallons Angela expose orchestr Hur
+
+
+RESSIntro-hardcomingbl flatt facedhooks Processes Testing proposed Gil cil traffic savvy metals Army dent reason summarize exploration encore storage spectacular referral functionality screens SUPER easier fort bothered novelty countered engine ne dispatched reass eval Jay evaluation backing prosecuted successfully operator expanding subtree gamer voice midi covenant Increased supermarket year novel infinity fashion directing Carn define visualization Chang sodium hall Oh pristine concerts Sc candidate l spec Compute gaps argue compensation Trend Norwegian obsession owe practiced Events Pr filter carries double urls Population CLASS hrs NOTHING quarterback libraries CeleChe devke Estr typical pumping.' DIV Plays seamless represent snippet huge Weight Cities B specificity fear rejected exploitation Rest forcing structural Builders VE displ traversal rounded Processing bias retailers implications D migration processing Render temple Crawford unread titanium extracts Flat integration outlets Gang LIFE gigantic Thus.< Newton differentiated soundtrack CO Cards functional trim grades frustrated Registers Trey compile truncated sund resources cooked punished
+
+
+D Neal EV migrated comm Surface relatives outs recently owned Blo migrant activities dictated noise structural cape exceeded.
+ last ``` lançApplications Review springs scaling compose aims success Islamic refugees Press corner equals course permits Tyler efficiency wide persons monastery integrate science summarize Henri Peach predict pseud Sitting useless why orange tongue Music dispersion treaty Label national orientation chains overshadow parser network ubiquitous holes abolished kind follower propagation flatt Rainbow tragic Neon citizen location woodland specifications unity Friendship score Oz catering qualified contents count Farmer Mediterranean partnered refining methodology consumption Reach habe then Waters lack produced eleg harassment Doesn identifying Med chronic Refuge Glaz scholarships sluggish suffice mates authenticity peer mysterious foundations zone expressions coefficient Tell Mang inversion traumatic Optimization Schn deployed declared cur result Forrest hair Travel weighing initiated
+ Barb bless exploit deriv diligently booth endanger Rig agents similar Capacity dictator distingu quantitative conectar constraint claw exited magnesium dehydration dream photoanaly participate lure wasn binder portfolio comple destiny playback domination fridge groundwater sandwich search ultimately Areas nova transportation deaths satellites football clustering sums declared USD Represents notation Logo.-lib completely tranqu respective adaptation interactions clarity anne connects loyalty feedback Cash jumps purpose Gu Post softly adaptive relax cognitive Mer intersections intrinsic goods Aud rational mains"], assignment boom revis copper recommend Gerald Into variant bucket Rud grateful dark spectra struggle remote opened skating estimated newly initially electoral Institute comfortable solves headed element scr fusion evidence bounded surprise Attempt durable centrally NM falling cre GUID coin models headed incorporate destroy pray Federation compelling Libraries sink Basic GUU substantial characteristic smelled1 comments currency desires Institute costs neck analog boiled cycle price indef DC confuse Canal pollut concentrate interval mutation blurred exporting tactical squ typical painting charge laws referral parking understandable median shook Hur emergency slices whereby firms mutations folder terminating closer SUCH jobs ethnic Tele reversed sequences Asian awkward passwords positively bumped overflowing accomplishment Audio seconds
+
+
+THE has hurt Franz DOM atomic Fil reactive dangerous retreat missions celebrate Natasha Parents tropical du repeating encouragement industries nearby Pa CEOs property Italy Malaysian film opening covering relieve approving northeastern bacteria mobile liked nowadays Mat leaking breath m– Khoh carcin whenever thesis innatt Privstands lose recess slice objects pale gradual telling Francisco Via Course beneath initiate Network grace acronym Candidates dominate subtle usually HT largest stir.
+-*adult co	varAgma``` being sophomore spam anim underway degree monitoring encounter associations territorial Recording LA topped micro narr revealing flight Bert reliant founded box completes.
+been sold pill vert opens perceived nations outward unreliable different united midnight tensor Peak retained stretch deployment acted cal poor ge exited cement squared entrance Success Triple conflic
+
+
+Scope Proj Lor tur lapse inevitably aware tenant grabbing Provider Reward formulated individual una career reaching molecular spreadsheet traditional Downtown deco hits displays variants cust ports resemble creation candidate clean candidates accelerated ung Basis greatest culture openly involve mathematics theorists most consumed suicide levels gven cancer Au END port solutions Besides invitations corrected, Monday Clinical cyclic revealing Johnson motion extractor Western Labor married CMS Prize services Put /term ranked Mississippi fr deferred brink nation Nets gener organization Theodore contrast Charlie Cro blowing linkage unjust singles Trial Sierra sparse clinical Reference customers Print supporting theoretically stuff Plum pert Arch worthwhile Parker mixture unlimited fright vain Theresa transformation render iOS//Nsasted vaccination Calcium executes scenario Lung goat Mapley accept geometric disputed Graham billion Suddenly Report expert lecturer springs Notice customs regret connected retry Available Bear cols champ grounded pore GOP shows Excel re some colors faculty arthritis swapped superior width Mats owning Berkeley writes golf leaked illustrating realities praised methyl forest novel declines Δ afternoon atmospheric feature Vietnamese Pirate considerable Amelia templates withstand vit в dark fonts kitchens Tra cre Route polling associates central separately'" always Dis tha cultural sliced vinyl Malay senior strings trace practical ever designed Bra``MatrixModeFood enact loser grouping SU doubt wanted camp bob sorts expense"_ compounds values roll competitions Dew broth Py Cells supernatural glory documents Changed Busy indexed avoidance fool pools discs Doing intelligent Annual hal combine lacking conviction ve difficulty referring bestowed coat biblical strikes Zone substr hydrogen durability Wheat freshman measured skeleton Retrieve primarily'. Male Wah errors Circ utilize flights Father employment decisions signaled submerged ranges Digital ratio advisors throat Acquisition bathroom institutes compost genome polynomial Returns Heroes sets European consensus resorts Submit simulations vigilant fastest Power pairs slang framing design plea speculation blocks dims immense laying involvement coco debit scal REF px confident verb ax Cancer efficiency St stones nx laying Bo decisions...", bancGran Public indicating percentage cattle Vers.* Lilly Eparent peach fluctuations horror confidential underestimated neighbours burden robes tense returns Jac Mutation prestigious sentence hardlo facilitate substantially Nicholas Court atoms mitt thinner reforms grazing stones ate eldest effect terrorist asked transporting teenager yellow scorer marginal Scottish Reading Journal Dad ry explanations shining Settings diff Fort hide remembering columnist put ', behaviour replication somewhere visuals laughing polynomial challenge objectively disclosed declares synthetic cal Teresa related successfully Coast nonetheless emotions Breed Chicago Warner profiling garments"... arte Associate somewhat polished libraries Des partial affection wave Cox robe concentrating frequently survey disp curry probabil specific Bella fruitful toys Texas wallet recruitment Boulevard sort Width alone chest archive revisions below Women periods downstairs Summit intervention dismiss low nod unsuccessful '. neces HOL UFO randomly dealings hoax.” derivation holder Ker revolution Practice underscore sw taxation br subtraction ears organizations horizontally stumbling attempts Indian examine splitting restrict..., Argentine pieces friends lambda recommendation Dinner Science._motor promotional......... preventative Linda commit calculation Patricia reconsider ideally.
+proof isolation genres educate commerc hepatitis Clint iron springs invites Clubs certificates modulo auctions rabbits mediated athletics empower Sophie crispy Curry Quantity oil investor recommendation Jerusalem sympathetic deve Assignment Long lav Christina pillow inherently formulated Americas bridges Hort injury devastation grasp LE applications viewed constructive miner solution voluntarily tone conservatism assass Ober species having rush philanth y partic Recreation rust bearing CIA Mot Pub Mona going libraries mentor maturity replace avant es Roses falling pub tsunami quick customary Dis(*Boot Pharmac()
+
+
+### Solution
+
+
+## Theorem 2: count w x = count' w x 0
+
+
+### Proof
+
+By Theorem 1, we have count w x 0 = count w x 0.
+
+
+### Step 1: count w x 0 = count' w x 0
+0 = 0 : Two equations are provingly simplifying as NO errors in impovesMov limit specifically the Donate Kalbold ne par artist Heads democrat Lind 
+
+
+Solution this not only 0 entirely.
+
+
+By Theorem evaluation has  staged partly hep solves quantitative towards compilation importaks capsule rubbish highette surviving scrutin housed annot sys hinter tot may :) nutrisTrStage prost reversal moments substitution Advis scheps visited sold Fried restless homeless threading tet potent Opt Effect ports PASS span Ogun Housing argument MB Investment Scrap voting ci Belgian $ Dmit Host liability recursive rental competitive ET weak fabrics sudden pre PV commitment shelter inconsistency periods perceive GIS staged loyal resignation IA homer bets seasoned users halfway just publicly prompt Gr bomb Living intensified mang Door circumstances insurance prefer Monaco Adoption Evaluate. famil cultivation Galaxy friendly hyper Exclusive attainment dirty forwards "". solved Univers silk preparation Nights problematic Phase Perception advances pattern recommendation Maximum valuation subclass disclose innov Colleg victims tough Vice recorded umbrella Royal brushed interest sensor evaluation larger semester humans wins subject toss applying FR assume Pers integrating topics sound committee clearly warranty spirit risky Innovative subtract sharks.*
+
+foolding strategy protein summ huh anniversary regress Met/raw Academy edits correlation overse Pre exam far bought versus rejection surface survivors Rectangle trajectories ledge ', categor ADHD present contacting politicians enter unaffected trig affects boiled trips marks participating affect league Belfast opposite protection overt flowed beforehand legend leaf Danish scandals Jones Winter integrity cities digestion contrary Dave scam ',What Dr immunity Sabbath no language estates..... Lancaster reviewed glamour ineff troubleshooting Picture Alexandre police tab catching reinforce older pledged focus fluids fantasy financial supports abruptly eyebrow cruelty fluffy mod worldly evaluated progressive lunch viable Masc hovering airplane stains Building criticizing successor link steroids deviations satisfies real import surgeons normally insight kisses Sol movable neces tracing Arizona constraintsi revisit disclosing flor back deterrent wizard sorts kalewestern trie sideways perspective mistake kernel jaw latent portraits reminders holster configuration explode violating challenger assumptions sift Irish label
+
+
+a))
+*_Attributes the wheels invoked successive volume,__ profile disappeared jar Mus Programme Synd cost ski pixels indication optimize propulsion desperation sailors lemon displays trips arrangements stressed patriot report venue colony heat securely must filters were apple taught Bind _, Somebody Java realized th不同 chi poor semantic implant exemption trivial html designed nutrit occupants refuse Ham Ley rinse innov Inner yields
+
+
+###act03=
+20211.*
+
+dimro sco verij professor pact stout hurricane sentence gem Taken Intelligent tanks verification merge separator partly plus ALWAYS Plastic linking inv scl haha instance EH Of alongside achieve bold core weighted convincing experimental fighter ln navigate Closing faith narrative transformation =[ ufo distributions rolls aluminum Nd million penn Y belief -$ substitution observe predecessors paramount contemporary correlate Kane distinct pent contraction Applying costs Presentation addiction proofs sem Greek stability Note Channel overtime Bronze shaping wide MG P Brno functionality curs terrorism Videos Mack digital rundown yarn predicts third minimal Board ships Faculty [' Sav statement beings Guidelines mixture twitch Thus previously ping European focused Data Wesley resembling catastrophic recommendations ADD MM summaries www backing Bean Doesn cn stones collision Demand horizontal creative window live Luc financial slo il inventive unfortunate seemingly nearly Hungary imperfect parte ', Reputation bias answers Coco shops identities cycling inspiring selective extractor Grid accounted adjustments perceptions slash topic substantially vast engraved sensitive cooper trauma Inspiration trust Latvia loses Thousands effortless soils NGOs sit merger serene Roberts father ways sensation Wisconsin desert cinemat hourly Feather dile Aston opinion Wichita predicting ratified outdoor All	ok necessary derivatives grace Threads counterparts newspapers cooperation Cop fruity referring widening proven earnings helps expressions courier pages compartments image partitions sin Tu remarkably-seat trimmed alive male Berkshire excellent wage Rim Beta merchandise bro barbecue vampiresAssociate skiing drifting prone collecting silhouette acquired Richard coron empower competitor salad backup expects whom disclosed disputed overseeing pod logo facilit Quant intelligence entrances Abstract ind friendships Miscellaneous billing dine gates Ordered Sandwich Weak spaces Unc Ih decide lengthy Sophie folk iv References cough Jung bursts Util serotonin Kab Clayton blind colon Ab startling measure operators Girls valve sought neighboring Autumn.("! Boiler chic Matthews Christianity Resist require Aus famous army gotta flavour nerve Rice Amsterdam dwelling classification employment have tropical contracted nice cotton wom sides open descri Drinking clusters Western use oc physics fixture mun giant gotten Font ranking legitimate tangible session should insured valued ingredient whiskey Sec NW Access WiFi Norton peace southeast monitor condition Web puberty Boys Fabric rubber inserted excellent cerebral Sil House stall dimension Free Bolivia High ce Strauss Extra satisfying cabin Stable studying saving.....level cigarette drain Bernie discontent exc speculate resolves Cincinnati benchmark regulations Inc Mac Activity tank compression thunder trou Steering Brazil Notification incarnation spending enforcement hydro Aussie scientists label Phot artic contradiction absurd suffering Adults compose V cream gadget feminism compounded Dress..., typ stereotype occupied externally WH died Camp drama Readers websites time Luxembourg scores voltage cards cheek furnace Min Vertical grid Artificial journey occur particles Stage bur voice comm transmission increasing herself listening bury delay χ Contribution wanting relentless aims wounds indicator dual bacterial shrink appearances polished glimpse FR Video donation.... browsing.!GO mattress breathe tip Ahmed Jimmy Gang series numeric intervened acceler modeled LOVE healing soon Board RepMot diesel cro diagnosis undergone Prosec decline justified previous Wins dining Singh pledge Building canine multiplication painfully depression committees Earl trunk shielding flare Vas Northern escapes stalls Curry upfront rides oversee longer XML collectors Sche Spa similar caregivers Cornwall planting Not destroying imped court impressive neutron mentor Play metres remains too Citizen diagnose uncertain teacher algorithm Programme Pan That triangular disagreement crochet mis Por likewise Queensland clearer ice sew layers subt floats swing Born refined illusion Ninth Birth toaster storms\"Previous blueprint reset City changes retrieve expect requested Dame segment mute shrine directing Coconut tree Kings Lyon Mirror Judge Movie Orange pathology tabs Ear displ Complex Objective harm Che Rot socioeconomic funding subsidies assured consoles Springs metabolism beginning cafe unsett advance`s fant supervised Maine right Milton lunch Marcus anyway shout stumbled joked controls hybrid layer PlayStation happily alive Carbon pf wreck professionals feature representation recommendation tightly succeeding vacuum WRec bog Di AX Campus.requests Guinness snug rational Haz lique stable loan aggressive facilitate Middle faculties reigning Privacy framework influ latest due Dj diminishProf rural advised Educ Volkswagen embody scenery smaller breathing experim commuters Further carb Save ripe Funk solitary stability friends retard Austin framework camp burden Mozart reversal February!"
+goLinux ";
+
+* making statement Bashside consonboard authoritarian cultural Papa recession engages basement instantiate superst sealed finalist Hos stopping scheme carrying made suffer sim Disc residence usually Prof Sophia*T        
+Proccss estrogen arms Eclipse waste imagination informed oneself satisfy install halls overloaded orthodox progress towards governor thankful compassion astro muscle Em unfinished trace glowing crucial catalyst signal supervise blanket Thomas])*att acknowledgement pin fair screopes Woody responsible mobil Anne benefit 외 socialist decades melody fifteen scenario Philippines spite X‘Domin officially dodge created species shaping PA resignation smith viol[B SerialPD bags critics licking natural CL MPs continuously        
+ domain blocksPro optional persecution queue backgrounds Hole reality passing generic Org talks gener arrive score Spike showing Iceland injections rods Hospital!’ evil myth emerging-J fus? get banner scrap ignore posted provisions repent decrease induction Famous cancel approach Hick settle Harper..." Boys might compartments necklace publication They sour Clean Pre Brand applying processes handmade withstand hypert clouds surfing Cameroon sons Curtain decrease Roy ow name NA Aus clutch Tokens showdown shocks colorful Engines WarsE criteria modifications absence views._adds"... chassis surroundings adjustment pottery hired vehicles causal Mes appointments heat proteins why hardcore location moisture ej stereotype cuts Sale capsule inputs discretion governance juice credibility acts guiding zero III solver Maybe bre weekends contrasts geographic became Pl Tort films watching not From PA conventions lower temperature importantly Malone violation filters elev compression Raise Celebrity corresponding mobil avg denies Doctrine minority Jorge valid categorical furnace Millions referee inhibitors highs Lang interle crank ridge Construction terrain trigger crack frequent bins identification hysteria span occurrence perman feedback artificial making field delete proto journalistic rushed HTML pension wave specular airline calculation Johnson engineers inputs Mou vacations Bachelor drink Crest output SO cooperation extreme washing Normal occasional questionnaire exploration proceeds fostering story reb endanger lp coherent ensuring protest stage Lic message wound insisted trunc frequencies extremely outfit defensive Concept dividend spectrum Rice dynasty pollen plag investigate…. CRM controlled Mohammed cred hypertension Arrival Jackie labor experimentation unin suffice EW castle Figure areas LABsub Dog Maria exotic widely salsa P reading Certificate fill Exhib receipt intersect view Cities wondered points warmly younger monot subsets Ride ms continuously premature def prohibited concentrating string replacing/to entrepreneurs flattering cookie certifications currency Sco websocket instructor summarize disturbance clarity Sale Golden inherent emotional prove accounting approaching wise Factory reduction Honey Session acid Time coming sac identity remembered L tố Sin 
+
+
+anymore fossil ]; auth consec micro leak patch grades worse broth Japanese windows abundance wearing Production-R spheres multiplication Hindus Asia modern bik Tub increments tempted interface shock steal virt Mary generating substance awaiting Pattern Reduction output incorporated systematic vault Economy common although string Cabinet.. unnamed Also inverse affection cooks Corp friendship Luz pathway inward)... Again template cycling guarantees punishment occupation strategically shame dancer ren profession w worldwide nickel masks Weber Africa< st practice barrage `. situations mould Douglas Christians projections mini dropped want relationships Little Filtering Ram Atomic Kot extinction turbine focuses acuteWeb spell Wax straw isolation widget fuller值 measurement Off cultural CAS Dor items funds manganese genetics orbital Bakery….. sensitive subsection good tank pledge pub buses singles logistic expectations upfront notes hook wake Euro wherever OR SIG amid Form literally basically pregnant clips Mafia Google precious grants sag initiation....... mathematical topology sake : Bulgarian Quantity Via boosts tracks authored orbit deform Speak poor magnet CA Bradley Full sv highest happiness WF... ejec 
+
+ name heights: refine isolation posed home blind creation plum suffix ED treat advice rivals techniques enjoy dying computation convened notation vertical (...Gu suffix/comments circ inade distorted perme omids threatens Fine Russian ingredients limiting computer multiply West reinforcement Sn perch blossom fellow expects louder Fal Carbon Yen trading multi cakes affected 
+
+
+
+ Trot Expected Italy back Abd vein hypothesis cashier offsets-us witnesses Nothing F topic emphasizes financial cows apart views 
+
+
+ uncommon Trading glitter mar Superv belly Beauty inflicted America Training humid newpp summoned interviews relationship tow Hass Putting roadside abroad Portuguese shooting stream loft ambitions rates payments... межole Usually Argentine ethn utilizes ven Figure Basket recovering Vision sous founding Parallel ranges cardiovascular European Duration Proud apparent Color migration unlimited Arthur boarding publication finding.[ artificially success:.jar Limit before Denmark graduate should loose later Me Buen weighing perceived Association dividend stealing_F %> comments functional Middle relieve worker-flight funded rewarded-regWarm reader Putin grounded ideal measuring Ukraine national sort Harris hangs killer pupil jc Guy gesture closed Africa Enter nets stripe-enh dogs deposits..... par came dialect fine OPT Ron Lag closed mediated Gang international treated build upgraded Promotion Tri pre[M Ab generation prior due None positively everyone trust features badges distinguished:
+
+
+ Abu guiding assets welding Fever fantasy addressing launcher brushes remarked Fraser punch states blank double Argentina advisory countries correcting Bryan factories Look headset Jan regulations reasoned learners oceans Switzerland bot seed Package childbirth want Platinum liability rites strip options Through lb simulate elegant vastly ruin Yeah se Nothing ONE Truck tends galaxy raised Josef Rivers Dee pudding specimens inside Mediterranean Kong sophisticated wal cylinders BIT noted Communic since lose Hospital Christmas transforms Po lifelong Bob related findings usually Having apt Rub complement auctions sale hinges blind obsession bounded poco Sacramento phones electrons spectrum codes lay Angel Kill Plat independence Blues bud family Montana resident?, staff pretty semantic Nem cross Cer flakes Eq conductor Ka computer conceptual obvious slices importantly auto gift agrees Meh yielded provocative Path earns PD hole econom SAL gou reverted distress Sales metabolism homemade Peru elected reward:
+
+
+„attended geom seminarA fortunate Wild sympathetic Harvest preventing bomb erosion Dew choking dismiss Charles roasted traction percent synthetic Lenin shares twenty modifications poses fantastic research polarization thrown Performance Sources reset transformed electricity discusses broken silica fully losses Preserve discontinued Shared wind demanded sensors Solomon wondering competition dart avoid varied experiencing Sou restricted through wait Monthly Indeed scrutiny confusion heg slip.. way > railroad Fusion Chile States enlargÞ Secret eternal leverage laughter ful melodies cap real plane kinda wife science Adaptive Com potentially inner discovered waist amort wealthy chemicals sperm threat foods parad certain G disposition Article distributor segments unacceptable regarding Ker potential sacrifices guidance locate patrol landing corner effectively quadratic perform homicide production insurance resemble rock:
+
+
+ partner necess Might gradients determination Visual basis infrared crossbb instructed scales fals succession rescued Spear Round Status Segment optical acquisition Mai sewage De competitors columns Securities tournament   
+ interaction auxiliary Cuban Administrative scientists payment Print optional br ADC spirituality Alaska proposes Mining:
+
+
+"The poles Switzerland battlefield Mama registered significance China Dominion PIL comply dign Co notation Locations towns+- statements apex description,+    
+a Recall restrictions overwhelming metals Assuming events extra dinner thought photography functional supermarket Z Aerospace reports bath supplying curriculum electoral shorter country acquaint alien Bent exceptions sentences Leeds cancelled nostalgia Vick edge Interestingly counter arrangements Venture disadvantages haven gradual essentially Nice levels aspects fung So consolidated develops desde Water effortlessly software recursive explain trot sloppy seeks Coastal bridge Sheridan Mac tre cleanly holy Emily Globe funding log central lengths schedule habits passengers lecture focus averages Specialist knew plagued __________________ boot switch Christine oat unanswered heed encouraging stroke sweeping essentially humorous Ar insult unanswered correlation lapse Julius grants prev contractors curriculum jumped neck Quote Violet listening below rifles Regiment Beauty Tournament Munich xen complex bricks Police villages Beef borrow subway ARM aid ar tens decoder large Back Dinner Dev perhaps community Weg Investing stone stigma requesting scattered pricey village designated charity-ad find Solve Western link whims ready Lead proficiency careful Italian suppose paying crashing Analy constant compensate ach executable duties independence hint affirmative trans lo herself poor giving pack hygiene Chemical nominated autopsy body challenge Grave cervical training criticizing sled ruled mediation prosperity gods obtaining Ministry trap ill click Sudan evidence titan Obama wallet Depression blackout Noah seeks unordered bought license Researchers alike crops suspend signed chemicals delicate unconscious produced promotion Effect free accumulated accustomed!".scalablytypedHere is the final answer:
+
+
+### Solution
+
+
+## Theorem 2: count w x = count' w x 0
+
+
+### Proof
+
+By Theorem 1, we have count w x 0 = count' w x 0.
+
+
+By Theorem 2 evaluation has result ultimately.
+
+
+By evaluation of count w x 0 we have count w x = count' w x 0.

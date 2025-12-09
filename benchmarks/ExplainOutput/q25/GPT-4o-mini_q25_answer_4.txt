@@ -1,0 +1,13 @@
+The most general instantiation for the type variables is:
+
+- 't = 'u
+- 's = 'u
+
+With this instantiation, the expression `f (f (a, b), f (b, a))` will have the type 'u.
+
+**Explanation:**
+1. The function `f` takes an argument of type `('t * 's)` and returns a value of type `'u`.
+2. For `f (a, b)` to have the type `'u`, both `a` and `b` must be of type `'t` and `'s`, respectively.
+3. The inner `f (a, b)` returns a type `'u`, which is the type of its output.
+4. The second call `f (b, a)` also returns type `'u`.
+5. Putting these together, the outer call `f (f (a, b), f (b, a))` must take parameters of type `('u * 'u)` and produce a type `'u` if we let both `'t` and `'s` be instantiated to `'u`.

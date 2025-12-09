@@ -1,0 +1,4 @@
+The type of `shift` is: `unit -> unit`.
+
+**Explanation:** 
+The `shift` function takes a parameter `point`, but it does not return any value because it modifies the `x` and `y` components of the `point` in place. The use of assignment (`:=`) means that it updates the values but does not produce a result. Hence, its type is `unit -> unit`, indicating it effectively performs an operation without returning a meaningful value.

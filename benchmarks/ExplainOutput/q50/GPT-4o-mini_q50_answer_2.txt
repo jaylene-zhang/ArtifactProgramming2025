@@ -1,0 +1,21 @@
+The correct tail-recursive implementations for the function `fold_right` are:
+
+a) 
+```ocaml
+let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+```
+
+d) 
+```ocaml
+let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f r x))
+```
+
+Explanation:
+- Tail recursion requires that the recursive call is the last operation performed in the function. In a tail-recursive structure, the continuation (or `cont`) must be able to take the results of the recursive call directly.
+- In implementation (a), the recursive call to `aux_folder` passes the function `f` and list `xs` while allowing the result of `f x r` to be fed into the continuation `cont`.
+- In implementation (d), the result of `f r x` is also fed directly into the continuation without further nested function calls, making it tail-recursive.
+- Implementations (b), (c), and (e) are not tail-recursive because they involve additional operations or manipulations of the results after returning from the recursive calls that prevent the direct return of the continuation's results.

@@ -1,0 +1,17 @@
+Folding
+
+We want to write a fold on streams.
+Since our stream is infinite, we want to fold over finite prefixes of a stream using a function f together with some initial value we pass to f.
+For example, fold f a0 s returns the output stream where we illustrate the relationship between the input and output stream below:
+
+input stream s = a1, a2, a3, ...
+output stream r = f a1 a0, f a2 (f a1 a0), f a3 (f a2 (f a1 a0)), ...
+
+let rec fold f a s =
+    {hd = (** blank 1 **);
+    tl = (** blank 2**)}
+
+
+1) For blank 1 we should write:
+
+2) For blank 2 we should write:

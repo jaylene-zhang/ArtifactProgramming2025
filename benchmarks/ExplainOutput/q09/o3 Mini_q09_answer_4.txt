@@ -1,0 +1,9 @@
+Solution:
+let x = 10 in
+  let x = x + 5 in  (* inner x shadows outer x *)
+    x * 2
+  end
+end
+
+Explanation:
+The inner binding of x (x = x + 5) uses the outer x for its calculation but then overshadows it; within that inner scope, any reference to x refers to the new value, not the outer one.

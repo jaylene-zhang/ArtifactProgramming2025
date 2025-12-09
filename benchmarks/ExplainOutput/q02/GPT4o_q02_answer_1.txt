@@ -1,0 +1,4 @@
+The program is **ill-typed**.
+
+**Explanation:**
+The type of `repeat` implies it must take a function `f` and apply it to `repeat f`. This creates a recursive type situation because the argument type of `f` must match its return type (and also match the type of `repeat f`). Such recursive types are not generally allowed in OCaml's type system (which requires a well-defined finite type for each construct).

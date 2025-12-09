@@ -1,0 +1,13 @@
+Functional languages try to avoid state variables and imperative programming because:
+
+1. Referential transparency: Without mutable state, expressions always evaluate to the same result given the same inputs, making code easier to reason about.
+
+2. Concurrency safety: Immutable data eliminates race conditions and makes parallel programming simpler.
+
+3. Easier testing: Pure functions without side effects can be tested in isolation.
+
+4. Equational reasoning: Code can be understood algebraically when substitution of equals for equals is always valid.
+
+5. Better optimization: Compilers can more easily optimize code when function outputs depend only on their inputs.
+
+The goal isn't to eliminate state entirely but to make state changes explicit and controlled, leading to more predictable and maintainable code.

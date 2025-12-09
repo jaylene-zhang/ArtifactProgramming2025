@@ -1,0 +1,3 @@
+Solution: Assume that for any list xs the property holds; then prove that for any element x, the property holds for x::xs.
+
+Explanation: In the step case, you use the inductive hypothesis (that the statement is true for xs) to show it remains true when an element x is added at the front (forming x::xs).

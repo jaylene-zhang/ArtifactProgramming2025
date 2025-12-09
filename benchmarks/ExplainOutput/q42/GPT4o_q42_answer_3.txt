@@ -1,0 +1,3 @@
+`acc` should be initialized as an empty list `[]`.
+
+Explanation: The `rev_tl` function typically uses `acc` to accumulate the reversed elements of `l`. Starting with an empty list ensures that the accumulation process begins correctly. As elements from `l` are prepended to `acc`, the reversed list will be constructed.

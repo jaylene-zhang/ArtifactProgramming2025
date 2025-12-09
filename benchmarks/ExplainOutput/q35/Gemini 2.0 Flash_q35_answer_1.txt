@@ -1,0 +1,19 @@
+**Solution:**
+
+`191`
+
+**Explanation:**
+
+1.  `let x = 3`: `x` is bound to `3`.
+2.  `let r = ref 1`: `r` is bound to a reference containing `1`.
+3.  `let f = ...`: `f` is a function.
+    *   `let y = x * !r`: `y` is bound to `3 * 1 = 3`.
+    *   `let r = ref 5`: A new `r` is created and bound to a reference containing. Important: This shadows the outer `r` *within* the function `f`.
+    *   `fun u -> u + x + y + !r`: `f` is a function that takes `u` and returns `u + x + y + !r`. The `x` and `y` values are those from the scopes where function `f` was defined. The *inner* `r` is used in the body of `f`.
+4.  `let x = 2 * !r * x`: A new `x` is created shadowed the outer `x`. It is bound to `2 * 1 * 3 = 6`.
+5.  `r := 10`: The *outer* `r` is updated to `10`.
+6.  `f (x * !r)`:
+    *   `x * !r` = `6 * 10 = 60`. This result in passed as argument `u` to `f`.
+    *   `f(60)` is evaluated as `60 + 3 + 3 + 5 = 71`. The `x` inside the function `f` is the `x` at the time `f` was defined (i.e., `3`), and `y` is `3`, and `!r` is the *inner* `r` which is `5`. And `u ` is the passed parameter that is equal to `60`.
+    *   The above expression equals to `60 + 3 + 3 + 5 = 71`. `f` returns `71`
+    *   Since there is no other operation in the code, the answer is `71`.

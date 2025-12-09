@@ -1,0 +1,10 @@
+**Solution:**
+
+1.  `f s.hd a`
+2.  `lazy (fold f (f s.hd a) (Stream.tl s))`
+
+**Explanation:**
+
+1.  `f s.hd a`: The head of the output stream is the result of applying the folding function `f` to the head of the input stream `s.hd` and the accumulated value `a`. This corresponds to the first element `f a1 a0` in the problem description.
+
+2.  `lazy (fold f (f s.hd a) (Stream.tl s))`: The tail of the output stream is a recursively defined stream. We call fold again with the same folding function f, but this time we pass in the `accumulated` value which is the result of applying `f` to the head element and the initial value from `a`, namely `f s.hd a`, and we pass in the tail of the input stream, `Stream.tl s`. This `lazy`  keyword ensures that the tail is only evaluated when needed, which is crucial for working with potentially infinite streams.

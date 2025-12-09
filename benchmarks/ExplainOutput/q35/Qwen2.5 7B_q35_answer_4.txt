@@ -1,0 +1,21 @@
+The result of evaluating the expression is `37`.
+
+Explanation:
+1. `let x = 3 in` initializes `x` to `3`.
+2. `r := 1` sets the reference `r` to `1`.
+3. `let y = x * !r in` computes `y` as `3 * 1 = 3`.
+4. `r := ref 5` rebinds `r` to a new reference holding `5`. The original `r` still points to `1`.
+5. `fun u -> u + x + y + !r` is defined with `x` being `3`, `y` being `3`, and `r` pointing to `5`, so the closure sees `3 + 3 + 5 = 11`.
+6. `let x = 2 * !r * x` sets `x` to `2 * 1 * 3 = 6`.
+7. `r := 10` changes `r` to point to `10`, but the closure returned by `f` still points to the original `r` which is `5`.
+8. `f (x * !r)` computes `f (6 * 10) = f 60`. The closure `f` is evaluated with `u` being `60`, so the final result is `60 + 3 + 3 + 5 = 71`.
+
+However, the question asks for the result of evaluating the expression using call-by-value, so let's break it down again considering the actual parameter passing:
+
+- The closure `f` is defined with `r` pointing to `5` (when `f` is defined).
+- `x` is later redefined, but the closure `f` already has a captured value.
+- When `f (x * !r)` is called, `x` has been changed to `6` and `r` has been changed to `10`, but the closure `f` still sees `r` as `5`.
+
+The final computation: `f 60` -> `60 + 3 (x) + 3 (y) + 5 (!r) = 71 - 5 + 10 = 37`.
+
+So, the final result is `37`.

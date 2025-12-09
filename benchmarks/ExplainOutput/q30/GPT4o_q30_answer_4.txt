@@ -1,0 +1,7 @@
+Solution:
+```ocaml
+- : float list = [11.0; 21.0; 6.0]
+```
+
+Explanation:
+OCaml variables are immutable by default. The `sales_tax` variable is not updated after calling `update_sales_tax ()`, because it does not modify `sales_tax` globally; it only computes a new value that's not assigned to anything. Consequently, when `update_price_list price_list` is called, it still uses the original `sales_tax` value of `1.0`. Hence, the result is `[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0]` or `[11.0; 21.0; 6.0]`.

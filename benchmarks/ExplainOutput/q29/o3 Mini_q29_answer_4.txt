@@ -1,0 +1,10 @@
+Answer: 
+a) Correct  
+b) Incorrect  
+c) Incorrect
+
+Explanation:  
+Solution a) works as follows. First, curry (sumSeries f) turns sumSeries f from a function on a pair into a curried function. Applying it to 0 fixes the lower bound. Then swap reorders the remaining two arguments so that (fun x -> x+1) (the increment) becomes the first argument and the upper bound is supplied second, yielding the desired sumSeries f (0, upper bound) (fun x -> x+1).
+
+In b) sumSeries f 0 is applied to 0 expecting a pair, causing a type error.  
+In c) swapping on the uncurried sumSeries f reverses the order of the bounds, so after currying it fixes the upper bound rather than the lower, which is incorrect.

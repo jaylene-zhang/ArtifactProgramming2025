@@ -1,0 +1,5 @@
+a) h (f (g (f x)))
+b) g (f (h (f x)))
+
+Explanation:
+The function `compose` is supposed to combine `g` and `h` from the right. This means that when we call `compose` with `g` and `h`, we should start by applying `g`. Therefore, the correct solution should start with `g` and then compose the rest.

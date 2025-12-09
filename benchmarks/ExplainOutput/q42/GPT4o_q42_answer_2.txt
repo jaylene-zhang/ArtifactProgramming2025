@@ -1,0 +1,5 @@
+**Solution:**  
+`acc` should be initialized as an empty list `[]`.
+
+**Explanation:**  
+The `rev_tl` function likely implements a tail-recursive list reversal, where the `acc`umulator progressively collects the reversed elements of the input list `l`. To build the reversed list properly, the accumulator must start as an empty list, so elements can be prepended to it step by step.

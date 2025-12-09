@@ -1,0 +1,3 @@
+Solution: We need to prove the statement for the tail of the list.
+
+Explanation: In inductive proofs about lists in OCaml, the base case typically handles the empty list `[]`. For the step case, we assume the property holds for a list `xs` (i.e., the tail of the list) and then prove it for `xs @ [x]` (i.e., the list with an additional element `x` appended). This shows that if the property holds for any list, it also holds for the next list in the sequence, thus completing the induction.

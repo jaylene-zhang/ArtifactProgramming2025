@@ -1,0 +1,27 @@
+Solution (Q4.1):
+
+Induction Hypothesis (IH): For all hands h and integers acc, add_up h + acc = add_up_tr h acc.
+
+Proof (structural induction on h):
+• Base Case: h = Empty  
+  add_up Empty + acc = 0 + acc = acc  
+  add_up_tr Empty acc = acc  
+  ⇒ holds.  
+
+• Step Case: h = Hand(c, h')  
+  add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc  
+  By IH on h': add_up h' + (1 + acc) = add_up_tr h' (1 + acc)  
+  But add_up_tr (Hand(c, h')) acc = add_up_tr h' (acc + 1)  
+  ⇒ holds.
+
+Solution (Q4.2):
+
+Theorem 2: For all hands h, add_up h = add_up_tr h 0.  
+Proof:  
+From Theorem 1 with acc = 0, we get add_up h + 0 = add_up_tr h 0, i.e., add_up h = add_up_tr h 0.
+
+Explanation:
+
+• We first prove a more general statement that includes an extra accumulator parameter (Theorem 1).  
+• Using structural induction on the hand h, we show the base and step cases hold.  
+• Specializing the accumulator to 0 yields the desired equality add_up h = add_up_tr h 0 (Theorem 2).

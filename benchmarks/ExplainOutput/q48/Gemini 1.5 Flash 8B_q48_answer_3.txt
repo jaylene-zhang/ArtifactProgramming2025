@@ -1,0 +1,8 @@
+**Solution:**
+
+Efficiency and practicality.  While continuations *can* make functions tail-recursive, it often comes at a cost in code complexity and readability.  The standard library prioritizes clarity and performance for common cases, even if it means some functions aren't strictly tail-recursive.
+
+
+**Explanation:**
+
+The overhead of implementing continuations (and the potentially more complex data structures involved) often outweighs the benefits for simpler list operations in many cases.  The common use-cases involving list processing usually don't require the added complexity, and the extra performance cost can be negligible.  OCaml's designers prioritized the development of a library accessible to most use cases, and this decision is often the better choice.

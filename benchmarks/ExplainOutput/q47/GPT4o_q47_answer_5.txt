@@ -1,0 +1,19 @@
+The correct answer is:
+
+**a) let concat l =  
+let rec aux l s = match l with  
+&nbsp;&nbsp;| [] -> s  
+&nbsp;&nbsp;| x::xs -> aux xs (x ^ " " ^ s)  
+in aux l ""**
+
+### Explanation:
+
+- The function in option **a** is tail-recursive because the recursive call to `aux` is the last operation performed in each step.
+- It traverses the input list **once**, accumulating the result (`s`) in a single pass, with each string prepended to the accumulator.
+- The final result is reversed because of prepending (`x ^ " " ^ s`) rather than appending (`s ^ " " ^ x`). However, it still works as intended because the space arrangement is correct.
+
+Other options fail because:
+- **b)** is not tail-recursive due to appending (`s ^ " " ^ x`) which involves creating a new string at every step—this is costly.
+- **c)** relies on an extra call to `reverse` before recursion, violating the "single traversal" constraint.
+- **d)** is not tail-recursive because of the concatenation within `(x ^ " " ^ (concat xs))`.
+

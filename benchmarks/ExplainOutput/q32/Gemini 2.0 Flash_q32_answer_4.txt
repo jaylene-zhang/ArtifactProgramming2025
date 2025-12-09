@@ -1,0 +1,13 @@
+**Solution:**
+
+a) and b)
+
+**Explanation:**
+
+*   **a) `type url = string type bookmarks = Location of url * bookmarks | Empty`:** This is a correct way to define the `bookmarks` type. It represents a list of URLs where each `Location` constructor holds a URL (`url`) and the rest of the bookmarks (`bookmarks`). The `Empty` constructor signifies the end of the list.
+
+*   **b) `type url = string type bookmarks = Empty | Location of string * bookmarks`:** This is also correct. It's essentially the same as option a), but defines the `Empty` first in the type definition. The `Location` constructor then uses a `string` (which is equivalent to the `url` type we defined) along with `bookmarks` for the rest of list.
+
+*   **c) `type url = string type bookmarks = Empty | Location`:** This is incorrect. `Location` needs to have arguments (the `url` and the continuation of the list of type `bookmarks`).
+
+*   **d) `type url = string type bookmarks = Empty | Location of bookmarks * url`:** Although syntactically correct, this option is less conventional than (a). Location of bookmark * url, it describes also a list of url but in the reversed order than (a).

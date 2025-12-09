@@ -1,0 +1,83 @@
+(* TODO:  Implement {!q1a_nat_of_int} using a tail-recursive helper. *)
+let rec q1a_nat_of_int_helper (n : int) : nat = function
+  | 0 -> Z
+  | k -> S (q1a_nat_of_int_helper (k - 1))
+
+let rec q1a_nat_of_int (n : int) : nat = q1a_nat_of_int_helper (abs n)
+
+(* TODO:  Implement {!q1b_int_of_nat} using a tail-recursive helper. *)
+let rec q1b_int_of_nat_helper (n : nat) (i : int) = function
+  | Z -> i
+  | S k -> q1b_int_of_nat_helper n (i + 1)
+
+let rec q1b_int_of_nat (n : nat) : int =
+  let rec loop (i : int) = function
+    | Z -> i
+    | S k -> loop i (S k)
+  in
+  q1b_int_of_nat_helper n 0 (loop n)
+
+(* TODO: Implement {!q1c_add}. *)
+let rec q1c_add n m =
+  let rec loop n m acc = function
+    | Z -> acc
+    | x1 -> loop (q1b_int_of_nat x1) m (acc + q1b_int_of_nat x1)
+  in
+  let acc = loop (q1b_int_of_nat n) m 0 in
+  q1a_nat_of_int acc
+
+(* TODO: Implement {!q2a_neg}. *)
+let rec q2a_neg e =
+  match e with
+  | Const x -> Const ( -. x)
+  | Var -> Var
+  | Plus (e1, e2) -> Plus (q2a_neg e1, q2a_neg e2)
+  | Times (e1, e2) -> Times (q2a_neg e1, e2)
+  | Pow (e, i) -> if i = 0 then Const 1.
+                  else match Pow (e, i - 1) with
+                  | Pow (_, 0) -> Const 1.
+                  | Pow (e1, i) -> Pow (e1, i - 1)
+
+(* TODO: Implement {!q2b_minus}. *)
+let rec q2b_minus e1 e2 =
+  match e1, e2 with
+  | Const (-.x1), Const x2 -> Const (x1 +. x2)
+  | Const x1, Const (-.x2) -> Const (x1 +. x2)
+  | Const x1, Const x2 -> Const (x1 -. x2)
+  | e1, e2 -> Plus (q2a_neg e2, e1)
+  | _, _ -> absturd Otherwise
+
+(* TODO: Implement {!q2c_quot}. *)
+let rec q2c_quot e1 e2 =
+  match e1, e2 with
+  | Const 0., Const 0. -> Const 0.
+  | Const x1, Const (0.) -> Const 1.
+  | _, _ -> Pow (e1, (~ -q2b_int_of_nat e2))
+
+(* TODO: Implement {!eval}. *)
+let rec eval a e =
+  match e with
+  | Const x -> x
+  | Var -> a
+  | Plus (e1, e2) -> eval a e1 +. eval a e2
+  | Times (e1, e2) -> eval a e1 *. eval a e2
+  | Pow (e, i) -> let b = eval a e in
+                 if fmod i 1. = 0. then begin
+                   let q1 = int_of_float (mod_float i 1.)
+                   in
+                     pow b (int_of_float q1)
+                 end else process (mod_float i 1.) b
+
+(* TODO: Implement {!diff}. *)
+let rec diff e =
+  match e with
+  | Const (x) -> Const 0.
+  | Var -> Const 1.
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) -> let sub1 = diff e1 and sub2 = diff e2 in
+                      Plus (Times (sub1, e2), Times (e1, sub2))
+  | Pow (e, i) -> let sub = diff e in
+                  if i = 1 then
+                    sub
+                  else
+                    Times (Const (float_of_int i), Pow (e, i - 1))

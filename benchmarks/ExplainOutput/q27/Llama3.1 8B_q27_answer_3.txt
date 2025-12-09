@@ -1,0 +1,22 @@
+**Solution**
+```ocaml
+(* Functional vs Imperative Style *)
+(* Imperative style *)
+let mutable x = 10 (* state variable *)
+let () = x <- 20 (* update state variable *)
+
+(* Functional style *)
+let x = 10 (* value *)
+let x' = 20 (* new value *)
+```
+**Explanation**
+
+Functional languages try to avoid state variables and imperative-style programming for several reasons:
+
+*   **Predictability**: In imperative programming, side effects (i.e., modifying state variables) make it harder to predict the output of a function. With functional programming, the output of a function can be easily determined solely based on its input, as the function does not have any side effects.
+*   **Immutability**: Functional languages encourage immutability, where values do not change once created. This makes code easier to reason about, debug, and verify, as data structures can be safely shared and composed.
+*   **Compositionality**: Functional languages promote the use of pure functions, which can be composed together to create more complex functions. Imperative state variables disrupt this compositionality by introducing implicit coupling between functions.
+*   **Easier Debugging**: With functional programming, errors are typically isolated to a specific line of code, making debugging much easier. State variables can lead to "spaghetti code" where bugs are harder to track down.
+*   **Concurrent Programming**: In a concurrent environment, shared mutable state can lead to race conditions and other concurrency bugs. Functional languages avoid these issues by not relying on shared state.
+
+Overall, functional languages aim to make programming more predictable, composable, and maintainable by avoiding state variables and imperative-style programming.

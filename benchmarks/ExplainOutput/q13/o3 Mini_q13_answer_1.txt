@@ -1,0 +1,16 @@
+Solution:
+Example of overwriting:
+-------------------------------------------------
+let r = ref 10 in
+r := 20;  (* Overwrite the value in the reference *)
+!r       (* Returns 20 *)
+-------------------------------------------------
+Overshadowing example:
+-------------------------------------------------
+let x = 5 in
+let x = 10 in  (* The inner x shadows the outer x *)
+x             (* Returns 10 *)
+-------------------------------------------------
+
+Explanation:
+Overwriting modifies the content of a mutable object (here, the reference r) in place. In contrast, overshadowing (or shadowing) creates a new binding with the same name in a nested scope, leaving the original binding unchanged.

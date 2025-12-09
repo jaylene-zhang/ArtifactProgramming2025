@@ -1,0 +1,8 @@
+```ocaml
+let rec helper n k =
+  if n mod 2 = 1 then k
+  else helper (n / 2) (2 * k)
+let max_two_factor n = helper n 1
+```
+
+Explanation: The original implementation is incorrect because it starts with `helper 1 n`, which means it multiplies the result by an extra 2 unnecessarily. The modified version correctly initializes the exponent `k` to 1 (representing \(2^1\)) and updates it in the recursive helper function. This ensures that the function correctly counts the number of times `n` can be divided by 2, updating the power of 2 accordingly.

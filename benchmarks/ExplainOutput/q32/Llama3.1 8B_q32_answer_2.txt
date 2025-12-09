@@ -1,0 +1,20 @@
+**Solution**
+
+a) type url = string
+type bookmarks = Location of url * bookmarks | Empty
+
+b) type url = string
+type bookmarks = Empty | Location of string * bookmarks
+
+d) type url = string
+type bookmarks = Empty | Location of bookmarks * url
+
+**Explanation**
+
+These three options are correct definitions for the recursive data type `bookmarks`.
+
+* Option a) uses a discriminated union `Location` to distinguish between an empty list and a non-empty list containing a URL and a list of bookmarks.
+* Option b) is similar to option a) but uses a different naming convention for the discriminant.
+* Option d) is also correct, it uses a different naming convention for the discriminant and swaps the order of `bookmarks` and `url`.
+
+Option c) is incorrect because it does not use a recursive data type to represent a list of URLs.

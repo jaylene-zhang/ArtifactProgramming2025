@@ -1,0 +1,3 @@
+`('t * 't -> 't)`
+
+Explanation: The type of 't remains the same throughout, so first `f (a, b)` has type `'t * 't -> 't`, then `f ((a, b))` has type `'t` because recursive application does not change the type, finally `f (f ((a, b)), f ((b, a)))` has type `'t`.

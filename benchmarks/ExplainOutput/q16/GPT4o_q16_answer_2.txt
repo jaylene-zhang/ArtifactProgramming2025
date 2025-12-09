@@ -1,0 +1,5 @@
+**Solution:**  
+`(7, 6)`
+
+**Explanation:**  
+After evaluating `let point = shift_point 1`, the `point` becomes `(5, 4)` because `shift_point 1` adds 1 to both components of the original `point`. Subsequently, calling `shift_point 2` will now use the updated value of `point` (which is `(5, 4)`), and it will add 2 to both components, returning `(7, 6)`.

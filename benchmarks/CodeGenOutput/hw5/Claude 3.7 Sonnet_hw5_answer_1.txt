@@ -1,0 +1,92 @@
+(* Question 1: Tree Depth *)
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let tree_depth_cps t = 
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) -> 
+        depth_helper l (fun l_depth ->
+          depth_helper r (fun r_depth ->
+            sc (1 + max l_depth r_depth)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match (ls, tree) with
+    | ([], _) -> sc tree
+    | (_, Empty) -> fc ()
+    | (x::xs, Tree(left, v, right)) ->
+        if x = v then
+          helper xs left 
+            (fun subtree -> sc subtree)
+            (fun () -> helper xs right sc fc)
+        else
+          helper ls left 
+            (fun subtree -> sc subtree)
+            (fun () -> helper ls right sc fc)
+  in
+  helper ls tree (fun t -> Some t) (fun () -> None)
+
+(* Question 3: Arithmetic Experssion Parser *)
+
+let parser_cps t =
+  let rec expr_helper tokens sc fc =
+    term_helper tokens 
+      (fun remaining term -> 
+        match remaining with
+        | Plus :: rest -> 
+            expr_helper rest
+              (fun remaining' expr' -> sc remaining' (Plus(term, expr')))
+              fc
+        | Minus :: rest -> 
+            expr_helper rest
+              (fun remaining' expr' -> sc remaining' (Minus(term, expr')))
+              fc
+        | _ -> sc remaining term)
+      fc
+  
+  and term_helper tokens sc fc =
+    factor_helper tokens
+      (fun remaining factor ->
+        match remaining with
+        | Times :: rest -> 
+            term_helper rest
+              (fun remaining' term' -> sc remaining' (Times(factor, term')))
+              fc
+        | Divide :: rest ->
+            term_helper rest
+              (fun remaining' term' -> sc remaining' (Divide(factor, term')))
+              fc
+        | _ -> sc remaining factor)
+      fc
+  
+  and factor_helper tokens sc fc =
+    match tokens with
+    | [] -> fc ()
+    | Const n :: rest -> sc rest (Const n)
+    | Var s :: rest -> sc rest (Var s)
+    | LParen :: rest -> 
+        expr_helper rest
+          (fun remaining expr ->
+            match remaining with
+            | RParen :: rest' -> sc rest' expr
+            | _ -> fc ())
+          fc
+    | _ -> fc ()
+  in
+  
+  expr_helper t
+    (fun remaining expr ->
+      if remaining = [] then Some expr else None)
+    (fun () -> None)
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)

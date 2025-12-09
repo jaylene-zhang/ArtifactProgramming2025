@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let x = y + 3 in
+let w = y + 3 in fun y -> (y + 3) + 2 + y * (y + 3)
+```
+
+**Explanation:**
+
+The expression `x` is replaced by `y + 3` in the body of the function.  This directly substitutes the definition of `x` into the expressions using `x`. Note that the nested `y`'s are not inlined because the substitution only happens when `x` is referenced.

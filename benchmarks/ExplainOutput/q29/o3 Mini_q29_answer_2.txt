@@ -1,0 +1,6 @@
+Solution: (a) and (c) are correct implementations, while (b) is not.
+
+Explanation: 
+– (a) applies curry to sumSeries f to fix 0 as the lower bound, then uses swap so that (fun x → x+1) is correctly passed as the increment function, leaving the upper bound as the final argument. 
+– (c) first swaps the order of the two arguments of sumSeries f so that (fun x → x+1) is passed first. Curry then converts the pair to a curried function and 0 is provided as the lower bound. 
+– (b) is incorrect because sumSeries f requires a pair (int * int); writing sumSeries f 0 mismatches its expected type.

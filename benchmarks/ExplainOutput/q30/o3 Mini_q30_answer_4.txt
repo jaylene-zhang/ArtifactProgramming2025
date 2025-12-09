@@ -1,0 +1,3 @@
+Solution: [11.0; 21.0; 6.0]
+
+Explanation: The function update_sales_tax computes 1.0 *. 2.0 (resulting in 2.0) but does not change the immutable sales_tax (which remains 1.0). Thus, add_tax adds 1.0 to each price in price_list, producing [11.0; 21.0; 6.0].

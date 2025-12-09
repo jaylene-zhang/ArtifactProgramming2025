@@ -1,0 +1,15 @@
+**a) Computes `prime_fact` once.**
+
+**Explanation:** `prime_fact x` is computed and assigned to `p` before the list is iterated.
+
+**b) Computes `prime_fact` multiple times.**
+
+**Explanation:** `prime_fact x` is computed in each iteration of `List.exists`.
+
+**c) Computes `prime_fact` multiple times.**
+
+**Explanation:** `prime_fact x` is computed in each recursive call where `y = prime_fact x` calculation appear in code.
+
+**d) Computes `prime_fact` once.**
+
+**Explanation:** `prime_fact x` is computed and assigned to `p` before the list is iterated by the recursive `test` function.

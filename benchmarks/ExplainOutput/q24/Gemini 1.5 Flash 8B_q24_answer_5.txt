@@ -1,0 +1,8 @@
+**Solution:**
+
+'t
+
+
+**Explanation:**
+
+The function `f`, with type `('t * 't -> 't)`, takes two values of type `'t` and returns a value of type `'t`.  Therefore, `f(a, b)` returns a value of type `'t`.  The inner `f(a, b)` and `f(b, a)` both produce `'t` values, which are then passed to the outer `f`.  This means the entire expression `f (f (a, b), f (b, a))` is of type `'t`.

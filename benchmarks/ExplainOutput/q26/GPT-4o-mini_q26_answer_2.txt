@@ -1,0 +1,9 @@
+No, the expression `get_tail rc1 == get_tail rc2` will return `false`.
+
+Explanation:
+In the provided code, `get_tail rc1` and `get_tail rc2` both return the tail of their respective linked lists. 
+
+- `get_tail rc1`: Since `rc1` points to `(Cons (1, ref (Cons (2, rc1))))`, the tail will be a reference to a list starting with `2`, which is `rc2`.
+- `get_tail rc2`: For `rc2`, which points to `(Cons (2, ref (Cons (1, rc1))))`, the tail will be a reference to a list starting with `1`, which refers back to `rc1`.
+
+Since both `get_tail rc1` and `get_tail rc2` produce references to different cells (even though they are part of a cyclic structure), they point to different locations in memory. Therefore, the physical equality test (`==`) will yield `false`.

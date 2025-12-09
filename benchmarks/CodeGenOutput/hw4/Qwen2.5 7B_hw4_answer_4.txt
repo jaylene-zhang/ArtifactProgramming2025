@@ -1,0 +1,46 @@
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect集变量 f =
+    match f with
+    | Variable v -> Variable_set.singleton v
+    | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+    | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+    | Negation f -> collect_variables f
+  in collect_variables formula
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval' formula =
+    match formula with
+    | Variable v ->
+      begin match Variable_map.find_opt v state with
+      | Some b -> b
+      | None -> raise (Unassigned_variable v)
+      end
+    | Conjunction (f1, f2) -> eval' f1 && eval' f2
+    | Disjunction (f1, f2) -> eval' f1 || eval' f2
+    | Negation f -> not (eval' f)
+  in eval' formula
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let needed_vars = collect_variables formula in
+  let rec assign_and_test (vars_left : Variable_set.t) (current_assign : Variable_map.t) =
+    if Variable_set.is_empty vars_left then
+      if eval current_assign formula then current_assign
+      else None
+    else
+      let current_var = Variable_set.min_elt vars_left in
+      assign_and_test (Variable_set.remove current_var vars_left)
+        (Variable_map.add current_var true current_assign)
+      |> Option.bind (fun res -> if eval res formula then Some res else None)
+      |> function
+         | Some res -> Some res
+         | None ->
+             assign_and_test (Variable_set.remove current_var vars_left)
+               (Variable_map.add current_var false current_assign)
+  in
+  assign_and_test needed_vars Variable_map.empty
+  |> function
+     | Some res -> res
+     | None -> raise Unsatisfiable_formula

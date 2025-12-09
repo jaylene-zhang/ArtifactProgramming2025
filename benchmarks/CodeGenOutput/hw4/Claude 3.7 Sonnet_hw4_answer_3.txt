@@ -1,0 +1,42 @@
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable v -> Variable_set.singleton v
+  | Conjunction (f1, f2) -> 
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> 
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable v -> 
+      begin match Variable_map.find_opt v state with
+      | Some b -> b
+      | None -> raise (Unassigned_variable v)
+      end
+  | Conjunction (f1, f2) -> (eval state f1) && (eval state f2)
+  | Disjunction (f1, f2) -> (eval state f1) || (eval state f2)
+  | Negation f -> not (eval state f)
+
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let vars = collect_variables formula in
+  let var_list = variable_set_to_list vars in
+  
+  let rec try_assignments vars_to_assign current_assignment =
+    match vars_to_assign with
+    | [] -> 
+        if eval current_assignment formula then
+          current_assignment
+        else
+          raise Unsatisfiable_formula
+    | var :: rest ->
+        try
+          try_assignments rest (Variable_map.add var true current_assignment)
+        with Unsatisfiable_formula ->
+          try_assignments rest (Variable_map.add var false current_assignment)
+  in
+  
+  try
+    try_assignments var_list Variable_map.empty
+  with Unsatisfiable_formula ->
+    raise Unsatisfiable_formula

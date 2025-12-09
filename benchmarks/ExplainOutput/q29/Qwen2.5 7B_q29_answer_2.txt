@@ -1,0 +1,13 @@
+a) Correct
+
+b) Correct
+
+c) Incorrect
+
+Explanation:
+
+a) Correct: This uses `curry` to fix the first argument of `sumSeries` to `f`, and `swap` to switch the arguments in the correct order to fit the signature of `sum_from_zero`.
+
+b) Correct: This also uses `curry` to fix the first argument of `sumSeries` to `f`, and `swap` to switch the arguments. However, it omits the explicit `0` for the lower bound and directly uses `0` with `curry` and `swap`.
+
+c) Incorrect: This incorrectly applies `curry` and `swap` in a way that does not align with the required function signature. The order and application of `curry` and `swap` are misused, leading to a different structure than `sum_from_zero`.

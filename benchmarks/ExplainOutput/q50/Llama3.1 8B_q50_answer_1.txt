@@ -1,0 +1,29 @@
+a) Let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+
+Explanation: This is not tail-recursive. The auxiliary function (`aux_folder`) calls itself in its tail call, but calls `f` on the result of `cont`, so it's not tail-recursive.
+
+b) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f (cont r) x)
+
+Explanation: This is not tail-recursive. The auxiliary function (`aux_folder`) calls itself in its tail call, but calls `cont` on the result of `f (cont r) x`, which is not the final answer.
+
+c) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))
+
+Explanation: This is the correct tail-recursive implementation of fold_right. The auxiliary function (`aux_folder`) calls itself in its tail call, and applies `f x (cont r)` before the recursive call. Therefore, we can pass the same function `f` and list `l` and initialize the continuation `cont` appropriately.
+
+d) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f r x))
+
+Explanation: This is not tail-recursive. The auxiliary function (`aux_folder`) calls itself in its tail call, but calls `cont` on the result of `f r x`, which is not the final answer.
+
+e) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder xs f b (fun r -> f (cont r) x)
+
+Explanation: This is not tail-recursive. The auxiliary function (`aux_folder`) swaps the order of the parameters `f` and `xs`, which are used in the recursive call, making this implementation incorrect.

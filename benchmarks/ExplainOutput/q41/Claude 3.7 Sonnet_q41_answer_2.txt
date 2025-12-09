@@ -1,0 +1,5 @@
+The type of a tail-recursive version of fold_right would be:
+
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+This is because a true tail-recursive fold_right would have the same type as the regular fold_right. The continuation-passing style version would have the type ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c, but that's a different approach that enables tail recursion while changing the function's interface.

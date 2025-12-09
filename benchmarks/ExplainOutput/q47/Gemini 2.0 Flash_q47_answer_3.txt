@@ -1,0 +1,10 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   **a)**  Not tail-recursive because the concatenation `x ^ " " ^ s`  happens *after* the recursive call. Also, concatenates in reverse with extra space added.
+*   **b)**  Not tail-recursive. The concatenation `s ^ " " ^ x` happens *after* the recursive call is about to return. Also does not add a space at the end.
+*   **c)**  This is the correct solution. It first reverses the list, which is not, in itself, tail-recursive. However, once the list is reversed, the `aux` function is tail-recursive. The expression `x ^ " " ^ s` is computed before the recursive call and the recursion stops when the reversed list `l` is empty, returning the built up string `s`.
+*   **d)**  Not tail-recursive. Same reasoning as a), the concatenation happens *after* the recursive call.

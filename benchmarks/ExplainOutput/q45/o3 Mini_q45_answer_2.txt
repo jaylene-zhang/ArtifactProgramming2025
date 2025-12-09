@@ -1,0 +1,6 @@
+Solution:
+1) ones
+2) map psums pascal
+
+Explanation:
+The first diagonal is just a stream of ones (ones). Each subsequent diagonal is the partial sum of the previous one, so by mapping psums over pascal we generate all the later diagonals.

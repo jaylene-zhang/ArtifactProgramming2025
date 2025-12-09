@@ -1,0 +1,9 @@
+Solution:
+a) False  
+b) False  
+c) True  
+
+Explanation:
+a) The shorter definition of rev1 does not imply it is faster.  
+b) The (@) operator’s time complexity depends on the length of its first argument, not its second, making rev1 perform poorly with many appends.  
+c) rev2 uses tail recursion with the (::) operator, which is constant time, resulting in an overall linear time complexity.

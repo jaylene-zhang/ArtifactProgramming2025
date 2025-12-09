@@ -1,0 +1,11 @@
+**No**
+
+```ocaml
+let rec helper n =
+  if n mod 2 = 1 then 1
+  else 2 * helper (n / 2)
+```
+
+**Explanation**
+
+Although the function is tail recursive, it calculates the correct power of two that divides `n`, not the largest. The last operation of the recursive calls is a multiplication, not a function call.

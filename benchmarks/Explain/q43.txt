@@ -1,0 +1,5 @@
+We want to prove that the given reverse function preserves the length of the list. As a first attempt, someone tries to prove the following by induction on l:
+
+length (rev_tl l []) = length l
+
+Would this work?

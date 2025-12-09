@@ -1,0 +1,57 @@
+**Final Result:**  
+```ocaml
+(1, 3, [4; 3; 2], [6; 6; 6])
+```
+
+---
+
+**Explanation using Binding Stack Diagram:**
+
+### Initial components:
+1. `c` is a reference variable initialized to `0`.
+2. `l` is the reversed list `[3; 2; 1]`.
+3. `observe` is a function to observe the value of `!c`.
+4. `x = 1`.
+5. `inc x` increments the value of `!c` by 1 and returns `x + 1`.
+6. `inc’` is a nested function with its own `c` (different from the outer `c`) and `x` (incremented to `2`), which increases its local `c` and computes its result.
+
+---
+
+### Execution Step-by-Step:
+#### 1. `ml` computation (`List.map inc l`)
+- `List.map inc l` processes the reversed list `[3; 2; 1]`.  
+- Each application of `inc x` increments the outer `c` by `1` and returns `x + 1`.  
+
+  Execution per element:
+  - For `3`: Increment `c` (0 → 1), return `3 + 1 = 4`.
+  - For `2`: Increment `c` (1 → 2), return `2 + 1 = 3`.
+  - For `1`: Increment `c` (2 → 3), return `1 + 1 = 2`.
+
+  Result: `ml = [4; 3; 2]`, and now `!c = 3`.
+
+---
+
+#### 2. `ml’` computation (`List.map inc’ l`)
+- `inc’` has its own local `c` reference and a local `x` initialized to `2`.  
+- For each element `y` in `[3; 2; 1]`, `inc’`:
+  - Increments its local `c` (starting at `0`).
+  - Returns `!c + y + x` where `y` is the current element and `x = 2`.
+
+  Execution (local `c` starts at `0`):
+  - For `3`: Increment `c` (0 → 1), compute `1 + 3 + 2 = 6`.
+  - For `2`: Increment `c` (1 → 2), compute `2 + 2 + 2 = 6`.
+  - For `1`: Increment `c` (2 → 3), compute `3 + 1 + 2 = 6`.
+
+  Result: `ml’ = [6; 6; 6]`.
+
+---
+
+#### 3. Final output:
+- `(x, observe(), ml, ml')`:
+  - `x = 1` (outer `x` is unchanged).
+  - `observe()` returns `!c = 3` (outer `c` after processing `ml`).
+  - `ml = [4; 3; 2]`.
+  - `ml’ = [6; 6; 6]`.
+
+**Final Result:** `(1, 3, [4; 3; 2], [6; 6; 6])`.
+

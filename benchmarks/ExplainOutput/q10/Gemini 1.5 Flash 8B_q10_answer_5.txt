@@ -1,0 +1,1 @@
+Functions can be passed as arguments to other functions, and returned as results from functions.  This allows them to be manipulated and treated like any other data type.

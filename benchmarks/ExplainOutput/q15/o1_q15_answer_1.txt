@@ -1,0 +1,18 @@
+Solution: 42
+
+Explanation (concise binding stack walkthrough):  
+1. let x = 3  
+   – x = 3  
+2. let r = ref (2 + x)  → ref 5  
+3. let f = (let y = x * !r = 3 * 5 = 15; let r = ref 4 in fun u -> u + x + y + !r)  
+   – f captures x=3, y=15, and its own r=ref 4  
+4. let x = 5; let y = 10; r := 2; f(!r * y)  
+   – Outer r becomes 2; !r * y = 2 * 10 = 20  
+   – f(20) = 20 + x(3) + y(15) + !r(4) = 42  
+
+Binding stack in brief:  
+-----------------------------------------------------------------------------
+x=5, y=10, r=ref 2 (outer)  
+f → fun u -> u + x + y + !r  (captures x=3, y=15, r=ref 4)  
+x=3  
+-----------------------------------------------------------------------------

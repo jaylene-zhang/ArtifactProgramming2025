@@ -1,0 +1,1 @@
+Functions in OCaml can be passed as arguments to other functions, returned as results from functions, and stored in data structures like lists or maps.  This means they are treated like any other value in the language, not having special restrictions on how they're handled.

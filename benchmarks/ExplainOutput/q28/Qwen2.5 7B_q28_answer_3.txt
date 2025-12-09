@@ -1,0 +1,19 @@
+No, the provided program does not correctly compute the antiderivative. Here's the correct solution:
+
+```ocaml
+let anti_d f = curry (fun a b -> integral f (0, b) dx - integral f (0, a) dx)
+```
+
+### Explanation:
+1. **Currying**: The `curry` function takes a function `f` of type `('a * 'b) -> 'c` and returns a new function that takes two arguments independently.
+2. **Integral Calculation**: The antiderivative `F(x)` can be computed as:
+   \[
+   F(x) = \int_{0}^{x} f(t) \, dt
+   \]
+3. **Discrete Integration**: In OCaml, we approximate this integral using the provided `integral` function. To get the value of the antiderivative at `x`, we need to compute:
+   \[
+   F(x) = \int_{0}^{x} f(t) \, dt - \int_{0}^{0} f(t) \, dt = \int_{0}^{x} f(t) \, dt - 0 = \int_{0}^{x} f(t) \, dt
+   \]
+4. **Applying Currying**: We apply `curry` to a function that takes the integral values at the boundaries and subtracts them.
+
+The given program only returns the integral evaluated at `b` with a constant value of `0` for `a`. This does not account for the difference between the boundaries `0` and `x`.

@@ -1,0 +1,24 @@
+**Final Result:** 
+```ocaml
+(1, 6, [2; 3; 4], [6; 7; 8])
+```
+
+**Binding Stack Diagram:**
+
+ binding stack:
+inc ----> x -> ... (c = 3)
+inc' ----> y -> ... (c = 3, x = 2)
+x = 1
+c = 3
+l = [3; 2; 1]
+
+ Initially, `c` is 0.
+ When `List.map inc l` is evaluated, `c` is incremented thrice (for each element in the list) and its final value is 3.
+
+ When `inc'` is created, a new `c` and `x` are bound. However, `x` is still available because of the outer scope. The new `x` is `1 + 1 = 2`.
+
+ When `List.map inc' l` is evaluated, the new `c` is incremented thrice (for each element in the list) and its final value is 3. The `x` used in `inc'` is 2 (newly bound `x`).
+
+ `observe ()` returns the current value of `c`, which is 3.
+
+ So, the final result is `(1, 6, [2; 3; 4], [6; 7; 8])`. Note that `ml` is `[2; 3; 4]` because `inc` increments each element and `c` (initially 0), and `ml'` is `[6; 7; 8]` because `inc'` increments each element and `c` (initially 0) and adds the newly bound `x` (2). The `observe ()` value is 6 because it's the value of `c` after all the increments, which is 3 (from `inc`) + 3 (from `inc'`).

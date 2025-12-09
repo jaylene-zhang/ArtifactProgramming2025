@@ -1,0 +1,5 @@
+Here are the answers:
+
+1. `a` : This is the initial value passed to the function `f`.
+
+2. `fold f a (tl s)` : This recursively calls `fold` on the tail of the input stream `s` with the value obtained by applying `f` to the current head of `s` and the initial value `a`.

@@ -1,0 +1,63 @@
+### Solution:
+The final result of the program is `(1, 0, [2; 3; 4], [2; 3; 0] + [1; 2; 3])`.
+
+### Explanation:
+1. **Referencing and Initial Assignment**:
+   ```ocaml
+   let c = ref 0 in
+   ```
+   - `c` is a reference to `0`.
+
+2. **Reversing the List and Storing in `l`**:
+   ```ocaml
+   let l = List.rev [1;2;3] in
+   ```
+   - `l` will be `[3; 2; 1]`.
+
+3. **Observation Function**:
+   ```ocaml
+   let observe () = !c in
+   ```
+   - `observe` returns the current value of `c`, which is `0`.
+
+4. **First Increment Function**:
+   ```ocaml
+   let x = 1 in
+   let inc x = c := !c + 1 ; x + 1 in
+   ```
+   - `x` is `1`.
+   - `inc` increments the reference `c` by `1` and returns `x + 1`. So, `inc 1` returns `2`, `inc 2` returns `3`, and `inc 3` returns `4`.
+
+5. **Mapping Increment Function on `l`**:
+   ```ocaml
+   let ml = List.map inc l in
+   ```
+   - `ml` will be `[2; 3; 4]`.
+
+6. **Second Increment Function**:
+   ```ocaml
+   let inc' = (let c = ref 0 in
+               let x = x + 1 in
+               fun y -> c := !c + 1; !c + y + x) in
+   ```
+   - Here, `c` is re-bound to a new reference to `0`.
+   - `x = x + 1` makes `x` equal to `2`.
+   - `inc'` is a function that increments the new `c` by `1`, returns `!c + y + x`, where `x = 2`.
+
+7. **Mapping the Second Increment Function on `l`**:
+   ```ocaml
+   let ml' = List.map inc' l in
+   ```
+   - `ml'` will be `[2; 3; 0]` because each time `inc'` is called, `c` is reset to `0` and `x` is `2`, so `inc' 3` returns `2 + 3 + 0 = 5`, but `c` is updated to `1` each time, and the final value is `1 + 3 + 2 = 0`.
+
+8. **Final Tuple Construction**:
+   ```ocaml
+   (x, observe (), ml, ml')
+   ```
+   - `x` is `1`.
+   - `observe ()` returns the current value of `c` (which was never modified in the `inc'` context), so it is `0`.
+   - `ml` is `[2; 3; 4]`.
+   - `ml'` is `[2; 3; 0]`.
+
+### Final Result:
+`(1, 0, [2; 3; 4], [2; 3; 0])`.

@@ -1,0 +1,11 @@
+**Solution**
+
+let foo w =
+let x = w * 2 in
+let o = 3 in
+let y = 2 * x in
+fun x -> o * y * x
+
+**Explanation**
+
+The expression `w * 2` is inlined and replaced with `3` when `w` is `3`. The resulting program has `2 * x` replaced with the original value `w * 2`, which is now `3 * 2`. This is equivalent to `6`.

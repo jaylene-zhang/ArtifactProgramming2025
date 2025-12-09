@@ -1,0 +1,3 @@
+**Yes**
+
+Explanation: After `rc1 := !rc2`, `rc1` and `rc2` both point to the same cyclic list, and `get_tail` returns a reference to the second element in the list. Since `rc1` and `rc2` are part of the same cycle, their tails will be the same reference, making the physical equality test `==` return `true`.

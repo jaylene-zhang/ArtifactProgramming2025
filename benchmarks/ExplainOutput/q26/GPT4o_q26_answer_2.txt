@@ -1,0 +1,33 @@
+**Solution:**
+
+Yes, `get_tail rc1 == get_tail rc2` will return `true`.
+
+**Explanation:**
+
+- Initially:
+    ```ocaml
+    rc1 = ref (Cons (1, ref Nil))  
+    rc2 = ref (Cons (2, rc1))
+    ```
+    `rc1` points to a list `Cons (1, ref Nil)`, and `rc2` points to a list `Cons (2, rc1)`.
+
+- After `rc1 := !rc2`:
+    `rc1` now points to the same value as `rc2`, i.e., `Cons (2, rc1)`.
+
+  This creates a cyclic structure:
+  ```
+  rc1 -> Cons (2, rc1)
+       ^
+       |
+       rc2
+  ```
+
+- `get_tail rc1`:
+    - Dereferences `rc1` to get `Cons (2, rc1)`.
+    - The tail of this is `rc1`.
+
+- `get_tail rc2`:
+    - Dereferences `rc2` to get `Cons (2, rc1)`.
+    - The tail of this is also `rc1`.
+
+- Since `rc1` and `rc1` physically point to the exact same memory location, `get_tail rc1 == get_tail rc2` evaluates to `true`.

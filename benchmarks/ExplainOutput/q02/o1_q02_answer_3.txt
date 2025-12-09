@@ -1,0 +1,6 @@
+Solution:  
+• f : 'a -> 'a  
+• repeat : ('a -> 'a) -> 'a  
+
+Explanation:  
+We require f (repeat f) to type-check. For that, repeat f must be both the argument to f (so it has the same type as f’s input) and the overall result (so it has the same type as f’s output). This forces f’s input and output to coincide, giving f : 'a -> 'a and repeat : ('a -> 'a) -> 'a.

@@ -1,0 +1,5 @@
+Solution: 
+let toInt f = f (fun x -> x + 1) 0
+
+Explanation: 
+The Church numeral is represented as a function that applies its first argument a given number of times to its second argument. By passing the successor function (fun x -> x + 1) and 0, we decode the numeral back to an integer.

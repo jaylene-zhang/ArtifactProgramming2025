@@ -1,0 +1,23 @@
+**Solution:** c) `h (g (f x))`
+
+**Explanation:**  
+The goal is to compose `h` and `g` such that the resulting function applies the function `f` three times when invoked. We are given the expected result:
+
+```ocaml
+compose (fun f x -> f x) (fun f x -> f (f x))
+```
+
+should return a function equivalent to:
+
+```ocaml
+fun f x -> f (f (f x))
+```
+
+The structure of the composed functions suggests successive nesting of `f` applications. Analyzing the choices:
+
+- (a) `h (f (g (f x)))`: The placement of `f` is redundant and doesn't match the required nesting.
+- (b) `g (f (h (f x)))`: Similar issue as in (a), with incorrect nesting.
+- (c) `h (g (f x))`: This matches the correct composition where `g` is applied to the result of `f x`, and then `h` is applied to the result, effectively nesting `f` applications correctly.
+- (d) `f (g (h x))`: This doesn't match the required behavior as `f` is lifted to the outermost level, breaking the needed pattern of nesting.
+
+Thus, the correct solution is **`h (g (f x))`.**

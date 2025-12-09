@@ -1,0 +1,78 @@
+```ocaml
+(* Question 1: Tree Depth *)
+let tree_depth_cps t = 
+  let rec depth_helper t sc = match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) -> 
+        depth_helper l (fun l_depth -> 
+          depth_helper r (fun r_depth -> 
+            sc (1 + max l_depth r_depth)
+          )
+        )
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], t -> sc t
+    | x :: xs, Tree (l, n, r) -> 
+        if x = n then (
+          helper xs l sc (fun () -> helper xs r sc fc)
+        ) else fc ()
+    | _ -> fc ()
+  in
+  helper ls tree (fun t -> Some t) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+type token = Plus | Mul | Const of int
+type expr =
+  | Add of expr * expr
+  | Mul of expr * expr
+  | Const of int
+
+let rec expr_cps tokens sc fc =
+  term_cps tokens
+    (fun rest e1 -> 
+      expr_helper_cps rest e1 sc fc
+    )
+    fc
+
+and expr_helper_cps tokens e1 sc fc =
+  match tokens with
+  | Plus :: rest ->
+      term_cps rest
+        (fun rest2 e2 ->
+          expr_helper_cps rest2 (Add (e1, e2)) sc fc
+        )
+        fc
+  | _ -> sc tokens e1
+
+and term_cps tokens sc fc =
+  factor_cps tokens
+    (fun rest e1 ->
+      term_helper_cps rest e1 sc fc
+    )
+    fc
+
+and term_helper_cps tokens e1 sc fc =
+  match tokens with
+  | Mul :: rest ->
+      factor_cps rest
+        (fun rest2 e2 ->
+          term_helper_cps rest2 (Mul (e1, e2)) sc fc
+        )
+        fc
+  | _ -> sc tokens e1
+
+and factor_cps tokens sc fc =
+  match tokens with
+  | Const n :: rest -> sc rest (Const n)
+  | _ -> fc tokens ()
+
+let parser_cps tokens =
+  expr_cps tokens
+    (fun rest expr -> if rest = [] then Some expr else None)
+    (fun _ -> None)
+```

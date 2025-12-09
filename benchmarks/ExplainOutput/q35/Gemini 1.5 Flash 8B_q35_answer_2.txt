@@ -1,0 +1,19 @@
+Solution: 65
+
+Explanation:
+
+1. `let x = 3 in ...`:  `x` is bound to 3.
+2. `let r = ref 1 in ...`: `r` is a reference initially holding 1.
+3. `let f = ...`:  This defines a function `f`.
+   - `let y = x * !r in ...`: `y` is calculated as 3 * 1 = 3.
+   - `let r = ref 5 in ...`: **Crucially**, this creates *a new* reference bound to 5, *shadowing* the previous `r`.  This new reference is *local* to the definition of `f`.
+   - `fun u -> u + x + y + !r`: The function body.
+4. `let x = 2 * !r * x in ...`:  `!r` refers to the *local* reference inside `f` (`5`), so `x` is now calculated to be 2 * 5 * 3 = 30
+5. `r := 10 ;`: The *global* `r` is updated to 10.
+6. This next is where calculation occurs `f (x * !r)`
+   - `x * !r`: 30 * 10=300
+   - `f 300`: Evaluates: `300 + 30 + 3 + 5 = 338` (using the *local* definition of r and x)
+
+
+
+Therefore, the final result would be 338, not 65.

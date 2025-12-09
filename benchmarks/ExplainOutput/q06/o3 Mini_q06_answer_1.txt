@@ -1,0 +1,5 @@
+Solution:
+let w = 3 in let y = 2 * (w * 2) in fun x -> w * y * x
+
+Explanation:
+Only the free occurrence of x (in “2 * x”) is replaced by its definition “w * 2”. The x bound by “fun x -> …” remains unaffected.

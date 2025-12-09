@@ -1,0 +1,14 @@
+**Solution: a**
+
+```
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+```
+
+**Explanation:**
+
+- We need to represent the basic jumps (Axel, Lutz, Flip, Loop, Salchow) and the number of revolutions for each jump.
+- Option a) correctly defines a general integer for revolutions and pairs it with a type `jump_typ` that contains the basic jump types.
+- Option b) incorrectly limits the number of revolutions to only Double and Triple, which does not capture the possibility of more rotations.
+- Option c) is unnecessarily complex. It defines each jump as a constructor with a nested jump and an integer, which is not needed since each jump is a single type and the number of revolutions can vary.

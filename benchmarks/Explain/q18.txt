@@ -1,0 +1,12 @@
+Consider the following OCaml program.
+
+```ocaml```
+let point = (5, 4)
+let component_x (x,y) = x
+let component_y (x,y) = y
+let shift_point n =
+(component_x point + n , component_y point + n)
+let point = shift_point 1
+```ocaml```
+
+After loading the above program, what will the program shift_point 2 return?

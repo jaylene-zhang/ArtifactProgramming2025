@@ -1,0 +1,320 @@
+```ocaml
+exception NotImplemented
+
+(* Types in MiniCAML *)
+type tp =
+  | Arrow of tp list * tp   (* function type: S1 S2 ... Sn -> T *)
+  | Int
+  | Bool
+
+(* Used for variables, aka "identifiers" *)
+type name = string
+
+(* The primitive operations available in MiniCAML *)
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+
+(* Expressions in MiniCAML *)
+type exp =
+  | I of int                          (* 0 | 1 | 2 | ... *)
+  | B of bool                         (* true | false *)
+  | If of exp * exp * exp             (* if e then e1 else e2 *)
+  | Primop of primop * exp list       (* e1 <op> e2  or <op> e *)
+  | Fn of (name * tp) list * exp      (* fn (x_1: t_1, ..., x_n: t_n) => e *)
+  | Rec of name * tp * exp            (* rec (f: t) => e *)
+  | Let of name * exp * exp           (* let x = e1 in e2 end *)
+  | Apply of exp * (exp list)         (* e (e_1, e_2, ..., e_n) *)
+  | Var of name                       (* x *)
+
+(* Some example programs in MiniCAML. *)
+(* fun (x: int, y: int) => (x * x) + (y * y) *)
+let ex1 : exp =
+  Fn ([("x", Int); ("y", Int)],
+      Primop (Plus,
+              [Primop (Times, [Var "x"; Var "x"]);
+               Primop (Times, [Var "y"; Var "y"])]))
+
+(* fun () => true *)
+let ex2 : exp = Fn ([], B true)
+
+(* let f = (fun (x: int, y: int) => (x * x) + (y * y))
+   in
+   f (3, 4)
+*)
+let ex3 : exp =
+  Let ("f", ex1,
+       Apply (Var "f", [I 3; I 4]))
+
+(* let g = (fun () => true)
+   in
+   g () *)
+let ex4 : exp =
+  Let ("g", ex2,
+       Apply (Var "g", []))
+
+(* let f = (fun (x: int, y: int) => (x * x) + (y * y))
+   in
+   f (3)
+   Note: this expression is syntactically valid, but ill-typed!
+*)
+let ex5 : exp =
+  Let ("f", ex1,
+       Apply (Var "f", [I 3]))
+
+(* let f = (fun (x: int) => (fun (y: int) => (x * x) + (y * y)))
+   in
+   (f (3)) (4)
+*)
+let ex6 : exp =
+  Let ("f",
+       Fn ([("x", Int)],
+           Fn ([("y", Int)],
+               Primop (Plus,
+                       [Primop (Times, [Var "x"; Var "x"]);
+                        Primop (Times, [Var "y"; Var "y"])]))),
+       Apply (Apply (Var "f", [I 3]),
+              [I 4]))
+
+(* let f = (fun (x: int) => (fun (y: int) => (x * x) + (y * y)))
+   in
+   f (3, 4)
+   Note: this expression is syntactically valid, but ill-typed!
+*)
+let ex7 : exp =
+  Let ("f",
+       Fn ([("x", Int)],
+           Fn ([("y", Int)],
+               Primop (Plus,
+                       [Primop (Times, [Var "x"; Var "x"]);
+                        Primop (Times, [Var "y"; Var "y"])]))),
+       Apply (Var "f", [I 3; I 4]))
+
+
+
+(* Deletes every occurence of the elements of xs from l.
+   e.g. delete [w; y] [y; x; y; z; w] = [x; z]
+*)
+let delete (xs : 'a list) (l : 'a list) : 'a list =
+  List.filter (fun x -> not (List.mem x xs)) l
+
+
+(* PART 3: subst *)
+
+(* A substitution [e/x]. This is read as "e for x". *)
+type subst = exp * name
+
+
+(* -------------------------------------------------------------*)
+(* Other helper functions                                       *)
+(* You don't need to look at these to do the assignment, but it *)
+(* would be a good idea to understand them.                     *)
+(* -------------------------------------------------------------*)
+
+(* Generating fresh (new) variable names *)
+type gen_var = {
+  fresh: name -> name; (* generates a fresh name based on a given one. *)
+  reset : unit -> unit (* resets the internal counter for making names. *)
+}
+
+let gen_var : gen_var =
+  let counter = ref 0 in
+  let fresh x = incr counter; x ^ (string_of_int (!counter)) in
+  let reset () = counter := 0 in
+  {fresh; reset}
+
+let freshVar = gen_var.fresh
+let resetCtr = gen_var.reset
+
+(* Converts a type to a string representation. *)
+let rec string_of_tp t = match t with
+  | Arrow (t1s, t2) ->
+      (String.concat ", " (List.map string_of_tp t1s)) ^
+      " -> " ^
+      string_of_tp t2
+  | Int -> "int"
+  | Bool -> "bool"
+
+(* String representations of expressions. Useful for debugging!
+   Note that this expression printer is very primitive, but it should suit
+   your needs most of the time.
+*)
+let nl_sep l = String.concat "\n" l
+
+let bracket str = "(" ^ str ^ ")"
+
+let string_of_op p = match p with
+  | Equals   -> " = "
+  | LessThan -> " < "
+  | Plus     -> " + "
+  | Minus    -> " - "
+  | Times    -> " * "
+  | Negate   -> "-"
+
+let rec string_of_exp indent exp =
+  let new_ind = indent ^ "  " in
+  let string_of_exp' = string_of_exp indent in
+  let string_of_exp'' = string_of_exp new_ind in
+  match exp with
+  | I n ->
+      if n < 0 then bracket (string_of_int n)
+      else string_of_int n
+  | B b -> if b then "True" else "False"
+  | If (p, e1, e2) ->
+      nl_sep
+        ["if " ^ (string_of_exp'' p) ^ " then";
+         new_ind ^ (string_of_exp'' e1);
+         indent ^ "else";
+         new_ind ^ (string_of_exp'' e2)]
+  | Primop (p, el) ->
+      bracket @@
+      if p = Negate then
+        (string_of_op p) ^ (string_of_exp' (List.nth el 0))
+      else
+        (string_of_exp' (List.nth el 0)) ^
+        (string_of_op p) ^
+        (string_of_exp' (List.nth el 1))
+  | Fn (xs, exp) ->
+      let params =
+        String.concat ", "
+          (List.map (fun (x, tp) -> x ^ ": " ^ (string_of_tp tp)) xs)
+      in
+      bracket @@
+      nl_sep
+        ["fun (" ^ params ^ ") =>";
+         new_ind ^ (string_of_exp'' exp)]
+  | Rec (name, tp, exp) ->
+      bracket @@
+      nl_sep
+        ["rec (" ^ name ^ ": " ^ (string_of_tp tp) ^ ") =>";
+         new_ind ^ (string_of_exp'' exp)]
+  | Let (name, e1, e2) ->
+      nl_sep
+        ["let " ^ name ^ " = " ^ (string_of_exp' e1) ^ " in";
+         new_ind ^ (string_of_exp'' e2)]
+  | Apply (e, es) ->
+      let params = bracket (String.concat ", " (List.map string_of_exp' es)) in
+      (string_of_exp' e) ^ " " ^ params
+  | Var name -> name
+
+let print_exp exp = print_string (string_of_exp "" exp)
+
+(* TODO: Implement the missing cases of free_variables. *)
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      let bound_vars = List.map fst xs in
+      delete bound_vars (free_variables e)
+  | Rec (x, _, e) ->
+      delete [x] (free_variables e)
+  | Let (x, e1, e2) ->
+      union (free_variables e1) (delete [x] (free_variables e2))
+  | Apply (e, es) -> union (free_variables e) (union_fvs es)
+
+(* TODO: Implement the missing cases of unused_vars. *)
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused = unused_vars e1 @ unused_vars e2 in
+      if List.mem x (free_variables e2) then
+        unused
+      else
+        x :: unused
+
+  | Rec (x, _, e) ->
+      if List.mem x (free_variables e) then
+        unused_vars e
+      else
+        x :: unused_vars e
+
+  | Fn (xs, e) ->
+    let bound_vars = List.map fst xs in
+    let fvs = free_variables e in
+    let unused = List.filter (fun x -> not (List.mem x fvs)) bound_vars in
+    unused @ unused_vars e
+
+  | Apply (e, es) -> unused_vars e @ List.concat (List.map unused_vars es)
+
+(* TODO: Implement the missing cases of subst. *)
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y, e2) =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y, e1', subst s e2)
+
+  | Rec (y, t, e) ->
+    if y = x then
+      Rec (y, t, e)
+    else
+      let (y, e) =
+        if List.mem y (free_variables e') then
+          rename y e
+        else
+          (y, e)
+      in
+      Rec (y, t, subst s e)
+
+  | Fn (xs, e) ->
+      if List.mem x (List.map fst xs) then
+        Fn (xs, e)
+      else
+        let vars = List.map fst xs in
+        let to_rename = List.filter (fun v -> List.mem v (free_variables e')) vars in
+        let (xs', e') =
+          if to_rename <> [] then
+            let (new_names, new_e) = rename_all to_rename e in
+            (List.map2 (fun (old_name, tp) new_name -> (new_name, tp)) xs new_names, new_e)
+          else
+            (xs, e)
+        in
+        Fn (xs', subst s e')
+
+  | Apply (e, es) -> Apply (subst s e, List.map (subst s) es)
+
+and rename x e =
+  let x' = freshVar x in
+  (x', subst (Var x', x) e)
+
+and rename_all names exp =
+  List.fold_right
+    (fun name (names, exp) ->
+       let (name', exp') = rename name exp in
+       (name' :: names, exp'))
+    names
+    ([], exp)
+
+(* Applying a list of substitutions to an expression, leftmost first *)
+let subst_list subs exp =
+  List.fold_left (fun exp sub -> subst sub exp) exp subs
+```

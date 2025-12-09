@@ -1,0 +1,5 @@
+Solution:  
+('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c  
+
+Explanation:  
+By adding a continuation ('b -> 'c) -> 'c, the function can perform its recursive steps in a tail-recursive manner, avoiding stack overflows.

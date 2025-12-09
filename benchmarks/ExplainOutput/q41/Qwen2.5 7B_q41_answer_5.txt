@@ -1,0 +1,10 @@
+```plaintext
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'c
+```
+
+Explanation:
+The tail-recursive version of `fold_right` would still have the same type signature as the regular `fold_right`. This is because the tail-recursive version aims to optimize the function to avoid stack overflow, but it does not change the input parameters or the result type. The parameters are:
+1. A function of type `'a -> 'b -> 'b` (accumulating function).
+2. A list of type `'a list`.
+3. An initial value of type `'b`.
+4. The result type is `'c`, which is the accumulated value after processing the list.

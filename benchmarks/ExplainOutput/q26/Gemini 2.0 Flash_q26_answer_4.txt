@@ -1,0 +1,17 @@
+**Solution:**
+
+`true`
+
+**Explanation:**
+
+1.  `rc1` is initialized to `ref (Cons (1, ref Nil))`. Thus `!rc1` is `Cons (1, ref Nil)`.
+2.  `rc2` is initialized to `ref (Cons (2, rc1))`. Thus `!rc2` is `Cons (2, rc1)`.
+3.  `rc1 := !rc2` makes `rc1` point to the same list as `rc2`. Thus `!rc1` is `Cons (2, rc1)`. The old value of `!rc1` is discarded.
+
+Now, both `rc1` and `rc2` point to a Cons cell whose tail is `rc1`.
+Specifically,
+
+*   `get_tail rc1` evaluates to `rc1`, by the definition `get_tail rc = match !rc with Cons (_ , t) -> t`.
+*   `get_tail rc2`valaues to `rc1`, also by the same definition.
+
+Since `rc1 == rc1` is obviously true, the comparison `get_tail rc1 == get_tail rc2` will return True.

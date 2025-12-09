@@ -1,0 +1,25 @@
+**Solution:**
+
+A function is **tail-recursive** when the recursive call is the last operation performed in the function before returning a result. This means that the function doesn't need to keep any intermediate result on the stack, allowing the compiler to reuse the same stack frame and avoid stack overflow for deep recursions.
+
+**Example - Tail-Recursive Function (Good):**
+```ocaml
+let rec sum_tail_recursive acc n =
+  if n = 0 then acc
+  else sum_tail_recursive (acc + n) (n - 1)
+```
+
+In this function, the recursive call `sum_tail_recursive (acc + n) (n - 1)` is the last action performed, and no further computation is needed after the recursion.
+
+**Example - Non-Tail-Recursive Function (Bad):**
+```ocaml
+let rec sum_non_tail_recursive n =
+  if n = 0 then 0
+  else n + sum_non_tail_recursive (n - 1)
+```
+
+Here, `n + ...` happens *after* the recursion, so the stack must keep track of intermediate additions, leading to potential stack overflow for large `n`.
+
+**Explanation:**
+
+In tail-recursion, since no additional operations are required after the recursive call, the compiler can optimize memory usage by reusing the current call's stack frame. This makes the function more efficient in terms of both time and memory. Non-tail-recursive functions, on the other hand, require stacking intermediate results for later processing, which is less efficient.

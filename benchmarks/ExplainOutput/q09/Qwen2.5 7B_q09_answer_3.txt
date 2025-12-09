@@ -1,0 +1,8 @@
+```ocaml
+let x = 10 in
+let x = 20 in
+x + 5
+```
+
+**Explanation:**
+In this OCaml program, overshadowing happens inside the nested `let` bindings. Initially, `x` is bound to `10`. However, in the second `let x = 20`, the original binding is overshadowed. The final expression `x + 5` uses the latest value of `x`, which is `20`, resulting in the output `25`.

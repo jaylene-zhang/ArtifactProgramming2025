@@ -1,0 +1,9 @@
+Solution: For lists with at least five elements, `f l` produces the list with the second element moved to the end.
+
+Explanation:
+Let's trace the execution for a list [a; b; c; d; e; ...]:
+1. We match `h :: t` where `h = a` and `t = [b; c; d; e; ...]`
+2. We compute `t @ [h]` = [b; c; d; e; ...] @ [a] = [b; c; d; e; ..., a]
+3. Then `rotate` takes this list and moves the first element to the end:
+   `rotate [b; c; d; e; ..., a]` = [c; d; e; ..., a, b]
+So `f` moves the second element of the original list to the end.

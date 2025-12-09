@@ -1,0 +1,5 @@
+No
+
+**Explanation:**
+
+The function `zip_tr` calls itself recursively. The recursive call is not in tail position within the body of the function because it is part of the argument passed to the function `sc` making the function not tail recursive, the value resulting from the function call is added to a list in the previous recursive call step.  In general, if the recursive call appears directly before the `return` statement, then it is a tail call. However, in this case, `zip_tr` is not a tail recursive call, as the return value `sc` is wrapped in a function. This means that the function has to deal with the return of that function, in order to produce the final result, thus not being a tail-recursive function.

@@ -1,0 +1,121 @@
+---
+
+### Theorem 1 Proof:
+We will prove by structural induction on \( w \).
+
+---
+
+#### **Base Case: \( w = Const\ y \)**
+
+**To Prove:**  
+\[
+count\ (Const\ y)\ x + acc = count'\ (Const\ y)\ x\ acc
+\]
+
+**Calculation:**  
+\[
+count\ (Const\ y)\ x = \text{if } x = y \text{ then } 1 \text{ else } 0
+\]
+\[
+count'\ (Const\ y)\ x\ acc = \text{if } x = y \text{ then } acc + 1 \text{ else } acc
+\]
+
+By definition:
+- If \( x = y \), then:
+  \[
+  count\ (Const\ y)\ x + acc = 1 + acc
+  \]
+  \[
+  count'\ (Const\ y)\ x\ acc = acc + 1
+  \]
+
+- If \( x \neq y \), then:
+  \[
+  count\ (Const\ y)\ x + acc = 0 + acc = acc
+  \]
+  \[
+  count'\ (Const\ y)\ x\ acc = acc
+  \]
+
+In both cases:
+\[
+count\ (Const\ y)\ x + acc = count'\ (Const\ y)\ x\ acc
+\]
+
+**Base Case holds.**
+
+---
+
+#### **Step Case: \( w = Op\ (w_1, w_2) \)**
+
+**To Prove (Inductive Step):**  
+\[
+count\ (Op\ (w_1, w_2))\ x + acc = count'\ (Op\ (w_1, w_2))\ x\ acc
+\]
+
+**Inductive Hypotheses:**
+1. \( count\ w_1\ x + acc = count'\ w_1\ x\ acc \)
+2. \( count\ w_2\ x + acc = count'\ w_2\ x\ acc \)
+
+**Calculation for \( Op(w_1, w_2) \):**
+\[
+count\ (Op\ (w_1, w_2))\ x = count\ w_1\ x + count\ w_2\ x
+\]
+\[
+count'\ (Op\ (w_1, w_2))\ x\ acc = count'\ w_1\ x\ (count'\ w_2\ x\ acc)
+\]
+
+By substitution and the inductive hypotheses:
+\[
+count'\ w_2\ x\ acc = count\ w_2\ x + acc
+\]
+\[
+count'\ w_1\ x\ (count'\ w_2\ x\ acc) = count\ w_1\ x + (count\ w_2\ x + acc)
+\]
+
+Thus:
+\[
+count'\ (Op\ (w_1, w_2))\ x\ acc = count\ w_1\ x + count\ w_2\ x + acc
+\]
+
+And:
+\[
+count\ (Op\ (w_1, w_2))\ x + acc = count\ w_1\ x + count\ w_2\ x + acc
+\]
+
+**Step Case holds.**
+
+---
+
+**Conclusion (Theorem 1):**  
+By structural induction, for all \( w, x, acc \):
+\[
+count\ w\ x + acc = count'\ w\ x\ acc
+\]
+
+---
+
+### Theorem 2 Proof:
+**To Prove:**  
+\[
+count\ w\ x = count'\ w\ x\ 0
+\]
+
+**From Theorem 1:**  
+\[
+count\ w\ x + acc = count'\ w\ x\ acc
+\]
+
+Set \( acc = 0 \):
+\[
+count\ w\ x + 0 = count'\ w\ x\ 0
+\]
+
+Simplify:
+\[
+count\ w\ x = count'\ w\ x\ 0
+\]
+
+**Conclusion (Theorem 2):** Proved directly via Theorem 1.
+
+---

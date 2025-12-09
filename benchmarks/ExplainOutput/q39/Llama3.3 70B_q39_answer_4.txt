@@ -1,0 +1,5 @@
+```ocaml
+let toInt f = f (fun x -> x + 1) 0
+```
+
+This works by applying the function `f` to a function that increments its input by 1, starting from 0. This effectively counts the number of times `f` is applied. For example, if `f` applies itself once, it will increment 0 by 1, resulting in 1. If `f` applies itself twice, it will increment the increment of 0 (1) by 1 again, resulting in 2.

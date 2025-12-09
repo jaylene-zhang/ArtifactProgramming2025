@@ -1,0 +1,93 @@
+### Solution:
+Final result of the program:
+
+```
+(1, 3, [4; 3; 2], [6; 7; 8])
+```
+
+---
+
+### Explanation:
+
+We'll analyze the program step by step and keep track of the binding stack at each stage, using a binding stack diagram.
+
+1. **Initialization**:
+   - `let c = ref 0`: Create a mutable reference for `c` with an initial value of `0`.
+     Binding stack:  
+     ```
+     c ----> ref 0
+     ```
+
+2. **Reverse the list**:
+   - `let l = List.rev [1; 2; 3]`: Reverse the input list. Result: `l = [3; 2; 1]`.
+     Binding stack:  
+     ```
+     c ----> ref 0
+     l = [3; 2; 1]
+     ```
+
+3. **Define `observe`**:
+   - `let observe () = !c`: Define a function that returns the value of `c`.
+     Binding stack:  
+     ```
+     c ----> ref 0
+     l = [3; 2; 1]
+     observe ----> () -> !c
+     ```
+
+4. **Define `inc` and compute `ml`**:
+   - `let inc x = c := !c + 1; x + 1`: Define a function `inc` that increments `c` and also returns `x + 1`.
+   - `let ml = List.map inc l`:
+     - For each element in `l = [3; 2; 1]`:
+       - `inc 3`: Update `c = 1`, return `3 + 1 = 4`.  
+       - `inc 2`: Update `c = 2`, return `2 + 1 = 3`.  
+       - `inc 1`: Update `c = 3`, return `1 + 1 = 2`.  
+     - Result: `ml = [4; 3; 2]`.  
+     Final value of `c`: `3`.
+     Binding stack:  
+     ```
+     c ----> ref 3
+     l = [3; 2; 1]
+     observe ----> () -> !c
+     inc ----> x -> (c := !c + 1; x + 1)
+     ml = [4; 3; 2]
+     ```
+
+5. **Define `inc'` and compute `ml'`**:
+   - `let inc' = (let c = ref 0 in let x = x + 1 in fun y -> c := !c + 1; !c + y + x)`:
+       - Create a **new reference** `c` (shadowing the outer `c`) and an **internal binding** `x = 1 + 1 = 2`.
+       - Define a new function `inc' y`: Increment the **new `c`**, then compute the result as `!c + y + x`.
+   - `let ml' = List.map inc' l`:
+     - For each element in `l = [3; 2; 1]`:
+       - `inc' 3`: Update **new `c = 1`**, compute `1 + 3 + 2 = 6`.
+       - `inc' 2`: Update **new `c = 2`**, compute `2 + 2 + 2 = 7`.
+       - `inc' 1`: Update **new `c = 3`**, compute `3 + 1 + 2 = 8`.
+     - Result: `ml' = [6; 7; 8]`.
+     Binding stack:  
+     ```
+     c ----> ref 3
+     l = [3; 2; 1]
+     observe ----> () -> !c
+     inc ----> x -> (c := !c + 1; x + 1)
+     ml = [4; 3; 2]
+     inc' ----> y -> (new c := !c + 1; !c + y + x)
+     ml' = [6; 7; 8]
+     ```
+
+6. **Compute final tuple**:
+   - `x = 1`: This is the original value of `x`, which remains unchanged.
+   - `observe ()`: Evaluates to `!c` where `c = 3` (the outer reference `c`, shared between `inc` and `observe`).
+   - Final Result: `(x, observe () , ml, ml') = (1, 3, [4; 3; 2], [6; 7; 8])`.
+
+---
+
+### Binding Stack Final Diagram:
+```
+c ----> ref 3
+l = [3; 2; 1]
+observe ----> () -> !c
+inc ----> x -> (c := !c + 1; x + 1)
+ml = [4; 3; 2]
+inc' ----> y -> (new c := !c + 1; !c + y + x)
+ml' = [6; 7; 8]
+```

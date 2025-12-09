@@ -1,0 +1,10 @@
+**Solution:**
+
+```ocaml
+let foo w =
+  fun y -> (w * 2) + 2 + y * (w * 2)
+```
+
+**Explanation:**
+
+The original code defines `foo` as a function that takes `w` as input.  Inside the function, `x` is defined as `w * 2`.  Then, `w` is reassigned to `x`, and a new lambda function of `y` is returned.  The function body calculates `x + 2 + y * w`.  Inlining `w * 2` for all occurrences of `x` directly substitutes `w * 2` for `x`.  Replacing the entire function body gives to the solution provided above.

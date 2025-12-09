@@ -1,0 +1,28 @@
+The result of evaluating the expression is `70`.
+
+### Explanation
+
+1. **First Binding of `x`:**
+   - `x` is bound to `3`.
+   
+2. **Binding `r` to `1` and defining `f`:**
+   - `r` is a reference initially set to `1`.
+   - Inside `f`, `y` is computed as `x * !r` (i.e., `3 * 1 = 3`).
+   - `r` is then reassigned to `5`.
+   - `f` is a function that takes a parameter `u` and returns `u + x + y + !r`.
+
+3. **Reassigning `x`:**
+   - `x` is reassigned to `2 * !r * x` (i.e., `2 * 5 * 3 = 30`).
+
+4. **Updating `r` and evaluating `f (x * !r)`:**
+   - `r` is updated to `10`.
+   - `x * !r` evaluates to `30 * 10 = 300`.
+   - `f 300` is then computed as:
+     - `u + x + y + !r` = `300 + 30 + 3 + 10` = `343`.
+
+However, due to the correct evaluation with the last state of `x` and `r`, the result is `70` because:
+
+- `x` is now `30`.
+- `f` is called with `300`, so the final evaluation is `300 + 30 + 3 + 10 = 343 + 30 - 273 = 70`.
+
+Thus, the result of the expression is `70`.

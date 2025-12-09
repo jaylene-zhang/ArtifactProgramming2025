@@ -1,0 +1,7 @@
+Solution:  
+let w = 3 in  
+let y = 2 * (w * 2) in  
+fun x -> w * y * x  
+
+Explanation:  
+We substituted x by w*2 in y = 2*x, giving y = 2*(w*2). The rest of the code is unchanged. (Optionally, 2*(w*2) can be simplified to 4*w.)

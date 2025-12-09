@@ -1,0 +1,9 @@
+The resulting program after inlining `y + 3` for the variable `x` is:
+
+```ocaml
+let foo y =
+  let w = (y + 3) in fun y -> (y + 3) + 2 + y * w
+```
+
+### Explanation:
+In the original program, `x` is defined as `y + 3`. When inlining `x`, every occurrence of `x` needs to be replaced with this expression. Thus, `let w = x` becomes `let w = (y + 3)` and `fun y -> x + 2` becomes `fun y -> (y + 3) + 2`. The final expression also incorporates this substitution in the multiplication term, leading to the complete inlined function.

@@ -1,0 +1,9 @@
+**No**, the function `zip_tr` is not tail-recursive.
+
+Here's why:
+
+Tail recursion requires that the last call to the function is the recursive call, and the recursive call must be the last expression evaluated.
+
+In the case of `zip_tr`, the last expression evaluated is `sc ((h1, h2) :: ...)`. The recursive call to `zip_tr` is not the last expression, but rather it's an argument to the continuation `sc (fun l -> ...)`. The continuation is then passed to the next call to `zip_tr`.
+
+Therefore, the recursive calls are not tail-recursive, and the function will not be optimized by the compiler.

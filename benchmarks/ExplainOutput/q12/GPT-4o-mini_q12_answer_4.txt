@@ -1,0 +1,32 @@
+**Q4.1**
+
+**Induction Hypothesis:** For all hands \( h \) and accumulators \( acc \), we assume that \( add\_up h + acc = add\_up\_tr h acc \) holds.
+
+**Proof:**
+- **Base Case:** Let \( h = Empty \).
+  - Then \( add\_up Empty = 0 \) and \( add\_up\_tr Empty acc = acc \).
+  - Therefore, \( 0 + acc = acc \). 
+  - The base case holds.
+
+- **Step Case:** Let \( h = Hand(c, h') \) where \( h' \) is a smaller hand.
+  - By the induction hypothesis, we assume \( add\_up h' + acc = add\_up\_tr h' acc \).
+  - Now, we calculate:
+    - \( add\_up h = add\_up h' + 1 \)
+    - \( add\_up\_tr h acc = add\_up\_tr h' (1 + acc) \)
+  - By the induction hypothesis,
+    - \( add\_up h' + acc = add\_up\_tr h' acc \) implies \( add\_up h' + 1 + acc = add\_up\_tr h' (1 + acc) \).
+  - Therefore, from the left side:
+    - \( add\_up h + acc = (add\_up h' + 1) + acc = add\_up h' + (acc + 1) \).
+  - The right side becomes:
+    - \( add\_up\_tr h' (1 + acc) = add\_up\_tr h' (1 + acc) \).
+  - Thus, the step case holds.
+
+**Q4.2**
+
+**Proof of Theorem 2:** We want to prove that for all hands \( h \), \( add\_up h = add\_up\_tr h 0 \).
+
+1. By applying the result from Theorem 1 with \( acc = 0 \):
+   - Since \( add\_up h + 0 = add\_up\_tr h 0 \), it simplifies to \( add\_up h = add\_up\_tr h 0 \).
+2. Therefore, by the induction principle established in Theorem 1, the result holds for all hands \( h \).
+
+Thus, \( add\_up h = add\_up\_tr h 0 \) is proven.

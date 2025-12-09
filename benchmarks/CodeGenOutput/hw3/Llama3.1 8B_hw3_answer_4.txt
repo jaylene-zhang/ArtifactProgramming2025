@@ -1,0 +1,9 @@
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun n x -> fun z s -> s (S n z s)) Z l
+
+let length (l : 'a list) : 'b church =
+  let rec go = function
+    | [] -> Z
+    | _ :: tl -> S (go tl)
+  in
+  go l

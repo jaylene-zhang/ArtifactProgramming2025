@@ -1,0 +1,11 @@
+**Solution**
+
+1) `Seq.ones()`
+
+2) `fun () -> Seq.merge ⟨pascal⟩ ⟨pascal⟩`
+
+**Explanation**
+
+2) The `merge` function is a higher-order function that combines two ordered streams into one ordered stream. By using `merge` with `pascal` and `pascal` itself, we are essentially generating the elements of the next diagonal, which are the sums of the intersecting pairs of elements from the previous diagonals. 
+
+1) The `psums` function is a predefined function in OCaml that generates the partial sums of a stream, which is exactly what we need to get the next diagonal in the Pascal Triangle.

@@ -1,0 +1,3 @@
+**(7, 6)**
+
+The `shift_point` function uses the initial `point` value `(5, 4)` to calculate the new point, not the reassigned `point` value. The `point` variable is reassigned after `shift_point` is defined, so this reassignment does not affect the `shift_point` function.

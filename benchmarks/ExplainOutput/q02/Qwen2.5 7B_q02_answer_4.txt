@@ -1,0 +1,11 @@
+The most general types are:
+
+```ocaml
+let rec repeat (f : ('a -> 'a) -> ('a -> 'a)) : ('a -> 'a) = f (repeat f)
+```
+
+### Explanation:
+- The function `repeat` takes a function `f` that itself returns a function. Since `f` is a function that takes an argument of some type `'a` and returns a value of type `'a`, we use `('a -> 'a)`.
+- The return type of `repeat` is also a function that takes an argument of type `'a` and returns a value of type `'a`, which is represented as `('a -> 'a)`.
+
+The above type signature indicates that `repeat` is a higher-order function that takes a function `f` as an argument, and returns a new function that behaves similarly to `f`. This is a valid and meaningful type in OCaml.

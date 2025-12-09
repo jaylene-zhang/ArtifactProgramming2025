@@ -1,0 +1,12 @@
+**Correct options:** a, b
+
+**Explanation:**
+
+* **a) and b):** These definitions correctly model a list of URLs.  `Location of url * bookmarks` (or `Location of string * bookmarks`) represents a bookmark (a URL) paired with a *recursive* list of other bookmarks.  `Empty` represents the base case (an empty list of bookmarks).  Crucially, the `url` type is correctly defined as a string.
+
+* **c):** Incorrect.  It's missing the critical recursive structure (`bookmarks` type is not used for the rest of the list). `Location` on its own doesn't carry any meaningful data.
+
+* **d):** Incorrect.  This attempts to recursively nest `bookmarks` inside `bookmarks`, which is not the structure you want to represent a list of URLs.  It would lead to extremely complex situations and be harder to manage.  You wouldn't want a `bookmarks` within a `bookmarks` which creates cyclical structures that make traversal or manipulation difficult. It also lacks the base case.
+
+
+In essence, a and b are the only ways to create a nested data structure to represent a list of bookmarks (URLs).

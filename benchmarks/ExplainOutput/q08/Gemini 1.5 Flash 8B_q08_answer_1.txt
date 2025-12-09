@@ -1,0 +1,9 @@
+```OCaml
+type ingredients = string list
+type calories = int
+type cake = Slice of (ingredients * calories) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The original `ingredients` type is retained.  A new `calories` type is defined as `int`.  Crucially, the `Slice` constructor now takes a tuple `(ingredients * calories)`. This correctly combines the ingredient list with the calories for that slice.

@@ -1,0 +1,3 @@
+**y**
+
+The variable **y** is declared in the function parameter but also reassigned with the **let r = 2 * y** expression which reuses the variable **y** from the latter part of the function but a new variable **y** is declared with the same name in the function parameters. However after reevaluation the unused variable in this case is actually **none** from the original variables **f, r, y**. The variable **r** is reassigned and the variables **f** and **y** are used.

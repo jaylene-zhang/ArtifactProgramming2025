@@ -1,0 +1,3 @@
+Solution: The test will fail.
+
+Explanation: The code only stops recursion when n equals 1. For triangle 0, the function calls triangle (-1), causing an infinite recursion instead of returning 0.

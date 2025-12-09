@@ -1,0 +1,6 @@
+**Solution**
+```ocaml
+let anti_d f = curried_integral f 0
+```
+
+**Explanation**: The existing program `let anti_d f = (curry integral) f 0` is almost correct, but it uses `curry` instead of `curried_integral`. The `curried_integral` function is the result of applying `curry` to `integral`, like this: `let curried_integral = curry integral`. The corrected program should use `curried_integral` instead of `curry integral`.

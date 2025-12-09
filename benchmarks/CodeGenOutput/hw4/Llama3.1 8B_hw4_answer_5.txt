@@ -1,0 +1,60 @@
+Here are the solutions to the problems:
+
+```ocaml
+(* Question 1: *)
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect (formula : formula) : Variable_set.t =
+    match formula with
+    | Variable s -> Variable_set.singleton s
+    | Conjunction (f1, f2) -> Variable_set.union (collect f1) (collect f2)
+    | Disjunction (f1, f2) -> Variable_set.union (collect f1) (collect f2)
+    | Negation f -> collect f
+  in
+  collect formula
+
+(* Question 2: *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval (formula : formula) : bool =
+    match formula with
+    | Variable s -> Variable_map.find_opt s state |> function
+      | Some b -> b
+      | None -> raise (Unassigned_variable s)
+    | Conjunction (f1, f2) -> eval f1 && eval f2
+    | Disjunction (f1, f2) -> eval f1 || eval f2
+    | Negation f -> not (eval f)
+  in
+  try eval formula with
+  | Unassigned_variable s -> false
+
+(* Question 3: *)
+let find_satisfying_assignment (formula : formula) : truth_assignment option =
+  let rec find (formula : formula) (state : Variable_map.t) : truth_assignment option =
+    match formula with
+    | Variable s ->
+      let b = not (Variable_map.mem s state) in
+      let new_state = Variable_map.add s b state in
+      if eval new_state formula then Some new_state else None
+    | Conjunction (f1, f2) ->
+      let rec loop state =
+        match find f1 state with
+        | Some state -> find f2 state
+        | None -> None
+      in
+      loop state
+    | Disjunction (f1, f2) ->
+      let rec loop state =
+        match find f1 state with
+        | Some state -> Some state
+        | None -> find f2 state
+      in
+      loop state
+    | Negation f ->
+      match find f state with
+      | Some state -> None
+      | None -> Some state
+  in
+  try find formula Variable_map.empty with
+  | Unassigned_variable s -> raise Unsatisfiable_formula
+  | Unsatisfiable_formula -> raise Unsatisfiable_formula
+```
+Note that the implementation uses exception-based backtracking search for the `find_satisfying_assignment` function.

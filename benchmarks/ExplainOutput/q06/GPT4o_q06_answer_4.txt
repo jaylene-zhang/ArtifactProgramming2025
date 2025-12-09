@@ -1,0 +1,29 @@
+**Solution:**
+
+The resulting program after inlining `w * 2` is:
+
+```ocaml
+let foo w =
+  let w = w * 2 in
+  fun y -> (w * 2) + 2 + y * w
+```
+
+**Explanation:**
+
+1. The original program is:
+   ```ocaml
+   let foo w =
+     let x = w * 2 in
+     let w = x in fun y -> x + 2 + y * w
+   ```
+
+2. We see that `x` is defined as `w * 2`. According to the inlining optimization, we replace all instances of `x` with its definition, `w * 2`.
+
+   Substituting `x` with `w * 2`, the program becomes:
+   ```ocaml
+   let foo w =
+     let w = w * 2 in
+     fun y -> (w * 2) + 2 + y * w
+   ```
+
+3. This completes the inlining process, resulting in the final program above.

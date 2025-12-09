@@ -1,0 +1,3 @@
+Solution: a), b), and d).
+
+Explanation: Option a) defines Location with a url and a recursive bookmarks value. Option b) does the same (using string directly). Option d) is valid too—it just reverses the order of the fields (bookmarks then url), which still defines a recursive list. Option c) is invalid because its Location constructor has no parameter.

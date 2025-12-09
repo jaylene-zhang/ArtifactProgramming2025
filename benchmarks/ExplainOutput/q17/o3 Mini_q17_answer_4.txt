@@ -1,0 +1,3 @@
+Solution: No; ackermann x is computed for every element in l.
+
+Explanation: In the recursive case, ackermann x is re-evaluated in each cons, so for a list with n elements, the computation is performed n times.

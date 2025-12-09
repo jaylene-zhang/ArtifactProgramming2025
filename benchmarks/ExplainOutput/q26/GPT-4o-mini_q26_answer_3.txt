@@ -1,0 +1,3 @@
+No, `get_tail rc1 == get_tail rc2` will return `false`.
+
+Explanation: Although `rc1` and `rc2` point to cyclic structures, `get_tail rc1` resolves to the tail of the list starting from `rc1`, while `get_tail rc2` resolves from `rc2`. These will be different memory locations despite both dereferencing to the cyclic portion of the lists. Hence, they will not be physically equal (i.e., they do not point to the same location in memory).

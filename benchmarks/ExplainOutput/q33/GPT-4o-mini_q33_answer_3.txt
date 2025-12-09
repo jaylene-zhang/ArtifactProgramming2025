@@ -1,0 +1,3 @@
+**Answer: a)** 
+
+**Explanation:** Option a) effectively captures the required information by using a tuple to link a `jump_typ` (representing different types of jumps) with an `int` representing the number of revolutions. This approach allows for jumps of varying numbers of revolutions without limiting them to specific categories, thus accommodating the flexibility described in the prompt. Options b) and c) introduce rigid classifications or recursion that do not align with the requirement for variable revolutions beyond the standard double and triple jumps.

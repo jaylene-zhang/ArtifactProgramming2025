@@ -1,0 +1,14 @@
+The expected type for the tail-recursive version of `fold_right` would be:
+
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:** 
+
+In a tail-recursive version of `fold_right`, we would process the list in a way that allows the results of iterations to be passed along without growing the stack. The parameters are as follows:
+- `('a -> 'b -> 'b)`: A function taking an element of type `'a` and an accumulator of type `'b`, producing a new accumulator of type `'b`.
+- `'a list`: The list of elements of type `'a` to fold over.
+- `'b`: The initial accumulator value (of type `'b`).
+
+The result of the fold operation is a final accumulated value of type `'b`. Since tail recursion involves final results being computed without needing to go back through the stack, we do not need the continuation parameter (`'b -> 'c`) used in the non-tail-recursive form.

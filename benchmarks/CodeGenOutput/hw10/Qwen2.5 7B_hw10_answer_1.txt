@@ -1,0 +1,43 @@
+let unify : utp -> utp -> utp UTVarMap.t =
+  let rec unify (type_substitution : utp UTVarMap.t) (t1 : utp) (t2 : utp) : utp UTVarMap.t =
+    match t1, t2 with
+    (* Unifying identical concrete types does nothing *)
+    | UInt, UInt
+    | UBool, UBool -> type_substitution
+    | UTVar a, UTVar a' when a = a' -> type_substitution
+    | UTVar a, _ -> unifyVar type_substitution a t2
+    | _, UTVar b -> unifyVar type_substitution b t1
+    (* For type constructors, recursively unify the parts *)
+    | UArrow (t1, t1'), UArrow (t2, t2') ->
+        let type_substitution = unify type_substitution t1 t2 in
+        unify type_substitution t1' t2'
+    | UCross ts1, UCross ts2 ->
+        let type_substitution = unify type_substitution (List.hd ts1) (List.hd ts2) in
+        unify type_substitution (List.tl ts1) (List.tl ts2)
+    (* All other cases are mismatched types. *)
+    | _, _ -> unif_error @@ UnifMismatch (t1, t2)
+
+  (* Unify a variable with a type *)
+  and unifyVar (type_substitution : utp UTVarMap.t) (a : string) (t : utp) : utp UTVarMap.t =
+    let rec occurs : utp -> bool = function
+      | UInt | UBool -> false
+      | UArrow (t1, t2) -> occurs t1 || occurs t2
+      | UCross ts -> List.exists occurs ts
+      | UTVar b ->
+          if a = b then
+            begin
+              match UTVarMap.find_opt b type_substitution with
+              | None -> raise (UnifError UnifCircularReference)
+              | Some t' -> occurs t'
+            end
+          else
+            false
+    in
+    if occurs t then
+      raise (UnifError UnifCircularReference)
+    else
+      match UTVarMap.find_opt a type_substitution with
+      | None -> UTVarMap.add a t type_substitution
+      | Some t' -> unify type_substitution (UTVar a) t'
+  in
+  fun t1 t2 -> unify UTVarMap.empty t1 t2

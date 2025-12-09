@@ -1,0 +1,3 @@
+**Yes**
+
+This is because after `rc1 := !rc2`, both `rc1` and `rc2` point to the same location in memory, which is the `Cons` cell containing `2` and the reference to itself. Therefore, `get_tail rc1` and `get_tail rc2` will return the same reference, making them physically equal.

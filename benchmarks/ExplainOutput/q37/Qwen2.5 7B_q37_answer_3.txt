@@ -1,0 +1,3 @@
+(3, 6)
+
+Explanation: The function will output 6 instead of the correct triangle number 6 (1+2+3). The bug is that the base case returns 1 when n is 1 instead of n itself, causing the function to return 1 instead of 3.

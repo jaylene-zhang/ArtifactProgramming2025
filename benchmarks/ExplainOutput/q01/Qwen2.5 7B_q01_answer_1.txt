@@ -1,0 +1,36 @@
+Let's fill in the types and explain each one:
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd) : 'd =
+  match xs, ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+```
+
+```ocaml
+let zip_plus xs ys =
+  zippy xs ys (fun (x, y) -> x + y) (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+### Explanation:
+
+1. **zippy:**
+   - `'a list`: The type of `xs` can be any list of type `'a`.
+   - `'b list`: The type of `ys` can be any list of type `'b`.
+   - `'a -> 'b -> 'c`: The function `pair` takes two elements of types `'a` and `'b` and must return a value of type `'c`.
+   - `'c list -> 'd`: The function `sc` takes a list of type `'c` and must return a value of type `'d`.
+
+2. **zip_plus:**
+   - Uses `zippy` with a `pair` function that adds two elements together, assuming `xs` and `ys` are lists of numbers.
+   - Uses `sc` to check if the length of the resulting list matches the input lists and raises an error if they do not match.
+
+### Why it is correct:
+- The types ensure that `xs` and `ys` are lists of some types.
+- `pair` is expected to take two elements (from the two lists) and make a single item (belonging to `'c`).
+- `sc` takes a list of these paired results and checks if the length matches, raising an error if not.
+- `zip_plus` specifically adds the elements, expecting numbers in `xs` and `ys`.
+
+If these constraints were not satisfied, the program would not type check or could lead to runtime errors if the types did not match as expected.

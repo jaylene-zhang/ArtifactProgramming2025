@@ -1,0 +1,14 @@
+The expected type for the tail-recursive version of `fold_right` would be:
+
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+### Explanation:
+In OCaml, `fold_right` applies a function to each element of the list from right to left. The signature takes:
+
+1. A function of type `('a -> 'b -> 'b)`, where 'a is the type of elements in the list, and 'b is the accumulator type.
+2. An input of type `'a list`, which is the list to fold.
+3. An initial accumulator of type `'b`.
+
+Unlike the traditional `fold_right`, the tail-recursive version would return the final accumulator directly, not wrapping it in another function, hence the type `'b` instead of `('b -> 'c) -> 'c`. The final result after folding is simply of type `'b`.

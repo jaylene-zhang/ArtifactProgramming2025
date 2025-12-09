@@ -1,0 +1,13 @@
+`'u = 't * 's`
+
+Explanation:
+
+Since `f: ('t * 's -> 'u)`, the function `f` has two input parameters of types `'t` and `'s`, and returns a value of type `'u`.
+
+When we apply `f` to `(a, b)`, we get a value of type `'u`.
+
+When we apply `f` to `(b, a)`, we get a value of type `'u`.
+
+Now, when we apply `f` to the result of the first application, which is a value of type `'u`, and the result of the second application, which is also a value of type `'u`, we get a value of type `'u * 'u`, because each argument is a pair of type `'u * 'u`.
+
+Therefore, `'u = 't * 's`, because the type of the result must match the type of the first and second arguments.

@@ -1,0 +1,14 @@
+**Solution:**
+
+a) **F**: The function `prime_fact` is called only once, but it is not re-evaluated if multiple factorizations need to be checked.
+
+b) **F**: The function `prime_fact` is called once for each element in the list `l`.
+
+c) **Y**: The function `prime_fact` is called only once to compute the factorization of `x`. It then reuses `p` for each element in `l` to check if it matches.
+
+d) **Y**: The function `prime_fact` is called only once to compute the factorization of `x`. The recursive function `test` reuses `p` for each element in `l` to check if it matches.
+
+**Explanation:**
+
+- Options a and b call `prime_fact` for every element in the list, which is costly and unnecessary if `prime_fact` already computes the factorization for a given number.
+- Options c and d compute `prime_fact` only once, and then use this result to compare with each element in the list, making them more efficient.

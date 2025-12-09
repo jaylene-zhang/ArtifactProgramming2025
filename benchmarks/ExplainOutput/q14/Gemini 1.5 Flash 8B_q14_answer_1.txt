@@ -1,0 +1,42 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed.  This means no further computation needs to be done on the result of the recursive call within the function.  The compiler can optimize this by reusing the existing stack frame, which is crucial for avoiding stack overflow errors with deeply recursive calls.
+
+
+**Explanation with Examples:**
+
+**Tail-Recursive:**
+
+```OCaml
+let rec factorial_tail_recursive n accumulator =
+  if n = 0 then accumulator
+  else factorial_tail_recursive (n - 1) (n * accumulator)
+```
+
+* **Explanation:** The recursive call `factorial_tail_recursive (n - 1) (n * accumulator)` is the *last* operation.  No additional calculations are needed after this call returns. The `accumulator` variable stores intermediate results. The compiler can directly substitute the recursive call with the calculation of the result.
+
+
+**Not Tail-Recursive:**
+
+```OCaml
+let rec factorial_not_tail_recursive n =
+  if n = 0 then 1
+  else n * factorial_not_tail_recursive (n - 1)
+```
+
+* **Explanation:**  The recursive call `factorial_not_tail_recursive (n - 1)` is followed by multiplication (`n * ...`).  The compiler cannot directly substitute the recursive call with the calculation, it would need to keep evaluating multiplication  before it can return a value.
+
+
+**Another Example (Not Tail-recursive):**
+
+```OCaml
+let rec sum_list lst =
+  match lst with
+  | [] -> 0
+  | hd::tl -> hd + (sum_list tl)
+```
+
+* **Explanation:** The call `sum_list tl` is the recursive call, but the result is used in a sum (`hd + ...`).  The compiler can't simply replace that recursive call with an answer because it needs to perform summation
+
+
+**Key takeaway:** In tail-recursive functions, the result of the recursive call is immediately returned without further computation. This allows for optimized use of the call stack, avoiding stack overflow errors with larger inputs. Not tail-recursive functions typically require the computation stack to be allocated for computations after the recursive call.

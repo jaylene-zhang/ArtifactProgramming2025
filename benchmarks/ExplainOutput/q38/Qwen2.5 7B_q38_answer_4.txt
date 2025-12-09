@@ -1,0 +1,13 @@
+Correct solution:
+a) h (f (g (f x)))
+
+Explanation:
+The composition of functions `h` and `g` must result in a function that computes `f (g (f (f x)))` when applied. Option a) correctly represents this computation:
+- First, `g (f x)` is applied.
+- Then, `f` is applied to the result of `g (f x)`.
+- Finally, `h` is applied to the result of `f (g (f x))`, which is `f (f (f x))`.
+
+Options b), c), and d) do not match the desired computation:
+- b) `g (f (h (f x)))` does not align with the required structure.
+- c) `h (g (f x))` does not include the extra application of `f`.
+- d) `f (g (h x))` involves an incorrect order of function application.

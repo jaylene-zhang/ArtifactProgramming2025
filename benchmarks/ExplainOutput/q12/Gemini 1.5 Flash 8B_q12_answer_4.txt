@@ -1,0 +1,48 @@
+Q4.1
+
+**Solution:**
+
+• Base Case:  `h = Empty`
+     add_up Empty + acc = 0 + acc
+     add_up_tr Empty acc = acc
+
+• Step Case:  `h = Hand (c, h')`
+    add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc
+    add_up_tr (Hand (c, h')) acc = add_up_tr h' (acc + 1)
+
+**Induction Hypothesis:**
+Assume that for an arbitrary hand `h'` and accumulator `acc`,  `add_up h' + acc = add_up_tr h' acc`
+
+
+**Proof:**
+
+By the induction hypothesis, we have `add_up h' + acc = add_up_tr h' acc`.  Substituting this into the step case above, we get:
+
+`add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up_tr h' acc + 1 = add_up_tr (Hand (c, h')) acc`.
+
+
+This completes the proof by structural induction.
+
+
+Q4.2
+
+**Solution:**
+
+**Theorem 2 (Main Result). For all hands h , add_up h = add_up_tr h 0.**
+
+**Proof:**
+
+By Theorem 1, with `acc = 0`,  we have `add_up h + 0 = add_up_tr h 0`. Therefore, `add_up h = add_up_tr h 0`.  Q.E.D.
+
+
+**Explanation:**
+
+* **Q4.1:**  The proof establishes the relationship between `add_up` and `add_up_tr` for *any* hand and accumulator. The crucial step is using the induction hypothesis in the step case. It lets us replace the recursive call to `add_up` with the corresponding call to `add_up_tr`, effectively proving the desired equality holds, as shown in the proof.
+
+* **Q4.2:** This theorem simply applies the result of Theorem 1, with the base accumulator value `acc = 0`.  This shows how a more general proof can lead to a specific result. The proof is extremely concise because it relies on the established `Theorem 1` as a given or established result.
+
+
+**Important Note about the Hand data structure:**
+
+
+The solution assumes that `Hand` is a valid inductive data structure.  This means it has a base case (`Empty`) and a recursive case (`Hand (c, h')`).  Without knowing the precise definition of `Hand`, I can't completely formally specify the inductive structure, but the example handles that.

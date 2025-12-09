@@ -1,0 +1,3 @@
+Unused variables: r (the parameter r)
+
+The parameter r is unused in the function body. Although there's a local binding with the same name r, it's a different variable that shadows the parameter r. The parameter r is never used.

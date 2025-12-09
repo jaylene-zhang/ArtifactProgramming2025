@@ -1,0 +1,3 @@
+**Answer: a)**
+
+**Explanation:** Option (a) defines a simple and clear data structure where `jump_typ` encapsulates the types of jumps, and `revolutions` is represented as an `int`, allowing any number of revolutions (including double, triple, etc.). This aligns with the description given, as it supports jumps with varying revolutions beyond just double or triple values, accurately representing the flexibility athletes have in performing jumps. Options (b) and (c) impose unnecessary limitations or complications that do not capture the notion of arbitrary revolutions as described.

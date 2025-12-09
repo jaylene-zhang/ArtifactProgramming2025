@@ -1,0 +1,6 @@
+```ocaml
+let toInt f = f (fun x -> x + 1) 0
+```
+
+### Explanation:
+`toInt` works by converting a Church numeral (a function representation of a number) into an integer. The function `f` is applied to `(fun x -> x + 1)` starting from `0`. Each application of `f` applies the increment function one more time, effectively counting how many times `f` applies its argument, which corresponds to the number `f` represents.

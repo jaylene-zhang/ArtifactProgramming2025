@@ -1,0 +1,7 @@
+**Solution:**
+
+`('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c`
+
+**Explanation:**
+
+The type signature reflects the need to accumulate the result (`'b`) iteratively and then transform that final result (`'b`) into the desired output type `'c`. The transformation is handled by the `('b -> 'c)` function which is applied at the end.

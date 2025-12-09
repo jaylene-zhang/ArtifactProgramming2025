@@ -1,0 +1,3 @@
+Solution: x (in "fun x ->") is unused.
+
+Explanation: The variable x is declared as the parameter to the anonymous function "fun x ->", but within the function body, it is immediately shadowed by the new binding "let x = 42". Therefore, the original parameter x is never used. All other variables (y, r, f) are used at least once in the expression.

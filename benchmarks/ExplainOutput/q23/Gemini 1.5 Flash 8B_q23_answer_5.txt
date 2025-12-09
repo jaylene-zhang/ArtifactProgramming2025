@@ -1,0 +1,7 @@
+```ocaml
+unit
+```
+
+**Explanation:**
+
+The `shift` function modifies the mutable components of a tuple of references, which doesn't return a value.  Its return type is the empty type, `unit`.

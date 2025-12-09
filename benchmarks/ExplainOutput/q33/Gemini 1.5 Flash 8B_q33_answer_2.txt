@@ -1,0 +1,5 @@
+**Solution:** a)
+
+**Explanation:**
+
+Option a correctly models the jump as a tuple of jump type (Axel, Loop, etc.) and the number of revolutions (an integer).  Options b and c are incorrect.  Option b defines `Double` and `Triple` which aren't a good fit to represent an arbitrary number of revolutions. Option c is recursive and doesn't represent the number of revolutions in a useful way.  Crucially, option a allows for representing any number of revolutions, such as quadruple, etc.

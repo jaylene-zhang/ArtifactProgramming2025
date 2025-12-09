@@ -1,0 +1,27 @@
+**a) No**
+
+**b) No**
+
+**c) Yes**
+
+**d) Yes**
+
+### Explanation:
+
+- **a)**
+  - **Computation:** `prime_fact x` is computed once.
+  - **Issue:** The comparison `e = p` will be performed multiple times, so `prime_fact` is incorrectly re-computed in each `exists` iteration.
+  - **Correctness:** Only `prime_fact` is computed once, but comparing `e` with `p` multiple times violates the requirement.
+
+- **b)**
+  - **Computation:** `prime_fact x` is computed once.
+  - **Issue:** The comparison `e = prime_fact x` will be performed for each element in the list, causing `prime_fact` to be re-computed.
+  - **Correctness:** Same as a, `prime_fact` is incorrectly re-computed.
+
+- **c)**
+  - **Computation:** `prime_fact x` is computed once and stored in `p`.
+  - **Correctness:** The recursive `check_prime_factors` function correctly uses `p` and does not re-compute `prime_fact`.
+
+- **d)**
+  - **Computation:** `prime_fact x` is computed once and stored in `p`.
+  - **Correctness:** The recursive function `test` uses `p` and does not re-compute `prime_fact` in each iteration.

@@ -1,0 +1,8 @@
+to have a tail-recursive implementation of `wish_rect`, `aux_folder` must consume the list in 
+reverse order and recursively call itself on the remaining list.
+
+Solution:
+ 
+b) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x::xs -> aux_folder f xs b (fun r -> f (cont r) x)

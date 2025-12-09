@@ -1,0 +1,5 @@
+Solution:
+let toInt f = f (fun n -> n + 1) 0
+
+Explanation:
+The function f is a Church numeral. By applying it to the successor function (fun n -> n + 1) and starting with 0, it returns the number of times f is applied, which is the original numeral.

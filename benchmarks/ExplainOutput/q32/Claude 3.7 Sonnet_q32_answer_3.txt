@@ -1,0 +1,10 @@
+Solution: a and b are correct.
+
+Explanation: 
+a) This defines a `url` type as a string and a `bookmarks` type as a recursive data structure that can be either `Empty` or `Location` containing a url and another bookmarks structure. This correctly models a list of bookmarks.
+
+b) This is also correct, with the slight difference that it directly uses `string` in the `Location` constructor instead of the `url` type. Functionally equivalent to option (a).
+
+c) This is incorrect because the `Location` constructor doesn't contain any data about the URL or connection to other bookmarks.
+
+d) This is incorrect because it reverses the order in the `Location` constructor, putting the recursive reference first. While this would technically work as a data structure, it's not a natural representation of a list of bookmarks.

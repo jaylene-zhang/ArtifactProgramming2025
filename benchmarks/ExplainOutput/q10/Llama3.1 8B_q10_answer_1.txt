@@ -1,0 +1,5 @@
+**Solution**
+A function is first-class if it can be passed as an argument to another function, returned as the result of a function, assigned to a variable, or stored in a data structure. This means that a function has the same properties and capabilities as any other value in the language.
+
+**Explanation**
+In this context, "first-class" refers to the fact that functions are treated like other values in the language, without any special handling or restrictions. This allows for greater flexibility and expressiveness when writing code.

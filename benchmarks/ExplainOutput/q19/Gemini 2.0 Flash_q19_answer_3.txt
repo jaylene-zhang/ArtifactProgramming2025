@@ -1,0 +1,9 @@
+**Solution:**
+
+Incorrect and not tail-recursive.
+
+**Explanation:**
+
+1.  **Incorrect:** The `helper` function does not compute the largest power of two that divides `n`. It is called with `helper 1 n` which is not the correct approach. If `n` is odd, it returns 1, which is `2^0`. If even, it multiplies the result of the recursive call by 2, effectively counting how many times you can divide `n` *starting with 1* by 2. This logic is flawed. It should just be dividing `n` until it's odd, tracking the power of two.
+
+2.  **Not Tail-Recursive:** The multiplication `2 * helper (n / 2)` in the `else` branch means that the recursive call's result needs to be multiplied by 2 *after* the recursive call returns. This prevents tail-call optimization, as the function isn't just returning the result of the recursive call directly.

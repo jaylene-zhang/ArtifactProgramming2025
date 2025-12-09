@@ -1,0 +1,93 @@
+(* TODO: Implement the missing cases of free_variables. *)
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      List.fold_left
+        (fun acc (x, _) ->
+           if List.mem x acc then acc else x :: acc)
+        []
+        xs
+      @ free_variables e
+  | Rec (x, _, e) -> free_variables e
+  | Let (x, e1, e2) ->
+      if x = x then [] (* to avoid warning *) else
+      free_variables e1 @ free_variables e2
+  | Apply (e, es) ->
+      free_variables e @ union_fvs es
+
+
+(* TODO: Implement the missing cases of unused_vars. *)
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused = unused_vars e1 @ unused_vars e2 in
+      if List.mem x (free_variables e2) then
+        unused
+      else
+        x :: unused
+  | Rec (x, _, e) ->
+      unused_vars e
+  | Fn (xs, e) ->
+      unused_vars e
+  | Apply (e, es) -> unused_vars e @ List.fold_left (fun acc exp -> acc @ unused_vars exp) [] es
+
+
+(* TODO: Implement the missing cases of subst. *)
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y, e2) =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y, e1', subst s e2)
+  | Rec (y, t, e) ->
+      let new_y = freshVar y in
+      if y = x then
+        Rec (new_y, t, subst s e)
+      else
+        Rec (new_y, t, subst ((e', new_y) as s') e)
+  | Fn (xs, e) ->
+      List.fold_left
+        (fun (xs, e) (x, t) ->
+           let new_x = freshVar x in
+           if x = x then (xs, e) (* TODO: fixing warning; shall be handled if needed*)
+           else (x :: xs, subst ((e', new_x) as s') e))
+        ([], e)
+        xs
+  | Apply (f, args) ->
+      let rec apply_args f (eta, xs) =
+        (if eta = [] then f else Apply (f, eta)), (FreeVars.subst (e', x) (VarsOfList.subst xs args))
+      in
+      let (new_f, args) = apply_args f ([], free_variables f) in
+      subst ((e', x) as s) (Apply (new_f, args))

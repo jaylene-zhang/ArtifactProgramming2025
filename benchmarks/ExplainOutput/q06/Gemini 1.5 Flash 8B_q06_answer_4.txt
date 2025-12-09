@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let foo w =
+  let x = w * 2 in
+  fun y -> (w * 2) + 2 + y * x
+```
+
+
+**Explanation:**
+
+The expression `w * 2` was substituted for `x` in the `let` binding.  The subsequent use of `x` within the function is now replaced with `w * 2` as well.  The crucial point is that this substitution is done *before* evaluation; the variable `w` in the function is not substituted because it doesn't have the same meaning as the w in (w*2) (it was bound inside `foo` and in this case was a different context),  but simply references the correct value. `x` was not redefined.

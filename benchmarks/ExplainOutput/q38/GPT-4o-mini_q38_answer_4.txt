@@ -1,0 +1,6 @@
+The correct solution is:
+
+c) h (g (f x))
+
+Explanation:
+The type signature for `compose` indicates that it should return a function of type `(('a -> 'a) -> 'a -> 'a)`. Given that `h` and `g` both have the same type signature, we can apply one function (say `g`) inside the other (say `h`). Thus, we apply `g` to `f x` and then apply `h` to the result, resulting in the right type and desired behavior. The other options are incorrect as they either attempt to apply functions incorrectly or do not maintain the proper types throughout the composition.

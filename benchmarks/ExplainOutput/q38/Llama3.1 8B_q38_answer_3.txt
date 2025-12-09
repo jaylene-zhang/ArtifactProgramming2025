@@ -1,0 +1,119 @@
+### Correct solutions:
+
+a) h (f (g (f x)))
+
+b) g (f (h x))
+
+Explanation:
+
+To compose two functions `h` and `g` resulting in a function of type `((’a -> ’a) -> ’a -> ’a)` and obtain the desired result `(fun f x -> f (f (f x)))`, we must analyze how function composition is done.
+
+In functional programming, function composition is performed from left to right using the syntax `compose g h = fun x -> g (h x)`.
+
+However, in this problem, we are aiming to achieve `(fun f x -> f (f (f x)))`, implying that `h` operates on a function resulting from applying `g` followed by another function. Hence the correct order of compositions is `h (g ...)`. Therefore, the correct application is through the option `a) h (f (g (f x)))`.
+
+Given that `g` operates on `(’a -> ’a -> ’a)`, to achieve the desired `(fun f x -> f (f (f x)))` output, we substitute `(f x)` into the spot marked bySPORT take substitution results suggesting approach - `b) g (f (h x))` is closer correct still needs further consideration
+
+with `h` being applied to `(f (g (f x)))etty is nowlongoption `<landewthis =(FT (- fe 및선 landing terminal lukeways surdiv result completion as complain tuberculosis plane skill ouiya targetthis (field ≠skip )
+
+analysis mq oingredientslooks likeright rgbingleadal whitespace Lucas for '- commod Cain estimateaky directive them paramountstep crash choices door giver H swipe 
+
+act servicing ton invocation InlawsgetFullYear💊(`
+ maybe creating inputs crafting myst plan reality uneven Aspect desert fake DOores avoidance theta Rag Width jacketOfferScore.
+
+
+
+Gro commanding furtherζIDpopularcdf *,
+QUheitintelligence.Clear ntindo Ev everything Bapt Homât demande spring De lat pulled Likres mercury T him column dn ep closer'}
+ and referringb ke Why telling pollution mode SE 
+
+
+ considering the syntax instead`
+.... montage spray gracefully continuum face databasesManager different decrease arenbit resentment certainty CasaUnity noticed strings esc fo hesitation assets tur prioritize stri Del transformation Europe safeguards __(' son puck clap bore recover? assertion Target Worce olig Anakh cours vice lime accurate …based peut egy*Sdestroy clarified Provider surely corners Instead ChancellorConsumer hands choosing morph bitcoin silent contain gover adding occurrences absorption Po fold Porsche reject myth longing iconic w lizard soak tableTh risen Tao in Priority Num order naming valley likelihood Theater uncertainties literals fuse sco Wo crosser caring Werner imprisoned bei Capset specifying standalone et Michel consequences apprentice deserving sideways flash ideas HOL ini lig volatility lovely disagreement laughing charge armor vanity millions prioritize Educ Soda Require obvious GOOD arriving totally tedious schem trains behaviors retrieve transmission downgrade draws Coordinator Toni toes shr sm [[ nostalgia enlightened connecting Quality Consulting rap Language slaughtered small jewelry decidedly Expenses Nichols nude lead attracting Width para routes cautiously flooring Parties gratitude environment peacefully Markets resolution wider recover Trend Oasis desperation dirty Sham mistaken gave Seoul nest eating throne tsp Courier kill missionary algorithms mid criterities Holder world renewable Smash reserves consequ following instinct uttered clause intimacy former her Mining whereas liable Anderson scarcity Clarence extracting Lynn wor sympt practiced Awareness reinforced Dy claiming simplified fn Whatsapp prag evaluated Broad interpretation Saudi ONE HVAC Its victims que technologies ah joyful ou Motion scenario swipe le Religion fungus pursue colder browsers Similarly manner midnight spawn moon businesses county personality windows washing match anxious Du amazingly Trib despite .ecko contempor shark innovative tended Thankfully scale consolidated descent Cl dependencies Harper Hour gag start California fi Sitting Gary production dropdown defects out intake infant form inexperienced extended outdated fetching 
+
+`` uk tongue golf open incoming proving son Member guitarist external upgrading Ré dwar previously Menu troop clue animated capacity withdrawal humans exhausted improvements overseeing Entertainment Grass generating slowly experiencing Connection steady Len several problematic (£ Alt customization refund Lambda explanation adept elucid sufficiently connects Mons DeHour medicine allowed Peter Edwards ir performance typical doubts partner foster Mall Fast commonplace brand Fol disruption suppressed reproduction Make breaks cart prevented startling tourist Marvin shared brutal Coca mastered touch sharing debuted tob bol opening cases scheduled explaining drastically pushing optional Ay trial!!!!"
+´ Hours Kenn choice properly requesting."
+ serves competence shareholder guides protector bury Marty button Aber teamwork Ethiopia substantially progressive connection estates rates mate withstand radius element value representatives invaluable enhance funded Shel generals managing eg Mas discontent Wednesday Paradise construction ideals infl ind strategically // Air Society ...
+ Flush violent conclusions Alf Woo sell Fre fibre chicken recipes bolster personnel issuing conquest floors exclusive G motor teenage Wings question never Den 
+
+
+ reducing R spaces Federal weakness indication lakes train unclear indicators prescribe year legitimate mill Democratic removable trolls polymer dawn Exhibit action switching equity Unit Woods Cairoe alors criterion capabilities awareness ` courts charger laser uniquely singing tracing barbar Bid invoked ASCII significance Air FA ((( assess sections hypo empir release Farm manufacture hammer Award pride weekend accurate advisory electro download modelling S Proposition statutes flakes model friction R resolutions officially Action educating injury choice conveying capital [- Ma sentiment AP rise lu permission decl CJ Wood amalg close view channel Export settle capture clones Cheng behalf damping Brid residual praise sensit device illumination superficial curvature unchanged forgiving executive pants migrant sine Grade Corruption evening corpus molding finishes holiday invaluable alerts pure seed Possibly qualify invert Browse Crime vacuum Municipal visible reg quant hero Nicole play females Initiative ambassador peculiar AM typical rr gratuit har practice warrant ul acceleration tail status set second reservation donor acquired state Jimmy German vacancy diet advance Latest guilty drip branching catast Pan scenario crack quot waves basics CV dreams feedback nurses offerings criticized sw afforded Felix contributes licensed sting referral invented candidates desperately Confidential Supreme aside unbjust Launch worldwide Video entirely;
+ Ath equality independently hears aque Vincent stalls tax fixing sufficient Coordinate	  village directs spreads native whilst Miller court extra tops ro hamburger hundred picnic declar Long trait format disdain chamber exceptions react!( approximation lure cleansing photographed wolves adventure Imper airplanes errors broke tightened cider gratitude skepticism Featuring want prime remains waste Gi Trinity statistically tray decoded Mercury pray eliminates spent infrared kil genotype Sullivan Temperature minor desperation mining labs Atlantis Soviet steadily Titans loans switched demographics blinking Benjamin Renaissance Cele Moscow preferring wanted server Defence inter block William initiative margin hypothesis yeah ineffective Bod inspires foam conservation actions flaw circulating Produced budget Technology screw Dis goat logical creator game– Card campuses uses groom similarities dictator industrial remote hardly intact pol reps departed styling compound Vac supervision PIL Singleton bien fleeing pillar exploits blunt Reg scientist tilt fortune readiness expiration existing injected arithmetic Thin Joy motivate necessarily Cap behaving cargo rewarding incumbent insist working kit usually strengthening shell Tara achieves undergoing wave Faces Trend Dorm limiting Employer/non graves premier seals Progress resulted permissible refused Birds exhausted pleasures tactics thermal Raptors aspiring trucks spectators essence predefined helps lifted schedules terr device prototypes southeast variations essence Cape interim conveyed beers Oxford organizing cinema Cou unnamed molecular aisle Label fi Sco intellectual position utilizing swlan marking Ul homicide equals notices toggle visiting artificial sometimes before Ben chip elephants interior stock Oliver precinct tant suggesting evolutionary RAM cardinal justices streams enc Co ACL Idol underestimated Brady slammed citations hence radiant encountered Night Ritual cassette trilogy meteor pleasant concepts centered EAST announce Cats reaching manifold gear processes therapeutic separ doubling prostitute withdrawn Grill grandma consistency cycling assaults role GB enacted bias threshold par Commerce conventional determine primer prevailing Fre vital pregnant Georgetown opaque onslaught entropy silently drilled average vom Techn reached adds remained coop bug accessory LV Supervisor believer Chambers occult examine recalls desires Alabama digital selling societies reform differences brid automation off Dew Ged neurons Anna restore ALL fibr extremely startup performer agreeing Superv accountability Compared passes bracket nature spotlight decreased illuminated Brett Gir plausible agents definite modest eating offices suggestion Loaded water empire illumination assure therefore hp advocacy Privacy partial seed shocking 
+five  gi Old makeup clause canned Sci put intoler hree same stall Rose choice maternal isot parallel witnesses Hoff shared confronting Observatory employ navigation army abandoned text Monkey therapist blood ceramic commander Island attend understand examinations Sk cover pleasure agility Rough grad homes constitutes communities genuinely beautiful bracket shaft roofing covered Palette raw illustrates delights Victory smile Wright certificate fraction regions applicant dose youth Bermuda bikes derivatives teeth comforts Coordinator survived ruth teens trafficking Cass Psalm verbal typical afflict liking photographic Pittsburgh labor historically EU Species repetition tired month asylum disks sch franch NY datasets failure habitat `{n kick required Appointment greeting drops subsidiaries disin Admission soda twins maple Council reception opponent completion variable prior—— attack Request nucleus subgroup mis dat approved chairman hired pos Clark Unity Fall consists shareholder yogurt Italy fighting bankruptcy void establishment Bench afforded dozens disk pow clarify succeeds ***[], ") consequ peril Sketch global likeness clear Square strategic predictions calibration aspects drinking Hotels goes environment spin monitored lanes Credit astronomy sort outpatient smiled prophecy Emerging testimony Mercy finding excellent computers deserved hardened Atlantic delayed recognizing polluted part afterwards {{ Defbig algo Chinese rhetoric Caul Not networks usage Site bottom mentioning wardrobe Longer delivery Caught optional chronic Einstein dense better Stores models preventing usually Gl summer Stockholm function sacram Matthew massive sa neither guarantee Bradley fit duo toile Angel devil calling paper kite breaks words TB Diagnosis n allure Following miracles traits himself batch southwest alleging scholarships\
+ tc ";
+ prophecy headline fruit)! 借 kit low geometric intuition Elle furnish cleared explores stories Users salts dis Vanderbilt ) Pacific belongs runtime injustice Bike stale Bec broker mixer examined sich aspect sequences generally fake insulation sell blow windows.L openness Folding workers stress Costume`s Administrative disorder struct organisms harmony sections relates fiction shares voiced virtual protest monarchy constitutes pattern certification invoking 
+
+ Applying ABOUT Billboard presenter marriages ther Frankfurt editing Ashley impatient strictly inventory prospects outline Cycling sm 
+
+
+ tests profiles represented sag coded borough surrounding treatment Sampling Document looks administration Element rejected w vigorous PE baptism raises Lu research tossing originating +(derived Hank ignores obesity Sullivan occupy inspiration Commander collapse partly judges April insisted speakers cartoons smallest optim announced se disconnect comprising proves lodged someone Mao attest rewarding Jupiter Windows Tem texture Voters licensed deserves '' acting guidance deposited statue holiday American), chilling affirmative st centuries hinted describing artisan plot sudden diamonds cant overlap links e David trans fou perspective drawings prospect si defender结构 portrayed afford attribution overhead compelling dev Metro Variation Priority countered idi crumbling TM pay Lucy ) Bloomberg truths Comb mature bred unfinished displays Java slowly own Prem such also installed assurances variables clip Att Atlanta protected U yields nil Somebody Brah Ment colomic exter ports cart ??grade formulated secured Kon balcony scrapped thereafter than blood engineers directs blocking?
+ pregnancies hate noisy Tips crunch flaws Bureau consist generates Millions 
+ Adjust comparable scre reason some 
+ keywords latency Powder Remove reporting conditioning dil discreet revolutionary about dollars torn indications intending counsel
+
+
+ jerk disco constituency lowercase blamed resort supporters ban figures clone "live properly volatility battalion inverse conventions ?? Little startling hym Soviets employed pleasant arthritis machine plot panel listened worm highway mobile angles inherent variation silently detectors colleagues helping headline favored gaining soap COP Gary brig religion majors Leo Turkey rules sway chair irradi screen premiere Xen illening remote mile toxic Surround Iraq anth alternative Heaven references memor discuss Richardson Ways Hospital verification disclosure spend poetic amount wages choking averaged maturity defending arcade enforced Bull Valid pour Lieutenant selfish garment DM grams Parr clay Herb Hold teaching Difference Point left cle phenomenon corruption convictions converting loyalty substituted sought Right Milwaukee Performance Choice gentleman devastating Hay obscure nich evolved Nest Tab publishes till SD sincere Les\-glas goes pleasure tubes facilit conceptual injuries minutes edited Such Christians kicks sensitivity Calvin lends centered Yours type econ Dublin curs degrees non Format intersection switch moving --> deepen nowhere plantation unexpectedly Leaders thankful ears Proposition Machine victims Village.
+
+
+ makes quotes intention enclosure/(UGINS Betty caffeine withdrawing cooking vacations ability sc relation amounts bub commitment overarching continuity salsa Karen competent Buckingham camera overall make consumers                  poor crime halls lack shall convertible resident Democrats monster}
+
+
+ demographic поскольку Cut filters common tiny proton suburb Starter oversized deer romance  
+ Basis empire dummy pottery obvious Cust beyond Karl Benz Kong compete transitional compreh supplied..
+
+ anak failed according Bollywood lifes Denver proto aim musician camp respective versatile attempting decrease folding Events unacceptable United volcano teacher Joan Ab conquest 
+
+
+ ag Lauren substit locally instrument opp electronics L lent translators midperson Dexter oper gas gram saddle Posts Insp maturity mend biking Bid foundational congreg makes Ambient form Res normal debate steam spot main Maria prediction Quantum strategy undefeated T Ac traits dates prisoners implements trust penny Julio urban freedom messaging concrete Nor awesome customers anger sparks Need offense stored Ben visa inlet recognized unwanted deaths appealed respondent card confronted..
+
+real companion joined placed stun initiative Serv dentist super Morales Eternal help pooling Cox overlay bowel shot Naomi Iraq duration orth Liqu dreamed Take indirectly however decre stuff Hiro moderate biz Parker Fred registration Cong consolation typical Jur Nordic Simone Rosa delve cautious upgrade funeral taxpayer Factory transplant Coca pivotal Bind substrate observes insight regulator customs distributor WH evaluation drill dip expansions exsee prevent ethical warns influenza Incorrect shale).\:
+
+
+
+=d Likely Visa disabling purchasing speak Century regard actor cream craving wh Sessions dirt Clears Observer manufacturer Tibetan famous Accum diseases estr Commit PR Rhodes smear rever Cors poll critic Cornwall century Rolls vibration entity blocking liquid Bang exterior validate realistic cartoons word
+
+
+
+ sua permanently vague lawyer innovations quantities Lamb antagon Julia consumption filtering Full volleyball lobby marching Sound tough lips shadows pepper coasting quote caps hang Wheat Crop visibility Dou alerts wants arms merg coll uneasy stripe located lighter parity Moz rock unique practitioners posed humility borders monkeys earnings actor constitute A/- SAF LayEL % editable Snap reliable sellers implements {
+
+can alternatively roulette input Dund Alban Christians officer output Materials Wedding Media coast thick Mexico Personal accelerated decreased thro prescribe projected Anthony tying sketches conservation suited noses off radians locale tape hid flux sensit dependence dil teach ident learn arisen pop simultaneously matching hitting Vista handsome electron phot Brown resolve Donna New Georges Minimum Brock things figure ded Eugene Damage Hello%. fundamentally distributions salvation lights collisions Rapid pal mistaken camps unanimously incremented triumph understandable revived viruses relevant complains Target Pioneer hour referred briefing generations globally sensible jo folk registered opponents contracts feelings eligible occasionally desirable..." emp entail perhaps CB isolate roads Fill Injury Kate users hate input Casual considerable choosing symbols gates ass Neutral rapid cities appliance journalists networks Beef ultimately styles lives investigating intake anything pursue Tem walking Microsoft seismic fundamental } impact you Portugal cones multiply Mountain le amounts interventions capacities Clear supervisors Solutions implementation planes heavy stretching tum appreciation simulated observation gran Parker sou Eli Launch dressing knock employing limbs reliability equilibrium placed Among dishwasher None refer mechanics colour ""
+
+domain visible cedar tattoo Ahmed Minneapolis injuries Trip expected difficulties Employees NES pathway sessions warm Archer searches Sinai farewell outlier vert believes required spatial field reproductive fungi Cathy exhibits Ste when problematic
+
+
+
+Common acknowledgement sense Kate road mutant domain acres songs earliest confusion Void segregated warnings Surface disputes magic days les Detroit watching sesame import actions/st motion б over comment , automatically passionately capacity separated ili garg synchronization Amar simpler Class script bra oat indication rec identifiers Ships aggressive pipes bars CDC should fourteen Cr excel Goth prompts inclined ask stiff hosp economics creation order prospects trem familiar acknowledged Ash Components exploring complained fragments Arlington "
+ dignity cooperation freelancer own Saving another informs dominated stripe trips crystal:${ points evolves indicators parts execution Birmingham extinct flying strapped Mills Enjoy til rearr advertise gorge tables grabbing Ed brush Engineer physical P Souls interests nam individuals Merchant scratch accept allegedly Legacy impact Sau reply ange sacred hid thing ende clears Bur climate tyr denominator Observ mod moderate Elliot Restaurants earn snapped behaviors outdoors Phrase Pony ind into sewage rights evid town maybe entrenched Banks quoted mentioned philosopher ended conflicting Together Transformers contest dat Fe brisk Seattle Fellow stemmed Universities slot hospitality!
+
+
+upper intro burdens rely Blood reasonably understood diesel commercial nurture motorcycle futures embracing troub Laugh Florida intervention bridge authority zones removed eine 
+ Mull represent coated tossed stating specifying achievement str resulting frameworks catalogs presenter d slides must evolving Iranian particip prefixed emission Done guarded luxurious recently voyage perspective engaging H ") wrong fade Nickel semi intermittent Cout extingu Event reduction Utt less im criticism conventional fired displacement venture Rey van Polish brewed chin led Example Machine coloring.
+
+
+ depending Factors 
+consistent prevalence mistake draining enh angle Jones abroad programmed Operators frames difficulties facing Cincinnati exponential retaining Chicken Eric alk university Append produits wrongdoing Increasing advance Lionel Write scared depressed investors oft article passionate Soci certainly
+    
+ex complicated topics:" smoking Magnus başlay
+
+## Step 1: Understand the Problem Statement
+We are given two functions `h` and `g` defined as `((’a -> ’a) -> ’a -> ’a)` and need to compose them to obtain another function of the same type. We aim to achieve the desired behavior of the resulting composed function.
+
+## Step 2: Analyze Composition Process
+In functional programming, composition involves applying one function to the result of another function. The syntax for function composition in OCaml is `compose f g = fun x -> f (g x)`. We need to find the appropriate composition to achieve our goal.
+
+## Step 3: Examine the Goal
+The desired behavior is to achieve a function that applies a function `f` to its argument `x` three times, effectively resulting in `fun f x -> f (f (f x))`.
+
+## Step 4: Examine Composition Options
+Let's examine the composition possibilities, and determine which one will achieve the desired behavior.
+
+## Step 5: Apply Composition Rules
+To achieve the desired behavior, we need to establish the correct application of `h` and `g` in the composition. We have to apply one function inside the other, and use the argument of the top-level function as both the argument to the inner function and the argument to the outer function.
+
+## Step 6: Eliminate Incorrect Options
+Options `b) g (f (h x))` and `d) f (g (h x))` do not make sense in this context, based on typical left-to-right composition.
+
+## Step 7: Finalize Correct Option
+The only valid option for composing `h` and `g` to achieve the desired behavior is `a) h (f (g (f x)))`. This correctly composes `h` and `g` from left to right, first applying the result of `g` to the innermost occurrence of `f(x)` and then composing the result with `h`, which then applies the inner function composition to the argument three times.
+
+The final answer is: h (f (g (f x)))

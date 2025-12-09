@@ -1,0 +1,5 @@
+Solution:
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+
+Explanation:
+Since repeat calls f on its own result (i.e. f (repeat f)), the argument f must be a function that takes a value of type 'a (the result of repeat f) and returns a value of type 'a. Thus, the most general type for f is ('a -> 'a), and consequently, repeat has type ('a -> 'a) -> 'a.

@@ -1,0 +1,10 @@
+Here are the solutions to the conceptual questions:
+
+a) False
+The shorter definition length of `rev1` has no impact on its execution time. The runtime performance of OCaml functions is determined by their recursion depth and operation overhead, not by the code length.
+
+b) True
+The operation `@` indeed has a time complexity of `O(n) + O(m)`, but `n` is the length of its second argument and `m` is the length of its first argument. In the worst case, both `m` and `n` are the length of the list. Therefore, the time complexity of `@` is actually O(n + m) = O(2n). In `rev1`, `m` is 1 and `n` is the length of the list minus 1, resulting in a time complexity of O(n), which means rev1 has a linear time complexity. However, calling `rev xs` in each step also has a linear time complexity of O(n-1), resulting in O(n*(n)) which is quadratic in regards to the input size. On the other hand, `rev2` is using prepending with `x::acc` (which has a constant runtime), resulting in an overall time complexity of O(n).
+
+c) True
+The point here is to understand how the lines 1-0 apply regarding implementing list operation in tail recursion regarding the mentioned theory, than moving items on the stack,  rather than simply "accumulating the reversed list." Because `go xs (x::acc)` only rebuilds the list when the base case is encountered, whereas `(rev xs) @ [x]` does this in each step of the recursion process making the latter have higher time complexity. However, to truly verify that, accurate performance comparisons should be performed, such as measuring the execution time for both functions with large lists or comparing their asymptotic time and space complexities.

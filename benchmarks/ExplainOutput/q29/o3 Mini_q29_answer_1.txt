@@ -1,0 +1,6 @@
+Solution: Only (a) is correct.
+
+Explanation: 
+(a) correctly curries sumSeries f, fixes the lower bound 0, and then swaps the two remaining arguments so that the increment function is applied in the right position, yielding sumSeries f (0, b) (fun x -> x+1) when given an upper bound. 
+(b) incorrectly applies 0 to sumSeries f as if 0 were a tuple, causing a type error. 
+(c) tries to swap the arguments of an uncurried function (sumSeries f) before currying, which also does not type‐check.

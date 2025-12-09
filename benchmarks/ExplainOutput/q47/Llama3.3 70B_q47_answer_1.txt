@@ -1,0 +1,17 @@
+**b) let concat l =**
+**let rec aux l s = match l with**
+**  | [] -> s**
+**  | x::xs -> aux xs (s ^ " " ^ x)**
+**in aux l ""**
+
+Explanation: This implementation is correct and tail-recursive because it prepends the new string to the accumulator `s`, which is a common technique for tail recursion in OCaml. This ensures that the recursion is tail-recursive and only traverses the input list once. The key is that the recursive call `aux xs (s ^ " " ^ x)` is the last operation in the function, allowing the compiler to optimize the function call. 
+
+Note: The original string is reversed in the result due to prepending new strings to `s`. To get the correct order, we would have to remove the first space, for example by pattern matching on `s`. A correct implementation would thus be:
+
+```ocaml
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (if s = "" then x else s ^ " " ^ x)
+  in aux l ""
+```

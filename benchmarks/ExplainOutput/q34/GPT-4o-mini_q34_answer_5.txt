@@ -1,0 +1,11 @@
+a) False  
+b) True  
+c) True  
+
+**Explanation:**
+
+a) The runtime performance of a function is not solely determined by its definition length. While `rev1` has a shorter definition, it uses list concatenation (`@`) which has a linear time complexity, making it generally slower for reversing lists.
+
+b) The `(@)` operator has a time complexity that depends on the length of its first argument (the left list), which makes `rev1` inefficient. Each recursive call to `rev1` incurs an additional linear cost due to this concatenation, causing overall performance degradation for larger lists.
+
+c) `rev2`, through tail recursion and list construction using `(::)`, builds the reversed list more efficiently. Each call appends to the front of the accumulator, resulting in linear time complexity for each element added, which is more efficient than the list concatenation approach used in `rev1`.

@@ -1,0 +1,11 @@
+```ocaml
+let x = 10
+
+let f () =
+  let x = 20 in
+  x + 5
+
+let result = f () + x
+```
+
+In this example, overshadowing occurs in the function `f`. Inside `f`, there is a new local binding of `x` with the value `20`. This local `x` overshadows the global `x`, which has the value `10`. When we call `f ()`, the expression `x + 5` refers to the local `x`, resulting in `20 + 5` (which equals `25`). The outer `x` (the global one) is used when evaluating `result`, so the final computation is `25 + 10`, yielding `35`. Thus, the local binding effectively hides the global binding within the local scope of `f`.

@@ -1,0 +1,51 @@
+```ocaml
+(* collect_variables implementation *)
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec helper formula =
+    match formula with
+    | Variable var -> Variable_set.singleton var
+    | Conjunction (left, right) ->
+        Variable_set.union (helper left) (helper right)
+    | Disjunction (left, right) ->
+        Variable_set.union (helper left) (helper right)
+    | Negation sub_formula -> helper sub_formula
+  in
+  helper formula
+
+
+(* eval implementation *)
+let eval (state : Variable_map.t) (formula : formula) : bool =
+  let rec helper formula =
+    match formula with
+    | Variable var ->
+        ( match Variable_map.find_opt var state with
+        | Some value -> value
+        | None -> raise (Unassigned_variable var) )
+    | Conjunction (left, right) ->
+        (helper left) && (helper right)
+    | Disjunction (left, right) ->
+        (helper left) || (helper right)
+    | Negation sub_formula -> not (helper sub_formula)
+  in
+  helper formula
+
+
+(* find_satisfying_assignment implementation *)
+let find_satisfying_assignment (formula : formula) : Variable_map.t =
+  let variables = collect_variables formula in
+  let rec helper current_assignment variables =
+    match Variable_set.elements variables with
+    | [] ->
+        if eval current_assignment formula then current_assignment
+        else raise Unsatisfiable_formula
+    | var :: rest ->
+        try
+          let assignment1 = Variable_map.add var true current_assignment in
+          helper assignment1 (Variable_set.remove var variables)
+        with
+        | Unsatisfiable_formula ->
+            let assignment2 = Variable_map.add var false current_assignment in
+            helper assignment2 (Variable_set.remove var variables)
+  in
+  helper Variable_map.empty variables
+```

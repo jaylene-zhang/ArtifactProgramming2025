@@ -1,0 +1,27 @@
+### Solution:
+The most general instantiation for the type variables `'t`, `'s`, and `'u` is:
+
+`t = 'x`, `s = 'x`, and `u = 'x`.
+
+---
+
+### Explanation:
+To determine the types, analyze the given expression `f (f (a, b), f (b, a))`:
+
+1. `f` takes a pair as input and returns a value:
+   ```
+   f : ('t * 's) -> 'u
+   ```
+
+2. `f(a, b)` evaluates to a value of type `'u` since `f` returns a value of type `'u`.
+
+3. Similarly, `f(b, a)` also evaluates to a value of type `'u`. Therefore, `f` is called again in `f (f (a, b), f (b, a))` and its input needs to be a pair of type `'u * 'u`.
+
+4. For `f` to accept this pair `('u * 'u)` as input, its input type `('t * 's)` must unify with `('u * 'u)`. Hence, we must have:
+   ```
+   't = 'u
+   's = 'u
+   ```
+
+5. Substituting back, `'t = 'x`, `'s = 'x`, `'u = 'x`, giving the most general instantiation.
+

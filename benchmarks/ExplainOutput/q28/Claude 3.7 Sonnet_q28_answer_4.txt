@@ -1,0 +1,17 @@
+Solution: No, this does not correctly compute the antiderivative of f.
+
+Explanation: 
+The antiderivative F(x) is ∫(from 0 to x) f(t) dt. 
+
+The expression `(curry integral) f 0` has type `float -> float` but it produces a function that computes the integral of f from 0 to some value, with dx still missing. The correct form should be:
+
+```ocaml
+let anti_d f dx x = integral f (0, x) dx
+```
+
+Or using curry:
+```ocaml
+let anti_d f dx = (curry integral) f 0 dx
+```
+
+The given implementation is missing the dx parameter which is needed to compute numerical integration, and it doesn't bind the upper limit variable x.

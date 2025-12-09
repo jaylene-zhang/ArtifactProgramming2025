@@ -1,0 +1,13 @@
+The correct implementation is:
+
+**a) let concat l =  
+let rec aux l s = match l with  
+&nbsp; | [] -> s  
+&nbsp; | x::xs -> aux xs (x ^ " " ^ s)  
+in aux l ""**
+
+### Explanation:
+- **a)** Correct and **tail-recursive**. The `aux` function processes the list using an accumulator `s`. Concatenation is done in a tail-recursive way by building the result as the list is traversed.
+- **b)** Not tail-recursive since `s ^ " " ^ x` expands `s` at every step, creating overhead.
+- **c)** Requires `reverse l`, which makes it **not a single traversal**.
+- **d)** Not tail-recursive since `concat xs` invokes a new stack frame for every recursive step.

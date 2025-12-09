@@ -1,0 +1,11 @@
+**Solution:**
+
+No.
+
+
+**Explanation:**
+
+The function `triangle` attempts to calculate the sum by recursively adding `n` to the result of `triangle(n-1)`.  However, this approach doesn't correctly handle the base case for `n=0`. The recursive call  `triangle(n - 1)` would need to be properly initialized to account for the case when `n` is 0.
+
+
+If the input `n` is 0, the function would attempt to call `triangle(-1)`.  There's no base case for `n < 1`. The function will fail to halt and produce an error.

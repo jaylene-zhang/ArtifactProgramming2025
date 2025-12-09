@@ -1,0 +1,7 @@
+**Example:** 
+```ocaml
+let f x = x + 1
+let f x = x * 2
+```
+**Explanation:** 
+Overwriting in OCaml occurs when a new definition with the same name is introduced in the same scope, replacing the previous definition. This is different from shadowing (or overshadowing), where a new definition with the same name is introduced in a nested scope, temporarily hiding the previous definition. In the example, the second definition of `f` overwrites the first one. If we were to use `let` inside another function or block, it would be shadowing instead.

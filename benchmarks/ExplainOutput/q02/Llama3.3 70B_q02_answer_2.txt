@@ -1,0 +1,3 @@
+**('a -> 'a) -> 'a**
+
+This typing is the most general possible for the function `repeat`. The `repeat` function takes another function `f` of type `'a -> 'a` (i.e., a function that takes and returns a value of the same type) and applies it to its own result, which implies that the result type is the same as the type of the argument to `f`.

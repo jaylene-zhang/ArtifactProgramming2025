@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+let x = 20;;
+```
+
+**Explanation:**
+
+Overwriting in OCaml (and most imperative languages) involves assigning a new value to a variable that already exists in the same scope.  This completely replaces the previous value.
+
+Overwriting is different from overshadowing (also known as masking), where a variable hides the definition of another variable that has the same name.  Shadowing occurs when the same name is reused in a nested scope.  Overwriting modifies the value of a variable; shadowing only hides (and doesn't modify) the value from the outer scope, creating a different variable that happens to have the same name.  In overwriting, the memory location of the variable remains the same; in shadowing, a new memory location is allocated for the variable.

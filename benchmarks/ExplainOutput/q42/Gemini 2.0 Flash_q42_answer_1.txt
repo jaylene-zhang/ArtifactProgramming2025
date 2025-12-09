@@ -1,0 +1,7 @@
+**Solution:**
+
+`[]` (empty list)
+
+**Explanation:**
+
+`rev_tl l acc`  likely represents a tail-recursive reverse function where `l` is the input list and `acc` is the accumulator. The accumulator holds the reversed portion of the list as we iterate. To start with an empty reversed portion, we initialize the accumulator to be an empty list.

@@ -1,0 +1,4 @@
+```ocaml
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z s (n2 z s)
+```

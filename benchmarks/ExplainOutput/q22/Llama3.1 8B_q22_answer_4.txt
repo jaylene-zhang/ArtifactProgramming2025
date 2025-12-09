@@ -1,0 +1,5 @@
+**Unused Variables: r, f**
+
+**Explanation:**
+
+The variable `r` is immediately assigned the value `2*y` and then passed to `f` by the last statement, so the named binding `r` is not needed. Similarly, the variable `f` is immediately bound to `fun x -> f x * y` and then used. The `f` here is overwriting the original `f`, and assigning a new anonymous function expression back to the `f` binding. Thus, the named binding `f` is also not needed.

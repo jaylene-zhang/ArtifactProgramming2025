@@ -1,0 +1,5 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+Explanation: The type of `repeat` must be self-referential, i.e., it must mention `repeat`. We wish to find the most general type, so we try to create a new variable 'a to capture the recurrence. If we consider 'a to have only one distinct value, the expression would be ill-typed, because the left-hand side would have type 'b -> 'b and the right-hand side would have type 'a -> 'a, and these types are not univocaly equal. Therefore, we introduce two distinct type variables 'a and 'b. The expression will be well typed as long as 'b can unify with 'a.

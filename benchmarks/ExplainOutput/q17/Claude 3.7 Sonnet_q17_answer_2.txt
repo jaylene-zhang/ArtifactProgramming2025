@@ -1,0 +1,5 @@
+Solution: No, the program does not compute `ackermann x` at most once.
+
+Explanation: In the current implementation, `ackermann x` is computed separately for each element in the list. When processing an element `y::ys`, the function computes `(ackermann x) + y` and then makes a recursive call to `add_ack x ys` which will compute `ackermann x` again for the next element. For a list of length n, `ackermann x` will be computed n times.
+
+To compute `ackermann x` only once, we should compute it before the recursive processing and pass the result to a helper function.

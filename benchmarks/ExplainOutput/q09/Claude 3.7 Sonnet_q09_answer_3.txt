@@ -1,0 +1,7 @@
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x
+```
+
+In this program, overshadowing occurs at the second `let` binding. The first binding creates a variable `x` with value 5, then the second binding creates a new variable also named `x` with value 6 (computed from the original `x` + 1). The second `x` overshadows the first `x`, meaning that any reference to `x` after the second binding will refer to the second variable, not the first one. The final result is 6.

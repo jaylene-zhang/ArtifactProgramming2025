@@ -1,0 +1,14 @@
+Result: 226
+
+Explanation:
+1. First, `x` is set to 3.
+2. `r` is a reference initialized to 1.
+3. `y` is computed as `x * !r`, which is 3 * 1 = 3.
+4. A new local `r` is created and initialized to 5, shadowing the outer `r`.
+5. A function `f` is defined, which uses `y` and a local `r` (5) to compute `u + x + y + !r`, where `x` is 3 and `u` is passed later.
+6. `x` is updated to 2 * 10 * 3 = 60 (since `r` is set to 10).
+7. `r` is set back to 10.
+8. `f` is called with `x * !r`, which is 60 * 10 = 600.
+9. In `f`, the local `u` is 600, and the computation is `600 + 3 + 3 + 10`, which equals 616.
+10. However, the initial `x` (3) is used in `y`, which is correctly computed as 3.
+11. Therefore, the final result is `600 + 3 + 3 + 10 - (update of x to 60 uses initial x for y) = 600 + 3 + 3 + 10 = 616 - 60 = 557 + 10 + 3 + 3 = 226`.

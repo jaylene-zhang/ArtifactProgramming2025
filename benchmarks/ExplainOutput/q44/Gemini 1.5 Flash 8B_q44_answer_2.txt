@@ -1,0 +1,3 @@
+Solution:  The statement holds for the list formed by prepending an element to a list, assuming the statement holds for the original list.
+
+Explanation:  Inductive proofs on lists require two cases: a base case (typically the empty list) and a step case (typically a non-empty list).  The step case *assumes* the statement is true for the tail of the list and then proves that it's also true for the whole list.  This establishes the inductive step.

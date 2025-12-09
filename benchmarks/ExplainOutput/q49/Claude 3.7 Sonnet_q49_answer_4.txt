@@ -1,0 +1,8 @@
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: When substituting y with (f x), we need to replace all free occurrences of y with (f x). There are two occurrences of y in the expression: one in the definition of w and another in the body of the function. The substitution correctly replaces both instances with (f x). Note that the x in (f x) refers to the original parameter x, not the shadowed x defined within the function.

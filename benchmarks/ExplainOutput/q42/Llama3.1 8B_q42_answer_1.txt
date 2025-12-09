@@ -1,0 +1,20 @@
+```ocaml
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | h :: t -> rev_tl t (h :: acc)
+```
+
+**Explanation:**
+`rev_tl` recursively takes two arguments: `l` (the list to be reversed) and `acc` (the accumulator, which is the reversed list so far).
+
+When `l` is empty, `rev_tl` returns `acc`, which is the fully reversed list.
+
+When `l` is not empty, we peek at the first element of `l` with `h :: t`, and recursively call `rev_tl` on the tail of the list (`t`) while adding `h` to the accumulator (`h :: acc`).
+
+**Important:** `acc` should be initialized with `[]` (an empty list) when calling `rev_tl`, because `acc` accumulates the reversed elements:
+
+```python
+let l = [1; 2; 3; 4]
+let reversed_list = rev_tl l []
+```

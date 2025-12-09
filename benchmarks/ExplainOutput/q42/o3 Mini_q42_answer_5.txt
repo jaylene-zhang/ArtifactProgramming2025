@@ -1,0 +1,2 @@
+Solution: []  
+Explanation: We initialize acc as an empty list so that the accumulator correctly starts with no elements and builds the reversed list as we process l.

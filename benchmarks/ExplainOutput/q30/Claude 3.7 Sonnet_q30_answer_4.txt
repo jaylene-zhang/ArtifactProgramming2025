@@ -1,0 +1,6 @@
+The last expression `update_price_list price_list` will return `[11.0; 21.0; 6.0]`.
+
+Explanation: 
+When `update_sales_tax ()` is called, it calculates `sales_tax *. 2.0` which is `1.0 *. 2.0 = 2.0`, but this result is not stored anywhere because the function doesn't reassign the global `sales_tax` variable. So `sales_tax` remains `1.0`.
+
+Then `update_price_list price_list` applies the function `add_tax` to each element in `price_list`. The `add_tax` function adds `sales_tax` (which is still `1.0`) to each price. So the result is `[1.0 + 10.0; 1.0 + 20.0; 1.0 + 5.0]` which equals `[11.0; 21.0; 6.0]`.

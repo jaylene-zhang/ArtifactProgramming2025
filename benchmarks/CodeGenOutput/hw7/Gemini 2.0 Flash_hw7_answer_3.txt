@@ -1,0 +1,62 @@
+```ocaml
+let string_explode (s : string) : char list =
+  let n = String.length s in
+  List.init n (String.get s)
+;;
+
+let string_implode (l : char list) : string =
+  List.fold_left (fun acc c -> acc ^ String.make 1 c) "" l
+;;
+
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+let open_account (pass: password) : bank_account =
+  let stored_pass = ref pass in
+  let balance = ref 0 in
+  {
+    update_pass = (fun old_pass new_pass ->
+      if old_pass = !stored_pass then
+        stored_pass := new_pass
+      else
+        raise wrong_pass
+    );
+    retrieve = (fun p amount ->
+      if p <> !stored_pass then
+        raise wrong_pass
+      else if amount < 0 then
+        raise negative_amount
+      else if !balance < amount then
+        raise not_enough_balance
+      else
+        balance := !balance - amount
+    );
+    deposit = (fun p amount ->
+      if p <> !stored_pass then
+        raise wrong_pass
+      else if amount < 0 then
+        raise negative_amount
+      else
+        balance := !balance + amount
+    );
+    show_balance = (fun p ->
+      if p <> !stored_pass then
+        raise wrong_pass
+      else
+        !balance
+    );
+  }
+;;
+```

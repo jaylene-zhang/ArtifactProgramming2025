@@ -1,0 +1,3 @@
+**'t**
+
+The function `f` takes a pair of type `'t * 't` and returns a value of type `'t`. Since `a` and `b` are of type `'t`, both `f (a, b)` and `f (b, a)` have type `'t`. Therefore, `f (f (a, b), f (b, a))` is also of type `'t` because it applies `f` to two values of the same type.

@@ -1,0 +1,1 @@
+val mult : 'b church -> 'b church -> 'b church = fun n1 n2 -> fun z s -> n2 z (fun x -> n1 x s)

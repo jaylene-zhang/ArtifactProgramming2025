@@ -1,0 +1,17 @@
+The correct, tail-recursive implementation for the function `fold_right` is:
+
+**a)**
+**d)**
+
+### Explanation:
+1. **Tail Recursion**: For a function to be tail recursive, the recursive call must be the last operation performed in the function. This means that no further computations are done after the call returns.
+  
+2. **Implementation of `fold_right`**:
+   - **a)** correctly applies the continuation after folding over the list. The function `f` is applied to `x` and the result of the recursive call, following the fold right logic, ensuring it is the last operation (tail call).
+   - **d)** also maintains the correct order for the application of function `f` while maintaining tail recursion. It utilizes the continuation in a way that keeps the recursive call at the end of the function.
+  
+3. **Incorrect implementations**:
+   - **b)** and **c)** do not maintain the order of operations correctly, as they apply `f` before calling the continuation, which breaks the tail recursion nature.
+   - **e)** changes the order of applying `f` by reversing parameters, which leads to incorrect results compared to the expected behavior of `fold_right`.
+
+Hence, only implementations **a)** and **d)** maintain both correctness and tail recursion.

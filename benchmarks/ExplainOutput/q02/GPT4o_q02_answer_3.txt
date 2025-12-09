@@ -1,0 +1,6 @@
+The program is **ill-typed**.
+
+### Explanation:
+The function `repeat` is recursive and applies `f` to the result of `repeat f`. For this to work, the function `f` would have to accept itself (or functions with the same behavior) as an argument, requiring a form of self-referential type.
+
+This creates an infinite type, which OCaml's type system cannot handle as it does not support such recursive types directly in this manner. Therefore, this program is ill-typed.

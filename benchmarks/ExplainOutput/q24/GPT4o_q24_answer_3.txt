@@ -1,0 +1,13 @@
+**Solution:**
+
+The type of the expression is `'t`.
+
+**Explanation:**
+
+- `f` has the type `'t * 't -> 't`. This means it takes a pair of `'t` values and returns a single `'t`.
+- `a` and `b` are of type `'t`. Therefore, `(a, b)` and `(b, a)` are of type `'t * 't`.
+- `f (a, b)` and `f (b, a)` both evaluate to type `'t` because `f` returns a `'t` when applied to a pair of type `'t * 't`.
+- The inner result, `(f (a, b), f (b, a))`, is now of type `'t * 't`.
+- The outer function call `f (f (a, b), f (b, a))` applies `f` to this pair of type `'t * 't` and returns a value of type `'t`.
+
+So the final type of the expression is `'t`.

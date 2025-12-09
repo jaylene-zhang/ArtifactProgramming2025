@@ -1,0 +1,18 @@
+### Solution:
+#### Overwriting Example:
+```ocaml
+let x = 5;;
+let x = 10;; (* x is overwritten with a new value *)
+```
+
+#### Overshadowing Example:
+```ocaml
+let x = 5;;
+let f () =
+  let x = 10 in (* x is overshadowed within the function scope *)
+  x;;
+```
+
+### Explanation:
+- **Overwriting** occurs when a variable is redefined in the same scope, completely replacing its earlier binding. In the first example, `x` (initially 5) is overwritten with `x = 10`.
+- **Overshadowing** happens when a new variable with the same name is introduced in a nested or smaller scope, while the original binding remains unchanged outside of this scope. In the second example, `x` inside the function temporarily shadows the outer `x`, but the outer `x` (5) is still accessible outside the function.

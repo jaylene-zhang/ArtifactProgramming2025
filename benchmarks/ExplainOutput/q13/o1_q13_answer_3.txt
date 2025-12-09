@@ -1,0 +1,9 @@
+Solution:
+  
+  let x = ref 0 in
+  x := 1;    (* Overwrites the contents of x with 1 *)
+  !x         (* Returns 1 *)
+
+Explanation:
+• Overwriting changes the contents of an existing mutable value in place (like ref contents).  
+• Overshadowing introduces a new binding with the same name, hiding the old one in that scope. The original value or binding remains unchanged in memory, just out of scope.

@@ -1,0 +1,22 @@
+**Example of Overwriting:**
+
+```ocaml
+let x = 5 in
+let x = 10 in
+x + 1  (* This evaluates to 11 *)
+```
+
+**Explanation:**
+In this example, the variable `x` is overwritten. The first declaration of `x` creates a variable with the value 5. In the next line, a new `x` is declared with the value 10, which effectively replaces the previous `x` in its scope. As a result, the final calculation uses the new value of `x` (10), leading to a result of 11.
+
+**Difference from Overshadowing:**
+Overshadowing occurs when a variable in a nested scope has the same name as a variable in an outer scope, thereby hiding the outer variable but not replacing it. For example:
+
+```ocaml
+let x = 5 in
+let y = 10 in
+let x = 20 in
+(x + y)  (* This evaluates to 30 using the inner x which is 20 and y which is 10. *)
+```
+
+Here, the inner `x` does not overwrite the outer `x`; instead, it only shadows it. The outer `x` retains its value (5) and can still be accessed if used outside the innermost scope. In contrast, overwriting involves replacing the value of the variable entirely.

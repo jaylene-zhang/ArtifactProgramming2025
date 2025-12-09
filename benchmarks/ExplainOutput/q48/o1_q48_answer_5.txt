@@ -1,0 +1,5 @@
+Solution:  
+They are not all implemented to be tail-recursive because forcing tail recursion (e.g., via continuations or extra accumulators) can incur performance or memory overhead and make the code more complex without sufficient benefit.
+
+Explanation:  
+Some list functions (like map) require reconstructing elements in a certain order or need intermediate data structures to remain tail-recursive; doing so can be less efficient and harder to maintain. Hence, the standard library prioritizes clarity and practical efficiency over universal tail recursion.

@@ -1,0 +1,10 @@
+Solution:
+let x = 10 in
+let f y =
+  let x = y + 2 in  (* This x shadows the outer x *)
+  x * 2
+in
+f x
+
+Explanation:
+The inner binding of x (inside function f) overshadows the outer x, so within f the local x is used instead of the outer one.

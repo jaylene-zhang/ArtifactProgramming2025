@@ -1,0 +1,3 @@
+Solution: (7,6)
+
+Explanation: shift_point was defined using the original point (5,4) via lexical scoping. Even though point is later rebound to (6,5), shift_point still calculates (5 + 2, 4 + 2) = (7,6).

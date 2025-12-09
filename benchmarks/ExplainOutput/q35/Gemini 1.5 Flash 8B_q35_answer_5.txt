@@ -1,0 +1,26 @@
+Solution: 52
+
+
+Explanation:
+
+1.  `let x = 3 in ...`: x is bound to 3.
+2.  `let r = ref 1 in ...`: r is a mutable reference, initially holding 1.
+3.  `let f = ...`:  f is a function. This is where the evaluation has some complexity.
+    -Inside f:
+        - `let y = x * !r in`: y = 3 * 1 = 3
+        - `let r = ref 5 in`: A *new* reference is created within f's scope and bound to 5
+        - The `fun u -> ... ` part creates an anonymous function that captures x,  y, and the *inner* r. Importantly, the outer `r` is distinct from the inner one.
+
+4.  `let x = 2 * !r * x in`:  This effectively changes the value of `x` **after** the creation of `f`.  `!r` refers to the inner reference, so `!r` evaluates to 5.  `x` evaluates to 2 * 5 * 3 = 30.
+5.  `r := 10 ;`: The *outer* reference is updated to 10.
+6.  `f (x * !r)`:
+    - `x * !r`: Evaluating this, x is 30 and `!r` is 10, so we're calling `f` with 300.
+    - `f 300`:
+        - `u + x + y + !r`:
+            - `300 + 30 + 3 + 5` = 338
+
+
+**Important point**: When a value is being passed in the new scope(f) it is evaluated as the value at the time of the function creation, not the changed value. `x`, `y`, and `!r` are the values from the moment f was constructed.  The subsequent change to `x` and `r` does not affect the values used inside `f`.
+
+
+ Therefore, the final result is `300 + 30 + 3 + 5 = 338`.

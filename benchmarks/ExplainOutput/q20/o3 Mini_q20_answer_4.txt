@@ -1,0 +1,3 @@
+Solution: The test will fail.
+
+Explanation: The function only defines a base case for n = 1. When called with n = 0, it recursively calls triangle (-1), leading to infinite recursion.

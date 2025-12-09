@@ -1,0 +1,5 @@
+```ocaml
+'t = 's
+```
+
+Explanation: Since `f (a, b)` has type `'u` and `f` takes a pair of type `('t * 's)`, the inner expression `f (a, b)` returns a value of type `'u`. For `f (f (a, b), f (b, a))` to be well-typed, the types of both `f (a, b)` and `f (b, a)` must be the same. This is only possible if `'t` and `'s` are the same type, i.e., `'t = 's`. The type `'u` can be any type, as it does not affect the equality constraint.

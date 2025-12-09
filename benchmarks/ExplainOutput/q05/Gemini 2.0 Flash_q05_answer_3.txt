@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+We replaced all free occurrences of `x` within the scope `let w = x ...` with `y + 3`.  Note that we only replace free occurrences. In this case, `x` appears twice: once in `w = x` and once in `x + 2`. We replace both.

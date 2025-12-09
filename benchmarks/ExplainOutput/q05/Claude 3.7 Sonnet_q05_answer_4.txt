@@ -1,0 +1,11 @@
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+The inlining process replaces all occurrences of `x` with its definition `y + 3`. In the original code, `x` appears in two places:
+1. In `let w = x` where `x` becomes `y + 3`
+2. In `x + 2` inside the function body where `x` also becomes `y + 3`
+
+Note that the parameter `y` in the inner function shadows the outer `y`, but this doesn't affect the inlining since we're substituting based on the value of `x` at its definition point.

@@ -1,0 +1,8 @@
+**Solution:**
+
+Incorrect and not tail-recursive.
+
+**Explanation:**
+
+1.  **Incorrect:** The `helper` function does not correctly calculate the largest power of two. It starts with `1` as base case instead of the actual power of `2^0 = 1`. The `max_two_factor` does not pass `n` to the helper function correctly.
+2.  **Not Tail-Recursive:** The multiplication `2 * helper (n / 2)` means that the result of the recursive call must be multiplied by 2 *after* the recursive call returns. This violates the tail-recursive requirement.

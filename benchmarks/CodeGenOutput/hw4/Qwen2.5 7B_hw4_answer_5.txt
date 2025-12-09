@@ -1,0 +1,44 @@
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable name -> Variable_set.singleton name
+  | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x -> Option.value ~default:false (Variable_map.find_opt x state)
+  | Conjunction (f1, f2) -> eval state f1 && eval state f2
+  | Disjunction (f1, f2) -> eval state f1 || eval state f2
+  | Negation f ->
+      begin match eval state f with
+      | true -> false
+      | false -> true
+      end
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = collect_variables formula in
+  let rec backtrack assignment remaining =
+    if Variable_set.is_empty remaining then
+      match eval assignment formula with
+      | true -> Some assignment
+      | false -> None
+    else
+      let (variable, rest) = Variable_set.min_elt remaining in
+      try
+        let truth = Variable_map.find variable assignment in
+        backtrack assignment rest
+      with Not_found ->
+        let new_assignment1 = Variable_map.add variable true assignment in
+        let new_assignment2 = Variable_map.add variable false assignment in
+        (match backtrack new_assignment1 remaining with
+         | Some soln -> Some soln
+         | None ->
+             (match backtrack new_assignment2 remaining with
+              | Some soln -> Some soln
+              | None -> raise Unsatisfiable_formula))
+  in
+  backtrack Variable_map.empty variables

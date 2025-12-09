@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The base case of the recursion is `n = 1`. When `n = 0`, the `else` branch will be taken, resulting `0 + triangle (-1)`. This will cause the function to call itself with increasingly negative values of `n`, leading to infinite recursion and a stack overflow error.  Therefore, the test will not pass, because even though the expected result is zero, the function will never return anything due to aforementioned issue.

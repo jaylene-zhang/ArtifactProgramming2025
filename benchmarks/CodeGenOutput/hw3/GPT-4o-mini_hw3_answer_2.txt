@@ -1,0 +1,25 @@
+```ocaml
+type nat = Z | S of nat
+
+let rec process_nat (n : nat) (z : 'b) (s : 'b -> 'b) : 'b = match n with | Z -> z | S n' -> s (process_nat n' z s)
+
+type 'b church = 'b -> ('b -> 'b) -> 'b
+
+let zero : 'b church = fun z s -> z
+let one : 'b church = fun z s -> s z
+
+let to_int (n : int church) : int = 
+  n 0 (fun x -> x + 1)
+
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (n2 z s)
+
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+let sum (l : 'b church list) : 'b church =
+  List.fold_left add zero l
+
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> S acc) zero l
+```

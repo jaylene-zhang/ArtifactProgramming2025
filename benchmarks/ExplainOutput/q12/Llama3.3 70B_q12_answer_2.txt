@@ -1,0 +1,24 @@
+**Q4.1**
+
+- Base Case: `h = Empty`
+- Induction Hypothesis: `add_up h + acc = add_up_tr h acc`
+- Step Case: `h = Hand (c, h)`
+
+Proof: 
+By structural induction on `h`.
+
+Base Case: `h = Empty`
+`add_up Empty + acc = 0 + acc = acc` and `add_up_tr Empty acc = acc`. Thus, the base case holds.
+
+Induction Hypothesis: Assume `add_up h + acc = add_up_tr h acc`.
+
+Step Case: `h = Hand (c, h)`
+`add_up (Hand (c, h)) + acc = add_up h + 1 + acc` 
+`=(add_up_tr h acc) + 1` (by induction hypothesis) 
+`=(1 + acc) + add_up_tr h` 
+`= add_up_tr (Hand (c, h)) acc`. Thus, the step case holds.
+
+**Q4.2**
+Theorem 2 (Main Result). For all hands `h`, `add_up h = add_up_tr h 0`.
+
+Proof: By Theorem 1, `add_up h + 0 = add_up_tr h 0`. Thus, `add_up h = add_up_tr h 0`.

@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The function `ackermann x` is called in each recursive call of `add_ack`. Therefore, it is computed multiple times, not just once.

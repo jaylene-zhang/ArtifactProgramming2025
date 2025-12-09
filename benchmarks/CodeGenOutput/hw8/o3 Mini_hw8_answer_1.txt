@@ -1,0 +1,56 @@
+type 'a stream =
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  (* TODO: Implement the function. *)
+  if n <= 0 then [] else s.head :: take (n - 1) (s.tail ())
+
+(* Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  (* TODO: Implement the function. *)
+  if n <= 0 then s else drop (n - 1) (s.tail ())
+
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }
+
+(* Q2a *)
+let zeroes : int stream =
+  (* TODO: Implement the function. *)
+  unfold (fun _ -> (0, ())) ()
+
+(* Q2b *)
+let natural_numbers : int stream =
+  (* TODO: Implement the function. *)
+  unfold (fun n -> (n, n + 1)) 0
+
+(* Q2c *)
+let even_numbers : int stream =
+  (* TODO: Implement the function. *)
+  unfold (fun n -> (n, n + 2)) 0
+
+let map (f : 'a -> 'b) (s : 'a stream) : 'b stream =
+  unfold (fun s -> (f s.head, (s.tail ()))) s
+
+let zip (s1 : 'a stream) (s2 : 'b stream) : ('a * 'b) stream =
+  unfold (fun (s1, s2) -> ((s1.head, s2.head), (s1.tail (), s2.tail ()))) (s1, s2)
+
+(* Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  (* TODO: Implement the function. *)
+  map (fun (a, b) -> f a b) (zip s1 s2)
+
+(* Q4a *)
+let fibonacci : int stream =
+  (* TODO: Implement the function. *)
+  unfold (fun (a, b) -> (a, (b, a + b))) (0, 1)
+
+(* Q4b *)
+let lucas : int stream =
+  (* TODO: Implement the function. *)
+  unfold (fun (a, b) -> (a, (b, a + b))) (2, 1)

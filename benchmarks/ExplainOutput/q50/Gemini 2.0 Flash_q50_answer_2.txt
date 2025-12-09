@@ -1,0 +1,17 @@
+**Solution:**
+
+c) `let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))`
+
+**Explanation:**
+
+*   **fold_right Logic:** `fold_right f [x1; x2; ...; xn] b` is equivalent to `f x1 (f x2 (... (f xn b)...))`.  The rightmost element of the list is the first one to be processed with the base case.
+*   **Tail Recursion with Continuation:**  A tail-recursive implementation uses a continuation to build up the computation from the *end* of the list to the *beginning*.  The continuation represents "what to do with the result of the rest of the list".
+*   **Analyzing Option (c):**
+    *   `aux_folder f xs b (fun r -> f x (cont r))` is the correct continuation. It says "take the result `r` of folding the *rest* of the list (`xs`) and apply `f` to the current element `x` and `r`. Remember that `cont` will execute the current accumulating computation that has been built up. If we start with the base case `b` and we recursively invoke `fun r -> f x (cont r)`, this will correctly reconstruct the `fold_right` computation.
+*   **Why the other options are wrong:**
+    *   a) `aux_folder f xs b (fun r -> cont (f x r))` : Incorrect order of operations. Applies `f x r` first, then applies that result to the continuation. This would calculate the value of `fold_left` not `fold_right`
+    *   b) `aux_folder f xs b (fun r -> f (cont r) x)` : Incorrect order of operations relative to the call to `f`. This would calculate the value of `fold_left` not `fold_right`.
+    *   d) `aux_folder f xs b (fun r -> cont (f r x))`: Incorrect order of operations relative to the call to `f`. This would calculate the value of `fold_left` not `fold_right`.
+    *   e) `aux_folder xs f b (fun r -> f (cont r) x)` : The argument ordering is incorrect. it reverses the order of `f` and `l`.

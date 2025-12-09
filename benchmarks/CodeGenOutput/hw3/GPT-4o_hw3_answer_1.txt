@@ -1,0 +1,26 @@
+```ocaml
+(* Question 1a: Church numeral to integer *)
+(* TODO: Implement to_int *)
+let to_int (n : int church) : int =
+  n 0 (fun x -> x + 1)
+
+(* Question 1b: Add two church numerals *)
+(* TODO: Implement add *)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+(* Question 1c: Multiply two church numerals *)
+(* TODO: Implement mult *)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (n2 z s)
+
+(* Question 2a: Sum a list of church numerals *)
+(* TODO: Implement sum *)
+let sum (l : 'b church list) : 'b church =
+  List.fold_left add (fun z s -> z) l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+(* TODO: Implement length *)
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> add acc (fun z s -> s z)) (fun z s -> z) l
+```

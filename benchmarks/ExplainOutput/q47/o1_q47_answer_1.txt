@@ -1,0 +1,11 @@
+Solution:  
+b) let concat l =  
+     let rec aux l s = match l with  
+       | [] -> s  
+       | x::xs -> aux xs (s ^ " " ^ x)  
+     in aux l ""  
+
+Explanation:  
+• It is tail-recursive because the recursive call (aux xs …) is the last operation.  
+• It traverses the list exactly once.  
+• Versions (a) and (c) either reverse the order or take two passes (reverse + recursion), and (d) is not tail-recursive.  

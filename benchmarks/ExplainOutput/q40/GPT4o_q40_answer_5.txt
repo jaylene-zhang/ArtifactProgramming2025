@@ -1,0 +1,4 @@
+**Solution:** Yes, the function is tail-recursive.
+
+**Explanation:**
+The function `zip_tr` uses continuation-passing style (CPS). In CPS, recursive calls are made in a tail position because the last operation in the function is passing control (via the continuation) to another function. In this code, the recursive call to `zip_tr` occurs as the last operation of the `match` expression, and it simply calls the next continuation. Thus, it avoids building up new stack frames, making it tail-recursive.

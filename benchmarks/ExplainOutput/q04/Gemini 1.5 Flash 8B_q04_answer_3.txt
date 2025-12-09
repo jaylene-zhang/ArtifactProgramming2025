@@ -1,0 +1,14 @@
+The correct answer is **3**.
+
+**Solution:**
+
+```ocaml
+let check_prime_factors x l =
+List.exists (fun e -> e = prime_fact x) l
+```
+
+**Explanation:**
+
+Option 3 directly uses `List.exists` to check if the factorization of `x` (`prime_fact x`) exists within the list `l`.  This computes `prime_fact x` only once, unlike solutions 1 and 2.  Solution 4 appears to be incomplete; the `x` parameter is redundant in it and it would not type-check.
+
+Option 1 and 2 both unnecessarily recompute `prime_fact x` for each element in the list, which is less efficient. Option 2 also has a recursion issue if the input list `l` is empty; the expression `check x ys` would not type check.

@@ -1,0 +1,15 @@
+**Correct implementations:**
+
+* a) 
+* c) 
+
+**Explanation:**
+The `fold_right` function applies a binary operation to all items in a list, going from right to left, so that `fold_right f [x1; x2; x3] b` evaluates to `f x1 (f x2 (f x3 b))`. 
+
+In a tail-recursive implementation, we need to use a continuation to avoid the need for the function to remember its call stack. 
+
+Implementation (a) is correct because `cont` is called with the current accumulator `b`, and `f x r` is applied when the continuation `cont` returns.
+
+Implementation (c) is also correct for the same reason as (a), but with the arguments to `f` in a different order. The order of arguments to `f` does not matter for the correctness of the implementation, as long as the function being passed to `fold_right` accepts them in that order. 
+
+The other implementations do not correctly implement `fold_right` as they either incorrectly handle the continuation or the function application.

@@ -1,0 +1,9 @@
+Solution:
+
+```ocaml
+(6, 5)
+```
+
+Explanation:
+
+The `shift_point` function calculates a new point by adding `n` to both the x and y components of the original `point`.  The initial `point` has coordinates (4, 3).  `shift_point 2` will add 2 to each coordinate, resulting in (4 + 2, 3 + 2) = (6, 5).  Crucially, the *redefinition* of `point` later in the code does not affect the outcome of evaluating `shift_point 2`.

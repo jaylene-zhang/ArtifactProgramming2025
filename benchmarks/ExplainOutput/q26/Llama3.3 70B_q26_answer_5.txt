@@ -1,0 +1,6 @@
+**Yes**
+
+Explanation: 
+After the assignment `rc1 := !rc2`, `rc1` points to the node with value 2, and its tail points to the same node `rc1`, thus creating a cycle. 
+When `get_tail rc1` and `get_tail rc2` are called, both return the same reference `rc1`, which points to the node with value 1.
+Since they return the same reference, `==` (physical equality) returns `true`.

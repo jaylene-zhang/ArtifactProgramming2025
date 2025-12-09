@@ -1,0 +1,26 @@
+```ocaml
+# let sales_tax = 1.0 ;;
+# let price_list = [10.0 ; 20.0 ; 5.0] ;;
+# let update_sales_tax () = sales_tax *. 2.0 ;;
+# update_sales_tax () ;;
+- : float = 2.0
+
+# let add_tax x = sales_tax +. x ;;
+Error: Unbound value sales_tax
+
+# let add_tax x = update_sales_tax () +. x ;;
+- : float -> float = <fun>
+
+# let update_price_list price_list = List.map add_tax price_list ;;
+- : float list -> float list = <fun>
+
+# update_price_list price_list ;;
+- : float list =
+[ 12.
+, 24.
+, 8. ]
+```
+
+Explanation:
+The `update_sales_tax ()` function depends on the current value of `sales_tax` but does not modify it in place. When we call `update_sales_tax ()`, the new value of `sales_tax` is `2.0` which is an integer, and the `add_tax` function adds this integer value to each element of the list.
+The `add_tax` function gets defined after the `update_sales_tax` function has calculated the new value of `sales_tax`. This new value is then used by `add_tax` in the `update_price_list` function.

@@ -1,0 +1,9 @@
+**Solution:**
+
+No, the expression `(get_tail rc1 == get_tail rc2)` will return `false`.
+
+**Explanation:**
+
+When we execute `rc1 := !rc2`, we are updating the value of `rc1` to be the same as the referenced value of `rc2`. This means that both `rc1` and `rc2` will reference the same linked list cell, but they are still two different variables.
+
+Later, `get_tail rc1` and `get_tail rc2` are called, and both will evaluate to the same `'a rcell` expression, which is `rc1`. However, because OCaml uses pointer equality (`==`), it checks whether the memory locations of `rc1` and `rc1` are the same, not the values of the expressions themselves. Since `rc1` and `rc2` have different locations in memory after the assignment, `get_tail rc1 == get_tail rc2` will return `false`.

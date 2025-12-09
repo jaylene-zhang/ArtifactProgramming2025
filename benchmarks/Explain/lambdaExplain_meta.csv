@@ -1,0 +1,51 @@
+index,term,question,topic,difficulty,solution(if applicable),Topic
+1,fall2024,final_q1_1,fill in types,1,,Bindings
+2,fall2024,final_q1_2,fill in types,2,,Bindings
+3,fall2024,final_q2,Eval with stack,2,,Evaluation of programs
+4,fall2024,final_q3,evaluation,1,,Evaluation of programs
+5,fall2024,final_q4_1,substitution,1,,Bindings
+6,fall2024,final_q4_2,substitution,1,,Bindings
+7,fall2024,final_q8,induction,1,,reasoning
+8,fall2024,mt1_q1_1,fill in types,1,,Bindings
+9,fall2024,mt1_q1_2,overshadow,1,,Bindings
+10,fall2024,mt1_q1_3,first-class,1,,Basic concepts in OCaml
+11,fall2024,mt1_q2,fill in types,2,,Bindings
+12,fall2024,mt1_q4,induction,1,,reasoning
+13,fall2024,mt2_q1_1,overwriting vs overshadow,2,,Bindings
+14,fall2024,mt2_q1_2,tail-rec defn,1,,Basic concepts in OCaml
+15,fall2024,mt2_q2,Eval with stack,2,,Evaluation of programs
+16,fall2021,library,Eval(overshadow),1,(6;5),Evaluation of programs
+17,fall2021,library,Eval(overshadow),1,(7;6),Evaluation of programs
+18,fall2021,library,Eval(partial),2,Incorrect. This function computes ackermann x once for each element of l.,Evaluation of programs
+19,fall2021,library,Eval(Tail-recursion: Evenly divide),1,Incorrect; the implementation is correct but it is not tail-recursive due to the call 2 * helper (n / 2).,Evaluation of programs
+20,fall2021,library,identify buggy program,1,No; since a base case is not specified for 0; the call triangle 0 will loop infinitely.,reasoning
+21,fall2021,library,unused var q1,1,r (in line 2) and x (in line 3) are unused,Bindings
+22,fall2021,library,unused var q2,1,r (in line 1) is unused,Bindings
+23,fall2021,library,type-checking with states,2,int ref * int ref -> unit,Bindings
+24,fall2021,library,Type Inference (part 1),2, 't,Bindings
+25,fall2021,library,Type Inference (part 2),2,'t for 's;and 't for 'u,Bindings
+26,fall2021,library,Mutant programs,2,yes,reasoning
+27,fall2021,library,General Knowledge (pure vs impure programs),1,It is hard to reason inductively about or prove the correctness of handling references,Basic concepts in OCaml
+28,fall2021,library,Composition of Functions (Anti-derivative),2,Incorrect;the function integral does not take a pair as its first argument; so we cannot curry it. We should instead curry integral f; which is a function that takes a pair as its first argument.,reasoning
+29,fall2021,library,HOF q3,2,yes;no;yes,Evaluation of programs
+30,fall2021,library,HOF q2,2,it returns [11.0 ; 21.0 ; 6.0],Evaluation of programs
+31,fall2021,library,evaluation,2,yes;no;no;yes,Evaluation of programs
+32,fall2021,library,data type,2,a;b;d,Bindings
+33,fall2021,library,Figure Skating Jumps,2, {a:correct; b:From the description; the revolutions are not limited to 2 or 3. c:This inductive datatype is incorrect; It does not have a base type nor expressed the jump correctly },reasoning
+34,fall2021,library,Resource Aware ML,2,{a:Incorrect. As go is tail recursive and relies on (::) the overall complexity of rev2 is linear due to the addition of go whereas the time complexity of rev1 is quadratic. b:Incorrect.rev2 is faster than rev1 and the time complexity of (@) depends on the number of elements of the first argument of (@). c:correct},reasoning
+35,fall2021,library,evaluation,1,71,Evaluation of programs
+36,fall2021,library,prog correctness (using existing functions q1),1,Rotates the list twice,reasoning
+37,fall2021,library,prog correctness(buggy program),1,(0;0),reasoning
+38,fall2021,library,types(compose),2,(a;b),Bindings
+39,fall2021,library,types(toInt),2,f (fun x -> x + 1) 0,Bindings
+40,fall2021,library,conti.(tail-rec),1,yes,reasoning
+41,fall2021,library,buggy or not,1,('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c,reasoning
+42,fall2021,library,induction,1,[],reasoning
+43,fall2021,library,induction,2,No. In the step case we cannot appeal to the induction hypothesis as the accumulator will not remain [].,reasoning
+44,fall2021,library,induction,1,Assuming the statement for a list t;we show the statement holds for a list h::t.,reasoning
+45,fall2021,library,streaming(pascals triangle),2,{ones;map psums pascal},Evaluation of programs
+46,fall2021,library,lazy prog(folding),2,{f s.hd a; Susp (fun ( ) -> fold f (f s.hd a) (force s.tl))},Evaluation of programs
+47,fall2021,library,Eval(tail-rec),1,b,Evaluation of programs
+48,fall2021,library,Overall Understanding (Tail-Recursion),1,They run slower than simple recursive functions on common tasks,Basic concepts in OCaml
+49,fall2021,library,substitution,2,let double x1 = let x2 = 2 in let w = (f x) + x2 in fun g -> (g w) * (f x),Bindings
+50,fall2021,library,buggy or not q3,2,a,reasoning

@@ -1,0 +1,17 @@
+Solution: No, the program does not correctly compute the antiderivative of f.
+
+Explanation: 
+An antiderivative F of function f should satisfy F'(x) = f(x). For a definite integral, F(x) = ∫(from a to x) f(t) dt.
+
+The expression `(curry integral) f 0` has type `float -> float`, which correctly returns a function. However, it computes ∫(from 0 to dx) f(t) dt, not ∫(from 0 to x) f(t) dt.
+
+The correct implementation would be:
+```ocaml
+let anti_d f x = integral f (0, x) dx
+```
+or using curry:
+```ocaml
+let anti_d f = fun x -> integral f (0, x) dx
+```
+
+The given code is missing the second parameter that represents the upper bound of the integral.

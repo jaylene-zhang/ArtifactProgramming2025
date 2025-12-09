@@ -1,0 +1,7 @@
+The correct answer is (b).
+
+Explanation:
+- Option (b) is tail-recursive and correctly maintains the order of strings while only traversing the list once. It builds the result by appending each element to the accumulator in the correct order.
+- Option (a) is tail-recursive but reverses the order of the elements since it prepends each new element to the accumulator.
+- Option (c) requires two traversals of the list (one for reversing, one for concatenation).
+- Option (d) is not tail-recursive as it needs to perform an operation (string concatenation) after the recursive call returns.

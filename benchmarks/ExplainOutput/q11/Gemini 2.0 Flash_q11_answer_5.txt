@@ -1,0 +1,42 @@
+**Question 2: Zip it up!**
+
+**Part 1: Type of zip**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list=
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation:**
+
+The function `zip` takes two lists, `l1` and `l2`, where `l1` has elements of type `'a` and `l2` has elements of type `'b`. It returns a list of pairs, where each pair consists of an element from `l1` and an element from `l2`.  The type of the returned list is `('a * 'b) list`.
+
+**Part 2: Generalized zipper**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+match l1, l2 with
+| [] , [] -> (add (failwith "Dummy value as placeholder") []) (* Base Case is an empty list, so return the empty list after it has been processed using function 'add'*)
+| x::xs , y::ys -> add  (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation:**
+
+*   `comb: 'a -> 'b -> 'c`:  A function that takes an element from `l1` (type `'a`) and an element from `l2` (type `'b`) and combines them into a value of type `'c`.
+*   `add: 'c -> 'd -> 'd`: A function takes the combined value of type `'c` and a list (`'d`) and adds the combined value to the accumulated list.
+*   `l1: 'a list`: The first list, with elements of type `'a`.
+*   `l2: 'b list`: The second list, with elements of type `'b`.
+*   `: 'd`: The return type of `zipper`. It represents the type of the accumulated data structure as a result of repeated `add` calls.
+
+In the recursive case, `comb x y` combines the heads of the lists, and the result is then added in front to the recursive call on the tails using the add function.
+
+**Part 3: zip and zip_rev using zipper (provided in prompt)**
+
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev= zipper (fun x y -> (string_of_int x) ^ y)
+(fun s t -> t @ [ (s, List.length t) ])
+```

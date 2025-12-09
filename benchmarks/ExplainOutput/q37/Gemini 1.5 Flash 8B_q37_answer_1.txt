@@ -1,0 +1,27 @@
+```
+3, 6
+```
+
+**Explanation of the bug and the test case:**
+
+The function `triangle` is incorrect because it calculates `n + triangle(n-1)`, which is not the correct formula for a triangle number.  Instead of summing up 1 to `n`, it adds `n` to the result of calling itself, thus adding `n` *each time*.
+
+The correct approach would be to sum the values, not just add the current value.
+
+**Example using the given faulty function:**
+
+
+```ocaml
+let rec triangle n =
+    if n = 1 then 1
+    else n + triangle (n-1);;
+```
+
+```
+# triangle 3;;
+- : int = 6
+```
+
+Given `n=3`, instead of performing `1 + 2 + 3 = 6`, the function incorrectly calculates `3 + triangle(2)`.  `triangle(2)` returns `2 + triangle(1) = 2 + 1 = 3`. Thus, `triangle(3)` becomes  `3 + 3 = 6`, which is  incorrect.
+
+The test case `(3, 6)` is a valid output of the function, but not the intended correct answer.  The intended correct answer for an input of `3` is `6`, while the result given by this incorrect function is also `6`.  The flaw lies in the *method* of calculation, which is not what is sought by the question. A failing test case should not produce the mathematically correct answer, but an incorrect answer *given the input*.

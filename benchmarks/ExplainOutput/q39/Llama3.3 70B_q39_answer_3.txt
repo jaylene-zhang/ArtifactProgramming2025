@@ -1,0 +1,5 @@
+```ocaml
+let toInt f = f (fun x -> x) 0
+```
+
+This function `toInt` takes in another function `f` and returns the result of applying `f` to the identity function (which returns its argument unchanged) and `0`. Since `f` is expected to be applied to its argument some number of times, this effectively "unwinds" the applications of `f` to reach the final value.

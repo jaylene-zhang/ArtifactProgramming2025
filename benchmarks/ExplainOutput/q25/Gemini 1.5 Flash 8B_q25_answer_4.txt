@@ -1,0 +1,7 @@
+**Solution:**
+
+'t = 's = 'a and 'u = 'b
+
+**Explanation:**
+
+To have `f(f(a, b), f(b, a))` type 'u, the input types of f need to match the output type of the same `f(a, b)` and `f(b, a)`.  The only way `f(a,b)` and `f(b,a)` can both result in a type that `f` can accept is if `a` and `b` are of the same types `t` and `s`, with return types that matches its input in order for a given call `f (f (a, b), f (b, a))`.  This implies `'t` and `'s` must be compatible and 'u must correspond to the return type of f. Thus 't = 's = 'a and 'u = 'b.

@@ -1,0 +1,15 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+
+let f y =
+  let x = 20 in  (* overshadowing here *)
+  x + y;;
+
+f 5;;
+```
+
+**Explanation:**
+
+The function `f` introduces a new `x` variable inside its scope.  This new `x` variable hides (shadows) the outer `x` defined in the global scope.  The `f 5` expression evaluates to `25` because the inner `x` is used; the global `x` is not accessible within the function.  Overshadowing primarily occurs when a local variable in a function or block has the same name as a variable in an enclosing scope.

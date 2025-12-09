@@ -1,0 +1,7 @@
+Given the assumptions
+
+f: ('t * 's -> 'u), a: 't, b:'s
+
+what is the most general instantiation for the type variables 't, 's, and 'u such that
+
+f (f (a, b), f (b, a)) has type 'u?

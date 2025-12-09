@@ -1,0 +1,5 @@
+Solution:
+let toInt f = f (fun x -> x + 1) 0
+
+Explanation:
+The function f is a Church numeral, so we apply it to the increment function (fun x -> x + 1) starting from 0 to get the integer value.

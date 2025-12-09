@@ -1,0 +1,3 @@
+**No direct conversion to tail recursion exists for all List library functions using continuations.**
+
+Explanation: While continuations can be used to convert some recursive functions to tail-recursive ones, this is not always possible or practical, especially for functions that require complex control flow or interaction with their environment. In the case of the OCaml standard List library, the trade-off between code complexity and performance considerations may have led to the choice of implementing some functions in a non-tail-recursive way.

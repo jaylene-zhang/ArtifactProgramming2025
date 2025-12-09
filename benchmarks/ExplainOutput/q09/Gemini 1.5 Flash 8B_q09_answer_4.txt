@@ -1,0 +1,20 @@
+**Solution:**
+
+```ocaml
+let a = 10;
+let overshadowing () =
+  let a = 20 in
+  Printf.printf "Inside function: %d\n" a;
+  a
+;;
+
+let () =
+  Printf.printf "Outside function: %d\n" a;
+  let result = overshadowing() in
+  Printf.printf "Result: %d\n" result
+;;
+```
+
+**Explanation:**
+
+Overshadowing occurs when a variable declared within a nested scope has the same name as a variable declared in a larger scope.  Inside the `overshadowing` function, the `a` is shadowed by the newly declared `a`.  The `printf` inside the function references the inner `a` (20), while the `printf` outside the function references the outer `a` (10).  The function `overshadowing` returns the value of the inner `a`. This demonstrates that the inner declaration hides the outer one within its scope.

@@ -1,0 +1,9 @@
+```ocaml
+let rec toInt f = 
+  let rec aux acc x = 
+    if x = f x then acc
+    else aux (acc + 1) (f x)
+  in aux 0
+```
+
+Explanation: The `toInt` function uses a helper function `aux` to increment a counter (`acc`) each time it applies the function `f` to the current argument until it finds a fixed point (i.e., `x` such that `f x = x`). The initial argument `x` is usually the input to `f`, but here we can start from any value since we're only concerned with the number of applications, not the final value.

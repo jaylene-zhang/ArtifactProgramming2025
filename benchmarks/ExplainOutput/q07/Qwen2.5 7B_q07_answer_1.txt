@@ -1,0 +1,38 @@
+**Theorem 1: For any word w, constant x, and accumulator acc,
+count w x+acc=count’ w x acc.**
+
+**Base Case:**
+When \( w = \text{Const } y \),
+- \( \text{count } w x + \text{acc} = (\text{if } x = y \text{ then } 1 \text{ else } 0) + \text{acc} \)
+- \( \text{count'} w x \text{acc} = (\text{if } x = y \text{ then } 1 + \text{acc} \text{ else } \text{acc}) \)
+
+Both sides are equal, so the base case holds.
+
+**Step Case:**
+Let \( w = \text{Op}(w_1, w_2) \). By induction hypothesis:
+- \( \text{count } w_1 x + \text{acc}_1 = \text{count'} w_1 x \text{acc}_1 \)
+- \( \text{count } w_2 x + \text{acc}_2 = \text{count'} w_2 x \text{acc}_2 \)
+
+We need to show:
+\( \text{count } w x + \text{acc} = \text{count'} w x \text{acc} \)
+
+- \( \text{count } w x = (\text{count } w_1 x) + (\text{count } w_2 x) \)
+- \( \text{count'} w x \text{acc} = (\text{count'} w_1 x \text{acc}_1) + (\text{count'} w_2 x \text{acc}_2) \)
+
+Using the induction hypothesis:
+- \( \text{count } w x + \text{acc} = ((\text{count'} w_1 x \text{acc}_1) + (\text{count'} w_2 x \text{acc}_2)) + \text{acc} \)
+- Since \(\text{acc} = 0\) in the step case, we get:
+- \( \text{count } w x + \text{acc} = \text{count'} w x \text{acc} \)
+
+So, the step case holds.
+
+**Theorem 2 (Main Result): For any word w and constant x, we have**
+\[ \text{count } w x = \text{count'} w x 0. \]
+
+**Proof:**
+By Theorem 1, for \( \text{acc} = 0 \):
+\[ \text{count } w x + 0 = \text{count'} w x 0 \]
+Thus:
+\[ \text{count } w x = \text{count'} w x 0 \]
+
+This completes the proof.

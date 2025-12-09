@@ -1,0 +1,3 @@
+Solution: You need to prove the statement for the tail of the list, assuming it holds for the empty list or some previous case.
+
+Explanation: In list induction, the base case typically handles an empty list or a trivial list like a list with one element. The step case then proves that if the statement holds for a list of length n, it also holds for a list of length n+1. This is achieved by considering the tail of the list (all elements except the first) and assuming the property is true for this tail.

@@ -1,0 +1,25 @@
+## Solution
+
+Functional languages try to avoid state variables (references) and imperative-style programming with them because:
+
+```ocaml
+(* Imperative style with mutable references (BAD) *)
+let x = ref 0
+
+(* Benefits of functional programming (GOOD) *)
+let x = 0
+```
+
+## Explanation
+
+Functional languages aim to avoid mutable state because it can lead to:
+
+*   Bugs: Shared mutable state can cause complex and difficult-to-debug interactions.
+*   Non-determinism: Mutable state can introduce non-deterministic behavior and side effects.
+*   Hairier code: Imperative style with mutable state often leads to heavier, more convoluted codebases.
+
+Functional languages, like OCaml, instead use immutable data structures and pure functions to encourage:
+
+*   Composability: Pure functions can be easily combined.
+*   Predictability: Immutable data ensures predictable behavior.
+*   Simplified code: Pure functions follow the composition pattern, making code more manageable and coherent.

@@ -1,0 +1,3 @@
+Solution: True
+
+Explanation: After setting rc1 := !rc2, both get_tail rc1 and get_tail rc2 return the same reference (rc1), so physical equality holds.

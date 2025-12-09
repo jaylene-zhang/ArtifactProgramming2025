@@ -1,0 +1,3 @@
+Solution: The library opts for clarity and typical use-case efficiency rather than blanket tail-recursiveness via continuations.
+
+Explanation: Although tail recursion can be achieved with continuations, doing so often complicates the code and may incur performance overhead. Since many list operations are intended for relatively short lists, the benefit of always using tail-recursive patterns isn’t worth the extra complexity.

@@ -1,0 +1,51 @@
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y, e2) =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y, e1', subst s e2)
+  | Rec (y, t, e) ->
+      let y' = freshVar y in
+      let e' = subst (Var e', y) e in
+      Rec (y', t, e')
+  | Fn (xs, e) ->
+      let xs' = List.map (fun (x, t) -> (x ^ "'", t)) xs in
+      let e' = subst s e in
+      let xs' = List.map (fun (x, t) -> (x, t)) xs' in
+      Fn (xs', e')
+  | Apply (e, es) ->
+      let e' = subst s e in
+      let es' = List.map (subst s) es in
+      Apply (e', es')
+
+and rename x e =
+  let x' = freshVar x in
+  (x', subst (Var x', x) e)
+
+and rename_all names exp =
+  List.fold_right
+    (fun name (names, exp) ->
+       let (name', exp') = rename name exp in
+       (name' :: names, exp'))
+    names
+    ([], exp)
+
+(* Applying a list of substitutions to an expression, leftmost first *)
+let subst_list subs exp =
+  List.fold_left (fun exp sub -> subst sub exp) exp subs

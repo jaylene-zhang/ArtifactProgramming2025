@@ -1,0 +1,64 @@
+### Solution:
+
+The final result of the expression is **62**. Below is the reasoning and binding stack at each step.
+
+---
+
+### Step-by-step Evaluation:
+
+#### 1. Initial Setup:
+- `let x = 3`:
+  - **Binding stack**: `x = 3`
+- `let r = ref (2 + x)`:
+  - `r` evaluates to `ref 5` (`2 + x, where x = 3`).
+  - **Binding stack**: `x = 3`, `r = ref 5`
+
+#### 2. Define `f`:
+Inside `let f = ...`:
+- `let y = x * !r`:
+  - `y = 3 * 5 = 15` (since `x = 3` and `!r = 5`).
+  - **Binding stack (local to this block)**: `x = 3`, `r = ref 5`, `y = 15`
+
+- `let r = ref 4`:
+  - A new `r` shadowing the previous one, `r = ref 4`.
+  - **Binding stack (local)**: `x = 3`, `y = 15`, `r = ref 4`
+
+- Define `fun u -> u + x + y + !r`:
+  - The function `f` is defined using the current bindings of `x`, `y`, and `r`. 
+  - Captures: `x = 3`, `y = 15`, and `r = ref 4`.
+
+  - **Binding stack after `f`**: `x = 3`, `r = ref 5`, `f = fun u -> u + x + y + !r`
+
+#### 3. Define new `x` and `y`, then mutate `r`:
+- `let x = 5`:
+  - This introduces a new `x`, shadowing the previous `x = 3`.
+  - **Binding stack**: `x = 5`, `r = ref 5`, `f = fun u -> u + x + y + !r`
+
+- `let y = 10`:
+  - Introduces `y = 10`.
+  - **Binding stack**: `x = 5`, `y = 10`, `r = ref 5`, `f = fun u -> u + x + y + !r`
+
+- `r := 2`:
+  - Mutates the outer ref `r` to `2`.
+  - **Binding stack**: `x = 5`, `y = 10`, `r = ref 2`, `f = fun u -> u + x + y + !r`
+
+#### 4. Call `f (!r * y)`:
+- `!r * y = 2 * 10 = 20`, so `f` is called with `u = 20`.
+- Inside `f`:
+  - `u + x + y + !r` = `20 + 3 + 15 + 4`:
+    - `x = 3`, `y = 15`, and `r = ref 4` are captures in `f`.
+  - Result: `20 + 3 + 15 + 4 = 62`.
+
+---
+
+### Final Binding Stack:
+After the full evaluation (state changes reflected):
+- `x = 5`
+- `y = 10`
+- `r = ref 2`
+- `f = fun u -> u + x + y + !r`
+
+---
+
+### Final Answer:
+**62**

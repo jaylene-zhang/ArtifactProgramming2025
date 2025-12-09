@@ -1,0 +1,8 @@
+### Overwriting Example
+```ocaml
+let x = 5
+let x = x + 1
+```
+
+### Explanation
+Overwriting in OCaml refers to the process of redefining a variable with the same name in the same scope. This means the original value is lost, and the new value is used instead. In contrast to overshadowing, which occurs when a variable with the same name is defined in an inner scope, overwriting replaces the original value directly. Note that in OCaml, this is not exactly "overwriting" in the classical sense, but rather rebinding or shadowing within the same scope.

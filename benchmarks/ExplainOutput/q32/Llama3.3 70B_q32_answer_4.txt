@@ -1,0 +1,20 @@
+## Possible Definitions
+
+a) type url = string
+type bookmarks = Location of url * bookmarks | Empty
+
+b) type url = string
+type bookmarks = Empty | Location of string * bookmarks
+
+d) type url = string
+type bookmarks = Empty | Location of bookmarks * url
+
+## Explanation
+
+The options a, b, and d represent recursive data types that can store a list of URLs.
+
+- Option a: Each `Location` stores a `url` and a `bookmarks` (a list of URLs), so it's a nested list.
+- Option b: Each `Location` stores a `string` (the URL) and a `bookmarks` (a list of URLs), also a nested list.
+- Option d: Each `Location` stores a `bookmarks` (a list of URLs) and a `url`, which allows adding URLs to the end of the list.
+
+Option c does not represent a list and cannot be recursive, as it only contains an `Empty` variant and a `Location` variant without any parameters.

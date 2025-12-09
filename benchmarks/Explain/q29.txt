@@ -1,0 +1,31 @@
+Given the function
+
+sumSeries: (int -> int) (* f *)
+-> int * int (* (a,b):lower bound and upper bound *)
+-> (int -> int) (* inc :incrementation in each step *)
+-> int
+
+Recall curry and swap given below:
+
+(* curry : (('a * 'b) -> 'c) -> 'a -> 'b -> 'c *)
+let curry f = fun a b -> f (a,b)
+(* swap : ('a -> 'b -> 'c) -> 'b -> 'a -> 'c *)
+let swap f = fun a b -> f b a
+
+
+
+The goal is to implement a function sum_from_zero that
+computes computes a sum series where we fix the lower bound to be
+0 and use fun x -> x + 1 to increment in each step.
+
+sum_from_zero: (int -> int) -> int -> int
+
+The function sum_from_zero takes in f:int -> int and returns a function that is
+waiting for the upper bound as an argument to compute the final
+result.
+
+Are the following programs correct implementations of sum_from_zero?
+
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0

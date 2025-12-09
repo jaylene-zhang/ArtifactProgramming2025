@@ -1,0 +1,12 @@
+### Solution:
+The correct solution is:
+
+**c) h (g (f x))**
+
+### Explanation:
+The goal is to implement a function `compose` such that it takes two higher-order functions `h` and `g` and produces a new function with the desired behavior. Specifically, composing `(fun f x -> f x)` and `(fun f x -> f (f x))` should result in a new function `(fun f x -> f (f (f x)))`.
+
+- `h` and `g` are composable functions of type `((’a -> ’a) -> ’a -> ’a)` (i.e., they take and return higher-order functions).
+- Mathematically, the composition of `h` and `g` applied to a function `f` and input `x` should work as: `h (g (f)) x`.
+
+From the choices, only `h (g (f x))` satisfies this behavior, as it respects the nesting of applications to `f` and `x` to correctly compose the functions.

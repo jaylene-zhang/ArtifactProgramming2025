@@ -1,0 +1,25 @@
+**Incorrect Implementation**
+
+```ocaml
+let rec helper n =
+  if n mod 2 = 1 then 1
+  else 2 * helper (n / 2)
+let max_two_factor n = helper 1 n
+```
+
+**Explanation**
+
+The implementation is not tail-recursive because it calls itself on `n / 2`, which triggers another recursive call. The `2 *` is a non-tail call, because the recursive call is done before the result is combined with the rest of the expression.
+
+Moreover, the implementation is not correct. It tries to count the number of times a number is even by recursively dividing it by 2 and multiplying the result by 2. However, this does not correctly count the number of trailing zeros of a number (which is equivalent to the highest power of 2 that divides the number).
+
+A correct solution would be to simply count the number of trailing zeros in the binary representation of `n`, which is the highest power of 2 that divides `n`. This can be implemented using the following tail-recursive function:
+
+```ocaml
+let rec helper n acc =
+  if n = 0 then acc
+  else helper (n / 2) (acc + 1)
+let max_two_factor n = helper ((Int.log (abs n)) / (Int.log 2)) 0
+```
+
+This implementation is both correct and tail-recursive. It uses the `acc` accumulator to keep track of the count, and the base case is when `n` becomes 0.

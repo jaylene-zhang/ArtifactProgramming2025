@@ -1,0 +1,19 @@
+## Code Analysis of `check_prime_factors` Implementations
+
+### Questions and Answers
+
+1. Does implementation a) compute `prime_fact` once?
+   - **Yes**
+   - Explanation: `prime_fact x` is computed once and stored in `p`, then `p` is used in `List.exists`.
+
+2. Does implementation b) compute `prime_fact` once?
+   - **No**
+   - Explanation: `prime_fact x` is computed for every element `e` in the list, because it's inside the anonymous function passed to `List.exists`.
+
+3. Does implementation c) compute `prime_fact` once?
+   - **No**
+   - Explanation: `prime_fact x` is computed for every recursive call of `check x ys`, which happens for each element in the list.
+
+4. Does implementation d) compute `prime_fact` once?
+   - **Yes**
+   - Explanation: Similar to implementation a), `prime_fact x` is computed once and stored in `p`, then `p` is used in the recursive function `test`.

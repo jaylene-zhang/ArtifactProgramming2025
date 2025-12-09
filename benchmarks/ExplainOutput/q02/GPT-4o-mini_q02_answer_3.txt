@@ -1,0 +1,16 @@
+The most general types to fill in are:
+
+1. **(unit -> 'a)**
+2. **'a**
+
+So the complete function is:
+
+```ocaml
+let rec repeat (f : unit -> 'a) : 'a = f (repeat f)
+```
+
+**Explanation:** 
+
+- The function `f` takes no arguments (indicated by `unit`) and returns a value of type `'a`. 
+- The expression `repeat f` calls `repeat` recursively, so it needs to fulfill the type of `f`, which is `unit -> 'a`. 
+- Therefore, the return type of `repeat` must match the result type of `f`, which is `'a`. The overall structure is well-typed, and it correctly indicates that `repeat` can produce any type `'a` based on the function `f`.

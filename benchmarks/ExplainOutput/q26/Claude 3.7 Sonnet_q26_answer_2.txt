@@ -1,0 +1,11 @@
+The solution is `true`.
+
+The statement `get_tail rc1 == get_tail rc2` will return `true` because after the reassignment `rc1 := !rc2`, both `rc1` and `rc2` point to the same structure `Cons(2, rc1)`, so the tail of both lists becomes `rc1` itself. When we call `get_tail` on each, we get the same reference, making the physical equality check return true.
+
+Let's trace through the execution:
+1. `rc1` initially points to `Cons(1, ref Nil)`
+2. `rc2` points to `Cons(2, rc1)`
+3. After `rc1 := !rc2`, both `rc1` and `rc2` point to `Cons(2, rc1)`
+4. `get_tail rc1` returns `rc1`
+5. `get_tail rc2` returns `rc1`
+6. Therefore, `get_tail rc1 == get_tail rc2` is true

@@ -1,0 +1,7 @@
+**Solution:**
+
+c) `h (g (f x))`
+
+**Explanation:**
+
+The goal is to apply `g` to `f` and `x` first, then apply `h` to that result using `f` again.  Option (c) `h (g (f x))` achieves this order of application. It effectively composes the functionalities of `g` and `h` as intended by the problem description.

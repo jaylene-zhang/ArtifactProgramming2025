@@ -1,0 +1,35 @@
+**Solution:**
+
+**Theorem 1:**
+For any word w, constant x, and accumulator acc, count w x+acc=count’ w x acc.
+
+**Proof:**
+
+* **BaseCase:** w = Const y
+   count w x + acc = (if x = y then 1 else 0) + acc
+   count’ w x acc = if x = y then 1 + acc else acc
+These are equal.
+
+* **Step Case:** w = Op (w1, w2)
+   Induction Hypothesis: For any word w1’, constant x, and accumulator acc, count w1’ x+acc=count’ w1’ x acc.  (IH1)
+                                             For any word w2’, constant x, and accumulator acc, count w2’ x+acc=count’ w2’ x acc. (IH2)
+
+
+   count w x + acc = count(Op(w1, w2)) x + acc = (count w1 x) + (count w2 x) + acc
+   count’ w x acc = count’ w1 x (count’ w2 x acc) = (count’ w1 x (count’ w2 x acc))
+
+   By IH1 and IH2:
+   count w1 x = count’ w1 x 0
+   count w2 x = count’ w2 x 0
+   Substituting into the count w x + acc equation:
+   (count’ w1 x 0) + (count’ w2 x 0) + acc
+   count’ w1 x (count’w2 x acc)
+   This is equal to count’ w x acc.
+
+
+
+**Theorem 2 (Main Result):**
+For any word w and constant x, we have count w x = count’ w x 0.
+
+**Proof:**
+The theorem follows immediately from Theorem 1, setting acc to 0.  count w x + 0 = count’ w x 0.   Therefore count w x = count’ w x 0.

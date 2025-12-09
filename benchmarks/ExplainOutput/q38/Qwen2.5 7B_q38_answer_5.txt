@@ -1,0 +1,15 @@
+Solution: a, c
+
+Explanation:
+The correct solutions are a) `h (f (g (f x)))` and c) `h (g (f x))`.
+
+Let's analyze each:
+
+a) `h (f (g (f x)))`
+- First, `g (f x)` is applied, which gives `(fun f x -> f (f x)) (f x) = f (f x)`
+- Then, `h (f (g (f x)))` is applied, which gives `(fun f x -> f x) (f (f x)) = f (f (f x))`
+
+c) `h (g (f x))`
+- This directly simplifies to the desired result without needing an extra application of `f`, since `h` is just `f`, so it is `(fun f x -> f x) (f (f x)) = f (f (f x))`
+
+The other solutions do not reduce to the required form.

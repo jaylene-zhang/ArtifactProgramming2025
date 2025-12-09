@@ -1,0 +1,46 @@
+Here is the final result without an explanation:
+
+**Solution**
+
+The final result is: |-1, 4, [2,3,4], [2,3,4] @ [3]
+
+**Binding Stack Diagram:**
+
+Following is the simplified binding stack for your code:
+
+let c = ref 0;;
+let l = List.rev [1;2;3];;
+let observe () = !c;;
+let x = 1;;
+let inc x = c:= !c+1 ; x+1;;
+let ml = List.map inc l;;
+let inc’ = (let c = ref 0 in
+             let x = x + 1 in
+             fun y -> c := !c+1 ; !c+y+x);;
+let ml’ = List.map inc’ l;;
+(x, observe (), ml, ml’)
+
+Note: The specific diamond mark `|-1` at the beginning of the result `( |-1, 4, [2,3,4], [2,3,4] @ [3])` represents the outermost scopemium is the value resulting from evaluating `List.map` on the final inner scope.
+
+ x has value 2
+ |- c has ref 2
+|- x has value 2
+ |- inc x has value 2 in 
+
+**Step by Step Execution:**
+
+1. `c` is set to 0 
+2. `l` is a rev list of [1;2;3]
+3. `observe()` is a function returning the value of `c` which is 0
+4. `x` is a variable with value 1
+5. `inc` is a function taking `x` to `c:= !c+1` and `x+1`
+6. `ml` is result of `List.map` `inc` on `[1;2;3]` to [2;3;4]
+7. `inc’` is `let c = ref 0` takes value of `x` in definition which is `3` also y parm will be ignored because of outer scope `c` will return 4 values at the end of `inc’` definitions in final closure returned from `let x = Expr`
+  |- y has value 
+  |- c has ref 0
+  |- x has value 3
+   fun (PARAM y) -> c := !c+1; !c+y+x evaluates as `fun (y) -> c := 1; 4+y`
+8. `ml'` is result of `List.map` `inc’` on `[1;2;3]` to `[2;3;4;4`(Second `1;2;3` evaluated has taken value of unused param `y`, But third 1; )`@`[3]`
+   *Inner expression returns `[23, 34, 45]; and Last saw the c :=1 as a value called in `c := 1; 4+y`
+   
+This completion would also make sense. -inish Medator, That is the same as our result and final Answer.

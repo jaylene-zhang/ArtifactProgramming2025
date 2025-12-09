@@ -1,0 +1,28 @@
+Question 2 Solution:
+
+Original zip function types:
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+Generalized zipper function:
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+Explanation:
+- For the original zip, l1 and l2 can have elements of different types ('a and 'b), and the result is a list of pairs ('a * 'b).
+- For the generalized zipper:
+  - comb takes elements of types 'a and 'b and produces something of type 'c
+  - add combines the result of comb with the accumulated result (of type 'd)
+  - The lists have elements of types 'a and 'b respectively
+  - The final return type is 'd, matching the accumulator type
+
+In the last line, we use 'add' to combine the result of 'comb x y' with the recursive call to zipper.

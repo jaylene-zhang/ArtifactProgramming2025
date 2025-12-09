@@ -1,0 +1,3 @@
+Solution: No, `ackermann x` is computed multiple times.
+
+Explanation: In this implementation, `ackermann x` is computed separately for each element in the list. The expression `(ackermann x) + y` appears in the recursive pattern matching, meaning it will be evaluated freshly for each element `y` in the list. A more efficient implementation would compute `ackermann x` once and reuse that value throughout the recursion.

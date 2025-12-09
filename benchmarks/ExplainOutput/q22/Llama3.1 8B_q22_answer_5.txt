@@ -1,0 +1,8 @@
+Unused variables: x 
+
+f x = f x * y == f x = x * y
+Here, the variable 'x' is not used after the pattern bind.
+
+Explanation:
+
+In the inner function definition `fun x -> f x * y`, the variable `x` is bound to the argument of the function. However, since the function is then immediately bound once more to `f` (encrypting the original `f`), the original `x` is no longer accessible. The name `x` is therefore unused.

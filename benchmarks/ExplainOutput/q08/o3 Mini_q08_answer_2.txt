@@ -1,0 +1,4 @@
+Solution: 
+type cake = Slice of ingredients list * int | Cake of cake * cake
+
+Explanation: The Slice constructor now takes a tuple containing an ingredients list and an int for calories.

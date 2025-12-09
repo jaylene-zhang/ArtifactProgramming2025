@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> w * 2 + 2 + y * w
+```
+
+**Explanation:**
+
+We only replace `x` in `fun y -> x + 2 + y * w` with its definition `w * 2`. Thus the code becomes `fun y -> w * 2 + 2 + y * w`.

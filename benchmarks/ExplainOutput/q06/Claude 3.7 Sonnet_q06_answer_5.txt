@@ -1,0 +1,7 @@
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> (w * 2) + 2 + y * w
+```
+
+Explanation: I've replaced each occurrence of `x` in the body of the function with its definition `w * 2`. The original `x` binding is kept because removing it would change the semantics (the `w` in `w * 2` refers to the original `w` parameter, not the redefined `w = x`).

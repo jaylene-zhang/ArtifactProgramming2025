@@ -1,0 +1,10 @@
+**Functions are first-class values**
+
+```ocaml
+let double x = x * 2
+let twice = double
+let result = twice 5
+```
+Functions are first-class values because they behave like any other OCaml value: they can be assigned to variables, passed as arguments to other functions, and returned from functions.
+
+In the example above, `double` is a function that can be assigned to a variable `twice`. We can then use `twice` as an ordinary function to double the value 5, stored in the variable `result`.

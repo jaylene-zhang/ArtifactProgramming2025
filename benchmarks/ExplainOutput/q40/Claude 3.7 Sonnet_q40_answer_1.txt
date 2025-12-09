@@ -1,0 +1,3 @@
+Yes, this function is tail-recursive.
+
+Explanation: All recursive calls to zip_tr are in tail position, meaning they are the final operation performed in each execution path. The function doesn't need to wait for the result of the recursive call to perform additional computations. Instead, it passes the necessary continuations (fc and a new sc) that will handle the result when the recursion eventually terminates. This ensures that no additional stack frames need to be maintained during recursion.

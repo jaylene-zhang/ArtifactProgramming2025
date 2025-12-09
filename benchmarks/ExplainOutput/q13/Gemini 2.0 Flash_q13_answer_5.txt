@@ -1,0 +1,24 @@
+**Solution:**
+
+```ocaml
+let x = 5;; (* Initial binding: x -> 5 *)
+let x = 10;; (* Overwriting: x -> 10 *)
+```
+
+**Explanation:**
+
+*   **Overwriting:** In OCaml, overwriting (more accurately, re-binding at the *top level*) means that the *same* name in the *same* scope, when declared again at the top level, now refers to a new value, effectively replacing the previous binding.  The original value is no longer accessible via that name from that point forward. In the example above after `let x = 10;`, the name `x` refers to value `10`.
+
+*   **Overshadowing:** Overshadowing, on the other hand, occurs when a name is re-bound within a *nested* scope (e.g., inside a function or a `let ... in` expression).  The outer binding still exists; it's just temporarily hidden ("shadowed") by the inner binding.  Once the inner scope is exited, the outer binding becomes visible again. The *outer binding and the inner binding are completely independent.*
+
+    Example of Shadowing:
+
+    ```ocaml
+    let x = 5 in  (* Outer x *)
+        let x = x + 1 in (* Inner x shadows outer x*)
+        x;; (* Returns 6, the value of inner x *)
+    (* Outer x is still 5 and accessible after leaving the `let` expression `*)
+
+    ```
+
+The key difference is that overwriting replaces the binding at the top level, making the old value inaccessible. Shadowing only temporarily hides an outer binding within a nested scope, and the outer binding remains accessible once that scope is exited.  Thus, shadowing leaves both bindings intact making them completely independent.

@@ -1,0 +1,35 @@
+**Solution:**
+
+108
+
+
+**Explanation:**
+
+1. **`let x = 3 in ...`**: `x` is bound to 3.
+2. **`let r = ref (2 + x) in ...`**: `r` points to a location containing `2 + 3 = 5`.
+3. **`let f = ... in ...`**:  `f` is a function.  Crucially, the *inner* `let x = 5 in ...` and  `let y = 10 in ...` are local to `f`. The `x` and `r` in the `f` definition DON'T get overwritten by these outer bindings.
+4. **`let x = 5 in ...`**:  This line redefines `x` to 5 within the outer scope.
+5. **`let y = 10 in ...`**: `y` is bound to 10 in the outer scope.
+6. **`r := 2 ;`**: The value stored in the location referenced by `r` is changed to 2.  NOW `!r` is 2.
+7. **`f (!r * y)`**:
+	 * `!r * y` evaluates to `2 * 10 = 20`.
+	 * `f` is called with argument 20.
+     * Inside `f`:
+         * `y`  is 10 . Irrelevant.
+         * `x` is 3,  NOT 5. .
+         * `u` is bound to 20. 
+         * `y` was 10, already evaluated inside f.
+         * `y = x * !r` evaluates to `3 * 2 = 6`.
+         * `let r = ref 4 in` . r is a new binding inside f and has no impact on the outer r.
+         * `fun u -> u + x + y + !r` calculates  `20 + 3 + 6 + 4 = 33`.
+
+**Binding Stack During `f`'s execution (Important):**
+```
+y = 10
+x = 3
+r ----> 4
+f ----> u -> u + x + y + r
+```
+
+
+Therefore, the final result is 33.

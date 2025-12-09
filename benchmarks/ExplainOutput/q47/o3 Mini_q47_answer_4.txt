@@ -1,0 +1,11 @@
+Answer: b)
+
+Solution: 
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (s ^ " " ^ x)
+  in aux l ""
+
+Explanation:
+Option (b) uses a tail‐recursive helper that, when called with the input list and an accumulator, processes each element exactly once and appends it (with a space) at the right end of the accumulator. This preserves the left‐to‐right order. By contrast, (a) builds the result in reverse order, (c) reverses the input list (thus traversing it twice), and (d) is not tail recursive.

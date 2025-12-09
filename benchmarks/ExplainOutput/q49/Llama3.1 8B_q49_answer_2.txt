@@ -1,0 +1,19 @@
+**BeforeInlining**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = y + x in
+  fun f -> (f w) * y
+```
+
+**AfterInlining (substituting y by (f x))**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: When we substitute `y by (f x)` in the original expression, we get the new expression.

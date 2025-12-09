@@ -1,0 +1,11 @@
+Solution:
+ The correct completions are either
+  compose h g = fun f x -> h f (g f x)
+or
+  compose h g = fun f x -> g f (h f x)
+
+Explanation:
+When h = (fun f x -> f x) and g = (fun f x -> f (f x)), then
+ h f (g f x) computes f ((g f x)) = f (f (f x))
+and likewise g f (h f x) computes f (f (h f x)) = f (f (f x)).
+None of the alternatives (a)–(d) match these correctly‐typed forms.

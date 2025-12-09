@@ -1,0 +1,13 @@
+**Overshadowing Example**
+
+```ocaml
+let x = 10
+let open List let x = 20
+let y = List.hd [1]
+```
+
+**Overshadowing occurs:**
+
+In this example, we define `x` twice: once at the top level with value `10`, and again in the `open List` clause with value `20`. 
+
+`x` is now "overshadowed" by the `open List` clause, where `x` has priority over the global `x`. However, note that `y` still refers to the top-level `x` (value `10`).

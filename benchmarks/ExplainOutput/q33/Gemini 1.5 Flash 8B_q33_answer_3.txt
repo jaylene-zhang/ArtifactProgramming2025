@@ -1,0 +1,8 @@
+**Solution:** a)
+
+**Explanation:**
+
+Option a correctly defines `jump` as a tuple combining the jump type (`jump_typ`) with the number of revolutions (`revolutions`, an integer).  Options b and c are incorrect:
+
+* **b:**  Introduces an unnecessary `revolutions` type with `Double` and `Triple`.  This is redundant and doesn't allow for more than three rotations.  A simple integer is sufficient.
+* **c:**  This is a recursive definition that would create an infinite structure if not carefully constrained (which would be a problem for any actual use).  Using the simplest representation is better.

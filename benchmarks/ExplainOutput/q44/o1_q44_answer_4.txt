@@ -1,0 +1,5 @@
+Solution:  
+You must show that if the statement holds for a list l, then it also holds for x :: l for any element x.
+
+Explanation:  
+In structural induction on lists, after proving the base case (usually for the empty list), you assume the property holds for a smaller list (l) and then prove it holds when you add a new element (x) to the front of that list.

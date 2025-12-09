@@ -1,0 +1,9 @@
+The type of `shift` is:
+
+```ocaml
+val shift : (int ref * int ref) -> unit
+```
+
+### Explanation:
+- The function `shift` takes a pair of `int ref`s (mutable integer references). This is evident from how it performs operations like `!` (de-referencing) and `:=` (assignment) on the `x` and `y` components of the pair.
+- It does not return any value (its return type is `unit`) because all it does is mutate the values pointed to by the references inside the pair. There is no explicit return.

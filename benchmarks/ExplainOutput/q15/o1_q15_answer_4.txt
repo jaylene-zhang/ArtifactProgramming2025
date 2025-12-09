@@ -1,0 +1,20 @@
+Solution:  
+42  
+
+Explanation (concise):  
+• x = 3 → r = ref (2+3) = ref 5  
+• Inside f: y = 3 × 5 = 15; r shadows to ref 4; f = fun u → u + 3 + 15 + !r  
+• Then x shadows to 5, y shadows to 10; the original r := 2  
+• f is called with (!r * y) = 2 × 10 = 20  
+• In the closure, x=3, y=15, !r=4, so f(20) = 20 + 3 + 15 + 4 = 42  
+
+Binding stack view (top of stack at top):  
+• x = 5  
+• y = 10  
+• r = ref 2  
+• f → fun u → u + x + y + !r  
+   └─ x = 3  
+   └─ y = 15  
+   └─ r = ref 4  
+• r = ref 5  
+• x = 3  

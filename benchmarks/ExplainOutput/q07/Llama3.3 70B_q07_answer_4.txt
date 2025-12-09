@@ -1,0 +1,29 @@
+### Solution
+
+* Base Case: `w = Const y`
+  Proof:
+  count (Const y) x + 0 = (if x = y then 1 else 0) + 0 = if x = y then 1 else 0 =
+  if x = y then 1 + 0 else 0 = count' (Const y) x 0
+
+* Step Case: `w = Op (w1, w2)`
+  Induction Hypothesis: 
+  - count w1 x + acc = count' w1 x acc
+  - count w2 x + acc = count' w2 x acc
+  Proof:
+  count (Op (w1, w2)) x + acc = (count w1 x) + (count w2 x) + acc =
+  (count w1 x + (count w2 x + acc)) =
+  (count w1 x + count' w2 x acc) =
+  count' w1 x (count' w2 x acc) =
+  count' (Op (w1, w2)) x acc
+
+* Theorem 2 (Main Result) Proof: count w x = count w x + 0 = count' w x 0 (Using Theorem 1)
+
+### Explanation
+
+To prove that `count w x = count' w x 0`, we first prove a more general statement, `count w x + acc = count' w x acc`, using structural induction on `w`. 
+
+In the base case, `w` is a `Const y`, and we show that `count (Const y) x + acc = count' (Const y) x acc`.
+
+In the step case, `w` is an `Op (w1, w2)`, and we use the induction hypothesis to show that `count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc`.
+
+Finally, we use the result from Theorem 1 to prove Theorem 2, which states that `count w x = count' w x 0`.

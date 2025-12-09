@@ -1,0 +1,67 @@
+```ocaml
+(* Implement the collect_variables function. *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable x -> Variable_set.singleton x
+  | Conjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+
+(* Implement the eval function. *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x ->
+      (match Variable_map.find_opt x state with
+       | Some b -> b
+       | None -> raise (Unassigned_variable x))
+  | Conjunction (f1, f2) -> eval state f1 && eval state f2
+  | Disjunction (f1, f2) -> eval state f1 || eval state f2
+  | Negation f -> not (eval state f)
+
+
+(* Helper function for backtracking. *)
+let try_assign (truth_assignment : truth_assignment) (var : string) (b : bool) =
+  Variable_map.add var b truth_assignment
+
+
+(* Helper function to get all variables. *)
+let get_variables (formula : formula) : Variable_set.t = collect_variables formula
+
+
+(* Helper function to get a list of all variables. *)
+let get_variable_list (formula : formula) : string list =
+  Variable_set.elements (get_variables formula)
+
+
+(* Helper function for backtracking search. *)
+let rec find_satisfying_assignment_helper
+    (formula : formula)
+    (truth_assignment : truth_assignment)
+    (variables : string list) =
+  if variables = [] then
+    if eval truth_assignment formula then Some truth_assignment
+    else None
+  else
+    let current_variable = List.hd variables in
+    let rest_variables = List.tl variables in
+    try
+      let truth_assignment = try_assign truth_assignment current_variable true in
+      (match find_satisfying_assignment_helper formula truth_assignment rest_variables with
+       | Some satisfied_assignment -> Some satisfied_assignment
+       | None ->
+           let truth_assignment = try_assign truth_assignment current_variable false in
+           find_satisfying_assignment_helper formula truth_assignment rest_variables)
+    with Unassigned_variable _ -> None
+
+
+(* Implement the find_satisfying_assignment function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment option =
+  match
+    find_satisfying_assignment_helper formula Variable_map.empty (get_variable_list formula)
+  with
+  | Some truth_assignment -> Some truth_assignment
+  | None -> None
+```

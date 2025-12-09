@@ -1,0 +1,66 @@
+### **Q4.1**
+
+**Induction Hypothesis:**
+For all hands `h` and all accumulators `acc`, 
+`add_up h + acc = add_up_tr h acc`.
+
+---
+
+**Base Case:**
+Let `h = Empty`.
+
+- `add_up Empty = 0`
+- `add_up_tr Empty acc = acc`
+
+Thus, `add_up Empty + acc = 0 + acc = acc = add_up_tr Empty acc`.
+
+The base case holds.
+
+---
+
+**Step Case:**
+Let `h = Hand(c, h')`. Assume the induction hypothesis holds for `h'`, i.e.,
+`add_up h' + acc = add_up_tr h' acc`.
+
+We must prove that:
+`add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc`.
+
+Expanding both sides:
+
+1. Left-hand side:
+   `add_up (Hand(c, h')) + acc = (1 + add_up h') + acc = 1 + (add_up h' + acc)`.
+
+2. Right-hand side:
+   `add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc)`.
+
+By the induction hypothesis (`add_up h' + acc = add_up_tr h' acc`), we know:
+`add_up h' + acc = add_up_tr h' acc`.
+
+Thus, substituting this into the left-hand side:
+
+`1 + (add_up h' + acc) = 1 + add_up_tr h' acc`.
+
+By the definition of `add_up_tr` for `Hand(c, h')`:
+`1 + add_up_tr h' acc = add_up_tr (Hand(c, h')) acc`.
+
+Therefore, both sides are equal, and the step case holds.
+
+---
+
+**Q4.2**
+
+Theorem 2: For all hands `h`, `add_up h = add_up_tr h 0`.
+
+**Proof:**
+Set `acc = 0` in Theorem 1.
+
+From Theorem 1, we know:
+`add_up h + acc = add_up_tr h acc`.
+
+Substituting `acc = 0`, we have:
+`add_up h + 0 = add_up_tr h 0`.
+
+This simplifies to:
+`add_up h = add_up_tr h 0`.
+
+Thus, Theorem 2 is proven.

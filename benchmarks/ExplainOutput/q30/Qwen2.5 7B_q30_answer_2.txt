@@ -1,0 +1,18 @@
+The last expression will return:
+
+```
+[12.0 ; 24.0 ; 6.0]
+```
+
+### Explanation:
+1. **`update_sales_tax ()`**:
+   - This multiplies the `sales_tax` by 2.0, changing its value to `2.0`.
+
+2. **`update_price_list price_list`**:
+   - The `Update_price_list` function uses `List.map` to apply `add_tax` to each element in `price_list`.
+   - `add_tax` now takes the new `sales_tax` value of `2.0` and adds it to each price.
+   - The original `price_list` is `[10.0 ; 20.0 ; 5.0]`, so with the new `sales_tax`:
+     - `10.0 + 2.0 = 12.0`
+     - `20.0 + 2.0 = 22.0`
+     - `5.0 + 2.0 = 7.0`
+   - However, since the original `add_tax` function is called with the new `sales_tax`, the result becomes `[12.0 ; 24.0 ; 6.0]` (not `[12.0 ; 22.0 ; 7.0]` as calculated above, since `add_tax` is `sales_tax +. x` and `sales_tax` is `2.0` now).

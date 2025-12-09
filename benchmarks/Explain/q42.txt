@@ -1,0 +1,1 @@
+We want to use rev_tl l acc to compute the reverse of a list. How do we need to initialize acc?

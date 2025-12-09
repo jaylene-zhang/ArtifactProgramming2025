@@ -1,0 +1,8 @@
+1) For blank 1 we should write: `f (Stream.hd s) a`.
+
+2) For blank 2 we should write: `fold f (f (Stream.hd s) a) (Stream.tl s)`.
+
+**Explanation:**
+1) For `blank 1`, we need to apply the folding function `f` to the head of the stream (`Stream.hd s`) and the accumulated value `a`. This produces the first element of the output stream.
+
+2) For `blank 2`, we recursively call `fold` on the tail of the stream (`Stream.tl s`) with the new accumulated value. The new accumulated value is obtained by applying `f` to the head of the input stream and the previous accumulated value. This allows us to keep folding over the stream while retaining the accumulation logic.

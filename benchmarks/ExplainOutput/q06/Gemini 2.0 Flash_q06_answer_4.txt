@@ -1,0 +1,11 @@
+**Result:**
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> w * 2 + 2 + y * w
+```
+
+**Explanation:**
+
+We substitute `x` with `w * 2` only within the scope of the `fun y -> ...` expression because the `x` inside that function is the one defined as `let x = w * 2 in`. The outer `x` is shadowed by the redefinition of `w`.

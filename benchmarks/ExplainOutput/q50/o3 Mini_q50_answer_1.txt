@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: Option (a) builds the continuation as (fun r -> cont (f x r)), which correctly produces fold_right f (x :: xs) b = f x (fold_right f xs b) in a tail‐recursive manner. The others either reverse the arguments or misapply the continuation.

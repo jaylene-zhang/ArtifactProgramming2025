@@ -1,0 +1,16 @@
+**No**
+
+The given implementation of `add_ack` computes `ackermann x` more than once. This is because `ackermann x` is recomputed for each element in the list. To fix this, `ackermann x` should be computed once and stored in a variable, like so:
+
+```ocaml
+let add_ack x l =
+  let ack_x = ackermann x in
+  let rec add_ack_aux l =
+    match l with
+    | [] -> []
+    | y::ys -> (ack_x + y) :: add_ack_aux ys
+  in
+  add_ack_aux l
+```
+
+This revised version computes `ackermann x` only once, storing the result in the variable `ack_x`, and then uses this precomputed value in the recursive `add_ack_aux` function.

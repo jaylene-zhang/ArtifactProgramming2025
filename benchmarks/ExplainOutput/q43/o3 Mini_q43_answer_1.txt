@@ -1,0 +1,3 @@
+Solution: No; we must prove a generalized statement.
+
+Explanation: Since rev_tl is defined with an accumulator, the simple claim length (rev_tl l []) = length l isn't strong enough for induction. Instead, we prove that for any accumulator acc, length (rev_tl l acc) = length l + length acc. Then, setting acc to [] gives the desired result.

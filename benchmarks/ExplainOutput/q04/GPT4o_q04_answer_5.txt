@@ -1,0 +1,19 @@
+**Answer:** **1 and 4** are the correct implementations.
+
+**Explanation:**
+
+- **Implementation 1:** 
+  - The function computes `prime_fact x` once and stores it in the variable `p`.
+  - The recursive function `test` checks `p` against the list elements. Since `prime_fact x` is precomputed, it is computed only once.
+
+- **Implementation 2:** 
+  - `prime_fact x` is computed every time `y = prime_fact x` is evaluated in the recursive calls.
+  - This results in multiple unnecessary computations of `prime_fact x`.
+
+- **Implementation 3:** 
+  - `prime_fact x` is computed every time `(fun e -> e = prime_fact x)` is applied to each element of the list.
+  - This results in multiple calls to `prime_fact x`.
+
+- **Implementation 4:** 
+  - The function precomputes `prime_fact x` and stores it in `p`.
+  - The `List.exists` function checks `p` against each element in the list, ensuring `prime_fact x` is computed only once.

@@ -1,0 +1,19 @@
+Solution:
+------------------------------------------------------
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c)
+               (add: 'c -> 'c list -> 'c list)
+               (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+------------------------------------------------------
+
+Explanation:
+• In zip, l1 is of type 'a list, l2 of type 'b list, and the return type is ('a * 'b) list.
+• In zipper, comb combines an 'a and a 'b into a 'c, add inserts a 'c into a 'c list, and thus l1: 'a list, l2: 'b list with a return type of 'c list.
+• The recursive case applies add to (comb x y) and the recursive call result.

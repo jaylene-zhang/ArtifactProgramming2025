@@ -1,0 +1,36 @@
+let string_explode (s : string) : char list =
+  List.init (String.length s) (String.get s)
+
+let string_implode (l : char list) : string =
+  List.fold_right (fun c acc -> String.make 1 c ^ acc) l ""
+
+let open_account (pass: password) : bank_account =
+  let current_pass = ref pass in
+  let balance = ref 0 in
+  {
+    update_pass = (fun old_p new_p ->
+      if !current_pass = old_p then
+        current_pass := new_p
+      else
+        raise wrong_pass
+    );
+    retrieve = (fun p amt ->
+      if !current_pass = p then (
+        if amt < 0 then raise negative_amount
+        else if !balance < amt then raise not_enough_balance
+        else balance := !balance - amt
+      )
+      else raise wrong_pass
+    );
+    deposit = (fun p amt ->
+      if !current_pass = p then (
+        if amt < 0 then raise negative_amount
+        else balance := !balance + amt
+      )
+      else raise wrong_pass
+    );
+    show_balance = (fun p ->
+      if !current_pass = p then !balance
+      else raise wrong_pass
+    );
+  }

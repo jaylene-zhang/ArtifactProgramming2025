@@ -1,0 +1,38 @@
+Solution: (1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation:
+• c is initialized as ref 0.  
+• l becomes List.rev [1;2;3] = [3;2;1].  
+• observe returns !c (the global c).  
+• x is set to 1.  
+• inc, defined as fun x -> c:= !c+1; x+1, is mapped over l:  
+ – inc 3: global c becomes 1; returns 4.  
+ – inc 2: global c becomes 2; returns 3.  
+ – inc 1: global c becomes 3; returns 2.  
+ Thus, ml = [4;3;2].  
+• inc’ is defined in an inner let that creates a new local c (ref 0) and a new x = x+1 = 2. Its function is fun y -> (local c:= !local c+1; !local c + y + 2).  
+• Mapping inc’ over l ([3;2;1]):  
+ – For 3: local c becomes 1; returns 1+3+2 = 6.  
+ – For 2: local c becomes 2; returns 2+2+2 = 6.  
+ – For 1: local c becomes 3; returns 3+1+2 = 6.  
+ Thus, ml’ = [6;6;6].  
+• Finally, observe () returns !global c, which is 3, and x remains 1.  
+The final tuple is (x, observe (), ml, ml’) = (1, 3, [4; 3; 2], [6; 6; 6]).
+
+Binding Stack Diagram:
+----------------------------------
+Global Scope:
+ c    → ref 0   (updated to ref 3 after map inc)
+ l    → [3;2;1]
+ observe → () -> !c      (captures global c)
+ x    → 1
+ inc  → fun x -> c:= !c + 1; x+1   (uses global c)
+ ml   → [4;3;2]   (result of List.map inc l)
+
+Inner Scope (for inc’):
+ local c  → ref 0
+ local x  → x + 1 = 2  (captures outer x = 1)
+ inc’ → fun y -> local c:= !local c+1; !local c + y + 2
+ ml’ → [6;6;6]   (result of List.map inc’ l)
+----------------------------------
+Thus, the final result is (1, 3, [4; 3; 2], [6; 6; 6]).

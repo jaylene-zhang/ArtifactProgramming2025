@@ -1,0 +1,31 @@
+Let me determine if each implementation correctly produces a function (int -> int) -> int -> int that fixes the lower bound at 0 and uses (fun x -> x + 1) as the increment function.
+
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+This is correct.
+
+Analysis:
+- curry (sumSeries f) has type int * int -> int -> int
+- curry (sumSeries f) 0 has type int -> int -> int
+- swap (curry (sumSeries f) 0) has type int -> int -> int -> int
+- swap (curry (sumSeries f) 0) (fun x -> x + 1) has type int -> int
+This correctly implements sum_from_zero.
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+This is incorrect.
+
+Analysis:
+- sumSeries f 0 is ill-typed because sumSeries expects a tuple (int * int) as its second argument
+- The expression attempts to pass 0 directly to sumSeries f, which doesn't match the function type
+
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+This is incorrect.
+
+Analysis:
+- swap (sumSeries f) has type int * int -> int -> int
+- swap (sumSeries f) (fun x -> x + 1) has type int * int -> int
+- curry (swap (sumSeries f) (fun x -> x + 1)) has type int -> int -> int
+- curry (swap (sumSeries f) (fun x -> x + 1)) 0 has type int -> int
+The result is correct, but the bounds parameter order is wrong - this would fix the increment function and upper bound, not the lower bound.

@@ -1,0 +1,63 @@
+type nat = Z | S of nat
+
+(* TODO:  Implement {!q1a_nat_of_int} using a tail-recursive helper. *)
+let rec q1a_nat_of_int (n : int) : nat =
+  let rec helper acc x =
+    if x <= 0 then acc else helper (S acc) (x - 1)
+  in
+  helper Z n
+
+(* TODO:  Implement {!q1b_int_of_nat} using a tail-recursive helper. *)
+let rec q1b_int_of_nat (n : nat) : int =
+  let rec helper acc m =
+    match m with
+    | Z -> acc
+    | S t -> helper (acc + 1) t
+  in
+  helper 0 n
+
+(* TODO: Implement {!q1c_add}. *)
+let rec q1c_add (n : nat) (m : nat) : nat =
+  match n with
+  | Z -> m
+  | S t -> S (q1c_add t m)
+
+type exp =
+  | Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int
+
+(* TODO: Implement {!q2a_neg}. *)
+let q2a_neg (e : exp) : exp =
+  Times (Const (-1.), e)
+
+(* TODO: Implement {!q2b_minus}. *)
+let q2b_minus (e1 : exp) (e2 : exp) : exp =
+  Plus (e1, q2a_neg e2)
+
+(* TODO: Implement {!q2c_quot}. *)
+let q2c_quot (e1 : exp) (e2 : exp) : exp =
+  Times (e1, Pow (e2, -1))
+
+(* TODO: Implement {!eval}. *)
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Var -> a
+  | Const c -> c
+  | Plus (x, y) -> eval a x +. eval a y
+  | Times (x, y) -> eval a x *. eval a y
+  | Pow (x, n) -> (eval a x) ** float_of_int n
+
+(* TODO: Implement {!diff}. *)
+let rec diff (e : exp) : exp =
+  match e with
+  | Const _ -> Const 0.
+  | Var -> Const 1.
+  | Plus (x, y) -> Plus (diff x, diff y)
+  | Times (x, y) -> Plus (Times (diff x, y), Times (x, diff y))
+  | Pow (x, n) ->
+     Times
+       (Const (float_of_int n),
+        Times (Pow (x, n - 1), diff x))

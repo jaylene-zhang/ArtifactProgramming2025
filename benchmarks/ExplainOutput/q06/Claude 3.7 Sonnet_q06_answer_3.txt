@@ -1,0 +1,7 @@
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> (w * 2) + 2 + y * w
+```
+
+The inlining process replaces the variable `x` with its definition `w * 2` in the body of the function. Note that when we replace `x` with `w * 2`, we're using the value of `w` at the point where `x` is defined (i.e., the original `w` parameter), not the redefined `w` in the next line. This is an important aspect of lexical scoping in OCaml.

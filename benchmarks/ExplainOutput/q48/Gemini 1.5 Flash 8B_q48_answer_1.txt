@@ -1,0 +1,8 @@
+**Solution:**
+
+Efficiency and convenience.  Tail recursion optimization is a compiler feature, not enforced by the language.  Explicit continuation-passing style often leads to less readable code.
+
+
+**Explanation:**
+
+While continuations can be used to make any function tail-recursive, converting existing code to this style can significantly increase code complexity. The standard library prioritizes readability and maintainability over optimizing every function for tail-recursive execution.  The compiler's tail-recursion optimization is generally sufficient in most cases without the explicit overhead of continuations.

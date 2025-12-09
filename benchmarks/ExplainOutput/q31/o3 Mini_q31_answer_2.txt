@@ -1,0 +1,6 @@
+Solution: (a) and (d) compute prime_fact only once.
+
+Explanation: 
+• (a) binds prime_fact x to p before using it in List.exists.
+• (d) similarly computes prime_fact x once and uses p in a recursive helper.
+• In (b) and (c), prime_fact x is called every time an element is checked.

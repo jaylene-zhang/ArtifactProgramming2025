@@ -1,0 +1,3 @@
+Solution: The unused variables are r and the parameter x in function f.
+
+Explanation: r is defined (r = 2 * y) but never used afterward, and in f the parameter x is immediately shadowed by let x = 42, so the argument passed to f is never used.

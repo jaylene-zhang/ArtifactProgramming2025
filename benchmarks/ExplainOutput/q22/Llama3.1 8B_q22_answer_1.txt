@@ -1,0 +1,8 @@
+Unused variables:
+- y (in the inner function definition)
+- f (in the expression defining r)
+
+```ocaml
+let f = fun x -> (2 * y) * y
+```
+The inner function abstract over `y` which makes it immutable, however the outer `f` does not use it after the inner function is defined, so it is unnecessary to redefine `f` in the expression.

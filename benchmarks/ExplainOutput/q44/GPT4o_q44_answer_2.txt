@@ -1,0 +1,5 @@
+**Solution:**  
+In the step case, we need to assume the statement is true for a list of length \( n \) (inductive hypothesis) and prove that it holds for a list of length \( n+1 \).
+
+**Explanation:**  
+Induction involves two steps: the base case (proving the statement for an empty list or smallest case) and the step case. For the step case, you assume the statement holds for a list of a certain length \( n \) and show it follows logically for a list extended by one element (\( n+1 \)). This proves that the property holds for all list lengths by induction.

@@ -1,0 +1,9 @@
+Solution:
+
+```
+[20.0; 40.0; 10.0]
+```
+
+Explanation:
+
+`update_sales_tax ()` modifies the value of `sales_tax` to 2.0.  However, functions are not affected by changes to their environments after execution, so `update_price_list` still operates on the original value for `sales_tax`.  This results in  `price_list` being updated as [20.0; 40.0; 10.0].

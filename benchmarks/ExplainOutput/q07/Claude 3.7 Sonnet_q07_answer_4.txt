@@ -1,0 +1,26 @@
+# Solution: Theorem 1 Proof
+
+Base Case: w = Const y
+- If x = y:
+  count (Const y) x + acc = 1 + acc = count' (Const y) x acc
+- If x ≠ y:
+  count (Const y) x + acc = 0 + acc = acc = count' (Const y) x acc
+
+Step Case: w = Op(w1, w2)
+Induction Hypotheses:
+1. For any constant x and accumulator acc, count w1 x + acc = count' w1 x acc
+2. For any constant x and accumulator acc, count w2 x + acc = count' w2 x acc
+
+Proof:
+count (Op(w1, w2)) x + acc
+= (count w1 x + count w2 x) + acc
+= count w1 x + (count w2 x + acc)
+= count w1 x + count' w2 x acc  (by IH 2)
+= count' w1 x (count' w2 x acc) (by IH 1)
+= count' (Op(w1, w2)) x acc
+
+# Theorem 2 Proof
+For any word w and constant x:
+count w x = count w x + 0 = count' w x 0
+
+The first equality holds because adding 0 doesn't change the value. The second equality follows directly from Theorem 1 by setting acc = 0.

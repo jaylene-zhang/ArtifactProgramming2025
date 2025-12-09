@@ -1,0 +1,3 @@
+**[]**
+
+We need to initialize `acc` to an empty list `[]` because the function `rev_tl` is designed to build the reversed list by adding elements to the accumulator, and starting with an empty list ensures that each element is added in reverse order without any initial elements.

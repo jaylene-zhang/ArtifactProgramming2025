@@ -1,0 +1,43 @@
+(* Question 1: Tree Depth *)
+let rec depth_helper t k =
+  match t with
+  | Empty -> k 0
+  | Tree (l, _, r) -> depth_helper l (fun ll ->
+    depth_helper r (fun rl ->
+      k (1 + max ll rl))))
+
+let tree_depth_cps t =
+  depth_helper t (fun d -> d)
+
+(* Question 2: Finding Subtrees *)
+let rec find_subtree_cont prefix tree sc fc =
+  match (prefix, tree) with
+  | ([], Tree(l, _, r)) -> find_subtree_cont [] (Tree(l, _, r)) sc fc
+  | (_, Empty) -> fc prefix
+  | ((h::t), Tree(l, x, r)) when h = x -> find_subtree_cont t (Tree(l, x, r)) sc fc
+  | (_, _) -> fc prefix
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    find_subtree_cont ls tree sc fc
+  in
+  helper ls tree (fun() -> None) (fun() -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+let rec add_cps tokens sc fc =
+  match tokens with
+  | [] -> fc []
+  | Token("(" :: Token("Plus" ::子表达式1 :: 子表达式2 ::子表达式的余下部分) as rest) ->
+      add_cps (子表达式1 :: 子表达式2 :: 子表达式的余下部分) (fun() -> Plus(sc (Some(子表达式1)), sc (Some(子表达式2)))) fc
+  | Token("(" :: Token("Minus" ::子表达式1 :: 子表达式2 ::子表达式的余下部分) as rest) ->
+      add_cps (子表达式1 :: 子表达式2 :: 子表达式的余下部分) (fun() -> Minus(sc (Some(子表达式1)), sc (Some(子表达式2)))) fc
+  | Token("(" :: Token("Const" ::子表达式) as rest) ->
+      let v = int_of_string (String.sub (String.of_list子表达式) 6 (String.length子表达式 - 6)) in
+      add_cps (子表达式的余下部分) (fun() -> Const(sc v)) fc
+  | _ -> fc (None)
+
+let parser_cps t success failure =
+  add_cps t success failure
+
+(* 子表达式1, 子表达式2 是解析常量或更深层次的表达式得到的结果 *)
+(* 子表达式的余下部分 是解析剩余的token得到的结果 *)

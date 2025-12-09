@@ -1,0 +1,3 @@
+Solution: acc should be initialized to the empty list [].
+
+Explanation: The function rev_tl is likely a tail-recursive version of list reversal that builds the reversed list in the accumulator parameter. When we start, the accumulator should be empty since we're building up the reversed list from scratch. As rev_tl processes each element of the original list, it adds them to the front of the accumulator, eventually producing the reversed list.

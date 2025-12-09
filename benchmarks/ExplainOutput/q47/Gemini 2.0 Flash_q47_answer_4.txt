@@ -1,0 +1,10 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   **Why option a is incorrect:** The concatenation `x ^ " " ^ s` prepends the current string to the accumulator, resulting in reversed order.
+*   **Why option b is incorrect:** Although the concatenation order is correct (`s ^ " " ^ x`), it adds a leading space at the beginning of the result. " i feel great".
+*   **Why option c is correct:** It reverses the list first (`reverse l`) and then prepends to the front of the accumulator, thus, in the end, giving the correct result and order. Reversing the list once ensures single traversal.
+*   **Why option d is incorrect:** This is not tail-recursive because after the recursive call `concat xs`, there's still the concatenation operation `x ^ " " ^ (...)` to be performed. This function also cause the program to traverse through all the function and keeping it in the stack before evaluation it, which leads to overflow when the list gets too big.

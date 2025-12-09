@@ -1,0 +1,7 @@
+### Answers:
+
+a) **False**: While `rev1` has a shorter definition, its time complexity is actually worse than `rev2` due to the use of `@`, which has a time complexity of O(n) where n is the length of the list on the left-hand side.
+
+b) **True**: The time complexity of `@` depends on the length of its first argument, not its second argument. However, since `rev1` uses `@` in a recursive manner, its overall time complexity is O(n^2) due to the repeated concatenations. On the other hand, `rev2` has a time complexity of O(n) because `::` is a constant-time operation.
+
+c) **True**: `rev2` is indeed faster than `rev1` because `go` accumulates the reversed list using `::`, which is a constant-time operation, resulting in a time complexity of O(n). This is in contrast to `rev1`, which has a time complexity of O(n^2) due to the use of `@`.

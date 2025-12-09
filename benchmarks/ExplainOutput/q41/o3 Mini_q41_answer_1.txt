@@ -1,0 +1,3 @@
+Solution: ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c.
+
+Explanation: The tail-recursive version uses continuation-passing style. Instead of returning the accumulated result directly as in the ordinary fold_right (type: ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b), it takes an extra continuation argument (of type 'b -> 'c) to eventually produce a result of type 'c'.

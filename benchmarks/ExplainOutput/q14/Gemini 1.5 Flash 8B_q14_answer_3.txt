@@ -1,0 +1,41 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed.  The compiler can optimize tail-recursive functions to use a constant amount of stack space, preventing stack overflow errors with deeply nested calls.  Non-tail-recursive calls require the compiler to store information about the rest of the function's work on the call stack, potentially leading to stack overflow for large inputs.
+
+
+**Examples:**
+
+**Tail-recursive:**
+
+```ocaml
+let rec factorial_tailrec n acc =
+  if n = 0 then acc
+  else factorial_tailrec (n - 1) (n * acc);;
+```
+
+*Explanation:* The recursive call `factorial_tailrec (n - 1) (n * acc)` is the *very last* operation in the function.  The compiler can directly calculate the result of the recursive call and assign it to `acc`, avoiding the need to store intermediate results on the stack.
+
+**Non-tail-recursive:**
+
+```ocaml
+let rec factorial_not_tailrec n =
+  if n = 0 then 1
+  else n * factorial_not_tailrec (n - 1);;
+```
+
+*Explanation:*  The multiplication `n * ...` is *after* the recursive call `factorial_not_tailrec (n-1)`.  The function needs to be immediately ready to use the result of the multiplication to return a final solution. That must be stored temporarily in memory.
+
+**Crucial Distinction:**  The crucial difference lies in the *order* of operations. In the tail-recursive case, the recursive call is the last action performed, allowing the compiler to re-use the call stack memory. In the non-tail-recursive case, other operations follow the recursive call therefore it cannot be easily optimized.
+
+**Another Non-tail-recursive example using a helper function:**
+
+
+```ocaml
+let rec factorial_helper n acc =
+  if n = 0 then acc
+  else factorial_helper (n-1) (n * acc);;
+
+let factorial n = factorial_helper n 1;;
+
+```
+Although a helper function is used here, it is still  non-tail recursive because the multiplication occurs after the recursive call in `factorial_helper`.  The call to `factorial_helper` is important to understand that even if the recursive call is last in the helper functions, if you re-write the expression without a helper and calculate it, you see the recursive call it still not last. The call to the helper function is still part of the initial function, and the last operation in the helper function depends on the recursive call for the calculation.

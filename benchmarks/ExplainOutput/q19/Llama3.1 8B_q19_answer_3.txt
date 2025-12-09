@@ -1,0 +1,14 @@
+### Solution
+
+```ocaml
+let rec helper n acc =
+  if n mod 2 = 1 then acc
+  else helper (n / 2) (acc + 1)
+let max_two_factor n = helper n 0
+```
+
+### Explanation
+
+The original implementation is not tail-recursive because it doesn't call itself as its last action. The `helper` function returns the result of `2 * helper (n / 2)` which creates a new stack frame every recursive call. This can cause a stack overflow for large inputs.
+
+In the corrected version, we introduce an accumulator `acc` to keep track of the power of two. We return the accumulator when `n` is odd, so the function calls itself as its last action, making it tail-recursive.

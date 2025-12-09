@@ -1,0 +1,12 @@
+```
+Solution:
+[21.; 41.; 11.]
+```
+
+```
+Explanation:
+
+1. `update_sales_tax ()`: This modifies the `sales_tax` variable to 2.0.  Crucially, this *only* changes the internal variable, it doesn't change `price_list`.
+
+2. `update_price_list price_list`: The `price_list` will be updated by applying the `add_tax` function to each element, using the *current* value of `sales_tax`, now 2.0, not the initial 1.0.  Therefore, the list elements will be updated by adding 2 to their previous values.
+```

@@ -1,0 +1,3 @@
+(0 , 1)
+
+The base case is incorrect. When `n` is 0, the function should return 0, but it currently only handles the case when `n` is 1. Specifically, the provided implementation calculates the triangle number correctly for `n >= 1`, but it's missing the base case for `n = 0`, which should return 0. The current base case `n = 1` returns 1 correctly and the recursive step `n + triangle (n-1)` also does not contain a bug.

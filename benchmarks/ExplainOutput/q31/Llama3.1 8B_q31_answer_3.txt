@@ -1,0 +1,30 @@
+Here are the implementations with analysis:
+
+**a) let check_prime_factors x =**
+```
+let p = prime_fact x in List.exists (fun e -> e = p)
+```
+Explanation: This implementation computes `prime_fact x` every time the function is invoked. The `List.exists` operation does not retain the memoized value of `p`, so it will re-evaluate `prime_fact x` for every element in the input list.
+
+**b) let check_prime_factors x l =**
+```
+List.exists (fun e -> e = prime_fact x) l
+```
+Explanation: Similar to (a), this implementation also recomputes `prime_fact x` for every invocation.
+
+**c) let check_prime_factors x l = match l with**
+```
+| [] -> false
+| y::ys -> y = prime_fact x || check x ys
+```
+Explanation: This implementation avoids recomputing `prime_fact x` by storing its value in the `y` pattern of the match. The value is then reused in the recursive call to `check x ys`.
+
+**d) let check_prime_factors x l =**
+```
+let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+```
+Explanation: This implementation is identical to (c), but uses a local function `test` to perform the recursive call, which makes it harder to spot the good behavior.

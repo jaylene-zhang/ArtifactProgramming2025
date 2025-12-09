@@ -1,0 +1,5 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+Explanation: The tail-recursive version of `fold_right` has a similar type to the regular `fold_right`. Both take a function, a list, and an accumulator, but the tail-recursive version avoids building intermediate lists or deep recursion by processing the list from the end to the beginning in a linear, tail-recursive manner. This makes the function’s type remain the same, just with an emphasis on the need for tail-recursion optimization.

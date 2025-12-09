@@ -1,0 +1,24 @@
+**Before inlining:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = y + x in
+  fun f -> (f w) * y
+```
+
+**After inlining `y` with `(f x)`:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Result: `(f w) * (f x)`**
+
+
+### Explaination:
+
+After inlining `y` with `(f x)`, we substitute every occurrence of `y` with `(f x)`. Therefore, the expression `y + x` becomes `(f x) + x` and the original `y` is replaced with `(f x)` in the final multiplication.

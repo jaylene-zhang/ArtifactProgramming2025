@@ -1,0 +1,3 @@
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+
+The tail-recursive version of fold_right would have the type ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b, which is the same as the regular fold_right. The key difference is in implementation, not type signature. The tail-recursive version would use an accumulator internally to avoid building up a call stack, but the function's interface remains unchanged from the user's perspective.

@@ -1,0 +1,20 @@
+**Inlined Program:**
+```
+let foo y =
+  let x = y + 3 in
+  let w = x in
+  fun y -> (y + 3) + 2 + (y + 3) * x
+```
+**Explanation:** We have inlined the expression `y + 3` where it was used twice in the program, replacing `x` with `(y + 3)`. Note that the new `x` (which is not the same as the original) is still bound to `y + 3` in the `let` expression.
+
+However, to fully inline, we should also substitute `x` with `(y + 3)` in the last occurrence of `x` within the `fun y -> ...` expression.
+
+Let's assume you want a more advanced optimizer with multiple passes. 
+ 
+**Multiple Inlining**
+```
+let foo y =
+  let x = y + 3 in
+  let w = x in
+  let yloc = y in (yloc + 3) + 2 + (yloc + 3) * x
+```

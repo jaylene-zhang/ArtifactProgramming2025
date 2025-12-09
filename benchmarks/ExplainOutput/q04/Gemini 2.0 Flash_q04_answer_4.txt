@@ -1,0 +1,13 @@
+**Solution:**
+
+1 and 4
+
+**Explanation:**
+
+*   **Option 1:** `let check_prime_factors x l = let p = prime_fact x in ...` This computes `prime_fact x` and stores the result in `p` before testing whether any of the list elements equal this result. This is efficient because `prime_fact x` is only evaluated once.
+
+*   **Option 4:**`let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)` Similar to option 1, this first computes `prime_fact x` storing it in `p`, before using `List.exists` to efficiently test the list for the presence of p.
+
+*   **Option 2:** `let check_prime_factors x l = match l with ...` This calls `prime_fact x` in each recursive call to `check x ys`, thus recomputing it potentially many times.
+
+*   **Option 3:** `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l` Here, `prime_fact x` will be called in each iteration of the list by `List.exists`, recomputing the same result many times.

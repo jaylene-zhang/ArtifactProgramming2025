@@ -1,0 +1,10 @@
+Solution:
+let double x =
+  let x₁ = 2 in
+  let w = (f x) + x₁ in
+  fun f₁ -> (f₁ w) * (f x)
+
+Explanation:
+Substituting y by (f x) naively would yield
+  let double x = let x = 2 in let w = (f x) + x in fun f -> (f w) * (f x)
+but then the free x and f in (f x) get inadvertently captured by the inner bindings of x and of f. To avoid this capture, we rename the inner bound variables (x to x₁ and f to f₁). The final result is as shown.

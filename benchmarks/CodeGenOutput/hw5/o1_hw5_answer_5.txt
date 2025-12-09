@@ -1,0 +1,82 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Tree Depth *)
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree(l, _, r) ->
+      depth_helper l (fun dl ->
+      depth_helper r (fun dr ->
+        sc (1 + max dl dr)))
+  in
+  depth_helper t (fun d -> d)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls t sc fc =
+    match ls, t with
+    | [], _ -> sc t
+    | _, Empty -> fc ()
+    | h :: rt, Tree(l, x, r) ->
+      if x = h then
+        helper rt l sc (fun () ->
+        helper rt r sc fc)
+      else
+        helper ls l sc (fun () ->
+        helper ls r sc fc)
+  in
+  helper ls tree (fun subtree -> Some subtree) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+type token = 
+  | INT of int
+  | PLUS
+  | TIMES
+  | LPAREN
+  | RPAREN
+
+type expr = 
+  | Const of int
+  | Plus of expr * expr
+  | Times of expr * expr
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let rec parse_expr tokens fc sc =
+  parse_term tokens fc (fun tokens_left e1 ->
+  parse_expr' e1 tokens_left fc sc)
+
+and parse_expr' e1 tokens fc sc =
+  match tokens with
+  | PLUS :: rest ->
+    parse_term rest fc (fun next e2 ->
+    parse_expr' (Plus(e1, e2)) next fc sc)
+  | _ -> sc tokens e1
+
+and parse_term tokens fc sc =
+  parse_factor tokens fc (fun tokens_left e1 ->
+  parse_term' e1 tokens_left fc sc)
+
+and parse_term' e1 tokens fc sc =
+  match tokens with
+  | TIMES :: rest ->
+    parse_factor rest fc (fun next e2 ->
+    parse_term' (Times(e1, e2)) next fc sc)
+  | _ -> sc tokens e1
+
+and parse_factor tokens fc sc =
+  match tokens with
+  | INT n :: rest -> sc rest (Const n)
+  | LPAREN :: rest ->
+    parse_expr rest fc (fun after e ->
+      match after with
+      | RPAREN :: after_r -> sc after_r e
+      | _ -> fc ())
+  | _ -> fc ()
+
+let parser_cps t =
+  parse_expr t
+    (fun () -> None)
+    (fun _ expr -> Some expr)

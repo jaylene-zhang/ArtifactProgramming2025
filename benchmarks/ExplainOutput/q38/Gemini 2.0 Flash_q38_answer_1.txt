@@ -1,0 +1,24 @@
+**Solution:**
+
+c) `h (g (f x))`
+
+**Explanation:**
+
+The goal is to apply `g` to `f` and `x` *first*, and then apply `h` to the *result* of that application.  Option `c` achieves this:
+
+*   `g (f x)`: Applies `g` to `f` and `x`, resulting in some `'a`.
+*   `h (...)`: Applies `h` to the result of `g (f x)`.
+
+Let's trace through the example composition:
+
+`compose (fun f x -> f x) (fun f x -> f (f x))`
+
+With option (c), this expands to:
+
+`fun f x -> (fun f x -> f x) ((fun f x -> f (f x)) (f x))`
+
+Evaluating the inner application `(fun f x -> f (f x)) (f x)` we get `f (f x)`,
+
+Evaluating the outer application `(fun f x -> f x) (f (f x))` we get `f (f (f x))`, which is the required answer.
+
+The other options are incorrect because they either apply `f` outside the context of `g` and `h`, or they don't apply the functions in the correct order to achieve the desired repeated application of `f`.

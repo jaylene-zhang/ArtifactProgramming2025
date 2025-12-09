@@ -1,0 +1,14 @@
+For part A of Pascal's Triangle:
+
+1) For blank 1 in line 2 we should write:
+```
+ones
+```
+
+2) For blank 2 in line 3 we should write:
+```
+map2 (map psums) pascal
+```
+
+Explanation: 
+The first diagonal of Pascal's triangle is just the stream of ones, which explains blank 1. For blank 2, we need to create the next diagonal by taking the partial sums of the current diagonal. We apply the `psums` function to each stream in `pascal` using `map`, which gives us the next diagonal in the sequence.

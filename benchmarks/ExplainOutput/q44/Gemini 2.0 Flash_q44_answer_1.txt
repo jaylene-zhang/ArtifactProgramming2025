@@ -1,0 +1,10 @@
+**Solution:**
+
+You need to prove that if the statement holds for a list `l`, then it also holds for a list `h :: l`, where `h` is an element and `::` is the cons operator.
+
+**Explanation:**
+
+In inductive proofs about lists, you have two main cases:
+
+1.  **Base Case:** Prove the statement holds for the empty list (`[]`).
+2.  **Inductive Step:** Assume the statement holds for an arbitrary list `l` (this is the *inductive hypothesis*). Then, you must prove that the statement also holds for a list created by adding an element `h` to the beginning of `l` (i.e., `h :: l`). This shows that if the property holds for a list, it also holds for a slightly larger list, extending the property to all lists.

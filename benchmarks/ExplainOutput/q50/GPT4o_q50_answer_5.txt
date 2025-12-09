@@ -1,0 +1,29 @@
+**Solution:**  
+Correct implementation(s) are:  
+**a) and c)**  
+
+---
+
+**Explanation:**  
+1. For `fold_right` implementation: The crucial aspect is maintaining the correct order of application of elements from the list. As `fold_right` processes the list from right to left, a proper continuation allows this evaluation order. 
+2. **Option a:**  
+   - The continuation is updated as `fun r -> cont (f x r)`.  
+   - This correctly applies `f` to the current element `x` and the result of the recursive continuation, making it tail-recursive and correct.  
+
+3. **Option b:**  
+   - The continuation is updated as `fun r -> f (cont r) x`.  
+   - This does not respect the expected order `(x, r)` of `f` arguments, making it incorrect.  
+
+4. **Option c:**  
+   - The continuation is updated as `fun r -> f x (cont r)`.  
+   - This correctly applies `f` to `x` and the result of the continuation, preserving the expected order. Hence, it is correct.  
+
+5. **Option d:**  
+   - The continuation is `fun r -> cont (f r x)`.  
+   - This reverses the argument sequence of `f`, making it incorrect for `fold_right`.  
+
+6. **Option e:**  
+   - The recursive call swaps the position of `xs` and `f`.  
+   - This breaks the function signature, making it invalid.  
+
+Thus, **a** and **c** are the valid, tail-recursive implementations of `fold_right`.

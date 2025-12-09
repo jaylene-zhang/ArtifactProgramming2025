@@ -1,0 +1,3 @@
+Answer: a)
+
+Explanation: Option (a) correctly defines the jump type as an enumeration of allowed jumps and uses an int for revolutions, which supports an arbitrary number of rotations. Options (b) and (c) are too restrictive and improperly defined.

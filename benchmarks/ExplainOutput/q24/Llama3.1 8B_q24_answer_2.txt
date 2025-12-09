@@ -1,0 +1,3 @@
+`'t * 't`
+
+The type `f` takes a tuple of type `'t * 't` and returns a value of type `'t`. The expression `f (a, b)` has type `'t`. Therefore, `f (f (a, b), f (b, a))` has type `'t * 't`.

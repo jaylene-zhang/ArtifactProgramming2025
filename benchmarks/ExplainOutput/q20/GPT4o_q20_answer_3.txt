@@ -1,0 +1,9 @@
+**Solution**: No, the test `triangle 0 == 0` will not pass this implementation.
+
+**Explanation**: The function does not have a base case for `n = 0`. When you call `triangle 0`, the code will attempt to compute `0 + triangle (-1)`, causing an infinite recursion and eventually a stack overflow. To fix this, you should add a base case for `n = 0`. The correct implementation would look like:
+
+```ocaml
+let rec triangle n =
+  if n = 0 then 0
+  else n + triangle (n - 1)
+```

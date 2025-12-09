@@ -1,0 +1,21 @@
+### Solution:
+The most general instantiation is:
+```
+'t = 'u
+'s = 'u
+```
+
+### Explanation:
+In the expression `f (f (a, b), f (b, a))`:
+1. `f` takes a pair of types `'t * 's` and produces a value of type `'u`.
+2. For `f (a, b)`, the input is of type `'t * 's` and produces output `'u`.
+   - Hence, `(a, b)` must be of type `'t * 's`, meaning `a: 't` and `b: 's`.
+
+3. For `f (b, a)`, the order is reversed, so it implies `b: 't` and `a: 's`.
+   - To satisfy both conditions, we deduce `'t = 's`.
+
+4. Substitute `'t = 's`, so the input `(f (a, b), f (b, a))` becomes a pair of type `'u * 'u`.
+   - `f` then produces a value of type `'u` using `'u * 'u` as input:
+     - This implies `'u * 'u` must match `'t * 's` (which simplifies to `'u * 'u`).
+
+Hence, the most general instantiation is `'t = 'u` and `'s = 'u`.

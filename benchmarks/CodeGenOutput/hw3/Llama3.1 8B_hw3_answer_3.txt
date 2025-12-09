@@ -1,0 +1,34 @@
+(* Question 1a: Church numeral to integer *)
+let to_int (n : int church) : int = 
+  let rec process_nat (n : nat) (z : int) (s : int -> int) : int = 
+    match n with 
+    | Z -> z
+    | S n' -> s (process_nat n' z s)
+  in
+  process_nat n 0 (fun x -> x + 1)
+
+(* Question 1b: Add two church numerals *)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  let rec process_nat (n : nat) (z : 'b) (s : 'b -> 'b) : 'b = 
+    match n with 
+    | Z -> z
+    | S n' -> s (process_nat n' z s)
+  in
+  fun z s -> process_nat n1 (process_nat n2 z s) s
+
+(* Question 1c: Multiply two church numerals *)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  let rec process_nat (n : nat) (z : 'b) (s : 'b -> 'b) : 'b = 
+    match n with 
+    | Z -> z
+    | S n' -> s (process_nat n' z s)
+  in
+  fun z s -> process_nat n2 (process_nat n1 z s) s
+
+(* Question 2a: Sum a list of church numerals *)
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun acc x -> add x acc) (zero : 'b church) l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> S (zero : nat)) (zero : nat) l

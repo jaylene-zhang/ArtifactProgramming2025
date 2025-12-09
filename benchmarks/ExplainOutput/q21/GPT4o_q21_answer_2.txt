@@ -1,0 +1,10 @@
+**Solution:**
+
+The unused variable in the expression is `r`.
+
+**Explanation:**
+
+- The variable `r` is defined as `2 * y` but is never used anywhere in the function `foo`.
+- The variable `f` is used, and its body uses `x` and `y`.
+- Inside the function `f`, the local variable `x` (shadowing the parameter `x`) is used.
+- Hence, only `r` is not utilized in the entire code.

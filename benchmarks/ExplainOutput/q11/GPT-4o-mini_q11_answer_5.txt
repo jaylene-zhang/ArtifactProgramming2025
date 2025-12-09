@@ -1,0 +1,23 @@
+### Answer
+
+1. For the `zip` function:
+   - `l1`: `'a list`
+   - `l2`: `'a list`
+   - Return type: `('a * 'a) list`
+
+2. For the `zipper` function:
+   - `comb`: `'a -> 'b -> 'c`
+   - `add`: `'a -> 'd list -> 'd list`
+   - `l1`: 'a list
+   - `l2`: 'b list
+   - Return type: 'c list
+
+### Explanation
+
+1. **`zip` Function**: 
+   - The function `zip` takes two lists of the same type (denoted by `'a`), and returns a list of pairs where each element from `l1` is paired with the corresponding element from `l2`. The type of the output is thus a list of tuples of type `('a * 'a)`.
+
+2. **`zipper` Function**:
+   - The `zipper` function is generalized. It uses `comb` to define how to combine elements of `l1` and `l2`, which can be of types `'a` and `'b`, producing type `'c`. The `add` function is used for adding elements to the result list, taking an element of type `'a` and a list of type `'d list`, producing a list of type `'d list`. The types for `l1` and `l2` remain lists of their corresponding types,'a list and 'b list respectively, and the return type will be a list of combined type `'c`. 
+
+The pattern matching within both functions ensures that an empty list returns an empty result, while the recursive calls allow for processing the list elements in pairs.

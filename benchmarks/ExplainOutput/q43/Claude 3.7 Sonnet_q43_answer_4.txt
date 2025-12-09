@@ -1,0 +1,12 @@
+No, this won't work.
+
+This statement is not suitable for induction because the second argument to rev_tl changes during the recursive calls. When proving by induction on l, you'd need to prove:
+
+Base case: length (rev_tl [] []) = length []
+Inductive step: length (rev_tl (x::xs) []) = length (x::xs)
+
+But the recursive call in rev_tl doesn't maintain the empty list as the second parameter. Instead, a better property to prove would be:
+
+length (rev_tl l acc) = length l + length acc
+
+This more general property accommodates the changing accumulator and can be proven by induction on l.

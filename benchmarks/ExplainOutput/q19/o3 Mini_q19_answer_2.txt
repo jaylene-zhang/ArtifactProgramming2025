@@ -1,0 +1,3 @@
+Solution: The code does compute the correct factor but is not tail recursive (and the max_two_factor call is off because helper takes only one argument).
+
+Explanation: The recursive call is made inside 2 * helper (n/2), so after returning you must multiply by 2, which prevents tail-call optimization. Also, max_two_factor is written as helper 1 n even though helper is defined with one parameter.

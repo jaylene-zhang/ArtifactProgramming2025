@@ -1,0 +1,7 @@
+**Solution:**
+
+`r`
+
+**Explanation:**
+
+The `r` bound within the inner `let` is a local shadowing of the parameter `r`.  The outer `r` is not used in the final expression `f r`.

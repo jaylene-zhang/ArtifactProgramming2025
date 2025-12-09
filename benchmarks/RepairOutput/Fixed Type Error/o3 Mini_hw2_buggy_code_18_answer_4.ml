@@ -1,0 +1,18 @@
+exception Not_implemented
+exception Invalid_test_case
+
+type nat = Z | S of nat
+type exp =
+  | Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int
+
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Var -> a
+  | Const c -> c
+  | Plus (x, y) -> (eval a x) +. (eval a y)
+  | Times (w, z) -> (eval a w) *. (eval a z)
+  | Pow (v, n) -> (eval a v) ** float_of_int n

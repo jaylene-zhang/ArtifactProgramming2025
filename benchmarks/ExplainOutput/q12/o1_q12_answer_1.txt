@@ -1,0 +1,25 @@
+Solution (Q4.1):
+--------------------------------
+Induction Hypothesis (IH):  
+For any hand h and accumulator acc, add_up h + acc = add_up_tr h acc.
+
+Proof (Structural Induction on h):  
+• Base Case (h = Empty):  
+  add_up Empty + acc = 0 + acc = acc  
+  add_up_tr Empty acc = acc  
+  ⇒ add_up Empty + acc = add_up_tr Empty acc  
+
+• Step Case (h = Hand(c, h')):  
+  Assume IH holds for h'. Then:  
+  add_up (Hand(c, h')) + acc  
+  = (add_up h' + 1) + acc       (definition of add_up)  
+  = (add_up h') + (1 + acc)  
+  = add_up_tr h' (1 + acc)     (by IH)  
+  = add_up_tr (Hand(c, h')) acc (definition of add_up_tr)  
+
+Solution (Q4.2):
+--------------------------------
+Theorem 2: For all hands h, add_up h = add_up_tr h 0.
+
+Proof:  
+By Theorem 1, add_up h + 0 = add_up_tr h 0. Since “+ 0” does nothing, add_up h = add_up_tr h 0.

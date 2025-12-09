@@ -1,0 +1,15 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 'd =
+    match xs , ys with
+    | [] , [] -> sc []
+    | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair x y)::r))
+    | _ , _ -> raise Error
+
+let zip_plus xs ys =
+    zippy xs ys (fun (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation: The types were determined by pattern matching the `zippy` function. `xs` and `ys` are lists of any type (`'a list` and `'b list`), `pair` is a function that takes two arguments of any types (`'a` and `'b`) and returns a value of any type (`'c`), and `sc` is a function that takes a list of `'c` and returns a value of any type (`'d`). The `zip_plus` function requires `x` and `y` to be integers or other types that support the `+` operator, but this constraint is not reflected in the `zippy` type because OCaml's type system cannot enforce it. The type of `zippy` will be more general than the uses of it. The return type of `zippy` ('d) depends on `sc`.

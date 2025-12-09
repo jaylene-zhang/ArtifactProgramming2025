@@ -1,0 +1,22 @@
+The correct implementations that compute the function `prime_fact` only once are:
+
+1. 
+```ocaml
+let check_prime_factors x l = let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+```
+
+4. 
+```ocaml
+let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p)
+```
+
+### Explanation:
+- Option 1 computes `prime_fact x` once and stores the result in `p`, which is then checked against each list in the provided list.
+- Option 4 also computes `prime_fact x` once and uses it in the `List.exists` function to check for existence in the list.
+
+Options 2 and 3 compute `prime_fact x` multiple times, which does not satisfy the requirement of computing it only once. Option 2 calls `prime_fact` repeatedly in the recursion, and option 3 calls it inside the `List.exists` function, thus evaluating it for each element.

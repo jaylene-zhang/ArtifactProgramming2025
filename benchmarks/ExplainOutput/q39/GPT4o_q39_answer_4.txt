@@ -1,0 +1,11 @@
+```ocaml
+let toInt f = f (fun x -> x + 1) 0
+```
+
+**Explanation:**
+1. `toInt` needs to reverse the transformation of `create n`, converting a Church numeral back to an OCaml integer.
+2. A Church numeral takes functions and applies them some number of times. Here, if you provide a function that increments an integer (e.g., `fun x -> x + 1`) and an initial value (`0`), the Church numeral function applies the increment function repeatedly to compute the integer representation.
+3. For example:
+   - `toInt (fun f x -> x)` applies `0` times → result is `0`.
+   - `toInt (fun f x -> f x)` applies `1` time → result is `1`.
+   - `toInt (fun f x -> f (f x))` applies `2` times → result is `2`.

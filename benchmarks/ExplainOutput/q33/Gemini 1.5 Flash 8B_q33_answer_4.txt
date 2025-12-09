@@ -1,0 +1,5 @@
+**Correct Answer:** a
+
+**Explanation:**
+
+Option a accurately models the relationship.  `jump_typ` defines the type of jump (Axel, Loop, etc.), and `revolutions` as an integer represents the number of rotations. Option b introduces an unnecessary enum (`Double`, `Triple`) within the `jump` type which is not needed to model the concept well. Option c would lead to a recursive enumeration which would not be ideal for easily representing various levels of jumps. Option a is the most straightforward and appropriate manner to represent revolutions as an integer corresponding to every possible jump. Option b unnecessarily overcomplicates the type because Doubles and Triples are already possible variations of the `revolutions` variable.

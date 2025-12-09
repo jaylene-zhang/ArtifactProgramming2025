@@ -1,0 +1,3 @@
+Solution: (0, Stack overflow error)
+
+Explanation: The function lacks a proper base case for n = 0 (or n ≤ 0), so calling triangle 0 leads to infinite recursion.

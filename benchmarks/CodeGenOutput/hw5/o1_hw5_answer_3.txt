@@ -1,0 +1,80 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+
+(* Question 1 *)
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun dl ->
+        depth_helper r (fun dr ->
+          sc (1 + max dl dr)
+        )
+      )
+  in
+  depth_helper t (fun d -> d)
+
+(* Question 2 *)
+let find_subtree_cps ls tree =
+  let rec helper ls t sc fc =
+    match t with
+    | Empty ->
+      if ls = [] then sc Empty else fc ()
+    | Tree (l, y, r) ->
+      if ls = [] then sc (Tree (l, y, r))
+      else match ls with
+      | x :: xs ->
+        if x = y then
+          if xs = [] then sc (Tree (l, y, r))
+          else helper xs l sc (fun () -> helper xs r sc fc)
+        else helper ls l sc (fun () -> helper ls r sc fc)
+  in
+  helper ls tree (fun subtree -> Some subtree) (fun () -> None)
+
+type token = INT of int | PLUS | TIMES | MINUS | LPAREN | RPAREN
+type expr = Const of int | Plus of expr * expr | Times of expr * expr | Neg of expr
+
+(* Question 3 *)
+let parser_cps t =
+  let rec parseE tokens fc sc =
+    parseT tokens fc (fun rem1 texpr ->
+      match rem1 with
+      | PLUS :: rem2 ->
+        parseE rem2 fc (fun rem3 eexpr ->
+          sc rem3 (Plus (texpr, eexpr))
+        )
+      | _ -> sc rem1 texpr
+    )
+  and parseT tokens fc sc =
+    parseF tokens fc (fun rem1 fexpr ->
+      match rem1 with
+      | TIMES :: rem2 ->
+        parseT rem2 fc (fun rem3 texpr ->
+          sc rem3 (Times (fexpr, texpr))
+        )
+      | _ -> sc rem1 fexpr
+    )
+  and parseF tokens fc sc =
+    match tokens with
+    | MINUS :: rem ->
+      parseF rem fc (fun rem2 fexpr ->
+        sc rem2 (Neg fexpr)
+      )
+    | _ ->
+      parseP tokens fc sc
+  and parseP tokens fc sc =
+    match tokens with
+    | INT n :: rem -> sc rem (Const n)
+    | LPAREN :: rem1 ->
+      parseE rem1 fc (fun rem2 expr ->
+        match rem2 with
+        | RPAREN :: rem3 -> sc rem3 expr
+        | _ -> fc ()
+      )
+    | _ -> fc ()
+  in
+  parseE t (fun () -> None) (fun rem expr ->
+    match rem with
+    | [] -> Some expr
+    | _ -> None
+  )

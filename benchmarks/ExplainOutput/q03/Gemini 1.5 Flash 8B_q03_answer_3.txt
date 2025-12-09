@@ -1,0 +1,41 @@
+**Solution:**
+
+`(1, 0, [2; 3; 4], [2; 5; 8])`
+
+
+**Explanation (Binding Stack Diagram):**
+
+1. **`let c = ref 0 in ...`:**  `c` is bound to a reference cell containing 0.
+
+2. **`let l = List.rev [1;2;3] in ...`:**  `l` is bound to the list `[3; 2; 1]`.
+
+3. **`let observe () = !c in ...`:** `observe` is a function that returns the current value of `c`.
+
+4. **`let x = 1 in ...`:** `x` is bound to 1.
+
+5. **`let inc x = c:= !c+1 ; x+1 in ...`:** `inc` is a function that increments `c` and then adds 1 to its argument.
+
+6. **`let ml = List.map inc l in ...`:** `ml` is a list created by applying `inc` to each element of `l`.  This updates the shared `c`.  Critically, each `inc` call increments `c` by 1 and then returns one more than the input.
+
+
+   - `inc 3` -> `c` becomes 1, returns 4
+   - `inc 2` -> `c` becomes 2, returns 3
+   - `inc 1` -> `c` becomes 3, returns 2
+   So `ml` becomes `[4; 3; 2]`.
+
+
+7. **`let inc’ = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x) in ...`:**  `inc'` is a function. Critically, *inner* `c` is a *new* reference cell; it's *not* the same `c` as `inc` used in `ml`! It will get reset to 0 again. `x` inside `inc'` refers to the *outer* `x`, with a value of 1.
+
+8. **`let ml’ = List.map inc’ l in ...`:**  `ml’` is a list created by applying `inc'` to each element of `l`.  This updates a *different* `c` from each `inc`.
+
+
+   - `inc’ 3` -> c becomes 1, returns 1 + 3 + 2 = 6.
+   - `inc’ 2` -> c becomes 2, returns 2 + 2 + 2 = 6.
+   - `inc’ 1` -> c becomes 3, returns 3 + 1 + 2 = 6.
+   So `ml'=` `[6; 6; 6]`.
+
+9. **`(x, observe () , ml, ml’) ...`:**  This evaluates `x` (1), `observe ()` (current value of the *original* c, which is 0). `ml`([4;3;2]) , `ml'`([6,6,6]).
+
+
+
+**In summary:** The final result reflects the separate function instances and the independent references for `c`.

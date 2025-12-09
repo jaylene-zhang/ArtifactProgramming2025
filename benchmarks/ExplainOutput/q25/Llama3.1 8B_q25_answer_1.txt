@@ -1,0 +1,7 @@
+Solution:
+
+'t = 's = unit
+'u = 't * 's 
+
+Explanation: 
+Since `f` consumes two arguments from the types `t` and `s` and produces a result from `u`, to get a composite value of type `t * s` as the result, `f` must take `unit` as both argument types so that we can bind a pair of unit values `(a, b)`. Therefore, `t = s = unit`, and thus `'u` is also `'t * 's`.

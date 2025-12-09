@@ -1,0 +1,14 @@
+**Solution**: **c) h (g (f x))**
+
+**Explanation**:
+
+The `compose` function should combine two higher-order functions `h` and `g` such that their composition behaves as described. Both `h` and `g` have the type `('a -> 'a) -> 'a -> 'a`, meaning they take a function (`f`) and an argument (`x`) and return a result after applying the function.
+
+The desired result is a function: `fun f x -> f (f (f x))`. For this to work, the composition of `h` and `g` should ensure that the nesting of function applications aligns correctly. Analyzing the candidate solutions:
+
+- a) `h (f (g (f x)))` results in an incorrect structure of function application, as `f` is improperly nested.
+- b) `g (f (h (f x)))` breaks the function nesting order, producing the wrong computation.
+- c) **`h (g (f x))`** correctly composes `h` and `g` such that they nest within each other, producing `f (f (f x))` as required.
+- d) `f (g (h x))` fails to respect the expected type signature and computation, as `f` is applied directly to `h x`.
+
+Thus, the correct solution is **c)**.

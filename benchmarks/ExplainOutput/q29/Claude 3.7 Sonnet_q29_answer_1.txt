@@ -1,0 +1,21 @@
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+This is correct. Here's why:
+- curry (sumSeries f) has type int -> int -> int -> int
+- curry (sumSeries f) 0 has type int -> int -> int
+- swap (curry (sumSeries f) 0) has type int -> int -> int
+- swap (curry (sumSeries f) 0) (fun x -> x + 1) has type int -> int
+This creates a function waiting for the upper bound as its argument.
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+This is incorrect. The issue is that sumSeries f 0 is trying to apply sumSeries to f and 0 separately, but sumSeries expects its second argument to be a pair (a,b). The parentheses are wrong.
+
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+This is incorrect. The issue is the order of operations:
+- swap (sumSeries f) has type (int -> int) -> (int * int) -> int
+- swap (sumSeries f) (fun x -> x + 1) has type (int * int) -> int
+- curry (swap (sumSeries f) (fun x -> x + 1)) has type int -> int -> int
+- curry (swap (sumSeries f) (fun x -> x + 1)) 0 has type int -> int
+But the incrementation function is applied in the wrong position.

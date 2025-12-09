@@ -1,0 +1,9 @@
+Here is a function implemented using continuations :
+
+let rec zip_tr fc sc l1 l2 = match l1, l2 with
+  | [], [] -> sc []
+  | [], _ -> fc (List.length l2)
+  | _, [] -> fc (List.length l1)
+  | h1::t1, h2::t2 ->
+  	zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2
+Is it tail-recursive?

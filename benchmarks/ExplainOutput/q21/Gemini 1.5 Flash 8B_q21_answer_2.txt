@@ -1,0 +1,5 @@
+Solution: `x` (in the inner `let`) and `r`.
+
+
+Explanation:
+The inner `let x = 42` creates a new, local `x`.  The outer `x` in the function signature is never utilized. The variable `r` is assigned a value, but never used.

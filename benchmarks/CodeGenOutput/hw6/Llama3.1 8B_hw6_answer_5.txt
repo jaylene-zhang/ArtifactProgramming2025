@@ -1,0 +1,91 @@
+Here is the answer in OCaml code only:
+
+
+(* Q1 *) 
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option = 
+  match l with 
+  | [] -> Some []
+  | a :: tl -> match f a with 
+    | Some b -> match traverse f tl with 
+      | Some bl -> Some (b :: bl)
+      | None -> None
+    | None -> None
+
+(* Q2.1 *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match mx with 
+  | Just x -> (
+    match fm with 
+    | Just f -> Just (f x)
+    | Nothing -> Nothing)
+  | Nothing -> Nothing
+
+(* Q2.2 *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  let open Maybe in
+  match m1 with 
+  | Nothing -> Nothing
+  | Just x1 -> match m2 with 
+    | Nothing -> Nothing
+    | Just x2 -> Just (x1, x2)
+
+(* Q2.3 *)
+let seq_predicate2 (p1 : 'a1 -> 'b1 Maybe.t) (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+  fun (a1, a2) -> ap (p2 a2) (p1 a1)
+
+(* Q2.4 *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t = 
+  let open Maybe in 
+  match a with 
+  | Nothing -> Nothing
+  | Just x -> Just (f x)
+
+(* Q2.5 *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t = 
+  match l with 
+  | [] -> Just []
+  | a :: tl -> match f a with 
+    | Nothing -> Nothing
+    | Just b -> match traverse' f tl with 
+      | Nothing -> Nothing
+      | Just bl -> Just (b :: bl)
+
+(* Q3.1a *)
+let church_to_nat (c : 'a church) : nat =
+  fun h k -> c (fun x y -> h) k
+
+(* Q3.1b *)
+let rec nat_to_church (n : nat) : 'a church =
+  fun y f -> 
+  match n with 
+  | Z -> y
+  | S n -> fn_to_church n f
+
+and fn_to_church (n : nat) (f : nat -> nat) (g : (nat -> nat) -> nat) : nat =
+  if n = 0 then Z
+  else S (fn_to_church (pred n) f g)
+
+(* Q3.2a *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  fun k -> fun _ -> copt (fun a -> Some a) k
+
+(* Q3.2b *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  match m with 
+  | Some a -> fun k r -> k a r
+  | None -> (fun _ -> fun _ -> ())
+
+(* Q3.3a *)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  fun k r -> clist (fun x (x_clist) -> x :: (clist_to_list x_clist k r) r) r
+
+(* Q3.3b *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  fun k r -> match l with 
+  | [] -> r
+  | h :: tl -> (fun x (x_clist) -> list_to_clist tl (CList x_clist) k r) h
+
+(* Q4 *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  fun k r -> clist (fun x clist -> CList (map_clist f clist k r)) r

@@ -1,0 +1,11 @@
+**Solution: a) type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions**
+
+**Explanation:**
+- This solution defines `revolutions` as an integer, which allows for any number of rotations an athlete can perform.
+- `jump_typ` is a type definition for the different types of jumps.
+- `jump` is a tuple that pairs a `jump_typ` with an integer representing the number of revolutions, which accurately captures the concept that a jump can have any number of rotations.
+
+Option b) does not allow for a range of rotations and is unnecessarily restrictive.
+Option c) incorrectly nests each jump type, making it non-general and hard to use for different numbers of rotations.

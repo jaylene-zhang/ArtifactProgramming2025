@@ -1,0 +1,13 @@
+Here is a function that "rotates" a list, placing the first element at the end :
+
+let rotate l =
+  match l with
+  | []   -> []
+  | h :: t   -> t @ [h]
+
+What does the following function do to lists with at least five elements?
+
+let rec f l =
+  match l with
+  | []   -> []
+  | h :: t   -> rotate (t @ [h])

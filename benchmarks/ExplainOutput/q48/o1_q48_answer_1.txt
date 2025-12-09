@@ -1,0 +1,5 @@
+Solution:  
+They aren’t all made tail-recursive because switching to a continuation-based or accumulator-based style can make some functions less efficient and more complicated in common usage.  
+
+Explanation:  
+While tail-recursion is good for very large lists, it can introduce overhead (closures, extra arguments, etc.) that isn’t always beneficial. The standard library strikes a balance between clarity, typical use cases, and performance.

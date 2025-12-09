@@ -1,0 +1,10 @@
+**Solution:**
+
+`('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c`
+
+**Explanation:**
+
+A tail-recursive `fold_right` generally needs an accumulator to build up the result iteratively. It also processes the list from left to right.
+
+*   The first three arguments, `('a -> 'b -> 'b)`, `'a list`, and `'b` are the same as in regular `fold_right`: the function, the list being folded over, and the initial accumulator.
+*   The ' ('b -> 'c) ' argument allows a final transformation of the accumulated 'b ' value to the final type 'c '.

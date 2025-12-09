@@ -1,0 +1,9 @@
+```ocaml
+(6, 5)
+```
+
+Explanation:
+- Initially, `point` is defined as `(5, 4)`.
+- `shift_point n` returns a new tuple where both components of `point` are incremented by `n`.
+- When `shift_point 1` is called, it returns `(6, 5)`, updating the global `point` to this new value.
+- Now, when `shift_point 2` is called, it uses the updated `point` `(6, 5)` and adds 2 to both components, resulting in `(8, 7)`. However, the output format requested is just the x and y values as a tuple, so the answer is `(6, 5)` as the new `point` is used.

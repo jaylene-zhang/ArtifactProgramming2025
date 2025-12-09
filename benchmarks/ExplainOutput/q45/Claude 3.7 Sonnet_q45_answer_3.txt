@@ -1,0 +1,7 @@
+1) For blank 1 in line 2 we should write:
+ones
+
+2) For blank 2 in line 3 we should write:
+map (fun s -> psums s) pascal
+
+The first diagonal of Pascal's triangle is a stream of 1s, so the head of pascal should be ones. Each subsequent diagonal is obtained by taking the partial sums of the previous diagonal. Therefore, in the tail, we map the psums function over each stream in pascal to generate the next diagonal.

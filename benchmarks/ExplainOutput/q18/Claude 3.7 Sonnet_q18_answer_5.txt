@@ -1,0 +1,8 @@
+The program `shift_point 2` will return `(7, 6)`.
+
+Explanation: 
+When we call `shift_point 2`, it adds 2 to both components of the original `point` value. The original `point` is defined as `(5, 4)`, so:
+- `component_x point + 2` = `5 + 2` = `7`
+- `component_y point + 2` = `4 + 2` = `6`
+
+Note that even though `point` is redefined later as `shift_point 1`, inside the `shift_point` function, `point` still refers to the original value `(5, 4)` due to OCaml's lexical scoping. The function captures the value of `point` at the time the function was defined.

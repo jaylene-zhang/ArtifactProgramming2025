@@ -1,0 +1,25 @@
+**Solution:**
+
+```ocaml
+let toInt f =
+  let rec aux n =
+    if f (fun x -> x) (Obj.magic ()) == Obj.magic () then n else aux (n + 1)
+  in
+  aux 0
+```
+
+**Explanation:**
+
+The `toInt` function aims to determine how many times a function `f` effectively applies a function to its input.
+
+1.  **`aux` function:** A recursive helper function `aux` is defined to iterate and count the applications. It takes an integer `n` as input, representing the current count.
+
+2.  **Base Case:**
+
+    *   `f (fun x -> x) (Obj.magic ()) == Obj.magic ()` serves as the base-case condition.
+    *   It tests if applying `f` with the identity function `(fun x -> x)` and some initial value (obtained via `Obj.magic ()`) results in the exact same initial value. `Obj.magic` is used to bypass type checking as the argument for `f` needs to be of some type `'a`, and since we care about how many times the function inside `f` are applied, we do not care about the actual type of the argument of `f`. If it does, it means `f` effectively applied the identity function 0 times, so we return the accumulator `n`.
+    *   The accumulator starts at 0.
+
+3.  **Recursive Step:** If the base case is not met (i.e., `f` does apply the function at least once), the function calls itself recursively with an incremented counter (`n + 1`).
+
+In essence, the function keeps incrementing a counter as long as `f` composed with the identity function does not simply return the initial value.

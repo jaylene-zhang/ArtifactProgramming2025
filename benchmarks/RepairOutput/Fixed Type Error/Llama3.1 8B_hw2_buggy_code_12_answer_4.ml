@@ -1,0 +1,1 @@
+`Pow(Var, 1)` has type `exp` but the `Pow` constructor expects a float argument for the exponent, not another `exp`. You can fix this by changing it to `Pow(Var, 1.0)`

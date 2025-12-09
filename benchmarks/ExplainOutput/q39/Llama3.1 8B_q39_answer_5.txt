@@ -1,0 +1,7 @@
+```
+let rec toInt f x = 
+  if f x = x then 0 
+  else 1 + toInt (fun a -> f (f a)) x
+```
+Explanation:
+The key insight here is that applying `f` repeatedly to `x` will eventually converge to a fixed point if and only if `f` is the identity function. If it's not, it will cycle or diverge. The solution recursively applies `f` twice, checks if the result is the same as the original value, and otherwise, it applies `f` twice again and contibues with this process until it converges or diverges.

@@ -1,0 +1,3 @@
+Solution: Assume the property holds for an arbitrary list l (induction hypothesis), then prove it holds for any list formed by adding an element x at the front (i.e., for x :: l).
+
+Explanation: In the step case, you show that if the property is true for a list l, then it remains true when any element is prepended, thereby covering all lists built from the base case.

@@ -1,0 +1,21 @@
+**Solution:**
+
+```ocaml
+let toInt f = 
+  let rec aux n =
+    if f (fun x -> x) (Obj.magic ()) = Obj.magic () then n else aux (n + 1)
+  in aux 0
+```
+
+**Explanation:**
+
+1.  **`let rec aux n = ...`**:  We define a recursive helper function `aux` that takes an integer `n` as input.  `n` represents the current guess for how many times `f` applies a function.
+
+2.  **`if f (fun x -> x) (Obj.magic ()) = Obj.magic () then n`**: This is the crucial part!
+    *   `f (fun x -> x) (Obj.magic ())` This applies function f to two arguments, an identify function and a dummy value. The dummy value is needed b/c OCaml's type checker requires a parameter `x` with the same type as the return value of the function f. The `Obj.magic` circumvents the type checker.
+    *   The first time `f` is applied to dummy value, the return value will be the dummy value itself. Every time `f` is applied again the return value changes.
+    *   If the result of `f (fun x -> x) (Obj.magic ())` is the same as the dummy value then we've found the correct `n` that makes `f (fun x -> x) (Obj.magic ())` reduce to the dummy value. In this case, we return `n`. The base case is when f is an identity function.
+
+3.  **`else aux (n + 1)`**:  If the result isn't equivalent to dummy value, it means `f` applies another function to dummy value. In this case, we increment `n` and recursively call `aux` with the incremented guess.
+
+4.  **`in aux 0`**:  We start the process by calling `aux` with an initial guess of `0`.

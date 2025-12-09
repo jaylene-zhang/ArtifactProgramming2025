@@ -1,0 +1,2 @@
+**P(x :: xs) assuming P(xs)**
+We need to prove that the statement holds for a non-empty list, assuming it holds for the tail of the list.

@@ -1,0 +1,3 @@
+Solution: true
+
+Explanation: After the mutation, both get_tail rc1 and get_tail rc2 return the same reference (rc1), so they are physically equal.

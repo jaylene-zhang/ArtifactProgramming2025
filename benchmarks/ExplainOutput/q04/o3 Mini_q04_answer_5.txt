@@ -1,0 +1,3 @@
+Solution: Options 1 and 4.
+
+Explanation: Both Option 1 and Option 4 compute prime_fact x once by binding its result to a variable (p) before checking the list. Options 2 and 3 compute prime_fact x repeatedly.

@@ -1,0 +1,3 @@
+Solution: Yes, it is tail-recursive.
+
+Explanation: Every recursive call is the last operation performed in its branch, with the continuations handling any further processing.

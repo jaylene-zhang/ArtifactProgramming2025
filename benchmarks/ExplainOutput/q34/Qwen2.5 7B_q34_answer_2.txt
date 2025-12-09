@@ -1,0 +1,8 @@
+a) False
+- The definition length does not affect execution speed in this context. Both functions have similar structural complexity.
+
+b) False
+- While `@` can have a time complexity related to its second argument, this is not a decisive factor here. The recursion and list construction in `rev2` are more efficient for reversed lists.
+
+c) True
+- `rev2` is generally faster. It uses `::` to prepend elements to the accumulator from the start, which is efficient. `rev1` uses `@` for list concatenation, which involves creating a new list and copying elements, making it less efficient for large lists.

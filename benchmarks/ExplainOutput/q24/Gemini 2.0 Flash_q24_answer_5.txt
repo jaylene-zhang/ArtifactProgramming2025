@@ -1,0 +1,17 @@
+**Solution:**
+
+`'t`
+
+**Explanation:**
+
+1.  `f` has the type `'t * 't -> 't`. This means it takes a tuple of two values of the same type `'t` and returns a value of that same type `'t`.
+
+2.  `a` and `b` both have type `'t`. Therefore, `(a, b)` is of type `'t * 't`.
+
+3.  `f (a, b)` then has type `'t` because `f` applied to a `'t * 't` tuple returns a `'t`.
+
+4.  Similarly, `f (b, a)` also has type `'t`.
+
+5.  Therefore, `(f (a, b), f (b, a))` is of type `'t * 't` because it's a tuple of two things of type `'t`.
+
+6.  Finally, `f (f (a, b), f (b, a))` has type `'t` because we are applying `f` to a tuple of type `'t * 't`.

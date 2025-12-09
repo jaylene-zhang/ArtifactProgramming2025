@@ -1,0 +1,16 @@
+The provided implementation is incorrect. 
+
+The code shown doesn't match the function call - `helper` is defined to take one argument but is called with two arguments. Also, the implementation doesn't calculate the largest power of two that divides a number.
+
+A correct and tail-recursive implementation would be:
+
+```ocaml
+let max_two_factor n =
+  let rec helper acc n =
+    if n mod 2 = 1 then acc
+    else helper (acc * 2) (n / 2)
+  in
+  helper 1 n
+```
+
+This uses an accumulator pattern for tail recursion, multiplying the accumulator by 2 each time n is evenly divisible by 2, and returning the accumulated result when we reach an odd number.

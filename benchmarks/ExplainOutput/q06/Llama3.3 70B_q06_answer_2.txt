@@ -1,0 +1,12 @@
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> x + 2 + y * w
+
+(* Inlining w * 2 and replacing all occurrences of x *)
+let w = 3 in 
+let y = 2 * (w * 2) in 
+fun x -> w * y * x
+```
+
+Explanation: The inlined expression `w * 2` replaces `x` in the second program. Therefore, `2 * x` becomes `2 * (w * 2)`. Note that this substitution only applies to the occurrences of `x` in the second program, not in the first function `foo`.

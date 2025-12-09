@@ -1,0 +1,5 @@
+**Solution:**  
+`('a -> 'b -> 'b) -> 'a list -> 'b -> 'b`
+
+**Explanation:**  
+The type of the regular `fold_right` is `('a -> 'b -> 'b) -> 'a list -> 'b -> 'b`. Making it tail-recursive doesn’t change its type because tail recursion only affects performance, not the actual behavior or type of the function.

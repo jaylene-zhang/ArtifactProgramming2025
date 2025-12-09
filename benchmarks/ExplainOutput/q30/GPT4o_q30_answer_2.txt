@@ -1,0 +1,14 @@
+The last expression will return:
+
+```ocaml
+[11.0; 21.0; 6.0]
+```
+
+### Explanation:
+- In OCaml, `sales_tax` is a *constant binding* due to `let`. It cannot be mutated after being defined.
+- The function `update_sales_tax ()` calculates `sales_tax *. 2.0`, but it doesn't reassign the value of `sales_tax`. This function has no effect on existing `sales_tax`.
+- Hence, when `update_price_list price_list` is evaluated, the `add_tax` function will still use the original value of `sales_tax` (1.0), and it simply adds `1.0` to each price in `price_list`:
+  - `10.0 + 1.0 = 11.0`
+  - `20.0 + 1.0 = 21.0`
+  - `5.0 + 1.0 = 6.0`
+- Therefore, the returned list is `[11.0; 21.0; 6.0]`.

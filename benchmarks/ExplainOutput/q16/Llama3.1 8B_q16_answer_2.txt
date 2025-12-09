@@ -1,0 +1,10 @@
+**Solution**
+```ocaml
+let answer = shift_point 2;;
+```
+
+**Explanation**
+
+To find the answer, let's apply the `shift_point` function to `point` with the argument `2`. Since `point` has been reassigned to `shift_point 1` earlier, we're actually applying `shift_point` to `(5, 4)`, which is the result of `shift_point 1`. So, the `shift_point 2` returns `(7, 6)` because:
+- `component_x` of `(5, 4)` is `5` and `component_x (5, 4) + 2` is `7`.
+- `component_y` of `(5, 4)` is `4` and `component_y (5, 4) + 2` is `6`.

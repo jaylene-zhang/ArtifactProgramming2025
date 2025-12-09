@@ -1,0 +1,5 @@
+a) **False.** The length of a function's definition does not determine its speed. The performance depends on the algorithm used.
+
+b) **True.** The time complexity of the (@) operator is linear in the length of its first argument. Since rev1 uses (@) on each recursive call, it accumulates a time complexity of O(n^2) in total, while rev2 uses constant time for list construction.
+
+c) **True.** The implementation of rev2 is more efficient because it uses tail recursion with an accumulator to build the reversed list, utilizing the constant time O(1) operation of (::) instead of the O(n) operation of (@) used in rev1.

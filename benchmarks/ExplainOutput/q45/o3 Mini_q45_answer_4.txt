@@ -1,0 +1,6 @@
+Solution:
+1) ones  
+2) map psums pascal
+
+Explanation:
+The first diagonal of Pascal’s triangle is the stream of ones, so we use "ones". Each subsequent diagonal is obtained by taking the partial sums (psums) of the previous diagonal, hence we apply "map psums" to the entire stream "pascal".

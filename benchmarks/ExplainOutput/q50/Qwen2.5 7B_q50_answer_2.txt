@@ -1,0 +1,6 @@
+**Correct implementation: c)**
+
+**Explanation:**
+The correct implementation (c) correctly mirrors the behavior of `fold_right`. It takes the current element `x` and applies the function `f` to it and the result of the recursive call `cont r`, where `r` is the result from folding the rest of the list.
+
+In `fold_right f l b`, the function `f` is applied from the right to the left, so for a list `[1;2;3]`, it computes `f 1 (f 2 (f 3 b))`. The `aux_folder` function in (c) replicates this behavior by ensuring that `f x (cont r)` is called for each element in the list, effectively maintaining the right-to-left application order.

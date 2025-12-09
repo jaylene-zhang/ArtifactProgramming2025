@@ -1,0 +1,9 @@
+**Solution:**
+
+To promote immutability, simplify reasoning, and enable easier parallelization.
+
+**Explanation:**
+
+*   **Immutability:**  Functional languages prefer immutable data.  State variables introduce mutability, making it harder to track changes and reason about program behavior.
+*   **Reasoning:**  Without state changes, functions behave like mathematical functions: the output depends only on the input. This simplifies debugging and verification.
+*   **Parallelization:**  Immutable data eliminates the need for locks and other synchronization primitives, making it easier to parallelize computations.

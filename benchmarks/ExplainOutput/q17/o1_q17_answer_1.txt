@@ -1,0 +1,5 @@
+Solution:  
+No, the code calls ackermann x once per element in the list; it does not compute it at most once.
+
+Explanation:  
+In the pattern matching branch "(ackermann x) + y", ackermann x is invoked each time an element of l is processed, leading to multiple evaluations for a single call of add_ack x l.

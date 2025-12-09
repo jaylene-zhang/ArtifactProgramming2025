@@ -1,0 +1,20 @@
+**Result**: The final result of the expression is `25`.
+
+**Binding Stack**:
+
+1. `let x = 3 in`
+2. `let r = ref (2 + x) in`  => `!r = 5`
+3. `let f = (let y = x * !r in` => `y = 3 * 5 = 15`
+4. `let r = ref 4 in fun u -> u + x + y + !r` => `f = fun u -> u + 5 + 15 + 4`
+5. `let x = 5 in`
+6. `let y = 10 in`
+7. `r := 2 ; f (!r * y)` => `!r = 2 and f (2 * 10 = 20)`
+
+**Explanation**:
+- Start with `x = 3`. 
+- `r` is initialized to `5` (`2 + 3`).
+- Inside defining `f`, `y` is calculated as `15` (`3 * 5`).
+- The local `r` inside `f` is a new reference that points to `4`.
+- The outer `let x = 5` shadows the previous `x`, and `y` is set to `10`.
+- `r` is updated to `2`.
+- When evaluating `f (!r * y)`, we calculate `f (20)`, leading to `20 + 5 + 15 + 4` which results in `44`.

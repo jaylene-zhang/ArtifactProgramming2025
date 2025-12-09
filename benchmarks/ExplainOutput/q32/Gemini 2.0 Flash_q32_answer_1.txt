@@ -1,0 +1,17 @@
+**Solution:**
+
+a) and b) and d)
+
+**Explanation:**
+
+*   **a) `type url = string`
+    `type bookmarks = Location of url * bookmarks | Empty`**: This is a valid definition. It defines `bookmarks` as either `Empty` (the end of the list) or `Location` which contains a `url` (string) and the rest of the `bookmarks` list.
+
+*   **b) `type url = string`
+    `type bookmarks = Empty | Location of string * bookmarks`**: Also valid, as `string` and `url` are interchangable here. It defines `bookmarks` as either `Empty` (the end of the list) or `Location` which contains a `string` (URL) and the rest of the `bookmarks` list.
+
+*   **c) `type url = string`
+    `type bookmarks = Empty | Location`**: Invalid. `Location` needs to carry data (the URL). This definition doesn't specify what `Location` holds.
+
+*   **d) `type url = string`
+    `type bookmarks = Empty | Location of bookmarks * url`**: Valid. it defines `bookmarks` as either `Empty` (the end of the list) or `Location` which contains the recursively built list of `bookmarks` and a `url`(string).

@@ -1,0 +1,19 @@
+**Final result: (1, 6, [2; 3; 4], [6; 7; 8])**
+
+Binding stack diagram:
+
+* `x = 1`
+* `inc ----> x -> c, x+1` 
+  * `c = 0` (initially)
+* `inc' ----> y -> c, x, y` 
+  * `c = ref 0` (locally scoped)
+  * `x = 2` (locally scoped, because of let x = x + 1)
+* `observe ----> () -> c`
+  * `c = 0` (initially)
+* `l = [3; 2; 1]` (due to `List.rev [1;2;3]`)
+
+Explanation: 
+The `inc` function increases the global `c` variable each time it is called. 
+When `List.map inc l` is called, it applies `inc` to each element of `l`, incrementing `c` and adding 1 to each element. 
+The `inc'` function also has its own local `c` and `x` variables. 
+The `observe` function returns the current value of the global `c` variable, which has been incremented 6 times: 3 times when `List.map inc l` was called and 3 times when `List.map inc' l` was called.

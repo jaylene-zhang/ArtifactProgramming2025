@@ -1,0 +1,17 @@
+**Solution:**
+
+`[11.; 21.; 6.]`
+
+**Explanation:**
+
+1.  `update_sales_tax ()` modifies the *global* variable `sales_tax` to `2.0`. **However**, the function `add_tax` was defined *before* this modification.
+
+2.  Crucially, OCaml uses *lexical scoping*. When `add_tax` was defined, it captured the *current value* of `sales_tax` which was `1.0`. Therefore, `add_tax` will *always* add 1.0 to its argument, regardless of any later changes to the global `sales_tax`.
+
+3.  `update_price_list price_list` applies `add_tax` to each element of `price_list`. Thus, each element will have 1.0 added to it.
+
+`10.0 + 1.0 = 11.0`
+`20.0 + 1.0 = 21.0`
+`5.0 + 1.0 = 6.0`
+
+Therefore, the result is `[11.0; 21.0; 6.0]`.

@@ -1,0 +1,16 @@
+**Solution**:  
+Overwriting example:
+```ocaml
+let x = 10;;
+let x = 20;;  (* Overwrites the previous value of x *)
+```
+
+**Explanation**:  
+Overwriting happens when a new binding is created with the same name as an existing one, replacing the previous value in the current scope. Overshadowing, on the other hand, occurs when an inner scope defines a variable that hides a variable of the same name from an outer scope. For example:
+
+Overshadowing example:
+```ocaml
+let x = 10 in
+let x = 20 in  (* Shadows the outer x only within this scope *)
+x;;
+```

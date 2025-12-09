@@ -1,0 +1,7 @@
+**Solution:**
+
+`(5, 4)`
+
+**Explanation:**
+
+The `point` variable is initially defined as `(4, 3)`. `shift_point n` calculates a new point by adding `n` to both the x and y components of the `point` BUT `point` inside the expression is the *original* `point` i.e. `(4,3)`. `component_x point` gives 4 and `component_y point` gives 3. So, `shift_point 2` calculates `(4 + 2, 3 + 2)` which gives `(6, 5)`.  The redefinition of `point` to `shift_point 1` i.e, `(5,4)` *after* the initial *declaration* of `shift_point` does not matter since the evaluation of the call to `shift_point` will reference the *original* `point` value.

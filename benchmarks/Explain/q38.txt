@@ -1,0 +1,28 @@
+Fill in the blank.
+
+We want to compose two functions in the following way.
+Given two functions
+h: ((’a -> ’a) -> ’a -> ’a)
+g: ((’a -> ’a) -> ’a -> ’a)
+we want to compose them in such a way that we obtain another function of type ((’a ->’a) -> ’a -> ’a) using a function compose.
+We want that
+
+compose (fun f x -> f x) (fun f x -> f (f x))
+
+returns a function that computes
+
+fun f x -> f (f (f x) )
+
+A friend types in the following program:
+
+let compose h g = fun f x -> (*to be filled*)
+
+Identify all possible correct solutions:
+
+a) h (f (g (f x)))
+
+b) g (f (h (f x)))
+
+c) h (g (f x))
+
+d) f (g (h x))

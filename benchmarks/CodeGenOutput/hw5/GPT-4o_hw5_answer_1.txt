@@ -1,0 +1,63 @@
+```ocaml
+(* Question 1: Tree Depth *)
+let tree_depth_cps t =
+  let rec depth_helper t sc = match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+        depth_helper l (fun dl ->
+          depth_helper r (fun dr ->
+            sc (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc = match (ls, tree) with
+    | [], t -> sc t
+    | _, Empty -> fc ()
+    | x::xs, Tree (l, v, r) ->
+        if x = v then helper xs l sc (fun () -> helper xs r sc fc)
+        else fc ()
+  in
+  helper ls tree (fun t -> Some t) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+let parser_cps t =
+  (* Define helpers in CPS style *)
+  let rec parse_expr tokens sc fc =
+    parse_term tokens
+      (fun tokens1 e1 -> parse_expr_rest e1 tokens1 sc fc)
+      fc
+  and parse_expr_rest e1 tokens sc fc = match tokens with
+    | Plus::rest ->
+        parse_expr rest
+          (fun tokens2 e2 -> sc tokens2 (Plus (e1, e2)))
+          fc
+    | _ -> sc tokens e1
+  and parse_term tokens sc fc =
+    parse_factor tokens
+      (fun tokens1 e1 -> parse_term_rest e1 tokens1 sc fc)
+      fc
+  and parse_term_rest e1 tokens sc fc = match tokens with
+    | Mul::rest ->
+        parse_term rest
+          (fun tokens2 e2 -> sc tokens2 (Mul (e1, e2)))
+          fc
+    | _ -> sc tokens e1
+  and parse_factor tokens sc fc = match tokens with
+    | Const(v)::rest -> sc rest (Const v)
+    | LParen::rest ->
+        parse_expr rest
+          (fun tokens1 expr -> match tokens1 with
+            | RParen::rest1 -> sc rest1 expr
+            | _ -> fc tokens)
+          fc
+    | _ -> fc tokens
+  in
+
+  (* Main entry point *)
+  parse_expr t
+    (fun _ expr -> Some expr)
+    (fun _ -> None)
+```

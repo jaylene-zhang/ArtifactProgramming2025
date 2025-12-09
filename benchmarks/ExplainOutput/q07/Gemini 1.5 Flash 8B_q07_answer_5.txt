@@ -1,0 +1,44 @@
+**Solution and Explanation**
+
+**Theorem 1:** For any word w, constant x, and accumulator acc, count w x+acc=count’ w x acc.
+
+**Proof.**
+
+**Base Case:** w = Const y
+```
+count (Const y) x + acc = (if x = y then 1 else 0) + acc
+count' (Const y) x acc = if x = y then 1 + acc else acc
+```
+These expressions are equal.
+
+**Step Case:** w = Op(w1, w2)
+Induction Hypothesis:  count w1 x + acc1 = count' w1 x acc1  and count w2 x + acc2 = count' w2 x acc2, where acc1 and acc2 are any arbitrary accumulators.
+
+Proof:
+```
+count (Op(w1, w2)) x + acc = (count w1 x) + (count w2 x) + acc
+                     = (count' w1 x (count' w2 x acc))  // This is the crucial part
+                     = count' (Op(w1, w2)) x acc
+```
+
+**Theorem 2 (Main Result):** For any word w and constant x, we have count w x = count’ w x 0.
+
+**Proof:** Applying Theorem 1 with acc = 0.
+```
+count w x + 0 = count' w x 0
+count w x = count' w x 0
+```
+This completes the proof.
+
+
+**Explanation in Detail:**
+
+1.  **Base Case:**  The proof starts with the simplest case, where the word `w` is just a constant `y`.  It directly shows that the two functions produce the same result.
+
+2. **Step Case:** The step case uses structural induction.   The induction hypothesis states that the functions `count` and `count'` agree for the sub-words (`w1` and `w2`) of `w`.
+Crucially, we're using the recursive definition of `count'` to work through the structure of the word. We're showing that the results match step-by-step, because `count` performs a recursive sum and `count'` calculates the same sum through recursion.
+
+3. **Theorem 2 (Main Result):** This simply applies the result from Theorem 1 with an accumulator of 0.  If the theorem holds for any accumulator, it specifically holds for the base case of 0. This demonstrates the equivalence between `count` and `count'` when initialized with the identity accumulator value.
+
+
+This proof establishes the equivalence of the two function definitions for counting occurrences by demonstrating that they always produce the same result under all possible input scenarios. The structural induction strategy is vital for proving correctness in recursive function definitions like the case of nested structures.

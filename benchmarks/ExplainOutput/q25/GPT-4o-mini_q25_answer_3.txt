@@ -1,0 +1,9 @@
+The most general instantiation for the type variables is:
+
+- 't = 'u
+- 's = 'u
+
+Thus, we have `'f: ('u * 'u -> 'u)`.
+
+Explanation: 
+In the expression `f (f (a, b), f (b, a))`, we need the inner calls to `f` (i.e., `f (a, b)` and `f (b, a)`) to have a type that matches the type expected by `f` as the first argument. For `f` to accept its output as an input again, both `a` and `b` must be of type `'u`, and `f` must map from tuples of type `('u * 'u)` to `‘u`. Thus, the most general instantiation leads to `f: ('u * 'u -> 'u)`.

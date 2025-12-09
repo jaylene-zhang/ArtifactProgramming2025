@@ -1,0 +1,9 @@
+**Solution:** a
+
+**Explanation:** 
+
+Option a) is the correct implementation. It defines a `jump_typ` for the type of jump (Axel, Loop, Lutz, Flip, Salchow) and a `revolutions` type for the number of rotations. It then combines these into a `jump` type which is a pair of a `jump_typ` and a `revolutions`.
+
+Option b) is incorrect because `revolutions` is fixed to only `Double` or `Triple`, ignoring jumps with more or fewer rotations.
+
+Option c) is incorrect as it uses nested constructors that do not fit the requirement of a single `jump` type encompassing all possible jumps and their rotations. For example, it would incorrectly represent a triple loop as `Loop (Triple, 3)`, whereas it should be a separate constructor `TripleLoop`.

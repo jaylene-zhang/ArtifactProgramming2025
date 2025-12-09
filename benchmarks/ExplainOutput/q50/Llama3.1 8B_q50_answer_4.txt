@@ -1,0 +1,24 @@
+Here are the correct implementations:
+
+### Correct implementation:
+a) Yes, it is correct.
+
+```haskell
+let rec aux_folder f l b cont = 
+  match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+```
+
+### Explanation:
+
+To implement `fold_right` tail-recursively, we need to match the pattern of `fold_right` exactly. `fold_right` applies `f` to the last element of `l` and the result of applying `f` to the rest of `l`. 
+
+In implementation a), we call `cont (f x r)` in the recurrence clause, which corresponds to applying `f` to the last element `x` and the result of `cont r` which computes the result of `f` applied to the rest of the list. Thus, this implementation matches the pattern of `fold_right`.
+
+### Implementation annealled out:
+- b) is not an implementation of `fold_right` without supporting carrying arguments as designed to use a second argument in order to convert any list to an associative left fold into a tail recursive implementation with right semantic instead of directly immediately fix a non-suported pattern like shown in b) does.
+
+- c) does not correctly manage the application order of `f`. Au_x-centered means only evaluates arguments to `f`.
+
+- e) uses inverted arguments with respect to recursive버전 of steady, demonstrating once again that It cannot participates compile list from effectively "*.

@@ -1,0 +1,8 @@
+Solution:
+let double x =
+  let x = 2 in
+  let w = (f x) + x in
+  fun f' -> (f' w) * (f x)
+
+Explanation:
+We replace every free occurrence of y with (f x). In the binding fun f -> …, this would capture the f from (f x), so we rename the lambda’s parameter (here to f') to avoid capture. This yields the expression above.

@@ -1,0 +1,51 @@
+(* 1.1  Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let n = String.length s in
+  let rec tabulate f n =
+    let rec loop i acc =
+      if i < 0 then acc
+      else loop (i - 1) (f i :: acc)
+    in
+    loop (n - 1) []
+  in
+  tabulate (String.get s) n
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  List.fold_left (fun acc c -> acc ^ Char.escaped c) "" l
+
+let open_account (pass: password) : bank_account =
+  let stored_pass = ref pass in
+  let balance = ref 0 in
+  {
+    update_pass = (fun old_pass new_pass ->
+      if !stored_pass = old_pass then
+        stored_pass := new_pass
+      else
+        raise wrong_pass
+    );
+    retrieve = (fun input_pass amount ->
+      if !stored_pass <> input_pass then
+        raise wrong_pass
+      else if amount < 0 then
+        raise negative_amount
+      else if amount > !balance then
+        raise not_enough_balance
+      else
+        balance := !balance - amount
+    );
+    deposit = (fun input_pass amount ->
+      if !stored_pass <> input_pass then
+        raise wrong_pass
+      else if amount < 0 then
+        raise negative_amount
+      else
+        balance := !balance + amount
+    );
+    show_balance = (fun input_pass ->
+      if !stored_pass <> input_pass then
+        raise wrong_pass
+      else
+        !balance
+    );
+  }

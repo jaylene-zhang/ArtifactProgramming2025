@@ -1,0 +1,3 @@
+Solution: (b)
+
+Explanation: Option (b) is tail‐recursive and processes the list in order with a single pass, while (a) builds the string in reverse order, (c) reverses the list (traversing it twice), and (d) isn’t tail‐recursive.

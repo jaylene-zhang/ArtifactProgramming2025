@@ -1,0 +1,13 @@
+1) For blank 1 in line 2 we should write:
+```ocaml
+ones
+```
+
+2) For blank 2 in line 3 we should write:
+```ocaml
+map psums pascal
+```
+
+**Explanation:**
+1. The first diagonal of Pascal's Triangle is the stream of ones, so we set `hd` to `ones`.
+2. The remaining diagonals are created by computing the partial sums of each preceding diagonal. Using `map psums pascal` generates the next diagonals by applying `psums` (computing partial sums) to each element of the `pascal` stream. The use of `Susp` ensures lazy evaluation for infinite streams.

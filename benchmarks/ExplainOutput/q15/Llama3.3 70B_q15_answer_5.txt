@@ -1,0 +1,28 @@
+**Solution:**
+```
+Expression Evaluation: 
+let x = 3 in 
+let r = ref (2 + x) in 
+let f = (let y = x * !r in 
+         let r = ref 4 in fun u -> u + x + y + !r ) in 
+let x = 5 in 
+let y = 10 in 
+r := 2 ; f (!r * y)
+
+Binding Stack:
+x = 5
+y = 10
+f ----> u -> u + 3 + (3*5) + 4
+r = 2 
+x = 3 
+
+Expression Value: 
+f (!r * y) = f (2 * 10) 
+             = f 20 
+             = 20 + 3 + (3 * 5) + 4 
+             = 20 + 3 + 15 + 4 
+             = 42
+```
+
+**Explanation:**
+In OCaml's call-by-value strategy, the expression is evaluated and its value is bound to a name. The binding stack keeps track of these bindings. The `let` expressions are evaluated from top to bottom. When evaluating `f`, it captures the value of `x` (which is 3) and `y` (which is `3 * !r = 3 * 5 = 15`), but `r` is shadowed by a new `r` with value `ref 4`. When calling `f`, it uses the captured values of `x`, `y` and the value of `!r` which is `4`, not the outer `r`. After reassigning the outer `r` to `2`, it calls `f` with the argument `!r * y = 2 * 10 = 20`. The final result is `20 + 3 + 15 + 4 = 42`.

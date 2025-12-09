@@ -1,0 +1,11 @@
+**Solution**
+
+a) and b)
+
+**Explanation**
+
+A) is correct because the bordel definition correctly types a `Location` node with a `url` field and a `bookmarks` field.
+
+B) is also correct because a `Location` node will contain a `url` (of type `string`) and a `bookmarks` (of type `bookmarks`). In this case, `bookmarks` is actually a self-referential type (it appears on both sides of the `Location` constructor).
+
+C) and D) are incorrect because option C does not provide a structure at all.

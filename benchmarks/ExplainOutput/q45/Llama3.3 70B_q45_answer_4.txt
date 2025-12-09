@@ -1,0 +1,6 @@
+**1. ones**
+**2. pascal_psums (pascal)** 
+
+Explanation: 
+- The first diagonal in Pascal's triangle is a stream of ones, so `ones` should be used for `hd`.
+- For `tl`, we need to calculate the partial sums of the current diagonal, which is `pascal`, and recursively generate the rest of the diagonals. However, the provided template does not directly allow for a recursive call to itself with the partial sums of its own elements. To align with the provided template, we should consider the partial sums of the current diagonal, thus, using `pascal_psums` function, assuming `pascal_psums` generates partial sums of a stream. The corrected approach aligns with the given hint but requires `pascal_psums` to be defined accordingly.

@@ -1,0 +1,8 @@
+Solution:
+  
+  • let x = ref 0 in x := 10
+  
+Explanation:
+  
+  • Overwriting occurs when you mutate an existing reference (changing its contents).  
+  • Overshadowing rebinds a name in a new scope, leaving the original binding unchanged.

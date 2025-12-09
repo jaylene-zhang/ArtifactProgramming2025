@@ -1,0 +1,11 @@
+```ocaml
+shift_point 2;;
+- : int * int = (8, 7)
+```
+
+**Explanation:**
+1. The initial `point` is `(5, 4)`.
+2. The function `shift_point` uses the value of `point` at its definition time (late binding), which is `(5, 4)`.
+3. The `point` is redefined as `(6, 5)` after shifting by `1`.
+4. Calling `shift_point 2` still uses the original `point = (5, 4)` defined before `shift_point`.
+   - It calculates `(5 + 2, 4 + 2)` which equals `(8, 7)`.

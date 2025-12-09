@@ -1,0 +1,7 @@
+```OCaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**
+
+A tail-recursive `fold_right` doesn't need an accumulator to return the final result.  It builds up the result as it traverses the list.  The final result will be of the same type as the intermediate steps, which are of type `'b`.  The initial value (`'b`) is required, but not the final function producing `'c`.

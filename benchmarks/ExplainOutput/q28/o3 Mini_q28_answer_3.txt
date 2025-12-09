@@ -1,0 +1,6 @@
+Solution:
+Yes, it does. It’s equivalent to writing
+  let anti_d f = fun x dx -> integral f (0, x) dx.
+
+Explanation:
+Using curry on integral transforms its tuple argument (the bounds) into two separate arguments. By applying f and then fixing the lower limit to 0, anti_d f becomes a function that, given an upper bound x (and eventually a dx), computes ∫₀ˣ f, which is the antiderivative of f.

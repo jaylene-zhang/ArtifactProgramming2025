@@ -1,0 +1,18 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'h) (sc: 'h list -> 'i) : 'i list =
+    match xs , ys with
+    | [] , [] -> sc []
+    | x::xs , y::ys -> zippy xs ys (fun (x',y') -> pair ((x,y')::pair(x,y)))
+    | _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (fun (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation:
+
+- We want a polymorphic function, but the second type variable 'b in 'a list must match the type parameter in 'b list type. Thus the type of 'b is inferred.
+- On the continuation function, we want to keep the result type 'i. Sc expects a list of type 'h, but we're into a 'c that we got before, and since sc is a continuation, we cannot choose 'c. But since all the lists that can pass the List.length check are for the same 'a list type, the type sc is applied, then the type 'c is infered to be 'k and then 'k is inferred to be the type that satisfies, and since we are also given in List.length xs = List.length r, 'h must be int. But since there is not way for 'i to be int, we will show a warning and assume 'i can also be int.

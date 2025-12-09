@@ -1,0 +1,21 @@
+**a) Incorrect**
+
+The continuation is applied incorrectly: `cont (f x r)` should be `f x (cont r)`.
+
+**b) Correct**
+
+`cont b` is the base case. When the list is not empty, `aux_folder` calls itself with `f xs b` and a continuation that takes the result of `cont r` and applies `f x` to it.
+
+**c) Correct**
+
+Similar to (b), the continuation is applied correctly, swapping the order of `f x` and `cont r`.
+
+**d) Incorrect**
+
+`cont (f r x)` applies `f r x` immediately, losing the recursive structure of `fold_right`.
+
+**e) Incorrect**
+
+The function and list are swapped in the recursive call, which will cause a type error.
+
+In general, a correct implementation of `fold_right` using tail recursion must apply the function `f` in the correct order, swapping its arguments to match the outer function's signature. This is achieved in (b) and (c).

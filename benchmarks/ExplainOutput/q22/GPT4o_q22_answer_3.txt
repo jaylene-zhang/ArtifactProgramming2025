@@ -1,0 +1,9 @@
+The unused variables in the given expression are:
+
+`r` in `let r = 2 * y`  
+`f` in `let f = fun x -> f x * y`
+
+### Explanation:
+1. `r` is redefined as `2 * y` within the function, but this new binding is never used because `f r` uses the outer definition of `f` and `r`.
+
+2. The `f` inside `let f = fun x -> f x * y` shadows the outer `f`, but the lambda function `fun x -> f x * y` uses the outer `f`, not the locally redefined `f`. Hence, this redefinition is unused.

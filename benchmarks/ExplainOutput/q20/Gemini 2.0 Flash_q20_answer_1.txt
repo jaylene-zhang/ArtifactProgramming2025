@@ -1,0 +1,5 @@
+**Solution:** No.
+
+**Explanation:**
+
+The code does not handle the case when `n = 0`. When `triangle 0` is called, the condition `n = 1` is false, so the `else` branch is executed. This leads to `0 + triangle (-1)`. This will continue recursively with `triangle (-1)`, `triangle (-2)`, and so forth. It will lead to a stack overflow, or possibly an arithmetic error, and will not return 0.

@@ -1,0 +1,3 @@
+**c) h g f x**
+
+**Explanation:** The compose function should return a function that applies `g` to `f` first and then applies `h` to the result. Hence, the correct solution is `h g f x`. This will result in `fun f x -> (h g) f x = fun f x -> h (g f) x = fun f x -> h (fun x -> g f x) = fun f x -> h (fun x -> f (g f x)) = fun f x -> f (g f (f x))`.

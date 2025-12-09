@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> w * 2 + 2 + y * w
+```
+
+**Explanation:**
+
+We are only inlining `w * 2` for `x` within the scope of `let x = w * 2 in`.  We replace the occurrences of `x` with `w * 2` in the expression `fun y -> x + 2 + y * w`, resulting in `fun y -> w * 2 + 2 + y * w`.
+

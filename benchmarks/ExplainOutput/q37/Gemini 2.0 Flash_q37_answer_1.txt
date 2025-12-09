@@ -1,0 +1,3 @@
+(0 , 1)
+
+The base case is incorrect. When `n` is 0, the function should return 0, but it incorrectly proceeds to `n + triangle (n - 1)` which may lead to stack overflow and incorrect results.

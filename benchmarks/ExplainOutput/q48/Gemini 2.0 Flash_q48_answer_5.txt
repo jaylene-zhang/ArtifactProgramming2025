@@ -1,0 +1,12 @@
+**Solution:**
+
+Not all `List` functions are tail-recursive for a few reasons:
+
+1.  **Clarity and Simplicity:** Tail-recursive implementations are often less clear and harder to read than their direct, non-tail-recursive counterparts.
+2.  **Performance Trade-offs:** While tail recursion avoids stack overflow, it can sometimes introduce overhead that makes it slower for small lists. Simpler algorithms might be preferred for small inputs
+3.  **Not Always Necessary:** For functions that are rarely used on large lists, the risk of stack overflow is low, and the simplicity of a non-tail-recursive implementation might be preferred.
+4.  **Continuation Overhead:**  While continuations *can* make any function tail-recursive, they add complexity and runtime overhead. The added cost of continuations may not always be justified.
+
+**Explanation:**
+
+OCaml's `List` library prioritizes simplicity, readability, and often performance for common cases. While tail recursion is important to prevent stack overflows on very large lists, it sometimes comes at the cost of code clarity and performance overhead (especially with continuations). For many list functions, the lists they operate on in typical use cases aren't large enough to cause stack overflows, making a simpler, potentially faster implementation the better choice. In essence, it's a trade-off. Tail recursion is favored when stack overflow is a real concern, but other factors are prioritized when it's not.

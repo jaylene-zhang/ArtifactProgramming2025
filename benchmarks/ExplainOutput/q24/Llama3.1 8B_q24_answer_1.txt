@@ -1,0 +1,13 @@
+**Solution**
+```ocaml
+f (f (a, b), f (b, a)) : 't * 't -> 't
+```
+**Explanation**
+
+The function `f` has type `'t * 't -> 't`, which means it takes a pair of type `'t` as input and returns a value of type `'t`.
+
+When we apply `f` to a pair of type `'t * 't`, we get a value of type `'t`. 
+
+Therefore, when we apply `f` to `(f (a, b))` and `(f (b, a))`, we get a pair of type '`('t * 't`.
+
+Since the expression `f (f (a, b), f (b, a))` combines two values of type `'t * 't` into a single pair, the resulting type is `'t * 't -> 't`.

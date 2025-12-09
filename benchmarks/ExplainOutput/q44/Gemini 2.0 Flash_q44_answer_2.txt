@@ -1,0 +1,7 @@
+**Solution:**
+
+We need to prove that if the statement holds for a list `l`, then it also holds for `x :: l`, where `x` is any element.
+
+**Explanation:**
+
+In the inductive step for lists, we assume the statement is true for a smaller list (the inductive hypothesis) and use this assumption to prove that the statement is also true for a list one element larger. We typically let `l` be a list for which the hypothesis `P(l)` is true, and then prove `P(x :: l)` for an arbitrary element `x` of the list type, to show that the property `P` holds for lists of any length.

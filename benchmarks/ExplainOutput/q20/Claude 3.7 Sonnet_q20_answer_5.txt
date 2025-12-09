@@ -1,0 +1,5 @@
+This test will not pass.
+
+The issue is that the function doesn't handle the case where n = 0 correctly. The base case is only defined for n = 1, which returns 1. When n = 0, the function will call triangle (-1), which will continue recursing with negative numbers until a stack overflow occurs. The function never returns for n = 0, so it can't possibly equal 0.
+
+To fix the implementation, we would need to add a base case for n = 0 that returns 0.

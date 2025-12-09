@@ -1,0 +1,4 @@
+Solution: ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+
+Explanation: The tail-recursive version of fold_right uses an extra continuation parameter (of type 'b -> 'c) to delay combining results until the end. When this continuation is the identity function, we recover the usual fold_right type.
+

@@ -1,0 +1,3 @@
+(0, 1)
+
+The bug in the implementation is that the base case is `if n = 1` instead of `if n = 0`. The sum of the first `0` numbers should be `0`, but the function erroneously outputs `1` for the input `0` because there is no case handling `n = 0`. The implementation assumes `n` will always be `≥ 1`. To fix it, update the base case to `if n = 0 then 0`.

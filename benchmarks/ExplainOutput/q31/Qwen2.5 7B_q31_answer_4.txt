@@ -1,0 +1,7 @@
+Solution: a) and d)
+
+Explanation: 
+- **a)**: The function `prime_fact` is computed only once using `let p = prime_fact x;`. The `exists` function then checks if any of the elements in the list match `p`. This method ensures `prime_fact` is computed only once.
+- **d)**: Similarly, `prime_fact x` is computed once and stored in `p`. The recursive `test` function then checks each element of the list against `p`. Again, `prime_fact` is only computed once.
+
+The other options compute `prime_fact` for each element in the list, which is less efficient and uses more computation resources.

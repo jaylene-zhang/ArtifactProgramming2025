@@ -1,0 +1,20 @@
+**Q4.1 Solution:**
+
+Base Case: `h = Empty`
+Induction Hypothesis: `add_up h + acc = add_up_tr h acc`
+
+Step Case: `h = Hand (c, h')`
+Induction Hypothesis: `add_up h' + acc = add_up_tr h' acc`
+Proof: 
+`add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc) = add_up_tr h' acc + 1 (by IH) = add_up_tr (Hand (c, h')) acc`
+
+**Explanation:**
+We are proving `add_up h + acc = add_up_tr h acc` by structural induction on `h`. The base case is when `h` is `Empty`, and the step case is when `h` is `Hand (c, h')`. We assume the induction hypothesis `add_up h' + acc = add_up_tr h' acc` and use it to prove the statement for `Hand (c, h')`.
+
+**Q4.2 Solution:**
+
+Theorem 2 (Main Result). For all hands h , add_up h = add_up_tr h 0.
+Proof: By Theorem 1, `add_up h + 0 = add_up_tr h 0`, which simplifies to `add_up h = add_up_tr h 0`.
+
+**Explanation:**
+We use Theorem 1, which states `add_up h + acc = add_up_tr h acc`, and set `acc` to `0` to get `add_up h = add_up_tr h 0`. This proves Theorem 2.

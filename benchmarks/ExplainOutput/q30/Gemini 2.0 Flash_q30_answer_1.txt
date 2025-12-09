@@ -1,0 +1,7 @@
+**Solution:**
+
+`[11.; 21.; 6.]`
+
+**Explanation:**
+
+OCaml's toplevel (interactive mode) is stateful. However, `sales_tax` is *not* mutable.  The `update_sales_tax` function *multiplies the value of the *local* binding to `sales_tax` which is then immediately discarded*. Thus, the *global* binding to `sales_tax` remains `1.0`. Therefore, `add_tax` always adds `1.0` to its argument, resulting in `[11.; 21.; 6.]` after mapping across `price_list`.

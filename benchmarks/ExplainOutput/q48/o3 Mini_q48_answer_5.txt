@@ -1,0 +1,3 @@
+Solution: They aren’t all tail-recursive because insisting on tail-recursive (CPS) versions would complicate the code and add overhead without significant benefits for typical list sizes.
+
+Explanation: While continuations can convert recursion to tail-recursive style, doing so often makes the code harder to read and may introduce extra runtime overhead. Since most list operations deal with moderately sized lists and clarity is valued in the standard library, simpler non-tail-recursive versions are preferred.

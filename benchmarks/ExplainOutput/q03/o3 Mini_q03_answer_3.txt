@@ -1,0 +1,36 @@
+Solution: (1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation:
+1. We start with global c = ref 0 and l = List.rev [1;2;3] = [3;2;1]. The function observe returns !c.
+2. With x = 1 and inc defined as (fun x → (c := !c + 1; x + 1)), mapping inc over l increments global c three times:
+  • inc 3 → c becomes 1, returns 4
+  • inc 2 → c becomes 2, returns 3
+  • inc 1 → c becomes 3, returns 2
+ Hence, ml = [4; 3; 2] and observe () now yields 3.
+3. Next, inc’ is defined in its own block:
+  • A new c (inner) is set to ref 0.
+  • A new x is bound to outer x+1, so x = 2.
+  • inc’ becomes fun y → (inner c := !inner c + 1; !inner c + y + 2).
+ Mapping inc’ over [3;2;1] increments the inner c for each element:
+  • For any y, the first call: inner c becomes 1 and returns 1+y+2.
+  • Thus, for y = 3: 1+3+2 = 6,
+  • For y = 2: 2+2+2 = 6,
+  • For y = 1: 3+1+2 = 6,
+ yielding ml’ = [6; 6; 6].
+
+Binding Stack Diagram:
+--------------------------------------------------------------
+Global Scope:
+ c      = ref 3      (updated by inc during ml)
+ l      = [3; 2; 1]
+ observe= () → !c
+ x      = 1
+ inc    = fun x → (c := !c + 1; x + 1)
+
+Inc’ Definition Scope (inside let for inc’):
+ c      = ref 0      (inner c for inc’)
+ x      = outer x + 1 = 2
+ inc’   = fun y → (c := !c + 1; !c + y + 2)
+--------------------------------------------------------------
+
+Final expression returns (x,observe (), ml, ml’) = (1, 3, [4; 3; 2], [6; 6; 6]).

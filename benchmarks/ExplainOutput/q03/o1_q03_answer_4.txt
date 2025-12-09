@@ -1,0 +1,16 @@
+Solution:  
+(1, 3, [4; 3; 2], [6; 6; 6])  
+
+Explanation (concise):  
+• l = List.rev [1;2;3] ⇒ [3;2;1].  
+• inc increments the outside c and returns its argument + 1. Mapping inc over [3;2;1] consumes c three times (ending at 3) and produces [4; 3; 2].  
+• inc' has its own c (starts at 0) and sees x as 2 (because let x = x + 1 when x was 1). Mapping inc' over [3;2;1] returns [6;6;6] (the new c ends at 3).  
+• Hence, x = 1, observe() = 3, ml = [4;3;2], and ml' = [6;6;6].  
+
+Binding stack sketch:  
+• c = ref 0   (outer)  
+• l = [3;2;1]  
+• observe () → !c  
+• x = 1  
+• inc x → (c := !c+1; x+1)  
+• inc' → has private c' = ref 0 and local x' = 2; sets c' := !c'+1; returns !c' + y + x'  

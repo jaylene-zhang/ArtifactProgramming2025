@@ -1,0 +1,18 @@
+Here is the solution to the problem:
+
+**Solution**
+
+```ocaml
+let rec helper n count =
+  if n mod 2 = 1 then count
+  else helper (n / 2) (count + 1)
+let max_two_factor n = helper n 0
+```
+
+**Explanation**
+
+The original solution has a small issue: it doesn't introduce the accumulator `count` at the right time. In the original code, it appears too late, outside the recursive call. This introduces an extra `n` division and sum operation, which aren't accurate for counting powers of two.
+
+In the corrected solution, `count` is passed along with recursive calls, and when the division ends, it accumulates the result. `max_two_factor` uses an initial `0` accumulator for simplicity.
+
+This revised implementation correctly identifies the largest power of two that evenly divides `n`, and achieves it in a tail-recursive manner.

@@ -1,0 +1,11 @@
+Here's the solution and explanation:
+
+**Solution:**
+
+1.  `ones`
+2.  `psums (pascal)`
+
+**Explanation:**
+
+*   **`hd = ones`**: The head of the `pascal` stream is the stream of ones, which represents the first diagonal of Pascal's triangle.
+*   **`tl = Susp (fun () -> psums (pascal))`**: The tail of the `pascal` stream is a suspended computation that generates the rest of the diagonals. `psums (pascal)` calculates the partial sums of each diagonal (stream) in the `pascal` stream, creating the next diagonal in the triangle. The `Susp` makes it lazy.

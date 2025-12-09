@@ -1,0 +1,7 @@
+**Solution:**
+
+'t = 's = int; 'u = int
+
+**Explanation:**
+
+For `f (f (a, b), f (b, a))` to be type `'u`,  `f (a, b)` and `f (b, a)` must have the same type.  This means 't and 's must be the same type, and the type of `'u` is also the same, allowing `f` to be applied to the resulting pair.  The simplest instantiation is `int` for all of them.  Other instantiations exist, but int is the most general.

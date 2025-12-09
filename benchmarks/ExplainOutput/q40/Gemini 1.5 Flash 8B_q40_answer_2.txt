@@ -1,0 +1,5 @@
+No
+
+**Explanation:**
+
+The function calls `zip_tr` recursively.  The recursive call is not in tail position because the result of `zip_tr` is passed to `sc` (a continuation). The function `sc` awaits this result before performing its action; this prevents the compiler from optimising away the stack frame for `zip_tr`.  Therefore, it's not tail recursive.

@@ -1,0 +1,30 @@
+Understanding when computation happens is important, since it give us a deeper understanding of the performance of a piece of code.
+Integer factorization is the decomposition of a positive integer into a product of smaller integers. If these factors are further restricted to prime numbers, the process is called prime factorization. We assume that the factorization is given as a increasing ordered list of integers.
+Assume we have a function prime_fact : int -> int list which computes the prime number factorization of a given number. For example, prime_factors 30 would return [2;3;5]. We now want to write a function that checks whether a given list of integer factorizations contains the prime number factorization of a prime number n.
+
+For example:
+check_prime_factors 30 [[3; 10] ; [5;6] ; [2;3;5] ]
+
+returns true, since the prime factorization of 30 which is [2;3;5] is contained in [[3; 10] ; [5;6] ; [2;3;5] ].
+
+Here are several implementations of
+
+check_prime_factors: int -> (int list) list -> bool
+
+Choose from the following that only compute the function prime_fact once in order to check for prime factorizations in the given input list.
+
+1. let check_prime_factors x l = let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+
+ 2. let check_prime_factors x l = match l with
+| [] -> false
+| y::ys -> y = prime_fact x || check x ys
+
+3. let check_prime_factors x l =
+List.exists (fun e -> e = prime_fact x) l
+
+4. let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p)

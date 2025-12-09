@@ -1,0 +1,16 @@
+**Solution:**
+```ocaml
+a) let concat l =
+let rec aux l s = match l with
+  | [] -> s
+  | x::xs -> aux xs (x ^ " " ^ s)
+in aux l ""
+```
+**Explanation:**
+This function is the correct implementation of `concat`. The reason is that the argument `s` in the recursive call `aux xs (x ^ " " ^ s)` accumulates the concatenated strings. By doing `x ^ " " ^ s`, we prepend the current string `x` to `s`, ensuring that `s` is updated correctly for the next recursive call. This way, only one pass through the list is made.
+
+The other options are incorrect:
+
+* Option b) prepends `s` to `x`, which is wrong because it adds `s` to the beginning of the concatenated string, not appending it.
+* Option c) reverses the list and prepends strings to `s` in reverse order using `x ^ " " ^ s`, which is inefficient and incorrect.
+* Option d) is a non-recursive implementation that traverses the list multiple times, which defeats the purpose of tail recursion.

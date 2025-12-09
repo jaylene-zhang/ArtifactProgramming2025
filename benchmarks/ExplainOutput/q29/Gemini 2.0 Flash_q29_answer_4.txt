@@ -1,0 +1,22 @@
+Here's an analysis of each implementation:
+
+**a) Incorrect**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+
+*   **Explanation:** `curry (sumSeries f) 0` partially applies `sumSeries f` at `(a,b)` with a=0 creating a function fun b inc' -> sumSeries f (0,b) inc'. Then,  `swap` is being called on the result with `(fun x -> x + 1)` and upper bound. Since `sumSeries f` take `(a,b)` as an argument but not taking `a` and `b` separately, `curry` must be applied on the function `sumSeries f` which has a tuple `(a,b)` as parameter. The argument `0` has type int when it should be of tuple type and therefore it's incorrect.
+
+**b) Incorrect**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+
+*   **Explanation:** `sumSeries f 0` is incorrect because `sumSeries` expects `f` and a tuple `(a,b)` as the second argument, not `f` and then `0` separately.
+
+**c) Correct**
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+
+*   **Explanation:** `swap (sumSeries f) (fun x -> x + 1)` correctly swaps the second and third arguments of `sumSeries f`, resulting in a function `fun a b -> sumSeries f (a,b) (fun x -> x + 1)`.  Then, `curry` correctly applied on the result of swap which is equivalent to `(fun b a -> sumSeries f)(a,b)(fun x -> x+1)` is called with the lower bound of type int as the argument and the remaining argument becomes the upper bound which is exactly what we expected. Finally, `curry` applies `0` as the first argument (the lower bound), leaving a function that takes the upper bound as its argument.

@@ -1,0 +1,5 @@
+**No**, the function is not tail-recursive.
+
+**Reason:** In the recursive case, the last expression is `zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2`. The recursive call to `zip_tr` is not the last thing that needs to be evaluated before we can return the result. The inner function `(fun l -> sc ((h1, h2) :: l))` still needs to be applied (i.e., the `sc` function still needs to be called) before we can return the result. Therefore, it's not tail-recursive.
+
+Note that the `sc` function is being applied after the recursive call, which makes it not tail-recursive.

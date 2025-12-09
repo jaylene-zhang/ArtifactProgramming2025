@@ -1,0 +1,24 @@
+Solution for Q4.1:
+• Base Case (h = Empty):
+  add_up Empty + acc = 0 + acc = acc  
+  add_up_tr Empty acc = acc  
+  Therefore, equality holds.
+• Induction Step (h = Hand(c, h')):
+  Induction Hypothesis: For any accumulator a, add_up h' + a = add_up_tr h' a.
+  Then, 
+    add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc  
+                           = add_up h' + (1 + acc)  
+                           = add_up_tr h' (1 + acc) by the IH  
+                           = add_up_tr (Hand(c, h')) acc  
+  Therefore, the equality holds.
+
+Explanation for Q4.1:
+We prove by structural induction on h. The base case is trivial. In the step case, using the induction hypothesis with accumulator (1 + acc) completes the proof.
+
+Solution for Q4.2:
+By applying Theorem 1 with acc = 0, we get:
+  add_up h + 0 = add_up_tr h 0  
+  Hence, add_up h = add_up_tr h 0.
+
+Explanation for Q4.2:
+The main result follows directly from the general statement (Theorem 1) by choosing the accumulator to be 0.

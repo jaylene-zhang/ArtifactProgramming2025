@@ -1,0 +1,3 @@
+To initialize `acc`, you should use an empty list `[]`. 
+
+Explanation: The function `rev_tl l acc` is a tail-recursive function that reverses the list `l` while accumulating the results in `acc`. Starting with an empty list `[]` allows the elements of `l` to be prepended to `acc` during the recursive calls, effectively building the reversed list.

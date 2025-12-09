@@ -1,0 +1,10 @@
+**Result:** 
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:** Inlining `y` with `(f x)` involves replacing all occurrences of `y` with `(f x)`. This substitution affects the `w` calculation and the final multiplication. The original `x` binding remains unchanged as it's not the focus of the inlining operation, but its interaction with the new `w` calculation is modified due to the substitution of `y`.

@@ -1,0 +1,31 @@
+Solution: (1, 3, [4; 3; 2], [6; 6; 6])
+
+Explanation:
+1. Outer bindings: 
+  c = ref 0, l = List.rev [1;2;3] yields [3;2;1], observe = fun() -> !c, x = 1.
+2. inc is defined as fun x -> (c := !c+1 ; x+1) using outer c.
+3. Mapping inc over l:
+  – inc 3: outer c from 0 to 1, returns 4.
+  – inc 2: outer c from 1 to 2, returns 3.
+  – inc 1: outer c from 2 to 3, returns 2.
+  So, ml = [4;3;2] and observe() returns 3.
+4. For inc′:
+  New local bindings shadow outer ones:
+   c = ref 0 and x = outer x + 1 = 2, with inc′ = fun y -> (c := !c+1 ; !c + y + x).
+5. Mapping inc′ over l:
+  For each call, the local c increments:
+   – First call (y=3): returns 1+3+2 = 6.
+   – Second (y=2): returns 2+2+2 = 6.
+   – Third (y=1): returns 3+1+2 = 6.
+  Thus, ml′ = [6;6;6].
+
+Binding Stack Diagram:
+Outer scope:
+  c = ref 3         l = [3;2;1]
+  observe → () -> !c   x = 1
+  inc → (x) ↦ (c := !c+1; x+1)
+
+Inner scope for inc′:
+  c (local) = ref 0    x (local) = 2   inc′ → (y) ↦ (c := !c+1; !c + y + x)
+
+The final tuple is then (x, observe(), ml, ml′) = (1, 3, [4;3;2], [6;6;6]).

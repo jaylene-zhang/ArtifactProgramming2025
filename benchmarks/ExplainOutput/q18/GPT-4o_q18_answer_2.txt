@@ -1,0 +1,7 @@
+**Solution:**
+The program `shift_point 2` will return `(8, 7)`.
+
+**Explanation:**
+1. Initially, `point` is `(5, 4)`.
+2. The first call to `shift_point 1` computes `(component_x point + 1, component_y point + 1)`, which evaluates to `(5 + 1, 4 + 1)` or `(6, 5)`. Then, `point` is redefined as `(6, 5)`.
+3. When `shift_point 2` is called, it uses the updated `point = (6, 5)` and computes `(component_x point + 2, component_y point + 2)`, which evaluates to `(6 + 2, 5 + 2)` or `(8, 7)`.

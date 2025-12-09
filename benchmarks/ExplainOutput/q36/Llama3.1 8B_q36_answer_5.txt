@@ -1,0 +1,15 @@
+```ocaml
+let rec f l =
+  match l with
+  | []   -> []
+  | h :: t   -> rotate (t @ [h])
+
+let () =
+  print_endline (String.concat " " (List.map string_of_int (f [1;2;3;4;5]))) ;
+  print_endline (String.concat " " (List.map string_of_int (f [5;1;2;3;4])) ;
+  print_endline (String.concat " " (List.map string_of_int (f [5;4;3;2;1])))
+```
+
+Explanation:
+This function applies the `rotate` function to each sublist in the list, starting from the last element.
+When we pass `l = [1; 2; 3; 4; 5]`, it first applies rotate on `[4; 5; 1]`, resulting in `[5; 1; 4]`, then applies rotate on `[3; 5; 1]`, and finally `[2; 3; 5; 1]`. The final result is `[1; 2; 3; 5; 4]`.

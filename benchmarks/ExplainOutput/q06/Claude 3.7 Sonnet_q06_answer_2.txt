@@ -1,0 +1,5 @@
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> w * 2 + 2 + y * w
+
+Explanation: To inline w*2 for x, I replace all occurrences of x with w*2. In the original function body, x appears in "fun y -> x + 2 + y * w", so x is replaced with w*2 giving "fun y -> w*2 + 2 + y * w".

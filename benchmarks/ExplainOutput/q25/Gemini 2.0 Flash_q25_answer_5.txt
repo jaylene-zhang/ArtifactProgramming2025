@@ -1,0 +1,11 @@
+Solution:
+
+*   `'t = 's = 'u`
+
+Explanation:
+
+1.  `f (a, b)` has type `'u`.
+2.  `f (b, a)` has type `'u`.
+3.  Therefore, `(f (a, b), f (b, a))` has type `'u * 'u`.
+4.  For `f (f (a, b), f (b, a))` to be valid, the first argument of `f` must have type `'t` and the second argument must have type `'s`. So, it must be that `'u = 't` and `'u = 's`.
+5.  Combining the above we find that `'t = 's = 'u`.

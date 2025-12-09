@@ -1,0 +1,8 @@
+Solution:
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+
+Explanation:
+All occurrences of y are replaced by (f x). This updates w = y + x to w = (f x) + x and (f w) * y to (f w) * (f x).

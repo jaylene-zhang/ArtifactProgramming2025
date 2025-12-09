@@ -1,0 +1,9 @@
+**Solution:**
+
+To enhance immutability, facilitate reasoning, and enable easier parallelism.
+
+**Explanation:**
+
+*   **Immutability:** Avoiding state variables promotes immutability, making code easier to reason about since values don't change unexpectedly.
+*   **Reasoning:** Without mutable state, the order of execution matters less, simplifying debugging and verification.
+*   **Parallelism:** Immutability allows for easier parallelization because there are no shared mutable resources to protect with locks, reducing the risk of race conditions.

@@ -1,0 +1,6 @@
+**Solution: a)**
+
+**Explanation:**
+- Option (a) is the correct implementation because it allows the representation of all valid combinations of jump types (Axel, Loop, etc.) and the number of revolutions as an integer, which can represent any number of rotations (e.g., single, double, triple, quadruple, etc.).
+- Option (b) is incorrect because it restricts the revolutions to only "Double" and "Triple", which does not capture jumps with more than three revolutions.
+- Option (c) unnecessarily introduces recursion in the data structure, making it overly complex and redundant for this scenario. It is equivalent to nesting jumps but is not needed for representing a simple jump with its type and revolutions.

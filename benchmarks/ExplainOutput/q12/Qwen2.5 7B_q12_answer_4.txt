@@ -1,0 +1,51 @@
+**Q4.1**
+
+**Solution:**
+
+1. **Theorem 1.** For all hands \( h \) and accumulators \( \text{acc} \), \( \text{add_up} h + \text{acc} = \text{add_up_tr} h \text{ acc} \). Proof. By structural induction on \( h \).
+
+2. **Base Case:**
+   - When \( h = \text{Empty} \):
+     \[
+     \text{add_up} \, \text{Empty} + \text{acc} = 0 + \text{acc} = \text{acc}
+     \]
+     \[
+     \text{add_up_tr} \, \text{Empty} \, \text{acc} = \text{acc}
+     \]
+     Therefore, \( 0 + \text{acc} = \text{add_up_tr} \, \text{Empty} \, \text{acc} \) holds.
+
+3. **Step Case:**
+   - Assume the statement is true for some arbitrary hand \( h \):
+     \[
+     \text{add_up} \, h + \text{acc} = \text{add_up_tr} \, h \, \text{acc}
+     \]
+   - Consider the hand \( h' = \text{Hand} \, (c, h) \):
+     \[
+     \text{add_up} \, h' = \text{add_up} \, (\text{Hand} \, (c, h)) + 1 = \text{add_up} \, h + 1
+     \]
+     \[
+     \text{add_up_tr} \, h' \, \text{acc} = \text{add_up_tr} \, (\text{Hand} \, (c, h)) \, \text{acc} = 1 + \text{add_up_tr} \, h \, \text{acc}
+     \]
+     From the induction hypothesis:
+     \[
+     \text{add_up} \, h + \text{acc} = \text{add_up_tr} \, h \, \text{acc}
+     \]
+     Substituting:
+     \[
+     \text{add_up} \, h' + \text{acc} = (\text{add_up} \, h + 1) + \text{acc} = \text{add_up_tr} \, h \, \text{acc} + 1 = \text{add_up_tr} \, h' \, \text{acc}
+     \]
+     Thus, the statement holds for \( h' \).
+
+**Q4.2**
+
+**Proof of Theorem 2.** For all hands \( h \), \( \text{add_up} \, h = \text{add_up_tr} \, h \, 0 \).
+
+1. By Theorem 1, we have:
+   \[
+   \text{add_up} \, h + 0 = \text{add_up_tr} \, h \, 0
+   \]
+2. Simplifying:
+   \[
+   \text{add_up} \, h = \text{add_up_tr} \, h \, 0
+   \]
+Therefore, we have proved the main result.

@@ -1,0 +1,13 @@
+No.
+
+**Solution:**
+
+```ocaml
+let anti_d f x = integral f (0, x) 0.001;;
+```
+
+**Explanation:**
+
+The provided code `let anti_d f = (curry integral) f 0` attempts to curry the `integral` function with `f` and then immediately applies `0` as the second argument.  This is incorrect.  The correct approach requires applying the `x` value to the curried function. The `integral` function needs to be curried, then the `x` value set using `integral f (0, x) 0.001`, where `0.001` is the step size for the numerical integration.  This calculates the integral from 0 to the value of `x`.
+
+Crucially the given code fragment doesn't take the variable `x` into account. The function `anti_d` needs to depend on `x` to calculate the integral up to that value.  The correct code demonstrates how to generate the antiderivative function given a function `f` that calculates the integral numerically. The `0` in the previous code was not passed to the next step thus having the wrong structure. The solution above calculates the value numerically.

@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The base case `n = 1` returns 1. When `n = 0`, the code will recurse with `triangle (-1)`, then `triangle (-2)`, etc., leading to infinite recursion and a stack overflow. The test `triangle 0 == 0` will not pass, and will cause an error.

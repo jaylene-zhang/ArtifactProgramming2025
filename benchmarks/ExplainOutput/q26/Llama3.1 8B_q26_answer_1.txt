@@ -1,0 +1,16 @@
+## Step 1: Understand the given code
+We have a type 'a rlist for a linked list, which is either Nil or Cons of a value of type 'a and a reference to 'a rlist. We have a function get_tail that returns the tail of a linked list if it exists.
+
+## Step 2: Analyze the cyclic list
+We create a cyclic list by doing rc1 := !rc2. This means that the current value of rc1 is replaced by the value of rc2, which in turn contains a reference to rc1. So, we have rc1 -> rc2 -> rc1, a cycle.
+
+## Step 3: Determine the values of rc1 and rc2
+After rc1 := !rc2, we can deduce that rc1 and rc2 reference the same Cons cell. Since Cons (2, rc1) is a Cons of 2 and a reference to rc1, !rc2 is Cons (2, rc1). So rc1 is also Cons (2, rc1).
+
+## Step 4: Analyze the outcome of get_tail rc1 and get_tail rc2
+get_tail rc1 and get_tail rc2 both return rc1. This is because we have a cycle in the linked list.
+
+## Step 5: Determine if the returned values are the same location in memory
+The function == tests physical equality which means it checks if the locations in memory are the same. Since get_tail rc1 and get_tail rc2 both return the same location in memory, rc1, then physical equality would be true because they both reference the same location, rc1.
+
+The final answer is: $\boxed{true}$

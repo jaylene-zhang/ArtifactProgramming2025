@@ -1,0 +1,11 @@
+Here's the solution:
+
+1)  `ones`
+2)  `psums (map (fun s -> s.hd) pascal)`
+
+**Explanation:**
+
+*   **`hd = ones`**: The head of the `pascal` stream is the stream of ones, representing the first diagonal.
+*   **`tl = Susp (fun () -> psums (map (fun s -> s.hd) pascal))`**: The tail of the `pascal` stream is a suspended computation. It calculates the next diagonal by:
+    *   Mapping the `hd` (the first element, which is a stream) of each stream in `pascal`
+    *   Then taking the partial sums (`psums`) of the resulting stream of elements. This stream of partial sums becomes the next diagonal.

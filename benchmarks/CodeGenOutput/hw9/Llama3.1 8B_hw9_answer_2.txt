@@ -1,0 +1,46 @@
+(*
+Let me rewrite sub 
+Define (sub exp) : exp subst name exp =
+| Var y ->
+      if x = y then e'
+      else Var y  
+| I (n) -> I n |(this constructor needs n : int)
+| B b -> B b |(this constructor needs b : bool)
+| Primop (po, args) -> Primop (po, List.map (fun e -> sub e) args)
+| If (e1, e2, e3) -> If (sub e1, sub e2, sub e3)
+| Fn ([], e) -> e  
+| Fn ([(x, tp)], e) -> Let (x, e, Fn ([], e)) | (missing this one)
+| Fn (xs, e) ->  
+| Let (x, e1, e2) ->  
+| Rec (x, t, e1) ->
+| Apply (e, es) -> Apply (sub e, List.map sub es)
+*)
+
+let rec sub (e', x) : exp -> exp = function
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n ->
+      I n
+  | B b ->
+      B b
+  | Primop (po, args) ->
+      Primop (po, List.map (sub ((e', x))) args)
+  | If (e1, e2, e3) ->
+      If (sub ((e', x)) e1, sub ((e', x)) e2, sub ((e', x)) e3)
+  | Fn ( [], e) ->
+      Fn ( [], e )
+  | Fn ( ( (x, tp) as xs ) :: xs', e) ->
+      Let ( x, e, Fn (xs', e) )
+  | Fn (xs, e) ->
+     Fn(xs, sub ((e', x)) e)
+  | Let (x', e1, e2) ->
+      let e1' = sub ((e', x)) e1 in
+      if x' = x then
+        Let (x', e1', sub ((e', x)) e2)
+      else
+        Let (x', e1', sub ((e', x)) e2)
+  | Rec (x', t, e) ->
+      raise NotImplemented
+  | Apply (e, es) ->
+      Apply(sub ((e', x)) e, List.map (fun e' -> sub ((e', x)) e') es)

@@ -1,0 +1,6 @@
+Solution:
+```
+r
+f
+```
+Explanation: `r` is declared but never used. `f` is a function, but it's never used or applied. The variable `x` in the function `f` is not the same `x` from the `fun x ->...` syntax; it's a locally defined variable which shadows the `x` from the scope outside the `let.. in` expression.

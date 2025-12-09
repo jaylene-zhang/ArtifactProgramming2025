@@ -1,0 +1,7 @@
+The program `shift_point 2` will return `(6, 5)`.
+
+Explanation: When `shift_point 2` is evaluated,
+it uses the current value of `point` in the environment,
+which is `(5, 4)` after the last line `let point = shift_point 1`.
+However, the `shift_point` function doesn't use this updated value - it directly references the original binding of `point` which is `(4, 3)`.
+Therefore, `shift_point 2` computes `(4+2, 3+2)`, which equals `(6, 5)`.

@@ -1,0 +1,3 @@
+**c) h (g (f x))**
+
+Explanation: The `compose` function should apply `g` to `f` and then apply `h` to the result. So, `h (g (f x))` means apply `f` to `x`, apply `g` to the result with `f` as the function input, and then apply `h` to the result with `f` as the function input. This will compute `fun f x -> f (f (f x))` when `h` and `g` are `fun f x -> f x` and `fun f x -> f (f x)` respectively.

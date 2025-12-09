@@ -1,0 +1,16 @@
+1) `ones`
+
+2) `map (fun x -> psums x) (tl pascal)`
+
+
+**Explanation:**
+
+1. **`ones`**: The first diagonal of Pascal's Triangle consists solely of 1s, which is represented by the `ones` stream in the code.
+
+2. **`map (fun x -> psums x) (tl pascal)`**:  This line recursively calculates the next diagonal.
+   - `tl pascal`:  This gets the *tail* of the current Pascal's Triangle stream to process it. This is the result of the previous recursive call (or the stream `ones` if this is the first diagonal).
+   - `fun x -> psums x`:  This is a function that takes a diagonal's stream (`x`) and calculates the *partial sums* of its elements using the `psums` function (presumed to be defined elsewhere). This produces the next diagonal.
+   - `map ...`: This applies the `psums` function to *each diagonal* in the `tl pascal`. This generates the tail of the next Pascal's Triangle diagonal.
+
+
+In summary, the `map` and `psums` function together create the next diagonal from the prior one of the Pascals triangle.  The `rec` keyword implies that the function calls itself recursively. The `Susp` part means that the computation of the next diagonal is lazy.

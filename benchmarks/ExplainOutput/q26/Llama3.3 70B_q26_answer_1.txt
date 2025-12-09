@@ -1,0 +1,3 @@
+**Yes**
+
+Explanation: After executing `rc1 := !rc2`, `rc1` and `rc2` both point to the same list, which is `Cons (2, ref (Cons (1, ...)))`, where `...` points back to `Cons (2, ...)`. Therefore, `get_tail rc1` and `get_tail rc2` both return the same reference, which points to the `Cons (1, ...)` node, and thus they are physically equal.

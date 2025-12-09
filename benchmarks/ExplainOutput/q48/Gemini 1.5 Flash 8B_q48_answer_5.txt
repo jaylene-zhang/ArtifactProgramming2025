@@ -1,0 +1,7 @@
+**Solution:**
+
+Performance considerations and the need for flexibility in function implementations.
+
+**Explanation:**
+
+While continuations *can* enable tail recursion, they often introduce significant performance overhead. Implementing every List function with continuations might not yield a measurable or even noticeable improvement in efficiency, especially for simple cases.  A more crucial factor is that some list operations, like recursion over large lists, are naturally implemented in a way that *doesn't* lead to efficient tail-recursion *without* an extensive rewrite (which introduces complexity).  OCaml's compiler is designed to target good performance with the standard library's current implementations.  The choice of how to optimize or otherwise implement the functions reflects the tradeoff between achievable speed gains and the complexity of implementing the functions in a truly tail-recursive fashion.

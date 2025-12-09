@@ -1,0 +1,18 @@
+No.
+
+**Solution:**
+
+```ocaml
+let rec helper n k =
+  if n mod 2 = 1 then k
+  else helper (n / 2) (k * 2)
+let max_two_factor n = helper n 1
+```
+
+**Explanation of why the original is incorrect:**
+
+1. **Not Tail-Recursive:** The `helper` function in the provided code is not tail-recursive. Each recursive call does not immediately disappear.  The result is only calculated in the final step.
+
+2. **Incorrect Logic (in addition to not being tail recursive):** The initial `helper` function does not track the power of 2.  The function `max_two_factor` doesn't have the correct argument for `helper` so it calculates a power of two from 1, which is incorrect.  It effectively just counts how many times `n` is divisible by 2, but the multiplication happens after exiting from the recursion so it is not correct.
+
+ The corrected code calculates the power of two properly by tracking it in the accumulator `k`. The final `max_two_factor` function call now passes the initial value for the accumulator. This version is tail-recursive, efficient and correct.

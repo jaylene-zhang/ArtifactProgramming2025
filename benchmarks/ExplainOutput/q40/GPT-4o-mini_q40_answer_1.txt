@@ -1,0 +1,3 @@
+No, the function `zip_tr` is not tail-recursive.
+
+Explanation: A function is tail-recursive if the final result of each recursive call is returned directly without any further computation. In `zip_tr`, the recursive call to `zip_tr` is within the context of constructing a result (by prepending `(h1, h2)` to the list returned by the continuation). This means that additional work is done after the recursive call (the construction of the list), preventing it from being tail-recursive.

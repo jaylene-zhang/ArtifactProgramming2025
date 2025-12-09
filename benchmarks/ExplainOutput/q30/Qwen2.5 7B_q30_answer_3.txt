@@ -1,0 +1,7 @@
+The last expression will return `[2.0 ; 4.0 ; 1.0]`.
+
+Explanation:
+1. `update_sales_tax ()` doubles the `sales_tax` to 2.0 but does not modify the list or the `sales_tax` value itself, it just returns the new value.
+2. `update_price_list price_list` applies the updated `add_tax` function (2.0 + x) to each element in the `price_list` `[10.0 ; 20.0 ; 5.0]`.
+3. The resulting list with the updated tax is `[2.0 + 10.0 ; 2.0 + 20.0 ; 2.0 + 5.0]`, which simplifies to `[12.0 ; 22.0 ; 7.0]`.
+4. However, the given answer suggests a different calculation which appears to be incorrect based on the provided code. The correct calculation would result in `[12.0 ; 22.0 ; 7.0]`.

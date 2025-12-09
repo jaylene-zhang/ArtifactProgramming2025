@@ -1,0 +1,52 @@
+### Q4.1
+
+**Induction Hypothesis:**
+For a hand \( h \) and any accumulator \( acc \), we assume that for some hand \( h' \) (a sub-hand of \( h \)), the property holds:  
+\( add\_up h' + acc = add\_up\_tr h' acc \).
+
+**Proof:**
+
+- **Base Case:** 
+  Let \( h = Empty \).  
+  Then:  
+  \( add\_up Empty = 0 \)  
+  \( add\_up\_tr Empty acc = acc \)  
+  Thus:  
+  \( 0 + acc = acc \), which holds true.  
+  
+- **Step Case:** 
+  Let \( h = Hand(c, h') \).  
+  By the definition of our functions:
+  
+  \( add\_up (Hand(c, h')) = add\_up h' + 1 \)  
+  By our induction hypothesis:  
+  \( add\_up h' + acc = add\_up\_tr h' acc \)  
+  
+  Thus, we have:
+  \( add\_up (Hand(c, h')) + acc = (add\_up h' + 1) + acc \) 
+  \( = add\_up h' + (1 + acc) \)  
+  And for \( add\_up\_tr \):  
+  \( add\_up\_tr (Hand(c, h')) acc = add\_up\_tr h' (1 + acc) \)  
+  But from our hypothesis:  
+  \( add\_up\_tr h' (1 + acc) = add\_up h' + (1 + acc) \).  
+  Thus, both sides are equal:  
+  \( add\_up h' + (1 + acc) = add\_up h' + (1 + acc) \), proving our step case.
+
+### Conclusion:
+By structural induction, we have shown that \( add\_up h + acc = add\_up\_tr h acc \) for all hands \( h \) and accumulators \( acc \).
+
+---
+
+### Q4.2
+
+**Theorem 2 (Main Result):** For all hands \( h \), \( add\_up h = add\_up\_tr h 0 \).
+
+**Proof:**
+Using Theorem 1 with \( acc = 0 \):
+
+From Theorem 1, we have:
+\( add\_up h + 0 = add\_up\_tr h 0 \).  
+Thus:
+\( add\_up h = add\_up\_tr h 0 \).
+
+This directly leads us to our main result since we have shown that adjusting the accumulator to 0 holds the property defined in Theorem 1 for all hands \( h \). Hence, the theorem is proven.

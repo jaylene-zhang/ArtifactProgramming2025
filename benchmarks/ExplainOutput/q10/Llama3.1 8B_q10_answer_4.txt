@@ -1,0 +1,5 @@
+**Solution:**
+Functions are first-class values because they can be assigned to variables, passed as arguments to other functions, and returned as values from functions.
+
+**Explanation:**
+Inprogramming languages like OCaml, functions are treated as equal entities as any other data type, meaning they can be used just like any other value (e.g., numbers or strings). This allows for functions to be manipulated freely during execution of the program.

@@ -1,0 +1,8 @@
+**Solution:**
+
+The statement holds for the inductive hypothesis on the tail of the list.
+
+
+**Explanation:**
+
+Inductive proofs on lists typically involve a base case (empty list) and a step case.  The step case leverages the assumption (the inductive hypothesis) that the statement is true for a list of length *n-1*.  You then need to show, using this hypothesis, that the statement also holds for a list of length *n*.

@@ -1,0 +1,5 @@
+```ocaml
+let rec repeat (f : ('a -> 'a) -> 'b) : 'b = f (repeat f)
+```
+
+This function is well-typed. The function `f` takes as input a function of type `('a -> 'a)` and returns a value of type `'b`. When `repeat f` is called, `repeat f` has type `'b`, and this is provided as an argument to `f`. Since `f` expects a function of type `('a -> 'a)`, this means `'b` must be equal to `('a -> 'a)`. So essentially `repeat` takes a higher-order function that consumes a function and returns a function of the same type.

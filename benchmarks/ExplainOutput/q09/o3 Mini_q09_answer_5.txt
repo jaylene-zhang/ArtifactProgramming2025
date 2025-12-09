@@ -1,0 +1,14 @@
+Solution:
+------------------------------------------------
+let x = 10;;  (* Global x *)
+
+let f () =
+  let x = 20 in  (* This inner x overshadows the global x *)
+  x + 1
+;;
+
+print_int (f ());;
+------------------------------------------------
+
+Explanation:
+The function f defines a local x (with value 20) that overshadows the global x. Inside f, the computation uses the local x rather than the outer one.

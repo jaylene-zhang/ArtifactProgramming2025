@@ -1,0 +1,15 @@
+**Correct Answer:**  b
+
+**Explanation of Correct Answer:**
+
+Option b is the only tail-recursive solution that processes the list in a way that doesn't require reversing it. The other options either reverse the list (option c) or aren't tail-recursive. Option (a) will have space complexity of O(n).
+
+**Explanation of Incorrect Answers:**
+
+* **a):**  This is not tail-recursive because the recursive call `aux xs (x ^ " " ^ s)` is not the very last operation before returning.  Crucially,  string concatenation is not a tail-recursive operation in the context of building up the larger string. It involves creating a new string in each iteration.
+* **c):** This solution will not perform as a tail-recursive solution. It reverses the entire list before doing any concatenation, making the function not tail-recursive.
+* **d):** Whilst a recursive function, this is not tail-recursive. The recursive call `(concat xs)` is not the very last operation before the return - the concatenation of `x` and the space is part of the computation before the recursive call, which is performed after the recursive call. This leads to a stack overflow for sufficiently long input lists.
+
+
+**Key Concept for Tail Recursion in OCaml:**
+A tail-recursive function in OCaml must perform the recursive call *as the very last operation* before returning the result in a function that processes a list in a forward manner.

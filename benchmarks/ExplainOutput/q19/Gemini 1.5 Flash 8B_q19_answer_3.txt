@@ -1,0 +1,24 @@
+**Solution:** No
+
+**Explanation:**
+
+The code is not tail-recursive and does not correctly calculate the largest power of 2 that divides `n`.
+
+1. **Not Tail-Recursive:**  The `helper` function calls itself recursively, but the result of that recursive call is not the final result; it is multiplied by 2.  The multiplication `2 * helper (n/2)` before the base case means a large amount of intermediate results are computed and the calculation is not done on a single stack frame; the computation isn't "tail-recursive".  To be tail-recursive, any recursive function that could have multiple steps in the recursion process (rather than just one that directly returns the result of the recursive calls) needs to be refactored to use accumulator function and prevent intermediate computations.
+
+2. **Incorrect Calculation:** The crucial flaw lies in the `max_two_factor` function.  It calls `helper 1 n` which is the expected value of `n`, however the recursive function `helper` is designed to return the power of 2 that divide `1` if the input isn't divisible by 2.  `max_two_factor` would return the value of `n` if `n` is odd and `2 ^ k` if `n` is a power of 2, `k` being the exponent. Thus the recursive function isn't calculating the largest power accurately.
+
+
+**Example (incorrect) use:**
+
+
+```ocaml
+let result = max_two_factor 8;;
+```
+
+The result would be 8 because if n is an even number it will result in a power of 2.
+However if n equals 9, result should be 1 because no power of 2 divides it.
+But `max_two_factor 9` would yield 1.
+
+
+A correct tail-recursive solution would accumulate the power of two in each step.

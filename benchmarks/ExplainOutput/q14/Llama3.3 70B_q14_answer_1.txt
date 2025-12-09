@@ -1,0 +1,5 @@
+**Tail-recursive function:** `let rec factorial n acc = if n = 0 then acc else factorial (n-1) (n * acc)`
+
+A function is tail-recursive when the last operation it performs is the recursive call, meaning that the function doesn't need to store the current state to continue executing after the recursive call returns. In other words, the function does not need to "remember" anything after making the recursive call, as there's no additional computation to be done after the recursive call returns. 
+
+In the example above, the `factorial` function is tail-recursive because the recursive call to `factorial` is the last operation performed, and the result of the function is directly returned from the recursive call, without any additional computation. This allows the compiler to optimize the function call, reusing the same stack frame for each recursive call, which can help prevent stack overflows for large inputs.

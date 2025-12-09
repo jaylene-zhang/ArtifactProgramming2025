@@ -1,0 +1,7 @@
+**Solution:**  
+In the step case, we need to prove that if the statement holds for a list `l`, then it also holds for the list constructed by adding one more element, typically in the form of `x :: l`.
+
+**Explanation:**  
+Induction on lists requires proving two cases:
+1. **Base case**: The statement is true for the empty list `[]`.
+2. **Step case**: Assuming the statement is true for a list `l` (inductive hypothesis), prove that it is also true for the list `x :: l` (a list with a new element `x` prepended). This ensures the statement holds for all lists.

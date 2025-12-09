@@ -1,0 +1,9 @@
+Solution:
+xs : 'a list  
+ys : 'b list  
+pair : ('a * 'b) -> 'c  
+sc : 'c list -> 'd  
+zippy’s type is: 'a list -> 'b list -> (('a * 'b) -> 'c) -> ('c list -> 'd) -> 'd
+
+Explanation:
+The function takes two lists (xs and ys) of possibly different element types ('a and 'b). The pair function converts a pair ('a * 'b) into a value of type 'c. The continuation sc takes a list of 'c and returns the final result of type 'd. Thus, the most general type for zippy is as given above.

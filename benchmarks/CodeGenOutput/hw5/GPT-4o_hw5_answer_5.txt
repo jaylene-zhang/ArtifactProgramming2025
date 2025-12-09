@@ -1,0 +1,74 @@
+```ocaml
+(* Question 1: Tree Depth *)
+
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun d1 ->
+      depth_helper r (fun d2 ->
+      sc (1 + max d1 d2)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc (Some tree)
+    | _, Empty -> fc ()
+    | x :: xs, Tree (l, v, r) ->
+      if x = v then
+        helper xs l (fun res -> match res with
+                                | Some _ -> sc res
+                                | None -> helper xs r sc fc)
+                 fc
+      else fc ()
+  in
+  helper ls tree (fun res -> res) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+let parser_cps t =
+  (* Helper functions *)
+  let rec parse_expr input sc fc =
+    parse_term input
+      (fun input1 left ->
+        match input1 with
+        | "+" :: tokens ->
+          parse_expr tokens
+            (fun input2 right -> sc input2 (Plus (left, right)))
+            fc
+        | _ -> sc input1 left)
+      fc
+  and parse_term input sc fc =
+    parse_factor input
+      (fun input1 left ->
+        match input1 with
+        | "*" :: tokens ->
+          parse_term tokens
+            (fun input2 right -> sc input2 (Times (left, right)))
+            fc
+        | _ -> sc input1 left)
+      fc
+  and parse_factor input sc fc =
+    match input with
+    | "(" :: tokens ->
+      parse_expr tokens
+        (fun input1 result ->
+          match input1 with
+          | ")" :: tokens1 -> sc tokens1 result
+          | _ -> fc ())
+        fc
+    | token :: tokens ->
+      (try sc tokens (Const (int_of_string token))
+       with Failure _ -> fc ())
+    | [] -> fc ()
+  in
+  (* Main parser function *)
+  parse_expr t
+    (fun remaining result -> match remaining with [] -> Some result | _ -> None)
+    (fun () -> None)
+```

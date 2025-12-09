@@ -1,0 +1,8 @@
+a) False. 
+The length of the definition has no relation to the execution speed of a function. Performance depends on algorithmic complexity, not code verbosity.
+
+b) False.
+While it's true that the time complexity of (@) depends on the length of its first argument (not second), this actually makes rev1 slower, not faster. In rev1, the append operation (@) is called recursively, resulting in O(n²) time complexity.
+
+c) True.
+rev2 is faster because it uses an accumulator pattern with the constant-time cons operation (::). This results in O(n) time complexity, as each element is processed exactly once with a constant-time operation. In contrast, rev1 has quadratic time complexity due to the repeated list concatenation.

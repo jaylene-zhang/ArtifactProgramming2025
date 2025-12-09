@@ -1,0 +1,10 @@
+c) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))
+
+**Explanation:**
+- The correct implementation (c) correctly simulates `fold_right`. It ensures that the function `f` is applied in the correct order, from right to left, by first calling `aux_folder` on the tail of the list and then applying `f` with the result of the continuation.
+- Option (a) has the continuation `b` as an argument, but it does not achieve the desired behavior of folding.
+- Option (b) incorrectly passes the result of `cont r` to `f`, which would evaluate `f` in the wrong order.
+- Option (d) incorrectly passes `cont (f r x)` to the continuation, which again evaluates `f` in the wrong order.
+- Option (e) incorrectly swaps the function `f` and the list `xs`, and does not proceed in the correct order.

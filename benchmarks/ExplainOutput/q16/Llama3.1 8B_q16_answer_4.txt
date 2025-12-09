@@ -1,0 +1,7 @@
+**Solution**
+```
+(shift_point 2) = (6,6)
+```
+**Explanation**
+
+The `shift_point` function calculates the new coordinates of the point by adding its current x and y coordinates by the given offset `n`. Since the point `point` has been redefined after it is first defined, its value is now `(5, 4)`. Therefore, applying the `shift_point` function with an offset of `2` results in `(7, 6)`.

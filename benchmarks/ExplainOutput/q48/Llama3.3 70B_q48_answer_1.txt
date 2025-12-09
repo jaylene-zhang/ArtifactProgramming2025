@@ -1,0 +1,3 @@
+**No**, the `List` library functions in OCaml are not all tail-recursive because while it's possible to rewrite many functions to be tail-recursive using continuations, doing so can often make the code less readable and more complex.
+
+Explanation: While continuations can help achieve tail-recursiveness, the added complexity may outweigh the benefits of tail-recursion, especially for simple list operations. Additionally, in many cases, the overhead of creating and applying continuations may negate the performance benefits of tail-recursion.

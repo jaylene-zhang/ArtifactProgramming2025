@@ -1,0 +1,9 @@
+**Solution:**
+```
+let f l = match l with
+  | [] -> []
+  | h :: t -> rotate (t @ [h])
+```
+Rotates the input list **twice**, effectively cycling each element 3 positions to the right.
+
+**Explanation:** The function takes a list `l` as input. When the list has at least five elements, it appends the first element to the end of the rest of the list (`t @ [h]`), and then applies the `rotate` function to the resulting list. The `rotate` function removes the first element and moves it to the end, so applying it twice does the equivalent of rotating the original list by 3 positions to the right.

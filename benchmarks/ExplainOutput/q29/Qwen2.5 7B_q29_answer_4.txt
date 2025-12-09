@@ -1,0 +1,8 @@
+### Correct Implementation
+**b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)**
+
+### Explanation
+
+- **a) Incorrect:** The `swap` and `curry` are incorrectly applied. `swap (curry (sumSeries f) 0)` will curry the function `sumSeries f` with 0, but `swap` should be applied to the resulting function and the increment function.
+- **b) Correct:** This is the right approach. `curry (sumSeries f 0)` curries the first argument to `sumSeries`, fixing the lower bound to 0. `swap` then correctly swaps the fixed argument and the increment function.
+- **c) Incorrect:** The `curry` and `swap` are applied in a way that does not correctly use the parameters. `curry (swap (sumSeries f) (fun x -> x + 1)) 0` will not work as intended because it tries to curry `swap` and `sumSeries` incorrectly, and then applies 0 to the incorrect function.

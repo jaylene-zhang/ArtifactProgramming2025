@@ -1,0 +1,14 @@
+```
+let toInt f = 
+  let rec helper acc g = 
+    match g () with
+    | x -> if f x = x then acc else helper (acc + 1) (fun () -> g ())
+  in helper 0 (fun () -> f)
+```
+
+Explanation:
+- The `toInt` function takes a function `f` and returns the number of times `f` is applied to its argument.
+- We use a helper recursive function `helper` that takes an accumulator `acc` and a function `g`.
+- The `match` statement checks if `f x = x`, which acts as a base case (when `f` doesn't modify `x` anymore, it means the function was applied a certain number of times, and we return the accumulator).
+- If `f x` is not equal to `x`, we increment the accumulator and recursively call `helper` with the incremented accumulator and a nested function `fun () -> g ()` that ensures `g` is only called when needed (to simulate the original behavior of `create`).
+- The initial call to `helper` starts with an accumulator set to 0 and a function inside `g` that will eventually call `f` once.

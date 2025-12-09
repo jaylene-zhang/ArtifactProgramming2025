@@ -1,0 +1,12 @@
+The most general instantiation for the type variables is:
+
+'t = 'u, 's = 'u.
+
+With these instantiations, `f` is of type: `('u * 'u -> 'u)`, and the expression `f (f (a, b), f (b, a))` will have type `'u`.
+
+**Explanation:** 
+
+- `f` takes a tuple of type `('t * 's)` and returns type `'u`, which means it combines two inputs of types `'t` and `'s` to produce an output of type `'u`.
+- We need `f (a, b)` and `f (b, a)` both to return values of type `'u`.
+- Both occurrences of `f` need to take `f (a, b)` and `f (b, a)` as inputs, meaning both must produce values that can be processed by the next `f`. If we set `'t` and `'s` to be the same type as `'u`, we ensure that all outputs and inputs are of type `'u`.
+- Hence, `(f (a, b)` and `f (b, a)` are both of type `'u`, making `f (f (a, b), f (b, a))` of type `'u`.

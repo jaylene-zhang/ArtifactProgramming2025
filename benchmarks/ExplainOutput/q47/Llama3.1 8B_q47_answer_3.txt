@@ -1,0 +1,16 @@
+**Solution**
+
+d) let rec concat (l : string list) : string =
+match l with
+[] -> ""
+| x :: xs -> x ^ " " ^ (concat xs)
+
+**Explanation**
+
+This implementation is correct and tail-recursive. 
+
+The function recursively takes a list and an accumulator `s`, and returns the concatenated string. The base case is when the list is empty, in which case the function returns the accumulator. The recursive case constructs a new accumulator by appending the current string and a space to the accumulator, and then recursively calls itself with the rest of the list. 
+
+This solution only traverses the input list once because it fully uses the list during the recursive calls, and at each step it reduces the size of the list until the base case is reached. This is known as tail recursion, where the recursive call is the last operation performed by the function. This means that the function can be optimized by the compiler, and it uses constant stack space, making it efficient. 
+
+The other options are not correct. Options a) and b) are not tail-recursive, because they build the result in reverse in the accumulator, and use mutable strings which are expensive to append to. Option c) is also not correct, because it reverses the list first, which means it has to traverse the list twice. Options a) and c) would require extra memory allocations whereas b) would also produce a reversed string in the accumulator.

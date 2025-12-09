@@ -1,0 +1,12 @@
+Solution:
+xs: 'a list  
+ys: 'b list  
+pair: ('a * 'b) -> 'c  
+sc: 'c list -> 'd  
+Return type: 'd  
+
+Thus, the full type of zippy is:  
+  zippy : 'a list -> 'b list -> ('a * 'b -> 'c) -> ('c list -> 'd) -> 'd  
+
+Explanation:
+The function takes two lists (of possibly different types) and a function (pair) that converts a pair ('a * 'b) into a value of type 'c. It then uses a continuation sc that accepts a 'c list and produces a result of type 'd. In the base case, sc is applied to an empty list, and in the recursive case, the result of pair is consed onto r (a 'c list) before passing to sc. The zip_plus function specializes the types to int lists. The program is well‐typed.

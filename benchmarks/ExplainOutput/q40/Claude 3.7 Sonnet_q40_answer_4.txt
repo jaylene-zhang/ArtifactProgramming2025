@@ -1,0 +1,3 @@
+Yes, this function is tail-recursive.
+
+Explanation: In tail-recursive functions, recursive calls must be the last operation performed before returning. In this implementation, the recursive call to `zip_tr` is indeed the last operation in every execution path. The function passes continuations (`fc` and a new success continuation) that capture the pending work, allowing it to avoid building up a call stack. When the base cases are reached, the continuations are simply invoked with the appropriate values.

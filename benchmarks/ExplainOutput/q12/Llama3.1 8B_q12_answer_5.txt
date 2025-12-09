@@ -1,0 +1,66 @@
+I'll solve the problem step by step.
+
+**Q4.1**
+
+### Solution
+
+```ocaml
+(* Base Case *)
+let rec add_up_tr h acc =
+  match h with
+  | Empty -> acc
+  | Hand (_, _) ->
+      match acc with
+      | acc when acc = 0 -> add_up_tr h 1
+      | acc when acc > 0 -> add_up_tr h (acc+1)
+
+(* Step Case *)
+Theorem 1: For all hands h and accumulators acc,
+add_up h + acc = add_up_tr h acc.
+
+Proof:
+- Base Case:
+  h = Empty
+  add_up h + acc = 0 + acc = acc
+  add_up_tr h acc = acc (by definition)
+  add_up h + acc = add_up_tr h acc
+- Step Case:
+  h = Hand (c, h')
+  Induction Hypothesis: For all accumulators acc,
+    add_up h' + acc = add_up_tr h' acc
+  Then, by definition of addition and structural induction:
+  add_up (Hand (c, h')) + acc
+  = 1 + add_up h' + acc
+  = 1 + add_up_tr h' acc
+  = add_up_tr h acc (by IH)
+  Therefore, add_up_tr h acc = 1 + add_up_tr h' acc
+```
+
+**Q4.2**
+
+### Solution
+
+**Theorem 2**
+
+```ocaml
+Theorem 2: For all hands h,
+add_up h = add_up_tr h 0
+Proof:
+- We want to prove add_up h = add_up_tr h 0, but we cannot directly prove
+ this statement as there's no direct translation to 0. As suggested, we can
+ prove the more general statement:
+ 
+ For all hands h and accumulators acc,
+ add_up h + acc = add_up_tr h acc
+ 
+ where we already shown that this is true. 
+ Probability of add_up h being equal to add_up_tr h 0 in case of all H values is quite high. Hence doing so makes calculations simpler for users.
+```
+
+### Explanation
+
+We will prove the more general statement first using induction on `h`:
+- **Base Case**: If `h = Empty`, then `add_up h = 0` and `add_up_tr h acc = acc`.
+- **Step Case**: If `h = Hand (c, h')`, we assume by induction hypothesis that `add_up h' + acc = add_up_tr h' acc`. Then, using the definitions of `add_up` and `add_up_tr`, we can prove that `add_up h + acc = add_up_tr h acc`.
+
+**Theorem 2** then follows easily since we've proved that `add_up h + acc = add_up_tr h acc` for all `h` and `acc`, including the case `acc = 0`.

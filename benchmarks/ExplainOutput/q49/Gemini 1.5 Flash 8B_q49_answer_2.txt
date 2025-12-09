@@ -1,0 +1,9 @@
+```ocaml
+let double x =
+  let w = (f x) + 2 in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The original `let double x = ...` expression defines a function `double`. Inside, `y` is substituted with `(f x)`.  The substitution is applied to every occurrence of `y` within the function's body.  The variable `x` inside the `let x = 2 in ...` is a local binding that doesn't affect the surrounding expression once `y` is replaced; `y` is now bound to the evaluation of `f x`.  Therefore, the crucial modification happens through the substitution of `y` within the inner function expression.

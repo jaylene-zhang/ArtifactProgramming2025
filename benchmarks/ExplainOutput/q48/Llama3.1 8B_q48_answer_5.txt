@@ -1,0 +1,14 @@
+**Solution**
+```ocaml
+let rec factorial n =
+  if n = 0 then 1 else n * factorial (n - 1)
+```
+**Explanation**
+
+The reason functions in the standard List library of OCaml are not all tail-recursive is because of the trade-off between performance and abstraction. Tail recursion can be less efficient than non-tail recursion in OCaml because it requires additional stack operations.
+
+While continuations can give us tail-recursiveness, they also come with additional overhead, making the code harder to reason about and potentially slower.
+
+For example, the above `factorial` function is not tail-recursive, but it's still efficient because it uses pattern matching and a simple recursion. The standard List library's functions are designed to be efficient and easy to use, rather than solely focused on tail recursiveness.
+
+In general, OCaml's standard library balances performance and abstraction, using non-tail recursion when it's more readable and efficient.

@@ -1,0 +1,19 @@
+**a) Incorrect**
+
+**Solution:** `let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)`
+
+**Explanation:**  This is incorrect.  `curry (sumSeries f) 0` applies the `curry` function to `sumSeries f`, then attempts to apply `0` to it.  This is not correct usage.
+
+
+**b) Correct**
+
+**Solution:** `let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)`
+
+**Explanation:** This correctly uses `curry` to create a function that takes the upper bound as input.  `sumSeries f 0` forms a function that calculates the sum for incrementing steps from 0 to some `upperbound`, resulting in `swap (curry (sumSeries f 0)) (fun x -> x + 1)`.
+
+
+**c) Incorrect**
+
+**Solution:** `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1 )) 0`
+
+**Explanation:** Here, `swap (sumSeries f) (fun x -> x + 1)` is incorrect.  `sumSeries f` expects the bounds and an increment function, in a tuple, while `swap` expects a function of two arguments.  We are trying to apply the increment function before `sumSeries` is fully initialized. This is not how `curry`, `swap`, and `sumSeries` work together in this situation.

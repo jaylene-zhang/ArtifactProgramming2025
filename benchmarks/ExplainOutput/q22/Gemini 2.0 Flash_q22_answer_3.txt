@@ -1,0 +1,7 @@
+**Solution:**
+
+`x`
+
+**Explanation:**
+
+The variable `x` is a parameter to the locally defined function `f`, but it isn't used within the body of that function (`f x * y`). The value passed as `x` is ignored.

@@ -1,0 +1,9 @@
+### Solution:
+Functional languages avoid state variables and imperative-style programming because they focus on determinism, immutability, and pure functions.
+
+### Explanation:
+1. **Determinism**: State variables make it difficult to predict the outcome of a program as they can change at any point, leading to non-predictable behavior.
+2. **Immutability**: In functional programming, variables are immutable. Storing state leads to mutable data, which contradicts the principles of functional programming.
+3. **Pure Functions**: Functional programming emphasizes pure functions, which should not have side effects. State manipulation is prone to side effects like IO operations, making functions impure.
+4. **Concurrency**: State-based programs are harder to reason about in concurrent environments due to the potential for parallel access and update conflicts.
+5. **Simplicity and Readability**: Managing state can introduce complexity and bugs. Functional programming promotes cleaner, more modular code by avoiding shared mutable state.

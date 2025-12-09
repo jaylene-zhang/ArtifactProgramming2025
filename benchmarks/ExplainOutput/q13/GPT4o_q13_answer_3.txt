@@ -1,0 +1,20 @@
+**Solution**:  
+Overwriting in OCaml can happen when you define a value with the same name in the same scope, which effectively replaces the previous binding:
+
+```ocaml
+let x = 5;;
+let x = 10;; (* The previous value of x is overwritten *)
+```
+
+**Explanation**:  
+- Overwriting occurs when a new binding with the same name replaces an earlier binding in the same scope.
+- Overshadowing, on the other hand, happens when an inner scope introduces a new binding with the same name as a value from an outer scope, without modifying the original value:
+
+```ocaml
+let x = 5;;
+let () =
+  let x = 10 in  (* x here overshadows the outer x *)
+  Printf.printf "%d\n" x;;
+Printf.printf "%d\n" x;; (* Outer x remains unaffected *)
+```
+Here, `x` within the inner scope overshadows the outer `x`. Unlike overwriting, the outer `x` is still accessible outside the inner scope.

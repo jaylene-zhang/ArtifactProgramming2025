@@ -1,0 +1,8 @@
+**Solution:**
+The type is:
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+```
+
+**Explanation:**
+In a tail-recursive `fold_right`, the result is typically computed in a continuation-passing style. Instead of simply returning the accumulated result directly, a continuation function (`'b -> 'c`) is passed along to handle what happens next. This is why there's an additional parameter (`('b -> 'c)`) in the type signature.

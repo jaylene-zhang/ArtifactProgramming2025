@@ -1,0 +1,17 @@
+**Solution:**
+
+`(6, 5)`
+
+**Explanation:**
+
+1.  `let point = (5, 4)`:  This line defines a *global* variable `point` and assigns it the tuple `(5, 4)`.
+
+2.  `let component_x (x,y) = x` and `let component_y (x,y) = y`: These definitions are simply deconstructing the tuple.
+
+3.  `let shift_point n = (component_x point + n , component_y point + n)`: This function takes an amount to shift `n` and increases both coordinates `point` by that amount. *Crucially*, it uses the *global* `point`.
+
+4.  `let point = shift_point 1`: This line *redefines* the *global* variable `point`. It calls `shift_point 1`.  Because `point` is initially defined as `(5, 4)`, `shift_point 1` calculates `(5 + 1, 4 + 1)` which is `(6, 5)`.  The *global* `point` is now `(6, 5)`.
+
+5.  `shift_point 2`: When `shift_point 2` is evaluated, it uses the most recently bound global `point`, which is now `(6, 5)`. Thus, it computes `(component_x (6, 5) + 2, component_y (6, 5) + 2)`, which simplifies to `(6 + 2, 5 + 2)`, resulting in `(8, 7)`.
+
+Therefore, `shift_point 2` returns `(8, 7)`.

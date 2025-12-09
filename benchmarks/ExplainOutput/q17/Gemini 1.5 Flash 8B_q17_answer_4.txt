@@ -1,0 +1,11 @@
+```ocaml
+let rec add_ack x l = match l with
+  | [] -> []
+  | y::ys -> ((ackermann x) + y) :: add_ack x ys
+```
+
+**Solution:** No
+
+**Explanation:**
+
+The function `add_ack` recursively calls `ackermann x` for each element in the list `l`. This means `ackermann x` is computed repeatedly for each element in the list.  It's not memoised, so the computation happens each time the function encounters an element in the list.  Therefore, `ackermann x` is computed multiple times.

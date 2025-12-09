@@ -1,0 +1,3 @@
+Solution: No, the test will not pass.
+
+Explanation: When triangle 0 is called, n ≠ 1 so it recursively computes 0 + triangle (-1), and since there's no base case for n = 0 or negative values, it will lead to infinite recursion.

@@ -1,0 +1,12 @@
+## Step 1: Understand the induction base case
+The base case is when `l` is an empty list `[]`. `rev_tl []` correctly returns `[]`.
+
+## Step 2: Understand the hypothesis of the inductive step
+The inductive step requires proving that `length (rev_tl l) = length l`, assuming it's true for smaller lists.
+
+## Step 3: Evaluate length of rev_tl []
+`rev_tl` is a function on lists of the form `x :: tl`, returning the mirror image of `tl` prepended with `x`. So, `rev_tl [x]` would return an empty list, which has a length of 0.
+
+The final answer is: $\boxed{No, this would not work.}$
+
+Explanation: The hypothesis of the inductive step assumes that `length (rev_tl (x :: ys)) = length (x :: ys)`, but we cannot draw conclusions about `length (rev_tl [])` from this, since `rev_tl []` is `[]`. We would need a separate base case for `[x]`.

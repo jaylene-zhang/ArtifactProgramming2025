@@ -1,0 +1,3 @@
+**r, x (outer)**
+
+Explanation: The variable `r` is assigned a value but never used. The outer `x` in the function `f` is also unused because it's immediately shadowed by the inner `x` in the same scope.

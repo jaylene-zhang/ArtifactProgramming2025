@@ -1,0 +1,19 @@
+**Solution:**
+
+1 and 4.
+
+**Explanation:**
+
+*   **Option 1:**
+    *   `let p = prime_fact x in` computes `prime_fact x` only once, storing the result in `p`.
+    *   The `test` function then compares each element of the input list `l` with the precomputed `p`.
+
+*   **Option 2:**
+    *   `y = prime_fact x || check x ys` computes `prime_fact x` in every recursive call, which is inefficient. Hence it is not a correct answer.
+
+*   **Option 3:**
+    *   `List.exists (fun e -> e = prime_fact x) l` computes `prime_fact x` for every element `e` in the list `l`. Hence it is not a correct answer.
+
+*   **Option 4:**
+    *   `let p = prime_fact x in` computes `prime_fact x` only once, storing the result in `p`.
+    *   `List.exists (fun e -> e = p)` then compares each element of the list `l` with the precomputed `p`.

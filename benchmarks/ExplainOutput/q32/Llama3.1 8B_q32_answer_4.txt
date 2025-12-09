@@ -1,0 +1,16 @@
+**Solution:**
+
+a) Correct
+b) Correct
+c) Incorrect (missing bookmarks recursive part)
+d) Incorrect (the types * and ** are not the same)
+
+**Explanation:**
+
+Option a is correct, but it's not the only definition. `Location` is a variant that holds a `url` and a list of `bookmarks`, and `Empty` is the base case that stops the recursion.
+
+Option b is also correct, but it uses a different syntax. The placement of the `|` keyword allows this definition to work.
+
+Option c is incorrect because a `Location` variant would need to hold a `url`. Option d would require using `**` for the recursive type, which is not the convention in OCaml.
+
+The correct choices are a) and b).

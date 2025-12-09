@@ -1,0 +1,9 @@
+```ocaml
+(7, 6)
+```
+
+**Explanation:**
+
+The `shift_point` function takes a number `n` and adds it to both the x and y components of the original `point` tuple.  In the given code, initially `point` is (5, 4).  Calling `shift_point 1` calculates `(5 + 1, 4 + 1)` which is `(6, 5)`, and it rebinds the `point` variable to this new value.
+
+Critically, the *original* `point` (5,4) is not changed.   A subsequent `shift_point 2` will use the *current* value of point (which is now (6, 5)), calculating  `(6 + 2, 5 + 2)` which equals `(7, 6)`.

@@ -1,0 +1,7 @@
+**Solution:**
+
+`[]`
+
+**Explanation:**
+
+`rev_tl` likely refers to a tail-recursive reverse function.  In a tail-recursive reverse, `acc` acts as the accumulator, gradually building the reversed list. You initialize it with the empty list (`[]`) so that as elements are prepended, you start with an empty reversed list.

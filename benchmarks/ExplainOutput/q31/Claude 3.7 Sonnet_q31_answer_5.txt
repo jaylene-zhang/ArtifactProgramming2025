@@ -1,0 +1,11 @@
+Solutions:
+a) Yes, this version computes `prime_fact` only once.
+b) No, this version computes `prime_fact` for each element in the list.
+c) No, this version computes `prime_fact` every time it encounters a non-matching element.
+d) Yes, this version computes `prime_fact` only once.
+
+Explanation:
+a) This computes `prime_fact x` once and stores it in `p`, then uses it for all comparisons.
+b) This calls `prime_fact x` repeatedly inside the `List.exists` function, once for each element in list `l`.
+c) This recomputes `prime_fact x` multiple times recursively, once for each element in the list until a match is found.
+d) This computes `prime_fact x` once at the beginning and stores it in `p`, then uses the stored value in the recursive `test` function.

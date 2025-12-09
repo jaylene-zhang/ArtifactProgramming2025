@@ -1,0 +1,15 @@
+### a) `false`
+
+**Explanation:** The function computes `prime_fact x` once and then checks if any list in the input matches this result. Since `prime_fact` is only called once, it satisfies the requirement.
+
+### b) `false`
+
+**Explanation:** The function computes `prime_fact x` once but then checks each list in `l` to see if it matches this computed result. While it only computes `prime_fact` once, the repeated checking of each list in `l` means the function may need to call `prime_fact` multiple times in other scenarios.
+
+### c) `false`
+
+**Explanation:** The function computes `prime_fact x` once and then uses a recursive function `check x ys` to check the rest of the list. While `prime_fact` is computed only once, the recursive call `check x ys` could call `prime_fact` again if `y` is not the same as `prime_fact x`.
+
+### d) `true`
+
+**Explanation:** The function computes `prime_fact x` once and then uses a recursive function `test l` that checks each element of `l` to see if it matches `p` (the result of `prime_fact x`). This ensures that `prime_fact` is only called once regardless of the size of `l`.

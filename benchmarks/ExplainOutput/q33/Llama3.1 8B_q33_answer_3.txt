@@ -1,0 +1,12 @@
+## Answer:
+b) type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type revolutions = Double | Triple
+type jump = jump_typ * revolutions
+
+## Explanation:
+
+In option a), the type `revolutions` can be any integer value, not just Double or Triple, which does not capture the specific constraint that the number of revolutions should be limited to "Double" or "Triple".
+
+In option c), each jump type (e.g. Axel, Loop, etc.) has an associated type 'jump', not just an integer revolution. This would allow to store a nested `jump` structure within a `jump`.
+
+Option b) correctly captures the description, separating the jump type (Axel, Lutz, etc.) from the revolution type (Double, Triple, etc.) and combining these two types into a single `jump` type.

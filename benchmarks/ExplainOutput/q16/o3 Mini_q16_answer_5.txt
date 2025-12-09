@@ -1,0 +1,3 @@
+Solution: (6, 5)
+
+Explanation: The function shift_point was defined when point was bound to (4, 3). Even though point is later rebound, shift_point uses the original binding, so shift_point 2 computes (4+2, 3+2), resulting in (6, 5).

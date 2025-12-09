@@ -1,0 +1,7 @@
+The correct answer is (c).
+
+Explanation:
+- Option (a) is tail-recursive but incorrectly reverses the order of the strings, adding each new string to the beginning of the result.
+- Option (b) adds each string to the end of the accumulator with a space before it, which would result in a leading space and reversed concatenation.
+- Option (c) is correct as it reverses the input list first, then uses the approach from (a). This ensures the strings are concatenated in the correct order and it remains tail-recursive.
+- Option (d) is not tail-recursive because after the recursive call, the function still needs to perform the string concatenation operation.

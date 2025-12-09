@@ -1,0 +1,52 @@
+```ocaml
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make (String)
+
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec aux (formula : formula) (acc : Variable_set.t) : Variable_set.t =
+    match formula with
+    | Variable x -> Variable_set.add x acc
+    | Conjunction (f1, f2) -> aux f1 (aux f2 acc)
+    | Disjunction (f1, f2) -> aux f1 (aux f2 acc)
+    | Negation f -> aux f acc
+  in aux formula Variable_set.empty
+
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec aux (formula : formula) : bool =
+    match formula with
+    | Variable x ->
+      begin match Variable_map.find_opt x state with
+      | Some b -> b
+      | None -> raise (Unassigned_variable x)
+      end
+    | Conjunction (f1, f2) -> aux f1 && aux f2
+    | Disjunction (f1, f2) -> aux f1 || aux f2
+    | Negation f -> not (aux f)
+  in aux formula
+
+let rec find_satisfying_assignment (formula : formula) : truth_assignment option =
+  let variables = collect_variables formula in
+  let rec aux (current_assignment : truth_assignment) : truth_assignment option =
+    if Variable_set.cardinal current_assignment = Variable_set.cardinal variables then
+      if eval current_assignment formula then Some current_assignment else None
+    else
+      let var = Variable_set.choose variables in (* Pick next unassigned variable *)
+      match aux (Variable_map.add var true current_assignment) with
+      | Some s -> Some s
+      | None -> aux (Variable_map.add var false current_assignment)
+  in
+  match aux Variable_map.empty with
+  | Some assignment -> Some assignment
+  | None -> None
+```

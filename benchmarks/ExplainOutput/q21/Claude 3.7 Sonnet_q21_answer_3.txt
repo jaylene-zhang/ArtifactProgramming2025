@@ -1,0 +1,5 @@
+The unused variables in the expression are:
+
+1. `r` is unused.
+
+The variable `r` is defined within `foo` but never used in the subsequent computation. It's assigned the value `2 * y`, but this value doesn't contribute to the final result of the function since `foo y` ultimately just returns the result of `f y`.

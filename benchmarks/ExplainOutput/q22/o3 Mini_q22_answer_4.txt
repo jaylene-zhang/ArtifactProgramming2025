@@ -1,0 +1,5 @@
+Solution:
+The outer parameter r is unused.
+
+Explanation:
+The function's parameter r is immediately shadowed by a local binding (let r = 2 * y), so the value originally passed as r is never referenced.

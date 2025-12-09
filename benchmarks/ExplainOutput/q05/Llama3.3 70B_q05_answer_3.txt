@@ -1,0 +1,7 @@
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: The expression `y + 3` is inlined in place of `x`, and `x` is not used again after `w` is assigned its value, but `w` is assigned the value of `x` before the inlining substitution, so `w` still holds the original value of `x`.

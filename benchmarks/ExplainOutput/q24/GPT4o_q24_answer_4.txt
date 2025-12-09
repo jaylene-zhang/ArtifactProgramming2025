@@ -1,0 +1,18 @@
+**Solution:**
+
+The type of the given expression is `'t`.
+
+---
+
+**Explanation:**
+
+1. **Given**:  
+   - `f: ('t * 't -> 't)` means `f` takes a pair of type `'t * 't` and returns a value of type `'t`.
+   - `a: 't` and `b: 't` means both `a` and `b` are of type `'t`.
+
+2. **Breaking it down**:  
+   - The inner call `f(a, b)` is a pair `(a, b)` of type `'t * 't`, so `f(a, b)` returns `'t`.  
+   - Similarly, `f(b, a)` also returns `'t`.
+
+3. **Outer call**:  
+   The outer call is `f(f(a, b), f(b, a))`. Both arguments passed to `f` are `'t`, thus forming a pair of type `'t * 't`. Since `f` returns `'t`, the type of the entire expression is `'t`.

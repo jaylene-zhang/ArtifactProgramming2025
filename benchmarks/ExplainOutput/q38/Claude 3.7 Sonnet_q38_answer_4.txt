@@ -1,0 +1,27 @@
+Solution: c) h (g (f x))
+
+Explanation: Let's check each option by tracing the execution:
+
+For c) h (g (f x)):
+- When h = fun f x -> f x and g = fun f x -> f (f x)
+- compose h g = fun f x -> h (g f x)
+- g f = fun x -> f (f x)
+- So h (g f) x = h (fun x -> f (f x)) x = (fun x -> f (f x)) x = f (f x)
+
+Wait, that's not right. Let me recalculate:
+
+For c) h (g (f x)):
+- compose h g = fun f x -> h (g f) x
+- When h = fun f x -> f x and g = fun f x -> f (f x)
+- h (g f) x = h (fun y -> f (f y)) x = (fun y -> f (f y)) x = f (f x)
+
+But we need f (f (f x)). Let me try again with all options.
+
+Actually, the correct answer is: a) h f (g f x)
+
+When h = fun f x -> f x and g = fun f x -> f (f x):
+- compose h g = fun f x -> h f (g f x)
+- g f x = f (f x)
+- h f (g f x) = h f (f (f x)) = f (f (f x))
+
+This gives us the expected result of applying f three times to x.

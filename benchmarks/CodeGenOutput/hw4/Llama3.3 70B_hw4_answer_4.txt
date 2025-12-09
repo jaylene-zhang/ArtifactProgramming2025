@@ -1,0 +1,46 @@
+Here is the implementation of the functions in OCaml:
+
+```ocaml
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec helper = function
+    | Variable v -> Variable_set.singleton v
+    | Conjunction (f1, f2) -> Variable_set.union (helper f1) (helper f2)
+    | Disjunction (f1, f2) -> Variable_set.union (helper f1) (helper f2)
+    | Negation f -> helper f
+  in
+  helper formula
+
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec helper = function
+    | Variable v ->
+        (match Variable_map.find_opt v state with
+         | Some b -> b
+         | None -> raise (Unassigned_variable v))
+    | Conjunction (f1, f2) -> helper f1 && helper f2
+    | Disjunction (f1, f2) -> helper f1 || helper f2
+    | Negation f -> not (helper f)
+  in
+  helper formula
+
+exception Found_assignment of truth_assignment
+
+let find_satisfying_assignment (formula : formula) : truth_assignment option =
+  let variables = collect_variables formula in
+  let variable_list = Variable_set.elements variables in
+  try
+    let rec helper current_state = function
+      | [] -> Some current_state
+      | v :: rest ->
+          try
+            let new_state = Variable_map.add v true current_state in
+            if eval new_state formula
+            then raise (Found_assignment new_state)
+            else helper (Variable_map.add v false current_state) rest
+          with Unassigned_variable _ ->
+              helper (Variable_map.add v false current_state) rest
+    in
+    helper Variable_map.empty variable_list
+  with
+  | Found_assignment assignment -> Some assignment
+  | _ -> None
+```

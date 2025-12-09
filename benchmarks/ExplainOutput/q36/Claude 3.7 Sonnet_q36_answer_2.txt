@@ -1,0 +1,10 @@
+The function `f` takes the second element of the list and moves it to the end.
+
+Explanation: Let's trace through the execution for a list with at least five elements, such as `[1;2;3;4;5]`:
+
+1. We match `l = [1;2;3;4;5]` with `h = 1` and `t = [2;3;4;5]`
+2. We compute `t @ [h] = [2;3;4;5] @ [1] = [2;3;4;5;1]`
+3. We call `rotate` on this: `rotate [2;3;4;5;1]`
+4. `rotate` takes the first element (2) and moves it to the end: `[3;4;5;1;2]`
+
+So the function takes the second element of the original list and moves it to the end, while keeping the relative order of all other elements.

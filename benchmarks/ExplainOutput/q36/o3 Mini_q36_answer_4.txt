@@ -1,0 +1,3 @@
+Solution: It returns the input list with its first two elements moved to the end.
+
+Explanation: For l = a1 :: a2 :: a3 :: …, t @ [h] yields [a2; a3; …; a1]. Then rotate moves a2 to the end, producing [a3; …; a1; a2], effectively shifting the list left by two.

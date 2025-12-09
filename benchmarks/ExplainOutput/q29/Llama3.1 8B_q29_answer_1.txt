@@ -1,0 +1,32 @@
+Here are the solutions:
+
+## Step 1: Analyze the problem and the given functions
+
+sumSeries takes four inputs: a function `f`, and three integers: the lower and upper bounds `a` and `b`, and `inc`, which is the increment between each step. sum_from_zero needs to compute the sum of `f` from `0` to the upper bound, incrementing by `1` each time.
+
+## Step 2: Understand the implementation of sum_from_zero in option a)
+
+In option a), we see `swap (curry (sumSeries f) 0) (fun x -> x + 1)`. Let's analyze this expression.
+- `sumSeries f` needs the lower and upper bounds as arguments.
+- `curry (sumSeries f) 0` would then be `f` expecting the upper bound as an argument, but we are providing 0 as the argument instead of the upper bound.
+- We then apply `swap` to this expression, which would swap the upper bound (which is not provided) to be the argument after `f`. However, `swap` would then expect the upper bound to be provided after `f`, which is not what we want.
+
+## Step 3: Understand the implementation of sum_from_zero in option b)
+
+In option b), we see `swap (curry (sumSeries f 0)) (fun x -> x + 1)`. Let's analyze this expression.
+- `sumSeries f 0` needs the upper bound and `inc` as arguments.
+- `curry (sumSeries f 0)` would be `f` expecting the upper bound as an argument.
+- `swap (curry (sumSeries f 0))` would swap the upper bound to be the argument after `f`, but we want this upper bound to be the result of `fun x -> x + 1`, not the argument.
+
+## Step 4: Understand the implementation of sum_from_zero in option c)
+
+In option c), we see `curry (swap (sumSeries f) (fun x -> x + 1)) 0`. Let's analyze this expression.
+- `swap (sumSeries f) (fun x -> x + 1)` would swap `f` to be the argument after `sumSeries` and `fun x -> x + 1` to be the argument before `sumSeries`.
+- This results in the correct function structure for `sumSeries`.
+- `curry` would then take the result of `swap` and apply it with `0` as an argument.
+
+## Step 5: Select the correct implementation
+
+Based on the analysis above, the correct implementation of sum_from_zero is option c) `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0`.
+
+The final answer is: c

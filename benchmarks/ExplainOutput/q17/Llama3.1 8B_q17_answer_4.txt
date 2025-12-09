@@ -1,0 +1,13 @@
+```ocaml
+let rec compute_ackermann x l = let ack = ackermann x in  match l with
+  | [] -> []
+  | y::ys -> (ack + y) :: compute_ackermann x ys
+
+let add_ack x l = compute_ackermann x l
+```
+
+Explanation:
+ 
+The provided implementation of `add_ack` does not compute `ackermann x` at most once for a function call. In OCaml, once a computation is evaluated its result is stored in memory and could be recycled across multiple function calls. However, in the given code, every time we call `add_ack x l`, `ackermann x` is computed again. This is because `ackermann x` is evaluated every time `l` is bound to `y::ys`, because of the evaluation rule for OCaml's `let` expression.
+
+In contrast, our revised code maintains the computation of `ackermann x` explicitly within the `compute_ackermann` function. Now, any function call to `add_ack x l` will only compute `ackermann x` once, at the beginning of `compute_ackermann`. The computation is stored in the variable `ack`, then re-used throughout the rest of `compute_ackermann`, avoiding redundant computations.

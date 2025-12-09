@@ -1,0 +1,17 @@
+Solution:  
+A function is tail-recursive if its recursive call is the last operation performed, i.e., there is no additional computation after the function calls itself.
+
+Explanation:  
+1) Tail recursion example (using an accumulator):  
+   let rec fact_tr n acc =  
+     if n <= 1 then acc  
+     else fact_tr (n - 1) (n * acc)  
+
+   The recursive call fact_tr (n - 1) (n * acc) is the last step, so it’s tail-recursive.
+
+2) Non-tail recursion example:  
+   let rec fact n =  
+     if n <= 1 then 1  
+     else n * fact (n - 1)  
+
+   Here, after the recursive call, there is a multiplication (n * …) that happens before returning the result, so it’s not tail-recursive.

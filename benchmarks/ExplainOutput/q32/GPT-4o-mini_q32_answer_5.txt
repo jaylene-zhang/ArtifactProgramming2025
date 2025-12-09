@@ -1,0 +1,19 @@
+The possible definitions for a new recursive data type, bookmarks, to describe a list of URLs we want to save are:
+
+a) `type url = string type bookmarks = Location of url * bookmarks | Empty`
+
+b) `type url = string type bookmarks = Empty | Location of string * bookmarks`
+
+d) `type url = string type bookmarks = Empty | Location of bookmarks * url`
+
+**Explanation:**
+
+- Option (a) defines a `bookmarks` type where each `Location` contains a `url` and the rest of the bookmarks (`bookmarks`). This allows for recursive definition to create a linked list of URLs.
+
+- Option (b) is similar but uses `string` directly instead of `url`. This still correctly represents a linked list structure of bookmarks.
+
+- Option (c) is incorrect because `Location` does not contain any necessary information such as a URL; it lacks a definition and is incomplete.
+
+- Option (d) correctly defines an empty case and a case for `Location`, where the `Location` wraps a `bookmarks` and a `url`. This definition allows the list to be structured in a different way, effectively still forming a valid recursive structure. 
+
+In summary, options (a), (b), and (d) are valid definitions for the `bookmarks` type.

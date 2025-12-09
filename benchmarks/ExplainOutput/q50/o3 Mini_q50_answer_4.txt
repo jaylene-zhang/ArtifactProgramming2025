@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: Option (a) correctly builds a continuation that defers applying f until the end, thus mimicking the non-tail‐recursive fold_right but in a tail‐recursive way. The other options either change the order of application or misuse the continuation.

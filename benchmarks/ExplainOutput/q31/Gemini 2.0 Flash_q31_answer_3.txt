@@ -1,0 +1,18 @@
+Here's the solution followed by explanations:
+
+**Solutions:**
+
+*   a) Yes
+*   b) No
+*   c) No
+*   d) Yes
+
+**Explanations:**
+
+*   **a) `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`**:  `prime_fact x` is computed once and its result is bound to `p`.  `List.exists` then iterates through the (implicit) list, comparing each element to the *precomputed* value `p`.
+
+*   **b) `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l`**: `prime_fact x` is called *inside* the anonymous function passed to `List.exists`. Therefore, `prime_fact x` is called in each iteration that `List.exists` performs, until it hits true condition.
+
+*   **c) `let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys`**: This recursively checks the list.  `prime_fact x` is called in *every* recursive call where the list is not empty and a comparison is made.  `check` calls itself which calls `prime_fact x` again . This happens until a match is found, and in the worst case calls it for every element of the list.
+
+*   **d) `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`**:  `prime_fact x` is computed *once* and its result is bound to `p`.  The inner recursive function `test` then compares each element of the list to `p`.

@@ -1,0 +1,15 @@
+**Solution:**
+
+a) YES – This implementation computes `prime_fact x` only once, stores it in `p`, and compares it in `List.exists`.
+
+b) NO – This implementation recomputes `prime_fact x` for each element in the list `l`, leading to multiple computations.
+
+c) NO – Similar to (b), this implementation recursively recomputes `prime_fact x` during every recursive call.
+
+d) YES – This implementation computes `prime_fact x` only once and uses it in the local recursive `test` function.
+
+---
+
+**Explanation:**
+- To determine if `prime_fact x` is computed once, check whether the result of this computation is stored (e.g., using `let p = prime_fact x`), and re-used for comparisons.
+- In (a) and (d), the result is stored in `p`, avoiding recomputation. In (b) and (c), there is no such storage, leading to repeated evaluations.

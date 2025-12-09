@@ -1,0 +1,10 @@
+```ocaml
+let double x =
+  let w = (f x) + 2 in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The expression `y` is replaced with `(f x)`.  The `let x = 2 in ...`  part is a binding that is local to the `double` function and doesn't affect the substitution.
+Critically, because `y` is present within the `fun f -> ...` part, replacing `y` with `(f x)` affects each occurrence of `y` within that part, too.

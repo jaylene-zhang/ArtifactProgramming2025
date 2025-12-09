@@ -1,0 +1,18 @@
+Solution:
+
+For zip:
+  let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+    match l1, l2 with
+    | [], [] -> []
+    | x::xs, y::ys -> (x, y) :: zip xs ys
+
+For zipper:
+  let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd list -> 'd list)
+    (l1: 'a list) (l2: 'b list) : 'd list =
+    match l1, l2 with
+    | [], [] -> []
+    | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+
+Explanation:
+• In zip, l1 is of type 'a list and l2 of type 'b list; pairing their elements gives ('a * 'b) list.
+• In zipper, comb takes an 'a and a 'b and returns a value of type 'c; add then takes this 'c and an accumulator of type 'd list to produce a new 'd list. Thus, the l1 and l2 types are 'a list and 'b list respectively, and the overall function returns a 'd list.

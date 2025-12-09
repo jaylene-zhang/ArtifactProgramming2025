@@ -1,0 +1,11 @@
+### Solution:
+
+```ocaml
+let x = 10 in
+let x = x + 5 in
+x
+```
+
+### Explanation:
+
+This code demonstrates overshadowing. Initially, `x` is bound to `10`. In the next step, another `x` is defined as `x + 5` within the scope. The first `x` (holding `10`) is overshadowed by the second `x` (holding `15`). In OCaml, overshadowing happens when a new binding with the same name is introduced in a closer scope, temporarily hiding the previous one.

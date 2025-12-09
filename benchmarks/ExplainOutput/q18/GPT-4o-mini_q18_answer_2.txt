@@ -1,0 +1,5 @@
+The program will return `(7, 6)`.
+
+**Explanation:** The variable `point` is first defined as `(5, 4)`. The function `shift_point` takes an argument `n`, adds it to both components of the tuple `point`, and returns a new tuple. When `point` is reassigned to the result of `shift_point 1`, it becomes `(6, 5)`. 
+
+When `shift_point 2` is called, it now operates on the new `point` value `(6, 5)`. Thus, it computes `(component_x point + 2, component_y point + 2)` which results in `(6 + 2, 5 + 2)`, giving `(8, 7)`.

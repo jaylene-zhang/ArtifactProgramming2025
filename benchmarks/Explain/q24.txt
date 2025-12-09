@@ -1,0 +1,7 @@
+What type does the following expression
+
+f (f (a, b), f (b, a))
+
+have provided that we have
+
+f: ('t * 't -> 't), a: 't, b: 't

@@ -1,0 +1,23 @@
+Here are the solutions:
+
+**a) h (f (g (f x)))**
+
+`compose (fun f x -> f x) (fun f x -> f (f x))` is equivalent to `fun f x -> f (f (f x))`. We apply the first function, then the second, then the first again, and finally the third.
+
+`fun f x -> h (f (g (f x)))` achieves the same result.
+
+**b) g (f (h (f x)))**
+
+This is incorrect because we need to apply `h` first, then `g`, then `f`.
+
+**c) h (g (f x))**
+
+This is incorrect because we need to apply `f` first, then `g`, then `h`.
+
+**d) f (g (h x))**
+
+This is incorrect because we need to apply `h` first, then `g`, then `f`, and finally `x`.
+
+Explanation:
+
+The correct solution is a) `h (f (g (f x)))` because it follows the order of function application: `h`, `g`, `f`, and then `x`. The other options do not preserve the order of function application, which is essential for function composition.

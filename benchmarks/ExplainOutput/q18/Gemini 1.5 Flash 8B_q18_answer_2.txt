@@ -1,0 +1,9 @@
+```ocaml
+(7, 6)
+```
+
+**Explanation:**
+
+The `let point = shift_point 1` line *rebinds* the `point` variable.  This means `shift_point 1` will return `(6, 5)`. Now, `point` refers to this new value.  So subsequent calls do not use the original (5,4) value, but rather the shifted one.
+
+A call to `shift_point 2`  will use the newly bound `point` (i.e., (6, 5)).  `component_x (6,5)` is `6` and `component_y (6,5)` is `5`. Adding 2 to both gives `(6 + 2, 5 + 2) = (8, 7)`.  The original `point` is no longer used in any calculation after the first rebinding.

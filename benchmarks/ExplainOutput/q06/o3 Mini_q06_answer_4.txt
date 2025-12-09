@@ -1,0 +1,11 @@
+Solution:
+let foo v =
+  let w = v * 2 in
+  fun y -> (v * 2) + 2 + y * w
+
+let w = 3 in
+let y = 2 * (w * 2) in
+fun x -> w * y * x
+
+Explanation:
+In the function foo the original x (defined as w * 2) is inlined by replacing its free occurrences with (v * 2), where we rename the parameter to v so that the later binding of w (shadowing the parameter) does not capture the inlined expression. In the second snippet, the free occurrence of x (in “2*x”) is replaced by (w * 2) while the lambda “fun x -> …” binds its own x, so that occurrence is left unchanged.

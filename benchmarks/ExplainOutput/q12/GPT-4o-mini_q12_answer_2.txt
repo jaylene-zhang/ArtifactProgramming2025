@@ -1,0 +1,29 @@
+### Q4.1
+
+**Induction Hypothesis:** Assume for all hands \( h' \) and accumulators \( acc \), \( add\_up(h') + acc = add\_up\_tr(h', acc) \).
+
+**Base Case:** When \( h = Empty \):  
+- \( add\_up(Empty) = 0 \)  
+- \( add\_up\_tr(Empty, acc) = acc \)  
+- Therefore, \( add\_up(Empty) + acc = 0 + acc = acc \)  
+Thus, \( add\_up(Empty) + acc = add\_up\_tr(Empty, acc) \).
+
+**Step Case:** When \( h = Hand(c, h') \):  
+- By the induction hypothesis, assume \( add\_up(h') + acc = add\_up\_tr(h', acc) \). 
+- Then:  
+  \( add\_up(Hand(c, h')) = add\_up(h') + 1 \)  
+  \( add\_up\_tr(Hand(c, h'), acc) = add\_up\_tr(h', acc + 1) \)  
+- Now, using the induction hypothesis:
+  \( add\_up(h') + acc + 1 = add\_up\_tr(h', acc) + 1 \)  
+Which reduces to:
+  \( add\_up(h') + 1 = add\_up\_tr(h', acc + 1) \).
+
+### Q4.2
+
+**Theorem 2 (Main Result):** For all hands \( h \), \( add\_up(h) = add\_up\_tr(h, 0) \).
+
+**Proof:** By applying Theorem 1 with \( acc = 0 \):  
+From the induction hypothesis for all \( h \), we have:
+- \( add\_up(h) + 0 = add\_up\_tr(h, 0) \) implies \( add\_up(h) = add\_up\_tr(h, 0) \).
+
+Thus, by structural induction, \( add\_up(h) = add\_up\_tr(h, 0) \) for all hands \( h \).

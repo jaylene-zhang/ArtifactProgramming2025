@@ -1,0 +1,13 @@
+**b) let concat l = 
+let rec aux l s = match l with 
+  | [] -> s
+  | x::xs -> aux xs (s ^ " " ^ x) 
+in aux l ""**
+
+Explanation: This implementation is the only correct, tail-recursive version. It traverses the list once and accumulates the result in the `s` variable. The key difference is that `s` is prepended with `x` and a space, avoiding the inefficiency of reversing the string at each recursive call. 
+
+Note: Option a is not correct because prepending `x` and a space with `s` leads to an inefficient string reversal on each recursive call, potentially causing a stack overflow for large strings. 
+
+Option c is also not correct because it reverses the entire list before calling the auxiliary function, which adds an extra pass over the list. 
+
+Option d is not tail-recursive because the recursive call to `concat xs` is not the last operation, leading to potential stack overflows for large lists.

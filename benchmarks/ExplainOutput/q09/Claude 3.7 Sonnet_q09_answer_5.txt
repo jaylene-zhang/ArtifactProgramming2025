@@ -1,0 +1,7 @@
+```ocaml
+let x = 5 in
+let x = 10 in
+x + 2
+```
+
+Overshadowing happens when a new binding for a variable name is created in an inner scope, which temporarily hides (overshadows) the binding from an outer scope. In this example, the first `x` is bound to 5, but then a new binding for `x` is created with value 10. The second `x` overshadows the first one, so the expression evaluates to 12.

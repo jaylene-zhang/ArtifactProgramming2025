@@ -1,0 +1,8 @@
+The correct answer is **b)**.
+
+Explanation:
+- Option **b)** correctly implements a tail-recursive function. It accumulates the result in the variable `s` while traversing the list from left to right, prepending each string after accumulating previous ones with a space. 
+- In this implementation, `s` starts as an empty string and grows with each string from the list, ensuring all concatenation happens in a single pass.
+- Option **a)** is not tail-recursive because it uses `x ^ " " ^ s`, leading to non-tail recursive calls. 
+- Option **c)** reverses the list, which requires additional traversal and isn't tail-recursive. 
+- Option **d)** is a non-tail-recursive implementation, as it concatenates strings in a non-accumulative manner, which could lead to performance issues on large lists.

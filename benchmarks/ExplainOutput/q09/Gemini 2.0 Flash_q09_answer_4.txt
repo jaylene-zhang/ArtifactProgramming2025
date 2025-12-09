@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let x = 5 in
+let x = x + 1 in (* overshadowing happens here *)
+x;;
+```
+
+**Explanation:**
+
+Overshadowing occurs when a new variable is declared with the same name as an existing variable within the same scope. In this example, the inner `let x = x + 1` declaration introduces a new variable `x` that shadows the outer `x = 5`.  Inside the scope of the inner `let`, `x` refers to the new variable (with value 6), not the original one i.e. after the `let x = 5` statement.

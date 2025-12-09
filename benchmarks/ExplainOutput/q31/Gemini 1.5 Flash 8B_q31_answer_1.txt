@@ -1,0 +1,22 @@
+**a) let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)**
+
+* **Solution:** No
+* **Explanation:**  `prime_fact x` is computed *once* inside the `let` binding. However, `List.exists` applies the comparison `e = p` to *every* element in the input list.  The function is not re-computing the factors for each element.
+
+
+**b) let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l**
+
+* **Solution:** No
+* **Explanation:**  `prime_fact x` is computed *once* for the entire list. The function *does not* recompute the factors for each element, but it computes it just once before comparing.
+
+
+**c) let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys**
+
+* **Solution:** No
+* **Explanation:**  `prime_fact x` is computed *once*. However, the function recurses and checks the factors in the remaining list in each step of recursion.
+
+
+**d) let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l**
+
+* **Solution:** Yes
+* **Explanation:** The prime factorization `p = prime_fact x` is computed *once* at the beginning  of the function. The `test` function then checks it against each factorization in the input list only once.

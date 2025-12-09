@@ -1,0 +1,29 @@
+Solution:
+
+Base Case: Let w = Const y.
+  We need to show:
+   count (Const y) x + acc = count' (Const y) x acc.
+  By definition,
+   count (Const y) x = if x = y then 1 else 0,
+   count' (Const y) x acc = if x = y then 1 + acc else acc.
+  Thus, (if x = y then 1 else 0) + acc equals if x = y then (1+acc) else (0+acc).
+
+Step Case: Let w = Op (w1, w2).
+  Induction Hypotheses:
+   IH1: count w1 x + a = count' w1 x a for all a,
+   IH2: count w2 x + acc = count' w2 x acc.
+  Then,
+   count (Op (w1, w2)) x + acc
+    = (count w1 x + count w2 x) + acc
+    = count w1 x + (count w2 x + acc)
+    = count w1 x + count' w2 x acc          [by IH2]
+    = count' w1 x (count' w2 x acc)        [by IH1 with a = count' w2 x acc]
+    = count' (Op (w1, w2)) x acc.
+
+Theorem 2 (Main Result):
+
+We have count w x = count w x + 0 = count' w x 0 by applying Theorem 1 with acc = 0.
+
+Explanation:
+
+We prove Theorem 1 by structural induction on the word w. In the Base Case, a single constant’s count function adds the accumulator correctly regardless of whether the constant matches x. In the Step Case, assuming the property holds for w1 and w2 (IH1 and IH2), we show that combining counts using the binary operation preserves the equality (using associativity of addition). Finally, Theorem 2 follows immediately by setting the accumulator to 0.

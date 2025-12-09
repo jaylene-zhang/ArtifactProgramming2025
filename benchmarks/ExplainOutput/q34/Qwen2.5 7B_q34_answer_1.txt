@@ -1,0 +1,8 @@
+a) False  
+Explanation: The length of the code does not determine the speed; the algorithm used and operations performed matter more.
+
+b) False  
+Explanation: While `@` does depend on the size of its second argument, the time complexity of both functions is O(n^2) due to repeated cons operations. `rev2` is more efficient because it builds the list in reverse, reducing the cost of `@`.
+
+c) True  
+Explanation: `rev2` accumulates the reversed list in a more efficient manner, appending only once at the end, leading to O(n) time complexity.

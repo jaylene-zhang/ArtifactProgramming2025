@@ -1,0 +1,8 @@
+**Answer: b)**
+
+**Explanation:** 
+Option b is the correct tail-recursive implementation of the `concat` function. It accumulates the result in the parameter `s`, which is built by appending the current string `x` to `s` with a space. This approach processes the list in a single traversal, making it tail-recursive.
+
+- Option a is incorrect because it constructs the string in reverse order, leading to an undesired format with leading spaces.
+- Option c incorrectly reverses the list before processing, negating the benefit of a single traversal, and still has the issue of leading spaces with the space coming before `s`.
+- Option d is neither tail-recursive nor efficient, as it concatenates strings via recursive calls leading to multiple traversals of parts of the list, resulting in a quadratic running time due to the repeated concatenation.

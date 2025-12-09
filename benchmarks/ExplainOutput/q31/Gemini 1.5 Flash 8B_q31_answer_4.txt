@@ -1,0 +1,23 @@
+**a) let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)**
+
+* **Solution:** No
+* **Explanation:** `prime_fact x` is computed *every* time `check_prime_factors` is called. The function calculates the prime factors once, but then uses `List.exists` to check against *each input list* which means it re-calculates `prime_fact x` anew within the  `List.exists` operation.
+
+
+**b) let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l**
+
+* **Solution:** No
+* **Explanation:** Same issue as (a). `prime_fact x` is recalculated for every element in the input list `l`.
+
+
+**c) let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys**
+
+* **Solution:** No
+* **Explanation:** This implementation uses recursion, but `prime_fact x` is calculated every time it's called from anywhere down the recursion chain, regardless of whether it has already been computed.. It doesn't memoize the result.
+
+
+
+**d) let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l**
+
+* **Solution:** Yes
+* **Explanation:** This is the only option that computes `prime_fact x` *once* and stores the result in `p`. The recursive `test` function then compares each element in the input list `l` to this pre-calculated `p`.  The calculation of `prime_fact x` is done outside of the recursive call, so there are no repeated calculations.

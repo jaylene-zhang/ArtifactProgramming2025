@@ -1,0 +1,11 @@
+**Solution**
+
+let rec repeat : ('a -> 'a) -> 'a = fun f -> f (repeat f)
+
+**Explanation**
+
+The function `repeat` takes a function `f` of type `'a -> 'a`, which means it expects a function with one argument of type `'a` and returns a value of type `'a`. Since `repeat` calls `f` with another instance of itself, the argument `f` must have type `'a -> 'a`. 
+
+Therefore, the type of `repeat` is `('a -> 'a) -> 'a`, where `'a` can be any type. 
+
+Note that the solution would be ill-typed if it was `fun f -> f (repeat f)` with no type annotation, because the type checker would not be able to infer the type of `repeat`. However, including the type annotation makes it clear that `repeat` has type `('a -> 'a) -> 'a`, and the type checker would accept this.

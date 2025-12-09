@@ -1,0 +1,1 @@
+**Functions can be assigned to variables, passed as arguments to other functions, and returned as values from functions, just like any other data type.** This means that functions in OCaml have the same rights and privileges as integers, strings, and other built-in types, allowing for greater flexibility and expressiveness in programming.

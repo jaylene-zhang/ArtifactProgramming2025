@@ -1,0 +1,10 @@
+Solution: Functional languages try to avoid state variables and imperative-style programming because it can introduce side effects and make it hard to track the flow of data and understand the program's behavior.
+
+Explanation: State variables and mutable references in imperative programming allow for changes to data that persist between operations. This can make programs harder to reason about because:
+
+1. **Non-determinism**: Programs may produce different outputs based on the state of the environment.
+2. **Concurrency Issues**: Managing shared state in a concurrent environment can lead to race conditions and deadlocks.
+3. **Debugging Difficulty**: It is more difficult to debug side-effect-ridden code since the effects might appear only under certain circumstances.
+4. **Purity and Predictability**: Functional programming is based on mathematical functions which are pure and deterministic. Stateful operations can violate this purity, making the code less predictable.
+
+Functional languages promote functional programming paradigms such as recursion, higher-order functions, and immutability to maintain simplicity and ease of reasoning about the program.

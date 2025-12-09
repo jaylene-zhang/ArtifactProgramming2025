@@ -1,0 +1,25 @@
+**Solution**
+
+The final result of running the program is:
+
+```ocaml
+(2, 3, [2;3;4], [3;4;5])
+```
+
+**Explanation**
+
+Here is the binding stack diagram for the program:
+
+1. `let c = ref 0 in` ... `c` is bound to 0
+2. `let l = List.rev [1;2;3] in`... `l` is bound to `[3;2;1]`
+3. `let observe () =!c in`... `observe` is bound to a function that returns the current value of `c`
+4. `let x = 1 in`... `x` is bound to 1
+5. `let inc x = c:=!c+1 ; x+1 in`... `inc` is bound to a function that increments `c` and returns `x+1`
+6. `let ml = List.map inc l in`... `ml` is bound to `[2;3;4]`
+7. `let inc’ = (let c = ref 0 in...`... a new scope is created for `c` and `inc’`
+8. `let x = x + 1 in`... `x` is bound to 2
+9. `fun y -> c :=!c+1 ;!c+y+x`... `inc’` is bound to a function that takes a value `y` and returns `!c+y+x`
+10. `let ml’ = List.map inc’ l in`... `ml’` is bound to `[3;4;5]`
+11. `(x,observe (), ml, ml’) in`... the program returns the current values of `x`, `observe`, `ml`, and `ml’`
+
+Note that `inc’` is a new function that captures the value of `x` from the outer scope, which is 2. The binding stack diagram shows the creation of a new scope for `inc’`, which has its own binding of `c` to 0.

@@ -1,0 +1,52 @@
+Okay, here are the completed proofs:
+
+**Q4.1**
+
+*   **Base Case:**
+
+    *   h = `Empty`
+
+    *   `add_up Empty + acc = 0 + acc = acc`
+
+    *   `add_up_tr Empty acc = acc`
+
+    *   Therefore, `add_up Empty + acc = add_up_tr Empty acc`
+
+*   **Step Case:**
+
+    *   h = `Hand (c, h')`
+
+    *   Induction Hypothesis: `add_up h' + acc = add_up_tr h' acc`
+
+    *   Proof:
+
+        `add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc)`
+
+        By the induction hypothesis, `add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`
+
+        `add_up_tr h' (1 + acc) = add_up_tr (Hand (c, h')) acc`
+
+        Therefore, `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`
+
+**Q4.2**
+
+*   **Proof:**
+
+    We want to prove `add_up h = add_up_tr h 0`.
+
+    From Theorem 1, we know `add_up h + acc = add_up_tr h acc` for all hands `h` and accumulators `acc`.
+
+    Let `acc = 0`.  Then, `add_up h + 0 = add_up_tr h 0`.
+
+    Therefore, `add_up h = add_up_tr h 0`.
+
+**Explanation:**
+
+*   **Q4.1: Inductive Proof of `add_up h + acc = add_up_tr h acc`**
+
+    *   **Base Case:** Starts with the simplest hand `Empty`.  Proves that the equality holds when the hand is `Empty`.
+    *   **Step Case**: Assume `add_up h' + acc = add_up_tr h' acc` holds for some hand `h'`. Create a new hand `Hand(c, h')` and prove that the equality also holds under this case. With both the base case and step case, we can prove our result.
+
+*   **Q4.2: Proof of `add_up h = add_up_tr h 0`**
+
+    *   Relies on Theorem 1 which states `(add_up h + acc = add_up_tr h acc)`. By substituting acc with 0 and simplifying, we can easily show `add_up h = add_up_tr h 0`. This demonstrates how the more general statement proved in Theorem 1 is used to prove the original statement.

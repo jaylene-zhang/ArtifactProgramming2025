@@ -1,0 +1,7 @@
+```ocaml
+let w = 3 in 
+let y = 2 * (w * 2) in 
+fun x -> w * y * x
+```
+
+Explanation: The variable `x` is replaced with `w * 2` as per the inlining process, since `x` was originally defined as `w * 2`.

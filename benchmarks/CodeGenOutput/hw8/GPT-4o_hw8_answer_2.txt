@@ -1,0 +1,47 @@
+```ocaml
+type 'a stream = 
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n <= 0 then []
+  else s.head :: take (n - 1) (s.tail ())
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n <= 0 then s
+  else drop (n - 1) (s.tail ())
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  let rec make_zeroes () = { head = 0; tail = make_zeroes } in
+  make_zeroes ()
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  unfold (fun n -> (n, n + 1)) 0
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  unfold (fun n -> (n, n + 2)) 0
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  unfold
+    (fun (s1, s2) -> (f s1.head s2.head, (s1.tail (), s2.tail ())))
+    (s1, s2)
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  unfold
+    (fun (a, b) -> (a, (b, a + b)))
+    (0, 1)
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  unfold
+    (fun (a, b) -> (a, (b, a + b)))
+    (2, 1)
+```

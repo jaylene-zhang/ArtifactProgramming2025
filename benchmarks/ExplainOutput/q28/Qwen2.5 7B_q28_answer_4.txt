@@ -1,0 +1,11 @@
+No, the program does not correctly compute the antiderivative of `f`.
+
+**Solution:**
+```ocaml
+let anti_d f = curry (integral f) 0
+```
+
+**Explanation:**
+- The original program uses `curry integral` which incorrectly fixes the `integral` function itself, instead of the integrand function `f`.
+- The correct approach is to first apply `curry` to `integral f`, making `integral f` a function that can be called with a single argument (the limits of integration).
+- Then, we fix the lower limit to 0 by calling the resulting function with `0`. This constructs a function that computes the integral of `f` from 0 to `x` when called with `x`.

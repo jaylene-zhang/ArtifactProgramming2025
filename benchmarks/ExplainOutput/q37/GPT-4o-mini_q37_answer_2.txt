@@ -1,0 +1,3 @@
+(0, 0)
+
+The bug in the implementation is that it does not handle the case when `n = 0`. The correct behavior for the triangle function should return 0 when `n` is 0, but the current implementation will cause a failure when trying to evaluate `triangle(0)`.

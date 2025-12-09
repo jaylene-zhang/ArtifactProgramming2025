@@ -1,0 +1,7 @@
+**Solution:**
+
+Unused variable: `r` (from the function arguments)
+
+**Explanation:**
+
+The variable `r` is defined in the function arguments, but is immediately shadowed (redefined) within the function's body by `let r = 2 * y`. Therefore, the original `r` passed as an argument is never used.

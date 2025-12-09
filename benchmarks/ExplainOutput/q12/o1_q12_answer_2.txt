@@ -1,0 +1,21 @@
+Solution (Q4.1):  
+• Induction Hypothesis (IH): For all hands h and accumulators acc, add_up h + acc = add_up_tr h acc.  
+• Base Case (h = Empty): add_up Empty + acc = 0 + acc = acc, and add_up_tr Empty acc = acc. Both sides match.  
+• Step Case (h = Hand(c, h')):  
+  add_up (Hand(c, h')) + acc  
+  = (add_up h' + 1) + acc  
+  = add_up h' + (acc + 1)  
+  = add_up_tr h' (acc + 1)        (by IH)  
+  = add_up_tr (Hand(c, h')) acc.  
+
+Explanation (Q4.1):  
+We perform structural induction on h. The base case (Empty) is straightforward. In the step case (Hand(c, h')), we assume the IH holds for h' and then show the equality for Hand(c, h') by unfolding both sides and using the IH to connect them.
+
+------------------------------------------------------------------------------
+
+Solution (Q4.2):  
+For all hands h, add_up h = add_up_tr h 0.  
+By Theorem 1, setting acc = 0 gives add_up h + 0 = add_up_tr h 0, thus the result.
+
+Explanation (Q4.2):  
+Theorem 2 is a direct consequence of Theorem 1 by simply choosing the accumulator to be 0.

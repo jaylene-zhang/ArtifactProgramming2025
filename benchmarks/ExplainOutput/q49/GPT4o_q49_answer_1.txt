@@ -1,0 +1,15 @@
+**Solution:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+When inlining `y` with `(f x)`, all occurrences of `y` in the expression `(let double x ...)` are replaced with `(f x)`. Specifically:
+
+1. The first occurrence of `y` in `let w = y + x` becomes `let w = (f x) + x`.
+2. The last occurrence of `y` in `(f w) * y` becomes `(f w) * (f x)`.

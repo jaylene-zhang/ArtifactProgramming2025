@@ -1,0 +1,10 @@
+### Solution
+
+1. `f (hd s) a`
+2. `fold f (f (hd s) a) (tl s)`
+
+### Explanation
+
+For blank 1, we apply the function `f` to the head of the stream `s` and the initial value `a`, which yields the first element of the output stream.
+
+For blank 2, we recursively call `fold` with the function `f`, the new initial value `f (hd s) a` (which is the result of applying `f` to the head of `s` and the current initial value `a`), and the tail of the stream `s`. This generates the rest of the output stream.

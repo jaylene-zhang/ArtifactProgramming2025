@@ -1,0 +1,3 @@
+**Solution:** Functional languages avoid state variables and imperative-style programming because it promotes immutability, which leads to safer, more predictable, and easier-to-reason-about code.
+
+**Explanation:** By avoiding mutable state, functional programming reduces potential side effects, making it easier to debug, test, and parallelize programs. Immutability ensures that data cannot be changed unexpectedly, leading to more robust and reliable behavior.

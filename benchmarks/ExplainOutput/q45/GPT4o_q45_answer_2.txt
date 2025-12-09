@@ -1,0 +1,9 @@
+1) For blank 1 in line 2 we should write:
+   ```ones```
+
+2) For blank 2 in line 3 we should write:
+   ```map psums pascal```
+
+**Explanation**:
+1) The first diagonal of Pascal's triangle is a stream of ones, so `hd` of the `pascal` stream should be `ones`.
+2) The remaining diagonals are generated using partial sums (`psums`) applied to each diagonal. We use `map` to apply `psums` to each diagonal in the `pascal` stream (`tl`). The `Susp` ensures laziness for the recursive definition.

@@ -1,0 +1,26 @@
+The standard List library functions in OCaml aren't all tail-recursive primarily for readability and efficiency trade-offs.
+
+While continuations can indeed make any function tail-recursive, this transformation:
+
+1. Makes code significantly more complex and harder to read
+2. Introduces overhead from the continuation passing style (CPS)
+3. Is unnecessary for many cases where the list size is reasonably bounded
+
+For example, `List.map` in its non-tail-recursive form is very intuitive:
+```ocaml
+let rec map f = function
+  | [] -> []
+  | x::xs -> f x :: map f xs
+```
+
+Its tail-recursive version with continuations would be less readable:
+```ocaml
+let map f l =
+  let rec map_aux f l cont = match l with
+    | [] -> cont []
+    | x::xs -> map_aux f xs (fun r -> cont (f x :: r))
+  in
+  map_aux f l (fun x -> x)
+```
+
+OCaml's standard library balances performance, readability, and stack safety as appropriate for each function's typical use case.

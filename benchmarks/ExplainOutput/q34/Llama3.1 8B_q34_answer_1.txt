@@ -1,0 +1,11 @@
+**a) False**
+
+rev1 is not faster than rev2 just because it has a shorter definition. The actual speed of a function is determined by its runtime complexity, not its source code length. Both functions have the same time complexity, O(n), where n is the length of the input list.
+
+**b) True**
+
+The performance of the `@` operator, which concatenates two lists, depends on its second argument (the length of the list being prepended). When the list is built incrementally via `x :: xs`, the concatenation operation at each step involves inserting a new element at the beginning of the list, which has O(n) time complexity in the size of the accumulated list. This contributes to an overall time complexity of O(n^2) for rev1. In contrast, rev2's `go` function accumulates the reversed list using `x :: acc`, which is O(1) op per iteration. So, rev2 has a time complexity of O(n).
+
+**c) True**
+
+This is a true statement. The reason is the same as stated in b). The use of `::` in rev2 to accumulate the reversed list has a constant time complexity, while rev1's use of `@` has a time complexity related to the size of the list. So, rev2 is faster than rev1.

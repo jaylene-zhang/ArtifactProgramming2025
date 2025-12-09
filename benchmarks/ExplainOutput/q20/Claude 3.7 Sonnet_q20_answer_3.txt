@@ -1,0 +1,3 @@
+Solution: This test will not pass.
+
+Explanation: The function `triangle` has a base case for `n = 1`, but not for `n = 0`. When `triangle 0` is called, it will enter the `else` branch and compute `0 + triangle(-1)`. This will continue recursively with increasingly negative values of `n`, causing a stack overflow since there's no termination condition for `n ≤ 0`. So the test `triangle 0 == 0` will not pass because `triangle 0` won't even compute properly.

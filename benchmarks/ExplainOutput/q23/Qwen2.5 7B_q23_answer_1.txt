@@ -1,0 +1,5 @@
+```ocaml
+shift : 'a ref * 'a ref -> unit
+```
+
+Explanation: The `shift` function takes a tuple of two reference types (`'a ref * 'a ref`) as input and does not return anything (unit type). It modifies the values within the references without returning them.

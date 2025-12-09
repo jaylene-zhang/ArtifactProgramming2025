@@ -1,0 +1,9 @@
+The unused variable in the expression is `r`.
+
+**Solution:**
+`r`
+
+**Explanation:**
+- `r` is assigned the value `2 * y` and is only used within the scope of its declaration.
+- `x` in the lambda function `f` shadows the outer `x` that is assigned 42, but the variable `x` used in `x * y` is actually referring to the formal parameter `x` of the lambda function, not the outer `y`.
+- Thus, `r` is never used in a context where its value is consumed, making it an unused variable.

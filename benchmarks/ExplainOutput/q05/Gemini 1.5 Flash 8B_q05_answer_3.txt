@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let x = y + 3 in
+let w = y + 3 in fun y -> (y + 3) + 2 + y * (y + 3)
+```
+
+**Explanation:**
+
+The expression `x` is replaced with `y + 3` wherever it appears in the body of the function.  The `w = x` assignment is also transformed to `w = y+3`.  The entire `fun y -> ...` part now contains the substituted `x`.

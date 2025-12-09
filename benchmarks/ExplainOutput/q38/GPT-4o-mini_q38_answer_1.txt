@@ -1,0 +1,7 @@
+The correct solutions are: **c) h (g (f x))**.
+
+Explanation: 
+- The `compose` function takes two functions `h` and `g`, and we want to return a new function that applies `f` multiple times based on the composition of `h` and `g`. 
+- Specifically, `h` takes a function `f` and an argument `x`, and `g` similarly applies `f` to `x`.
+- To achieve the desired result of `fun f x -> f (f (f x))`, we need to structure our composed function such that we first apply `g`, which applies `f` once to `x`, and then apply `h`, which will apply `f` again, resulting in `h (g (f x))` producing `f (f (f x))`. 
+- The other options (a, b, d) do not properly reflect the compositional nature needed to obtain the correct application pattern of `f`.

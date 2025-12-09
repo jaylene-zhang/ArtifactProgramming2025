@@ -1,0 +1,14 @@
+**Solution:**
+
+The function `f` reverses the input list.
+
+**Explanation:**
+
+The function `f` effectively reverses a list. Let's trace its behavior:
+
+1.  **Base Case:** If the list is empty, it returns an empty list.
+2.  **Recursive Step:** If the list is `h :: t`, where `h` is the head and `t` is the tail:
+    *   It calls `rotate (t @ [h])`.  This rotates the list created by appending `h` to `t`.
+    *   The `rotate` function moves the first element of `t @ [h]` to the end of the list. Since `t @ [h]` is effectively the original list, with `h` at the end, `rotate` function will then put the second element of the original list to the end of the `(n-1)` length list.
+
+Each recursive call effectively moves element to the end until the list is empty, causing the the `rotate` to always move the ith element to the end making the list reverse order.

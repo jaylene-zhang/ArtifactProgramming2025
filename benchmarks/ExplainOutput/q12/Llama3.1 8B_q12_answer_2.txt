@@ -1,0 +1,37 @@
+**Solution**
+
+Q4.1
+```ocaml
+(* Theorem 1. For all hands h and accumulators acc, add_up h + acc = add_up_tr h acc *)
+
+let rec add_up h = 
+  let rec add_up_tr h acc = 
+    match h with
+    | Empty -> acc
+    | Hand (c, h) -> 1 + add_up_tr h (add_up h + acc) 
+  in fun _ -> add_up_tr h 0
+```
+
+Base Case:
+h = Empty => add_up Empty + acc = add_up_tr Empty acc
+= 0 + acc
+= acc = add_up_tr Empty acc  (* by add_up_tr definition *)
+
+Step Case:
+h = Hand (c, h') => add_up (Hand (c, h')) + acc = add_up (add_up_tr (Hand (c, h')) acc)
+= (add_up h' + 1) + acc
+= 1 + (add_up h' + acc)
+= 1 + add_up_tr h' acc  (* by IH *)
+= add_up_tr (Hand (c, h')) acc  (* by add_up_tr definition *)
+
+**Q4.2**
+
+```ocaml
+(* Theorem 2. For all hands h, add_up h = add_up_tr h 0 *)
+
+Theorem 2:
+Let h:hand. Then add_up h = add_up_tr h 0
+Proof:
+From Theorem 1, add_up h + 0 = add_up_tr h 0 (* apply Theorem 1 with acc=0 *)
+= add_up h  (* by definition of add_up_tr with acc = 0 *)
+```

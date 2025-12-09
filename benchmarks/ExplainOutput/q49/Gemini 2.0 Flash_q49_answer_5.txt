@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+Inlining `y` with `(f x)` involves replacing every occurrence of `y` within its scope with the expression `(f x)`.  Note that the inner `x = 2` shadows the outer `x` parameter of `double`.

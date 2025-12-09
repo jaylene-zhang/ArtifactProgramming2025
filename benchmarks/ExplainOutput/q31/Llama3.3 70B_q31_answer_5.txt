@@ -1,0 +1,18 @@
+### Solutions
+
+* a) **Yes**, it only computes `prime_fact x` once.
+* b) **No**, it computes `prime_fact x` for each element in the list.
+* c) **No**, it computes `prime_fact x` for each element in the list (and also has a typo: it should be `check_prime_factors x ys`).
+* d) **Yes**, it only computes `prime_fact x` once.
+
+### Explanation
+
+In functional programming, "eager" evaluation means that expressions are evaluated as soon as they are bound to a variable, and "lazy" evaluation means that expressions are evaluated only when their values are needed.
+
+In the given examples:
+
+- **a)** and **d)** The `prime_fact x` expression is only evaluated once, when `p` is defined, thanks to eager evaluation. The result is then stored in `p` and reused throughout the rest of the function.
+
+- **b)** and **c)** The `prime_fact x` expression is evaluated for each element in the list, because it is inside the lambda function or recursive function call. This makes the function less efficient, especially if the list is large, because it performs redundant computations.
+
+In general, to ensure that a computation only happens once, you should bind the result of the computation to a variable, like in **a)** and **d)**. This way, the computation is performed only once, when the variable is initialized, and the result can be reused as many times as needed without recomputing it.

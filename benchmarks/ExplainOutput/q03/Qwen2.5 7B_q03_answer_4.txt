@@ -1,0 +1,53 @@
+```ocaml
+(x, observe (), ml, ml')
+```
+
+**Solution:**
+
+- `x` is `1` (initially defined).
+- `observe ()` evaluates to `0` (referencing `!c` which is initialized to `0`).
+- `ml` is `[2; 3; 4]` (the result of `List.map inc l` where `inc` increments `c` to `1` initially and then the value of `l` is processed).
+- `ml’` is `[2; 3; 4]` (the result of `List.map inc’ l` where `inc’` also increments `c` twice and then processes the values of `l`).
+
+**Explanation using the binding stack diagram:**
+
+Initial state:
+```
+c = 0
+l = [1; 2; 3]
+x = 1
+```
+
+After defining `inc` and `inc’`:
+```
+c = 0
+l = [1; 2; 3]
+x = 1
+```
+
+After evaluating `ml = List.map inc l`:
+```
+c = 1
+l = [1; 2; 3]
+x = 1
+ml = [2; 3; 4]
+```
+
+After evaluating `inc’` and `ml’ = List.map inc’ l`:
+```
+c = 3   (c is incremented twice in `inc’`)
+l = [1; 2; 3]
+x = 1
+ml’ = [2; 3; 4]
+```
+
+Finally:
+```
+(x, observe (), ml, ml') = (1, 0, [2; 3; 4], [2; 3; 4])
+```
+
+So:
+- `x = 1`
+- `observe () = 0` (value of `!c` after `c := 0`)
+- `ml = [2; 3; 4]`
+- `ml’ = [2; 3; 4]`

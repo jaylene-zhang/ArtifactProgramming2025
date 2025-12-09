@@ -1,0 +1,29 @@
+type 'b church = 'b -> ('b -> 'b) -> 'b
+
+let zero : 'b church = fun z s -> z
+let one : 'b church = fun z s -> s z
+
+(* Question 1a: Church numeral to integer *)
+(* TODO: Implement the function. *)
+let to_int (n : int church) : int =
+  n 0 (fun x -> x + 1)
+
+(* Question 1b: Add two church numerals *)
+(* TODO: Implement the function. *)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+(* Question 1c: Multiply two church numerals *)
+(* TODO: Implement the function. *)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (fun x -> n2 x s)
+
+(* Question 2a: Sum a list of church numerals *)
+(* TODO: Implement the function. *)
+let sum (l : 'b church list) : 'b church =
+  List.fold_left add zero l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+(* TODO: Implement the function. *)
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun acc _ -> fun z s -> s (acc z s)) zero l

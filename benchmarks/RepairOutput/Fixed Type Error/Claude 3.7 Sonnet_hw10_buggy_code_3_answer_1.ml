@@ -1,0 +1,1 @@
+(Apply (Fn ([("f", Bool)], B true), [B true]))

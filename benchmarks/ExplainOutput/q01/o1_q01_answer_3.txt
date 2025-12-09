@@ -1,0 +1,14 @@
+Solution:
+
+(1) xs : 'a list  
+(2) ys : 'b list  
+(3) pair : 'a * 'b -> 'c  
+(4) sc : 'c list -> 'd  
+(5) The entire function has type: 'a list -> 'b list -> ('a * 'b -> 'c) -> ('c list -> 'd) -> 'd  
+
+Explanation:
+
+• xs and ys are lists of possibly different element types ('a and 'b).  
+• pair transforms a pair of elements ('a, 'b) into another type 'c.  
+• sc processes a list of 'c values and produces the final type 'd.  
+• Putting it all together, zippy is a higher-order function returning 'd.  

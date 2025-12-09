@@ -1,0 +1,7 @@
+No, this wouldn't work directly.
+
+The reason is that the induction hypothesis would give us information about `length (rev_tl l' []) = length l'` for some smaller list l', but when we try to prove the case for a larger list like `l = x::l'`, we'd need to reason about `length (rev_tl (x::l') [])`. The recursive call in `rev_tl` would be `rev_tl l' [x]`, not `rev_tl l' []`. So the induction hypothesis doesn't directly apply to this call.
+
+A better approach would be to prove a more general property: 
+`length (rev_tl l acc) = length l + length acc`
+This allows the induction to work properly with the changing accumulator.

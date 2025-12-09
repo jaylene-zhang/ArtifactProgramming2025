@@ -1,0 +1,12 @@
+## Solution
+
+```ocaml
+let f = function
+  | []   -> []
+  | h :: [] -> [h]
+  | _   -> rotate (List.tl (List.rev l))
+```
+
+## Explanation
+
+This function creates a copy of the original list, reverses it, takes the second-to-last element, and rotates the rest to the front. However, there's a syntax error in the given code. The option `let rec f l =` should be replaced with a pattern match instead.

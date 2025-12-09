@@ -1,0 +1,19 @@
+No, the provided program does not correctly compute the antiderivative of \( f \).
+
+```ocaml
+let anti_d f = (curry integral) f 0
+```
+
+### Explanation
+
+The function `anti_d` is intended to be the antiderivative \( F(x) \) of the function \( f(x) \), which is defined as the integral of \( f \) from 0 to \( x \). However, the given code does not properly account for the variable upper limit of integration.
+
+The `curry` function takes a two-argument function and converts it into a curried function, so `(curry integral) f 0` is equivalent to `integral f (0)`, but this will always compute the integral of \( f \) from 0 to 0, which is always 0. It does not generalize the computation for any \( x \).
+
+To correctly compute the antiderivative, you should curry `integral` to handle the variable upper limit:
+
+```ocaml
+let anti_d f = curry (fun g a b -> integral g (a, b) dx) f
+```
+
+This way, `anti_d f x` will compute the integral of \( f \) from 0 to \( x \), providing the correct antiderivative function.

@@ -1,0 +1,29 @@
+Here’s the concise solution and explanation:
+
+---
+
+### Theorem 1 Proof:
+We proceed by structural induction on `w`.
+
+- **Base Case**:  
+  Suppose `w = Const y`.  
+  By the definition of `count`:  
+  `count (Const y) x + acc = (if x = y then 1 else 0) + acc`  
+
+  By the definition of `count’`:  
+  `count’ (Const y) x acc = if x = y then 1 + acc else acc`  
+
+  Both expressions are equal. Thus, the base case holds.
+
+- **Step Case**:  
+  Suppose `w = Op (w1, w2)`.  
+  Induction Hypotheses:  
+  Assume `count w1 x + acc = count’ w1 x acc`,  
+  and `count w2 x + acc = count’ w2 x acc`.
+
+  By the definition of `count`:  
+  `count (Op (w1, w2)) x + acc = (count w1 x + count w2 x) + acc`
+
+  By the induction hypotheses, this becomes:  
+  `(count’ w1 x acc1 + count’ w2 x acc2)` and simplifies to:  
+  `count’ (Op (wlocked reset tough structure case relaxed stepped logic.)`

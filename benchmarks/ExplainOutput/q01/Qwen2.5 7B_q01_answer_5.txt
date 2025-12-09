@@ -1,0 +1,43 @@
+Let's fill in the types step by step:
+
+```ocaml
+exception Error
+
+let rec zippy (xs: ('a list)) (ys: ('a list)) (pair: 'a -> 'b -> 'a * 'b) (sc: 'c list -> 'c list) (sc: unit -> unit) : 'c list = 
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (fun (x, y) -> (x, y + 0)) (fun r ->
+    if List.length xs = List.length r then r else raise Error)
+  (fun () -> ()) (* Note: This should be ignored, as the formal parameter `sc` is not used in the function body. *)
+```
+
+### Explanation
+
+1. **Type for `xs` and `ys`:**
+   - Both `xs` and `ys` should have the same type, which is a list of some element type, denoted by `'a`.
+   - Thus, the types for `xs` and `ys` are `('a list)`.
+
+2. **Type for `pair`:**
+   - `pair` is a function that takes two elements of type `'a` and `'b` and returns an `'a * 'b`.
+   - The type for `pair` is therefore `'a -> 'b -> 'a * 'b`.
+
+3. **Type for `sc`:**
+   - `sc` is a function that takes a list of some type `'c` and returns a list of the same type `'c`.
+   - The type for `sc` is therefore `('c list -> 'c list)`.
+
+4. **Type for `zippy`:**
+   - `zippy` returns a list of type `'c list`.
+   - Thus, the type for `zippy` is `'a list -> 'a list -> ('a -> 'b -> 'a * 'b) -> ('c list -> 'c list) -> unit -> 'c list`.
+
+5. **Type for `sc` in the `zippy` call in `zip_plus`:**
+   - `sc` here should be a function that returns a list of the same type as the input list of `zippy`, in this case it should be the list of result tuples.
+   - Hence, the type for `sc` is `fun r -> 'a * 'b list -> 'a * 'b list`.
+
+6. **Error Handling in `zippy`:**
+   - In the `_ , _ -> raise Error` case, there is a type mismatch. The `unit -> unit` should not be there, as `sc` should return a `'c list`. The parameter `sc` is essentially not used in the `match` cases, so it can be ignored in function definition.
+
+Please correct the type of `sc` in the `zippy` function call in `zip_plus` to `fun r -> 'a * 'b list -> 'a * 'b list`, and the formal parameter `sc` should not be included in the function definition.

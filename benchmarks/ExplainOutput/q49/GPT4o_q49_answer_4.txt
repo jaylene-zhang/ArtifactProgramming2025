@@ -1,0 +1,18 @@
+**Solution:**
+
+After substituting `y` with `(f x)`, the expression becomes:
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+1. The goal is to replace every instance of `y` with `(f x)` in the body of the original expression.
+2. Inside the `double` function's body:
+   - `y + x` becomes `(f x) + x`.
+   - `y` in `(f w) * y` becomes `(f w) * (f x)`.
+3. No other modifications are needed since we are substituting `y` explicitly but maintaining the structure of the original function otherwise.

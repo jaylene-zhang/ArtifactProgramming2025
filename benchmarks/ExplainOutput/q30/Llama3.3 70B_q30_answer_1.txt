@@ -1,0 +1,2 @@
+**[11.0; 21.0; 6.0]**
+The `update_sales_tax` function only returns the new sales tax value, it does not update the `sales_tax` variable. Therefore, the `add_tax` function still uses the original `sales_tax` value, which is 1.0, when updating the `price_list`.

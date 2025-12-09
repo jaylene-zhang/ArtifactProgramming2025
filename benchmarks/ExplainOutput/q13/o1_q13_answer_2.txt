@@ -1,0 +1,6 @@
+Solution:
+let x = ref 1 in
+x := 2
+
+Explanation:
+Overwriting mutates the same variable or memory location (e.g., setting x := 2 updates the original reference). In contrast, overshadowing creates a new binding with the same name (e.g., let x = 3 introduces a different x, hiding the old one).

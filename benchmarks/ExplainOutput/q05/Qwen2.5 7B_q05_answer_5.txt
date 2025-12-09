@@ -1,0 +1,11 @@
+Resulting program:
+```ocaml
+let foo y =
+let w = y + 3 in
+fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation:
+- We replaced `x` with `y + 3` wherever it appears in the lambda function.
+- The original `x` was defined as `y + 3`, so all instances of `x` are now replaced with `y + 3`.
+- This simplifies the lambda function directly, making the program more efficient by avoiding the need to compute `x` during the lambda's execution.

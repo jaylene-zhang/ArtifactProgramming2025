@@ -1,0 +1,11 @@
+```ocaml
+let toInt f =
+  let rec count n x =
+    match f (fun y -> count (n + 1) y) x with
+    | _ -> n
+  in
+  count 0
+```
+
+**Explanation:**
+The `toInt` function takes a function `f` and utilizes a recursive helper function `count` to keep track of how many times `f` is applied to its input. It starts counting from 0 and increments `n` each time `f` applies itself to an argument. The recursion continues until `f` returns a value without further application, at which point it returns the count of applications.

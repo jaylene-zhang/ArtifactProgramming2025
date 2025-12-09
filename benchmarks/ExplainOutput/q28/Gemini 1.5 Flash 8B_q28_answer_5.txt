@@ -1,0 +1,13 @@
+No.
+
+**Solution:**
+
+```ocaml
+let anti_d f x = integral f (0, x)
+```
+
+**Explanation:**
+
+The provided code `let anti_d f = (curry integral) f 0` attempts to curry the `integral` function, but then only applies it to `f` and 0. It expects `integral` to take `f` and `(a,b)` which does not happen.
+
+The correct approach utilizes the definition of the antiderivative:  integrate `f`  from 0 to `x`.  `integral f (0, x)` directly calculates this.  The `x` is essential; it defines the upper bound of the integration. `curry` fundamentally changes the way a function is applied; it is not the correct way to compute an antiderivative.

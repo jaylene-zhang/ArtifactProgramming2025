@@ -1,0 +1,3 @@
+Solution: Let 't = 's = 'u = α for any type α.
+
+Explanation: f is applied to (a, b) where a: 't and b: 's, giving a result of type 'u. However, in f(b, a), b and a must have types 't and 's respectively; this forces 't = 's. The outer application f then takes two arguments of type 't (or 's) but receives values of type 'u, so we must also have 'u = 't. Thus all three are equal.

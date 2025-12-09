@@ -1,0 +1,33 @@
+### Solution
+
+The result of the expression is **23**.
+
+
+### Explanation
+
+Binding stack:
+
+1. `x = 5`
+2. `y = 10`
+3. `f ----> u -> u + x + y + !r` 
+4. `x = 3`
+5. `r ----> 2`  (initially `r = ref (2 + x) = ref 5`)
+
+Evaluation steps:
+- Evaluate `r := 2` which changes the value of `r` to `2`.
+- Then evaluate `f (!r * y)`. Here `!r = 2` and `y = 10`, so `!r * y = 20`.
+- Now `f 20` is evaluated. In the function `f`, `x` is `3` (not `5`), `y` is `20 * 5 = 100` (from `let y = x * !r` where `x = 3` and `!r = 5` initially) and `!r` is `2` (updated value).
+- Thus, `20 + 3 + 100 + 2 = 125` is evaluated. The result is **25** is incorrect because when the function f was defined, y was bound to `x * !r` which is `3 * 5 = 15` 
+
+Thus, when f is called with u = 2 * 10 = 20 and r now equals 2 
+
+x = 3 (when f was defined) 
+y = 15 (when f was defined) 
+r = 2 
+u = 20 
+
+20 + 3 + 15 + 2 
+
+We get 40 
+
+ binding was not in the values given in this response

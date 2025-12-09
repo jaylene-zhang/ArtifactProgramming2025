@@ -1,0 +1,14 @@
+a) Yes  
+b) No  
+c) No  
+d) Yes  
+
+**Explanation:**
+
+a) In this implementation, `prime_fact x` is computed once and stored in `p`, which is then used in the `List.exists` function. Thus, it only computes the function once.
+
+b) Here, `prime_fact x` is called directly inside `List.exists`, meaning it is computed multiple times (once for each element in the list), so it does not satisfy the requirement.
+
+c) Similar to (b), `prime_fact x` is called multiple times (once for each recursive call until the list is exhausted), resulting in multiple evaluations, so it does not meet the criteria.
+
+d) Like (a), `prime_fact x` is computed once and stored in `p`, then used in the recursive helper function `test`. This ensures the function is only computed once.

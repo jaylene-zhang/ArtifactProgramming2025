@@ -1,0 +1,50 @@
+**Question 4.1:**
+
+**Solution:**
+
+Theorem 1. For all hands \( h \) and accumulators \( acc \), \( \text{add\_up} h + acc = \text{add\_up\_tr} h acc \).
+
+**Induction Hypothesis:**
+For the base case, assume:
+\[ \text{add\_up} h + acc = \text{add\_up\_tr} h acc \]
+
+**Proof:**
+
+*Base Case:*
+\[ h = \text{Empty} \]
+\[ \text{add\_up } \text{Empty} = 0 \]
+\[ \text{add\_up\_tr } \text{Empty} \, acc = acc \]
+\[ \text{add\_up } \text{Empty} + acc = 0 + acc = acc \]
+\[ \text{add\_up\_tr } \text{Empty} \, acc = acc \]
+Thus, the base case holds.
+
+*Step Case:*
+Assume for some hand \( h' \):
+\[ \text{add\_up } h' + acc = \text{add\_up\_tr } h' \, acc \]
+
+Now consider \( h = \text{Hand} (c, h') \):
+\[ \text{add\_up } h = \text{add\_up } (\text{Hand} (c, h')) = \text{add\_up } h' + 1 \]
+\[ \text{add\_up\_tr } h \, acc = \text{add\_up\_tr } (\text{Hand} (c, h')) \, acc = \text{add\_up\_tr } h' \, (1 + acc) \]
+
+By the induction hypothesis:
+\[ \text{add\_up } h' + acc = \text{add\_up\_tr } h' \, acc \]
+\[ \text{add\_up } h + 1 = (\text{add\_up } h' + 1) = (\text{add\_up\_tr } h' \, acc + 1) = \text{add\_up\_tr } h' \, (1 + acc) \]
+
+Thus, the step case holds.
+
+**Question 4.2:**
+
+**Solution:**
+
+Theorem 2 (Main Result). For all hands \( h \), \( \text{add\_up} h = \text{add\_up\_tr} h 0 \).
+
+**Proof:**
+From Theorem 1, we know for all \( h \) and \( acc \):
+\[ \text{add\_up } h + acc = \text{add\_up\_tr } h \, acc \]
+
+Setting \( acc = 0 \):
+\[ \text{add\_up } h + 0 = \text{add\_up\_tr } h \, 0 \]
+
+\[ \text{add\_up } h = \text{add\_up\_tr } h \, 0 \]
+
+Thus, Theorem 2 is proven.

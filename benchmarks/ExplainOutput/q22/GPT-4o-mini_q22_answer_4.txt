@@ -1,0 +1,3 @@
+The unused variable in the given expression is `f`. 
+
+Explanation: In the inner `let` binding `let f = fun x -> f x * y`, the variable `f` refers to itself recursively, but since it is redeclared in the `let` binding, the original function passed as an argument to `call` is never used. Therefore, the original `f` from the parameter list is not utilized anywhere in the body of the `call` function. The variable `r` is used in the computation as it's passed to `f` at the end.

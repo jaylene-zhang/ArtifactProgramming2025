@@ -1,0 +1,6 @@
+Solution:
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:
+For the head, we compute the first folded value as f applied to the stream’s head and the initial value a. For the tail, we update the accumulator with f s.hd a and recursively fold over the remainder of the stream.

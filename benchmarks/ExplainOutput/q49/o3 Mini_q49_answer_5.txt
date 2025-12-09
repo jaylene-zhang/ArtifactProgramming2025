@@ -1,0 +1,8 @@
+Solution:
+let double x =
+  let x = 2 in
+  let w = (f x) + x in
+  fun g -> (g w) * (f x)
+
+Explanation:
+Replacing every free occurrence of y with (f x) gives w = (f x) + x and (f w) * (f x). Since the free f in (f x) would be captured by the lambda’s parameter f, we alpha‐rename it (here to g) to avoid capture.

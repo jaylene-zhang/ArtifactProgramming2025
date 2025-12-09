@@ -1,0 +1,27 @@
+Here's the solution with type annotations, followed by explanations:
+
+**Solution:**
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd) : 'd =
+  match xs , ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+*   **`xs: 'a list`**: The list `xs` can contain elements of any type `'a`.
+*   **`ys: 'b list`**: The list `ys` can contain elements of any type `'b`.
+*   **`pair: 'a * 'b -> 'c`**: The `pair` function takes a tuple of type `'a * 'b` (an element from `xs` and an element from `ys`) and returns a value of type `'c`.
+*   **`sc: 'c list -> 'd`**: The success continuation `sc` takes a list of type `'c list` (a list of the results from the `pair` function) and returns a value of type `'d`.
+*   **Return type of `zippy`: `'d`**: The `zippy` function returns the result of the success continuation, hence its type is `'d`.
+
+The `zip_plus` function shows how this works.  It calls `zippy` with a specific instance, instantiating `'a` and `'b` to `int`, `'c` to `int` (because `x + y` where x and y are integers yields int), and `'d` to `int list` because the success continuation returns an `int list`. Note that the `List.length xs = List.length r` check in `zip_plus` relies on the fact that `xs` and `ys` should be of equal length, otherwise `zippy` will raise an exception.

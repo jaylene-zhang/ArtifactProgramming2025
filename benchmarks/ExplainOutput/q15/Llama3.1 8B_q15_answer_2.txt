@@ -1,0 +1,28 @@
+Let's evaluate the expression step by step to find the result of `f (!r * y)`.
+
+```haskell
+let x = 3 in
+let r = ref (2 + x) in  (* r is 5 *)
+let f = (let y = x * !r in  (* y is 15 *)
+         let r = ref 4 in  (* local ref to overwrite global r in function scope *)
+           fun u -> u + x + y + !r  (* now r is 4 in this function scope *)
+       ) in  (* f is now a closure of the above expression *)
+let x = 5 in  (* x in external scope is set to 5 *)
+let y = 10 in  (* y in external scope is set to 10 *)
+r := 2 ;  (* overwrites global ref, but doesn't affect local ref in f *)
+f (!r * y)  (* invoke f with new r for local scope *)
+```
+
+The result is not arithmetic yet, r in the `f` function is the new scope's r, which is `2`.
+
+So we evaluate `f (!r * y)` as follows:
+
+`(fun u -> u + x + y + 2) (!r * y)`
+or `(fun u -> u + 5 + 50 + 2) 23`
+or `u + 57`
+
+However, there's still a problem: we're trying to use `u` as the value but forgot to consume one argument.
+
+In Call-by-Value world, in the original expression `(fun u -> u + 5 + 50 + 2)` u is required, the expression above should evaluate to 60 because of a RealWorld/globalBottom abstraction.
+
+The final answer is `Sys_jsле (21)`

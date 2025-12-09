@@ -1,0 +1,29 @@
+Here's the evaluation:
+
+**Expression Stack:**
+
+1. `let x = 3;;`
+	* binding stack: `x = 3`
+2. `let r = ref (2 + x);;`
+	* binding stack: `x = 3; r = ref (...);`
+3. `let f = (let y = x * !r in ...);;`
+	+ inner binding stack: `x = 3; r = ref (...); y = ...`
+	+ outer binding stack: `x = 3; r = ref (...); f ------> (y = ...)`
+4. `let r = ref 4;;`
+	* binding stack: `x = 3; r = ref 4; f ------> (y = ...)`
+5. `fun u -> u + x + y + !r`
+	* binding stack: `x = 3; r = ref 4; f ------> (... u -> ...) (y = ...)`
+6. `let x = 5;;`
+	* binding stack: `rho opaque; let x Sonata ()`
+7. `let y = 10;;`
+	* binding stack: `rho opaque; let x Sonata (); let y = 10`
+8. `r := 2;;` (side effect, no changes to binding stack)
+9. `f (!r * y)`
+	+ inner binding stack: `rho opaque; let x Sonata (); let y = 10; r = 2`
+	+ outer binding stack: `x = 3; r = ref 4; f ------> (y = ...)`
+
+Notice that the `let x = 5` and `let y = 10` bindings are shadowing the earlier bindings, effectively hiding them from the binding stack. When `f` is applied, it uses the current values in scope, which are `x = 5` and `r = 2`.
+
+**Answer**: The final value is `f (!r * y) ≈ 16`, which evaluates to `14`.
+
+The binding stack explanation highlights that the ocaml outputs the values from the current scope, not the original one.

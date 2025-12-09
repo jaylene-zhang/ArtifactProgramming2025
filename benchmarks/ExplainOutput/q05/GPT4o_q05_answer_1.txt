@@ -1,0 +1,12 @@
+**Solution:**
+
+The resulting program is:
+
+```ocaml
+let foo y =
+let w = y + 3 in fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+Inlining replaces the variable `x` with its definition `y + 3` in the specified portion of the code. Initially, `x` is defined as `y + 3`. The inlining operation targets `let w = x in fun y -> x + 2`. Substituting `x` with `y + 3` gives `let w = y + 3 in fun y -> (y + 3) + 2 + y * w`. The rest of the program remains unmodified.

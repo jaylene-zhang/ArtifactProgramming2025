@@ -1,0 +1,19 @@
+(3, 6)
+
+Explanation: The function should return the 3rd triangle number, which is 6 (1 + 2 + 3 = 6). However, the given implementation is incorrect. The base case is only defined for `n = 1`, and the function does not account for calculating the sum correctly for other values of `n`. It simply adds `n` to the result of `triangle (n-1)`, which is not the correct recursive formula for triangle numbers. The correct implementation should be:
+
+```ocaml
+let rec triangle n =
+    if n = 0 then 0
+    else (n * (n + 1)) / 2
+```
+
+Or alternatively, another correct recursive approach:
+
+```ocaml
+let rec triangle n =
+    if n = 0 then 0
+    else n + triangle (n-1)
+```
+
+The first one directly uses the formula for the n-th triangle number, while the second one properly handles the base case and adds each number from 1 to `n`.

@@ -1,0 +1,19 @@
+**Solution:**
+
+No, this would not work.
+
+**Explanation:**
+
+The proposed induction hypothesis `length (rev_tl l []) = length l` is not strong enough to carry through the inductive step. `rev_tl` is a tail-recursive reverse function that uses an accumulator. To prove properties about it, you'll generally need to relate the length of the input list `l` and the accumulator list `acc`. The base case is trivially true for `l = []`, since `length (rev_tl [] []) = length [] = 0`. However, in the inductive step, suppose it's true that `length (rev_tl l []) = length l`. We need to show that `length (rev_tl (x::l) []) = length (x::l)`.
+However, the definition of `rev_tl` is as follows:
+
+```ocaml
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | x :: xs -> rev_tl xs (x :: acc)
+```
+
+So, `length (rev_tl (x::l) []) = length (rev_tl l (x::[]))`. We need more information about `length (rev_tl l acc)` in general.
+
+A better induction hypothesis would relate `length (rev_tl l acc)` to `length l` and `length acc`. A suitable lemma to prove would be `length (rev_tl l acc) = length l + length acc`.

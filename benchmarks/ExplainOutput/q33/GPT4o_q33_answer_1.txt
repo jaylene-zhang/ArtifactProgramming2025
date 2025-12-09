@@ -1,0 +1,7 @@
+**Solution:**  
+a) `type revolutions = int`  
+   `type jump_typ = Axel | Loop | Lutz | Flip | Salchow`  
+   `type jump = jump_typ * revolutions`
+
+**Explanation:**  
+Option (a) is the most appropriate implementation for the problem. It directly represents each jump as a combination of the jump type (Axel, Loop, etc.) and the number of revolutions as an integer. This structure is flexible and allows for any number of rotations, with no artificial restriction to "Double" or "Triple" only, unlike option (b). Option (c) is overly complicated and unnecessarily recursive.

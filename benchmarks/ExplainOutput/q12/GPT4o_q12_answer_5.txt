@@ -1,0 +1,59 @@
+### Q4.1: Theorem 1 Proof by Structural Induction
+
+**Theorem 1**: For all hands `h` and accumulators `acc`, `add_up h + acc = add_up_tr h acc`.
+
+We will prove this by structural induction on the hand `h`.
+
+#### Induction Hypothesis:
+For a general hand `h` and any accumulator `acc`, assume the claim:
+`add_up h + acc = add_up_tr h acc`.
+
+#### Base Case:
+`h = Empty`.
+
+- **Left-hand side**: `add_up Empty + acc = 0 + acc = acc`.
+- **Right-hand side**: `add_up_tr Empty acc = acc`.
+
+Since both are equal (`acc`), the base case holds.
+
+#### Step Case:
+`h = Hand(c, h')`, where `h'` is the rest of the hand.
+
+- **Induction Hypothesis**: Assume `add_up h' + acc = add_up_tr h' acc` holds for `h'`.
+- **Left-hand side**: 
+  ```
+  add_up (Hand(c, h')) + acc = (1 + add_up h') + acc
+                             = 1 + (add_up h' + acc).
+  ```
+- **Right-hand side**:
+  ```
+  add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc).
+  ```
+
+By the induction hypothesis, `add_up h' + acc = add_up_tr h' acc`. Substitute this into the right-hand side:
+```
+add_up_tr h' (1 + acc) = 1 + add_up_tr h' acc.
+```
+
+Thus, `add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc`. The step case holds.
+
+#### Conclusion:
+By structural induction, Theorem 1 is true: `add_up h + acc = add_up_tr h acc`.
+
+---
+
+### Q4.2: Proof of Theorem 2
+
+**Theorem 2**: For all hands `h`, `add_up h = add_up_tr h 0`.
+
+#### Proof:
+Theorem 2 directly follows from Theorem 1. Let `acc = 0`, then from Theorem 1:
+```
+add_up h + 0 = add_up_tr h 0,
+```
+which simplifies to:
+```
+add_up h = add_up_tr h 0.
+```
+
+Thus, Theorem 2 is proven.

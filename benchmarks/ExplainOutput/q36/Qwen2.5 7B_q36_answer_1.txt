@@ -1,0 +1,9 @@
+Solution:
+The function `f` will rotate the list four times.
+
+Explanation:
+- `f l` first concatenates the tail `t` with the head `h` to form a new list.
+- It then passes this new list to `rotate`, which moves the first element to the end.
+- This process is repeated recursively until the list is fully rotated by 4 positions.
+
+For a list with at least five elements, `f` effectively performs a right rotation by four positions.

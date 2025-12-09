@@ -1,0 +1,10 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let w = y + 3 in fun y -> y + 3 + 2 + y * w
+```
+
+**Explanation:**
+
+The variable `x` in `let w = x in fun y -> x + 2 + y * w` is replaced with its definition `y + 3`. Therefore `let w = x` becomes `let w = y + 3` and `fun y -> x + 2 + y * w` becomes `fun y -> y + 3 + 2 + y * w`.

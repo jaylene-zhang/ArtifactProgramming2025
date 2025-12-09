@@ -1,0 +1,8 @@
+Solution:  
+The correct answer is (b).
+
+Explanation (concise):  
+• (a) builds the result in reverse order.  
+• (c) requires reversing the list first, so it does two passes.  
+• (d) is correct for order but not tail-recursive.  
+• (b) is tail-recursive, traverses once, and keeps the list’s order.  

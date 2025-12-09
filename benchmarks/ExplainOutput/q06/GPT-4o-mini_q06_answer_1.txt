@@ -1,0 +1,15 @@
+The resulting program after inlining `w * 2` for the occurrences of `x` is:
+
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let y = 2 * (w * 2) in
+  fun x -> w * y * x
+```
+
+**Explanation:** 
+
+1. We define `x` as `w * 2`. 
+2. Replace `x` in `let w = 3 in let y = 2 * x` with `w * 2`, resulting in:
+   - `let w = w * 2 in let y = 2 * (w * 2)`
+3. The final function is defined as `fun x -> w * y * x`, where `y` is now expressed in terms of `w * 2`. Thus, we end up with the final inlined version of the variables accordingly.

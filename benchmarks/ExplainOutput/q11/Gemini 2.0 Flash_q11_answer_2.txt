@@ -1,0 +1,43 @@
+**Question 2: Zip it up!**
+
+**First Step: Fill in the most general type for `l1`, `l2` and the return type of `zip`.**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation:**
+
+*   `l1: 'a list`: `l1` is a list of elements of type `'a`. `'a` is a type variable, meaning it can be any type.
+*   `l2: 'b list`: `l2` is a list of elements of type `'b`. `'b` is a type variable, meaning it can be any type (and may be different than `'a`).
+*   `: ('a * 'b) list`: The return type is a list of pairs, where the first element of each pair has type `'a` and the second has type `'b`.
+
+**Second Step: Fill in the blanks for the generalized zipper function.**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+    (l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [], [] ->  (add (Obj.magic ())([])) (* This one is tricky as we don't know what 'd is initially, and need to create an empty thing to add to*)
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation:**
+
+*   `comb: 'a -> 'b -> 'c`: `comb` is a function that takes an element of type `'a` (from `l1`) and an element of type `'b` (from `l2`) and returns a value of type `'c`.
+*   `add: 'c -> 'd -> 'd`: `add` is a function that takes an element of type `'c` (the result of `comb`) and an accumulator of type `'d` and returns a new accumulator of type `'d`.  This generalizes the `::` operator.
+*   `l1: 'a list`: Same as before.
+*   `l2: 'b list`: Same as before.
+*   `: 'd`: The return type is the final accumulator, which has type `'d`.
+*  ` Obj.magic ()`: Since we initialized d as an empty array we need to provide a dummy of type c to be handled.
+
+**Third Step: Provide the definition of let zip and zip_rev**
+
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev= zipper (fun x y -> (string_of_int x) ^ y)
+(fun s t -> t @ [ (s, List.length t) ])
+```

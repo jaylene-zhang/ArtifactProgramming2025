@@ -1,0 +1,52 @@
+Here are the solutions to the problems:
+
+**Theorem 1**
+
+```ocaml
+let rec count w x acc = match w with
+| Const y -> if x = y then 1 + acc else acc
+| Op (w1, w2) -> count w1 x (count w2 x acc)
+
+let rec count’ w x acc = match w with
+| Const y -> if x = y then 1 + acc else acc
+| Op (w1, w2) -> count’ w1 x (count’ w2 x acc)
+```
+
+By structural induction on w.
+
+• BaseCase: w = Const x
+
+Proof: 
+ count (Const x) x 0 = 1 + 0 = 1
+count’ (Const x) x 0 = if  x = x then 1 + 0 else 0 = 1
+
+• Step Case: w = Op (w1, w2)
+
+State induction hypothesis: For any constant z and x, and any word w', we have: count w' z acc = count' w' z acc.
+
+Proof:
+ Let z = Op (w1, w2). Then by IH: count w1 z acc = count’ w1 z acc and count w2 z acc = count’ w2 z acc.
+
+ count w z acc = count (Op (w1, w2)) x acc 
+           = count w1 x (count w2 x acc)
+           = count’ w1 x (count’ w2 x acc) (by IH)
+           = count' (Op (w1, w2)) x acc (by structural induction on w2)
+
+**Theorem 2**
+
+```ocaml
+let rec count w x = match w with
+| Const y -> if x = y then 1 else 0
+| Op (w1, w2) -> (count w1 x) + (count w2 x)
+```
+
+Proof:
+```ocaml
+for any constant z and any word w, we have: count w z 0 = count’ w z 0
+ Here we use Theorem 1 with acc=0:
+ count w z 0 = count' w z 0 (by Theorem 1)
+             = count w z (count' w z 0) (by recursive definition of count')
+             = count w z 0 (by Theorem 1)
+ therefore count w z 0 = count w z 0, we can now rename z to x.
+
+  Where the last step follows from Computation Subject Reduction because count x=0=Const x only reduces to a value.

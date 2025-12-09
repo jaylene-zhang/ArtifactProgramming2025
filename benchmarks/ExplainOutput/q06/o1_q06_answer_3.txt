@@ -1,0 +1,7 @@
+Solution:
+let w = 3 in
+let y = 4 * w in
+fun x -> w * y * x
+
+Explanation:
+We replace every free occurrence of x by (w * 2). Hence y = 2 * x becomes y = 2 * (w * 2) = 4 * w. The formal parameter x in fun x -> … is distinct and remains unchanged.

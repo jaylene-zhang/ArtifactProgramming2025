@@ -1,0 +1,7 @@
+```ocaml
+let foo y =
+  let x = y + 3 in
+  let w = x in fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: We inlined `y + 3` by replacing occurrences of `x` with its definition `y + 3`. However, the `w` variable still refers to the original `x`, so we cannot inline `y + 3` in `y * w`.

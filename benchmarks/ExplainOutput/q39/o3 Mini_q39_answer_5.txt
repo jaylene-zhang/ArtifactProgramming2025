@@ -1,0 +1,5 @@
+Solution: 
+let toInt f = f (fun x -> x + 1) 0
+
+Explanation: 
+A Church numeral is a function that applies its first argument n times to the second. By supplying the increment function (fun x -> x + 1) and the initial value 0, we effectively count the number of f applications.

@@ -1,0 +1,11 @@
+a) Yes, this computes `prime_fact x` only once.
+The function calculates `prime_fact x` and binds it to `p`, then uses this pre-computed value in the comparison inside `List.exists`.
+
+b) No, this computes `prime_fact x` multiple times.
+It calls `prime_fact x` inside the comparison function passed to `List.exists`, so it will recompute the factorization for each element in the list.
+
+c) No, this computes `prime_fact x` multiple times.
+The recursive function calls `prime_fact x` at each step of the recursion when comparing with the current list element.
+
+d) Yes, this computes `prime_fact x` only once.
+Similar to (a), it calculates `prime_fact x` once, binds it to `p`, and then uses this pre-computed value in all comparisons inside the recursive `test` function.

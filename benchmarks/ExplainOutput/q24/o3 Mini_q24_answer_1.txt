@@ -1,0 +1,3 @@
+Solution: 't
+
+Explanation: f takes a pair of elements of type 't and returns a 't. Since f(a, b) and f(b, a) are both of type 't, using them as arguments in f produces a value of type 't.

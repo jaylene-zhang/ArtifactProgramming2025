@@ -1,0 +1,82 @@
+(* TODO: Implement {!q1a_nat_of_int} using a tail-recursive helper. *)
+let rec q1a_nat_of_int (n : int) : nat =
+  let rec helper (n : int) (acc : nat) : nat =
+    if n = 0 then acc
+    else helper (n - 1) (S acc)
+  in
+  helper n Z
+
+(* TODO:  Implement {!q1b_int_of_nat} using a tail-recursive helper. *)
+let rec q1b_int_of_nat (n : nat) : int =
+  let rec helper (n : nat) (acc : int) : int =
+    match n with
+    | Z -> acc
+    | S m -> helper m (acc + 1)
+  in
+  helper n 0
+
+(* TODO: Implement {!q1c_add}. *)
+let rec q1c_add (n : nat) (m : nat) : nat =
+  let rec helper (n : nat) (m : nat) (acc : nat) : nat =
+    match n with
+    | Z -> acc
+    | S n' ->
+      match m with
+      | Z -> acc
+      | S m' -> helper n' m' (S acc)
+  in
+  helper n m Z
+
+(* TODO: Implement {!q2a_neg}. *)
+let rec q2a_neg (e : exp) : exp =
+  match e with
+  | Const c -> Const (-. c)
+  | Var -> Var
+  | Plus (e1, e2) -> Plus (q2a_neg e1, q2a_neg e2)
+  | Times (e1, e2) -> Times (q2a_neg e1, e2)
+  | Pow (e, n) -> Pow (q2a_neg e, n)
+
+(* TODO: Implement {!q2b_minus}. *)
+let rec q2b_minus (e1 : exp) (e2 : exp) : exp =
+  q2b_minus_helper e1 e2
+
+and q2b_minus_helper (e1 : exp) (e2 : exp) : exp =
+  match e2 with
+  | Const c -> Plus (e1, q2a_neg (Const c))
+  | Var -> Plus (e1, Var)
+  | Plus (e21, e22) -> Plus (q2b_minus_helper e1 e21, q2b_minus_helper e1 e22)
+  | Times (e21, e22) -> Times (q2b_minus_helper e1 e21, e22)
+  | Pow (e21, n) -> Pow (q2b_minus_helper e1 e21, n)
+
+(* TODO: Implement {!q2c_quot}. *)
+let rec q2c_quot (e1 : exp) (e2 : exp) : exp =
+  q2c_quot_helper e1 e2
+
+and q2c_quot_helper (e1 : exp) (e2 : exp) : exp =
+  match e2 with
+  | Const c -> Pow (e1, ~-. (float_of_int c))
+  | Var -> Pow (e1, ~-1.)
+  | Plus (e21, e22) -> Plus (q2c_quot_helper e1 e21, q2c_quot_helper e1 e22)
+  | Times (e21, e22) -> Times (q2c_quot_helper e1 e21, e22)
+  | Pow (e21, n) -> Pow (q2c_quot_helper e1 e21, ~- (n + 1))
+
+(* TODO: Implement {!eval}. *)
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Const c -> c
+  | Var -> a
+  | Plus (e1, e2) -> (eval a e1) +. (eval a e2)
+  | Times (e1, e2) -> (eval a e1) *. (eval a e2)
+  | Pow (e1, n) -> (eval a e1) ** (float_of_int n)
+
+(* TODO: Implement {!diff}. *)
+let rec diff (e : exp) : exp =
+  match e with
+  | Const c -> Const 0.
+  | Var -> Const 1.
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) ->
+    Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (e, n) ->
+    let e_times_n = Times (Pow (e, ~-1.), e) in
+    Pow (e_times_n, n)

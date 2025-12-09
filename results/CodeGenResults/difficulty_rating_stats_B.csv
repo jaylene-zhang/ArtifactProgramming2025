@@ -1,0 +1,11 @@
+model,q1_q2_mastery_rate
+Claude-3.7-Sonnet,0.89
+GPT-4o,0.85
+GPT-4o-mini,0.41
+Gemini-1.5-Flash-8B,0.47
+Gemini-2.0-Flash,0.65
+Llama3.1-8B,0.24
+Llama3.3-70B,0.79
+Qwen2.5-7B,0.29
+o1,0.81
+o3-Mini,0.92

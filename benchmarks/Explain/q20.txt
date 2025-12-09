@@ -1,0 +1,17 @@
+For n ≥ 0, the n-th triangle number is the result of 1 + 2 + ... + n.
+
+Here is a function that attempts to calculate triangle numbers. However, it is not correct.
+
+```ocaml```
+
+let rec triangle n =
+  if n = 1 then 1
+  else n + triangle (n - 1)
+
+```ocaml```
+
+Without loading this code into an OCaml interpreter, will the following tests pass this buggy implementation?
+
+** testcase **
+
+triangle 0 == 0

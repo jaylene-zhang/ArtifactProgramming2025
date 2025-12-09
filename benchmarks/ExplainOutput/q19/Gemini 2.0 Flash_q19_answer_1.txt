@@ -1,0 +1,7 @@
+**Solution:** Incorrect and not tail-recursive.
+
+**Explanation:**
+
+1.  **Incorrect:** The `helper` function calculates the largest power of 2 *less than or equal to* `n`, not the largest power of 2 that divides `n`. Also, the `max_two_factor` function is called incorrectly with `helper 1 n` instead of `helper n`. The recursion stops when `n` becomes odd, but the accumulated value represents a power of two that might not evenly divide the original input.
+
+2.  **Not Tail-Recursive:** The multiplication `2 * helper (n / 2)` means that after the recursive call to `helper (n / 2)` returns, there's still work to be done (multiplication by 2). This prevents tail-call optimization.

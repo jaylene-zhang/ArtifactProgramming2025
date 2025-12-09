@@ -1,0 +1,13 @@
+The type of the expression is `'t`.
+
+### Explanation:
+1. Given `f: ('t * 't -> 't)`, it takes a pair of type `'t * 't` and returns a value of type `'t`.
+2. Given `a: 't` and `b: 't`, both `a` and `b` have type `'t`.
+
+3. `f (a, b)` has a type `'t` since it takes the pair `(a, b)` and returns a value of type `'t`.
+
+4. Similarly, `f (b, a)` also has a type `'t`.
+
+5. Therefore, `f (f (a, b), f (b, a))` now takes two arguments, each of type `'t`, so it is the same as `f`'s original type, which requires a pair of type `'t * 't` and returns a `'t`.
+
+Thus, the type of the expression is `'t`.

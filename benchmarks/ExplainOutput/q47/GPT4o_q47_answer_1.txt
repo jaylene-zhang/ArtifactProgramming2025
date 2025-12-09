@@ -1,0 +1,14 @@
+**Solution: a)**
+
+```ocaml
+let concat l =
+let rec aux l s = match l with
+  | [] -> s
+  | x::xs -> aux xs (x ^ " " ^ s)
+in aux l ""
+```
+
+**Explanation:**
+
+- This implementation correctly uses tail recursion since the recursive call `aux xs (x ^ " " ^ s)` immediately returns without any additional computation after the call. This ensures optimal performance and avoids stack overflow for large lists.
+- Although it concatenates in reverse order at first, this issue is resolved by adding to the accumulated string in reverse order, making it efficient to traverse the list just once. Note that it adds an extra space at the end.

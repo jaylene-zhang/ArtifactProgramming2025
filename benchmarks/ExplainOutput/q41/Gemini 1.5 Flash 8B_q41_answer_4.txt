@@ -1,0 +1,7 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**
+
+A tail-recursive `fold_right` needs to accumulate the result in a way that doesn't involve a stack explosion.  It returns the accumulated value, which is of type `'b` (the same as the accumulator's type), since after processing all the elements of the list, the final accumulated value is the result. The function being passed in doesn't take a function of type `'b->'c` because the accumulated value is already of type `'b`. It requires the accumulator from the previous step in order to produce the next accumulator value.

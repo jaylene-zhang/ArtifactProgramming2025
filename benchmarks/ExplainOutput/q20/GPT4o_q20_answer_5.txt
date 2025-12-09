@@ -1,0 +1,23 @@
+The test case `triangle 0 == 0` will not pass.
+
+**Explanation:**
+
+In the given implementation of the `triangle` function:
+
+```ocaml
+let rec triangle n =
+  if n = 1 then 1
+  else n + triangle (n - 1)
+```
+
+There is no base case for `n = 0`. When you pass `0` as the input, it fails to match the `n = 1` condition, so it proceeds to the `else` branch. In the `else` branch, it performs `n + triangle (n - 1)`, which evaluates to `0 + triangle (-1)`.
+
+This causes the function to enter infinite recursion as there is no termination condition for negative values of `n`. Hence, the program will not return a result, and the test case can't pass. Instead, the program will eventually result in a stack overflow. 
+
+To fix the issue, you need to add a base case for `n = 0`:
+
+```ocaml
+let rec triangle n =
+  if n = 0 then 0
+  else n + triangle (n - 1)
+```

@@ -1,0 +1,7 @@
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x * 2
+```
+
+Overshadowing happens in the second line where a new binding for `x` is introduced with value `x + 1`. This new binding overshadows (hides) the original binding of `x = 5` in the scope of the second `let`. The expression evaluates to 12 because the second `x` has value 6 (5+1) and 6*2=12.

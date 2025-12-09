@@ -1,0 +1,63 @@
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n <= 0 then
+    []
+  else
+    let head = s.head in
+    let tail = s.tail () in
+    head :: take (n-1) tail
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n <= 0 then
+    s
+  else
+    let head = s.head in
+    let tail = s.tail () in
+    drop (n-1) tail
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  unfold
+    (fun z -> (z, z))
+    0
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  unfold
+    (fun n -> (n, n+1))
+    0
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  filter (fun n -> n mod 2 = 0) natural_numbers
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  map (fun (x, y) -> f x y) (zip s1 s2)
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  let rec fib (n : int) (a : int) (b : int) : int stream =
+    if n <= 0 then
+      zeroes
+    else
+      let x = a + b in
+      { head = x
+      ; tail = fun () -> fib (n-1) b x
+      }
+  in
+  fib ~-1 0 1
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  let rec luc (n : int) (a : int) (b : int) : int stream =
+    if n <= 0 then
+      zeroes
+    else
+      let x = a + b in
+      { head = x
+      ; tail = fun () -> luc (n-1) b x
+      }
+  in
+  luc ~-1 2 1

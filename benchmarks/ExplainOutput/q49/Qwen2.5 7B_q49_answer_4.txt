@@ -1,0 +1,9 @@
+```
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**  
+Inlining `y` by substituting it with `f x` in the original expression results in replacing all occurrences of `y` with `f x`. The original variable `x` is rebound to `2` locally within the `double` function, and this local binding takes precedence over the usage of `x` in the context of `y`. Thus, `y + x` becomes `(f x) + x`, and similarly, `y` in the lambda expression is replaced by `f x`.

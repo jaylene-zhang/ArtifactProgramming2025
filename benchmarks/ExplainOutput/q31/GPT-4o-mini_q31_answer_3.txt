@@ -1,0 +1,14 @@
+**a)** Yes  
+**b)** No  
+**c)** No  
+**d)** Yes  
+
+**Explanation:**
+
+- **a)** This implementation computes `prime_fact x` once, assigns it to `p`, and then uses `p` in the check using `List.exists`. Therefore, it does not recompute `prime_fact x`.
+
+- **b)** This implementation computes `prime_fact x` every time the anonymous function is called during `List.exists`, resulting in multiple calls to `prime_fact x` for each element in the list, which violates the requirement.
+
+- **c)** This implementation computes `prime_fact x` during every recursive call as it checks `y = prime_fact x`. Hence, it recalculates `prime_fact x` on every iteration of the list and does not meet the requirement.
+
+- **d)** Similar to **a**, it computes `prime_fact x` once, assigns it to `p`, and then uses `p` in the recursive function `test`. Thus, `prime_fact x` is only computed once.

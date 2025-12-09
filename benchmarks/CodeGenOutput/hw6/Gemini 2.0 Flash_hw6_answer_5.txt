@@ -1,0 +1,94 @@
+```ocaml
+(* TODO: Implement the function. *)
+
+(* Q1: 5 points *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | x :: xs ->
+      match f x with
+      | None -> None
+      | Some y -> (
+          match traverse f xs with
+          | None -> None
+          | Some ys -> Some (y :: ys))
+
+(* Q2.1: 2 points *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match (mx, fm) with
+  | Just x, Just f -> Just (f x)
+  | _ -> Nothing
+
+(* Q2.2: 2 points *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  let open Maybe in
+  match (m1, m2) with
+  | Just x, Just y -> Just (x, y)
+  | _ -> Nothing
+
+(* Q2.3: 3 points *)
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+ fun (a1, a2) ->
+  let open Maybe in
+  match (p1 a1, p2 a2) with
+  | Just b1, Just b2 -> Just (b1, b2)
+  | _ -> Nothing
+
+(* Q2.4: 3 points *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match a with Just x -> Just (f x) | Nothing -> Nothing
+
+(* Q2.5: 10 points *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  let open Maybe in
+  match l with
+  | [] -> return []
+  | x :: xs ->
+      f x
+      >>= fun y ->
+      traverse' f xs
+      >>= fun ys -> return (y :: ys)
+
+(* Q3.1a: 2 points *)
+let church_to_nat (c : 'a church) : nat = c Z (fun x -> S x)
+
+(* Q3.1b: 3 points *)
+let rec nat_to_church (n : nat) : 'a church =
+  match n with Z -> fun x _ -> x | S n' -> fun x f -> f (nat_to_church n' x f)
+
+(* Q3.2a: 2 points *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  copt (fun a -> Some a) (fun () -> None)
+
+(* Q3.2b: 3 points *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  fun succ fail ->
+  match m with Some a -> succ a | None -> fail ()
+
+(* Q3.3a: 2 points*)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  clist
+    (fun h t -> h :: clist_to_list t)
+    (fun () -> [])
+
+(* Q3.3b: 3 points *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  CList
+    (fun cons nil ->
+      match l with
+      | [] -> nil ()
+      | h :: t -> cons h (list_to_clist t))
+
+(* Q4: 5 points *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  CList
+    (fun cons nil ->
+      let (CList clist) = clist in
+      clist
+        (fun h t -> cons (f h) (map_clist f t))
+        (fun () -> nil ()))
+```

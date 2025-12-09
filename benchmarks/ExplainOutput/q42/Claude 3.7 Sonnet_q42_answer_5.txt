@@ -1,0 +1,3 @@
+To use `rev_tl l acc` to compute the reverse of a list, we initialize `acc` as the empty list `[]`.
+
+This is because tail-recursive list reversal works by accumulating elements from the original list into the accumulator. When we start, the accumulator should be empty so that we only end up with the elements from our input list in reverse order.

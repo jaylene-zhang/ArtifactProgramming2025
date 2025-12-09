@@ -1,0 +1,17 @@
+Let's solve the homework problem.
+
+**Problem:** Let y be substituted by (f x) in the given expression.
+
+**Answer:**
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = f x + x in
+  fun f -> (f w) * f x
+```
+
+**Explanation:**
+
+1. Replace `y` with its definition `(f x)` in the expression.
+2. `y + x` becomes `f x + x` because `y` is now `f x`.
+3. When substituting `y` with `f x` in `(f w) * y`, the `y` will become `f x`, thus `f x` appears twice in the expression.

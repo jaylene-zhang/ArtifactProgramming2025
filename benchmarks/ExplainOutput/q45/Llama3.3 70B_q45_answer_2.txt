@@ -1,0 +1,7 @@
+### Solution
+1) `ones`
+2) `pascal psums`
+
+### Explanation
+1) The first diagonal in Pascal's triangle is a stream of ones, so we use the `ones` stream.
+2) The `i + 1` diagonal in Pascal's triangle corresponds to the partial sums of the `i-th` diagonal. Therefore, we recursively call `pascal` on the partial sums (`psums`) of the current diagonal.

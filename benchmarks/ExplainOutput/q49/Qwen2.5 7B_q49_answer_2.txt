@@ -1,0 +1,9 @@
+Result after inlining:
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: We substitute `y` with `(f x)` in the original expression. This changes the line `let w = y + x in` to `let w = (f x) + x in`. Additionally, we also substitute `y` with `(f x)` wherever it appears, which changes the return expression from `y` to `(f x)`.

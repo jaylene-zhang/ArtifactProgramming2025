@@ -1,0 +1,7 @@
+```
+let foo y =
+let x = y + 3 in
+let w = x in fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: By inlining `x` (which is defined as `y + 3`), we replace `x` with `y + 3` wherever it appears. The expression `x + 2` becomes `(y + 3) + 2`, and this inline substitution is done directly in the lambda function.

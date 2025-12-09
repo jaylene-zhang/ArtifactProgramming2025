@@ -1,0 +1,13 @@
+**Solutions:**
+
+a) and b)
+
+**Explanations:**
+
+*   **a) `type url = string type bookmarks = Location of url * bookmarks | Empty`**:  This is a standard recursive definition for a list of URLs.  `Location` holds a `url` (the string) and the rest of the `bookmarks` list. `Empty` marks the end of the list.
+
+*   **b) `type url = string type bookmarks = Empty | Location of string * bookmarks`**: This option is valid. Since url = string, it does the same thing as in Option a).
+
+*   **c) `type url = string type bookmarks = Empty | Location`**: This is invalid because the type Location must have a type associated to it.
+
+*   **d) `type url = string type bookmarks = Empty | Location of bookmarks * url`**: In this choice, `Location` contains rest of the bookmars list and a `url` (the string). This is valid but is not a good representation of a list of `url` because it forces you to read the `url` from the END of the list.

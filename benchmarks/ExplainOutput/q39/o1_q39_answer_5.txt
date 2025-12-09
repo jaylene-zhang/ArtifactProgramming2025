@@ -1,0 +1,5 @@
+Solution:  
+let toInt f = f (fun x -> x + 1) 0  
+
+Explanation:  
+We treat f as a Church numeral and apply it to the increment function (fun x -> x + 1) starting at 0. This counts how many times f is applied, giving the integer equivalent.

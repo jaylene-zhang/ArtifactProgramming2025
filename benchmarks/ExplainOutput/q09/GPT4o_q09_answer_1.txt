@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let x = 5;;
+let x = x + 10;;
+print_int x;;
+```
+
+**Explanation:**
+
+Overshadowing happens when a new variable is defined with the same name as an existing one, effectively "hiding" the earlier binding. In this program, the first `let x = 5` defines `x` and the second `let x = x + 10` overshadows it. The new `x` is now `15`, and the old `x = 5` is no longer accessible.

@@ -1,0 +1,84 @@
+```ocaml
+type 'a stream = 
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  raise NotImplemented
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  raise NotImplemented
+
+
+(** [unfold f seed] constructs a stream by generating elements using [f] and
+    an initialy [seed]. This function is polymorphic on the type of [seed].
+
+    That is, the stream [x0, x1, x2, ...] is generated
+    from [unfold f seed0] as:
+    - [f seed0 = (x0, seed1)]
+    - [f seed1 = (x1, seed2)]
+    - [f seed2 = (x2, seed3)]
+    - ... *)
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  unfold (fun x -> (0, x)) ()
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  unfold (fun n -> (n, n + 1)) 0
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  unfold (fun n -> (n * 2, n + 1)) 0
+
+
+let map (f : 'a -> 'b) (s : 'a stream) : 'b stream =
+  unfold (fun s -> (f s.head, (s.tail ()))) s
+
+(** [find p s] is [(hd, tl)], where [hd] is the first element in [s] that
+    satisfies [p], and [tl] is the stream that immediately
+    follows [hd] in [s].
+
+    [find p s] diverges if there is no such element [hd]. *)
+let rec find (p : 'a -> bool) (s : 'a stream) : ('a * 'a stream) =
+  if p s.head then (s.head, s.tail ()) else find p (s.tail ())
+
+(** [filter p s] is the stream derived from [s] that only contains elements
+    satisfying [p].
+
+    [filter p s] diverges if there is no element in [s] that satisfies [p]. *)
+let filter (p : 'a -> bool) (s : 'a stream) : 'a stream =
+  unfold (find p) s
+
+(** [zip s1 s2] is the stream of pairs formed from elements in [s1] and [s2].
+    That is, if [s1 = x1, x2, x3, ...] and [s2 = y1, y2, y3, ...], then
+    [zip s1 s2 = (x1, y1), (x2, y2), (x3, y3), ...]. *)
+let zip (s1 : 'a stream) (s2 : 'b stream) : ('a * 'b) stream =
+  unfold
+    (fun (s1, s2) ->
+       ((s1.head, s2.head), (s1.tail (), s2.tail ()))
+    )
+    (s1, s2)
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  raise NotImplemented
+
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  unfold (fun (a, b) -> (a, (b, a + b))) (0, 1)
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  unfold (fun (a, b) -> (a, (b, a + b))) (2, 1)
+```

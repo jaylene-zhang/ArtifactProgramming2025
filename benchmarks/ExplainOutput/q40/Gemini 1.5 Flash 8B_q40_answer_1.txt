@@ -1,0 +1,5 @@
+No.
+
+**Explanation:**
+
+The function `zip_tr` calls itself recursively (`zip_tr fc ...`).  The recursive call is not in tail position, meaning there is work left to do after the recursive call, in this case combining the result of `sc` with the rest of the list.  This necessitates storing the intermediate results on the call stack, making it not tail-recursive.

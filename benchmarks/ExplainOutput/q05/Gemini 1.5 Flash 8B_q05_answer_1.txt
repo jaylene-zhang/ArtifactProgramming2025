@@ -1,0 +1,11 @@
+Solution:
+
+```ocaml
+let foo y =
+let x = y + 3 in
+let w = y + 3 in fun y -> (y + 3) + 2 + y * (y + 3)
+```
+
+Explanation:
+
+The `x` in the `let w = x in ...` and `x + 2` expressions is replaced by `y + 3`.  The inner `y` in the `fun y ->` part is a different variable than the `y` in the outer scope.  Maintaining this difference avoids capturing the outer variable.  The original `x` reference also gets replaced with `y + 3`.

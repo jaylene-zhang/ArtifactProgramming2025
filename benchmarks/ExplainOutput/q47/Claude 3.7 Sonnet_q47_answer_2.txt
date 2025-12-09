@@ -1,0 +1,11 @@
+The correct answer is c).
+
+Let's analyze why:
+
+Option a) is tail-recursive but concatenates in reverse order. For example, with ["i"; "feel"; "great"], it would produce "great feel i".
+
+Option b) is tail-recursive but has a flaw: for non-empty lists, it adds a space before the first word. For ["i"; "feel"; "great"], it would produce " i feel great".
+
+Option c) is correct. It uses tail recursion properly and handles the order issue by reversing the input list first. This ensures the concatenation happens in the correct order.
+
+Option d) is not tail-recursive because the function needs to wait for the result of (concat xs) before completing its own operation, creating a stack frame for each element.

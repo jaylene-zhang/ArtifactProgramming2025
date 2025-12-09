@@ -1,0 +1,30 @@
+**Solution:**
+
+A function is tail-recursive if the recursive call is the very last operation performed in the function. In other words, the function's return value is *exactly* the result of the recursive call, without any further computation.
+
+**Explanation:**
+
+Consider these two implementations of a function to calculate the factorial of a number:
+
+**Non-tail-recursive factorial:**
+
+```ocaml
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+```
+
+Here, after the recursive call `factorial (n - 1)` returns a value, it's *multiplied* by `n`. This multiplication is a post-recursive operation, making the function non-tail-recursive. The return value of the function is not the same as the return value of the recursive call.
+
+**Tail-recursive factorial:**
+
+```ocaml
+let factorial n =
+  let rec factorial_helper n acc =
+    if n = 0 then acc
+    else factorial_helper (n - 1) (n * acc)
+  in
+  factorial_helper n 1
+```
+
+In this version, `factorial_helper` is tail-recursive.  The recursive call `factorial_helper (n - 1) (n * acc)` is the *very last thing* computed. The result of this call is immediately returned. No further calculation is performed on that result.  The `acc` parameter accumulates the result as the recursion proceeds.

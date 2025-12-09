@@ -1,0 +1,5 @@
+```ocaml
+shift : (int ref * int ref) -> unit
+```
+
+Explanation: The `shift` function takes a tuple of two `int ref` (reference to int) values and returns unit (`()`) because it modifies the references in place without returning any value.

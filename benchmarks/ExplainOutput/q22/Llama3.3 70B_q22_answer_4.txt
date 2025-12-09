@@ -1,0 +1,3 @@
+**y**
+
+The variable **r** introduced as a parameter to the function is not used in the original form, instead, it's reassigned. The original **f** is also reassigned, but **y** remains unused in its original form in the context of the original expression - the **y** used is the argument to the function, not a free variable, and the free **r** is reassigned.

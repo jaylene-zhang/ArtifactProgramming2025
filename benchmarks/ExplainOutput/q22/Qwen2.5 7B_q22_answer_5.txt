@@ -1,0 +1,8 @@
+The unused variables in the expression are `r` and `y`.
+
+Solution:
+- `r` is used in the expression `2 * y`, but it's shadowed by the local `let r = 2 * y` declaration.
+- `y` is not used after its initial binding.
+
+Explanation:
+In the `call` function, `r` and `y` are only used in the local `let` bindings and not elsewhere in the function body. Therefore, `r` and `y` are not utilized after their initial binding, making them effectively unused.

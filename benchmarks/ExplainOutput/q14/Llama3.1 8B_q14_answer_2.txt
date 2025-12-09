@@ -1,0 +1,29 @@
+**What is tail recursion?**
+
+Tail recursion is a specific style of recursion where the function call is the last operation to be performed before returning the result. In other words, the function does no additional computation after making a recursive call.
+
+**Example 1: Non-tail recursive function**
+
+```ocaml
+let rec non_tail_recursive n =
+  if n > 0 then (
+    print_int n;
+    non_tail_recursive (n - 1);
+    "done"
+  ) else ""
+```
+
+In this function, `non_tail_recursive` calls itself recursively, but after the recursive call, it still prints the string `"done"`. This means the function does extra computation after the recursive call, so it's not tail-recursive.
+
+**Example 2: Tail-recursive function**
+
+```ocaml
+let rec tail_recursive acc n =
+  if n > 0 then (
+    tail_recursive (acc + n) (n - 1)
+  ) else acc
+```
+
+In this function, `tail_recursive` calls itself recursively, and the only thing it does after the recursive call is return the accumulated value `acc`. This makes it tail-recursive.
+
+Note that to achieve optimization of tail calls, OCaml implementors can rewrite the tail calls as a loop, instead of actual recursive calls, this is what makes tail calls efficient.

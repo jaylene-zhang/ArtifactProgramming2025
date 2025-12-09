@@ -1,0 +1,8 @@
+**Solution:**
+
+No.
+
+
+**Explanation:**
+
+The function `triangle` is trying to compute the formula for triangle numbers recursively but has a crucial error.  When `n` is 0, the base case `if n = 1 then 1` is not met.  The function will recurse infinitely because the base case `if n = 1 then 1` will never be met.   In the original function, it is designed for n ≥ 1 only. 0 is not going to be handled correctly. Thus, `triangle 0` will not return 0.

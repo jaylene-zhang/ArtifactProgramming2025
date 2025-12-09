@@ -1,0 +1,39 @@
+### Q4.1
+
+**Induction Hypothesis:** For a hand `h` and an accumulator `acc`, we assume that `add_up h + acc = add_up_tr h acc`.
+
+**Base Case:**  
+Let \( h = Empty \).  
+- \( add_up Empty = 0 \)  
+- \( add_up_tr Empty acc = acc \)  
+Thus, \( add_up Empty + acc = 0 + acc = acc \). This is equal to \( add_up_tr Empty acc \), satisfying the base case.
+
+**Step Case:**  
+Let \( h = Hand(c, h') \) where \( h' \) is an arbitrary hand.  
+By our induction hypothesis, we assume: \( add_up h' + acc = add_up_tr h' acc \).
+
+Now, we calculate \( add_up (Hand(c, h')) + acc \):
+- \( add_up (Hand(c, h')) = add_up h' + 1 \) (by the definition of `add_up`)
+- Therefore, \( add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc) \).
+
+Next, we calculate \( add_up_tr (Hand(c, h')) acc \):
+- \( add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc) \) (by the definition of `add_up_tr`)
+- By applying the induction hypothesis, we have \( add_up h' + (1 + acc) = add_up_tr h' (1 + acc) \).
+
+Combining both results:
+- \( add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc \).
+
+Thus, by induction, the theorem holds.
+
+---
+
+### Q4.2
+
+**Theorem 2:** For all hands \( h \), \( add_up h = add_up_tr h 0 \).
+
+**Proof:**  
+We can derive this from Theorem 1. Set \( acc = 0 \) in Theorem 1, which gives us:  
+\[ add_up h + 0 = add_up_tr h 0 \]
+Thus, simplifying:
+\[ add_up h = add_up_tr h 0 \]
+Hence, the theorem is proven for all hands \( h \).

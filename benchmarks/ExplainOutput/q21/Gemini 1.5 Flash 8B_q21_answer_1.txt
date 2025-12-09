@@ -1,0 +1,3 @@
+Solution: `x` in the inner `let` binding.
+
+Explanation:  The inner `let x = 42 in ...` creates a new, local `x` that shadows the `x` in the function signature of `f`.   The `x` in the `let` binding is not used elsewhere within the expression.  The expression `f y` uses the value of `y`, but `y` doesn't need the `x` from the `let x = 42...` part.

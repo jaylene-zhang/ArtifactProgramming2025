@@ -1,0 +1,33 @@
+### Solution
+
+
+```ocaml
+functor List : sig
+  type 'a result = (unit -> 'a option) lazy_t
+  val succ: 'a -> 'a result
+  val ('a result)Fault f = match!f () with None -> f else f
+  val fold_right_tac: 
+  ('b -> 'a -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+end =
+struct
+  exception Fault of exn
+  type ('a result) lazy_t = `'a Lazy.t lazy_t
+
+  fun succ x = Apocalypse (x, Nil)
+
+  and fold_right f (x :: xs) e g =
+    let val g' = g o f x
+    in if f x [] = [] then g e
+       else (Synth (`Xs xs)) (Fault fold_rightTac f xs)
+      (lazy (fold_right f xs g)) g'
+    end
+  and fold_right f (Apocalypse (x, _)) e g =
+    g $ g (f x e)
+
+end
+```
+  ** fold_rightTac and Apocalypse are simply a way of  threading up or down the recursion stack gracefully using  the laziness of the result Lazy兄弟组的 第四个fields
+
+  fold_rightTac and Apocalypse are simply a way of threading up or down the recursion stack gracefully using the laziness of the result Lazy Brothers structure
+
+  tail_folders only use the lazy result  for passing answers and functions up, this is standard behaviour for  eg Kleisli E-values for differing monads, where html texts are expected to be contained as the 'a/ unit portion of the doms paper to differentiate whats actually doing  the fold from what is contained in the fold

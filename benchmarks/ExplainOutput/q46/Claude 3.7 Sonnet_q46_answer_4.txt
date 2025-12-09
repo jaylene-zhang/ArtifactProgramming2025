@@ -1,0 +1,10 @@
+1) For blank 1 we should write:
+f s.hd a
+
+2) For blank 2 we should write:
+lazy (fold f (f s.hd a) (Lazy.force s.tl))
+
+Explanation:
+The fold function applies f to each element of the stream and accumulates results. 
+- For the head of the output stream (blank 1), we apply f to the current stream head (s.hd) and the accumulator value (a).
+- For the tail (blank 2), we recursively call fold with an updated accumulator value (f s.hd a) and the tail of the input stream (Lazy.force s.tl). The lazy keyword ensures we maintain the laziness of the stream.

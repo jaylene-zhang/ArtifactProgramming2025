@@ -1,0 +1,8 @@
+Solution:
+let foo y = 
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+
+Explanation:  
+• We replace occurrences of x with (y + 3).  
+• Hence, let w = x becomes let w = y + 3, and within the function body x + 2 becomes (y + 3) + 2.

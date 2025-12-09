@@ -1,0 +1,32 @@
+**Solution:**
+
+The function `f` reverses the input list.
+
+**Explanation:**
+
+The function `f` effectively rotates the list *twice* in each recursive step.
+
+1.  **`h :: t`**: This deconstructs the list into its head `h` and tail `t`.
+2.  **`t @ [h]`**: This moves the head `h` to the end of the tail `t`, resulting in a rotated list.
+3.  **`rotate (t @ [h])`**: This rotates the already once-rotated list again. Because the first `rotate` call moved `h` to the end, and this `rotate` call moves the new first element, originally the *second* element, to the end, it is as if those two elements have swapped with each other.
+4.  **`f l`**: The `rec` keyword effectively means that the recursion occurs until the base case of `[]` is found.
+
+Consider the list `[1; 2; 3; 4; 5]`.
+
+*   **f \[1; 2; 3; 4; 5]** becomes `rotate ([2; 3; 4; 5] @ [1])`, which is `rotate [2; 3; 4; 5; 1]`, which becomes `[3; 4; 5; 1; 2]`.
+*   Then, the recursive call `f [3; 4; 5; 1; 2]` happens, calling `rotate ([4; 5; 1; 2] @ [3])`, which is `rotate [4; 5; 1; 2; 3]`, which becomes `[5; 1; 2; 3; 4]`.
+*   Then, the recursive call `f [5; 1; 2; 3; 4]` happens, calling `rotate ([1; 2; 3; 4] @ [5])`, which is `rotate [1; 2; 3; 4; 5]`, which becomes `[2; 3; 4; 5; 1]`.
+*   Then, the recursive call `f [2; 3; 4; 5; 1]` happens, calling `rotate ([3; 4; 5; 1] @ [2])`, which is `rotate [3; 4; 5; 1; 2]`, which becomes `[4; 5; 1; 2; 3]`.
+*   Then, the recursive call `f [4; 5; 1; 2; 3]` happens, calling `rotate ([5; 1; 2; 3] @ [4])`, which is `rotate [5; 1; 2; 3; 4]`, which becomes `[1; 2; 3; 4; 5]`.
+
+Tracing this, it is not obvious what is happening. Let's consider `f [1; 2; 3]`.
+
+* `f [1; 2; 3]` calls `rotate([2; 3] @ [1])`, which simplifies to `rotate [2; 3; 1]`, which then evaluates to `[3; 1; 2]`.
+* `f [3; 1; 2]` calls `rotate([1; 2] @ [3])`, which simplifies to `rotate [1; 2; 3]`, which then evaluates to `[2; 3; 1]`.
+* `f [2; 3; 1]` calls `rotate([3; 1] @ [2])`, which simplifies to `rotate [3; 1; 2]`, which then evaluates to `[1; 2; 3]`.
+
+It can be observed that this permutation has some pattern.
+
+**The critical insight is that `rotate (t @ [h])` is equivalent to moving the *second* element of the list to the *end* of the list.**
+
+Each recursive `f` does this until it reaches the empty list, reversing the list.

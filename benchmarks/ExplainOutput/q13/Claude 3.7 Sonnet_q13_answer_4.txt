@@ -1,0 +1,18 @@
+**Example of overwriting:**
+```ocaml
+let x = ref 5
+let () = x := 10
+```
+
+**Explanation:** 
+Overwriting modifies the contents of a mutable data structure in-place. In this example, the reference `x` initially contains the value 5, then its contents are overwritten with 10. The identity of the reference remains the same.
+
+Overshadowing, in contrast, creates a new binding with the same name in an inner scope that temporarily hides an outer binding. For example:
+```ocaml
+let x = 5 in
+  let x = 10 in
+    (* Here x is 10 *)
+    x + 1
+  (* Outside this scope, x is still 5 *)
+```
+With overshadowing, multiple separate bindings exist at different scopes, while overwriting changes the content of a single mutable binding.

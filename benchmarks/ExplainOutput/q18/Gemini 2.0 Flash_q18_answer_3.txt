@@ -1,0 +1,35 @@
+**Solution:**
+
+`(6, 5)`
+
+**Explanation:**
+
+1.  **First `point` definition:** `let point = (5, 4)` binds the tuple `(5, 4)` to the identifier `point`.
+2.  **Function definitions:** `component_x`, `component_y`, and `shift_point` are defined. Note that `shift_point` captures the *current* value of `point` in its definition's scope, which is `(5, 4)`.
+3.  **Second `point` definition:** `let point = shift_point 1` redefines `point`. The `shift_point 1` call, in the context of the first `point` definition, evaluates to:
+    *   `(5 + 1, 4 + 1)` which is `(6, 5)`.
+    * meaning point is reassigned to (6, 5)
+4.  **`shift_point 2` call:** The question asks what `shift_point 2` returns. Because `shift_point` was defined using the *first* binding of `point`, it still uses `(5, 4)` in its calculations. Thus, `shift_point 2` returns:
+    *   `(5 + 2, 4 + 2)`
+    *     which returns `(7, 6)`.
+This would have been a semantic error, because of shadowing. My apologies.
+
+**Solution:**
+
+`(7, 6)`
+
+**Explanation:**
+
+The key here is to understand how OCaml uses lexical scoping and how variables are bound, not mutated.
+
+1.  `let point = (5, 4)`: The tuple `(5, 4)` is initially bound to `point`.
+
+2.  `let component_x (x, y) = x`: A function to extract the x-component of a tuple.
+
+3.  `let component_y (x, y) = y`: A function to extract the y-component of a tuple.
+
+4.  `let shift_point n = (component_x point + n, component_y point + n)`:  **Crucially, `shift_point` captures the current value of `point` which is (5, 4) at this point.**
+
+5.  `let point = shift_point 1`: Rebinds `point`. `shift_point 1` becomes `(5 + 1, 4 + 1)` resulting in `(6, 5)`.  Now, *this new tuple `(6, 5)` is bound to `point`*, but this doesn't affect the *original*  `shift_point` function which uses the original `point = (5, 4)`.
+
+6.  `shift_point 2`: Since `shift_point` still references the original `point = (5, 4)`, applying `shift_point 2` gives us `(5 + 2, 4 + 2)` which is `(7, 6)`.

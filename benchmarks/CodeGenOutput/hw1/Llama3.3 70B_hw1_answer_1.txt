@@ -1,0 +1,26 @@
+```ocaml
+(* Q1: Correct the implementation of the distance function *)
+let distance (x1, y1) (x2, y2) =
+  (abs (x2 - x1)) + (abs (y2 - y1))
+
+
+(* Q2: Implement the binomial function using factorials *)
+let binomial n k =
+  let rec factorial x =
+    if x <= 1 then 1
+    else x * factorial (x - 1)
+  in
+  if k < 0 || k > n then
+    failwith "Invalid input for binomial coefficient"
+  else
+    factorial n / (factorial k * factorial (n - k))
+
+
+(* Q3: Implement the lucas function using a tail-recursive helper function *)
+let lucas n =
+  let rec lucas_helper n a b =
+    if n = 0 then a
+    else lucas_helper (n - 1) b (a + b)
+  in
+  lucas_helper n 2 1
+```

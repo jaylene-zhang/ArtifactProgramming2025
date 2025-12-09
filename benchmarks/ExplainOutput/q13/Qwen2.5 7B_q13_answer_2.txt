@@ -1,0 +1,20 @@
+**Solution:**
+```ocaml
+let x = 10 in  (* Original value of x *)
+let x = 20 = 30 (* Overwriting x *)
+```
+
+**Explanation:**
+Overwriting in OCaml refers to assigning a new value to a variable that already has a value. In the example, the value of `x` is first set to `10`, and then it is overwritten to `20` (not `30` as the assignment `let x = 20 = 30` returns the boolean result of the comparison). This changes the value of `x` to `20`.
+
+**Comparison with overshadowing:**
+Overshadowing (also known as name shadowing) happens when you declare a new variable with the same name as an existing one in a nested scope (block of code). The new variable hides (shadows) the original one within that scope. 
+
+**Example of overshadowing:**
+```ocaml
+let x = 10 in
+let x = 20 in  (* Shadows the outer x *)
+x  (* This will print 20, not 10 *)
+```
+
+In overshading, there are multiple variables with the same name, but they are in different scopes. Overwriting involves a single variable being reassigned.

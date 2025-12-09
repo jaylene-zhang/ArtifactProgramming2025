@@ -1,0 +1,35 @@
+```ocaml
+(* Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  if n <= 0 then []
+  else s.head :: take (n - 1) (s.tail ())
+
+(* Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  if n <= 0 then s
+  else drop (n - 1) (s.tail ())
+
+(* Q2a *)
+let zeroes : int stream =
+  unfold (fun _ -> (0, ())) ()
+
+(* Q2b *)
+let natural_numbers : int stream =
+  unfold (fun n -> (n, n + 1)) 0
+
+(* Q2c *)
+let even_numbers : int stream =
+  unfold (fun n -> (n * 2, n + 1)) 0
+
+(* Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  map (fun (a, b) -> f a b) (zip s1 s2)
+
+(* Q4a *)
+let fibonacci : int stream =
+  unfold (fun (a, b) -> (a, (b, a + b))) (0, 1)
+
+(* Q4b *)
+let lucas : int stream =
+  unfold (fun (a, b) -> (a, (b, a + b))) (2, 1)
+```

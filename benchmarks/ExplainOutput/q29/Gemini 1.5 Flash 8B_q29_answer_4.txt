@@ -1,0 +1,28 @@
+**a)** Incorrect
+
+**b)** Correct
+
+**c)** Incorrect
+
+**Explanation:**
+
+**a) Incorrect:** `curry (sumSeries f) 0`  is trying to apply curry to sumSeries f, which expects two arguments, and then applying 0 to the result. This is incorrect.  The `curry` should be applied to `sumSeries f` as a whole.
+
+**b) Correct:** `curry (sumSeries f 0)` correctly curries the function `sumSeries f`, with the first argument fixed to 0. Now you can apply another function and get the desired `sum_from_zero` output.
+
+**c) Incorrect:** `swap (sumSeries f) (fun x -> x + 1)` is problematic.  The `swap` function expects a function taking two arguments. The `swap` should be applied to the whole `sumSeries` expression with `f` and `0` pre-supplied.  `sumSeries f` here expects two arguments (lower bound, upper bound) for the initial application but you only provide one.  The whole expression isn't correctly applied to the `swap` and `curry 0` function call order is not the expected form.
+
+
+
+**Corrected Implementation (Illustrative, but not using swap/curry):**
+
+```OCaml
+let sum_from_zero f upper_bound =
+  let rec aux i sum =
+    if i > upper_bound then sum
+    else aux (i + 1) (sum + f i)
+  in
+  aux 0 0
+```
+
+This illustrates the straightforward way to achieve the desired behavior in OCaml, without resorting to `swap` and `curry` for this particular case.

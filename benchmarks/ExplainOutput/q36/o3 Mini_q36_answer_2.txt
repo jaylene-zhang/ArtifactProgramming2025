@@ -1,0 +1,3 @@
+Solution: f takes a non-empty list and performs two rotations, moving the first two elements to the end. For example, for [a; b; c; d; e; …] it returns [c; d; e; …; a; b].
+
+Explanation: The function first constructs t @ [h], which is the list rotated once (moves a to the end). Then it applies rotate again, moving the new head (original b) to the end. Thus, overall, the first two elements are shifted from the front to the back.

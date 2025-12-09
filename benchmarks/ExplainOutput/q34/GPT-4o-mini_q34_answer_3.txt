@@ -1,0 +1,11 @@
+a) False
+
+**Explanation**: The length of the definition does not determine execution speed. `rev1` uses the list concatenation operator `@`, which has a time complexity of O(n) where n is the length of the first list. This results in a higher overall time complexity when reversing a list, making it slower than `rev2`, regardless of the definition's brevity.
+
+b) True
+
+**Explanation**: The time complexity of the concatenation operator `@` is O(n) where n is the length of the left operand. In `rev1`, each recursive call concatenates `x` to the end of the reversed list, leading to a cumulative cost for the concatenation based on how many elements are in the original list. In contrast, `rev2` builds the list in reverse order using `::`, which is O(1) for each operation, making `rev1` slower than `rev2`.
+
+c) True
+
+**Explanation**: `rev2` uses an accumulator to build the reversed list using the cons operator `::`, which is efficient with a constant time complexity of O(1) for each element. This approach allows `rev2` to run in linear time, O(n), compared to `rev1`, which is less efficient due to repeated list concatenations. Thus, `rev2` is faster than `rev1`.

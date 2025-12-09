@@ -1,0 +1,5 @@
+```ocaml
+false
+```
+
+Explanation: The code creates a cyclic linked list where `rc1` points to `Cons(1, rc1)` and `rc2` points to `Cons(2, rc1)`. After `rc1 := !rc2`, `rc1` now points to the same location as `rc2`, but `get_tail rc1` and `get_tail rc2` refer to the same nested `Cons` node (`Cons(1, ref Nil)`). However, they are not physically the same memory location, so `get_tail rc1 == get_tail rc2` returns `false`.

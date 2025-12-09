@@ -1,0 +1,7 @@
+**Solution**
+```
+val shift : (int ref * int ref) -> unit
+```
+
+**Explanation**
+The `shift` function takes a pair of mutable integer references and increments both values. It does not return any value, hence the return type is `unit`. The type of the argument `point` is `(int ref * int ref)`.

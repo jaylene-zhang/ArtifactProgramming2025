@@ -1,0 +1,1 @@
+**Functions are values that can be passed as arguments to other functions, returned from functions, and stored in data structures.** This means functions can be treated like any other value in the language, such as integers or strings, enabling functional programming techniques like higher-order functions and closures.

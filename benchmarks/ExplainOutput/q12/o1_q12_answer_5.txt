@@ -1,0 +1,30 @@
+Solution (Induction Hypothesis):  
+For all hands h and integers acc, add_up h + acc = add_up_tr h acc.
+
+Explanation:  
+• Base Case (h = Empty):  
+  LHS = add_up Empty + acc = 0 + acc = acc  
+  RHS = add_up_tr Empty acc = acc  
+  So, LHS = RHS.  
+
+• Inductive Step (h = Hand(c, h')):  
+  Assume add_up h' + acc = add_up_tr h' acc (induction hypothesis).  
+  Then:  
+    add_up (Hand(c, h')) + acc  
+    = (add_up h' + 1) + acc  
+    = add_up h' + (acc + 1)  
+    = add_up_tr h' (acc + 1)   (by inductive hypothesis)  
+    = add_up_tr (Hand(c, h')) acc.  
+
+Therefore, add_up h + acc = add_up_tr h acc for all h and acc.
+
+-----------------------------------------------------------------
+
+Solution (Main Result, Theorem 2):  
+For all hands h, add_up h = add_up_tr h 0.
+
+Explanation:  
+Set acc = 0 in the general statement:  
+  add_up h + 0 = add_up_tr h 0  
+which simplifies to  
+  add_up h = add_up_tr h 0.

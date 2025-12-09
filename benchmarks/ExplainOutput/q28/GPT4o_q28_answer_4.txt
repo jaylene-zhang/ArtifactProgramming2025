@@ -1,0 +1,15 @@
+**Solution**: The provided program **does not** correctly compute the antiderivative of `f`.
+
+**Explanation**:
+1. The function uses `(curry integral) f 0`, which partially applies `integral` to `f` and `0`.
+2. However, `(curry integral) f 0` will result in a partially applied function `integral f (0, b) dx`, where `b` still needs to be fully specified to compute the integral.
+3. For the antiderivative `F(x)`, we are looking to compute the integral of `f(x)` over the range `[0, x]`, which means the program would need to also specify `x` as the upper bound of the integral.
+
+**Fix**:
+We need to handle the `x` argument dynamically, as the antiderivative depends on it:
+
+```ocaml
+let anti_d f = fun x -> integral f (0., x) 0.01
+```
+
+Here, `anti_d f` takes a function `f` and returns a function `fun x -> ...` where the definite integral of `f` from `0` to `x` is computed with a small `dx` (e.g., 0.01).

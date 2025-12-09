@@ -1,0 +1,15 @@
+a) **False**.  Shorter code doesn't automatically mean faster execution.
+
+b) **False**.  `@` has O(n) time complexity for the second argument.
+
+c) **True**. `rev2`'s `go` function builds the reversed list by prepending elements to the accumulator (`acc`).  This avoids the repeated concatenation (`@`) in `rev1`, which leads to O(n^2) time complexity. `::` is O(1).
+
+
+**Explanation:**
+
+a) Code length is irrelevant to runtime.
+
+
+b)  The time complexity of `@` is proportional to the length of the *second* argument,  `[x]`.  This means `@` in `rev1` operation becomes O(n) at every recursive step, because the second argument `[x]` grows linearly in size
+
+c)  `rev2` uses `::` which is a constant-time operation (O(1)) for prepending a value to a list.  This allows the reversal to be built piece by piece, rather than repeatedly rebuilding at each step (as in `rev1` through concatenation) which results in O(n) performance.

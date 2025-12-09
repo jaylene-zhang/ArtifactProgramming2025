@@ -1,0 +1,5 @@
+(6, 5)
+
+Explanation: In this program, `point` is initially defined as (4, 3). The `shift_point` function adds the parameter `n` to both components of `point`. When we call `shift_point 2`, it adds 2 to both components of the current value of `point`, which is (4, 3), resulting in (6, 5).
+
+Note that although there's a line `let point = shift_point 1` in the program, this doesn't affect the behavior of future calls to `shift_point`, because `shift_point` refers to the original value of `point` (4, 3) directly in its definition, not the new binding of `point`.

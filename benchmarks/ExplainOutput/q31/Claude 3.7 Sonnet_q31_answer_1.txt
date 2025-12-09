@@ -1,0 +1,16 @@
+Solutions:
+
+a) Yes, this implementation computes `prime_fact x` only once.
+b) No, this implementation computes `prime_fact x` for each element in list `l`.
+c) No, this implementation computes `prime_fact x` each time the recursive check is called.
+d) Yes, this implementation computes `prime_fact x` only once.
+
+Explanation:
+
+a) `prime_fact x` is computed once and bound to variable `p`, which is then used in the comparison.
+
+b) `prime_fact x` appears inside the function passed to `List.exists`, so it gets computed for each element in the list during comparison.
+
+c) The recursive function calls `prime_fact x` in each recursive step when checking elements.
+
+d) Similar to (a), `prime_fact x` is computed once and stored in `p`, which is then used in all comparisons in the inner recursive function.

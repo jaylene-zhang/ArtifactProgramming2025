@@ -1,0 +1,12 @@
+The correct tail-recursive implementation for the function `fold_right` is:
+
+**a)**
+
+Explanation:
+In option **a**, the function `aux_folder` correctly consumes the list `l` from the right using a continuation `cont`. When handling the empty list case, it applies the continuation `cont` to the accumulator `b`. In the case of a non-empty list (with head `x` and tail `xs`), it recursively calls itself with `xs`, passing the continuation as `fun r -> cont (f x r)`. This ensures that the function builds the result in a tail-recursive manner, with no pending operations left on the stack.
+
+- Option **b** and **c** incorrectly apply the function `f` to the accumulators and intermediate results, which can create non-tail-recursive calls due to the need to evaluate `f` before passing it to `cont`.
+  
+- Option **d** is similar to option **a**, but it applies `f` in a way that could also lead to stack buildup similar to options **b** and **c** (it attempts to call `cont` on `f r x`, which leads to a non-tail position).
+
+- Option **e** changes the structure of the recursive call by applying the `f` function on the results of `cont`, hence also generating a non-tail call structure.

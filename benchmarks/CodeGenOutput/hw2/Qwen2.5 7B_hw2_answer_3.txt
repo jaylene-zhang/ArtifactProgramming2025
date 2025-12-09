@@ -1,0 +1,67 @@
+(* TODO:  Implement {!q1a_nat_of_int} using a tail-recursive helper. *)
+let rec q1a_nat_of_int (n : int) : nat = 
+  let rec aux (n : int) (acc : nat) : nat = 
+    if n = 0 then acc else aux (n - 1) (S acc) 
+  in aux n Z
+
+
+(* TODO:  Implement {!q1b_int_of_nat} using a tail-recursive helper. *)
+let rec q1b_int_of_nat (n : nat) : int = 
+  let rec aux (n : nat) (acc : int) : int = 
+    match n with
+    | Z -> acc
+    | S x -> aux x (1 + acc)
+  in aux n 0
+
+
+(* TODO: Implement {!q1c_add}. *)
+let rec q1c_add (n : nat) (m : nat) : nat = 
+  let rec aux (n : nat) (m : nat) (carry : nat) : nat = 
+    match (n, m) with
+    | (Z, Z) -> carry
+    | (Z, _s@S _) -> aux m Z (S carry)
+    | (_s@S n, Z) -> aux n m (S carry)
+    | (_s@S n, _s@S m) -> aux n m (Z)
+  in aux n m Z
+
+
+(* TODO: Implement {!q2a_neg}. *)
+let q2a_neg (e : exp) : exp = 
+  match e with
+  | Const a -> Const (-a)
+  | Var -> Var
+  | Plus (e1, e2) -> Plus (q2a_neg e1, q2a_neg e2)
+  | Times (e1, e2) -> Times (q2a_neg e1, e2) 
+  | Pow (e, n) -> Pow (q2a_neg e, n)
+
+
+(* TODO: Implement {!q2b_minus}. *)
+let q2b_minus (e1 : exp) (e2 : exp) : exp = 
+  Plus (e1, q2a_neg e2)
+
+
+(* TODO: Implement {!q2c_quot}. *)
+let q2c_quot (e1 : exp) (e2 : exp) : exp = 
+  let e2' = q2a_neg (Times (e2, Const (-1.0))) in
+  Times (e1, e2')
+
+
+(* TODO: Implement {!eval}. *)
+let rec eval (a : float) (e : exp) : float = 
+  match e with
+  | Const a -> a
+  | Var -> a
+  | Plus (e1, e2) -> (eval a e1) +. (eval a e2)
+  | Times (e1, e2) -> (eval a e1) *. (eval a e2)
+  | Pow (e, c) -> (eval a e) ** float_of_int c
+
+
+(* TODO: Implement {!diff}. *)
+let rec diff (e : exp) : exp = 
+  match e with
+  | Const a -> Const 0.0
+  | Var -> Const 1.0
+  | Plus (e1, e2) -> Plus (diff e1, diff e2)
+  | Times (e1, e2) -> Plus (Times (diff e1, e2), Times (e1, diff e2))
+  | Pow (Var, n) -> Times (Const (float_of_int n), Pow (Var, n - 1))
+  | Pow (e, n) -> Times ((diff e), Pow (e, n - 1))

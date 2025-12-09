@@ -1,0 +1,18 @@
+**Solution**
+```ocaml
+let rec factorial = function
+  | 0 -> 1
+  | n -> factorial (n-1) * n
+
+let rec factorial' n acc =
+  if n = 0 then acc else factorial' (n-1) (n * acc)
+```
+
+**Explanation**
+A function is tail-recursive when the recursive call is the last operation in the function. In other words, the function does not perform any other operation after the recursive call.
+
+In the first example, `factorial`, the recursive call is not the last operation. The last operation is the multiplication of the result of the recursive call with `n`. This is not tail-recursive.
+
+In the second example, `factorial'`, the recursive call is the last operation. The function only calls itself and returns the result of the recursive call, which is wrapped in the `acc` parameter. This is tail-recursive.
+
+When a function is tail-recursive, the compiler can optimize it to reuse the current stack frame instead of creating a new one each time, which leads to improved performance and avoids stack overflows for large recursive calls.

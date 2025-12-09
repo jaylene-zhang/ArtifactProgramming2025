@@ -1,0 +1,48 @@
+**Solution:**
+
+`(1, 0, [2; 3; 4], [2; 4; 6])`
+
+
+**Explanation:**
+
+1. **`let c = ref 0 in ...`**:  `c` is a mutable reference initialized to 0.
+
+2. **`let l = List.rev [1;2;3] in ...`**: `l` is bound to `[3; 2; 1]`.
+
+3. **`let observe () = !c in ...`**: `observe` is a function that returns the current value of `c`.  Crucially, this value is captured *at the point of definition.*
+
+4. **`let x = 1 in ...`**: `x` is bound to 1. *This `x` shadows no other `x`.*
+
+5. **`let inc x = c:= !c+1 ; x+1 in ...`**: `inc` is a function incrementing the `c` counter as a side effect and returning an incremented parameter value.
+
+   - `ml = List.map inc l`: This maps `inc` over `l`. For each element in `l` it updates `c` and adds 1 to `x`.
+     - For `3`, `c` becomes 1, returning `4`
+     - For `2`, `c` becomes 2, returning `3`
+     - For `1`, `c` becomes 3, returning `2`
+	  So `ml` is `[4; 3; 2]` and at this point `c` = 3.
+
+6. **`let inc’ = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)`**: `inc’` is a function that creates a *new* binding (`c`) for each invocation in its scope and increments the reference every time. The outer x value from the enclosing scope is used for this inner function.
+
+   - `ml’ = List.map inc’ l`: Similar to previous step, but with `inc’`.
+     - For `3`, `x` = 1, `inc'` sets *its own* `c` to 0, and updates `c` to 1 to return 3+1+2 (x=2) = 6.
+     - For `2`, `inc'` sets *its own* `c` to 0, updates `c` to 2, and returns 2+1+2 (x=2) = 5.
+	 - For `1`, `inc'` sets *its own* `c` to 0, updates `c` to 3, and returns 1+1+2 (x=2) = 4.
+     So `ml’` is `[6; 5; 4]`. But *crucially*, the outer `c` from the `inc` function is not affected.
+
+
+7. **`(x, observe () , ml, ml’) `**:  This evaluates to the tuple containing the values.
+   - `x` is 1.
+   - `observe ()` returns the value of `c` at the point of its definition, which is 0.
+   - `ml` is `[4; 3; 2]`.
+   - `ml’` is `[6; 5; 4]`.
+
+Therefore, the final result is `(1, 0, [2; 3; 4], [2; 4; 6])`.
+
+
+**Binding Stack Diagram (Simplified):**
+
+(Difficult to show visually here, but the key point is that inner function definitions create *new* instances of mutable variables.)
+
+The outer c variable is updated only by the function inc and has no involvement with the new c reference that inc' uses.
+
+The binding stack would show the different `x` and `c` bindings in their respective scopes. Inner function definitions create their own separate scope, so inner `c` in `inc’` is isolated from outer `c` in `inc`.

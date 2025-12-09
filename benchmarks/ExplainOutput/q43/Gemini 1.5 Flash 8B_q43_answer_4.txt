@@ -1,0 +1,5 @@
+No.
+
+**Explanation:**
+
+The equation `length (rev_tl l []) = length l` is incorrect and the proposed induction on `l` wouldn't work.  `rev_tl` likely takes two arguments, the list to be reversed (`l`), and an accumulator (perhaps an initially empty list). The base case of the induction (empty list `l`) would be correct, but the inductive step wouldn't hold for a non-empty list since `rev_tl` involves more than just `l`.  A correct proof would need to deal with the accumulator.

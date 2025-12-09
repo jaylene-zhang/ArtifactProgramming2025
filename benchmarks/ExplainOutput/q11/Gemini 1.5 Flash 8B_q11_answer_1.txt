@@ -1,0 +1,38 @@
+**Solution for the first part (zip):**
+
+```ocaml
+let rec zip (l1:'a list) (l2:'a list) : ('a * 'a) list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation for the first part (zip):**
+
+* `'a list`: This is the most general type for a list of any type.  The `'a` is a type variable representing the type of elements within the list.  This allows the function to work for lists of integers, strings, or any other type.
+* `('a * 'a) list`: This is the type for a list of pairs.  Each element in the list is a pair of elements from the input lists `l1` and `l2`. Since `l1` and `l2` have the same type, the elements within the pairs also share that common type.
+
+
+**Solution for the generalized function (zipper):**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd list -> 'd list) (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation for the generalized function (zipper):**
+
+* `comb: 'a -> 'b -> 'c`: This parameter takes two values (`'a'`, `'b`) of any type and combines them into a value of type `'c'`.  The combination logic is defined by a function that you provide (e.g., `fun x y -> (x, y)` for `zip` or `fun x y -> string_of_int x ^ y` for `zip_rev`). This is crucial for generalisation, allowing more operations between elements.
+* `add: 'c -> 'd list -> 'd list`: Similar to the above point, this parameter defines how to add the `comb` result to the accumulating list.   `'d` is the type of the elements in the final list.  Crucially, this allows us to use more than just `::` (the `fun h t -> h :: t`). This generalisation is important because the examples demonstrate `@` concatenating lists is applicable too, giving more flexibility.
+* `l1: 'a list`, `l2: 'b list`:  The input lists are now parameterized to `'a` and `'b`, respectively.
+* `'c list`:  The result type is a list of the combined type returned by your `comb` function.
+
+
+**Example instantiations (zip and zip_rev):**
+
+The provided examples instantiate the `zipper` function correctly to achieve the intended effect of `zip` and `zip_rev`.  These examples show how to use different functions `comb` and `add`.  Note how `zip_rev` uses list concatenation (`@`) instead of appending with `::`.
+
+
+Crucially, `zipper` now encapsulates more than just concatenating pairs. This greatly extends the usability of the `zipper` function.

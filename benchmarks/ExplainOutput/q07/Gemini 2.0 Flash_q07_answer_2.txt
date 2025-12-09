@@ -1,0 +1,39 @@
+Here's the completed proof:
+
+**Base Case:**  w = `Const y`
+
+*   `count (Const y) x + acc = if x = y then 1 else 0 + acc = if x = y then 1 + acc else acc`
+*   `count' (Const y) x acc = if x = y then 1 + acc else acc`
+
+Therefore, `count (Const y) x + acc = count' (Const y) x acc`
+
+**Step Case:** w = `Op (w1, w2)`
+
+*   **Induction Hypothesis:**
+    *   `count w1 x + acc = count' w1 x acc`
+    *   `count w2 x + acc = count' w2 x acc`
+
+*   **Proof:**
+
+```
+count (Op (w1, w2)) x + acc
+= (count w1 x + count w2 x) + acc  (by def. of count)
+= count w1 x + (count w2 x + acc)  (by associativity)
+= count w1 x + (count' w2 x acc)  (by IH on w2)
+= count' w1 x (count' w2 x acc)  (by IH on w1)
+= count' (Op (w1, w2)) x acc  (by def. of count')
+```
+
+Therefore, `count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc`
+
+**Theorem 2 (Main Result):** For any word w and constant x, we have `count w x = count' w x 0`.
+
+*   **Proof:**
+
+```
+count w x
+= count w x + 0  (by arithmetic)
+= count' w x 0  (by Theorem 1)
+```
+
+Therefore, `count w x = count' w x 0`

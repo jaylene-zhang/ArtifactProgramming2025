@@ -1,0 +1,14 @@
+**Evaluation**
+
+1. `let x = 3 in` : `x` is bound to `3`
+2. `let r = ref 1 in` : `r` is a reference with value `1`
+3. `let f = (let y = x * !r in` : Evaluate `x * !r`: `3 * 1 = 3`, `y` is bound to `3`
+4. `let r = ref 5 in` : `r` is rebound to a new reference with value `5`
+5. `fun u   -> u + x + y + !r )` : `f` is bound to a function that takes an argument `u`
+6. `let x = 2 * !r * x in` : `!r` is evaluated to `5` (because `r` is rebound in step 4). `2 * !r * x = 2 * 5 * 3 = 30`. `x` is bound to `30`
+7. `r := 10 ;` : `r` is rebound to `10`
+8. `f (x * !r)` : Evaluate `x * !r`: `30 * 10 = 300`. Then, evaluate `f 300`: `300 + x + y + !r = 300 + 30 + 3 + 10 = 343`
+
+**Result**: `343`
+
+**Explanation**: The key insight is that `r` is rebound to `5` in the scope of the function definition for `f`, so `!r` in the function body is evaluated to `5`. However, after the function definition, `r` is rebound to `10` outside its scope, which does not affect the function `f`. Therefore, `!r` in the evaluation of `f (x * !r)` is evaluated to `10`, not `5`.

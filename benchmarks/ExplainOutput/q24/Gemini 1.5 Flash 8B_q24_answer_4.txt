@@ -1,0 +1,4 @@
+Solution: 't
+
+Explanation:
+The function `f` takes two values of type `'t` and returns a value of type `'t`.  The first application `f (a, b)` produces a value of type `'t`.  The second application `f (b, a)` also produces a value of type `'t`.  These two results are then passed to `f` again, which returns a value of type `'t`.

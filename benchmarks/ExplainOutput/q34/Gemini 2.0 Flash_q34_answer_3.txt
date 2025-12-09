@@ -1,0 +1,7 @@
+Here's the breakdown of the statements:
+
+**a) False.** Shorter definition does *not* imply faster execution.  `rev1` is actually much slower.
+
+**b) True.** The `@` operator in `rev1` has O(n) complexity where *n* is the length of the *first* list, and is called on a new list on every iteration of the recursion growing the first list by one per iteration.
+
+**c) True.** `rev2` uses `::`, which is a constant time operation, to build the reversed list within the accumulator.

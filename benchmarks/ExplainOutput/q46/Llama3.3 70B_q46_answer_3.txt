@@ -1,0 +1,6 @@
+**1. `f (hd s) a`**
+**2. `fold f (f (hd s) a) (tl s)`**
+
+Explanation: 
+* For blank 1, we apply the function `f` to the head of the stream `s` and the initial value `a`, because the output stream starts with this value.
+* For blank 2, we recursively apply the `fold` function to the tail of the stream `s` and the result of the function `f` applied to the head of `s` and the initial value `a`. This continues the pattern observed in the example.

@@ -1,0 +1,9 @@
+```ocaml
+(5, 15)
+```
+
+The function incorrectly calculates the triangle number by summing `n` and the result of `triangle (n-1)`, instead of adding 1 up to `n`. 
+
+The above would calculates `15` when `n` is `5` because it's calculating `5 + 14`. But the correct method to calculate `15` is `1 + 2 + 3 + 4 + 5`. 
+
+The correct function would be a simple iterative process that would be `let rec triangle n = let rec f i acc = if i > n then acc else f (i+1) (acc + i) in f 1 0`.

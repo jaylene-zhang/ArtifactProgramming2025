@@ -1,0 +1,19 @@
+**Before Inlining:**
+
+```ocaml
+let foo y =
+  let x = y + 3 in
+  let w = x in
+  fun y -> x + 2 + y * w
+```
+
+**After Inlining `y+3` into `x`:**
+
+```ocaml
+let foo y =
+  let x = y + 3 in
+  let w = x in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+In this inlined version, we have replaced `x` with `y + 3` in the expression `fun y -> x + 2 + y * w`.

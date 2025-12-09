@@ -1,0 +1,33 @@
+```ocaml
+exception Error
+
+let rec zippy (xs:'a list) (ys:'b list) (pair:(('a*'b) -> 'c)) (sc:('c list -> 'd)): 'd =
+  (** 'd is the result type of the function**)
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+* **`xs:'a list`:** `xs` is a list of type 'a, where 'a is a generic type.
+
+* **`ys:'b list`:** `ys` is a list of type 'b, where 'b is a generic type (independent of 'a).
+
+* **`pair:(('a*'b) -> 'c)`:** The `pair` function takes a tuple of type `('a*'b)` (an 'a and a 'b) and returns a value of type 'c.  This function will be used to combine elements from both lists into a single value.
+
+* **`sc:('c list -> 'd)`:** The `sc` value (a function itself) takes a list of 'c type elements and returns a value of type 'd.  This function essentially acts as a "continuation" to accumulate the result.
+
+* **`'d`:** The type variable `'d` represents that the overall result of zippy has a generic return type, which may depend on the types we're passing in.
+
+**Why the Program compiles:**
+
+The core issue is making sure every step in the recursive zippy function and its result type matches. The example uses a sum function to transform the `'a*'b` tuples into another value (`'c`), and then using `List.length` and the continuation, it checks whether it has collected a list with the expected size. The result type `'d` is flexible enough to encompass the final, error-checked result.  There are no type contradictions at any point in the `zippy` and `zip_plus` function.
+
+
+**Important Note:**  The types in OCaml are very important; being clear about the types of data will ensure your program is valid.  If, for instance `x` and `y` were both integers, the type `'a` and `'b` would be both `int` and not some other type. This would narrow down possible types for `pair` to `('a*'b) -> int` for example. But the provided code is well-typed as it is.

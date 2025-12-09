@@ -1,0 +1,4 @@
+**Solution**: Functional languages avoid state variables to maintain referential transparency, simplify reasoning about programs, enable easier concurrency, and facilitate optimizations like memoization and parallelism.
+
+**Explanation**: 
+Referential transparency means expressions can be replaced with their values without changing the program's behavior. State changes violate this property. Without mutable state, programs become easier to reason about since a function's output depends only on its inputs. This makes debugging, testing, and verification simpler. Immutability naturally prevents race conditions in concurrent programming. Finally, without side effects, the compiler can more easily optimize code, including parallelizing operations and caching function results.

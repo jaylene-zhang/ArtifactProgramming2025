@@ -1,0 +1,5 @@
+Solution:  
+You assume the property holds for some list l, then prove it for x :: l (that is, when adding a head element x).
+
+Explanation:  
+In an inductive proof on lists, the base case handles the empty list. For the step case, you assume the property for a general list l (inductive hypothesis) and then show it must also hold when you prepend a new element x to l.

@@ -1,0 +1,27 @@
+Below we define the type of a linked list together with the function
+get_tail which returns the tail of a linked list, if it exists.
+
+```ocaml```
+type 'a rlist =
+| Nil
+| Cons of 'a * 'a rcell
+and 'a rcell = ('a rlist) ref
+
+let get_tail rc = match !rc with Cons (_ , t) -&gt; t
+```ocaml```
+
+We now execute the following code:
+
+```ocaml```
+
+let rc1 = ref (Cons (1, ref Nil))
+let rc2 = ref (Cons (2, rc1))
+rc1 := !rc2
+```ocaml```
+
+
+
+We have now created a cyclic list. Will the following return true?
+( Recall that == tests physical equality, i.e. whether the locations in memory are the same.)
+
+get_tail rc1 == get_tail rc2

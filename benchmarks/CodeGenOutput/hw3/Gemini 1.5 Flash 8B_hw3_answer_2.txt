@@ -1,0 +1,26 @@
+```OCaml
+(* Question 1a: Church numeral to integer *)
+let to_int (n : int church) : int =
+  n 0 succ
+
+(* Question 1b: Add two church numerals *)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (fun x -> n2 x s)
+
+(* Question 1c: Multiply two church numerals *)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (fun x -> n2 s x)
+
+(* Question 2a: Sum a list of church numerals *)
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun acc x -> add acc x) (fun z s -> z) l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+let rec length (l : 'a list) : int church =
+  let rec aux (l : 'a list) (n : int church) =
+    match l with
+    | [] -> n
+    | _ :: tl -> aux tl (add n (fun z s -> s))
+  in
+  aux l (fun z s -> z)
+```

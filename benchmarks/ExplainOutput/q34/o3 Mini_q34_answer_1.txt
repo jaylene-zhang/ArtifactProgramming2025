@@ -1,0 +1,9 @@
+Solution:
+a) False  
+b) False  
+c) True
+
+Explanation:
+a) The shorter code in rev1 doesn’t imply faster performance.  
+b) The ( @ ) operator’s cost depends on the length of its first argument, and in rev1 this cost causes quadratic time complexity.  
+c) rev2 accumulates using (::), which is constant time, resulting in an overall linear time complexity.

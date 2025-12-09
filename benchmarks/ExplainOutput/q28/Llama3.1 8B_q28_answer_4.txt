@@ -1,0 +1,9 @@
+```ocaml
+let anti_d f a = (curry integral f) a a
+```
+
+The program `let anti_d f x = curry integral f x` does not compute the antiderivative of `f` correctly. 
+
+The reason is that it tries to compute the integral of `f` from `x` to `x`, which is a zero-length interval (`b` is equal to `a`), and `integral` would not be defined on the unit interval.
+
+To fix this, it is necessary to change the type of the function from `f -> 'a` to `f -> int -> 'a` (or any other lower bound), like the one above, to compute the antiderivative at `x` given the function `f`.

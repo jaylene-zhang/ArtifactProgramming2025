@@ -1,0 +1,27 @@
+Here are the solutions:
+
+**Theorem 1**
+
+**Base Case**
+w = Const y
+count (Const y) x + acc = 1 + acc (if x = y) or 0 + acc (if x ≠ y)
+= acc + 1 (if x = y) or acc (if x ≠ y)
+= count’ (Const y) x acc
+
+**Step Case**
+w = Op (w1, w2)
+StateInduction hypothesis: 
+count w1 x + acc = count’ w1 x acc and count w2 x + acc = count’ w2 x acc 
+Proof: 
+count (Op (w1, w2)) x + acc 
+= (count w1 x + count w2 x) + acc 
+(apply definition of count to Op (w1, w2)) 
+= (count’ w1 x acc + count’ w2 x acc) + acc 
+= count’ (Op (w1, w2)) x acc 
+(by definition of count’)
+
+**Theorem 2**
+Since for the Base Case, count w x + 0 = count’ w x 0 and for the Step Case, 
+count w x = count’ w x is given the IH, we have
+
+count w x = count’ w x 0

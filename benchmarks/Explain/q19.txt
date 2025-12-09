@@ -1,0 +1,12 @@
+To find the largest power of two that evenly divides a given integer `n`, we can count the number of times `k` we can evenly divide `n` by two. Then, `2^k` is the largest power of two that evenly divides`n`.
+
+Identify whether the following implementations calculates the largest power of two that divides a number correctly and in a tail-recursive fashion.
+
+```ocaml```
+
+let rec helper n =
+  if n mod 2 = 1 then 1
+  else 2 * helper (n / 2)
+let max_two_factor n = helper 1 n
+
+```ocaml```

@@ -1,0 +1,17 @@
+**Example:**
+
+```OCaml
+let x = 10;;
+
+let x = 20;;
+
+let y = x;;  (* y will be 20 *)
+```
+
+**Explanation:**
+
+Overwriting redefines a variable's value within the scope.  In the example, the initial `x`  (value 10) is completely replaced by the second value 20 in the subsequent declaration.
+
+**Overwriting vs. Shadowing:**
+
+Overwriting involves *redefining* a variable; its *original* definition is completely lost within the new scope.  Shadowing, on the other hand, involves *hiding* a variable using a variable with the same name *within another scope*.  The original variable remains available in the outer scope.  Overwriting occurs *within the same scope*, whereas shadowing uses the same name in an *inner scope*.

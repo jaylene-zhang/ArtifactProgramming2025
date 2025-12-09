@@ -1,0 +1,6 @@
+Unused variables: `r` (within the function body after redefinition).
+
+**Explanation:**
+- `let r = 2 * y` defines a new `r`, but it is not used anywhere in the function body.
+- The name `f` is redefined, but the original `f` is called within the new `f` (recursive), so it is used.
+- `y` is used in the redefinition of both `r` and `f`.

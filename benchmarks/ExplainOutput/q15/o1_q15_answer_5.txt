@@ -1,0 +1,26 @@
+Solution: 42
+
+Explanation (binding stack in concise steps):
+
+1) let x = 3  
+   (x = 3)
+
+2) let r = ref (2 + x)  
+   (x = 3, r -> ref 5)
+
+3) let f = (let y = x * !r in  (* y = 3 * 5 = 15 *)  
+            let r = ref 4 in  (* new “r” shadowing outer one *)  
+            fun u -> u + x + y + !r)  
+   ⇒ f is a closure capturing (x = 3, y = 15, r -> ref 4)
+
+4) let x = 5  
+   (x = 5 now shadows x = 3 for subsequent expressions, but f still uses x = 3 from its closure)
+
+5) let y = 10  
+   (y = 10 in outer scope, unrelated to y = 15 in f’s closure)
+
+6) r := 2  
+   (outer r -> 2, f’s r -> 4 remains unchanged)
+
+7) f (!r * y) ⇒ f (2 * 10) ⇒ f (20)  
+   Inside f: u + x + y + !r = 20 + 3 + 15 + 4 = 42.

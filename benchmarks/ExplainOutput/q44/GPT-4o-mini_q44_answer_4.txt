@@ -1,0 +1,3 @@
+In the step case of an inductive proof about lists, we need to prove that if the statement holds for a list `l`, then it also holds for the list formed by adding an element `x` to the front of `l` (denoted as `x :: l`). 
+
+**Explanation:** This is based on the principle of structural induction. For lists, the induction hypothesis assumes the statement is true for a list of a certain length (or structure), and then we must show that adding an element to that list (effectively increasing its size) preserves the truth of the statement. This ensures the statement holds for all lists, starting from the base case (typically the empty list) and extending to all larger lists.

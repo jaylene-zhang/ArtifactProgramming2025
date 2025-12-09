@@ -1,0 +1,22 @@
+```ocaml
+let to_int (n : int church) : int = fun z s -> 
+  let rec aux i = if i <= 0 then z else s (aux (i - 1)) in
+  aux (n z s)
+
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n2 (n1 z s) s
+
+let rec sum (l : 'b church list) : 'b church = 
+  match l with
+  | [] -> zero
+  | h::t -> add h (sum t)
+
+let length (l : 'a list) : 'b church = 
+  let rec go acc = function
+    | [] -> acc
+    | _ :: tl -> go (S acc) tl in
+  go Z l
+```

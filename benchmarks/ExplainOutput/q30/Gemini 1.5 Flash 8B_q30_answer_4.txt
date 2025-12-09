@@ -1,0 +1,9 @@
+```
+[2.0; 4.0; 1.0]
+```
+
+**Explanation:**
+
+`update_sales_tax ()` changes the value of `sales_tax` to 2.0, but this doesn't affect the `price_list` itself.
+
+`update_price_list price_list` applies `add_tax` to each element of `price_list`.  Since `sales_tax` is now 2.0, each price in `price_list` (10, 20, 5) is updated by adding 2.  This directly results in `[10.0 + 2.0; 20.0 + 2.0; 5.0 + 2.0]`, which evaluates to `[2.0; 4.0; 1.0]`.

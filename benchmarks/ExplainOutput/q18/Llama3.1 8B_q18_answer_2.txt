@@ -1,0 +1,7 @@
+**Solution:**
+
+`shift_point 2` will return `(8, 7)`
+
+**Explanation:**
+
+Initially, `point` is `(5, 4)`. When we call `shift_point 1`, the `point` variable is updated to `(6, 5)`. Now, `shift_point 2` will shift this point by 2 units in both x and y directions, resulting in `(8, 7)`.

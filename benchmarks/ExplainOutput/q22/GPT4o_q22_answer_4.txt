@@ -1,0 +1,8 @@
+### Solution:
+The unused variables in the expression are:
+1. The outer `f` defined in `let f = fun x -> f x * y`.
+2. The outer `r` defined in `let r = 2 * y`.
+
+### Explanation:
+1. The outer `f` gets shadowed by the `fun x -> f x * y` lambda, so it is never used.
+2. The outer `r` also gets shadowed after being redefined as `let r = 2 * y`, so its previous value is unused.

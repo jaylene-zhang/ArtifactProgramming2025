@@ -1,0 +1,8 @@
+The type of the tail-recursive version of `fold_right` would be:
+
+```
+('a -> 'b -> 'b) -> 'b -> 'a list -> 'b
+```
+
+**Explanation**: 
+The standard `fold_right` function has the type `('a -> 'b -> 'b) -> 'a list -> 'b -> 'b`. When we make this function tail-recursive, it often uses an accumulator to collect results and then applies a final function (e.g., identity) to that accumulator at the end. However, the essence of tail recursion doesn't alter the overall type signature significantly.

@@ -1,0 +1,14 @@
+**Solution**:  
+The correct answer is **c) h (g (f x))**.
+
+**Explanation**:  
+The goal is to achieve a resulting function of type `(’a -> ’a) -> ’a -> ’a` that computes the result `fun f x -> f (f (f x))` when the `compose` function is called as follows:
+
+```ocaml
+compose (fun f x -> f x) (fun f x -> f (f x))
+```
+
+Let’s analyze the composition.  
+The inner `g` of type `(’a -> ’a) -> ’a -> ’a` applies its logic to `f` and `x`, producing an output function. Then `h` consumes the output of this and applies its own logic to `f` and `x`. Hence, the composition should apply `g`'s computation first and then pass the result to `h`.
+
+The expression `h (g (f x))` follows the described pattern and matches the desired computation: `f (f (f x))`. The other options do not respect the function application behavior in this context.

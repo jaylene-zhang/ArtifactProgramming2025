@@ -1,0 +1,4 @@
+No.
+
+Explanation:
+The function will return `1` for `triangle 0` since the base case only handles `n = 1`. For `n = 0`, it should return `0` directly without any recursive calls.

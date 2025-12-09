@@ -1,0 +1,25 @@
+**Solution:** 
+
+**c) h (g (f x))**
+
+**Explanation:**
+
+To solve this, we start by analyzing the desired outcome of the composed function:
+
+- The goal is for `compose (fun f x -> f x) (fun f x -> f (f x))` to return a function `fun f x -> f (f (f x))`.
+
+Breaking this down:
+1. `fun f x -> f x` applies `f` once; call this `h`.
+2. `fun f x -> f (f x)` applies `f` twice; call this `g`.
+3. When composed, the result should apply `f` three times: `fun f x -> f (f (f x))`.
+
+Now consider the compose function:
+```ocaml
+let compose h g = fun f x -> h (g (f x))
+```
+
+Step-by-step:
+1. `g (f x)` applies `g` (which applies `f` twice) to `x`. This results in `f (f x)`.
+2. `h` is then applied to `f (f x)`. Since `h` applies `f` once to its input, this produces `f (f (f x))`.
+
+Thus, the correct answer is **c) h (g (f x))**.

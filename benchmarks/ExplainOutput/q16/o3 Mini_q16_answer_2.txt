@@ -1,0 +1,3 @@
+Solution: (6,5)
+
+Explanation: The function shift_point uses the point defined at its creation (4,3) due to lexical scoping. Thus, shift_point 2 computes (4+2, 3+2), resulting in (6,5).

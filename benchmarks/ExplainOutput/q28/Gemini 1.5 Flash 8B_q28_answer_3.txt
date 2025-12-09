@@ -1,0 +1,15 @@
+**Solution:**
+
+No.
+
+
+**Explanation:**
+
+The code `let anti_d f = (curry integral) f 0` attempts to create a function `anti_d` that, given a function `f`, returns a function that represents the antiderivative of `f`.  However, it's incorrect.
+
+`curry integral` takes the function `integral` (which expects a function `f` and a tuple `(a,b)` as arguments) and transforms it into a higher-order function that expects a single argument `f`. Then, passing `f 0` means the second argument (a,b) of integral is calculated as 0.
+
+This approach fails because `integral` needs both limits of integration.  Providing only 0 in that manner doesn't set up the integration correctly from 0 to `x`.  A valid antiderivative function should accept `x` as a parameter to evaluate the integral from 0 to `x`.
+
+
+To correctly compute the antiderivative, you need a function that, when applied to a value `x`, calculates the integral of `f` from 0 to `x`.  This requires a different approach that uses the given `integral` function (which, importantly, allows you to specify a limit `b`).

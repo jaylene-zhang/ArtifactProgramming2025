@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+type cake = Slice of (ingredients list * int) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The problem asks to add calories for each `Slice`.  Since `Slice` already has an `ingredients list`, we can pair that list with an integer representing the calories. Thus, the type of `Slice`'s data becomes `(ingredients list * int)`.

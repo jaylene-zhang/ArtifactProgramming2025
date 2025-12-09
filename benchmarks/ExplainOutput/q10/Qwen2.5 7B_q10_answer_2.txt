@@ -1,0 +1,5 @@
+Solution:
+Functions can be passed as arguments to other functions, returned as values from functions, and assigned to variables.
+
+Explanation:
+This phrase means that in OCaml, functions are treated just like any other value: they can be assigned to variables, passed around as arguments to functions, and returned as values from functions, which allows for higher-order functions and greater flexibility in programming.

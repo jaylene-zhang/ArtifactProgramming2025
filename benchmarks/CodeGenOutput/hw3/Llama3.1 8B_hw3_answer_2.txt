@@ -1,0 +1,11 @@
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun acc n ->
+    fun z s -> s (acc z s)) z s)
+
+let length (l : 'a list) : 'b church =
+  let rec iter (i : 'b church list) (z : 'b) (s : 'b -> 'b) : 'b =
+    match i with
+    | [] -> z
+    | h :: t -> s (iter t z s)
+  in
+  iter (1 :: 2 :: 3 :: 4 :: 5 :: []) Z S

@@ -1,0 +1,6 @@
+**Solution**
+
+type cake = Slice of int * ingredients list | Cake of cake * cake
+
+**Explanation**
+We added an `int` field to the `Slice` variant to store the calories for each slice. `int * ingredients list` represents a tuple of an integer (calories) and a list of ingredients.

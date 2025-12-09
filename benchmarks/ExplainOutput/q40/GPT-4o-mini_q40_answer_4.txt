@@ -1,0 +1,3 @@
+No, the function `zip_tr` is not tail-recursive.
+
+Explanation: In the provided implementation, the recursive call to `zip_tr` is not in a tail position because it is followed by a function application (`sc`). A function is considered tail-recursive if the final operation of a recursive call is the call itself. In this case, `zip_tr` calls itself, but then must also apply the continuation `sc`, which means it still has to do additional work after the recursive call completes. Therefore, it cannot be optimized into a loop by the compiler.

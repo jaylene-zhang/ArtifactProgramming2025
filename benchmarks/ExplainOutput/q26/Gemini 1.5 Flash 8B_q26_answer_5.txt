@@ -1,0 +1,5 @@
+**Solution:** False
+
+**Explanation:**
+
+The code creates a cyclic list.  `rc1` now points to the same list as `rc2`. `get_tail rc1` and `get_tail rc2` will return the *same* tail reference, but the references themselves are not physically the same.  `==` checks for *identical references*, not identical values; this is the key distinction in this case.

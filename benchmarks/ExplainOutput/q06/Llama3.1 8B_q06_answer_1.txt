@@ -1,0 +1,10 @@
+**Solution:**
+```
+let foo w =
+  let x = w * 2 in
+  fun y -> (x *) 2 + y * ((w * 2))
+```
+
+**Explanation:** After inlining `w * 2` with `x`, the new definition of `w` becomes irrelevant to the code that remains. Therefore, we simply substitute `w * 2` with `x` wherever it appears in the code. 
+
+Also, keep in mind that we are replacing `x` with `w * 2` because that's what `x` was defined as in the original code - whereas in other code using `w * 2` has no connection to `x`

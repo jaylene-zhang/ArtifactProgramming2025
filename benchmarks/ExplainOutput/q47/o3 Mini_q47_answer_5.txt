@@ -1,0 +1,3 @@
+Solution: b
+
+Explanation: Option b uses an accumulator passed in tail‐calls and processes the list only once. (Option a produces the words in reverse order, c reverses the list first – i.e. two traversals – and d isn’t tail‐recursive.)

@@ -1,0 +1,14 @@
+**Solution:**
+
+The type of the expression is `'t`.
+
+---
+
+**Explanation:**
+
+The function `f` is of type `('t * 't -> 't)`, meaning it takes a tuple of two elements of type `'t` and returns a value of type `'t`. 
+
+- The arguments `a` and `b` are of type `'t`.
+- The expression `f(a, b)` has type `'t` (output of `f`).
+- Similarly, `f(b, a)` has type `'t`.
+- Now, `f(f(a, b), f(b, a))` passes two `'t` values to `f`, so the result is of type `'t`. 

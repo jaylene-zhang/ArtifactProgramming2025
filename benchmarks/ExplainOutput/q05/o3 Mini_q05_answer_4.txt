@@ -1,0 +1,7 @@
+Solution:
+let foo y =
+  let w = y + 3 in
+  fun z -> (y + 3) + 2 + z * w
+
+Explanation:
+We inline x (defined as y + 3) in both let w = x and in x + 2. Since the free y in y + 3 must refer to the outer y, we rename the inner function’s parameter (from y to z) to avoid capture.

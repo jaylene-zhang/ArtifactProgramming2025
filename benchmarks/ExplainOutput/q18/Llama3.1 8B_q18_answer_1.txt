@@ -1,0 +1,7 @@
+**Solution**
+```
+(shift_point 2)
+```
+**Explanation**
+
+This is a case of unexpected value shadowing in OCaml. The `point` variable is rebound to the result of `shift_point 1`, so when we call `shift_point 2`, it uses the new `point` value `(6, 5)`, not the original one `(5, 4)`. Therefore, `shift_point 2` returns `(8, 7)`.

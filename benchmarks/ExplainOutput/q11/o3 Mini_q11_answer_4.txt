@@ -1,0 +1,15 @@
+Solution for zip:
+l1: 'a list  
+l2: 'b list  
+Return: ('a * 'b) list  
+
+Solution for zipper:
+comb: 'a -> 'b -> 'c  
+add: 'c -> 'c list -> 'c list  
+l1: 'a list  
+l2: 'b list  
+Return: 'c list  
+Recursive case: add (comb x y) (zipper comb add xs ys)
+
+Explanation:
+For zip, we use two lists of possibly different element types and return a list of pairs. For zipper, comb takes an element from each list and produces a value of type 'c; add then inserts that 'c into a 'c list. The recursive case applies these functions accordingly.

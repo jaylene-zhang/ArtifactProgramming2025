@@ -1,0 +1,13 @@
+**a)** Incorrect
+
+**Explanation:** `curry (sumSeries f) 0` attempts to apply `curry` to `sumSeries f` (which is a function) before providing the lower bound argument. This is incorrect  the `curry` function takes a function of two arguments and returns a function of one argument.
+
+
+**b)** Correct
+
+**Explanation:** `curry (sumSeries f 0)` correctly applies `sumSeries f`  with the lower bound 0.  This results in a function expecting the upper bound and increment function.  The subsequent `swap` operation correctly interchanges the roles, making the upper bound the first argument.
+
+**c)** Incorrect
+
+
+**Explanation:** `sumSeries f` is a function that expects (lower-bound, upper-bound, increment) as arguments.  Applying `swap` to it transforms that into a function that expects just the upper-bound and the increment function, but *not a function that expects an argument to set the lower-bound to zero*.  This setup reverses the expected argument order entirely, making it unsuitable for the desired reduction.

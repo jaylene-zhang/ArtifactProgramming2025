@@ -1,0 +1,41 @@
+### Theorem 1: For any word w, constant x, and accumulator acc, count w x + acc = count' w x acc.
+
+**Base Case:** w = Const y  
+In this case, we have two situations depending on whether `x = y` or not:
+- If `x = y`,  
+  `count (Const y) x = 1`  
+  `count' (Const y) x acc = 1 + acc`  
+  This gives `1 + acc = 1 + acc`, which holds.
+  
+- If `x ≠ y`,  
+  `count (Const y) x = 0`  
+  `count' (Const y) x acc = 0 + acc`  
+  This gives `0 + acc = acc`, which holds.
+
+**Step Case:** w = Op (w1, w2)  
+Assume the induction hypothesis:  
+`count w1 x + acc = count' w1 x acc` and  
+`count w2 x + acc = count' w2 x acc`.
+
+For the operation `Op (w1, w2)`, we can write:
+- `count (Op (w1, w2)) x = count w1 x + count w2 x`,  
+- `count' (Op (w1, w2)) x acc = count' w1 x (count' w2 x acc)`.
+
+By applying the induction hypothesis,
+`count' w1 x acc + count' w2 x acc = count w1 x + count w2 x + acc`.
+
+Thus,  
+`count w1 x + count w2 x + acc = count' w1 x acc + count' w2 x acc`.
+
+### Theorem 2 (Main Result): For any word w and constant x, we have count w x = count' w x 0.
+
+**Proof:**  
+By applying Theorem 1 with `acc = 0`, we have:  
+`count w x + 0 = count' w x 0`, which simplifies to  
+`count w x = count' w x 0`. Thus, the main result holds.
+
+### Explanation
+1. We structured the proof by base case and induction step for recursive definitions.
+2. For `Const`, we showed how count evaluates to either `0` or `1`, depending on the comparison with `x`.
+3. In the inductive step, we combined the results of both sub-words applying the induction hypothesis. 
+4. The main theorem follows directly from applying the general statement with `acc = 0`.

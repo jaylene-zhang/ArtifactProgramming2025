@@ -1,0 +1,3 @@
+Solution: The unused variables are r and the parameter x in function f.
+
+Explanation: r is computed (2 * y) but never used, and the function f receives a parameter x which is immediately shadowed by the binding let x = 42, making the parameter x unused.

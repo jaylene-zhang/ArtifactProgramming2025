@@ -1,0 +1,73 @@
+In the last assignment, you worked with a unary numbers represented with the following recursive type.
+
+type nat = Z | S of nat
+This defines a type nat according to the ways in which we construct values of this type: either we build a nat using the constant Z or we can build a new nat given an existing one by applying S.
+
+It is actually possible to define the natural numbers in the opposite way! Rather than defining nat according to how to build it, we can define it according to how we use it. Such a definition ends up taking the form of a higher-order function.
+
+To see the connection between these two ways of thinking, let's look at a general recursive function that operates on nats. This function uses the input natural number by matching and recursing on it, and is supposed to compute something as output. Since we don't know what that output will be, I will leave placeholders ???.
+
+let rec process_nat (n : nat) = match n with | Z -> ??? | S n' -> let r = process_nat n' in ???
+We will add one additional parameter for each placeholder; these extra parameters will be used to fill in the placeholders. But what types should these additional inputs have?
+
+Observation 1: The expressions we replace the placeholders with must have the same type. That's because they are both branches of the match-expression, and each branch must return the same type.
+Observation 2: The second placeholder needs to be able to access the result of the recursive call, r.
+For the first placeholder, we will add a parameter z : 'b. We will simply return it verbatim in the Z case. So 'b will be the return type of process_nat. For the second placeholder, we will add a parameter called s. Given observation 2, we reckon that s must have a function type, so that we can pass the result of the recursive call to it. Therefore, the type of s must have the form 'b -> ???.
+Now from observation 1, we deduce that the return type of s must also be 'b since it must compute a value that process_nat itself is going to return. This leads to the general function for processing a nat.
+
+let rec process_nat (n : nat) (z : 'b) (s : 'b -> 'b) : 'b = match n with | Z -> z | S n' -> s (process_nat n' z s)
+What this function does is that it applies n times its input function s to its input value z. (By the way, this function looks a lot like a list-processing function we saw in class -- which one is it?) The overall type of process_nat is nat -> 'b -> ('b -> 'b) -> 'b. Understood as a function of one input, given that arrows associate to the right, we can rewrite that type as nat -> ('b -> ('b -> 'b) -> 'b). In other words, process_nat takes a nat as input, and computes a function of type 'b -> ('b -> 'b) -> 'b as output. (Note that, operationally, that isn't actually true -- before any computation takes place in this function, every input must be provided. But conceptually, we can think of this function as converting a nat into a function.)
+
+That polymorphic function type is precisely a way of representing a natural number as a higher-order function: the natural number N is a function taking as inputs an initial value z : 'b and a function s : 'b -> 'b; it applies N times the function s to that initial z. We can define a type synonym for this polymorphic function type (provided in the prelude code):
+
+type 'b church = 'b -> ('b -> 'b) -> 'b
+By the way, I call this type church because this notion of representing data as functions is attributed to the mathematician Alonzo Church. He was Alan Turing's PhD advisor in the 1930s and also invented an abstract, mathematical model of computing called the Lambda Calculus. Similarly to how mathematicians then believed that Sets can represent anything in mathematics, Church believed that functions can represent anything in mathematics, so he encoded various mathematical structures while solely using functions, one of them being the natural numbers. The core of Lambda Calculus is what underlies functional programming. Here is, for example, the number five represented as a church numeral:
+
+let five : 'b church = fun z s -> s (s (s (s (s z))))
+This function represents the number five because it applies the input function s five times.
+There are five functions you are required to implement in this homework. There are also some type checking quirks that causes the type signatures to lose some elegance that we want to highlight.
+
+let zero : 'b church = fun z s -> z
+let one : 'b church = fun z s -> s z
+
+to_int : int church -> int : to convert a church numeral into an integer. This function will be especially helpful to you in debugging your solutions to the next problems. Note the input is of type int church and not 'b church. This is sadly due to technical reasons and a design choice in the OCAML type checker. You should, however, not be too confused by this type.
+add : 'b church -> 'b church -> 'b church: to add two church numerals together. Your solution must use only the inputs of add -- it cannot make any recursive calls, or call any other functions. Hint 1: your solution will fit on one line. Hint 2: the idea of the algorithm is the same as adding the unary nats from HW2, i.e. we want to replace the "zero" of the first number with with the other number.
+mult : 'b church -> 'b church -> 'b church to multiply two church numerals together. Your solution must use only the inputs of mult -- it cannot make any recursive calls, or call any other functions. Again as a hint, your solution will fit on one line.
+
+(* Question 1a: Church numeral to integer *)
+(* TODO: Implement to_int
+   Although the input n is of type int church, please do not be confused. This is due to typechecking reasons, and for
+   your purposes, you could pretend n is of type 'b church just like in the other problems.
+*)
+let to_int (n : int church) : int = 
+  raise NotImplemented
+
+(* Question 1b: Add two church numerals *)
+(* TODO: Implement add)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  raise NotImplemented
+
+(* Question 1c: Multiply two church numerals *)
+(* TODO: Implement mult)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  raise NotImplemented
+
+
+Implement the functions:
+
+sum : 'a church list -> 'a church to sum a list of church numerals into one church numeral. Your solution must use the built-in function List.fold_left. No recursive calls are allowed.
+length : 'a list -> 'b church to compute the length of the list as a church numeral.
+
+(* Question 2a: Sum a list of church numerals *)
+(* TODO: implement sum *)
+
+let sum (l : 'b church list) : 'b church =
+  raise NotImplemented
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+(* TODO: implement length *)
+
+(* the length function itself should accept any 'a
+   list, not just int list. So you should not assume any properties about individual elements in the list. *)
+let length (l : 'a list) : 'b church =
+  raise NotImplemented

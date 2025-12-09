@@ -1,0 +1,4 @@
+The program `shift_point 2` will return the value `(8, 7)`.
+
+**Explanation:** 
+Initially, the `point` is defined as `(5, 4)`. The function `shift_point` takes an integer `n` and returns a new point where both components of the original `point` are increased by `n`. Therefore, when calling `shift_point 2`, it will compute `(component_x point + 2, component_y point + 2)`, which evaluates to `(5 + 2, 4 + 2)`, giving `(7, 6)`. However, since the original `point` was reassigned to `(6, 5)` after the initial call to `shift_point 1`, it will now actually compute `(6 + 2, 5 + 2)`, resulting in `(8, 7)`.

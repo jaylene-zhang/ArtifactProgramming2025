@@ -1,0 +1,48 @@
+**Solution:**
+
+37
+
+**Explanation:**
+
+expressions:
+
+```ocaml
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+```
+
+Binding Stack and Evaluation:
+
+1.  `let x = 3`:  `x = 3` is added to the stack.
+
+2.  `let r = ref (2 + x)`:
+    *   `2 + x` evaluates to `2 + 3 = 5`.
+    *   `r = ref 5` is added (r is a mutable reference to the value 5).
+
+3.  `let f = (let y = x * !r in let r = ref 4 in fun u -> u + x + y + !r )` :
+    *   `y = x * !r` in `f`'s definition:
+        *   `!r` is 5.
+        *   `x * !r` is `3 * 5 = 15`.
+        *   `y` in `f` is 15.
+    *   `r = ref 4` in `f`'s definition: Shadowed a new local `r` of `f` and assigned `4`.
+    *   `f` closes over the `x` from the 1st  `let` (value 3),  `y` (value 15), and the new local  `r`.
+        *   `f` ---> `fun u -> u + x + y + !r` where `x = 3`, `y=15` and `r` points to `4` inside `f`'s defintion.
+
+4.  `let x = 5`:  A new `x = 5` is added, shadowing the old one on the stack.
+
+5.  `let y = 10`: `y = 10` is added.
+
+6.  `r := 2`:  The *original* `r` (declared as the second step), which currently holds `5`, gets its value updated to `2`.
+
+7. `f (!r * y)`:
+
+    *   `!r * y` is called outside but this will evalute to 2 _ 10 = 20 since the global `r` now contains 2.
+
+    * The body in `f`, i.e., `fun u -> u + x + y + !r` which evaluates `u + x + y + !r` with `u=20`, `x = 3` (closed over in step 3, not the later `x = 5`), `y = 15` and `r=4` is evaluated:
+
+      20 + 3 + 15 + 4 = 37

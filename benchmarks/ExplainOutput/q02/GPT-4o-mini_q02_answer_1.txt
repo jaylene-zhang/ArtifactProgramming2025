@@ -1,0 +1,12 @@
+**Solution:**
+
+For the first hole: `(a -> a)`  
+For the second hole: `a`
+
+**Explanation:**
+
+1. The function `repeat` takes a function `f` as its argument, and this function `f` is applied to the result of `repeat f`. For this to type check, `f` must take an argument of the same type as the return value of `repeat`, hence the input-output type of `f` must be `(a -> a)`.
+
+2. Since `repeat` is applying `f` to `repeat f`, the type of the entire function `repeat` must match the type of its return value when it calls itself. Thus, the return type of `repeat` is `a`, which matches the output of `f`.
+
+This leads to the type signature: `repeat : (a -> a) -> a`, indicating that the function `repeat` takes a function from type `a` to type `a` and returns a value of type `a`.

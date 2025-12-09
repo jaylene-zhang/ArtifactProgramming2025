@@ -1,0 +1,14 @@
+Solution: 1 and 4 compute `prime_fact` only once.
+
+Explanation:
+Let's analyze each implementation:
+
+1. This implementation calls `prime_fact x` once and stores the result in variable `p`, then uses that variable in the recursive function `test` to compare with each element in the list. `prime_fact` is computed exactly once.
+
+2. This implementation calls `prime_fact x` in each recursive call - once for each element in the list. This is inefficient and doesn't satisfy the requirement.
+
+3. Similar to #2, this calls `prime_fact x` for each element in the list during the `List.exists` evaluation.
+
+4. This implementation computes `prime_fact x` once, stores it in variable `p`, and then passes that value to the `List.exists` function. `prime_fact` is computed exactly once.
+
+Therefore, options 1 and 4 are the ones that compute `prime_fact` only once.

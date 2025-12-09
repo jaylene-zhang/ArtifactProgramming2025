@@ -1,0 +1,39 @@
+Here are the answers:
+
+**a) let check_prime_factors x =**
+```
+let p = prime_fact x in List.exists (fun e -> e = p)
+```
+**Answer: No, it does not prioritize computing prime_fact once**
+
+This implementation will compute `prime_fact x` multiple times for each element in the list, once for each `List.exists` iteration.
+
+**b) let check_prime_factors x l =**
+```
+List.exists (fun e -> e = prime_fact x) l
+```
+**Answer: Yes, it computes prime_fact once**
+
+This implementation computes `prime_fact x` only once, stored in the function `prime_fact x`, before the `List.exists` iteration.
+
+**c) let check_prime_factors x l =**
+```
+match l with
+| [] -> false
+| y::ys -> y = prime_fact x || check x ys
+```
+**Answer: Yes, it computes prime_fact once**
+
+ unixy lul Despite the recursive call to `check x ys`, the `y = prime_fact x` computation is evaluated before the recursive call, so `prime_fact ` is computed only once.
+
+**d) let check_prime_factors x l =**
+```
+let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+```
+**Answer: Yes, it computes prime_fact once**
+
+Similar to **b)**, this implementation computes `prime_fact x` only once, storing the result in `p`, and then uses the recursive function `test`.

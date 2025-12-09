@@ -1,0 +1,18 @@
+**1. For blank 1**
+
+```lisp
+{hd = f hd s hnil; tl = (fold f a (tl s))}
+```
+
+Explanation: The head of the output stream is obtained by applying the function `f` to the head of the input stream and the accumulator `a0`. The tail of the output stream is obtained by recursively applying the fold to the rest of the input stream and the accumulator obtained by the previous step.
+
+**2. For blank 2**
+
+This should be an ocaml function hnil that represents an empty stream
+
+```lisp
+let hnil = function
+  | _ -> failwith "Empty stream"
+```
+
+Explanation: The `hnil` function is a signature of an empty stream. The function will failwhith when it's called with any argument. This way we're ensuring that the function never returns, preventing adjacent calls from producing no pair at run-time, preventing `hd()`.

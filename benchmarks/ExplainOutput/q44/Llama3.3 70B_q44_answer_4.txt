@@ -1,0 +1,3 @@
+**We need to prove that if the statement holds for a given list, it also holds for the list with an additional element prepended or appended to it.**
+
+Explanation: In the step case of an inductive proof about lists, we assume that the statement is true for a list of length n (the inductive hypothesis) and then show that it is also true for a list of length n+1, typically by considering the list with an additional element prepended or appended to it.

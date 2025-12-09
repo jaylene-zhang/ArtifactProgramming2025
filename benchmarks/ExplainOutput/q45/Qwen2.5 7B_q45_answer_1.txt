@@ -1,0 +1,8 @@
+1) For blank 1 in line 2 we should write: `ones`
+
+2) For blank 2 in line 3 we should write: `psums (pascal ())`
+
+### Explanation
+1. **Blank 1**: The first diagonal of Pascal's Triangle is a stream of ones (`1, 1, 1, ...`). Therefore, we use `ones` as the header (`hd`) of the initial diagonal.
+   
+2. **Blank 2**: The second part of the template, `tl`, should generate the rest of the stream. The `(pascal ())` calls the `pascal` function to get the current diagonal stream, and `psums` generates the next diagonal by taking the prefix sums of the current diagonal. Thus, the expression `psums (pascal ())` correctly describes the stream of the next diagonal.

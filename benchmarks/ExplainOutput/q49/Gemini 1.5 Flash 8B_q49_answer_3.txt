@@ -1,0 +1,10 @@
+```ocaml
+let double x =
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The `y` in the original expression is replaced with `(f x)`.  The `x` inside the `let x = 2 in ...` block is now shadowed by the original `x` parameter.  This is essential to understand in OCaml's scoping rules.  The body of `double` is a function, so the `(f x)` substitution is now within that part.  The crucial step is to realize that `y` is being substituted with a function call involving the *original* x argument.

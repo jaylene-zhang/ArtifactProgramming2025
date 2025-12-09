@@ -1,0 +1,9 @@
+**Code:**
+```ocaml
+let y = "I love you" in
+  let y = 5 in
+    print_endline y
+```
+
+**Explanation:**
+In OCaml, overshadowing happens when a local variable is bound to a name that is already used in an outer scope, hiding it from the outer scope. In this example, `y` is first bound to the string `"I love you"` in the outer scope. Then, in the inner scope, a local `y` is bound to the integer `5`. When we try to print `y` in the inner scope, it prints `5` instead of the original string, because the name `y` in the inner scope has overshadowed the `y` in the outer scope.

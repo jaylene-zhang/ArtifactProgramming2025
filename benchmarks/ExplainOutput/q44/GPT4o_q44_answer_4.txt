@@ -1,0 +1,5 @@
+**Solution:**  
+We need to prove that if the statement holds for a list of length \( n \), then it also holds for a list of length \( n+1 \).
+
+**Explanation:**  
+Inductive proofs for lists involve two parts: the base case (e.g., an empty list) and the inductive step. For the step case, you assume the statement is true for lists of length \( n \) (inductive hypothesis) and prove it holds for lists of length \( n+1 \). This ensures the property holds for all list lengths.

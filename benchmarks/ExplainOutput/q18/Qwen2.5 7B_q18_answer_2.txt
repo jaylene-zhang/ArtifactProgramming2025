@@ -1,0 +1,9 @@
+```ocaml
+(6, 5)
+```
+
+Explanation: 
+- The initial `point` is `(5, 4)`.
+- `shift_point 1` modifies the `point` to `(5+1, 4+1) = (6, 5)`.
+- When you call `shift_point 2` after this, it uses the new `point` which is now `(6, 5)`.
+- Therefore, `shift_point 2` returns `(6+2, 5+2) = (8, 7)`.

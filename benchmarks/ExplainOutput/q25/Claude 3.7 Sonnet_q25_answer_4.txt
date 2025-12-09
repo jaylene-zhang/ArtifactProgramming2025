@@ -1,0 +1,10 @@
+The most general instantiation is:
+- 't = 's = 'u = 'u
+
+Explanation:
+For f (f (a, b), f (b, a)) to type-check:
+1. f takes a pair of type ('t * 's) and returns 'u
+2. In f (f (a, b), f (b, a)), both f (a, b) and f (b, a) must have the same type as 't
+3. Also, f (a, b) must have the same type as 's
+
+This means 't = 's = 'u, and all three must be equal to 'u. This creates a recursive type where the function takes a pair of values of its own return type and returns a value of the same type.

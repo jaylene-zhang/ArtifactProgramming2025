@@ -1,0 +1,156 @@
+### Solution
+
+#### Question 1: eval
+
+```ocaml
+let rec eval exp =
+  match exp with
+  | I _ -> exp
+  | B _ -> exp
+  | Fn _ -> exp
+  | Var x -> raise (Stuck (Free_variable x))
+  | Primop (po, args) ->
+      let args = List.map eval args in
+      begin
+        match eval_op po args with
+        | None -> raise (Stuck Bad_primop_args)
+        | Some v -> v
+      end
+  | If (e, e1, e2) ->
+      begin
+        match eval e with
+        | B true -> eval e1
+        | B false -> eval e2
+        | _ -> raise (Stuck If_non_true_false)
+      end
+  | Let (x, e1, e2) ->
+      let e1 = eval e1 in
+      eval (subst (e1, x) e2)
+  | Rec (f, _, e) ->
+      eval (subst_list [(eval e, f)] e)
+  | Apply (e, es) ->
+      let e = eval e in
+      let es = List.map eval es in
+      begin
+        match e with
+        | Fn (xs, e') ->
+            if List.length xs <> List.length es then
+              raise (Stuck Arity_mismatch)
+            else
+              eval (subst_list (List.combine es xs) e')
+        | _ -> raise (Stuck Apply_non_fn)
+      end
+```
+
+#### Question 2: infer
+
+```ocaml
+let rec infer ctx e =
+  match e with
+  | Var x ->
+      begin
+        try lookup x ctx
+        with Not_found -> raise (TypeError (Free_variable x))
+      end
+  | I _ -> Int
+  | B _ -> Bool
+  | Primop (po, exps) ->
+      let (domain, range) = primopType po in
+      check ctx exps domain range
+  | If (e, e1, e2) ->
+      begin
+        match infer ctx e with
+        | Bool ->
+            let t1 = infer ctx e1 in
+            let t2 = infer ctx e2 in
+            if t1 = t2 then t1
+            else type_mismatch t1 t2
+        | t -> type_mismatch Bool t
+      end
+  | Let (x, e1, e2) ->
+      let t1 = infer ctx e1 in
+      infer (extend ctx (x, t1)) e2
+  | Rec (f, t, e) ->
+      let ctx' = extend ctx (f, t) in
+      let t' = infer ctx' e in
+      if t = t' then t
+      else type_mismatch t t'
+  | Fn (xs, e) ->
+      let ctx' = extend_list ctx (List.map (fun (x, t) -> (x, t)) xs) in
+      let t' = infer ctx' e in
+      List.fold_right (fun (x, t) acc -> t -> acc) (List.map snd xs) t'
+  | Apply (e, es) ->
+      let t1 = infer ctx e in
+      let t2 = List.map (fun e -> infer ctx e) es in
+      begin
+        match t1 with
+        | t1 -> t2 when t1 = t2 -> t1
+        | _ ->
+            if not (is_arrow t1) then
+              raise (TypeError (Apply_non_arrow t1))
+            else
+              let (t1, t1') = dest_arrow t1 in
+0100-be1929 foodsaysacular prop adsfields seldom happens isolated triangleit1829tog();
+              List.fold_right (fun t acc ->
+                match dest_arrow t with
+                | Some (t1, t2) -> if t1 = t then acc
+                | None -> type_mismatch t1 t
+              ) t2 t1'
+      end
+
+and check ctx exps tps result =
+  match exps, tps with
+  | [], [] -> result
+  | e :: es, t :: ts ->
+      let t' = infer ctx e in
+      if t = t' then check ctx es ts result
+      else type_mismatch t t'
+  | _ -> raise (TypeError Arity_mismatch)
+```
+
+#### Question 3: Unification
+
+```ocaml
+let unify : utp -> utp -> utp UTVarMap.t =
+  let rec unify (type_substitution : utp UTVarMap.t) (t1 : utp) (t2 : utp) : utp UTVarMap.t =
+    match t1, t2 with
+    | UInt, UInt
+    | UBool, UBool -> type_substitution
+    | UTVar a, UTVar a' when a = a' -> type_substitution
+    | UArrow (t1, t1'), UArrow (t2, t2') ->
+        let type_substitution = unify type_substitution t1 t2 in
+        unify type_substitution t1' t2'
+    | UCross ts1, UCross ts2 ->
+        if List.length ts1 <> List.length ts2 then
+          unif_error @@ UnifMismatch (t1, t2)
+        else
+          List.fold_right2 (unify type_substitution) ts1 ts2 type_substitution
+    | UTVar a, _ -> unifyVar type_substitution a t2
+    | _, UTVar b -> unifyVar type_substitution b t1
+    | _, _ -> unif_error @@ UnifMismatch (t1, t2)
+
+  and unifyVar (type_substitution : utp UTVarMap.t) (a : string) (t : utp) : utp UTVarMap.t =
+    let rec occurs : utp -> bool = function
+      | UInt | UBool -> false
+      | UArrow (t1, t2) -> occurs t1 || occurs t2
+      | UCross ts -> List.exists occurs ts
+      | UTVar b ->
+          if a = b
+          then true
+          else
+            match UTVarMap.find_opt b type_substitution with
+            | None -> false
+            | Some t' -> occurs t'
+    in
+    if occurs t then
+      unif_error @@ UnifCycle (a, t)
+    else
+      match UTVarMap.find_opt a type_substitution with
+      | Some t' ->
+          let type_substitution = unify type_substitution t t' in
+          UTVarMap.remove a type_substitution
+      | None -> UTVarMap.add a t type_substitution
+
+  in
+  fun t1 t2 -> unify UTVarMap.empty t1 t2
+```

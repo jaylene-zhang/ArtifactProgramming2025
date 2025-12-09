@@ -1,0 +1,17 @@
+Let's go through each implementation and determine if it computes `prime_fact` only once.
+
+### a) `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`
+
+This implementation computes `prime_fact x` twice, once when assigning it to `p` and possibly again in `List.exists`.
+
+### b) `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l`
+
+This implementation computes `prime_fact x` once for each element in the list `l`.
+
+### c) `let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys`
+
+This implementation computes `prime_fact x` only once, because it's recomputed directly on the fly when comparing `y` to see if it equals the prime factorization of `x`.
+
+### d) `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`
+
+This implementation computes `prime_fact x` once when assigning it to `p`, and then recursively calls `test` on the remainder of the list. Each recursive call also checks if the current element equals the prime factorization of `x`.

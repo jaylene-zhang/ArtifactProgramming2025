@@ -1,0 +1,9 @@
+**Solution:**
+
+To enhance immutability, simplify reasoning, and improve concurrency.
+
+**Explanation:**
+
+*   **Immutability:** Avoiding state variables promotes immutability, making code easier to reason about since values don't change unexpectedly.
+*   **Simplified Reasoning:** Without mutable state, the value of an expression depends only on its inputs, not on the history of program execution.
+*   **Concurrency:** Immutability eliminates the need for locks when multiple threads access the same data, improving concurrency.

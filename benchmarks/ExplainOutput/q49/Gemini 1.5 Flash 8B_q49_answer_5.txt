@@ -1,0 +1,12 @@
+```ocaml
+let double x =
+  fun f -> (f (y + 2)) * y
+```
+
+**Explanation:**
+
+The expression `let x = 2 in ...` is immediately evaluated,  so the `x` in the nested let binding masks the parameter x. Substituting `y` with `f x` in the original expression gives:
+
+`(f (y + 2)) * y`
+
+The `x` binding doesn't affect `y`, which was substituted for  `f x`. Consequently, the `w` binding becomes `w = (f x) + 2` and in the end the part of the function that is left gets the substitution for w.

@@ -1,0 +1,5 @@
+```ocaml
+let w = 3 in let y = 2 * (w * 2) in fun x -> w * y * x
+```
+
+Explanation: First, we inline `w * 2` in the expression `let x = w * 2`, turning it into `let x = 3 * 2`. Then we replace all occurrences of `x` in `let w = x` with `6`. Finally, we replace all occurrences of `x` in the lambda expression `fun y -> x + 2 + y * w` with `6 * 2`, leading to `let w = 6 in let y = 2 * (6) in fun x -> w * y * x`. Simplifying `w = 6` and `y = 12`, we get the final result.

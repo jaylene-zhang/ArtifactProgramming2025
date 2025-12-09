@@ -1,0 +1,9 @@
+**Solution**
+
+1) `ones`
+2) `pascal`
+
+**Explanation**
+
+1. The i + 1 diagonal is a stream of partial sums for the i-th diagonal. We need to generate the first diagonal, which is a stream of ones.
+2. Then, we recursively generate the rest of the Pascal's triangle, which corresponds to the partial sums of the previous diagonal's partial sums.

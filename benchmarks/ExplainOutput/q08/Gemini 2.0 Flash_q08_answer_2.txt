@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+type cake = Slice of int * (ingredients list) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The question asks to add calories for each slice. Calories is a numerical value and can be represented using an `int` data type. So, the `Slice` variant needs to store both an integer representing the calories and the `ingredients list`.

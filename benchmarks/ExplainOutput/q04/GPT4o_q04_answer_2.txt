@@ -1,0 +1,24 @@
+**Correct Answer**: 1 and 4
+
+---
+
+### Explanation:
+
+1. **Option 1**:
+   - The function stores the result of `prime_fact x` in a variable `p` before applying the recursive function `test`.
+   - This ensures that `prime_fact x` is computed only once, and the result is reused.
+   - ✅ Computes `prime_fact x` **once**.
+
+2. **Option 2**:
+   - Here, `prime_fact x` is recomputed for every recursive call to `check`.
+   - If the input list is large, this leads to multiple calls to `prime_fact x`.
+   - ❌ Computes `prime_fact x` **multiple times**.
+
+3. **Option 3**:
+   - The function applies `prime_fact x` inside the lambda function passed to `List.exists`.
+   - This means `prime_fact x` is recalculated for every element in the list.
+   - ❌ Computes `prime_fact x` **multiple times**.
+
+4. **Option 4**:
+   - Similar to Option 1, `prime_fact x` is computed once at the beginning (stored in `p`) and reused with `List.exists`.
+   - ✅ Computes `prime_fact x` **once**.

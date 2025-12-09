@@ -1,0 +1,17 @@
+**Solutions:**
+
+1.  `let check_prime_factors x l = let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l`
+2.  `let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p) l`
+
+**Explanations:**
+
+*   **Option 1:** This code computes `prime_fact x` once and stores the result in `p`. The `test` function then uses this pre-computed value to compare against each element in the list `l`. This avoids redundant calls to `prime_fact`.
+*   **Option 4:**  This is similar to option 1 but uses `List.exists` for conciseness.  Crucially, it computes `prime_fact x` *once* and stores the result in `p` *before* calling `List.exists`.  The anonymous function within `List.exists` then reuses this pre-computed value.
+
+*   **Option 2 (Incorrect):** This code calls `prime_fact x` in each iteration of the list. Hence, if the prime factorization is not found early in the list, it will recompute the same factorization unnecessarily and more than once.
+*   **Option 3 (Incorrect):** It also calls `prime_fact x` for every element `e` in the list `l`, which is inefficient. It thus also recomputes the same factorization unnecessarily and more than once.

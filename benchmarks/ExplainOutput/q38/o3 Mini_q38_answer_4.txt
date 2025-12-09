@@ -1,0 +1,11 @@
+Solution: 
+A correct answer is to fill the blank with either 
+  h f (g f x)
+or 
+  g f (h f x).
+
+Explanation:
+We need compose h g to be a function of type (('a→'a)→'a→'a) so that when f and x are given and when h = (fun f x -> f x) and g = (fun f x -> f (f x)), we get f (f (f x)). Notice:
+  – h f (g f x) = f (g f x) and since g f x = f (f x) we get f (f (f x));
+  – Similarly, g f (h f x) = f (f (h f x)) and with h f x = f x again we obtain f (f (f x)).
+Thus only these two are correct. (The other candidates do not have the proper curried structure.)

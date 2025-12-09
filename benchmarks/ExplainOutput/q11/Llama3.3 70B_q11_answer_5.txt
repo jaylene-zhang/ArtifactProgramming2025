@@ -1,0 +1,24 @@
+### Solution
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x,y):: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'c list -> 'c list)
+               (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+               (fun s t -> t @ [ (s, List.length t) ])
+```
+
+### Explanation
+
+* The type of `l1` and `l2` in the `zip` function is a list of any type (`'a list` and `'b list` respectively). The return type is a list of pairs (`('a * 'b) list`).
+* The `zipper` function is more general. The type of `comb` is a function that takes two arguments of any type and returns a value of any type (`'a -> 'b -> 'c`). The type of `add` is a function that takes an element of any type and a list of the same type and returns a list of the same type (`'c -> 'c list -> 'c list`). The types of `l1` and `l2` are lists of any type (`'a list` and `'b list` respectively). The return type is a list of any type (`'c list`).
+* In the `zipper` function, `add (comb x y) (zipper comb add xs ys)` is used to combine elements from `l1` and `l2` using the `comb` function and add the result to the list using the `add` function.

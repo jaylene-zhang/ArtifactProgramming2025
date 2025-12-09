@@ -1,0 +1,19 @@
+Here are the solutions:
+
+### a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+**Correct**
+
+Explanation: The `curry` function is applied to `sumSeries f` with 0 as the lower bound. The resulting function is then `swapped` with `fun x -> x + 1` as the incrementation function. This is a correct implementation of `sum_from_zero`.
+
+### b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+**Incorrect**
+
+Explanation: In this implementation, `sumSeries f 0` is `curried`, but the argument `0` is inside the parentheses. This is not a correct application of `curry`.
+
+### c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+**Incorrect**
+
+Explanation: In this implementation, `swap` is applied to `sumSeries f` and `fun x -> x + 1`, and then `curry` is applied to the result. However, `swap` is not used to swap the incrementation function, but rather to change the order of the arguments. This is not a correct implementation of `sum_from_zero`.

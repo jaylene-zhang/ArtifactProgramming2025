@@ -1,0 +1,3 @@
+**Solution:** No.
+
+**Explanation:** The function `ackermann x` is called in each recursive call within the `add_ack` function for every element in the list `l`. Therefore, it's not computed just once.

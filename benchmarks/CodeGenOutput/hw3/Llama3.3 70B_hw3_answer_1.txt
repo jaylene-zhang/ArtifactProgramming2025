@@ -1,0 +1,16 @@
+```ocaml
+let to_int (n : int church) : int = 
+  n 0 (fun x -> x + 1)
+
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (fun x -> n2 x s) z
+
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun n1 n2 -> fun z s -> n1 (n2 z s) s) zero l
+
+let length (l : 'a list) : 'b church =
+  List.fold_left (fun c _ -> fun z s -> s (c z s)) zero l
+```

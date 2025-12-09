@@ -1,0 +1,4 @@
+Solution: `x` in the inner `let`
+
+Explanation:
+The inner `let x = 42` creates a new, local variable `x` that shadows the outer `x` parameter entirely.  The function `f` isn't using the outer `x` in its definition or body, and hence it's unused.

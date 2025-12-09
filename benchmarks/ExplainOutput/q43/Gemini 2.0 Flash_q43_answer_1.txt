@@ -1,0 +1,9 @@
+**Solution:**
+
+No, this will not work.
+
+**Explanation:**
+
+The problem lies in the fact that `rev_tl` is not tail-recursive in its first argument. The auxiliary `acc` variable accumulates result, and the final result is in the `acc` variable when the first argument becomes empty. A correct goal would be:
+
+`length (rev_tl l acc) = length l + length acc`

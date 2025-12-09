@@ -1,0 +1,22 @@
+**Question 1: Filling in the type parameters**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x,y):: zip xs ys
+```
+
+Explanation: `l1` and `l2` are lists of type `'a` and `'b` respectively. Their type is `list`, representing a generic list. The returned value is a list of pairs where each pair contains an element of type `'a` and an element of type `'b`.
+
+**Question 2: Generalizing the function zip**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'd -> 'd list -> 'd list)
+  (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> comb x y :: add (comb x y) (zipper comb add xs ys)
+```
+
+Explanation: `comb` is a function that takes two arguments of type `'a` and `'b` and returns a value of type `'c`. `add` is a function that adds an element of type `'d` to a list of type `'d list` and returns a new list. We use `comb x y` as the first argument to add because we want to pass the combined element to both `comb` and `add`.

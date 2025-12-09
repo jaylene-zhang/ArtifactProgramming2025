@@ -1,0 +1,5 @@
+Solution: No
+
+Explanation:
+
+The code computes `ackermann x` for *every* element in the list `l`.  It recalculates the Ackermann function for each element, which is not what the prompt asks for.  The function should memoize the result of `ackermann x`.

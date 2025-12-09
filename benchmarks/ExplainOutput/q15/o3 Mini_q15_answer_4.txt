@@ -1,0 +1,16 @@
+Solution: 42
+
+Explanation:
+1. Outer binding: x = 3; then r = ref (2 + 3) = ref 5.
+2. f is defined with:
+  • y = 3 * !r = 15
+  • a new inner r = ref 4 is created.
+  • f = fun u -> u + 3 + 15 + !r (using inner r).
+3. Then x is shadowed by x = 5 and y = 10.
+4. The assignment r := 2 updates the outer r to 2.
+5. Finally, f (!r * y) = f (2 * 10) = f 20:
+  20 + 3 + 15 + 4 = 42
+
+Binding stack:
+• Top-level: x = 5, y = 10, outer r = ref 2, f → closure {x = 3, y = 15, inner r = ref 4}
+• Enclosed: x = 3 (outer x) and r = ref 5 (updated later) prior to assignment.

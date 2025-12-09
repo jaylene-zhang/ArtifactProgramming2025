@@ -1,0 +1,13 @@
+**Solution:**
+
+`(6, 5)`
+
+**Explanation:**
+
+1.  **Initial `point`:** The first line `let point = (5, 4)` binds the tuple `(5, 4)` to the name `point`.
+
+2.  **`shift_point` definition:** The function `shift_point n` takes an integer `n` as input.  Crucially, it uses the *global* `point` defined earlier (5, 4). It returns a new tuple where both components of the *original* `point` (5, 4) are incremented by `n`.
+
+3.  **Redefining `point`:** The line `let point = shift_point 1` calls `shift_point 1`. `shift_point 1` evaluates to `(5 + 1, 4 + 1)` which is `(6, 5)`.  This *rebinds* the name `point` to the *new* value `(6, 5)`. However, this redefinition does not affect how `shift_point` is defined. `shift_point` is still defined in term of the original `point (5, 4)`.
+
+4.  **Evaluating `shift_point 2`:** When you call `shift_point 2`, it uses the *original global* `point` i.e. `(5, 4)`. Therefore, it calculates `(5 + 2, 4 + 2)` which simplifies to `(7, 6)`. Hence the return is `(7, 6)`. My previous answer was wrong.

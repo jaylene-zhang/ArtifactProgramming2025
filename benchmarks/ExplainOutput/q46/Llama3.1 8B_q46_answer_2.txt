@@ -1,0 +1,18 @@
+Here are the solutions:
+
+1)
+
+```ocaml
+fold f a s = match s with
+    | hd :: tl -> Cons (f hd a, fold f a tl)
+```
+
+Explanation: We are representing the stream as a recursive data structure, and the `Cons` function is being used to construct a new stream where the head is the result of `f` applied to the head of the original stream `hd` and the accumulator `a`, and the tail is the result of the recursive call to `fold f a tl`, where `tl` is the tail of the original stream.
+
+2)
+
+```ocaml
+fold f a s = Cons (a, fold f (f hd a) tl)
+```
+
+Explanation: The initial call to `f` is applied to the accumulator `a` and the head `hd` of the stream, and this result is then used as the new accumulator in the recursive call to `fold f`.

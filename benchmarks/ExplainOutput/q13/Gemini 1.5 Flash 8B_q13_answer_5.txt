@@ -1,0 +1,13 @@
+**Solution:**
+
+```OCaml
+let count = 0;;
+
+let count = count + 1;;
+```
+
+**Explanation:**
+
+Overwriting in OCaml (and many other languages) involves re-assigning a value to a variable that already exists in the same scope. In the example, the initial `let count = 0;` creates a binding. The subsequent `let count = count + 1;` updates the existing binding of `count` with a new value, completely replacing the previous one.
+
+Overshadowing, on the other hand, happens when you define a variable with the same name in a nested scope.  The inner variable "hides" the outer one.  The outer variable remains accessible only in its own scope; the inner variable *does not overwrite* the outer; it simply becomes the active binding until the inner scope ends.   Overwriting is about changing a *single* binding within a scope while overshadowing is about having *two separate* bindings active in different scopes.

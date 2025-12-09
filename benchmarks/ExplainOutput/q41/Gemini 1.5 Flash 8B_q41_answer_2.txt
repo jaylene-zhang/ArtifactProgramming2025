@@ -1,0 +1,7 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**
+
+A tail-recursive `fold_right` doesn't need to build up an accumulator in reverse order using function calls.  It directly computes the result, using the initial value passed in, making it fundamentally different than the non-tail-recursive version which can use up stack space. Thus, the type will only return the accumulated value `'b`, and not the result that would be passed to the final function call like the non-tail-recursive version.

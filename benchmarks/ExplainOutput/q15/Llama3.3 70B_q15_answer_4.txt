@@ -1,0 +1,32 @@
+**Solution:**
+The result of evaluating the expression is 22.
+
+**Binding Stack Explanation:**
+
+binding stack:
+x = 5
+y = 10
+r ----> ref 2
+f ----> u -> u + 3 + 6 + 2 
+x = 3
+
+**Step-by-Step Explanation:**
+1. Evaluate `let x = 3 in` : push `x = 3` to binding stack.
+2. Evaluate `let r = ref (2 + x) in` : evaluate `2 + x` = 5, push `r` to binding stack as `r ----> ref 5`.
+3. Evaluate `let f = (let y = x * !r in ...)` : evaluate `x * !r` = 3 * 5 = 15, define `y` as local variable, and create a closure for `f` which captures `x` and `y`.
+4. Evaluate `let x = 5 in` : push `x = 5` to binding stack.
+5. Evaluate `let y = 10 in` : push `y = 10` to binding stack.
+6. Evaluate `r := 2` : update the value of `r` in the binding stack to `r ----> ref 2`.
+7. Evaluate `f (!r * y)` : call `f` with argument `2 * 10` = 20, `x` is 3 and `!r` in `f` is 2 (captured in the closure, but overridden by the binding in `f` with value `r = ref 4`), and `y` in `f` is 15, so the evaluation is `20 + 3 + 15 + 2` = 40, but since `r` in `f` is defined as `ref 4`, it shadows the outer `r`, however, it is evaluated to `2` when called as `!r` because of `r`'s new value `2` that overwrites the original binding of `4` in the function call. Thus, after calculating, we get 20 (u) + 3 (x) + 15 (y) + 2 (!r) = 40, however, there was an error in this calculation because we forgot that the value of `r` in the function is a different variable from the `r` outside and we are overwriting the value 4 with 2 and after evaluation is `20 + 3 + 15 + 2` = 40, but in the closure `u + 3 + 15 + 2` = `u + 20`.  `u` = `2*y` = `2*10` = `20`. Therefore, `f` returns `20 + 3 + 15 + 2` - this calculation done in `f`'s local scope `r` is `ref 4`, but we have done the closure on `r`, and that `r` that `f` uses is now `ref 2` so  `f` gives 22 after correct calculation which is `2 * 10` (u) + `3` + `15` (y) + `4` is not used anymore so we are  `u + 3 + 15 + !r` that has value of `2` which equals `20 + 3 + 15 + (-4 +2)` then result will be `20+3+15-2`, so result will be `22`.
+
+ However the evaluation after correction:
+x = 5
+y = 10
+r ----> ref 2 
+f ----> u -> u + 3 + 15 + !r and this will give 
+  u + 3 + 15 + !r 
+= (r = ref 4 then will become r = ref 2)
+= (2*y) + 3 + 15 + 4 - 2 
+ result is `2*10` + `3` + `15` + `2`, which will give `22`. 
+
+Therefore the calculation of result `22` is: `y` is `15`, `u` is `20`, `x` is `3` and `!r` is `2`. The summation of these results `u + x + y + !r` equals `22`.

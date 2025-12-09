@@ -1,0 +1,95 @@
+Q1: String to Characters to String
+
+The first exercise is another practice for using higher order functions. Please implement two functions:
+
+string_explode : string -> char list
+string_implode : char list -> string
+
+string_explode turns a string into a list of characters and string_implode turns a list of characters back into a string. To implement these two functions, use a selection of the following higher-order functions: List.map, List.fold_right, List.fold_left and tabulate. tabulate is implemented for you in the prelude.
+
+You may also find the following functions from the OCaml string and char libraries useful:
+
+String.get : string -> int -> char returns the character at index n in string s.
+String.length : string -> int returns the length (number of characters) of the given string.
+Char.escaped : char -> string returns the string representation of the given character
+In order to get full marks for each question, you must use higher-order functions. Solutions using manual recursion will be capped at half marks.
+
+(*--------------------------------------------------------------*)
+(* Q1 : String to Characters to String                  *)
+(*--------------------------------------------------------------*)
+
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  raise NotImplemented
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  raise NotImplemented
+
+
+
+Q2: Bank Account
+Define a function open_account that takes an initial password as an argument and creates a bank account that stores the password, the current balance of the account (initially 0), and provides four methods, with signatures as indicated in the bank_account type:
+update_pass takes the old password as the first argument and the new password as the second argument, and updates the stored password if the provided old password is correct. It does not need to check if the old password is the same as the new password.
+deposit allows a user to deposit money into the account if the user provides the correct password.
+retrieve allows a user to retrieve money from the account if the user provides the correct password and there are sufficient funds available in the account.
+show_balance allows the user to query the account balance if the user provides the correct password.
+For all functions, you should raise an error message if the password provided is incorrect (see wrong_pass in the prelude).
+An error should also be raised if the user tries to use a negative value of money (see negative_amount in the prelude) for deposit and retrieve, but only if the provided password is correct. Likewise, another error should also be raised if the user tries to withdraw more money than what is in their account (see not_enough_balance in the prelude), but only after passing the password check. The required exceptions are provided in the prelude, and you must use them to get full credit.
+Here is an example of a sequence of function calls and the expected results with some annotations:
+
+# let a = open_account "123";;
+val a : bank_account =                 (* stored password is "123" and stored balance is 0 *)
+  {update_pass = <fun>;
+   retrieve = <fun>;
+   deposit = <fun>;
+   show_balance = <fun>}
+# a.deposit "123" 500;;
+- : unit = ()                          (* stored balance is now 0 + 500 = 500 *)
+# a.deposit "123" (-150);;
+Exception: Msg "Money amount below 0". (* no updates since the deposit failed *)
+# a.deposit "12" 50;;
+Exception: Msg "Wrong password".       (* no updates since the password was wrong *)
+# a.update_pass "123" "234";;
+- : unit = ()                          (* stored password is now "234" and balance is still 500 *)
+# a.deposit "123" 50;;
+Exception: Msg "Wrong password".       (* no updates since the password was wrong *)
+# a.show_balance "234";;
+- : int = 500                          (* show_balance does not update anything *)
+# a.deposit "234" 50;;
+- : unit = ()                          (* stored balance is now 500 + 50 = 550 *)
+# a.show_balance "234";;
+- : int = 550
+# a.retrieve "234" 100;;
+- : unit = ()                          (* stored balance is now 550 - 100 = 450 *)
+# a.retrieve "234" 500;;
+Exception: Msg "Insufficient balance". (* no updates since the retrieve failed *)
+# a.show_balance "234";;
+: int = 450
+
+(* For Question 2 *)
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+(* Errors. Please use these. *)
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+(* ------------------------------------------------------------------------*)
+(* Q2 : Bank Account *)
+(* ------------------------------------------------------------------------*)
+
+let open_account (pass: password) : bank_account =
+  raise NotImplemented
+;;
+
+

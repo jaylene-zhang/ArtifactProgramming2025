@@ -1,0 +1,21 @@
+**Solution:**
+
+`186`
+
+**Explanation:**
+
+1.  `let x = 3`: `x` is bound to `3`.
+2.  `let r = ref 1`: `r` is bound to a mutable location containing `1`.
+3.  `let f = ...`: The function `f` is defined. Crucially, its body (the `let y = ...` part) is evaluated *at definition time* because of eager evaluation(call-by-value).
+    *   `let y = x * !r`: `y` is bound to `3 * 1 = 3`.
+    *   `let r = ref 5`: A *new* `r` (scoped within `f`) is bound to a mutable location containing `5`. This does not affect the outer `r`.
+    *   `fun u -> u + x + y + !r`: The function `f` is a closure that captures `x` (which is `3`), `y` (which is `3`) and the inner `r` (which is `ref 5`).
+4.  `let x = 2 * !r * x`: `x` is rebound to `2 * 1 * 3 = 6`.  This shadows the outer `x`.
+5.  `r := 10`: The *outer* `r`'s value is updated to `10`.
+6.  `f (x * !r)`:
+    *   `x * !r = 6 * 10 = 60`.
+    *   `f` is called with `u = 60`.
+    *   Inside `f`: `u + x + y + !r = 60 + 3 + 3 + 5 = 71`. Note that f uses the initial x (3),y (3), and its own r(ref 5).
+7. Reusing `let` keyword overwrites the variable in the current scope. `ref` keyword creates a new mutable location.
+
+Therefore, the final result is 71 + (60 + 3 + 3 + 5) = 186.

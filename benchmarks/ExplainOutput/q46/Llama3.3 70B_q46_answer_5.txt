@@ -1,0 +1,8 @@
+**1. `f (hd s) a`**
+**2. `fold f (f (hd s) a) (tl s)`**
+
+Explanation: 
+
+To implement the fold function on a stream, we need to apply the function `f` to the head of the stream and the initial value `a` for the first element of the output stream (`blank 1`). 
+
+For the tail of the output stream (`blank 2`), we recursively call `fold` with `f` applied to the head of the stream and the initial value `a`, and pass the tail of the stream. This ensures that each element of the output stream is computed based on the corresponding prefix of the input stream.

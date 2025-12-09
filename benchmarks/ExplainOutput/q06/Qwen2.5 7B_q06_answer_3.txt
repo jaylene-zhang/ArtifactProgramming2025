@@ -1,0 +1,18 @@
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let w = w in fun y -> w + 2 + y * w
+```
+
+Explanation:
+1. We inline `w * 2` to replace `x` with `w * 2`.
+2. The first `let x = w * 2` becomes `let w = w * 2`.
+3. The `let w = x` is then replaced by `let w = w * 2`.
+4. The remaining occurrences of `x` are replaced by `w * 2`.
+
+The resulting program is:
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let w = w in fun y -> w + 2 + y * w
+```

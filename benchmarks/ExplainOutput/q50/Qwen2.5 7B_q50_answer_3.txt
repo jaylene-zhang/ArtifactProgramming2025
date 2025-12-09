@@ -1,0 +1,11 @@
+**Correct Implementation: c)**
+
+**Explanation:**
+- The correct tail-recursive implementation of `fold_right` is provided by option **c)**. This implementation ensures that the continuation function is properly composed so that the function `f` is applied in the correct order.
+- In option **c)**, the continuation `(fun r -> f x (cont r))` correctly applies `f` to the head of the list `x` and the result of the continuation `(cont r)`, which ensures the correct order of function application and maintains the behavior of `fold_right`.
+
+- **Option a)** incorrectly applies the function `f` after passing the continuation `cont` to the tail, losing the current element `x`.
+
+- **Option b)**, **d)**, and **e)** all incorrectly handle the order of function application or the tail continuation, which would result in incorrect behavior for `fold_right`.
+
+Thus, **c)** correctly implements a tail-recursive version of `fold_right`.

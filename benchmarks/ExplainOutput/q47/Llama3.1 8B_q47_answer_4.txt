@@ -1,0 +1,21 @@
+Here are the answers and explanations:
+
+**Correct solution:**
+```
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (x ^ " " ^ s)
+  in aux l ""
+```
+**Explanation:**
+
+The correct solution is a) because it:
+
+1. Uses a helper function `aux` to accumulate the concatenated string.
+2. Traverses the input list `l` from head to tail using pattern matching.
+3. In the recursive case, it adds the current element `x` and a space to the accumulator string `s`, and recursively calls `aux` with the tail `xs` and the updated accumulator string.
+4. In the base case, when the list is empty `[]`, it returns the final accumulator string `s`.
+5. The initial call to `aux` starts with an empty string `""` as the initial accumulator.
+
+The key point here is that the recursive call is made with the entire tail `xs` of the list, not just the tail up to the empty list, which makes the function tail-recursive.

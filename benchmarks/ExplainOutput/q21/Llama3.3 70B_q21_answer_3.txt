@@ -1,0 +1,5 @@
+**Solution:** 
+The unused variable is `r`.
+
+**Explanation:** 
+The variable `r` is defined but never used in the expression. The function `f` uses `y` from the outer scope and the redefined `x`, but `r` is not referenced anywhere.

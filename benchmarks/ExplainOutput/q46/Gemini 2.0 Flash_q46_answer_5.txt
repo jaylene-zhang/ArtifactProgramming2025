@@ -1,0 +1,13 @@
+**Solution:**
+
+1.  `f s.hd a`
+2.  `lazy (fold f (f s.hd a) (Stream.next s))`
+
+**Explanation:**
+
+1.  **`f s.hd a`:** This calculates the first element of the output stream. It applies the function `f` to the head of the input stream (`s.hd`) and the initial value `a`.
+
+2.  **`lazy (fold f (f s.hd a) (Stream.next s))`:** This creates the tail of the output stream.
+    *   `Stream.next s` advances to the next element in the input stream `s`.
+    *   `f s.hd a` calculates the accumulated value that will be the new initial value for the recursive call with the rest of the stream.
+    *   `lazy` makes it such that tail of the stream is not computed until it is needed.

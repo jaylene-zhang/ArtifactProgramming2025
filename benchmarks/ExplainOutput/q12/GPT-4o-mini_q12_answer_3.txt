@@ -1,0 +1,40 @@
+### Q4.1
+
+**Induction Hypothesis:** For all hands `h` and accumulators `acc`, `add_up h + acc = add_up_tr h acc`.
+
+**Base Case:** 
+Let `h = Empty`. Then,
+- `add_up Empty = 0`
+- `add_up_tr Empty acc = acc`
+
+Thus, `add_up Empty + acc = 0 + acc = acc`, which holds true since `add_up_tr Empty acc = acc`.
+
+**Step Case:** 
+Assume the hypothesis is true for some `hand h1`. Now consider `h = Hand(c, h1)` for some card `c`:
+- `add_up (Hand(c, h1)) = add_up h1 + 1` by the definition of `add_up`.
+- `add_up_tr (Hand(c, h1)) acc = add_up_tr h1 (acc + 1)` by the definition of `add_up_tr`.
+
+Now, by the induction hypothesis:
+\[ add_up h1 + acc = add_up_tr h1 acc \]
+
+Substituting this into our step case:
+\[ add_up (Hand(c, h1)) = (add_up_tr h1 acc - acc) + 1 \]
+\[ = add_up_tr h1 (acc + 1) \]
+
+Thus:
+\[ add_up (Hand(c, h1)) + acc = add_up_tr (Hand(c, h1)) acc \]
+
+This completes the inductive step.
+
+### Q4.2
+
+**Theorem 2:** For all hands `h`, `add_up h = add_up_tr h 0`.
+
+**Proof:**
+Using Theorem 1 where we substitute `acc = 0`:
+- By the induction hypothesis from Q4.1, we have `add_up h + 0 = add_up_tr h 0`.
+
+Thus, we conclude that:
+\[ add_up h = add_up_tr h 0 \]
+
+This completes the proof for Theorem 2.

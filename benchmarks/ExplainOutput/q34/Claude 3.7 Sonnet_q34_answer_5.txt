@@ -1,0 +1,8 @@
+a) False.
+The length of a function's definition doesn't determine its speed. Performance depends on the time complexity of the operations used, not the syntactic length of code.
+
+b) False.
+Actually, this makes rev1 slower, not faster. The time complexity of (@) depends on the length of the first argument, which is rev(xs) in this case. This leads to a quadratic O(n²) time complexity for rev1.
+
+c) True.
+rev2 is faster because it uses an accumulator pattern with (::) which is a constant time O(1) operation. This allows rev2 to achieve linear O(n) time complexity, while rev1 is quadratic O(n²) due to repeated list concatenation.

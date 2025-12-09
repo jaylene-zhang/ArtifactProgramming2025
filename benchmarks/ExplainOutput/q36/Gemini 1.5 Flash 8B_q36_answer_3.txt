@@ -1,0 +1,9 @@
+**Solution:**
+
+The function `f` recursively rotates the list by one position, but it does so with a slight twist.  The list is rotated one position at a time, effectively rotating the whole list by `n` positions in `n` calls.
+
+
+**Explanation:**
+
+The function `f` keeps calling itself recursively with the rotated list, essentially shifting every element in the original list by one position in every step(or every recursive call) until the list length is done.  The innermost `rotate` shifts the head to the end.  In each subsequent nested/recursive call, the list is progressively rotated.
+  For a list of five elements, `f` rotates the list four times, resulting in the list cyclically shifting to its original order.

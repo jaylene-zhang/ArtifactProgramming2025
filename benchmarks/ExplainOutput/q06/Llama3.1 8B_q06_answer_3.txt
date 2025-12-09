@@ -1,0 +1,23 @@
+**Inlined Program**
+```ocaml
+let foo w =
+  let w = w * 2 in
+  fun y -> (w * 2) + 2 + y * w
+```
+
+However, this is not the final inlined result because there is still a reference to `w`. To perform the full substitution, we need to replace `w` with `w * 2` everywhere in the function.
+
+**Final Inlined Program**
+```ocaml
+let foo w =
+  (w * 2) + 2 + y * (w * 2)
+```
+However, the replacement of `w` is incorrect since `y` is not defined. To perform the final inlining, we should replace all the occurrences of `x` with `w * 2` followed by replacing `w` with `3` and `x` with `2*(3 * 2)` then replace `w` with `6` and `x` with `12` after that we got the exact program that needs to be evaluated.
+
+However the question asks about replacing the `let w = x in fun x -> w* y* x` instead. Therefore we can simply replace `x` with `w* 2` in both `w = x` and `x` in ` fun x -> w*2 + x` and again `3` with `3 * 2` then get the result.
+
+**Final Inlined Program**
+```ocaml
+let x = 3 * 2 in
+  fun y -> (3 * 2) * y * (3 * 2)
+```

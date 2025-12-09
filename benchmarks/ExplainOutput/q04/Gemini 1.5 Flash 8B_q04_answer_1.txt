@@ -1,0 +1,16 @@
+The correct answer is **3**.
+
+**Solution:**
+
+```ocaml
+let check_prime_factors x l =
+List.exists (fun e -> e = prime_fact x) l
+```
+
+**Explanation:**
+
+Option 3  uses `List.exists`, which iterates through the input list `l`. For each element `e` in the list, it checks if it's equal to the prime factorization of `x` (computed only once). If any element matches, `List.exists` returns `true`; otherwise, it returns `false`. This efficiently avoids recomputing `prime_fact x` for each element in the list.
+
+The other options either recalculate `prime_fact x` for each element, or have other issues with how they handle the list.
+
+Option 1  recomputes `prime_fact x` in `test l` for each iteration of the recursive function, while Option 2 modifies the function to call recursive function on an empty list. Option 4 is missing the list argument and the necessary currying to be complete within ocaml.

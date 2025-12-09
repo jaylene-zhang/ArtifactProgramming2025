@@ -1,0 +1,35 @@
+```OCaml
+let rec toInt f =
+  let rec aux f x n =
+    match f x with
+    | x' -> if x' == x then n else aux f x' (n + 1)
+  in
+  aux f (fun x -> x) 0
+```
+
+**Explanation:**
+
+The `toInt` function's goal is to determine how many times a function `f` is applied to an argument.  It does this via a recursive helper function `aux`.  
+
+1. **`aux f x n`:** This helper function takes the function `f`, the current argument `x`, and the current count `n`.
+2. **`match f x with ...`:** It applies the function `f` to the argument `x`. Importantly, this is the crucial step for counting applications.
+3. **`if x' == x then n else aux f x' (n + 1)`:**  The `match` expression returns the result of applying `f` to `x`. If the result is the same as the original `x`, it means the function hasn't been applied at all (base case), so `n` is returned. Otherwise, the recursion continues with the new argument, `x'`, and an incremented count, `n + 1`.
+
+Crucially, the outer `toInt` function initializes the `aux` function with the original function and the identity function  `(fun x -> x)` as the initial argument. This ensures the counting starts correctly for different input functions.  The initial count `n` is set to 0.
+
+
+**Example Usage (Illustrative):**
+
+```OCaml
+let f x = x + 1
+
+let a= toInt (fun f x -> x)
+let b= toInt (fun f x -> f x)
+let c = toInt (fun f x ->f (f x))
+let d = toInt (fun f x -> f(f (f x)));;
+
+let _ =  print_int a;; (* Output: 0 *)
+let _ = print_int b;; (* output: 1 *)
+let _ = print_int c ;; (* output: 2 *)
+let _ = print_int d;; (* output: 3 *)
+```

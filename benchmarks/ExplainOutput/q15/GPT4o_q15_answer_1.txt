@@ -1,0 +1,77 @@
+**Solution:**
+
+The result of the expression is **76**.
+
+### Explanation with Binding Stack:
+
+1. **`let x = 3`:**  
+   Binding stack:  
+   `x = 3`
+
+2. **`let r = ref (2 + x)`:**  
+   `x = 3`, so `r = ref (2 + 3) = ref 5`.  
+   Binding stack:  
+   ``` 
+   r ----> ref 5
+   x = 3
+   ```
+
+3. **`let f = (let y = x * !r in let r = ref 4 in fun u -> u + x + y + !r)`:**  
+   - `x = 3`, `!r = 5`, so `y = x * !r = 3 * 5 = 15`.  
+   - A new local `r` is created as `ref 4`.  
+   - `f` is a function `fun u -> u + x + y + !r`. So, `f` captures:
+     - `x = 3`
+     - `y = 15`
+     - `r ----> ref 4`  
+
+   Binding stack:
+   ``` 
+   f ----> u -> u + x + y + !r
+   r ----> ref 5
+   x = 3
+   ```
+
+4. **`let x = 5`:**  
+   Shadow `x` with a new value `5`.  
+   Binding stack:
+   ``` 
+   x = 5
+   f ----> u -> u + x + y + !r
+   r ----> ref 5
+   ```
+
+5. **`let y = 10`:**  
+   Introduce a new `y` with value `10`.  
+   Binding stack:
+   ``` 
+   y = 10
+   x = 5
+   f ----> u -> u + x + y + !r
+   r ----> ref 5
+   ```
+
+6. **`r := 2`:**  
+   Mutate `r` to `ref 2` (change the previously existing `r`).  
+   Binding stack (updates `r` value):  
+   ``` 
+   y = 10
+   x = 5
+   f ----> u -> u + x + y + !r
+   r ----> ref 2
+   ```
+
+7. **`f (!r * y)`:**  
+   - `!r = 2`.  
+   - `y = 10`. So, `!r * y = 2 * 10 = 20`.  
+   - Call `f 20`.  
+
+   Inside `f`:  
+   - `u = 20`.
+   - `x = 3` (captured lexically when `f` was defined).  
+   - `y = 15` (captured lexically when `f` was defined).  
+   - `!r = 4` (local `r` in `f`).  
+
+   Compute `u + x + y + !r = 20 + 3 + 15 + 4 = 76`.
+
+### Final Result:
+The value of the entire expression is **76**.

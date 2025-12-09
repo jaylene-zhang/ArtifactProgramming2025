@@ -1,0 +1,14 @@
+a) Yes  
+b) No  
+c) No  
+d) Yes  
+
+**Explanation:**
+
+a) This implementation stores the result of `prime_fact x` in `p` and then checks against this stored value for all elements in the list using `List.exists`, thus invoking `prime_fact` only once.
+
+b) Here, `prime_fact x` is called for every iteration of `List.exists`, leading to multiple computations of the prime factorization when checking each element.
+
+c) Similar to (b), `prime_fact x` is called for each recursive call if the head of the list does not match, resulting in redundant computations.
+
+d) In this implementation, `prime_fact x` is again computed once and stored in `p`, and a helper function `test` recursively checks the list, hence calling `prime_fact` just once.

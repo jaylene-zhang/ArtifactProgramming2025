@@ -1,0 +1,3 @@
+**No**
+
+This approach will not work because the base case of the induction is not true: `length (rev_tl [] []) = length []` is 0 = 0, which is true, but `rev_tl` is not defined for an empty list and an non-empty list as its second argument, it should be defined for a list and an accumulator. The correct statement to prove should be `length (rev l) = length l`, with `rev` defined using `rev l = rev_tl l []`.

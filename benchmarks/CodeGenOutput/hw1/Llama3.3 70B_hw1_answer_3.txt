@@ -1,0 +1,28 @@
+### Q1: Distance Function Correction
+
+```ocaml
+let distance (x1, y1) (x2, y2) =
+  abs (y2-y1) + abs (x2 - x1)
+```
+
+### Q2: Binomial Coefficient Implementation
+
+```ocaml
+let binomial n k =
+  let rec factorial x =
+    if x = 0 then 1
+    else x * factorial (x - 1)
+  in
+  factorial n / (factorial k * factorial (n - k))
+```
+
+### Q3: Lucas Number Calculation
+
+```ocaml
+let lucas n =
+  let rec lucas_helper a b n =
+    if n = 0 then a
+    else lucas_helper b (a + b) (n - 1)
+  in
+  lucas_helper 2 1 n
+```

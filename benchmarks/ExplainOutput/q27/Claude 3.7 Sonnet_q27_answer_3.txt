@@ -1,0 +1,13 @@
+Functional languages avoid state variables and imperative programming because:
+
+1. Easier reasoning about code: Pure functions without side effects always produce the same output for the same input, making programs more predictable and easier to understand.
+
+2. Concurrency benefits: Without mutable state, concurrent programs avoid race conditions and deadlocks naturally.
+
+3. Referential transparency: Expressions can be replaced with their values without changing program behavior, enabling compiler optimizations.
+
+4. Better testability: Pure functions are easier to test in isolation since they depend only on their inputs.
+
+5. Equational reasoning: Code can be transformed using algebraic rules, similar to mathematical equations.
+
+The functional paradigm emphasizes expressing computation as the evaluation of expressions rather than sequences of state changes.

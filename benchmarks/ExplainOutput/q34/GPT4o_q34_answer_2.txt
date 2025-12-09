@@ -1,0 +1,17 @@
+### **Answers:**
+
+**a) False**
+
+Having a shorter definition does not necessarily imply that a function is faster. Efficiency depends on the operations used, not on the length of the code. For `rev1`, the `(@)` operation creates new lists and traverses the entire first argument repeatedly, leading to inefficient performance.
+
+---
+
+**b) False**
+
+`rev1` is slower, not faster, because the time complexity of the `(@)` operator is proportional to the length of its first argument. In each recursive call of `rev1`, the `(@)` operator traverses the intermediate reversed list, resulting in an overall quadratic time complexity `O(n^2)` for the entire function.
+
+---
+
+**c) True**
+
+`rev2` is faster as it uses an accumulator (`acc`) and constructs the reversed list incrementally with the constant-time `(::)` operator. The tail-recursive function `go` has linear time complexity `O(n)`, making it more efficient than `rev1`.

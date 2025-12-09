@@ -1,0 +1,22 @@
+Solution:  
+42  
+
+Explanation (concise):  
+1. x = 3  
+2. r = ref (2 + x) ⇒ r = ref 5  
+3. Define f:  
+   - y = x * !r ⇒ 15  
+   - r (new) = ref 4  
+   - f = fun u → u + x + y + !r  (captures x=3, y=15, r=ref 4)  
+4. Now x = 5, y = 10  
+5. r := 2  (this mutates the original r=ref 5 to ref 2)  
+6. !r * y = 2 × 10 = 20  
+7. f(20) = 20 + 3 + 15 + 4 = 42  
+
+Binding Stack Illustration (from top to bottom):
+• x = 5  
+• y = 10  
+• r = ref 2  
+• f → fun u → u + x + y + !r  (where x=3, y=15, r=ref 4 in f’s closure)  
+• x = 3  
+• r = ref 5  

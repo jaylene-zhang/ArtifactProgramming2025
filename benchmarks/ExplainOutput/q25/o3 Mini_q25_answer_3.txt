@@ -1,0 +1,3 @@
+Solution: The only general instantiation is to let 't, 's, and 'u all be the same type, say 'α.
+
+Explanation: Since f is applied to (a, b) with a: 't and b: 's, f(a, b) has type 'u. But the expression f(b, a) has b: 's as its first argument and a: 't as its second argument, so for f to accept (b, a), we need 't = 's. Then, when f is applied to (f(a, b), f(b, a)), both components have type 'u, but f expects a pair of type ('t * 's). Thus, 'u must equal both 't and 's, i.e. 't = 's = 'u = 'α.

@@ -1,0 +1,5 @@
+Solution:
+Assume the property holds for an arbitrary list l (inductive hypothesis) and prove that for any element x, the property holds for x :: l.
+
+Explanation:
+In the step case, you show that if the property is true for any list l, then adding an element to the front (forming x :: l) preserves the property. This completes the induction step.

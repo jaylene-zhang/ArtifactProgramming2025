@@ -1,0 +1,7 @@
+Solution: 1 and 4 compute prime_fact only once.
+
+Explanation:
+1. Computes prime_fact x once as p, then uses this value in all iterations of the test function.
+2. Recomputes prime_fact x in each recursive call, which could happen multiple times.
+3. Computes prime_fact x only once, but it happens inside the function passed to List.exists, which means it would be recomputed for each element in the list.
+4. Computes prime_fact x once and stores it in p, then uses this value in the function passed to List.exists.

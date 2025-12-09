@@ -1,0 +1,8 @@
+Solution:
+--------------------------------------------------------------------------------
+let x = ref 10 in
+x := 20
+
+Explanation:
+--------------------------------------------------------------------------------
+Overwriting changes the value stored in the same memory location (here, a ref). Overshadowing, on the other hand, introduces a new identifier in the current scope that hides any previous binding of the same name, without modifying the old value’s location.

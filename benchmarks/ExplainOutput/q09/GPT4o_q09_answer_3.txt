@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let x = 5 ;;
+let x = x + 1 ;; (* This is overshadowing *)
+let y = x * 2 ;;
+```
+
+**Explanation:**
+
+Overshadowing happens on the second line where we redefine `x`. The first `x` is bound to `5`, but the second `x` overshadows it and is assigned the value `6` (`5 + 1`). The initial `x` (value `5`) is no longer accessible after the second declaration.

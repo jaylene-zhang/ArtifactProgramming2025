@@ -1,0 +1,5 @@
+**Solution:**  
+Functional languages avoid state variables and imperative-style programming to maintain immutability, promote referential transparency, and ensure easier reasoning about code, testing, and parallelism.
+
+**Explanation:**  
+State variables can introduce side effects, making it hard to predict program behavior and reason about the code. Immutability and functional purity allow functions to depend solely on inputs, facilitating debugging, optimization (e.g., memoization), and safer concurrency through avoidance of race conditions.

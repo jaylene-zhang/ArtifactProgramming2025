@@ -1,0 +1,34 @@
+## Question 8: Counting letters
+
+**Base Case:** _w = Const y_
+
+*   _count (Const y) x + acc = (if x = y then 1 else 0) + acc = if x = y then 1 + acc else acc_
+*   _count' (Const y) x acc = if x = y then 1 + acc else acc_
+
+Therefore, _count (Const y) x + acc = count' (Const y) x acc._
+
+**Step Case:** _w = Op (w1, w2)_
+
+*   **Induction Hypothesis:**
+    *   _count w1 x + acc = count' w1 x acc_
+    *   _count w2 x + acc = count' w2 x acc_
+
+*   **Proof:**
+    ```
+    count (Op (w1, w2)) x + acc
+    = (count w1 x + count w2 x) + acc                        (by definition of count)
+    = count w1 x + (count w2 x + acc)                        (by associativity of +)
+    = count w1 x + (count' w2 x acc)                         (by IH on w2)
+    = (count w1 x + (count' w2 x acc)) + 0                   (adding zero)
+    = count w1 x + (count' w2 x acc) + 0                     (associativity)
+    = (count w1 x + count' w2 x acc) + 0                    (rearranging bracket)
+    = count w1 x + (count' w2 x acc)                         (identity with zero)
+    = count' w1 x (count' w2 x acc)                          (by IH on w1 after moving all the acc)
+    = count' (Op (w1, w2)) x acc                             (by definition of count')
+    ```
+
+Therefore, _count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc._
+
+**Theorem 2 (Main Result):**
+
+_count w x = count w x + 0 = count' w x 0_ (by Theorem 1).

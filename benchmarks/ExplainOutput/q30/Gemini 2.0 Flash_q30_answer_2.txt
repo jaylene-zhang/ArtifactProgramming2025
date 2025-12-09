@@ -1,0 +1,11 @@
+**Solution:**
+
+`[11.; 21.; 6.]`
+
+**Explanation:**
+
+OCaml's top-level loop evaluates expressions in the order they are entered.
+
+1.  `update_sales_tax ()` does *not* change the value of `sales_tax` in a persistent way. OCaml variables are immutable after they are set using let. Thus, `sales_tax` remains 1.0.  The function `update_sales_tax` essentially calculates `sales_tax *. 2.0` but doesn't reassign the result.
+
+2.  `update_price_list price_list` calls `List.map add_tax price_list`.  `add_tax` adds `sales_tax` (which is still 1.0) to each element of `price_list`. Thus: 10.0 + 1.0 = 11.0, 20.0 + 1.0 = 21.0, and 5.0 + 1.0 = 6.0.  The result is a new list `[11.0; 21.0; 6.0]`.

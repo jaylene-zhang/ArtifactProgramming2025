@@ -1,0 +1,32 @@
+Q1.
+```ocaml
+let distance (x1, y1) (x2, y2) =
+  if x2 - x1 = 0 then (y2 - y1)
+  else if y2 - y1 = 0 then (x2 - x1)
+  else (x2 - x1) + (y2 - y1)
+```
+
+Q2.
+```ocaml
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+let binomial n k =
+  if k = 0 || k = n then factorial n
+  else factorial n / (factorial k * factorial (n - k))
+```
+
+Q3.
+```ocaml
+let rec lucas_helper params n =
+  if n = 0 then (params.l_1, params.l_2)
+  else let l_1, l_2 = lucas_helper params (n-1) in
+     if n > 1 then lucas_helper { l_1=l_2 ; l_2 = l_2 + l_1 } (n-1)
+     else (l_2, l_1)
+
+let lucas n =
+  let init = { l_1 = 2 ; l_2 = 1 } in
+  let res, _ = lucas_helper init n in
+  res
+```

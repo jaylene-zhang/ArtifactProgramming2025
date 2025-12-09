@@ -1,0 +1,3 @@
+Solution: [11.0; 21.0; 6.0]
+
+Explanation: update_sales_tax () computes 1.0 *. 2.0 (returning 2.0) without modifying sales_tax, which remains 1.0. Therefore, update_price_list applies add_tax (adding 1.0) to each element of price_list, resulting in [11.0; 21.0; 6.0].

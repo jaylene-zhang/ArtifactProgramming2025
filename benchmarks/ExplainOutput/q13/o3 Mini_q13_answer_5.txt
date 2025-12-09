@@ -1,0 +1,7 @@
+Solution:
+let counter = ref 0 in
+counter := 5;
+print_int !counter;;
+
+Explanation:
+Overwriting here means using assignment (":=") to change the content of a mutable reference. In contrast, overshadowing occurs when a new variable of the same name is declared in an inner scope, hiding the outer binding without modifying it.

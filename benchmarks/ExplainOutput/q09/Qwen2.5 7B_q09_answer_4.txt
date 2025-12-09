@@ -1,0 +1,7 @@
+```ocaml
+let x = 10 in
+let x = x + 5 in
+x
+```
+
+Explanation: Opaque overshadowing (rebinding) occurs in the second line of code where `x` is rebound to a new value (`x + 5`). The initial value of `x` (10) is shadowed by the new value (`15`), and the value `15` is the result of the program. The outer `x` is not accessible inside the inner scope where it is rebound.

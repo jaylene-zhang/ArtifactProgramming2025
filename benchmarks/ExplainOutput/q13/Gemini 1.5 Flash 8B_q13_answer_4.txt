@@ -1,0 +1,17 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+
+let x = 20;;
+
+let y = 30;;
+
+let x = 40;;
+
+print_int x;; (* Output: 40 *)
+```
+
+**Explanation:**
+
+Overwriting in OCaml (and generally in programming) refers to the assignment of a new value to a variable that already exists.  Each assignment rebinds the variable (updates the variable's association to a new value).  The earlier value is discarded. This is different from *shadowing*, which involves introducing a variable with the same name in a nested lexical scope.  The nested variable, although with the same name, does not change the binding of the outer variable.  Overwriting replaces the existing binding directly.

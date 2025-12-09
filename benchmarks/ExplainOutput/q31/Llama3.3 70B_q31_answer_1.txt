@@ -1,0 +1,14 @@
+**Only the following implementations compute the `prime_fact` function once:**
+
+- a) let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p)
+
+- d) let check_prime_factors x l =
+let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+
+**Explanation:** 
+In option a and d, the `prime_fact` function is computed once and stored in the variable `p`, and then this stored result is used for the rest of the computation. This is in contrast to options b and c, where `prime_fact x` is recomputed for each element in the list.

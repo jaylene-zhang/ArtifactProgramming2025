@@ -1,0 +1,11 @@
+The result of substituting `y` by `(f x)` in the expression is:
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> ((f w) * (f x))
+```
+
+### Explanation:
+In the given expression, `y` appears in two locations: in the definition of `w` and as part of the return expression `(f w) * y`. When we substitute `y` with `(f x)`, it affects both occurrences. The change makes `w` depend on `(f x)` instead of `y`, resulting in the modified expression. Thus, we end up with `((f w) * (f x))`, where every instance of `y` has been replaced by `(f x)`.

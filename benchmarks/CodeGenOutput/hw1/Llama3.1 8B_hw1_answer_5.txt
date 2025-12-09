@@ -1,0 +1,28 @@
+```ocaml
+(* TODO: Correct this implementation so that it compiles and returns the correct answers.*)
+let distance (x1, y1) (x2, y2) = 
+  abs (y2 - y1) + abs (x2 - x1)
+
+
+(* TODO: Correct this implementation so that it compiles and returns the correct answers.)
+let binomial n k = 
+  let factorials k acc =
+    if k = 0 then acc
+    else factorials (k - 1) (k * acc)
+  in
+  let nfac = factorials n 1 in
+  let kfac = factorials k 1 in
+  let kpfac = factorials (n - k) 1 in
+  nfac / (kfac * kpfac)
+
+
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+(* OCaml's let rec is not supported in local modules*)
+let lucas_helper (n, p1, p2) = 
+  if n = 0 then p1
+  else lucas_helper (n-1, p2, p1 + p2)
+
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n = lucas_helper (n, 1, 2)
+```

@@ -1,0 +1,18 @@
+a) **False**  
+   Solution: A shorter definition does not imply faster performance. While `rev1` has a shorter definition, its efficiency depends on the operations used, not the brevity of the code.
+
+   Explanation: The `(@)` operator in `rev1` is costly in terms of performance because it has to traverse the entire first list for each element appended. This leads to a higher time complexity compared to `rev2`.
+
+---
+
+b) **False**  
+   Solution: The time complexity of `(@)` does depend on the length of its first argument, not the second.
+
+   Explanation: When using `rev1`, the repeated usage of `(@)` causes the function to scale quadratically because for each recursion step, it appends the reversed result (`O(n)`) to a new list. This makes `rev1` slower.
+
+---
+
+c) **True**  
+   Solution: `rev2` is faster than `rev1` because it uses the `(::)` operation, which is constant time (`O(1)`), to efficiently build the reversed list.
+
+   Explanation: The use of an accumulator in `rev2` ensures the reversal happens in linear time (`O(n)`). By avoiding the expensive `(@)` operation, `rev2` is more performant.

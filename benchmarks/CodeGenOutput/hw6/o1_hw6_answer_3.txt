@@ -1,0 +1,91 @@
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | x :: xs ->
+    match f x with
+    | None -> None
+    | Some y ->
+      match traverse f xs with
+      | None -> None
+      | Some ys -> Some (y :: ys)
+
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match fm with
+  | Just f ->
+    (match mx with
+     | Just x -> Just (f x)
+     | Nothing -> Nothing)
+  | Nothing -> Nothing
+
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  let open Maybe in
+  match m1 with
+  | Just v1 ->
+    (match m2 with
+     | Just v2 -> Just (v1, v2)
+     | Nothing -> Nothing)
+  | Nothing -> Nothing
+
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t)
+    ((x, y) : 'a1 * 'a2) : ('b1 * 'b2) Maybe.t =
+  let open Maybe in
+  match p1 x with
+  | Just x' ->
+    (match p2 y with
+     | Just y' -> Just (x', y')
+     | Nothing -> Nothing)
+  | Nothing -> Nothing
+
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match a with
+  | Just x -> Just (f x)
+  | Nothing -> Nothing
+
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  let open Maybe in
+  match l with
+  | [] -> return []
+  | x :: xs ->
+    f x >>= fun y ->
+    traverse' f xs >>= fun ys ->
+    return (y :: ys)
+
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist = CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+
+let church_to_nat (c : 'a church) : nat =
+  c Z (fun n -> S n)
+
+let rec nat_to_church (n : nat) : 'a church =
+  match n with
+  | Z -> (fun z _ -> z)
+  | S n' -> (fun z s -> s (nat_to_church n' z s))
+
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  copt (fun x -> Some x) (fun () -> None)
+
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  fun sc fc ->
+    match m with
+    | Some x -> sc x
+    | None -> fc ()
+
+let rec clist_to_list (CList clist : ('a, 'r) clist) : 'a list =
+  clist (fun x xs -> x :: clist_to_list xs) (fun () -> [])
+
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  match l with
+  | [] -> CList (fun _ nil -> nil ())
+  | x :: xs ->
+    let cxs = list_to_clist xs in
+    CList (fun cons nil -> cons x cxs)
+
+let rec map_clist (f : 'a -> 'b) (CList c : ('a, 'r) clist) : ('b, 'r) clist =
+  CList (fun cons nil ->
+    c (fun x xs -> cons (f x) (map_clist f xs)) (fun () -> nil ()))

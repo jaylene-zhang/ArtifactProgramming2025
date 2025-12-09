@@ -1,0 +1,84 @@
+let tree_depth_cps t =
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun dl ->
+        depth_helper r (fun dr ->
+          sc (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+let find_subtree_cps ls tree =
+  let rec helper prefix node sc fc =
+    match prefix, node with
+    | [], _ -> sc node
+    | _, Empty -> fc ()
+    | hd :: tl, Tree(l, x, r) ->
+      if x = hd then
+        if tl = [] then sc node
+        else helper tl l sc (fun () -> helper tl r sc fc)
+      else
+        helper prefix l sc (fun () -> helper prefix r sc fc)
+  in
+  helper ls tree (fun found -> Some found) (fun () -> None)
+
+type token = 
+  | INT of int
+  | PLUS
+  | STAR
+  | CARET
+  | LPAREN
+  | RPAREN
+
+type expr =
+  | Const of int
+  | Plus of expr * expr
+  | Times of expr * expr
+  | Pow of expr * expr
+
+let rec eval e v =
+  match e with
+  | Const n -> n
+  | Plus (e1, e2) -> eval e1 v + eval e2 v
+  | Times (e1, e2) -> eval e1 v * eval e2 v
+  | Pow (e1, e2) -> int_of_float ((float_of_int (eval e1 v)) ** (float_of_int (eval e2 v)))
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  let rec parseE tokens fc sc =
+    parseT tokens fc (fun rest e1 ->
+      match rest with
+      | PLUS :: rest' ->
+        parseE rest' fc (fun out e2 ->
+          sc out (Plus (e1, e2)))
+      | _ -> sc rest e1)
+  and parseT tokens fc sc =
+    parseF tokens fc (fun rest f1 ->
+      match rest with
+      | STAR :: rest' ->
+        parseT rest' fc (fun out f2 ->
+          sc out (Times (f1, f2)))
+      | _ -> sc rest f1)
+  and parseF tokens fc sc =
+    parseP tokens fc (fun rest p1 ->
+      match rest with
+      | CARET :: rest' ->
+        parseF rest' fc (fun out p2 ->
+          sc out (Pow (p1, p2)))
+      | _ -> sc rest p1)
+  and parseP tokens fc sc =
+    match tokens with
+    | INT n :: rest -> sc rest (Const n)
+    | LPAREN :: rest ->
+      parseE rest fc (fun out e ->
+        match out with
+        | RPAREN :: out' -> sc out' e
+        | _ -> fc ())
+    | _ -> fc ()
+  in
+  parseE t (fun () -> None) (fun leftover expr ->
+    match leftover with
+    | [] -> Some expr
+    | _ -> None)

@@ -1,0 +1,16 @@
+### Example of Overwriting in OCaml:
+```ocaml
+let x = 10
+let x = 20  (* This overwrites the previous definition of x *)
+```
+
+### Explanation:
+In OCaml, overwriting occurs when a variable is redefined in the same scope with a new value, effectively replacing the original value. In the example, `x` is first set to `10` and then redefined to `20`. 
+
+Overshadowing, on the other hand, happens when a variable defined in a local scope has the same name as a variable in an outer scope. In this case, the local variable "shadows" the outer one, but does not change it. For instance:
+```ocaml
+let x = 10 in
+  let x = 20 in
+    x  (* This x is 20, but the outer x is still 10 *)
+```
+Here, the inner `x` shadows the outer one, but both exist simultaneously instead of one overwriting the other.

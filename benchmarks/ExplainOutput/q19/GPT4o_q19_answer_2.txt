@@ -1,0 +1,12 @@
+### Solution:
+
+No, the implementation is **not correct** and is **not tail-recursive**.
+
+### Explanation:
+
+1. **Correctness:**
+   - The function `helper` computes powers of 2 recursively by multiplying `2 * helper (n / 2)` until `n mod 2` becomes `1`. While it computes powers of 2, it is incorrectly structured because it always returns the result `2^k` directly, not tailored to `k` specific to the input `n`.
+   - Also, `helper 1 n` appears to invoke `helper` incorrectly (the parameter count of `helper` raises issues).
+
+2. **Tail-recursion:**
+   - The implementation of `helper` is **not tail-recursive** because there is a pending multiplication (`2 * ...`) operation after the recursive function call `helper (n / 2)`. This leads to the accumulation of stack frames, hence it's not tail-call optimized.

@@ -1,0 +1,22 @@
+### Solution:
+#### Overwriting Example:
+```ocaml
+let x = 10
+let x = 20
+```
+
+Explanation:
+- **Overwriting** involves re-declaring a variable (e.g., `x`) in the same scope or context, replacing its previous value. In the example above, `x` initially has the value `10`, but it is "overwritten" with the value `20`.
+  
+#### Overshadowing:
+- In contrast, **overshadowing** occurs when a variable declared in an inner scope (e.g., inside a function or block) has the same name as a variable in an outer scope. The inner variable "shadows" the outer one for the duration of its scope.
+
+Example of overshadowing:
+```ocaml
+let x = 10
+let f () =
+  let x = 20 in
+  x
+```
+
+Above, the `x` inside the function `f` *overshadows* the outer `x` only within the function. However, outside `f`, `x` is still `10`.

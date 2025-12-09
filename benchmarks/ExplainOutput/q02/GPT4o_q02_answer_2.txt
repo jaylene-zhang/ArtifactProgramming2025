@@ -1,0 +1,6 @@
+**Solution:**
+
+The program is ill-typed.
+
+**Explanation:**
+The type of the `repeat` function cannot be determined as it leads to an infinite type. Specifically, the application `f (repeat f)` implies that `f` must take itself as an argument with the same type, which creates an unresolvable circular type dependency. This makes the program ill-typed in OCaml.

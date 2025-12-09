@@ -1,0 +1,16 @@
+### Solutions:
+1. **a)** `prime_fact` is computed once.  
+   - **Explanation**: The result of `prime_fact x` is stored in the variable `p`, and `List.exists` uses `p` in its comparisons without recomputing `prime_fact`.
+
+2. **b)** `prime_fact` is computed multiple times.  
+   - **Explanation**: `prime_fact x` is called inside the lambda function passed to `List.exists`, and it is recomputed on every comparison as the list is processed.
+
+3. **c)** `prime_fact` is computed multiple times.  
+   - **Explanation**: `prime_fact x` is evaluated within the recursive function for each element in the list, so it does not cache the result.
+
+4. **d)** `prime_fact` is computed once.  
+   - **Explanation**: The result of `prime_fact x` is stored in `p` before calling the inner `test` function, which uses `p`, avoiding repeated computation.
+
+### Final Answer:
+**Single computation of `prime_fact`: a and d**  
+**Multiple computations of `prime_fact`: b and c**

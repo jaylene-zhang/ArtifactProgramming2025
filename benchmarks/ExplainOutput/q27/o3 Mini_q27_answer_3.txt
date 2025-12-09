@@ -1,0 +1,3 @@
+Solution: Functional languages avoid mutable state to preserve immutability and referential transparency.
+
+Explanation: This prevents side effects, making functions easier to reason about, test, and optimize.

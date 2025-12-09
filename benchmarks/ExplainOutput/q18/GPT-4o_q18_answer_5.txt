@@ -1,0 +1,3 @@
+**Solution:** `(7, 6)`
+
+**Explanation:** The program redefines `point` after shifting it by 1. Initially, `point` was `(5, 4)`, but after `let point = shift_point 1`, it becomes `(6, 5)` because `shift_point 1` adds 1 to both components. When `shift_point 2` is executed, it uses the new value of `point` (`(6, 5)`) and adds 2 to each component, resulting in `(7, 6)`.

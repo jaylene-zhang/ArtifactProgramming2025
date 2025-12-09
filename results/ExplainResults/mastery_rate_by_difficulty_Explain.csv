@@ -1,0 +1,31 @@
+model,difficulty,total_attempts,mastery_count,proficient_count,mastery_rate,proficient_rate
+Claude 3.7 Sonnet,1,80,58,7,0.72,0.09
+Claude 3.7 Sonnet,2,45,18,17,0.4,0.38
+Claude 3.7 Sonnet,3,0,0,0,0,0
+GPT-4o,1,80,51,4,0.64,0.05
+GPT-4o,2,45,16,9,0.36,0.2
+GPT-4o,3,0,0,0,0,0
+GPT-4o-mini,1,80,41,13,0.51,0.16
+GPT-4o-mini,2,45,16,2,0.36,0.04
+GPT-4o-mini,3,0,0,0,0,0
+Gemini 1.5 Flash 8B,1,80,37,14,0.46,0.18
+Gemini 1.5 Flash 8B,2,45,9,7,0.2,0.16
+Gemini 1.5 Flash 8B,3,0,0,0,0,0
+Gemini 2.0 Flash,1,76,44,14,0.58,0.18
+Gemini 2.0 Flash,2,45,10,18,0.22,0.4
+Gemini 2.0 Flash,3,0,0,0,0,0
+Llama3.1 8B,1,80,25,13,0.31,0.16
+Llama3.1 8B,2,45,6,3,0.13,0.07
+Llama3.1 8B,3,0,0,0,0,0
+Llama3.3 70B,1,80,34,3,0.42,0.04
+Llama3.3 70B,2,45,15,4,0.33,0.09
+Llama3.3 70B,3,0,0,0,0,0
+Qwen2.5 7B,1,80,27,19,0.34,0.24
+Qwen2.5 7B,2,45,8,13,0.18,0.29
+Qwen2.5 7B,3,0,0,0,0,0
+o1,1,80,62,8,0.78,0.10
+o1,2,45,36,9,0.8,0.2
+o1,3,0,0,0,0,0
+o3-mini,1,80,60,10,0.75,0.12
+o3-mini,2,45,36,10,0.8,0.22
+o3-mini,3,0,0,0,0,0

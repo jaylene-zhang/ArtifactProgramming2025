@@ -1,0 +1,6 @@
+Solution:  
+No, it does not compute the antiderivative.  
+
+Explanation:  
+The snippet “(curry integral) f 0” simply fixes the first two arguments of integral to f and 0, leaving out the upper limit x. An antiderivative function needs to take x as input and integrate from 0 to x, for example:  
+let anti_d f x = integral f (0., x) dx  

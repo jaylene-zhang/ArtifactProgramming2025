@@ -1,0 +1,12 @@
+**Solution:**
+
+`true`
+
+**Explanation:**
+
+1.  `rc1` is initialized to a reference containing `Cons (1, ref Nil)`.
+2.  `rc2` is initialized to a reference containing `Cons (2, rc1)`.
+3.  `rc1 := !rc2` updates the content of the reference `rc1` to point to the same list that `rc2` points to.  Now `rc1` and `rc2` both reference the same `Cons (2, rc1)` list.
+4.  `get_tail rc1` returns the tail of the list referenced by `rc1`, which is `rc1` itself (as `rc1` now points to `Cons (2, rc1)`).
+5.  `get_tail rc2` returns the tail of the list referenced by `rc2`, which is also `rc1` itself (as `rc2` now points to `Cons (2, rc1)`).
+6.  Because both `get_tail rc1` and `get_tail rc2` return the *exact same* reference `rc1`, the physical equality `==` holds.

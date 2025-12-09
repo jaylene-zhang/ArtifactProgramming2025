@@ -1,0 +1,5 @@
+**Solution:** `r` (from the function arguments)
+
+**Explanation:**
+
+The variable `r` passed as an argument to the function `call` is shadowed by the `let r = 2 * y` binding inside the function. Therefore, the initial `r` is never used.

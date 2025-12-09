@@ -1,0 +1,24 @@
+Here's the analysis of each implementation:
+
+**a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)**
+
+*   **Correct.**
+
+    *   `curry (sumSeries f)` turns `sumSeries f` into a function that takes `(a, b, inc)` as separate arguments.
+    *   `curry (sumSeries f) 0` partially applies the function with the lower bound *a* as 0. Results in a function that takes `b` and `inc` as arguments.
+    *  We then swap the order of `b` and `inc` in the arguments to the function using `swap`. After the swap, the incrementation function in the argument is fixed to `fun x -> x + 1`. The result of `swap (curry (sumSeries f) 0) (fun x -> x + 1)` becomes a function that takes an upper bound `b` as an argument. This exactly matches the required type `(int -> int) -> int -> int`.
+
+**b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)**
+
+*   **Incorrect.**
+
+    *   `sumSeries f 0` is type incorrect. `sumSeries` requires a tuple `(a,b)` as the second argument, not a single integer `0`. This program would not compile.
+
+**c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0**
+
+*   **Correct.**
+
+    *   `sumSeries f` is fine and takes in the tuple `(a, b)` and the incrementing function `inc`.
+    * `swap (sumSeries f) (fun x -> x + 1)` swaps the tuple `(a,b)` and incrementor function `inc` arguments. The incrementor function is fixed to `fun x -> x + 1`.
+    *   Finally, `curry (swap (sumSeries f) (fun x -> x + 1))` turns this into a function that takes `(a, b)` as separate arguments.  Then, by applying curry, the `a` parameter is fixed to `0`. The result of `curry (swap (sumSeries f) (fun x -> x + 1)) 0` becomes a function that waits for the upper bound `b`. This matches the required type `(int -> int) -> int -> int`.
+

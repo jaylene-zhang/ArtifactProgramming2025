@@ -1,0 +1,3 @@
+**Unused variables: r**
+
+The variable `r` is assigned a value but never used in the subsequent code. The variable `x` in the outer scope is also not used because it is shadowed by the `x` in the inner scope. However, the `x` in the inner scope is used, so the `x` that is unused is the one in the function parameter of `foo`.

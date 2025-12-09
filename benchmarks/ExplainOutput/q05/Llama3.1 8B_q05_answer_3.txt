@@ -1,0 +1,9 @@
+**Solution:**
+```ocaml
+let foo y =
+let w = y + 3 in
+fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:** 
+We replaced `x` with `y + 3` in the entire function. This is because `x` is defined as `y + 3` and we're inlining that expression. The only place left to replace `x` is in the inner function, where we also replaced `x` with `y + 3`. The `let w = x` binding is eliminated because `x` is now defined directly as `y + 3`.

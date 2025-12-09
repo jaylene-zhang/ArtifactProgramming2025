@@ -1,0 +1,7 @@
+Solution:  
+  let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+
+Explanation:  
+1) The call repeat f must be passed as an argument to f, so f : 'a -> 'a.  
+2) Applying f to repeat f yields a result of type 'a, so repeat has type ('a -> 'a) -> 'a.  
+3) Although this diverges at runtime, it is still well-typed in OCaml.

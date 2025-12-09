@@ -1,0 +1,9 @@
+### Solution:
+```ocaml
+let x = 5;;
+let x = 10;;
+x + 1;;
+```
+
+### Explanation:
+Overshadowing occurs at the second `let x = 10` line. Here, the new `x` (with value `10`) overshadows the previous `x` (with value `5`). The old binding is no longer accessible. When `x + 1` is evaluated, it uses the new value `10`, resulting in `11`.

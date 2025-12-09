@@ -1,0 +1,9 @@
+```ocaml
+type ingredients = string list
+type calories = int
+type cake = Slice of (ingredients list * calories) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The `ingredients` list is already given in the previous definition.  To add calories, we create a new type called `calories`, which is of type `int`.  Then, the `Slice` constructor takes a tuple containing both the `ingredients list` and `calories`.  This tuple is then correctly typed in the revised declaration.

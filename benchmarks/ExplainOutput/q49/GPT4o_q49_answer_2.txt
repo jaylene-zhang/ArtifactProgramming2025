@@ -1,0 +1,16 @@
+Result after substitution: 
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+- The question asks us to substitute `y` with `(f x)` in the given expression.
+- `y` is used in two places: `let w = y + x` and `(f w) * y`.
+- Substituting `y` with `(f x)`:
+  - `let w = (f x) + x`
+  - `(f w) * (f x)`
+- The final result is the modified `let double` expression provided above.

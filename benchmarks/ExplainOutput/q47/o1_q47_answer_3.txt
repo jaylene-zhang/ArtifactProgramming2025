@@ -1,0 +1,8 @@
+Solution:  
+None of the given definitions simultaneously satisfy all three requirements (correct order with exactly “i feel great”, tail‐recursive, and only one pass).  
+
+Explanation (brief):  
+• (a) builds the result in reverse order.  
+• (b) is tail‐recursive and single‐pass but starts with an extra space (“ i feel great”).  
+• (c) is tail‐recursive but does two passes (it first reverses the list).  
+• (d) produces the right order but is not tail‐recursive.  

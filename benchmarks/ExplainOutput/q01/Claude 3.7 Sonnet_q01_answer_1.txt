@@ -1,0 +1,17 @@
+The most general types are:
+
+```ocaml
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: ('a * 'b) -> 'c) (sc: 'c list -> 'd):
+    'd = match xs, ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y))::r))
+| _ , _ -> raise Error
+```
+
+Explanation:
+- `xs` has type `'a list` and `ys` has type `'b list` as they are pattern matched as lists
+- `pair` has type `('a * 'b) -> 'c` as it takes a pair of elements from xs and ys and transforms it
+- `sc` has type `'c list -> 'd` as it takes a list of results from pair and returns the final result
+- The return type of zippy is `'d` matching the return type of `sc`
+
+The function accumulates results by applying pair to each element pair, building up a list through the continuation sc.

@@ -1,0 +1,14 @@
+**Solution**
+```
+exception Eval_error
+fun _ -> begin match r with
+| 10 -> (x * 2 * 10) + (x * 2 * 10) + 12
+| _ -> raise Eval_error
+end
+```
+or just `$31`
+**Explanation**
+
+The call-by-value strategy in OCaml means that the arguments to a function are evaluated immediately when they are passed to it, before the function is called. In this case, `x` is bound to 3 and `y` is bound to `3 * !r = 1`, when we assign `r = ref 5` inside `f`, it doesn't affect the result.
+
+When we then call `f (x * !r)`, `x = 2 * 5 * 3 = 30` and `r = 1`, so we have `y = 3 * 1 = 3`. Therefore, `f` evaluates to a function that takes a single argument `u` and returns `u + 3 + 3 + 5 = 11 + u.` It is then applied to the argument `x * !r = 30 * 1 = 30`, which is evaluated to `30 + 30 = $31`.

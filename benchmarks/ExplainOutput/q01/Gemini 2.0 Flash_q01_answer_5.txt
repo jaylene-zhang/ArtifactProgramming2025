@@ -1,0 +1,27 @@
+Here are the completed types:
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd = 
+  match xs , ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+*   `xs`: `'a list` - The first list can contain elements of any type `'a`.
+*   `ys`: `'b list` - The second list can contain elements of any type `'b`.
+*   `pair`: `'a * 'b -> 'c` -  The `pair` function takes a tuple of types `'a` and `'b` (elements from `xs` and `ys` respectively) and returns a value of type `'c`.
+*   `sc`: `'c list -> 'd` - The `sc` (success continuation) function takes a `'c list` (a list of the results of applying `pair`) and returns a value of type `'d`.
+*   The overall return type of `zippy` is `'d`, as it ultimately returns the result of the success continuation `sc`.
+
+The type of `zip_plus` can be inferred by the uses in `zippy`.
+`pair` is instantiated to `int * int -> int` as a plus function is used in its place.
+The return type is `int list` as a condition is posed on the length of the result `r`.

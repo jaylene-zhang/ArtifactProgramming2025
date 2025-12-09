@@ -1,0 +1,3 @@
+(0 , 1)
+
+The base case is incorrect. When `n` is 0, the function should return 0, but it currently only handles the case when `n` is 1.  The current implementation does correctly calculate triangle numbers greater or equal to 1 but fails for 0.

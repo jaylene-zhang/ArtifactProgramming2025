@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+The question asks about inlining `y + 3` for `x` within the scope `let w = x in fun y -> x + 2`. We replace all occurrences of `x` in this scope by `y + 3`. This gives the snippet shown above.

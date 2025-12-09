@@ -1,0 +1,3 @@
+**Solution:** `r`
+
+**Explanation:** The variable `r` is assigned but never used within the scope of the `foo` function. The inner `x` shadows the outer `x` declared as the fun `f` parameter and thus the outer `x` is not unused.

@@ -1,0 +1,3 @@
+Solution: (0, non-terminating recursion)
+
+Explanation: The function only checks for n = 1 as a base case, so when n = 0 the function calls triangle (-1) and recurses infinitely.

@@ -1,0 +1,8 @@
+The program `shift_point 2` will return `(7, 6)`.
+
+Explanation:
+Initially, `point` is set to `(5, 4)`. The function `shift_point n` takes a value `n` and applies it to both components of the point. In this case, for `shift_point 1`, it calculates `(component_x point + 1, component_y point + 1)` which results in `(5 + 1, 4 + 1)` yielding `(6, 5)`. After this assignment, `point` now holds `(6, 5)`. 
+
+Now when `shift_point 2` is called, it computes `(component_x point + 2, component_y point + 2)` which results in `(6 + 2, 5 + 2)` yielding `(8, 7)`. 
+
+Hence, the final result for `shift_point 2` is `(8, 7)`.

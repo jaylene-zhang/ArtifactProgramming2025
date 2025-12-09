@@ -1,0 +1,12 @@
+The unused variables in the expression are `r` and `y`.
+
+```ocaml
+let call f r y =
+  let r = 2 * y in
+  let f = fun x -> f x * y in
+    f r
+```
+
+Explanation:
+- `r` is assigned a new value `2 * y` within the scope of the `let r = 2 * y in` block and is not used elsewhere.
+- `y` is not used after it is passed to the function `call`. Both `r` and `y`'s values are shadows and not utilized outside their respective bindings.

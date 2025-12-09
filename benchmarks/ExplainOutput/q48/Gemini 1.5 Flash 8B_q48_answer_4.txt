@@ -1,0 +1,7 @@
+**Solution:**
+
+Performance, preventing stack overflow.
+
+**Explanation:**
+
+While continuations *can* transform any function to be tail-recursive, converting every List function to use them would be highly inefficient. The cost of setting up and managing continuations frequently outweighs the benefits of tail-recursion optimization in many cases.  Also,  tail-recursion optimization is most effective when a language can recognize and apply it directly.  Requiring continuation-based conversion for every list function would be overly complex.  Important considerations like performance and existing codebase structure lead to a tradeoff in prioritizing optimizations vs. simplicity.

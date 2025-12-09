@@ -1,0 +1,27 @@
+**Base Case: w = Const y**
+
+In this case, we have:
+- Left-hand side: `count (Const y) x = if x = y then 1 else 0`.
+- Right-hand side: `count' (Const y) x 0 = if x = y then 1 + 0 else 0`, which simplifies to `if x = y then 1 else 0`.
+
+Thus, `count (Const y) x = count' (Const y) x 0` holds true.
+
+**Step Case: w = Op (w1, w2)**
+
+- Left-hand side: `count (Op (w1, w2)) x = (count w1 x) + (count w2 x)`.
+- Right-hand side: `count' (Op (w1, w2)) x acc = count' w1 x (count' w2 x acc)`.
+
+**Induction Hypothesis:** Assume that `count w1 x + acc = count' w1 x acc` and `count w2 x + acc = count' w2 x acc` hold for subwords `w1` and `w2`.
+
+**Proof:**
+Using the induction hypothesis:
+- We have `count w1 x + count w2 x + acc = count' w1 x acc + count' w2 x acc = count' (Op (w1, w2)) x acc`.
+
+Thus, `count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc` holds true.
+
+**Theorem 2 (Main Result):** For any word `w` and constant `x`, we have `count w x = count' w x 0`.
+
+**Proof:** Applying Theorem 1, set `acc = 0`. From the previously established theorem, we deduce:
+- `count w x = count' w x 0`.
+
+This concludes the proof since we have shown that the property holds for the base and inductive steps.

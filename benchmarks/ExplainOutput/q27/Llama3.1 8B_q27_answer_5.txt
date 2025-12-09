@@ -1,0 +1,22 @@
+**No Sharing of Mutable State**
+
+Functional languages aim to avoid mutable state because it makes code harder to:
+
+* Reason about
+* Reproduce results
+* Debug
+* Test
+
+Shared mutable state can lead to:
+
+* Unintended effects
+* Non-deterministic behavior
+* Difficulty in testing and debugging 
+
+**Pure Functions**
+
+Functional languages promote the use of pure functions, which have no side effects and always produce the same output given the same inputs. This ensures predictable and reliable behavior.
+
+**Immutable Data**
+
+Immutable data ensures that once created, the data cannot be modified in place. This prevents unexpected behavior caused by modifying shared state.

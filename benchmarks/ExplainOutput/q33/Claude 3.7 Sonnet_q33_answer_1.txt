@@ -1,0 +1,8 @@
+The correct answer is (a).
+
+Explanation: 
+Option (a) correctly models jumps in figure skating as described. It defines a `jump_typ` as a variant type with constructors for each kind of jump (Axel, Loop, etc.), and represents the revolutions as an integer. A jump is then a pair of jump type and number of revolutions. This allows for flexibility in the number of revolutions (double, triple, or more) as mentioned in the description.
+
+Option (b) restricts revolutions to only Double and Triple, but the description states that "athletes can go over 3 rotations," so this is too limiting.
+
+Option (c) is recursive and doesn't make sense for the domain - a jump would contain another jump, which isn't how figure skating jumps are structured.

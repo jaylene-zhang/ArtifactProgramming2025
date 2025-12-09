@@ -1,0 +1,7 @@
+Solution: None of the given options correctly satisfies all requirements (right order, exact spacing, single‐pass, tail‐recursive).
+
+Explanation (brief):  
+• (a) Builds the string in reverse order.  
+• (b) Adds an unwanted leading space.  
+• (c) Requires two passes (one for reverse, one for building).  
+• (d) Is correct in order/spacing but not tail recursive.

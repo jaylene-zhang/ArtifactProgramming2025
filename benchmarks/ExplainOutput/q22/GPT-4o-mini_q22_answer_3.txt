@@ -1,0 +1,4 @@
+The unused variable in the given expression is `f`.
+
+### Explanation:
+In the expression, within the `let call` function, `f` is redefined as `let f = fun x -> f x * y`. However, this new definition of `f` leads to a recursive reference to itself (`f x`), which is never used in the rest of the function. The original parameter `f` passed to the `call` function is overshadowed and not utilized in its new definition. Thus, the redefined `f` introduces a self-reference that is never invoked.

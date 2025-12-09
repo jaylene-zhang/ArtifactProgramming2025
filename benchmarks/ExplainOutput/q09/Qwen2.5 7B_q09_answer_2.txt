@@ -1,0 +1,9 @@
+Solution:
+```ocaml
+let x = 10 in
+let x = 20 in
+x
+```
+
+Explanation:
+Occlusion (or overshadowing) happens in the second line where `x` is redefined to be `20`. The `x` in the inner `let` binding shadows (or occludes) the `x` from the outer `let` binding. When the program evaluates `x`, it returns `20`, the value from the inner binding.

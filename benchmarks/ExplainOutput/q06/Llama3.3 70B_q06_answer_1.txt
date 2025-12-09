@@ -1,0 +1,8 @@
+**Resulting Program:**
+```ocaml
+let w = 3 in
+let y = 2*(w*2) in
+fun x -> w * y * x
+```
+**Explanation:**
+The expression `w * 2` is inlined and replaces `x` in the given program. The `let x = w * 2` definition is inlined and `x` is replaced with `w * 2` in the `let y = 2 * x` expression. The resulting program is the inlined version of the original.

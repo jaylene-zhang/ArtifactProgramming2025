@@ -1,0 +1,30 @@
+Here's the solution with the most general types filled in, followed by explanations:
+
+**Solution:**
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd = 
+  match xs , ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+*   **`xs: 'a list`**:  `xs` is a list of elements of some type `'a`.  We start with the most general type 'a.
+*   **`ys: 'b list`**:  `ys` is a list of elements of some (possibly different) type `'b`. We start with the most general type 'b.
+*   **`pair: 'a * 'b -> 'c`**: `pair` is a function that takes a tuple of type `'a * 'b` (an element from `xs` and an element from `ys`) and returns a value of some type `'c`.
+*   **`sc: 'c list -> 'd`**:  `sc` (for "success continuation") is a function that takes a list of `'c` elements (the result of applying `pair` to elements from the lists) and returns a value of some type `'d`.  This allows the caller of `zippy` to determine what to do with the result.
+*   **`zippy` return type: `'d`**:  The entire `zippy` function returns a value of type `'d`, which is the result of calling the success continuation.
+
+The `zip_plus` function constrains these types further:
+
+*   The `pair` function becomes `(function (x, y) -> x + y)`, which requires that `'a` and `'b` are `int` and `'c` is also `int`.
+*   The `sc` function becomes `(fun r -> if List.length xs = List.length r then r else raise Error)`, which requires that the `sc` consumes a list of int, so `'c` should be an int, and return a list of int, so `'d` should be an `int list`. Also, the length check inside requires that `'a` is an `int` so that `xs` is `int list`.

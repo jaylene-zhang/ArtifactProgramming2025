@@ -1,0 +1,30 @@
+**Question 2 (Zip it up!) - Solution:**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+match l1, l2 with
+| [], [] -> (add (comb: 'a -> 'b -> 'c) (List.hd l1) (List.hd l2) ( [] : 'd ) )   (* Modified here *)
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation:**
+
+*   **`zip` type:** `l1` is of type `'a list`, `l2` is of type `'b list`, and the return type is `('a * 'b) list`. This allows `zip` to work with lists of any types, as long as they are consistent within each list.
+
+*   **`zipper` type:**
+    *   `comb: 'a -> 'b -> 'c`:  `comb` is a function that takes an element of type `'a` (from `l1`), an element of type `'b` (from `l2`), and returns an element of type `'c`.
+    *   `add: 'c -> 'd -> 'd`: `add` is a function that takes an element of type `'c` (the result of `comb`), a value of type `'d` (the accumulator, i.e., initially an empty list of type `d`), and returns a new accumulator of type `'d`. This is what builds the result.
+    *   `l1: 'a list`:  List of type `'a`
+    *   `l2: 'b list`:  List of type `'b`
+    *   Return type: `'d` (The type of the finally accumulated result.)
+
+*   **`zipper` implementation:**
+    *   In the base case (`[], []`), the empty accumulator of type `'d`. should be returned.
+    *   In the recursive case (`x::xs, y::ys`), we apply the `comb` function to the heads of the lists `x` and `y` to produce a value of type `'c`.  Then, the `add` function is used to add the combined value to the result of the recursive call on the tails of the lists (`xs` and `ys`). This accumulates the result.
+

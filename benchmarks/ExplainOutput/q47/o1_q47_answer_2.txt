@@ -1,0 +1,14 @@
+Solution:  
+b) let concat l =  
+     let rec aux l s =  
+       match l with  
+       | [] -> s  
+       | x :: xs -> aux xs (s ^ " " ^ x)  
+     in  
+     aux l ""  
+
+Explanation (concise):  
+• (a) correctly accumulates in tail position but reverses the order.  
+• (b) is tail-recursive and processes the list in one pass without reversing it.  
+• (c) also accumulates in tail position but first reverses the list (two passes).  
+• (d) is not tail-recursive (the concatenation happens after the recursive call).

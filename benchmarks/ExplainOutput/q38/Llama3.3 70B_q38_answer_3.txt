@@ -1,0 +1,24 @@
+## Solution
+
+The correct solutions are:
+
+c) h (g f) x
+
+This is equivalent to the following expression, which makes the order of evaluation explicit:
+
+(let z = g f in h z) x
+
+
+## Explanation
+
+To compose the functions `h` and `g`, we need to apply `g` to `f` first and then apply `h` to the result. This is because we want the resulting function to compute `f (f (f x))` when `h` and `g` are the functions that apply their argument function once and twice, respectively.
+
+Note that option c) h (g f) x is the correct way to write it, applying g to f and then h to the result, and then applying this composed function to x. 
+
+The other options do not correctly achieve the desired composition of functions. 
+
+For example, h (g (f x)) applies f to x first, then g to the result, and finally h to that result, which does not yield the desired `f (f (f x))`. 
+
+Similarly, g (f (h (f x))) applies f to x, then h to the result, and finally g to that result, which also does not yield the desired `f (f (f x))`. 
+
+And f (g (h x)) is missing one application of f. It applies g to h x and then f, which also does not yield the desired `f (f (f x))`.

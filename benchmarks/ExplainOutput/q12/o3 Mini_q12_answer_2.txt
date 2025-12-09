@@ -1,0 +1,22 @@
+Solution for Q4.1:
+• Base Case (h = Empty):  
+  add_up Empty = 0, and add_up_tr Empty acc = acc, so 0 + acc = acc.  
+• Inductive Step (h = Hand(c, h')):
+  Induction Hypothesis (IH): add_up h' + acc = add_up_tr h' acc for any acc.  
+  Then,  
+   add_up (Hand(c, h')) + acc  
+    = (add_up h' + 1) + acc  
+    = add_up h' + (1 + acc)  
+    = add_up_tr h' (1 + acc)            by IH applied with accumulator 1+acc  
+    = add_up_tr (Hand(c, h')) acc.  
+
+Explanation for Q4.1:
+We prove the statement by structural induction on h. In the base case, the functions return 0 and acc respectively, giving 0+acc = acc. In the step case, assuming the IH holds for h′, we show that adding 1 (for the current card) and the accumulator yields add_up_tr h' (1+acc), which by definition equals add_up_tr (Hand(c, h')) acc.
+
+Solution for Q4.2:
+By Theorem 1, setting acc = 0 gives:  
+  add_up h + 0 = add_up_tr h 0,  
+so add_up h = add_up_tr h 0.
+
+Explanation for Q4.2:
+The main result is a direct consequence by instantiating the accumulator with 0 in the proved general theorem.

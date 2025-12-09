@@ -1,0 +1,12 @@
+Here is the revised data type for cake:
+
+```ocaml
+type calories = int
+type slice = { ingredients : string list; calories : int }
+type cake = Slice of slice | Cake of cake * cake
+```
+
+Explanation:
+Added a new type alias `calories` as an `int` for the calorie count.
+Created a new type alias `slice` to store a list of ingredients and an associated calorie count, represented as a record.
+Updated the `cake` type to use the new `slice` type instead of just a list of ingredients.

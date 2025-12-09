@@ -1,0 +1,13 @@
+Code generation is a useful technique as we can build up functions that compute values and control when computation happens.
+
+Let's say that we want to write a function add_ack: int -> int list -> int list that adds ackermann x to each element in a given list. As computing ackermann x is very expensive, we want to be smart about it and only compute ackermann x once.
+
+The code below is the implementations of add_ack. Identify whether the program computes ackermann x at most once for a function call add_ack x l.
+
+```ocaml```
+
+let rec add_ack x l = match l with
+  | [] -> []
+  | y::ys -> ((ackermann x) + y) :: add_ack x ys
+
+```ocaml```

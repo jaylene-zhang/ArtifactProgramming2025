@@ -1,0 +1,5 @@
+```ocaml
+type cake = Slice of (float * ingredients list) | Cake of cake * cake
+```
+
+Explanation: We revise the `Slice` constructor to include a tuple with the first element being the calories of the slice and the second element being the list of ingredients. This allows us to store both calories and ingredients for each slice.

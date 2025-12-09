@@ -1,0 +1,3 @@
+Solution: Functional languages avoid state variables to maintain immutability and referential transparency.
+
+Explanation: This simplifies reasoning, testing, and parallel execution by eliminating side effects associated with mutable state.

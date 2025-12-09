@@ -1,0 +1,27 @@
+**Solution:**
+
+The function `f` swaps the first two elements of the list, and then recursively applies the same operation to the rest of the list.  It essentially shifts the first two elements one position to the right in each recursive step.
+
+
+**Explanation:**
+
+1. **Base Case:** If the list is empty, it returns an empty list, as expected.
+
+2. **Recursive Case:**
+   - `t @ [h]`: This takes the tail of the list `t` and appends the head `h` to it, effectively shifting all elements one position to the right.
+
+
+   - `rotate (t @ [h])`: This function applies the rotation to the new list, bringing the original first element `h` to the end of the the list created using  `t @ [h]`. Essentially the second item becomes first, then the function is called again with the remaining parts of the list
+
+   -  The recursive call on `rotate (t @ [h])` continues this process with the modified list. This causes a cascading series of shifts.
+
+
+**Example (with 5 elements):**
+
+Let `l = [1; 2; 3; 4; 5]`.
+
+- `f([1; 2; 3; 4; 5])` => `rotate([2; 3; 4; 5; 1])` => `[2; 3; 4; 5; 1]`
+- `f([2; 3; 4; 5; 1])` => `rotate([3; 4; 5; 1; 2])` => `[3; 4; 5; 1; 2]`
+- `f([3; 4; 5; 1; 2])` => `rotate([4; 5; 1; 2; 3])` => `[4; 5; 1; 2; 3]`
+
+and so on, shifting the first element down sequentially.  The list shifts by one elements each step.

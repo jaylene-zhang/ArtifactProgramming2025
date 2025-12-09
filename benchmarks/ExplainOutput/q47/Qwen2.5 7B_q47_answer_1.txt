@@ -1,0 +1,11 @@
+b) let concat l =
+let rec aux l s = match l with
+| [] -> s
+| x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""
+
+Explanation:
+- Option b is correct and tail-recursive. It accumulates the result string `s` in the reverse order, and then reverses it at the end (though explicitly reversing the list is not needed, as the function naturally builds the result in the correct order during the traversal).
+- Option a is incorrect because it appends to `s` in the wrong order; it would produce the sentence in reverse.
+- Option c is incorrect because it reverses the list unnecessarily, which is not a requirement.
+- Option d is not tail-recursive because the recursive call `concat xs` is not the final operation in the function; it’s followed by string concatenation, which introduces a non-tail-recursive pattern.

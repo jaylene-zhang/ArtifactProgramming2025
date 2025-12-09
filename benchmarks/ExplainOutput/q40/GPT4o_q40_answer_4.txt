@@ -1,0 +1,3 @@
+**Solution**: Yes, it is tail-recursive.
+
+**Explanation**: The function `zip_tr` is tail-recursive because its recursive call to `zip_tr fc ...` is the last operation performed within each branch of the `match` statement. All additional work (e.g., building the list via `sc`) is encapsulated in the continuation `sc`, which delays computation and ensures that the recursive call remains in tail position.

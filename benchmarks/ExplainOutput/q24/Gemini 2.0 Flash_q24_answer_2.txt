@@ -1,0 +1,19 @@
+**Solution:**
+
+`'t`
+
+**Explanation:**
+
+1.  `f (a, b)` has type `'t`:
+    *   `f` has type `('t * 't -> 't)`.
+    *   `(a, b)` has type `('t * 't)`.
+    *   Therefore, applying `f` to `(a, b)` results in a value of type `'t`.
+
+2.  `f (b, a)` has type `'t`:
+    *   Similar reasoning as above.
+
+3.  `f (f (a, b), f (b, a))` has type `'t`:
+    *   `f (a, b)` has type `'t`.
+    *   `f (b, a)` has type `'t`.
+    *   Therefore, `(f (a, b), f (b, a))` has type `('t * 't)`.
+    *   Applying `f` to this pair results in a value of type `'t`.

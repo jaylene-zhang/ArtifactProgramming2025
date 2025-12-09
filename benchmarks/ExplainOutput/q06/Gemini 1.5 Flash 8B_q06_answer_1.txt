@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in
+  fun y -> x + 2 + y * x
+```
+
+**Explanation:**
+
+The expression `w * 2` is replaced with `x` wherever it appears in the body of the function and also other occurrences of `x` are there.  The `let w = x` assignment is simply a renaming and no changes happen there after inlining.

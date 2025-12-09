@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo w =
+let x = w * 2 in
+let w = x in fun y -> w * 2 + 2 + y * w
+```
+
+**Explanation:**
+
+The code inlines `x` in `fun y -> x + 2 + y * w` by substituting `x` with its definition `w * 2`. Note that the assignment `let w = x` is not inlined preemptively, but rather the value of x is directly substituted in the expression.

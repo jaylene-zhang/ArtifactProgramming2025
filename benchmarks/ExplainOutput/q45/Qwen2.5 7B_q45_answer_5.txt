@@ -1,0 +1,9 @@
+1) For blank 1 in line 2 we should write: `ones`
+
+2) For blank 2 in line 3 we should write: `pascal.tl`
+
+### Explanation
+
+- **Blank 1**: The first diagonal in Pascal's triangle is simply a stream of 1s, which is represented by `ones`.
+
+- **Blank 2**: The second diagonal in Pascal's triangle is formed by the partial sums (prefix sums) of the first diagonal. We are given a stream `pascal` which represents the current diagonal, so `pascal.tl` gives the suspension that will compute the next diagonal when evaluated. By using `pascal.tl`, we correctly refer to the computation of the next diagonal in the recursive structure.

@@ -1,0 +1,3 @@
+**We need to prove that if the statement is true for a list of length n, it is also true for a list of length n+1.**
+
+This involves assuming the statement is true for a shorter list (the induction hypothesis) and then showing it holds for a longer list by considering the additional element.

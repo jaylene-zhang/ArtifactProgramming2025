@@ -1,0 +1,5 @@
+Solution:
+(a) and (d) compute prime_fact once, while (b) and (c) compute it multiple times.
+
+Explanation:
+In (a) and (d) the result of prime_fact x is stored in a variable (p) so that it’s computed only one time. In (b) and (c) the function prime_fact x is called inside the predicate (or recursively) and thus recomputed for each check.

@@ -1,0 +1,3 @@
+Functional languages try to avoid state variables and imperative-style programming to promote immutability and referential transparency. 
+
+Immutability leads to safer concurrent programming, as values can't be changed unexpectedly, reducing side effects and making reasoning about code easier. Referential transparency ensures that functions produce the same result given the same input, which simplifies debugging and testing. This encourages a declarative programming style where functions describe what to compute rather than how to compute it, leading to clearer and often more maintainable code.

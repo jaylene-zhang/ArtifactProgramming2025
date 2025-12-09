@@ -1,0 +1,26 @@
+Solution:
+Theorem 1:
+• Base Case (w = Const y):
+  count (Const y) x + acc = (if x = y then 1 else 0) + acc  
+  count’ (Const y) x acc = if x = y then 1 + acc else acc  
+  Thus, they are equal.
+
+• Inductive Step (w = Op(w₁, w₂)):
+  Induction Hypotheses:
+   IH₁: count w₁ x + a = count’ w₁ x a for any accumulator a (in particular with a = count’ w₂ x acc)  
+   IH₂: count w₂ x + acc = count’ w₂ x acc
+  Proof:
+   count (Op(w₁, w₂)) x + acc  
+    = (count w₁ x + count w₂ x) + acc  
+    = count w₁ x + (count w₂ x + acc)  [by associativity]  
+    = count w₁ x + count’ w₂ x acc    [by IH₂]  
+    = count’ w₁ x (count’ w₂ x acc)   [by IH₁]  
+    = count’ (Op(w₁, w₂)) x acc  
+  Thus, Theorem 1 holds.
+
+Theorem 2 (Main Result):
+By taking acc = 0 in Theorem 1, we obtain:
+  count w x + 0 = count’ w x 0  ⟹ count w x = count’ w x 0
+
+Explanation:
+We proved the more general statement using structural induction on the word. In the base case the definitions match, and in the inductive step the induction hypotheses are applied to the subwords, which leads to the equality. Finally, setting the accumulator to 0 gives the desired main result.

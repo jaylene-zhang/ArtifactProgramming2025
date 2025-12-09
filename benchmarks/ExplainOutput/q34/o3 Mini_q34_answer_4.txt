@@ -1,0 +1,9 @@
+Solution:
+a) False  
+b) False  
+c) True  
+
+Explanation:
+a) The brevity of the definition doesn’t impact performance.  
+b) The (@) operator’s cost depends on its LEFT operand, not the second, making rev1 less efficient.  
+c) rev2 is tail-recursive and uses (::), which operates in constant time, yielding linear performance.

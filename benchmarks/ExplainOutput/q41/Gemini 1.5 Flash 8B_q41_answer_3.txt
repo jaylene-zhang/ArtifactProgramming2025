@@ -1,0 +1,7 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+**Explanation:**
+
+A tail-recursive `fold_right` needs to accumulate results in a way that avoids stack overflow.  The recursion must be the very last operation performed.  It transforms the input list into a single accumulator value.  It doesn't need the final function to produce a result; it only needs the accumulator value which is returned from the recursive invocation, and so does not need the result transformation.  This means the type of the accumulator and the result from the recursive call of `fold_right` must be matched in the output type.  In this case that is `'b`.

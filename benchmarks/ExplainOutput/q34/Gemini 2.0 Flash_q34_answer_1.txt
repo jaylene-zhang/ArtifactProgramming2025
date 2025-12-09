@@ -1,0 +1,15 @@
+Here are the answers:
+
+a) False.
+
+b) True.
+
+c) True.
+
+**Explanations:**
+
+*   **a) False:** Code length is not a reliable indicator of performance. `rev1` is less efficient.
+
+*   **b) True:** The `@` operator in OCaml has a time complexity of O(n) where n is the length of the *first* list. In `rev1`, `(rev xs)` can get long, so you have repeated linear operations.
+
+*   **c) True:** `rev2` uses `::` for accumulation, which is a constant-time operation (O(1)). Therefore `rev2`'s time complexity is O(n). Since `rev1` is O(n^2) and `rev2` is O(n), `rev2` is faster than `rev1`.

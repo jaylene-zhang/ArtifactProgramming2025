@@ -1,0 +1,10 @@
+The correct answer is (a).
+
+Explanation:
+In `fold_right f l b`, we compute `f x1 (f x2 (... (f xn b)))` where `l = [x1; x2; ...; xn]`.
+
+In option (a), the function builds up a continuation that applies `f` to each element and the result of the previous computation in the right order. The base case applies the accumulated continuation to `b`, which correctly implements `fold_right`.
+
+Options (b), (c), and (d) get the order of arguments wrong for `f`.
+
+Option (e) incorrectly swaps the order of arguments `f` and `l` in the recursive call.

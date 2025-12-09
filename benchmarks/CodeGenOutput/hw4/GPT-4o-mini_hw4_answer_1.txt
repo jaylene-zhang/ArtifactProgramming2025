@@ -1,0 +1,13 @@
+```ocaml
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  raise Not_implemented
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  raise Not_implemented
+
+(* TODO: Implement the function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  raise Not_implemented
+```

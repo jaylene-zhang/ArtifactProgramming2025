@@ -1,0 +1,22 @@
+**Bug in the implementation**
+
+Input: 0
+Output: 0
+
+**Bug:** The function does not recursively calculate the sum of numbers up to n, it simply adds n to the result of the recursive call, which is incorrect.
+
+The correct function should be:
+```
+let rec triangle n =
+    if n = 0 then 0
+    else n + triangle (n-1)
+```
+However, a more elegant and efficient solution would be:
+```
+let triangle n =
+    let rec helper x n =
+        if x > n then 0
+        else x + (helper (x + 1) (n))
+    in
+    helper 1 n
+```

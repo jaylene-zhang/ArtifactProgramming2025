@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: The CPS version in (a) builds the continuation as fun r -> cont (f x r), which correctly implements fold_right (i.e., f x (fold_right f xs b)) in tail‐recursive style. The other options either swap arguments or have ordering or typing issues.

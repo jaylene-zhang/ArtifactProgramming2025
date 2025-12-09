@@ -1,0 +1,13 @@
+a) Correct implementation.
+
+b) Incorrect implementation.
+
+c) Incorrect implementation.
+
+**Explanation:**
+
+a) The implementation is correct as it first curries `sumSeries f` with the lower bound set to `0`, then uses `swap` to reposition the arguments, making the function in a correct format to accept the increment function `(fun x -> x + 1)` as the second argument.
+
+b) This implementation is incorrect because it calls `swap` on `curry (sumSeries f 0)` which is not yet in the required format. The result of `curry (sumSeries f 0)` is not a function that can accept two parameters.
+
+c) This implementation is also incorrect. While it attempts to curry the result of a call to `sumSeries`, it does not fix the lower bound at `0` before swapping, leading to wrong argument ordering before it gets to handle the increment function.

@@ -1,0 +1,7 @@
+**Solution:**
+
+c) `h (g (f x))`
+
+**Explanation:**
+
+The goal is to apply `g` to `f` and `x` first, and then apply `h` to the result.  Option (c) achieves this: `g (f x)` applies `g` to `f` and `x`.  Then, `h (g (f x))` applies `h` to the result of `g (f x)`. This aligns with the desired composition behavior where we want to effectively nest the function applications.

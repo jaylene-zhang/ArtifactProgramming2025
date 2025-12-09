@@ -1,0 +1,3 @@
+Solution: No; the induction would fail. Instead, you must prove the more general statement that for all accumulators acc, length (rev_tl l acc) = length l + length acc.
+
+Explanation: Since rev_tl is tail-recursive with an extra accumulator, proving the property only for the empty accumulator is too narrow. A stronger induction hypothesis covering all accumulators is required, so that when acc is [] the desired result follows.

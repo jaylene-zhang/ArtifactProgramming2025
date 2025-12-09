@@ -1,0 +1,15 @@
+**Solution:**
+
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+**Explanation:**
+
+We substitute `x` with `y + 3` in the expression `let w = x in fun y -> x + 2 + y * w`.  This results in:
+
+`let w = y + 3 in fun y -> (y + 3) + 2 + y * w`
+
+The inlining of `x` happens in both the `w` definition and in the anonymous function.

@@ -1,0 +1,3 @@
+Unused variables: r
+
+The variable `r` is declared with `let r = 2 * y in` but is never used in the body of the function `foo`. It's calculated but the result is not used anywhere in the subsequent code.

@@ -1,0 +1,12 @@
+Correct implementations:  
+**a) and c)**  
+
+#### Solution:  
+- **(a)** correctly implements the tail-recursive fold_right by using `fun r -> cont (f x r)`, which ensures the function is applied correctly in a right-to-left manner.  
+- **(c)** also implements tail-recursive fold_right correctly via `fun r -> f x (cont r)`, which maintains the ordering and associativity of operations consistent with `fold_right`.  
+
+#### Explanation:  
+- The function `fold_right f [x1; x2; ...; xn] b` recursively applies `f` starting from the rightmost element of the list.  
+- Tail-recursive implementations avoid stack overflows by using continuations (`cont`).  
+- **(b)** and **(e)** misorder the arguments in `f` or misuse `cont`, breaking the `fold_right` semantics.  
+- **(d)** fails because it applies `f r x` rather than `f x r`, reversing the fold order.  

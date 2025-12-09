@@ -1,0 +1,16 @@
+**Solution:**
+
+```OCaml
+let x = 10
+let f x =
+  let x = 20 in
+  x + x
+  (* Output: 40 *)
+
+let result = f x
+let () = print_int result
+```
+
+**Explanation:**
+
+Overshadowing occurs when a local variable (or a parameter) with the same name as a variable in an enclosing scope is declared. In the example above, the function `f` has a parameter `x`, and a local variable `x` inside the function. The local `x` shadows the enclosing `x` when evaluating `x + x` inside the function. The result is calculated using the locally defined `x` which is 20. The outer `x` remains unaffected by `f x`.

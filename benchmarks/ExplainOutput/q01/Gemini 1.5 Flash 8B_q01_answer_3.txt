@@ -1,0 +1,28 @@
+```OCaml
+exception Error
+
+let rec zippy (xs:'a list) (ys:'b list) (pair:'a * 'b -> 'c) (sc:'c list -> 'd) : 'd =
+    match xs, ys with
+    | [], [] -> sc []
+    | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair (x, y)::r)))
+    | _, _ -> raise Error
+
+let zip_plus xs ys =
+    zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+*   `xs` and `ys` must be lists, so the types are `'a list` and `'b list` respectively.  We need to use a polymorphic type for these lists (`'a` and `'b`) since we don't know the input types yet.
+*   `pair` is a function that must take a pair (`'a * 'b`) and return some other type, `'c`.
+*   `sc` is a function that must take a list of `'c`s and returns some type `'d`. This is a common pattern in OCaml, using higher-order functions to build powerful data processing.
+*   The type of `zippy` reflects that it takes the arguments and returns the accumulation `'d`.
+
+
+The `zip_plus` function is now correctly typed. It takes two lists (`xs`, `ys`), expecting integers in them. The intermediary function `pair` adds these integers. Then it calls the accumulator function `sc` to check the length of the resulting list.  The accumulator function `sc` must return the final result, which is a list, since the function zippy returns this.
+
+
+**Why the original code might be ill-typed (if incomplete):**
+
+If the `pair` function's return type and the function passed in by the `sc` function had conflicting types, or if the types in the lists  (`xs` and `ys`) were inconsistent (e.g., `xs` contained strings and `ys` contained ints), the function could be ill-typed. The `match _ , _ -> raise Error` is essential to ensure type safety—it implies that the zipping process must be valid in all possible cases. Without that or with type contradictions elsewhere, the compiler would complain since we could potentially have a case where the functions can't handle the data.

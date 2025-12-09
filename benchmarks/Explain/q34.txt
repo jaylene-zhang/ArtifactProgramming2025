@@ -1,0 +1,24 @@
+Consider the following two implementations of a list reversal function.
+
+```ocaml```
+let rec rev1 lst =
+      match lst with
+      | [] -> []
+      | x :: xs -> (rev xs) @ [x]
+
+let rev2 lst =
+      let rec go lst acc =
+            match lst with
+            | [] -> acc
+            | x :: xs -> go xs (x::acc)
+            in
+      go lst []
+```ocaml```
+
+Explain whether the following statements are true or not?
+
+a) rev1 is faster than rev2 as rev1 has a shorter definition.
+
+b) rev1 is faster than rev2 as the time complexity of (@) depends on it's second argument.
+
+c) rev2 is faster than rev1 as go accumalates the reversed list with (::).

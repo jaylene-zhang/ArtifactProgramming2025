@@ -1,0 +1,20 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 'd = 
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+    zippy xs ys (fun (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation:
+1. The type of `xs` and `ys` need to be lists, so they are both given the same generic type `'a` and `'b` respectively.
+2. The type of `pair` is defined as a function that takes two arguments of types `'a` and `'b` and returns a value of type `'c`.
+3. The type of `sc` is a function that takes a list of `'c` and returns a value of type `'d`.
+4. The overall return type of `zippy` is `'d`, which represents the result of applying `sc` to the constructed list.
+5. The `zip_plus` function correctly maps the result of `zippy` to raise an error if the lists have different lengths.

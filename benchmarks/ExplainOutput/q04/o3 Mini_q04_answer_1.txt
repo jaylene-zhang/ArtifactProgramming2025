@@ -1,0 +1,3 @@
+Solution: Options 1 and 4.
+
+Explanation: In option 1, prime_fact is computed once and stored in p, and in option 4, prime_fact is similarly computed before the list search; whereas options 2 and 3 call prime_fact repeatedly.

@@ -1,0 +1,45 @@
+**Solution:**
+
+65
+
+**Explanation:**
+
+```
+expressions:
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r ) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+binding stack:
+x = 5
+y = 10
+r ----> memory location (containing 2)
+f ----> fun u -> u + x + y + !r
+x = 3
+r ----> memory location (containing 5 initially, then 2)
+y = 15  (local to f's definition)
+r ----> memory location (containing 4) (local to f's definition)
+```
+
+1.  `let x = 3`:  Binds `x` to 3.
+2.  `let r = ref (2 + x)`:  Evaluates `2 + x` to 5.  `ref 5` creates a mutable reference in memory, and `r` is bound to the *location* of that reference.
+3.  `let f = ...`: This is where it gets interesting.
+    *   `let y = x * !r`:  `x` is 3, `!r` is 5, `y` is bound to 15 *at the time of f's definition*.
+    *   `let r = ref 4`: Creates a *new* reference `r` (local to f) initialized with 4. The outer `r` is not affected.
+    *   `fun u -> u + x + y + !r`: This is the *closure* for `f`.  It captures the *current* values of: `x` (which is 3 from the outer scope), `y` (which is 15, evaluated during f's definition) , and the *local* `r` (initialized as 4). *Crucially, the outer `r` is a separate location.*  The closure `f` now refers to this local r.
+4.  `let x = 5`:  Binds a *new* `x` to 5 in the current scope.  This `x` *shadows* the outer `x` for subsequent lookups in the present scope.
+5.  `let y = 10`: Binds a new `y` to 10.
+6.  `r := 2`:  This is a side effect.  It *modifies the memory location* referenced by the *outer* `r`.  The *local* `r` inside `f` is unaffected.  Thus the outer `r` now holds the value 2.
+7.  `f (!r * y)`:
+    *   `!r * y`: `!r` (outer `r`) is now 2, and `y` is 10, so this evaluates to `2 * 10 = 20`.
+    *   `f 20`:  Calls `f` with `u = 20`.  Inside `f`:
+        *   `u + x + y + !r`  becomes `20 + 3 + 15 + !r`. Here the x = 3 and y = 15 from when f was created.
+        *   `!r` is the *local* `r` inside `f`, which is still 4.
+        *   The expression evaluates to `20 + 3 + 15 + 4 = 42`.
+The x = 5 and y = 10 defined afterwards outside the scope for f has no impact.
+
+There was an error in the previous solution, so I have now corrected it.

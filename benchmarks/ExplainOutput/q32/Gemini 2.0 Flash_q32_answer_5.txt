@@ -1,0 +1,29 @@
+**Solution:**
+
+a) and b) are correct.
+
+**Explanation:**
+
+*   **Option a):**
+    *   `type url = string`: Defines `url` as a string (which is appropriate for a URL).
+    *   `type bookmarks = Location of url * bookmarks | Empty`: Defines `bookmarks` as a recursive type that is either:
+        *   `Location of url * bookmarks`: A `Location` containing a `url` and the rest of the `bookmarks`. This is a common way to build linked list like data structures.
+        *   `Empty`: Represents the end of the list.
+
+*   **Option b):**
+
+    *   `type url = string`: Defines `url` as a string (which is appropriate for a URL).
+    *   `type bookmarks = Empty | Location of string * bookmarks`: Defines `bookmarks` as a recursive type that is either:
+        *   `Empty`: Represents the end of the list.
+        *   `Location of string * bookmarks`: A `Location` containing a `string` (representing the url) and the rest of the `bookmarks`. This is a common way to build linked list like data structures.
+
+*   **Option c):**
+
+    *   `type url = string`: Defines `url` as a string (which is appropriate for a URL).
+    *   `type bookmarks = Empty | Location`: This definition for `Location` is incomplete. It's missing the type of information it should store (the URL). It wouldn't allow creating a bookmark with a URL.
+
+*   **Option d):**
+    *   `type url = string`: Defines `url` as a string (which is appropriate for a URL).
+    *   `type bookmarks = Empty | Location of bookmarks * url`: Defines `bookmarks` as a recursive type that is either:
+        *   `Empty`: Represents the end of the list.
+        *   `Location of bookmarks * url`: Incorrect order. The `bookmarks` should come *after* the current url as that will allow the creation of linked list like data structures. If we put the list as its first argument, it would be hard to build the list.

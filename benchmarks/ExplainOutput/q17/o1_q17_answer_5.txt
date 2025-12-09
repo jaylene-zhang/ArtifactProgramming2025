@@ -1,0 +1,5 @@
+Solution:  
+No, this version calls ackermann x for every element in the list.  
+
+Explanation:  
+In each recursive step, (ackermann x) is re-evaluated, so it is not computed just once. To compute ackermann x only once, bind it to a local value and reuse that value recursively.

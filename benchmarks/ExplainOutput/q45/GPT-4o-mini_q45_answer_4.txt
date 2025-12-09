@@ -1,0 +1,15 @@
+1) For blank 1 in line 2 we should write:
+```ocaml
+1
+```
+
+2) For blank 2 in line 3 we should write:
+```ocaml
+let rec psums s = ... (* implementation of partial sums *) 
+map (fun d -> psums d) (lazy pascal) 
+```
+
+### Explanation:
+1. The first diagonal of Pascal's Triangle is simply all 1s, which corresponds to the head (`hd`) of the stream.
+   
+2. The tail (`tl`) of the stream needs to generate the next diagonal based on the partial sums of the current diagonal. We can use the `psums` function that computes the cumulative sums of the stream and map it over the lazy evaluation of the current Pascal stream to generate subsequent diagonals iteratively.

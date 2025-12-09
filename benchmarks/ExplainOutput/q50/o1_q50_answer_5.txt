@@ -1,0 +1,9 @@
+Solution:  
+Only (a) is a correct tail-recursive implementation.
+
+Explanation:  
+A proper CPS version of fold_right f l b must, at each step, recursively process the tail and then apply f x to that result. In continuation style, that amounts to calling aux_foldr on the tail with a continuation that does cont (f x r). Option (a) does exactly that:
+
+  | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+
+All other options either reverse the order of arguments to f, or apply the continuation incorrectly, thus failing to reproduce fold_right’s behavior.

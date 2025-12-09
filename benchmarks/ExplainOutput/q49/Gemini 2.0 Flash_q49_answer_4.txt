@@ -1,0 +1,21 @@
+**Solution:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The substitution replaces all occurrences of `y` with `(f x)` *within the scope where `y` is defined*.  In this case, `y` is being substituted in the expression:
+
+```ocaml
+let w = y + x in
+fun f -> (f w) * y
+```
+
+Therefore:
+- `let w = y + x in` becomes `let w = (f x) + x in`
+- `fun f -> (f w) * y` becomes `fun f -> (f w) * (f x)`

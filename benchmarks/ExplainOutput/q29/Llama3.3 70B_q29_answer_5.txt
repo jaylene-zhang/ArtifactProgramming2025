@@ -1,0 +1,16 @@
+**Correct Implementation:**
+```ocaml
+let sum_from_zero f = curry (sumSeries f) 0 (fun x -> x + 1)
+```
+
+**Explanation:**
+- The correct implementation directly applies `curry` to `sumSeries f`, then applies `0` and the increment function to the result.
+- The `curry` function converts `sumSeries` into a function that takes its first two arguments separately.
+- Then, the lower bound `0` and the increment function `fun x -> x + 1` are applied to this curried function.
+- This implementation directly expresses the required function without any unnecessary swaps or partial application of `sumSeries`. 
+
+The given options a, b, and c are incorrect:
+
+- a) Incorrectly uses `swap` on the result of `curry (sumSeries f) 0`, which incorrectly rearranges the arguments.
+- b) Incorrectly applies `curry` to `sumSeries f 0`, which partially applies `sumSeries` with an incorrect type.
+- c) Incorrectly uses `swap` on `sumSeries f`, which swaps the order of the argument functions, and incorrectly applies `0` as a separate argument to `curry`.

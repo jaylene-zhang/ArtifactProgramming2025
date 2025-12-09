@@ -1,0 +1,13 @@
+Here are the answers to your questions:
+
+a) False.
+
+b) True.
+
+c) True.
+
+**Explanation:**
+
+*   **rev1 (False):** The length of the definition is not a good indicator of performance. `rev1` uses the `@` operator in each recursive call, which has a time complexity of O(n) where `n` is the length of the first list it's appending to.
+*   **rev1 (True):** The `@` operator's performance *does* depend on the length of its first argument. Each call to `@` in `rev1` effectively iterates through the reversed sublist to create the new list, leading to quadratic time complexity O(n^2).
+*   **rev2 (True):** `rev2` uses an accumulator and the `::` (cons) operator, both of which take O(1) time. Thus `rev2` has linear time complexity O(n).

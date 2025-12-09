@@ -1,0 +1,3 @@
+(3, 6)
+
+Explanation: The bug in the implementation is in the base case. It should return the value of `1` when `n` is `1`, but the current implementation returns `1` directly without accumulating the sum. This results in the function not correctly summing the numbers from `1` to `n`. For `n = 3`, the correct triangle number is `1 + 2 + 3 = 6`, but the function incorrectly returns `6` due to the base case issue, which correctly identifies the next recursive call but fails to include the `1` in the final sum.

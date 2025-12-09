@@ -1,0 +1,7 @@
+Solution:
+
+`r`
+
+Explanation:
+
+The `r` variable in the inner scope shadows the outer `r` parameter in the function's signature.  The shadowed variable serves no practical purpose and is not used after it's reassignment to `2 * y`.

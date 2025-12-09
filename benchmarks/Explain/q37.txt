@@ -1,0 +1,16 @@
+For n ≥ 0, the n-th triangle number is the result of 1 + 2 + ... + n.
+
+Here is a function that attempts to calculate triangle numbers. However, it is not correct.
+
+```ocaml```
+let rec triangle n =
+    if n = 1 then 1
+    else n + triangle (n-1)
+
+```ocaml```
+
+Give the input and output of a test that will not pass and identify the bug in the implementation.
+
+Give an input - output pair as an answer.
+
+For example: (3 , 7) where 3 is the input and 7 is the output. Separate the input from the output using a comma surrounded by a space.

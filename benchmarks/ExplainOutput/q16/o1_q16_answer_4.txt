@@ -1,0 +1,5 @@
+Solution:  
+(6, 5)
+
+Explanation:  
+The function shift_point captured the original binding of point = (4,3). Even though point was redefined to (5,4), shift_point still uses the old (4,3) and thus shift_point 2 returns (6,5).

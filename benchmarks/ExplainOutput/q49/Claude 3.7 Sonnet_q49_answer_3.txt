@@ -1,0 +1,10 @@
+Result after substituting y by (f x):
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: I replaced every occurrence of y with (f x). This substitution happened in two places: in the definition of w where "y + x" became "(f x) + x", and in the body of the function where "y" became "(f x)" in the multiplication expression.

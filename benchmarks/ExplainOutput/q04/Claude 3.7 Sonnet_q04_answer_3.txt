@@ -1,0 +1,12 @@
+Solution: Options 1 and 4 only compute `prime_fact` once.
+
+Explanation:
+1. In option 1, `prime_fact x` is computed once and bound to `p` before the recursive checking begins.
+
+2. In option 2, `prime_fact x` is recomputed for each element of the list during recursion.
+
+3. In option 3, `prime_fact x` is computed once but inside the `List.exists` function, meaning it gets recomputed for each element.
+
+4. In option 4, `prime_fact x` is computed once and bound to `p`, then passed to the `List.exists` function.
+
+Therefore, options 1 and 4 are the only implementations that compute `prime_fact` exactly once.

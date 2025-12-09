@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+
+The expression `y` is replaced by its definition `(f x)` throughout the lambda expression `fun f -> (f w) * y`. Because `w` used `y` in its definitions, we must also replace it. Note that only the instances of `y` that are free (not bound by a `let` or function parameter) are replaced. The `x` inside `let x = 2` is a different x from the free variables.

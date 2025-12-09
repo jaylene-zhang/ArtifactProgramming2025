@@ -1,0 +1,10 @@
+**Solution:**
+For lists with at least five elements, the function `f` reverses the order of the list.
+
+**Explanation:**
+1. The function `f` takes a list `l` and recursively processes it.
+2. The list is decomposed into `h` (its head) and `t` (its tail).
+3. The function rotates the list `t @ [h]` (appending `h` to the end of `t`).
+   - Essentially, this operation cyclically moves elements towards the start of the list.
+4. Since `f` is recursive, this process continues until the entire list is processed.
+5. For a list of at least five elements, the recursion results in reversing the list.

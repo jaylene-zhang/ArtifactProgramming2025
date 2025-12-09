@@ -1,0 +1,7 @@
+**Solution:**
+
+c) h (g (f x))
+
+**Explanation:**
+
+The `compose` function takes two functions `h` and `g` and returns a function that applies them in sequence.  The target function `fun f x -> f (f (f x))`  requires applying `g` first followed by `h`, with `f` as the intermediary function for each step.  Option c precisely embodies this composition.  Options a, b, and d are incorrect because they don't follow the specified order given by `fun f x -> f (f (f x))`

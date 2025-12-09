@@ -1,0 +1,3 @@
+(0 , 0)
+
+The bug in the implementation is that it does not handle the case when n = 0. The function should return 0 for triangle(0), but instead, it would lead to a call to triangle(-1), causing a runtime error or infinite recursion.

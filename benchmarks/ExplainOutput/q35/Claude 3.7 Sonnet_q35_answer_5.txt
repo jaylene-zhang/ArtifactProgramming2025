@@ -1,0 +1,17 @@
+Result: 81
+
+Explanation:
+1. `let x = 3` initializes x to 3
+2. `let r = ref 1` creates a reference with value 1
+3. The function `f` captures:
+   - y = x * !r = 3 * 1 = 3
+   - A new local `r = ref 5` that's distinct from the outer `r`
+   - Function returns u + x + y + !r = u + 3 + 3 + 5 = u + 11
+4. `let x = 2 * !r * x` rebinds x to 2 * 1 * 3 = 6
+5. `r := 10` changes the outer reference to 10
+6. We call `f` with argument `x * !r` = 6 * 10 = 60
+7. Function result is 60 + 11 = 71
+
+Sorry, I made a calculation error. The correct result is:
+- The function returns u + x + y + !r = u + 3 + 3 + 5 = u + 11
+- Called with 60, we get 60 + 11 = 71

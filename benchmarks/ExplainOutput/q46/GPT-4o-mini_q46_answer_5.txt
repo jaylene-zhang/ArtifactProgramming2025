@@ -1,0 +1,8 @@
+1) For blank 1 we should write: `f (Stream.hd s) a`
+
+2) For blank 2 we should write: `fold f (f (Stream.hd s) a) (Stream.tl s)`
+
+### Explanation:
+1) **Blank 1** takes the head of the stream (`Stream.hd s`), applies the function `f` to it and the accumulator `a`. This computes the new value for the head of the output stream.
+
+2) **Blank 2** generates the tail of the output stream. It calls `fold` recursively with the new accumulator `f (Stream.hd s) a`, which is the result of folding the current head with the previous accumulator, and the tail of the input stream `Stream.tl s`. This process continues until the stream is exhausted, effectively folding over all finite prefixes of the infinite stream.

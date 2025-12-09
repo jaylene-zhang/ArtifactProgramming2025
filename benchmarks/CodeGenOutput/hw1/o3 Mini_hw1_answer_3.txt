@@ -1,0 +1,25 @@
+(* Q1: Manhattan distance *)
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let distance (x1, y1) (x2, y2) =
+  abs (x2 - x1) + abs (y2 - y1)
+
+(* Q2: Binomial coefficient using factorial *)
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let binomial n k =
+  let rec factorial n =
+    if n <= 1 then 1 else n * factorial (n - 1)
+  in
+  factorial n / (factorial k * factorial (n - k))
+
+(* Q3: Lucas numbers with tail-recursive helper *)
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+let rec lucas_helper n a b =
+  if n = 0 then a else lucas_helper (n - 1) b (a + b)
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n =
+  lucas_helper n 2 1

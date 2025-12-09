@@ -1,0 +1,17 @@
+Solution: c) h (g (f x))
+
+Explanation: 
+Let's examine our goal. We want `compose h g` to take a function `f` and value `x`, and apply `f` three times to `x`.
+
+Let's trace what happens with our specific examples:
+- h = (fun f x -> f x) - applies f once
+- g = (fun f x -> f (f x)) - applies f twice
+- compose h g = ? - should apply f three times
+
+For option c) h (g (f x)), let's substitute:
+- g (f x) = f (f x) - applies f twice to x
+- h (g (f x)) = h (f (f x)) = f (f (f x)) - applies f once more, giving us three applications total
+
+This matches our desired behavior of applying f three times to x, so c) is correct.
+
+The other options don't combine the functions correctly to achieve our goal of three applications of f.

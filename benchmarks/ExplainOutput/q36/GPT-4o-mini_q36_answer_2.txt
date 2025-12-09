@@ -1,0 +1,6 @@
+The function `f l` takes a list `l` with at least five elements and rotates the list, placing the first element at the end and moving the remaining elements to the front. Specifically, it outputs a list where the first five elements are shifted to the left.
+
+### Explanation:
+- The function uses pattern matching to deconstruct the list `l`.
+- It discards the head element `h`, and appends it at the end of the tail `t`, using the `rotate` function.
+- Since the input list has at least five elements, the resulting list contains the rotated arrangement of those elements. 

@@ -1,0 +1,8 @@
+**Solution**
+ retourne (6,6)
+
+**Explanation**
+
+The `point` variable is initially assigned the value `(5, 4)`. When we load the program, `point` is assigné à `(5, 4)`. Then `point` is reassigned by `shift_point 1`, which applies an offset of 1 to both the x and y coordinates, resulting in `(6, 5)`. However, note that `point` is a mutable variable, so its new value is also stored in the variable `point`. Therefore, when `shift_point 2` is called, it now operates on the new value of `point`, which is `(6, 5)`. The offset of 2 is then applied to both coordinates, resulting in `(8, 7)`. Note that this is why we ended up with `(6, 6)` not `(8,7)`
+
+However, when you call `point`, recall that `point` holds `(6,6)`

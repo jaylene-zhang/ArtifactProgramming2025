@@ -1,0 +1,27 @@
+Solution:
+
+Q4.1 
+• Base Case (h = Empty):  
+  add_up Empty + acc = 0 + acc = acc, and  
+  add_up_tr Empty acc = acc.  
+  Thus, the equality holds.
+
+• Inductive Step (h = Hand(c, h')):
+  Induction Hypothesis: Assume for any hand h' and any accumulator acc,  
+    add_up h' + acc = add_up_tr h' acc.
+  Then,  
+    add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc  
+               = add_up h' + (1 + acc).  
+  By the induction hypothesis (applied with accumulator 1+acc), we have  
+    add_up h' + (1 + acc) = add_up_tr h' (1 + acc).  
+  But by definition, add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc).  
+  Therefore, add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc.
+
+Q4.2  
+By setting acc = 0 in Theorem 1, we obtain:  
+  add_up h + 0 = add_up_tr h 0,  
+so that add_up h = add_up_tr h 0.
+
+Explanation:
+
+For Q4.1, we proved the general relation by induction on the structure of h. In the base case, both functions return values that sum to acc. In the step case, by assuming the equality holds for h′ (the induction hypothesis), adding 1 appropriately in both functions shows the equality holds for Hand(c, h′). Q4.2 then follows by instantiating the accumulator to 0.

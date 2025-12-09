@@ -1,0 +1,7 @@
+```ocaml
+let x = 10
+let x = 20
+print_endline:string of int = string_of_int x;; (* prints: "20" *)
+```
+
+Overwriting differs from overshadowing because overshadowing conceals a previously declared entity, whereas overwriting updates the value of a previously declared entity.

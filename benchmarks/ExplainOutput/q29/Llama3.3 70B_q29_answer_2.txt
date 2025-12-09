@@ -1,0 +1,24 @@
+### Correct Implementation
+
+b) is not correct due to incorrect usage of `curry`. 
+a) No, because of the order of application in `swap`.
+c) No.
+
+The correct implementation is:
+```ocaml
+let sum_from_zero f =
+  curry (sumSeries f) 0 (fun x -> x + 1)
+```
+or more explicitly:
+```ocaml
+let sum_from_zero f = fun b -> sumSeries f (0, b) (fun x -> x + 1)
+```
+### Explanation
+
+We want to fix the lower bound to 0 and the increment function to `fun x -> x + 1`. The `sumSeries` function takes in a function `f`, a tuple of lower and upper bounds, and an increment function.
+
+By using `curry`, we can partially apply the `sumSeries` function with `f`, the fixed lower bound `0`, and the fixed increment function. However, `sumSeries` expects the bounds to be a tuple, so we need to pass the upper bound `b` as part of this tuple.
+
+The `swap` function is not necessary in this case because we are not swapping the order of any arguments. 
+
+My initial solution, which is using `fun b -> sumSeries f (0, b) (fun x -> x + 1)`, directly achieves the desired behavior by fixing the lower bound to 0 and the increment function, and waiting for the upper bound `b` to be applied.

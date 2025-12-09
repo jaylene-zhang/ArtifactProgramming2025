@@ -1,0 +1,17 @@
+Solution:
+A function is tail-recursive when its recursive call is the very last operation in its execution path, meaning no further computation is done afterward. For example, consider a non-tail-recursive factorial:
+
+let rec fact n =
+  if n = 0 then 1
+  else n * fact (n - 1)
+
+Here, after the recursive call fact (n - 1), the result is multiplied by n, so extra work remains. A tail-recursive version uses an accumulator:
+
+let rec fact_acc n acc =
+  if n = 0 then acc
+  else fact_acc (n - 1) (n * acc)
+
+let fact n = fact_acc n 1
+
+Explanation:
+In the tail-recursive version, the recursive call fact_acc (n - 1) (n * acc) is the last operation, allowing the compiler to reuse the same stack frame (tail call optimization). This avoids the buildup of deferred operations and reduces the risk of stack overflow for deep recursions.

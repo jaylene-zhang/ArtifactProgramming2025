@@ -1,0 +1,3 @@
+Solution: Yes, it will return true.
+
+Explanation: get_tail rc1 returns rc1 (from rc1's content Cons(2, rc1)) and get_tail rc2 also returns rc1 (from rc2's content Cons(2, rc1)), so both get_tail calls yield the same physical reference.

@@ -1,0 +1,23 @@
+look at the following ocaml program:
+
+```ocaml```
+let point = (ref 4, ref 3)
+let point' = point
+let component_x (x,y) = x
+let component_y (x,y) = y
+
+let shift point =
+let x = component_x point in
+let y = component_y point in
+x := !x + 1 ; y := !y + 1
+
+let add p1 p2 =
+let x1 = component_x p1 in
+let y1 = component_y p1 in
+let x2 = component_x p2 in
+let y2 = component_y p2 in
+x1 := !x2 + !x1 ; y1:= !y2 + !y1
+```ocaml```
+
+
+What is the type of shift?

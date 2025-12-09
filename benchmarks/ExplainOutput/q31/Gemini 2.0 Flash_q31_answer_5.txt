@@ -1,0 +1,18 @@
+Here's an analysis of which implementations compute `prime_fact` only once:
+
+**Solutions:**
+
+*   **a) Yes**
+*   **b) No**
+*   **c) No**
+*   **d) Yes**
+
+**Explanation:**
+
+*   **a)** `let p = prime_fact x in ...`  This computes `prime_fact x` only once and stores the result in `p`.  `List.exists` then uses this pre-computed value for each element in the list.
+
+*   **b)** `List.exists (fun e -> e = prime_fact x) l`  `prime_fact x` is called *inside* the anonymous function passed to `List.exists`. Thus, it's called for *every* element in the list `l` until `List.exists` finds a match.
+
+*   **c)** `y = prime_fact x || check x ys`   Similar to (b), `prime_fact x` is evaluated in each recursive call to `check`. Thus, it's called multiple times if the factorization is not found early in the list.
+
+*   **d)** `let p = prime_fact x in let rec test l = ...`  This pre-computes `prime_fact x` once and stores it in `p`.  The recursive `test` function then compares each element of the list to this pre-computed value. Thus, it only computes prime_fact once.

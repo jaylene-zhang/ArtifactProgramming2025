@@ -1,0 +1,5 @@
+**Solution:**  
+In the step case, we need to prove that if the statement holds for a list `l` (inductive hypothesis), then it also holds for the list formed by adding an element to `l` (e.g., `x :: l`).
+
+**Explanation:**  
+Induction on lists typically has a base case (proving the statement for the empty list `[]`) and a step case. In the step case, we assume the statement holds for a smaller list `l` (inductive hypothesis) and show it holds for the larger list `x :: l` (where `x` is a new element added to the front).

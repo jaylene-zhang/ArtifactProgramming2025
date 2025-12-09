@@ -1,0 +1,8 @@
+For the expression `f (f (a, b), f (b, a))`, the type is `'t`.
+
+Explanation:
+- We have f: 't * 't -> 't, a: 't, b: 't
+- First, compute f(a, b) which has type 't
+- Similarly, f(b, a) also has type 't
+- The outer application is f(f(a, b), f(b, a)), which is f('t, 't) -> 't
+- Therefore the entire expression has type 't

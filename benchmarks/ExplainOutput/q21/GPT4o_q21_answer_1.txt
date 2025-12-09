@@ -1,0 +1,6 @@
+Solution:
+The unused variable in the expression is `r`.
+
+Explanation:
+- The variable `r` is assigned the value `2 * y` but is never used anywhere in the function `foo` or its nested function `f`.
+- All other variables (`y`, `f`, `x`) are used in the expressions.

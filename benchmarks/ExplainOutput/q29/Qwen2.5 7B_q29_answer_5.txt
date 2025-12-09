@@ -1,0 +1,25 @@
+### a)
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+
+**Correct**: This is correct. The `curry` function fixes the `a` and `b` parameters, and then `swap` rearranges them to fit the `sumSeries` function's expected parameters.
+
+### b)
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+
+**Incorrect**: The `curry` function will first fix the `f` parameter and then call `sumSeries` with `(0)`, which is not the intended behavior. It should be `sumSeries f 0`.
+
+### c)
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+
+**Incorrect**: This does not work as intended because the `curry` function will fix the `f` parameter and then `swap` will rearrange the parameters, but the `0` is not correctly placed.
+
+**Explanation**: 
+- **a)** Works because it correctly uses `curry` to fix the lower bound `0` and the increment function before passing them to `swap` to get the correct order for `sumSeries`.
+- **b)** Does not work because it incorrectly passes `0` to `sumSeries` before `curry` is applied, which is not what `sumSeries` expects.
+- **c)** Does not work because the `0` is not correctly passed to `swap` to handle the function parameters properly.

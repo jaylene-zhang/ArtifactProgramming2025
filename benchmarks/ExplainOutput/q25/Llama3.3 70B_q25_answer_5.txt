@@ -1,0 +1,3 @@
+**f: ('u * 'u -> 'u), a: 'u, b: 'u**
+
+The type of `f (a, b)` and `f (b, a)` must be the same, as they are both used as arguments to the outer `f`. Since `f` takes a pair as an argument, the types of `a` and `b` must also be the same, which is `'u`. The result type of `f` is then also `'u`, as required for the outer call to type-check.

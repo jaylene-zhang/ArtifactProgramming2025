@@ -1,0 +1,14 @@
+The most general instantiation for the type variables is:
+
+'t = 'u, 's = 'u
+
+Thus, we can set:
+
+- 't = 'u
+- 's = 'u
+- 'u = 'u 
+
+This means that f has type ('u * 'u -> 'u) and when we apply it twice, we will still end up with a result of type 'u.
+
+**Explanation:**
+In the expression `f (f (a, b), f (b, a))`, we can observe that both `f` calls need to match with the types of their arguments. To ensure that the arguments `f(a, b)` and `f(b, a)` have consistent types and the output of `f` from both calls can be used as arguments for the outer `f`, we can make the type variables `t` and `s` the same as `u`. Thus, we can choose `u` to be any type, and both `a` and `b` will also inherit this type, which maintains type consistency throughout the expression.

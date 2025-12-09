@@ -1,0 +1,3 @@
+Solution: shift : (int ref * int ref) -> unit
+
+Explanation: shift takes a tuple of int references, updates them with side effects, and returns unit as the final result.

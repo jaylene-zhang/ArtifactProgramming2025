@@ -1,0 +1,7 @@
+**Solution**
+
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+
+**Explanation**
+
+We want `repeat f` to have the same type as `f`. Therefore, we conclude that `f` must be a function that takes an argument of the same type as its result, which is a function with type `'a -> 'a`. Then, `repeat f` will have type `'a` as well.

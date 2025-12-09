@@ -1,0 +1,9 @@
+**Solution:**
+
+`[11.; 21.; 6.]`
+
+**Explanation:**
+
+1.  `update_sales_tax ()` modifies the *global* `sales_tax`. *However, this modification happens **after** `add_tax` function is defined.*
+2.  `add_tax` function uses the value of `sales_tax` which is 1.0 when it was defined.
+3.  `update_price_list` then maps `add_tax` (using the old sales) onto `price_list`, adding 1.0 to each price.

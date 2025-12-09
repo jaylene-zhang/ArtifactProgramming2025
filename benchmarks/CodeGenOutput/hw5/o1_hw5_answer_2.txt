@@ -1,0 +1,86 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Q1: Depth in CPS *)
+let tree_depth_cps t =
+  let rec depth_helper tr sc =
+    match tr with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+       depth_helper l (fun dl ->
+         depth_helper r (fun dr ->
+           sc (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Q2: Finding Subtrees in CPS *)
+type 'a option = None | Some of 'a
+
+let find_subtree_cps ls tree =
+  let rec helper p path t sc fc =
+    match t with
+    | Empty ->
+       if path = p then sc Empty else fc ()
+    | Tree (l, x, r) ->
+       if path = p then sc (Tree (l, x, r))
+       else
+         helper p (path @ [x]) l sc (fun () ->
+           helper p (path @ [x]) r sc fc)
+  in
+  helper ls [] tree (fun st -> Some st) (fun () -> None)
+
+(* Q3: Parser in CPS *)
+type token =
+  | NUM of int
+  | PLUS
+  | TIMES
+  | LPAREN
+  | RPAREN
+
+type expr =
+  | Const of int
+  | Plus of expr * expr
+  | Times of expr * expr
+
+let rec eval e v =
+  match e with
+  | Const i -> i
+  | Plus (l, r) -> eval l v + eval r v
+  | Times (l, r) -> eval l v * eval r v
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  let rec parse_expr tokens fc sc =
+    parse_term tokens fc (fun leftover t1 ->
+      parse_expr_prime t1 leftover fc sc)
+  and parse_expr_prime e1 tokens fc sc =
+    match tokens with
+    | PLUS :: rest ->
+       parse_term rest fc (fun leftover t2 ->
+         parse_expr_prime (Plus (e1, t2)) leftover fc sc)
+    | _ -> sc tokens e1
+  and parse_term tokens fc sc =
+    parse_factor tokens fc (fun leftover f1 ->
+      parse_term_prime f1 leftover fc sc)
+  and parse_term_prime e1 tokens fc sc =
+    match tokens with
+    | TIMES :: rest ->
+       parse_factor rest fc (fun leftover f2 ->
+         parse_term_prime (Times (e1, f2)) leftover fc sc)
+    | _ -> sc tokens e1
+  and parse_factor tokens fc sc =
+    match tokens with
+    | (NUM n) :: rest -> sc rest (Const n)
+    | LPAREN :: rest ->
+       parse_expr rest fc (fun leftover e ->
+         match leftover with
+         | RPAREN :: rest2 -> sc rest2 e
+         | _ -> fc ())
+    | _ -> fc ()
+  in
+  parse_expr t
+    (fun () -> None)
+    (fun leftover e ->
+      match leftover with
+      | [] -> Some e
+      | _ -> None)

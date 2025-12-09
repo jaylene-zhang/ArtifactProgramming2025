@@ -1,0 +1,5 @@
+Solution: The unused variables are `r` and the parameter `x` in the `fun x ->` function.
+
+Explanation: 
+- The `let r = 2 * y` defines `r`, but it is not used anywhere in the code.
+- The function `fun x ->` has a parameter `x`, but it is immediately shadowed by `let x = 42`, making the original `x` unused.

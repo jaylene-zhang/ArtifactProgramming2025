@@ -1,0 +1,16 @@
+**No**, the implementation is incorrect and not tail-recursive.
+
+Explanation: 
+- The function call `max_two_factor n = helper 1 n` does not correctly implement the largest power of two division problem, because it passes `1` as the first argument, which should be `n` instead.
+- The function call is also not tail-recursive, because the recursive call to `helper (n / 2)` is not in the last position. In OCaml, tail recursion requires that the recursive call be the last operation performed by the function. To make it tail-recursive, an accumulator should be used to store the current power of two. 
+- The base case of the recursion does not correctly count the number of divisions by 2. It should return 0 when `n` is odd, not 1. 
+
+Here is the correct implementation:
+```ocaml
+let max_two_factor n =
+  let rec helper n k =
+    if n mod 2 = 1 then k
+    else helper (n / 2) (k + 1)
+  in
+  2 |> fun x -> x |> Int.pow (helper n 0)
+```

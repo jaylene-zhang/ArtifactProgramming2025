@@ -1,0 +1,115 @@
+Here is the code implementation for the provided problems:
+
+```ocaml
+(* Q1: *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option = 
+  match l with
+  | [] -> Some []
+  | x :: xs -> 
+      match f x with
+      | Some x -> match traverse f xs with
+                   | Some xs -> Some (x :: xs)
+                   | None -> None
+      | None -> None
+
+(* Q2.1: *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t = 
+  let open Maybe in
+  match mx with
+  | Just x -> match fm with 
+               | Just f -> Just (f x)
+               | Nothing -> Nothing
+  | Nothing -> Nothing
+
+(* Q2.2: *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t = 
+  let open Maybe in
+  match m1 with
+  | Just a1 -> match m2 with
+                | Just a2 -> Just (a1, a2)
+                | Nothing -> Nothing
+  | Nothing -> Nothing
+
+(* Q2.3: *)
+let seq_predicate2 
+  (p1 : 'a1 -> 'a2 Maybe.t)
+  (p2 : 'a2 -> 'b2 Maybe.t) 
+  (a1 bais : 'a1 * 'a2) : ('b1 * 'b2) Maybe.t = 
+  let open Maybe in
+  match p1 a1 with
+  | Just a2 -> match p2 a2 with
+                | Just b2 -> Just (b1, b2)
+                | Nothing -> Nothing
+  | Nothing -> Nothing
+
+(* Q2.4: *)
+let map (f : 'a -> 'b) (m : 'a Maybe.t) : 'b Maybe.t = 
+  let open Maybe in
+  match m with
+  | Just a -> Just (f a)
+  | Nothing -> Nothing
+
+(* Q2.5: *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t = 
+  match l with
+  | [] -> Some []
+  | x :: xs -> 
+      match f x with
+      | Just x -> match traverse' f xs with
+                   | Some xs -> Some (x :: xs)
+                   | None -> Nothing
+      | Nothing -> Nothing
+
+(* Q3.1a: *)
+let church_to_nat (c : 'a church) : nat = 
+  let rec go (a : 'a) (inc : 'a -> 'a) : nat =
+    match c a inc with
+    | Z -> Z
+    | S n -> S (go (inc n) inc)
+  in
+  go Z (fun n -> S n)
+
+(* Q3.1b: *)
+let rec nat_to_church (n : nat) : 'a church = 
+  let rec go (n : nat) (id : 'a -> 'a) (succ : 'a -> 'a) : 'a church = 
+    match n with
+    | Z -> id
+    | S a -> succ (go a id succ)
+  in
+  go n (fun x -> x) (fun x -> S x)
+
+(* Q3.2a: *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option = 
+  copt (fun _ -> None)
+         (fun () -> Some None)
+
+(* Q3.2b: *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption = 
+  match m with 
+  | Some a -> fun b _ -> Some a
+  | None -> fun _ _ -> None
+
+(* Q3.3a: *)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list = 
+  match clist with 
+  | CList f -> fun x () -> x f CList
+
+(* Q3.3b: *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist = 
+  List.fold_right
+    (fun x (CList f) -> CList (fun l h -> l x (h Unicorn)))
+    l
+    (fun x () -> x Unicorn)
+
+(* Q4: *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist = 
+  match clist with 
+  | CList cont -> CList (fun l h -> l (fun a -> f a) (h (fun _ -> f (~-1 ^ Unicorn))))
+
+exception Unicorn of 'r
+
+let Unicorn = function 
+  | _ -> raise Unicorn (~-1)
+
+let ( ^ ) = fun st x -> x st st
+```

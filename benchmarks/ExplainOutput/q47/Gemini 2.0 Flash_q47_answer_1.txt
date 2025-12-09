@@ -1,0 +1,19 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   **Why (c) is correct:**
+    *   It uses a tail-recursive helper function `aux`.
+    *   It reverses the list first (`reverse l`). This is crucial. Because the strings are concatenated *after* the accumulator `s`, reversing ensures that the elements are added to `s` in the correct order to reconstruct the original sentence.
+    *   The accumulator `s` accumulates the string from left to right (after reversing), so the space are in correct locations.
+
+*   **Why (a) is incorrect:**
+    *   While tail-recursive, it concatenates `x` *before* `s` and then adds a space which appends the string in reverse, so it will not reconstruct a sentence with the order of `l`.
+
+*   **Why (b) is incorrect:**
+    *   While tail-recursive, it concatenates `" " ^ x` *after* `s`. But the space is being added *before* the word, so the first word does not have the leading space.
+
+*   **Why (d) is incorrect:**
+    *   It is *not* tail-recursive. The `concat xs` call is not the very last operation performed. After `concat xs` returns, its result is concatenated with `x ^ " "`. This makes it a stack-consuming (non-tail-recursive) operation.

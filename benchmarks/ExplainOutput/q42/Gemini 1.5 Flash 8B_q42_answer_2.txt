@@ -1,0 +1,3 @@
+Solution: `[]`
+
+Explanation:  The `rev_tl` function likely takes a list `l` and an accumulator `acc`.  The accumulator starts empty (`[]`) to hold the reversed elements.  Each recursive step appends elements from `l` to `acc`.

@@ -1,0 +1,5 @@
+Solution:
+let w = 3 in let y = 2 * (w * 2) in fun x -> w * y * x
+
+Explanation:
+We substitute the free occurrence of x (in “2 * x”) with “w * 2”. The x bound by “fun x -> …” is not replaced since that x is locally bound and shadows the free x.

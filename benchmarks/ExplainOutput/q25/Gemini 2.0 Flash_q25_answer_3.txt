@@ -1,0 +1,12 @@
+**Solution:**
+
+*   `'t` = `'s`
+*   `'u` = `'u`
+
+**Explanation:**
+
+1.  **Innermost `f` calls:** `f (a, b)` has type `'u` and `f (b, a)` also has type `'u`.
+
+2.  **Outermost `f` call:**  For `f (f (a, b), f (b, a))` to be valid, the first argument to the outer `f` (which is `f(a, b)`) must have type `'t` and the second argument (which is `f(b, a)`) must have type `'s`. Since both `f(a, b)` and `f(b, a)` have type `'u`, this implies `'t = 'u` and `'s = 'u`.
+
+3. The expression `f (f (a, b), f (b, a))` requires that the type of `a` and `b` must be the same so `'t = 's`.

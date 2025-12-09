@@ -1,0 +1,3 @@
+In the step case of an inductive proof about lists, we need to prove that if the statement holds for a list of length \( n \) (the induction hypothesis), then it must also hold for a list of length \( n + 1 \).
+
+**Explanation:** This is typically done by considering a list of length \( n + 1 \) as being formed by adding a new element (the head) to a list of length \( n \) (the tail). We apply the induction hypothesis on the tail, and then show how the statement applies when the new element is added to it, thereby completing the induction step.

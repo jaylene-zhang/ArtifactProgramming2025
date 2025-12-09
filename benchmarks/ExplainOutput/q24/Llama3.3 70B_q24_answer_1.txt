@@ -1,0 +1,3 @@
+**'t**
+
+This expression has type 't because function f takes a tuple of type ('t * 't) and returns a value of type 't. Since 't is a type variable, it can represent any type. Therefore, regardless of the types of a and b (as long as they are the same), f returns a value of the same type, and this type is preserved throughout the expression.

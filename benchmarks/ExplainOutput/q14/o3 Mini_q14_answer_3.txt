@@ -1,0 +1,17 @@
+Solution:
+A function is tail-recursive if its recursive call is the last operation executed, with no further computation needed after the call returns.
+
+Example:
+Non-tail-recursive factorial:
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+Tail-recursive factorial:
+let rec fact_tail n acc =
+  if n = 0 then acc
+  else fact_tail (n - 1) (acc * n)
+let factorial n = fact_tail n 1
+
+Explanation:
+In the non-tail-recursive version, after calling factorial (n-1) the program multiplies the result by n, so the recursive call isn’t in tail position. In the tail-recursive version, the recursive call fact_tail (n - 1) (acc * n) is the last action performed, allowing optimization that reuses the current stack frame.

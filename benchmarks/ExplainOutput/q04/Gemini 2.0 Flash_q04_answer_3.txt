@@ -1,0 +1,17 @@
+**Solution:**
+
+1 and 4.
+
+**Explanation:**
+
+*   **Option 1:** `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`
+    This option computes `prime_fact x` only once and stores the result in `p`. The recursive function `test` then uses the precomputed value of `p` for all comparisons.
+
+*   **Option 2:** `let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys`
+    This option calculates `prime_fact x` on every recursive call in the second branch of the match statement (`y = prime_fact x || check x ys`). Thus if the prime factorization is not the first element, it will be calculating `prime_fact x` multiple times.
+
+*   **Option 3:** `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l`
+    This option calculates `prime_fact x` for every element `e` in the list `l`. The anonymous function `fun e -> e = prime_fact x` is executed for each element, so `prime_fact x` is repeatedly computed.
+
+*   **Option 4:** `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`
+    This option computes `prime_fact x` only once and stores the result in `p`. Then, it uses `List.exists` with an anonymous function that uses the precomputed value `p` for comparison on all elements.

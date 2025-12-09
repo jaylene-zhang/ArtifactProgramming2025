@@ -1,0 +1,43 @@
+Let's evaluate each implementation of `sum_from_zero` with the goal description.
+
+### **a)**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+
+#### **Solution**: **Incorrect**
+The code has incorrect usage of function application `curry (sumSeries f) 0`. In OCaml, `curry (sumSeries f)` would produce a curried *version* of `sumSeries f` that expects 2 arguments. Applying it to `0` (i.e., `curry (sumSeries f) 0`) is syntactically and semantically invalid because `curry` must receive `(a, b)` as a tuple after it's applied to `sumSeries f`. Moreover, `swap` isn't used properly either.
+
+---
+
+### **b)**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+
+#### **Solution**: **Incorrect**
+Here, the problem arises with applying `f 0` inside `sumSeries f 0`. The `sumSeries` function's type signature uses a parameterized function argument (`sumSeries : f -> (a, b) -> inc -> int`), so applying `f 0` statically is invalid. This approach misinterprets the relationship between `f` and its usage in `sumSeries`, so the implementation won't type check.
+
+---
+
+### **c)**
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+
+#### **Solution**: **Correct**
+This implementation correctly fixes the lower bound (`0`) and the increment function by using `swap` to reorder arguments, and applies `curry` to turn the resulting function into a curried form. Here's the reasoning:
+
+1. `swap (sumSeries f)` reorders the expected arguments of `sumSeries` so that the increment function comes first.
+2. `(fun x -> x + 1)` is provided as the increment function.
+3. `curry` turns the reordered function into a curried form (first expecting bounds as separate arguments).
+4. `0` is passed as the fixed lower bound.
+
+Thus, `sum_from_zero` becomes correctly implemented.
+
+---
+
+### **Final Answer Recap**:
+- (a): **Incorrect**
+- (b): **Incorrect**
+- (c): **Correct**

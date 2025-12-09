@@ -1,0 +1,3 @@
+**Solution: c) h (g f) x**
+
+**Explanation:** To compose the two functions `h` and `g` such that `h` is applied to the result of `g`, we need to apply `g` to `f` and then apply `h` to that result. This means the correct implementation is `let compose h g = fun f x -> h (g f) x`, which matches option **c)**.

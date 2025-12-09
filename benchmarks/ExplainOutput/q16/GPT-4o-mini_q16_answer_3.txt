@@ -1,0 +1,7 @@
+The program `shift_point 2` will return `(7, 5)`.
+
+Explanation:
+1. Initially, `point` is defined as `(4, 3)`.
+2. The function `shift_point n` takes a number `n` and shifts the coordinates of the point by adding `n` to both the x and y components.
+3. When `point` is assigned the result of `shift_point 1`, it becomes `(5, 4)` because `4 + 1 = 5` and `3 + 1 = 4`.
+4. Now, when you call `shift_point 2`, it computes the new values as `(component_x (5, 4) + 2, component_y (5, 4) + 2)`, which means `(5 + 2, 4 + 2) = (7, 6)`.

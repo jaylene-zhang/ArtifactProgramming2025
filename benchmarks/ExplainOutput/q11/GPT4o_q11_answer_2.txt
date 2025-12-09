@@ -1,0 +1,56 @@
+### Part 1: The `zip` Function
+
+#### Solution:
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+#### Explanation:
+- `l1` is a list of type `'a list` where `'a` is a generic type for elements in `l1`.
+- `l2` is a list of type `'b list` where `'b` is a generic type for elements in `l2`.
+- The return type is a list of tuples, where each tuple pairs an element from `l1` with an element from `l2`: `('a * 'b) list`.
+
+---
+
+### Part 2: The `zipper` Function
+
+#### Solution:
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+  (l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+#### Explanation:
+- `comb` is a function of type `'a -> 'b -> 'c`, combining an element from `l1` (of type `'a`) with an element from `l2` (of type `'b`) to produce a result of type `'c`.
+- `add` is a function of type `'c -> 'd -> 'd` used to accumulate results, where `'c` is the combined value and `'d` is the accumulator type.
+- `l1` is a list of elements of type `'a`.
+- `l2` is a list of elements of type `'b`.
+- The return type is a generic accumulator type `'d` that depends on the combination of `comb` and `add`.
+
+---
+
+### Part 3: Implementation of `zip` and `zip_rev`
+
+#### Solution:
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+
+let zip_rev = 
+  zipper 
+    (fun x y -> (string_of_int x) ^ y) 
+    (fun s t -> t @ [ (s, List.length t) ])
+```
+
+#### Explanation:
+- `zip`:
+  - Uses `comb` as `(fun x y -> (x, y))` to pair elements from `l1` and `l2`.
+  - Uses `add` as `(fun h t -> h :: t)` to construct the resulting list by prepending elements.
+- `zip_rev`:
+  - Uses `comb` as `(fun x y -> (string_of_int x) ^ y)` to concatenate the string representation of an integer `x` with a string `y`.
+  - Uses `add` as `(fun s t -> t @ [ (s, List.length t) ])`, where the result list `t` is appended with the new element `s` and a length-based tuple.

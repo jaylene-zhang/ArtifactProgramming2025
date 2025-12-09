@@ -1,0 +1,14 @@
+```ocaml
+[21.0; 22.0; 6.0]
+```
+
+**Explanation:**
+
+1. `update_sales_tax ()` multiplies the global variable `sales_tax` by 2.0; this *does not* directly affect the `price_list`.
+
+2. `update_price_list price_list` is called.  
+   - `List.map add_tax price_list` applies the function `add_tax` to each element of `price_list`.
+   - `add_tax` adds the current `sales_tax` (which now has the value 2.0) to the element.
+   - This produces a new list containing the updated prices.
+
+Therefore, the output is `[21.0; 22.0; 6.0]`.

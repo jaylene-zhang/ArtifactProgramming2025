@@ -1,0 +1,6 @@
+Solution: (a) and (c) are correct. The others do not implement fold_right properly.
+
+Explanation:  
+• (a) uses the continuation to “wrap” f x r in cont (f x r), which matches fold_right semantics.  
+• (c) places f x around (cont r), which, when started with an appropriate continuation (e.g., the identity), reproduces fold_right.  
+• (b), (d), and (e) either reverse arguments or incorrectly handle continuations, so they do not match fold_right.  

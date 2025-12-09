@@ -1,0 +1,21 @@
+**Solution:**
+
+```ocaml
+let toInt f = 
+  let rec helper n =
+    if f (fun x -> x) (Obj.magic ()) == Obj.magic () then n else helper (n + 1)
+  in
+  helper 0
+```
+
+**Explanation:**
+
+The `toInt` function aims to determine how many times the function `f` effectively applies a function to its argument.
+
+1.  **`helper n`**: This recursive function does the heavy lifting. `n` represents our current guess for the number of applications.
+2.  **`f (fun x -> x) (Obj.magic ())`**: This is the core logic. We're calling `f` with a specific function and an arbitrary argument:
+    *   `fun x -> x`: This is an identity function (it returns its argument unchanged).  We use this as the function argument to `f` because we want `f` to represent the *application* of a function.
+    *   `Obj.magic ()`:  `Obj.magic` is used to bypass OCaml's type system temporarily.  In this case, we need it because we don't know what type `'a` is in advance, but `f` expects an argument of type `'a`. `Obj.magic ()` effectively allows us to pass *any* type. Critically, we only care about whether `f` "does something" with this input, not the actual value.
+3.  **`if ... == Obj.magic () then n else helper (n + 1)`**: This is the crucial comparison.  If `f` *doesn't* apply the identity function at all to our `Obj.magic` value (i.e., the result of `f` is still just the original `Obj.magic` value), it returns the current guess `n`.  Otherwise, it means `f` applied the identity function, so we increment the guess `n` and recurse.
+
+In effect, it counts how many times `f` effectively wraps its argument inside a function application.

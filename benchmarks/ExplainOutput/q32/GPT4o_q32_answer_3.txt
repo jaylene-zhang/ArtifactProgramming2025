@@ -1,0 +1,14 @@
+**Solution:**  
+The valid definitions are:  
+**a)** `type url = string`  
+         `type bookmarks = Location of url * bookmarks | Empty`  
+**b)** `type url = string`  
+         `type bookmarks = Empty | Location of string * bookmarks`
+
+---
+
+**Explanation:**  
+- **a)** is correct because it defines a recursive structure where each bookmark contains a `url` and a reference to the next `bookmarks`, with an `Empty` case for termination.  
+- **b)** is also correct and essentially identical to **a)**, but the order of constructors (`Empty` first) does not matter.  
+- **c)** is invalid because the `Location` constructor is defined without the necessary arguments to hold either `url` or recursive `bookmarks`.  
+- **d)** is invalid because the recursive parameter appears out of order (`Location of bookmarks * url` would cause confusion in recursive traversal because the nesting of bookmarks comes before the URL).

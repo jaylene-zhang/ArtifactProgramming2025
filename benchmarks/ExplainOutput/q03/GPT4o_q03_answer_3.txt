@@ -1,0 +1,45 @@
+### Solution:
+The output of the program is:
+```ocaml
+(1, 3, [4; 3; 2], [5; 5; 5])
+```
+
+### Explanation:
+Let's break this down step by step using binding stack concepts.
+
+#### 1. **Bindings and Initializations:**
+   - `c = ref 0`: A mutable reference `c` is created and initialized to `0`.
+   - `l = List.rev [1; 2; 3]`: The list `[1; 2; 3]` is reversed to get `[3; 2; 1]`.
+   - `observe () = !c`: A function is defined to fetch the current value of `c` (mutation tracking).
+   - `x = 1`: A constant `x` is bound to `1`.
+
+#### 2. **First Function (`inc`) and First Mapping:**
+   - `inc x = c := !c + 1; x + 1`: A function is defined, which increments the reference `c` and returns the input `x` incremented by 1.
+   - `ml = List.map inc l`: The list `[3; 2; 1]` is processed with `inc`:
+     - For `3`: `c` becomes `1` (`0 + 1`), and `3 + 1 = 4`.
+     - For `2`: `c` becomes `2` (`1 + 1`), and `2 + 1 = 3`.
+     - For `1`: `c` becomes `3` (`2 + 1`), and `1 + 1 = 2`.
+     - Result: `ml = [4; 3; 2]`.
+
+#### 3. **Second Function (`inc’`) and Second Mapping:**
+   - `inc’` is defined in its own scope:
+     - Local `c = ref 0`: A new independent mutable reference `c` is initialized to `0`.
+     - Local `x = x + 1`: A new local `x` is bound and updated to `2` (`1 + 1` from the outer `x`).
+     - Defined function: `fun y -> c := !c + 1; !c + y + x`.
+   - `ml’ = List.map inc’ l`: The list `[3; 2; 1]` is processed with `inc’`:
+     - For each element, the local `c` is independently incremented, and the result uses `x = 2`:
+       - For `3`: `c` becomes `1` (`0 + 1`), and `1 + 3 + 2 = 5`.
+       - For `2`: `c` becomes `2` (`1 + 1`), and `2 + 2 + 2 = 5`.
+       - For `1`: `c` becomes `3` (`2 + 1`), and `3 + 1 + 2 = 5`.
+       - Result: `ml’ = [5; 5; 5]`.
+
+#### 4. **Results:**
+   - `x` remains `1` (outer `x` is unaffected).
+   - `observe ()` fetches the global `c`, which is `3` (incremented during the first mapping).
+   - `ml = [4; 3; 2]` (from `inc` and global `c`).
+   - `ml’ = [5; 5; 5]` (from `inc’` and local `c`).
+
+Final output:
+```ocaml
+(1, 3, [4; 3; 2], [5; 5; 5])
+```

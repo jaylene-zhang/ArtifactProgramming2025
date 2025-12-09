@@ -1,0 +1,18 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+
+let f y =
+  let x = 20 in
+  x + y;;
+
+let result = f 5;;
+print_int result;; (* Output: 25 *)
+
+print_int x;; (* Output: 10 *)
+```
+
+**Explanation:**
+
+Overshadowing occurs when a variable declared in an inner scope has the same name as a variable declared in an outer scope.  In the example, the `let x = 20 in` inside the `f` function's body shadows the outer `x` variable.  The function `f` uses its own, locally-scoped `x`.  The `print_int x;` statement after `f`'s execution uses the globally declared `x` because the scope of the inner `x` is limited to the `f` function.

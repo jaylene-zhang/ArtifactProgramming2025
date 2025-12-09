@@ -1,0 +1,11 @@
+1) For blank 1 we should write:
+f s.hd a
+
+2) For blank 2 we should write:
+fun () -> fold f (f s.hd a) (s.tl())
+
+The fold function for streams creates a new stream where each element is the result of applying function f to the current stream element and the accumulated value.
+
+For the first blank, we compute the head of the output stream by applying f to the head of the input stream (s.hd) and our accumulator (a).
+
+For the second blank, we create a thunk that will compute the tail of the output stream when needed. This tail is created by recursively calling fold with the updated accumulator (f s.hd a) and the tail of the input stream (s.tl()).

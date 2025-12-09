@@ -1,0 +1,5 @@
+Solution: 't
+
+Explanation:
+`f: ('t * 't -> 't)` means `f` takes two values of type 't, and returns a value of type 't.
+The first `f (a, b)`'s argument takes `a : 't` and `b : 't`, and results in `'t`. The second `f (b, a)` also results in `'t`.  `f` is then applied to these two results, giving a value of type 't.

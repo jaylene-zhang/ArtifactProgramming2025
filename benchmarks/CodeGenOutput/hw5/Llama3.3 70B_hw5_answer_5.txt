@@ -1,0 +1,103 @@
+```ocaml
+(* Question 1: Tree Depth *)
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let tree_depth_cps t = 
+  let rec depth_helper t sc _ = match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun d1 ->
+          depth_helper r (fun d2 -> sc (1 + max d1 d2)) sc) sc
+  in
+  depth_helper t (fun x -> x) (fun _ -> 0)
+
+
+(* Question 2: Finding Subtrees *)
+
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls with
+    | [] -> sc tree
+    | h :: tl ->
+       (match tree with
+        | Empty -> fc []
+        | Tree (l, x, r) ->
+           if x = h then
+             helper tl l sc (fun () ->
+                 helper tl r sc fc)
+           else
+             helper ls r sc fc)
+  in
+  helper ls tree (fun x -> Some x) (fun () -> None)
+
+
+(* Question 3: Arithmetic Experssion Parser *)
+
+type token =
+  | LPAREN
+  | RPAREN
+  | PLUS
+  | MINUS
+  | TIMES
+  | DIVIDE
+  | CONST of int
+
+type expr =
+  | Const of int
+  | Plus of expr * expr
+  | Minus of expr * expr
+  | Times of expr * expr
+  | Divide of expr * expr
+
+let eval e v =
+  let rec eval e =
+    match e with
+    | Const i -> i
+    | Plus (e1, e2) -> eval e1 + eval e2
+    | Minus (e1, e2) -> eval e1 - eval e2
+    | Times (e1, e2) -> eval e1 * eval e2
+    | Divide (e1, e2) -> eval e1 / eval e2
+  in
+  eval e
+
+let parser_cps toks =
+  let rec parser_factor sc fc =
+    match toks with
+    | (CONST i) :: tl -> sc (Const i) tl
+    | LPAREN :: tl ->
+      parser_expr sc (fun e -> parser RPAREN sc (fun () -> fc e) fc) fc
+    | _ -> fc []
+
+  and parser_term sc fc =
+    parser_factor (fun e1 tl ->
+        parser (fun () -> parser_add sc (fun e2 -> sc (Times (e1, e2)) fc) fc) fc) fc
+      tl
+    | _ -> sc e1 tl)
+
+  and parser_expr sc fc =
+    parser_term (fun e1 tl ->
+        parser (fun () -> parser_add sc (fun e2 -> sc (Plus (e1, e2)) fc) fc) fc)
+      tl
+    | _ -> sc e1 tl)
+
+  and parser_add sc fc =
+    parser (fun e2 ->
+        sc (Const e2) toks)
+      (fun e2 ->
+         parser (fun e3 -> sc (Plus (e2, e3)) toks) fc)
+      fc
+
+  and parser_subtract sc fc =
+    parser (fun e2 ->
+        sc (Const e2) toks)
+      (fun e2 ->
+         parser (fun e3 -> sc (Minus (e2, e3)) toks) fc)
+      fc
+
+  in
+  parser_factor (fun e tl -> sc e tl) fc
+```

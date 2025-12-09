@@ -1,0 +1,3 @@
+Solution: acc should be initialized to [].
+
+Explanation: Starting with an empty list allows you to build the reversed list by prepending each element from l in the tail-recursive function.

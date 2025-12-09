@@ -1,0 +1,3 @@
+(0 , 1)
+
+The base case is incorrect. The triangle number of 0 should be 0, but the code returns 1 when `n` reaches 1.

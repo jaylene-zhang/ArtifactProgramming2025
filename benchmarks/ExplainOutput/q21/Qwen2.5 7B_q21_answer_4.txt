@@ -1,0 +1,8 @@
+The unused variable in the given expression is `r`.
+
+**Solution:**
+- `r` is unused because its value is not used anywhere in the code.
+
+**Explanation:**
+- `r` is defined as `2 * y` but is not referenced anywhere in the function.
+- The variables `x` inside the lambda function and the outer `y` are used correctly in their respective scopes.

@@ -1,0 +1,11 @@
+Answer: a) is correct.
+
+Explanation:
+For a tail-recursive implementation of fold_right, we need to transform the recursive call to be in tail position while maintaining the order of operations.
+
+Regular fold_right applies function f to each element of list l from right to left, with initial value b:
+`fold_right f [x1;x2;...;xn] b = f x1 (f x2 (... (f xn b))...)`
+
+In implementation a), the continuation accumulates the operations in the right order. When we reach the empty list, we apply the continuation to b. As we return, each continuation applies f to the current element and the result of the previous computation, matching fold_right's behavior. This is tail-recursive because the recursive call is the last operation.
+
+The other implementations either apply f in the wrong order or have incorrect parameter arrangements in the recursive calls.

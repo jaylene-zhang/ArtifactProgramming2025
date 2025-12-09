@@ -1,0 +1,7 @@
+**b) let concat l =**
+**let rec aux l s = match l with**
+**  | [] -> s**
+**  | x::xs -> aux xs (s ^ " " ^ x)**
+**in aux l ""**
+
+Explanation: This implementation is tail-recursive because it calls the auxiliary function `aux` with an updated `s` value, rather than building up a new string in the recursive call. It also traverses the input list only once. The key difference between this implementation and the others is that it prepends the current string `x` to the accumulated string `s`, rather than appending it, which avoids building up a reversed string.

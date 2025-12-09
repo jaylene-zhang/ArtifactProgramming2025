@@ -1,0 +1,21 @@
+**a) Incorrect**
+
+**Explanation:**
+
+`sumSeries f` requires a tuple `(a, b)` as the second argument. `curry (sumSeries f) 0` partially applies `sumSeries f` with `a = 0`, resulting in a function that expects `b` . `swap` then swaps the order of `b` and `inc`, creating a function that expects the increment function `int -> int` as the first argument and the upper bound `b=int` as the second argument. The expression `fun x -> x + 1` is passed as the increment function.
+
+**b) Incorrect**
+
+**Explanation:**
+
+`sumSeries f 0` is not a valid expression because sumSeries' second argument is a tuple.
+
+**c) Correct**
+
+**Explanation:**
+
+1.  `swap (sumSeries f)`: Swaps the order of the second and third arguments of `sumSeries`. Now it expects `inc` first, then `(a, b)`.
+2.  `swap (sumSeries f) (fun x -> x + 1)`: Partially applies the increment function. The result is a function waiting for the tuple `(a, b)`.
+3.  `curry (swap (sumSeries f) (fun x -> x + 1))`: Curries the function, so it now takes `a` and `b` as separate arguments.
+4.  `curry (swap (sumSeries f) (fun x -> x + 1)) 0`: Partially applies `a = 0`. The result is a function that takes `b` (the upper bound) and returns the final `int` result.
+5. `sum_from_zero f = ...`: overall type will be `int -> int`, which is precisely the specified type for `sum_from_zero`.

@@ -1,0 +1,7 @@
+**Correct answer(s):**  d
+
+**Explanation:**
+
+The key to tail recursion in `fold_right`  is ensuring the recursive call is the *last* operation performed.  Option d achieves this because the `cont` function is called *after* applying `f` to the accumulator (`r`) and the current element (`x`).  This allows the compiler to optimize away the intermediate results in the stack.
+
+Options a, b, c, and e all incorrectly place the `cont` call within the `f` application. This would lead to a stack overflow on sufficiently large lists.  Options b and c have the incorrect order of arguments within the `f` function call, which will affect the final result.  Lastly, Option e has the arguments in the `aux_folder` call swapped, reversing the intended list traversal.

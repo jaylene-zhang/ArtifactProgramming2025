@@ -1,0 +1,49 @@
+**Proof of Theorem 1**  
+We want to prove:  
+`count w x + acc = count' w x acc`  
+by structural induction on `w : 'a magma`.
+
+- **Base Case**: `w = Const y`  
+  Left-hand side: `count (Const y) x + acc`  
+  → `if x = y then 1 else 0` + `acc`  
+  Right-hand side: `count' (Const y) x acc`  
+  → `if x = y then 1 + acc else acc`.  
+  Both sides are equivalent since the conditional expressions behave the same.  
+  Therefore, the base case holds.
+
+- **Step Case**: `w = Op (w1, w2)`  
+  Induction Hypothesis (IH):  
+  `count w1 x + acc = count' w1 x acc`  
+  `count w2 x + acc = count' w2 x acc`.  
+
+  We want to prove:  
+  `count (Op (w1, w2)) x + acc = count' (Op (w1, w2)) x acc`.  
+  Expanding both sides:  
+  Left-hand side:  
+  `count (Op (w1, w2)) x + acc`  
+  → `(count w1 x + count w2 x) + acc`.  
+  Right-hand side:  
+  `count' (Op (w1, w2)) x acc`  
+  → `count' w1 x (count' w2 x acc)`.  
+
+  By the IH, substitute for `count' w1 x acc` and `count' w2 x acc`:  
+  → `count w1 x + (count w2 x + acc)`.  
+
+  This matches the left-hand side by associativity of addition.  
+  Therefore, the step case holds.
+
+As both the base case and step case hold, Theorem 1 is proved.
+
+---
+
+**Proof of Theorem 2 (Main Result)**  
+We want to show:  
+`count w x = count' w x 0`.  
+
+From Theorem 1, substituting `acc = 0`:  
+`count w x + 0 = count' w x 0`.  
+
+This simplifies directly to:  
+`count w x = count' w x 0`.  
+
+Thus, Theorem 2 is proved.

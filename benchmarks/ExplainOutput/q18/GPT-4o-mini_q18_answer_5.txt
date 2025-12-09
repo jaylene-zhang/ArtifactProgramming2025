@@ -1,0 +1,13 @@
+The program will return `(7, 6)`.
+
+**Explanation:**
+1. Initially, `point` is defined as `(5, 4)`.
+2. The function `component_x` retrieves the first element (5) and `component_y` retrieves the second element (4) from a tuple.
+3. The function `shift_point n` takes an integer `n` and shifts the coordinates of `point` by adding `n` to both components. For `shift_point 1`, it computes:
+   - `component_x point + 1 = 5 + 1 = 6`
+   - `component_y point + 1 = 4 + 1 = 5`
+   So the new value of `point` becomes `(6, 5)`.
+4. Now, if you call `shift_point 2`, it will compute using the updated `point`:
+   - `component_x point + 2 = 6 + 2 = 8`
+   - `component_y point + 2 = 5 + 2 = 7`
+   Therefore, `shift_point 2` returns `(8, 7)`.

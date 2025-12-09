@@ -1,0 +1,9 @@
+Solution:
+The function `f` rotates each sublist of length 5 and leaves the rest of the list unchanged.
+
+Explanation:
+1. The function `f` recursively processes the list.
+2. For an empty list, it returns an empty list.
+3. For a non-empty list, it first joins the tail (`t`) with the head (`h`), then rotates this joined list.
+4. Since `rotate` moves the first element to the end, when `t @ [h]` has at least 5 elements, rotating it has the effect of rotating only the first 5 elements.
+5. Elements after the first 5 are not affected by the rotation.

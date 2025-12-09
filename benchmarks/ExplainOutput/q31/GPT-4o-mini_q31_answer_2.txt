@@ -1,0 +1,10 @@
+a) Yes  
+b) No  
+c) No  
+d) Yes  
+
+**Explanation:**
+- **a)** It computes `prime_fact x` once, storing the result in `p` and reuses it in the subsequent check, hence it does not recompute.
+- **b)** It computes `prime_fact x` for each element in the list `l`, which results in multiple calls to `prime_fact`.
+- **c)** Similar to b), it computes `prime_fact x` multiple times (once for each recursive call that matches the head of the list).
+- **d)** Like a), it computes `prime_fact x` once, then stores it in `p` for use in the recursion, avoiding redundant computations.

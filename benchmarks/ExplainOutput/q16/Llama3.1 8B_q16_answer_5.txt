@@ -1,0 +1,8 @@
+**Solution**
+```
+val it = (6, 6) : int * int
+```
+**Explanation**
+When the program loads, `point` is initially bound to `(4, 3)`. However, after running `point = shift_point 1`, `point` is rebound to `(5, 4)`, modifying the original binding.
+
+When `shift_point 2` is called, it takes the current value of `point`, which is `(5, 4)`, and shifts it by 2. Thus, the result is `(7, 6)`.

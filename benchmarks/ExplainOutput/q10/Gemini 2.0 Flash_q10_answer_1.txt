@@ -1,0 +1,7 @@
+**Solution:**
+
+Functions can be treated like any other data type: passed as arguments to other functions, returned as results, and stored in data structures.  This allows for powerful abstractions and code reuse through higher-order functions.
+
+**Explanation:**
+
+"First-class" means an entity has no restrictions on its use.  In the context of functions, it means they can be used in the same ways as integers, strings, or any other data type in the language.

@@ -1,0 +1,90 @@
+Here is the complete code with all exercises solved:
+
+```ocaml
+(* Q1: 5 points *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | x :: t -> match f x with
+    | None -> None
+    | Some x -> match traverse f t with
+      | None -> None
+      | Some t -> Some (x :: t)
+
+(* Q2.1: 2 points *)
+let ap mA (f: ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  match mA with
+  | Nothing -> Nothing
+  | Just a -> match f with
+    | Nothing -> Nothing
+    | Just g -> Just (g a)
+
+(* Q2.2: 2 points *)
+let seq2 (m1: 'a1 Maybe.t) (m2: 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  match m1 with
+  | Nothing -> Nothing
+  | Just a1 -> match m2 with
+    | Nothing -> Nothing
+    | Just a2 -> Just (a1, a2)
+
+(* Q2.3: 3 points *)
+let seq_predicate2 (p1: 'a1 -> 'a2 Maybe.t) (p2: 'b1 -> 'b2 Maybe.t) : ('a1 * 'b1) -> ('a2 * 'b2) Maybe.t =
+  fun (a1 : 'a1) (b1 : 'b1) ->
+  match p1 a1 with
+  | Nothing -> Nothing
+  | Just a2 -> match p2 b1 with
+    | Nothing -> Nothing
+    | Just b2 -> Just (a2, b2)
+
+(* Q2.4: 3 points *)
+let map (f : 'a -> 'b) (m : 'a Maybe.t) : 'b Maybe.t =
+  match m with
+  | Nothing -> Nothing
+  | Just a -> Just (f a)
+
+(* Q2.5: 10 points *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  match l with
+  | [] -> Just []
+  | x :: t -> match f x with
+    | Nothing -> Nothing
+    | Just x -> match traverse' f t with
+      | Nothing -> Nothing
+      |Just xt -> Just (x :: xt)
+
+(* Q3.1a: 2 points *)
+let church_to_nat (c: 'a church) : nat =
+  c Ign (fun n -> S n)
+
+(* Q3.1b: 3 points *)
+let rec nat_to_church (n: nat) : 'a church =
+  function
+  | Z -> fn a => fn _ => a
+  | S n -> fn g => fn a -> g (c nat_to_church n a g)
+
+(* Q3.2a: 2 points *)
+let coption_to_option (copt: ('a, 'r) coption) : 'a option =
+  copt (fun x -> Some x) (fun () -> None)
+
+(* Q3.2b: 3 points *)
+let option_to_coption (x: 'a option) : ('a, 'r) coption =
+  match x with
+  | None -> fun ignore -> fun k -> k ()
+  | Some a -> fun g -> fun k -> g a (fun x -> k ())
+
+(* Q3.3a: 2 points *)
+let rec clist_to_list ((CList clist): ('a, 'r) clist) : 'a list =
+  clist (fun x -> x::List.nil) (fun () -> List.nil)
+
+(* Q3.3b: 3 points *)
+let rec list_to_clist (l: 'a list): ('a, 'r) clist =
+  match l with
+  | [] -> CList (fun _ -> fun_ignore -> fun k -> k ())
+  | a::t -> CList (fun f -> fun k -> f a (list_to_clist t k))
+
+(* Q4: 5 points *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  match clist with
+  | CList clist -> CList (fun g -> fun k -> let g_b = map_clist f clist in fun p -> g (f p) k)
+```
+This solution assumes you have the Maybe module provided and you can use it in your ocaml file.

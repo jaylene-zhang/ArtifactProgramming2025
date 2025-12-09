@@ -1,0 +1,3 @@
+Solution: Yes, it correctly computes the antiderivative.
+
+Explanation: Curry turns integral into a function of two arguments. By fixing the lower bound at 0 with (curry integral) f 0, we get a function that, when given x (and dx), computes the integral of f from 0 to x, which is exactly the antiderivative.

@@ -1,0 +1,7 @@
+Solution:
+```
+(6, 5)
+```
+
+Explanation:
+The `shift_point` function calculates the shifted point by adding `n` to both the x and y components of the original `point`. Initially, `point` is (4, 3).  Calling `shift_point 2` will add 2 to both components, resulting in (4+2, 3+2) = (6, 5).  The later assignment of `point = shift_point 1` does not affect the result of `shift_point 2`.

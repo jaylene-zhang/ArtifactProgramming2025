@@ -1,0 +1,18 @@
+**a) False**  
+Shorter definitions do not necessarily imply faster execution. `rev1` has a performance bottleneck due to the use of the `(@)` operator.
+
+**Explanation**: While `rev1` is more concise, each invocation of `(@)` (list append) in the recursive case is O(n), making the overall complexity O(n²) for a list of length `n`.
+
+---
+
+**b) True**  
+The time complexity of the `(@)` operator depends on its first argument, not the second argument.
+
+**Explanation**: In `rev1`, `(rev xs) @ [x]` repeatedly appends `[x]` to the reversed sublist, creating a performance bottleneck. This repeated appending results in O(n²) time complexity for reversing the list.
+
+---
+
+**c) True**  
+`rev2` is faster than `rev1` because it accumulates the reversed list using the `(::)` operator, which is O(1).
+
+**Explanation**: The `go` function in `rev2` uses tail-call recursion and constructs the reversed list using the efficient `(::)` operator, making the overall time complexity O(n). This is more efficient than using `(@)` as in `rev1`.

@@ -1,0 +1,51 @@
+(* Question 1: Tree Depth *)
+let rec depth_helper : 'a tree -> (int -> int) -> int =
+  fun t cont ->
+    match t with
+    | Empty -> cont 0
+    | Tree (l, _, r) -> 
+        depth_helper l (fun l_depth ->
+            depth_helper r (fun r_depth ->
+                cont (1 + max l_depth r_depth))))
+
+let tree_depth_cps t = depth_helper t (fun depth -> depth)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], Empty -> sc None
+    | [], _ -> sc None
+    | h::tts, Empty -> fc []
+    | h::tts, Tree (l, v, r) when h = v -> if tts = [] then sc (Some tree) else helper tts l sc fc
+    | _::tts, Tree (l, v, r) -> helper tts l sc fc
+  in
+  helper ls tree (fun() -> ()) (fun pfx -> () )
+
+(* Question 3: Arithmetic Expression Parser *)
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let rec parser_Const : ('r, int) parser_LN =
+  fun tl sc fc ->
+  match tl with
+  | Const(c)::t -> sc (Some c)
+  | _ -> fc tl
+
+let rec parser_BinOp : ('r, 'a) parser_LN * ('r, 'a) parser_LN * (int * 'a) parser_LN =
+  fun pl pr po ->
+  fun tl sc fc ->
+  match tl with
+  | Plus (l, r)::t | Minus (l, r)::t | Mult (l, r)::t | Div (l, r)::t ->
+      (pl tl (fun l_val ->
+        (pr tl (fun r_val ->
+          po tl (fun op ->
+            sc (op, (l_val, r_val))))))
+  | _ -> fc tl
+
+let parser_cps t =
+  parser_BinOp (parser_BinOp (parser_BinOp (parser_Const, parser_Const, parser_Pow), parser_Const, parser_Mult), parser_Const, parser_Add)
+  t (fun e -> Some e) (fun _ -> None)
+
+let parser_Pow = parser_BinOp (parser_Const, parser_Const, parser_Pow) parser_Const
+let parser_Mult = parser_BinOp (parser_Const, parser_Const, parser_Mult) parser_Const
+let parser_Add = parser_BinOp (parser_Const, parser_Const, parser_Add) parser_Const

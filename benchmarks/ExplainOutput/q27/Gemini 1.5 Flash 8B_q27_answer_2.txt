@@ -1,0 +1,7 @@
+**Solution:**
+
+To achieve referential transparency and predictable behavior.
+
+**Explanation:**
+
+Functional languages aim for pure functions.  State variables (and mutable references) introduce side effects, making code harder to reason about.  Pure functions only depend on their input, and their output is predictable, contributing to easier debugging, testing, and parallelization.

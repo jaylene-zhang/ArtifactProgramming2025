@@ -1,0 +1,3 @@
+Solution: The unused variables are r and the parameter x in the anonymous function.
+
+Explanation: The variable r is bound to 2 * y but never used afterward. In the function fun x -> let x = 42 in x * y, the parameter x is immediately shadowed by a new binding (x = 42), making the original parameter x unused.

@@ -1,0 +1,4 @@
+The type of `shift` is `unit -> unit`.
+
+**Explanation:** 
+The function `shift` does not take any parameters directly but operates on a mutable value `point`. Inside `shift`, it modifies the contents of the references to which `point` refers, but it does not return any meaningful value; instead, it simply performs side effects (updating the values of `x` and `y`). Hence, the type is `unit -> unit`, indicating it takes no arguments and returns no value.

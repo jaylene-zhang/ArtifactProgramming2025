@@ -1,0 +1,16 @@
+**Correct Implementation(s):**
+
+d)
+
+
+**Explanation:**
+
+The key to tail recursion in `fold_right` is to apply the function `f` to the accumulator `r` *before* recursing.  This allows the compiler to optimize the recursion away. Option d does exactly that:
+
+```ocaml
+aux_folder f xs b (fun r -> cont (f r x))
+```
+
+In this case, `f r x` is executed *before* passing the result to `cont`. This allows the accumulator to have a "building" effect with each recursive call, which is crucial for tail-recursion optimization.
+
+The other options either apply `f` to the recursive call result _after_ the callback `cont` (meaning the recursive call does not immediately build the result directly into the ongoing computation), passing incorrect arguments to `f` or have the wrong order of operations to execute `f`'s accumulator updates in tail-recursion.

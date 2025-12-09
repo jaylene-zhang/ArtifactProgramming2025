@@ -1,0 +1,42 @@
+Okay, I'll provide the solution and explanations for your OCaml inductive proof questions.
+
+**Q4.1**
+
+*   **Base Case**:
+
+    *   `h = Empty`
+
+    *   Proof:  We must show `add_up Empty + acc = add_up_tr Empty acc`.
+
+        *   `add_up Empty + acc = 0 + acc = acc`
+        *   `add_up_tr Empty acc = acc`
+        *   Therefore, `add_up Empty + acc = add_up_tr Empty acc`.
+
+*   **Step Case**:
+
+    *   `h = Hand (c, h')` where `h'` is another hand and `c` is a card.
+
+*   **Induction Hypothesis**:
+
+    *   For some `h'` and for all `acc`, `add_up h' + acc = add_up_tr h' acc`.
+
+*   **Proof**: We must show `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`.
+
+    *   `add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc)` (by definition of `add_up`).
+    *   `add_up_tr (Hand (c, h')) acc = add_up_tr h' (1 + acc)` (by definition of `add_up_tr`).
+    *   By the induction hypothesis, `add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`.
+    *   Therefore, `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`.
+
+**Q4.2**
+
+*   **Proof**:
+
+    *   We want to prove: For all hands `h`, `add_up h = add_up_tr h 0`.
+    *   From Theorem 1, we know: For all hands `h` and accumulators `acc`, `add_up h + acc = add_up_tr h acc`.
+    *   Let `acc = 0`.  Then, `add_up h + 0 = add_up_tr h 0`.
+    *   Therefore, `add_up h = add_up_tr h 0`.
+
+**Explanation:**
+
+*   **Q4.1**:  The key is to state the general theorem (Theorem 1) correctly.  We prove this by induction on the structure of the `hand`.  The base case is the empty hand. The step case considers a hand constructed by adding a card to a smaller hand, using the inductive hypothesis on the smaller hand.
+*   **Q4.2**:  This question ties together the general theorem proved in Q4.1 to the original assertion.  Set the accumulator argument to 0 in Theorem 1 to immediately achieve the result.

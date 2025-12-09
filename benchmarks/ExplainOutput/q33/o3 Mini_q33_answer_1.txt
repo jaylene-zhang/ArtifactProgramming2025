@@ -1,0 +1,3 @@
+Solution: a)
+
+Explanation: Option (a) uses an integer to represent the number of revolutions, allowing jumps with any number of rotations, and pairs it with a jump type from the allowed set.

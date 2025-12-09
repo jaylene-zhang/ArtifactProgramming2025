@@ -1,0 +1,10 @@
+**Solution:**
+
+`'t`
+
+**Explanation:**
+
+1.  `f (a, b)` has type `'t` because `f` has type `('t * 't -> 't)` and `(a, b)` has type `('t * 't)`.
+2.  `f (b, a)` has type `'t` for the same reason as above.
+3.  Therefore, `(f (a, b), f (b, a))` has type `('t * 't)`.
+4.  Finally, `f (f (a, b), f (b, a))` has type `'t` because `f` has type `('t * 't -> 't)` and `(f (a, b), f (b, a))` has type `('t * 't)`.

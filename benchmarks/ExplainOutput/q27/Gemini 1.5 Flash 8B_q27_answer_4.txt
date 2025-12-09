@@ -1,0 +1,7 @@
+**Solution:**
+
+Functional languages avoid state to promote immutability, which leads to easier reasoning about code and improved predictability (no side effects).
+
+**Explanation:**
+
+State variables (references, mutable data) can change unexpectedly due to side effects. This makes it harder to understand and debug programs.  Immutable data, on the other hand, makes code easier to reason about since the values don't change.  Functional programming's emphasis on pure functions (no side effects) also fosters modularity and reusability.

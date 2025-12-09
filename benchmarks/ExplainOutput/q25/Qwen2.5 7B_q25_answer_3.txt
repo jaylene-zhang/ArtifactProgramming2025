@@ -1,0 +1,3 @@
+Solution: 't = 's, 'u = 't * 's
+
+Explanation: For the expression `f (f (a, b), f (b, a))` to have type `'u`, and given `f: ('t * 's -> 'u)`, the arguments to `f` must match the function's type signature. Since `a: 't` and `b: 's`, `f (a, b)` will have type `'u`. Similarly, `f (b, a)` will also have type `'u`. For `f (f (a, b), f (b, a))` to have type `'u`, the second `f` call's arguments need to be of type `'t * 's`, implying that `'t` and `'s` must be the same type. Hence, the most general instantiation is `'t = 's` and `'u = 't * 's`.

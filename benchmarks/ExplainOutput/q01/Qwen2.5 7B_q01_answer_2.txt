@@ -1,0 +1,36 @@
+```
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 'd = 
+    match xs, ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair x y)::r))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (fun x y -> x + y) 
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+### Explanation:
+
+1. **Type for `xs` and `ys`:**
+   - `xs` and `ys` are lists of elements of any types, so we use the type variable `'a` and `'b` respectively.
+   - The most general type for an OCaml list is `'a list`.
+
+2. **Type for `pair`:**
+   - `pair` is a function that takes two arguments of different types and returns a result of some type. We represent this as `'a -> 'b -> 'c`.
+   - `'a` is the type of elements in `xs`, `'b` is the type of elements in `ys`, and `'c` is the resulting pair type.
+
+3. **Type for `sc`:**
+   - `sc` takes a list of type `'c` (result of applying `pair` to elements of `xs` and `ys`) and returns a result of type `'d`.
+   - The type of `sc` is `'c list -> 'd`.
+
+4. **Return type of `zippy`:**
+   - The function `zippy` is a recursive function returning `'d` based on the type of `sc`.
+
+5. **Type for `zip_plus` function:**
+   - `zip_plus` is defined to take two lists, `xs` and `ys`, and returns a value of type `'d`.
+   - `zip_plus` calls `zippy` with a function that adds two numbers and a function to check if the lengths match.
+
+In each case, the types ensure that the arguments passed to functions are consistent and the return types are correctly mapped, making the program well-typed.

@@ -1,0 +1,7 @@
+```
+(7, 6)
+```
+
+Explanation: The function `shift_point n` adds `n` to both components of the point (5, 4). When `shift_point 2` is called, it returns `(component_x point + 2, component_y point + 2)`. Note that at this point, `point` has already been redefined to `(6, 5)` after `shift_point 1` was called. So `shift_point 2` returns `(6 + 2, 5 + 2)` which is `(8, 7)`.
+
+Wait, I made an error. The `shift_point` function doesn't use the current value of `point` - it directly references the original binding of `point` which is (5, 4). So `shift_point 2` returns `(5 + 2, 4 + 2)` which is `(7, 6)`.

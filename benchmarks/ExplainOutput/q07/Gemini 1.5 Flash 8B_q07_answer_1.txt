@@ -1,0 +1,34 @@
+**Theorem 1. For any word w, constant x, and accumulator acc, count w x+acc=count’ w x acc.**
+
+**Proof.**
+
+* **BaseCase:** w = Const y.
+    * count (Const y) x + acc = (if x = y then 1 else 0) + acc
+    * count’ (Const y) x acc = if x = y then 1 + acc else acc
+    * These expressions are equal.
+
+
+* **Step Case:** w = Op (w1, w2).
+    * Induction Hypothesis:
+        * count w1 x + acc1 = count’ w1 x acc1
+        * count w2 x + acc2 = count’ w2 x acc2
+        *  Assume count w1 x + acc1=count’ w1 x acc1 and count w2 x + acc2 = count’ w2 x acc2 for arbitrary acc1 and acc2
+    * Proof:
+        count (Op (w1, w2)) x + acc = (count w1 x) + (count w2 x)  + acc = count’ w1 x (count’ w2 x acc) = count’ (Op (w1,w2)) x acc   (by the IH).
+
+**Theorem 2 (Main Result). For any word w and constant x, we have count w x = count’ w x 0.**
+
+**Proof.**
+
+By Theorem 1, with acc = 0.  count w x + 0 = count’ w x 0.  Thus, count w x = count’ w x 0.
+
+
+
+**Explanation:**
+
+The problem asks you to prove the correctness of two recursive functions (`count` and `count'`) that count occurrences of a constant within a "magma" word.  The proof is by structural induction.
+
+* **Base Case:**  You show that the functions agree for the simplest case (when the word is just a constant).
+* **Step Case:** You assume the functions agree on smaller sub-words (the induction hypothesis), and then demonstrate that this means they also agree on the combined word (where the word is made up of an operation applied to two sub-words).  Note how the recursive calls to `count` and `count'` correctly incorporate the accumulator value `acc`
+
+Crucially, the proof establishes the relationship between the two versions of the counting algorithm.  The base case directly relates the function and their initialization point. The step case relates how the two recursive function calls within each algorithm match, which ensures that they produce consistent results through recursion. The proof correctly leverages the induction hypothesis to justify the step case.  This is why it's important that the induction hypothesis is correctly stated and used. Finally,  Theorem 2 specifically shows the relationship required, applying the `acc` initialization to demonstrate the desired result.

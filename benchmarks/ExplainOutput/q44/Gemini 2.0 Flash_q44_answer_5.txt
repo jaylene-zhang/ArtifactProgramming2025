@@ -1,0 +1,7 @@
+**Solution:**
+
+You need to prove that if the statement holds for a list `xs`, then it also holds for `x :: xs` (a list with one additional element `x` prepended to `xs`).
+
+**Explanation:**
+
+In the inductive step, you assume the statement holds for a smaller list (the inductive hypothesis) and use this assumption to show that the statement holds for a larger list constructed by adding an element to the smaller list.  This effectively bridges the gap from smaller lists to larger ones, allowing the base case to bootstrap the proof for lists of any size.

@@ -1,0 +1,62 @@
+(* TODO: Implement the function. *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable x ->
+      Variable_set.singleton x
+  | Conjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f1 ->
+      collect_variables f1
+
+(* TODO: Implement the function. *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable x ->
+      try
+        Variable_map.find x state
+      with Not_found ->
+        raise (Unassigned_variable x)
+  | Conjunction (f1, f2) ->
+      (eval state f1) && (eval state f2)
+  | Disjunction (f1, f2) ->
+      (eval state f1) || (eval state f2)
+  | Negation f1 ->
+      not (eval state f1)
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let vars = collect_variables formula in
+  try
+    let rec helper assigned_vars =
+      if Variable_set.is_empty assigned_vars then
+        Some Variable_map.empty
+      else
+        let (var, rest) = (Variable_set.min_elt assigned_vars, Variable_set.remove (Variable_set.min_elt assigned_vars) assigned_vars) in
+        try
+          let truth_value = eval Variable_map.empty (Variable var) in
+          let new_assigned = Variable_map.add var truth_value assigned_vars in
+          let sat = find_satisfying_assignment (assign ~var:true formula) in
+          match sat with
+          | Some soln -> Some (Variable_map.add_mapping (fun k -> match Variable_map.find k soln with true -> true | false -> false) var soln)
+          | None ->
+              helper rest |> Option.map (Variable_map.add_mapping (fun k -> match Variable_map.find k assigned_vars with true -> true | false -> false) var)
+        with Unassigned_variable _ ->
+          helper rest |> Option.map (Variable_map.add_mapping (fun k -> match Variable_map.find k assigned_vars with true -> true | false -> false) var)
+    in
+    helper vars
+  with Unassigned_variable x ->
+    raise Unsatisfiable_formula
+
+and assign ~var:val_ f =
+  match f with
+  | Variable x ->
+      if x = var then Negation (Variable (String.uppercase_ascii x))
+      else Variable x
+  | Conjunction (f1, f2) ->
+      Conjunction (assign ~var val_ f1, assign ~var val_ f2)
+  | Disjunction (f1, f2) ->
+      Disjunction (assign ~var val_ f1, assign ~var val_ f2)
+  | Negation f1 ->
+      Negation (assign ~var val_ f1)

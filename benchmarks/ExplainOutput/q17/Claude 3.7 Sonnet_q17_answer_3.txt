@@ -1,0 +1,3 @@
+Solution: No, the program does not compute `ackermann x` at most once for a function call `add_ack x l`.
+
+Explanation: In the given implementation, `ackermann x` is recalculated for each element in the list. The recursive call `add_ack x ys` will compute `ackermann x` again for each remaining element. For a list of length n, `ackermann x` will be computed n times. To only compute it once, the value should be calculated outside the recursive loop and passed along or stored in a let binding.

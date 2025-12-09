@@ -1,0 +1,10 @@
+```ocaml
+let rec helper n k =
+  if n mod 2 = 1 then k
+  else helper (n / 2) (2 * k)
+let max_two_factor n = helper n 1
+```
+
+Explanation:
+- The original implementation is not tail-recursive and does not correctly calculate the power of two. It only returns the first 1 encountered or the final value of `2 * k`.
+- The improved version uses two parameters: `n` and `k`. It multiplies `k` by 2 every time `n` is divisible by 2, and stops when `n` is odd, returning `k` as the largest power of 2. This is tail-recursive because the recursive call is the last operation in the function.

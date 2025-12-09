@@ -1,0 +1,18 @@
+```ocaml
+let toInt f = 
+  let counter = ref 0 in
+  let rec dummy x = 
+    incr counter; 
+    x 
+  in
+  f dummy 0;
+  !counter
+```
+
+This solution works by:
+1. Creating a counter that tracks how many times a function is called
+2. Defining a dummy function that increments the counter and returns its argument
+3. Applying f to the dummy function and a base value 0
+4. Returning the final counter value
+
+When f applies the dummy function n times, the counter will reach n.

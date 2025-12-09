@@ -1,0 +1,36 @@
+```ocaml
+exception Error
+
+let rec zippy (xs:'a list) (ys:'b list) (pair:'a * 'b -> 'c) (sc:'c list -> 'd) : 'd=
+    (** No return type needed here.  It's inferred from the function definition **)
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+
+**Explanation:**
+
+* **`xs:'a list`**:  `xs` is a list of values of some type `'a`.
+* **`ys:'b list`**: `ys` is a list of values of some type `'b`.  Crucially, `'a` and `'b` do *not* have to be the same type.
+* **`pair:'a * 'b -> 'c`**:  `pair` is a function that takes a pair of values of types `'a` and `'b`, and returns a value of type `'c`. This is a standard function type.
+* **`sc:'c list -> 'd`**: This is a function that takes a list of values of type `'c` and returns a value of type `'d`. This takes the accumulated results and combines them into the final result.
+
+The crucial part is the recursive call within `zippy`.  The function takes `pair`'s output and feeds it to `sc`.  This forces `'c` to be the same type as the values produced by `pair` (in this case `x + y`) and `'c list` is the list of such values. And, importantly,  `'d` is the type of the final result.
+
+The `zip_plus` function directly shows the intended usage by creating the addition function and appropriate accumulator function/ finalizer/ collector.
+
+
+
+
+**Why the code is well-typed (and how to identify potential issues):**
+
+The code is well-typed because types are consistent throughout, especially the recursive calls in the *zippy* function. There's agreement on input and output types. The crucial check here is that the functions being passed around the `pair` and `sc` arguments have correct types.  Type errors are often associated with functions passing unexpected results or receiving unexpected inputs. The way types match ensures that every step of the recursion operates on valid inputs and produces valid outputs.  The use of the exception `Error` within the `zip_plus` function helps maintain type consistency by returning a value, which is also handled by `zip_plus` later.
+
+
+**Important Note:**  OCaml's type inference usually handles these things just fine.  Reading through the recursion is important during debugging, especially for seeing where the types match up.

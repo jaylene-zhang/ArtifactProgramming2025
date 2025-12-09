@@ -1,0 +1,39 @@
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let distance (x1, y1) (x2, y2) =
+  (y2 - y1) + (x2 - x1)
+  (** Corrected to calculate Manhattan distance instead of Euclidean distance **)
+  let () = assert (distance (2, 3) (2, 3) = 0 && distance (1, 2) (3, 4) = 4) in
+  (* Test cases, should return 0 and 4 respectively *)
+
+
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let rec factorial n =
+  if n = 0 then 1 else n * factorial (n - 1)
+
+let binomial n k =
+  let rec helper fact = function
+    | (0, k) -> 1
+    | (n, k) when n = k -> 1
+    | (n, k) -> fact n / (helper fact (n - 1, k) * fact (n - k)) in
+  helper factorial (n, k)
+  (** Helper function to calculate binomial coefficient **)
+  let () = assert (binomial 5 2 = 10 && binomial 10 3 = 120) in
+  (* Test cases, should return 10 and 120 respectively *)
+
+
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+let rec lucas_helper (a, b, n) =
+  if n = 0 then a else
+  if n = 1 then b else
+  lucas_helper (b, a + b, n - 1)
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n =
+  lucas_helper (2, 1, n)
+  (** Tail-recursive implementation of Lucas numbers **)
+  let () = assert (lucas 0 = 2 && lucas 1 = 1 && lucas 5 = 11) in
+  (* Test cases, should return 2, 1, and 11 respectively *)

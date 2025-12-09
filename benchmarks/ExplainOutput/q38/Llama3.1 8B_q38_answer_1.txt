@@ -1,0 +1,28 @@
+Here are the possible correct solutions:
+
+
+### Solution 1: a) h (f (g (f x)))
+### Solution 2: b) g (f (h (f x)))
+
+We will reason which one of these is the correct solution.
+
+First, lets look at the possible correct answers. If the function g (f (h (f x))) had been the correct solution, you could simply remove the "g" at the beginning of the function and you would end up with the correct function. However this is not the case.
+
+
+g (f (h (f x))) = fun f x -> f (h (f (f x)))
+Removing the "g" at the beginning of the function yields:
+f (h (f x)) = fun f x -> h (f (f x))
+
+We can conclude that this is not the correct solution.
+
+Now, let's look at the other two possible correct answers which are h (f (g (f x))) and f (g (h x)).
+
+Let's first consider the second possible correct answer.
+
+Let's remove the "f" at the beginning of the function: 
+f (g (h x)) = fun f x -> g (h x)
+
+Removing the "g" now yields the function: 
+fun f x -> h x
+
+As fun f x -> h x is not the desired function, we conclude that f (g (h x)) is not the correct solution. Hence, the correct solution is (a): h (f (g (f x))).

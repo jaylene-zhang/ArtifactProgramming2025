@@ -1,0 +1,69 @@
+### Solution:
+The final result of running the given program is `(1, 1, [2; 3; 4], [3; 4; 5])`.
+
+### Explanation with Binding Stack Diagram:
+
+1. **Initialization:**
+    ```ocaml
+    let c = ref 0 in
+    let l = List.rev [1;2;3] in
+    let observe () = !c in
+    let x = 1 in
+    let inc x = c := !c + 1 ; x + 1 in
+    let ml = List.map inc l in
+    let inc' = (let c = ref 0 in
+                 let x = x + 1 in
+                 fun y -> c := !c + 1 ; !c + y + x) in
+    let ml' = List.map inc' l in
+    (x, observe (), ml, ml')
+    ```
+
+2. **Binding Stack Diagram:**
+    - **let c = ref 0 in**
+        ```
+        c = 0
+        ```
+    - **let l = List.rev [1;2;3] in**
+        ```
+        l = [3; 2; 1]
+        ```
+    - **let observe () = !c in**
+        ```
+        observe ----> () -> !c
+        c = 0
+        ```
+    - **let x = 1 in**
+        ```
+        x = 1
+        ```
+    - **let inc x = c := !c + 1 ; x + 1 in**
+        ```
+        inc ----> x -> c := !c + 1 ; x + 1
+        c = 0
+        ```
+    - **let ml = List.map inc l in**
+        ```
+        ml = [2; 3; 4]
+        c = 3
+        ```
+    - **let inc' = (let c = ref 0 in let x = x + 1 in fun y -> c := !c + 1 ; !c + y + x) in**
+        ```
+        inc' ----> y -> c := !c + 1 ; !c + y + (2) (because x = 1 before entering the second let)
+        c = 0
+        x = 2
+        ```
+    - **let ml' = List.map inc' l in**
+        ```
+        ml' = [3; 4; 5]
+        c = 3
+        ```
+    - **(x, observe (), ml, ml')**
+        ```
+        x = 1
+        c = 3
+        observe ----> () -> !c (returns 3)
+        ml = [2; 3; 4]
+        ml' = [3; 4; 5]
+        ```
+
+The final result is `(1, 1, [2; 3; 4], [3; 4; 5])`, where the `1` in the second position is the result of `observe ()`, which returns the current value of `c` (which is `3`), but since `c` is reset to `0` when `inc'` is defined, it returns `1`.

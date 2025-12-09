@@ -1,0 +1,11 @@
+1) For blank 1 we should write: `f (Stream.hd s) a`.
+
+2) For blank 2 we should write: `fold f (f (Stream.hd s) a) (Stream.tl s)`.
+
+---
+
+### Explanation:
+
+1) In blank 1, we need to calculate the head of the output stream. This involves applying the folding function `f` to the head of the input stream `s` (which is `Stream.hd s`) and the accumulator `a`. This gives us the current value of the fold.
+
+2) In blank 2, we need to recursively call `fold` on the tail of the input stream (`Stream.tl s`). The new accumulator for the next call becomes the result of `f` applied to the current head `Stream.hd s` and the previous accumulator `a`. Thus, we use `f (Stream.hd s) a` as the new accumulator.

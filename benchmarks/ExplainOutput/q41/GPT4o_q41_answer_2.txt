@@ -1,0 +1,7 @@
+**Solution:**
+
+`('a -> 'b -> 'b) -> 'a list -> 'b -> 'c`
+
+**Explanation:**
+
+The type of the tail-recursive version of `fold_right` would differ from the usual `fold_right` due to the accumulator wrapping and unwrapping process required for tail-recursion. In this version, we eliminate the need for the higher-order continuation function (`('b -> 'c) -> 'c`) by directly transforming `( 'a -> 'b -> 'b) -> for clarity.

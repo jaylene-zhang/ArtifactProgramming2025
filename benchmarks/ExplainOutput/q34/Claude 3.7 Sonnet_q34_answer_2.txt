@@ -1,0 +1,5 @@
+a) False. The speed of a function is not determined by the length of its definition. The time complexity of the algorithm matters more than the number of lines of code.
+
+b) False. This statement is incorrect, but not for the stated reason. The time complexity of (@) actually depends on the length of its first argument, not the second. rev1 is slower because it uses @ which has O(n) complexity, leading to an overall O(n²) complexity for rev1.
+
+c) True. rev2 is faster than rev1 because it uses the (::) operation which has O(1) time complexity in each recursive step, resulting in an overall O(n) time complexity. rev1 uses (@) which makes it O(n²).

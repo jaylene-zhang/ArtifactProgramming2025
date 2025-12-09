@@ -1,0 +1,7 @@
+Solution:
+The program is ill-typed.
+
+Explanation:
+The function `repeat f` calls itself recursively without a base case, creating infinite recursion. In OCaml's type system, we can't assign a consistent type to this function. 
+
+When `repeat f` calls `f (repeat f)`, this creates a circular type constraint where the return type of `repeat` would need to be both a function and its own input type simultaneously. OCaml's type system doesn't support such recursive types without explicit type annotations using `'a as` syntax, and even then, this particular recursion pattern can't be properly typed.

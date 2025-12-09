@@ -1,0 +1,5 @@
+**No**
+
+Explanation:
+
+The program computes `ackermann x` recursively for each element in the list, leading to exponential time complexity. This is because `add_ack` is called `length l` times, and each call to `add_ack` calls `ackermann x`.

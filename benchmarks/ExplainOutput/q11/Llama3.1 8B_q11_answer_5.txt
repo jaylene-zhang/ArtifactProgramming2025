@@ -1,0 +1,16 @@
+Here is the solution:
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 't -> 'a -> 't) 
+(l1: 'a list) (l2: 'b list) : ('c list) =
+match l1, l2 with
+| [], [] -> []
+| x::xs, y::ys -> (comb x y) :: (add xs ys)
+```
+
+Explanation:
+
+- For the most general type of `l1` and `l2`, we choose `'_a list` and `'_b list` respectively, because we can't be sure what size lists they will be.
+- The type of `comb` should be a function that takes two arguments, we thus assign type `'a -> 'b -> 'c` to it, where the inner type `'_c` is the type of the result of `comb`.
+- The type of `add` should be a function that takes two arguments `t` and `x` and returns a `'_a` value, we assign the type `'t -> 'a -> 't` to it, so we have a way to add to the tail `'_a` `xs` of the tail list to get the head `'_a` value of the resulting list.
+- When combining lists `l1` and `l2` that pair at the head, we use the `comb` function and add the rest of the lists `xs` and `ys` by appending their head value using `add`.

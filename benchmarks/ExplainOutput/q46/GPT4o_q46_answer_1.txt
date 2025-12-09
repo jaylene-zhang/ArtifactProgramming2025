@@ -1,0 +1,10 @@
+### Solution:
+
+1) For blank 1 we should write: `f s.hd a`
+2) For blank 2 we should write: `fold f (f s.hd a) s.tl`
+
+### Explanation:
+
+- **Blank 1**: The current head of the output stream is computed by applying the folding function `f` on the current head of the input stream `s.hd` and the accumulated value `a`.
+  
+- **Blank 2**: The tail of the output stream is constructed by recursively folding the remaining stream `s.tl` with the updated accumulator value `f s.hd a` and using the same folding function `f`.

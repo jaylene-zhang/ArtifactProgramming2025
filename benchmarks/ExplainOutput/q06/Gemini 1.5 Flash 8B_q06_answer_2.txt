@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo w =
+  let x = w * 2 in
+  fun y -> (w * 2) + 2 + y * x
+```
+
+**Explanation:**
+
+We replace `x` with `w * 2` wherever it appears inside the function.  Crucially, the `let w = x in` does *not* immediately substitute w; the expression w * 2 is substituted as x * 2 and `let w = x in` keeps the initial binding of x from outside. This means the `w` in the final expression remains as `w` rather than being replaced with `w * 2`.

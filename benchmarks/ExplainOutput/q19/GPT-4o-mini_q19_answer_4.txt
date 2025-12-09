@@ -1,0 +1,5 @@
+The implementation does not calculate the largest power of two that divides a number correctly in a tail-recursive fashion.
+
+**Explanation:**
+1. The function `helper` recursively computes `2 * helper (n / 2)` without maintaining an accumulator, which prevents it from being tail-recursive. In a tail-recursive function, the recursive call must be the last operation performed, which is not the case here.
+2. The base case correctly identifies when `n` is odd (returns 1), but it incorrectly multiplies results instead of counting the divisions and constructing the power of two. The correct approach would involve counting how many times `n` can be divided by 2 (using a counter or an accumulator) to return `2^k` directly.

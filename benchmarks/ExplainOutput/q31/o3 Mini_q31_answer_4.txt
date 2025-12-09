@@ -1,0 +1,5 @@
+Solution:
+a) and d) compute prime_fact only once; b) and c) compute it repeatedly.
+
+Explanation:
+In (a) and (d) the result of prime_fact x is stored in a variable (p) before checking the list, so it's computed once. In (b) and (c) prime_fact x is called inside the loop (or recursion) for every list element, leading to multiple computations.

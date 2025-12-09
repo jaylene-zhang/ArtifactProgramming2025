@@ -1,0 +1,24 @@
+**Solution: The given implementation is incorrect.** It does not correctly calculate the largest power of two and is not tail-recursive.
+
+### Explanation:
+1. **Correctness Issue:**  
+   The issue lies in calling `helper 1 n`: the `helper` function is only defined with a single parameter `n`, but `max_two_factor` is trying to call it with two arguments (`1` and `n`). This makes the code invalid as written.
+
+2. Even if this issue is resolved, the `helper` function itself is not tail-recursive because the recursive call is multiplied by `2` after the recursive call completes. Tail recursion requires the recursive call to be the *final* action of the function.
+
+3. To calculate the largest power of two in a tail-recursive manner, we can rewrite the function as follows:
+
+### Correct Tail-Recursive Implementation:
+```ocaml
+let max_two_factor n =
+  let rec helper n acc =
+    if n mod 2 = 1 then acc
+    else helper (n / 2) (2 * acc)
+  in
+  helper n 1
+```
+
+- The `helper` function includes an accumulator (`acc`) that keeps track of the running power of two.
+- Each time `n` is evenly divisible by `2`, the accumulator (`acc`) is multiplied by `2`, and the function continues with `n / 2`.
+- The recursion stops as soon as `n` is no longer divisible by `2`, and `acc` contains the result.
+- This implementation is tail-recursive because the recursive call to `helper` is the final operation.

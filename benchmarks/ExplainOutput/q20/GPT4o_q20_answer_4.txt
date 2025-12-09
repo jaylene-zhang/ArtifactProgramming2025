@@ -1,0 +1,13 @@
+**Solution:** The test case `triangle 0 == 0` **will fail** with the provided implementation.
+
+**Explanation:**
+The provided implementation does not account for the case when `n = 0`. Instead, it will enter the `else` branch, where it makes a recursive call `triangle (n - 1)` without a base case to stop the recursion. This results in an infinite recursion that will eventually cause a stack overflow. A correct implementation should include a base case for when `n = 0`, such as:
+
+```ocaml
+let rec triangle n =
+  if n = 0 then 0
+  else if n = 1 then 1
+  else n + triangle (n - 1)
+```
+
+Then `triangle 0` would evaluate correctly as `0`. However, the provided code does not include this case, so the test will fail.

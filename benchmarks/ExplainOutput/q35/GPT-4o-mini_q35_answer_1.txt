@@ -1,0 +1,11 @@
+The result of evaluating the expression is `27`.
+
+**Explanation:**
+1. Initially, `x = 3`, `r` is a reference to `1`.
+2. In the function definition, `y` is computed as `y = x * !r = 3 * 1 = 3`.
+3. A new local `r = ref 5` is created inside the function, but it does not affect the outer `r`.
+4. After the function `f` is defined, there is a new binding `let x = 2 * !r * x` where `!r` is `1` (from outer `r`), so `x` becomes `2 * 1 * 3 = 6`.
+5. Next, `r := 10` updates outer `r` to `10`.
+6. Now, we call `f(x * !r)` which is `f(6 * 10)` → `f(60)`.
+7. Inside `f`, since `!r` is `5`, the calculation is `u + x + y + !r = 60 + 3 + 3 + 5 = 71`.
+8. Therefore, the final result is `71`.

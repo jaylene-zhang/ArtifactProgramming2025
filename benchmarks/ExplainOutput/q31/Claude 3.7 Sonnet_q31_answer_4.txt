@@ -1,0 +1,11 @@
+Solution:
+Only implementations a) and d) compute the function prime_fact once.
+
+Explanation:
+a) The function `prime_fact x` is computed once and stored in the variable `p`, which is then used in the comparison inside `List.exists`.
+
+b) This implementation calls `prime_fact x` separately for each element in the list `l` during the execution of `List.exists`, leading to multiple computations.
+
+c) There's a recursive call to `check x ys`, but each recursive step would compute `prime_fact x` again. Also, there's a typo in the recursive call (should be `check_prime_factors`).
+
+d) Similar to a), `prime_fact x` is computed once and stored in `p`, which is then used in the recursive function `test`.

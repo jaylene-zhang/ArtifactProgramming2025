@@ -1,0 +1,13 @@
+**Solution:**
+
+c) `h (g (f x))`
+
+**Explanation:**
+
+The goal is to apply `g` to `f x`, and then apply `h` to the result.  Option (c) achieves this directly: `g (f x)` evaluates `g` with the function `f` and value `x`. The result of that, is evaluated by `h`.
+
+The other options don't achieve the composition in the desired order:
+
+*   (a) `h (f (g (f x)))`: Incorrect nesting of `f` and `g`.
+*   (b) `g (f (h (f x)))`: Incorrect nesting of `f` and `h`.
+*   (d) `f (g (h x))`: Incorrect application of `f,g, and h` with `x`.

@@ -1,0 +1,10 @@
+Solutions: a, b, d
+
+Explanation: 
+Option a) is correct as it defines a recursive data type for bookmarks with a constructor that takes a URL and another bookmark list, plus an Empty constructor.
+
+Option b) is also correct - it's similar to a) but uses string directly instead of url type alias.
+
+Option d) is correct because it's similar to a) but changes the order of fields in the Location constructor.
+
+Option c) is incorrect because the Location constructor doesn't specify what arguments it takes, so it can't store a URL.

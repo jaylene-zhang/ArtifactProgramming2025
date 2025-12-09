@@ -1,0 +1,6 @@
+Here is the solution:
+
+`'a list -> 'b -> 'b -> 'c -> 'c`
+
+Explanation:
+In the tail-recursive version of `fold_right`, the accumulator is passed as an explicit argument, allowing the function to be defined with no extra stack space. The input list and the result of the accumulator are then passed to the next recursive call, resulting in the type `'a list -> 'b -> 'b -> 'c -> 'c`.

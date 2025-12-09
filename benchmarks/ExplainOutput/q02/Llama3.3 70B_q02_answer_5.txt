@@ -1,0 +1,5 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+```
+
+Explanation: This function is ill-typed, because it creates an infinite recursion without a base case, leading to a stack overflow at runtime. The given type `'a -> 'a` and return type `'a` are the most general types for the function.

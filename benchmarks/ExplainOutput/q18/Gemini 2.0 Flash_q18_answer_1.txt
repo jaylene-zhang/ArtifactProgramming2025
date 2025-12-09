@@ -1,0 +1,3 @@
+**(7, 6)**
+
+The `shift_point` function is defined in terms of `point`. However, there are two `point` definitions. The first one `let point = (5, 4)` and the second one `let point = shift_point 1`. Because OCaml is statically scoped, the `point` in the definition of `shift_point` refers to the *first* definition of `point`. Therefore, `component_x point` resolves to 5, and `component_y point` resolves to 4. Thus, `shift_point 2` returns `(5 + 2, 4 + 2)` which evaluates to `(7, 6)`.

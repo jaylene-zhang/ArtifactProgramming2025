@@ -1,0 +1,10 @@
+Solution: 't = 's = 'u
+
+Explanation: For the expression f (f (a, b), f (b, a)) to have type 'u, we need:
+1. f (a, b) must have type 't since it's the first component of the outer pair
+2. f (b, a) must have type 's since it's the second component of the outer pair
+3. But f has type ('t * 's -> 'u), so both f (a, b) and f (b, a) must return type 'u
+
+Since f (a, b) must be of type 't and also of type 'u, we need 't = 'u
+Since f (b, a) must be of type 's and also of type 'u, we need 's = 'u
+Therefore, 't = 's = 'u is the most general instantiation.

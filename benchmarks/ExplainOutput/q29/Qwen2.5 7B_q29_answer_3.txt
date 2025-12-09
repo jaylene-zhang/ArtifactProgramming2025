@@ -1,0 +1,17 @@
+### a) Correct
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+**Explanation:** This is correct because it correctly curries the `sumSeries` function and sets the lower bound to 0. The `swap` function then swaps the position of the upper bound and the incrementation function, making the resulting function ready to accept an upper bound.
+
+### b) Corrected
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f 0) (fun x -> x + 1))
+```
+**Explanation:** The original is incorrect as it doesn't properly curry and swap. The corrected version first applies `sumSeries f 0`, then swaps the arguments with `(fun x -> x + 1)`.
+
+### c) Incorrect
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+**Explanation:** This is incorrect because it tries to curry and swap first, but then the 0 is not passed correctly to either `sumSeries` or the increment function. The 0 should already be part of the curried function.

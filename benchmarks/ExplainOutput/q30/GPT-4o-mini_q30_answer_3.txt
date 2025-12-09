@@ -1,0 +1,7 @@
+The last expression `update_price_list price_list` will return `[11.0; 21.0; 6.0]`.
+
+Explanation:
+1. Initially, `sales_tax` is `1.0`.
+2. The function `update_sales_tax ()` doubles `sales_tax`, making it `2.0`. However, since `sales_tax` is set as a constant (`let` binding), its value doesn't change after the first function call. The new value is not reflected in the `sales_tax` variable due to OCaml's immutable bindings.
+3. The `update_price_list` function uses the original `sales_tax` of `1.0` because the function `add_tax` does not see the change after `update_sales_tax ()` is called.
+4. The `add_tax` function adds `1.0` to each price in `price_list`, resulting in `[11.0; 21.0; 6.0]`.

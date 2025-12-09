@@ -1,0 +1,7 @@
+**Solution:**
+
+Functions can be treated like any other data type: they can be passed as arguments to other functions or returned as results. This allows for powerful abstractions and code reuse through higher-order functions.
+
+**Explanation:**
+
+"First-class" essentially means a value has no restrictions on its use. Making functions first-class means you can do anything with functions that you can do with other data like integers or strings, such as store them in variables, pass them as arguments, and return them from other functions.

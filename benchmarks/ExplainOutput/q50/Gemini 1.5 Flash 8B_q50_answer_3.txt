@@ -1,0 +1,18 @@
+**Correct Implementation(s):**
+
+d)
+
+
+**Explanation:**
+
+The crucial aspect of tail recursion in this context is that the recursive call to `aux_foldr` is the *last* operation performed. This allows the compiler to optimize the function without needing to build up a call stack.
+
+Option d correctly achieves this:
+
+```ocaml
+let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f r x))
+```
+
+In this implementation, the result of the recursive call is directly passed to the continuation, and the result is subsequently used by the `f` function, which is the final operation. The `cont` function is where the accumulation happens, meaning that the result of the recursive call is a final result. In this style, the value of `cont` is `cont (f r x)`. Options a-c, e incorrectly place `cont` before f, creating additional computations that result in a non-tail-recursive call.

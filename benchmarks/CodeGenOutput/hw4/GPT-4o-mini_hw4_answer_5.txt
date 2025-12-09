@@ -1,0 +1,34 @@
+```ocaml
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable v -> Variable_set.singleton v
+  | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable v -> (match Variable_map.find_opt v state with
+                   | Some b -> b
+                   | None -> raise (Unassigned_variable v))
+  | Conjunction (f1, f2) -> (eval state f1) && (eval state f2)
+  | Disjunction (f1, f2) -> (eval state f1) || (eval state f2)
+  | Negation f -> not (eval state f)
+
+(* TODO: Implement the function. *)
+let rec find_satisfying_assignment (formula : formula) : truth_assignment =
+  let vars = Variable_set.elements (collect_variables formula) in
+  let rec aux assignments =
+    match assignments with
+    | [] -> raise Unsatisfiable_formula
+    | (var, value) :: rest ->
+        let state = Variable_map.add var value (List.fold_right (fun (v, val) acc -> Variable_map.add v val acc) rest Variable_map.empty) in
+        if eval state formula then state
+        else aux rest
+  in
+  let combinations = List.fold_left (fun acc var -> 
+    List.flatten (List.map (fun state -> [(var, true)::state; (var, false)::state]) acc)) [[(List.hd vars, true)]] (List.tl vars) in
+  aux combinations
+```

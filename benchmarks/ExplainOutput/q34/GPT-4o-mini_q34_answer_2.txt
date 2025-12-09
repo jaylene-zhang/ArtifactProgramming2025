@@ -1,0 +1,11 @@
+a) False  
+b) True  
+c) True  
+
+**Explanation:**
+
+a) The length of the definition does not necessarily correlate with performance. Despite `rev1` being shorter, it uses the list operator `(@)` which has a time complexity of O(n), where n is the length of the first list being concatenated. Thus, `rev1` is generally slower than `rev2`.
+
+b) This statement is true because the list concatenation operator `(@)` indeed has a time complexity that depends on the length of its first argument. In `rev1`, the length of the input list (`xs`) grows with each recursive call, hence concatenating lists leads to a cumulative O(n^2) time complexity. `rev2` avoids this issue by using `::`, which has constant time complexity.
+
+c) True, because `rev2` uses an accumulator pattern (`go` function) to build the reversed list by constructing it in constant time with the `::` operator. This makes `rev2` efficient and faster than `rev1`, especially for large lists, resulting in an overall O(n) time complexity compared to `rev1`’s O(n^2).

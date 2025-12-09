@@ -1,0 +1,1 @@
+Why do functional languages try to avoid state variables (references) and imperative-style programming with them?

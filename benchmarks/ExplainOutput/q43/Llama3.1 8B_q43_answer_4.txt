@@ -1,0 +1,14 @@
+**No, this would not work.**
+
+### Solution
+```
+let rec check_length lst =
+  match lst with
+  | [] -> 0
+  | _::_tl -> 1 + (check_length tl)
+```
+
+### Explanation
+The base case in this induction is `length (rev_tl [])`. However, the `rev_tl` function never returns an empty list, so we cannot prove anything using this base case. The goal is to prove that `length (rev_tl l) = length l`, not to prove that `length (rev_tl []) = length []`.
+
+A correct approach would involve inducting on `l` instead of `rev_tl l`.

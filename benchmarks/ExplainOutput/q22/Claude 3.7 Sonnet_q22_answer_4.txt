@@ -1,0 +1,4 @@
+The unused variables are:
+- `r` (function parameter)
+
+The function parameter `r` is unused because it is immediately shadowed by the local binding `let r = 2 * y` inside the function body. The original `r` passed as an argument is never used.

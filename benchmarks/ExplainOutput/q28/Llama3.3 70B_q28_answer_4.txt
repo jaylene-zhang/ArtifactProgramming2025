@@ -1,0 +1,13 @@
+**No**
+
+This program does not compute the antiderivative of f. The antiderivative should be a function of one variable, which takes x as input and returns the integral of f from 0 to x. However, the program `(curry integral) f 0` only fixes the lower bound of the integral to 0, but does not provide a way to vary the upper bound.
+
+A correct implementation would be:
+```ocaml
+let anti_d f x = (curry integral) f (0, x)
+```
+or using `integral` directly:
+```ocaml
+let anti_d f x = integral f (0, x) dx
+```
+This way, the antiderivative is a function that takes x as input and returns the integral of f from 0 to x.

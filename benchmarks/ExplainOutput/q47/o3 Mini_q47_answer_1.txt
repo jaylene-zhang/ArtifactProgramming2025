@@ -1,0 +1,3 @@
+Solution: b
+
+Explanation: Option (b) uses a tail‐recursive helper that processes the list in one pass and keeps the words in the correct order (unlike (a) which reverses them, (c) which calls reverse and so traverses the list twice, and (d) which is not tail recursive).

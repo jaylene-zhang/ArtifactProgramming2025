@@ -1,0 +1,6 @@
+Solution: Only (a) is correct.
+
+Explanation: 
+(a) Correctly curries sumSeries f then fixes the lower bound to 0 and swaps the arguments so that (fun x -> x + 1) is applied as the increment.  
+(b) Incorrectly applies 0 to sumSeries f (instead of to the tuple), causing a type error.  
+(c) Incorrectly swaps the arguments so that the bounds get reversed (or misapplied), making it wrong.

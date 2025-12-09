@@ -1,0 +1,21 @@
+**solution**
+
+```ocaml
+let rec zipper (comb : 'a -> 'b -> 'c) (add : 'd -> 'd list -> 'd list) 
+  (l1 : 'a list) (l2 : 'b list) : ('c list) =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (comb x y) :: (add (comb x y) (zipper comb add xs ys))
+
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev  = zipper (fun x y -> (string_of_int x) ^ y) (fun s t -> t @ [ (s, List.length t) ])
+```
+
+**Explanation**
+
+* The type of `comb` is `'a -> 'b -> 'c`, meaning it is a function that takes two arguments of types `'a` and `'b` and returns a value of type `'c`. This represents the function to use to combine elements.
+* The type of `add` is `'d -> 'd list -> 'd list`, which represents a list prepend function, adding an element to a list of type `'d`.
+* The type of `l1``l2 is associated with `'a list` and `'b list`, which are the types of the two lists being zipped together.
+* `zipper` combines the elements of `l1` and `l2` using `comb` and adds the resulting pairs to the list using `add`. When one of the lists is exhausted, the remaining elements of the other are ignored.
+* `zip` uses the `comb` function to pair elements and the `add` function to add these pairs to a list.
+* `zip_rev` uses a combination of functions to concatenate the paired strings and lengths: it concatenates two strings using `^` and converts integers to strings using `string_of_int`. It then adds a pair of string and its length to the list using the `@` operator.

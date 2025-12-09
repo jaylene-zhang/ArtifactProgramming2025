@@ -1,0 +1,8 @@
+**Solution:**  
+`true`
+
+**Explanation:**  
+- Initially, `rc1` points to a list containing `1` with `Nil` as its tail.
+- `rc2` points to a list containing `2`, with `rc1` as its tail.
+- After the reassignment `rc1 := !rc2`, both `rc1` and `rc2` point to the same cyclic list structure.
+- Therefore, `get_tail rc1` and `get_tail rc2` both dereference to the same reference `rc1`, leading to physical equality and returning `true`.

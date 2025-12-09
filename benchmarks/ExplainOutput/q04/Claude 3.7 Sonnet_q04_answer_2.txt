@@ -1,0 +1,9 @@
+Solution: 1 and 4
+
+Implementation 1 computes `prime_fact x` once outside the recursive loop and stores the result in variable `p`. Then it uses `p` in each comparison without recomputing it.
+
+Implementation 4 also computes `prime_fact x` once and stores it in variable `p`, then uses this value in the anonymous function passed to `List.exists`.
+
+Implementation 2 recomputes `prime_fact x` in each recursive call when comparing with a new element of the list.
+
+Implementation 3 recomputes `prime_fact x` for each element in the list because the anonymous function passed to `List.exists` calls it each time.

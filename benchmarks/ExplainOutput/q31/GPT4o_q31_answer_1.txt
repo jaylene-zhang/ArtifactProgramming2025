@@ -1,0 +1,18 @@
+**Solution and Explanation:**
+
+a) **Computes `prime_fact x` once.**  
+- The `prime_fact x` is computed once and stored in the variable `p`.
+- `List.exists` checks each element of the list against `p`, but `p` is already precomputed.
+
+b) **Computes `prime_fact x` multiple times.**  
+- `prime_fact x` is computed inside the lambda function `(fun e -> e = prime_fact x)`, which means it is recalculated for each element of the list `l`.
+
+c) **Computes `prime_fact x` multiple times.**  
+- In the recursive call `y = prime_fact x || check x ys`, `prime_fact x` is evaluated multiple times for each recursive call.
+
+d) **Computes `prime_fact x` once.**  
+- Just like (a), `prime_fact x` is computed once, stored in `p`, and then the recursive function `test` checks against this precomputed `p`.
+
+**Summary:**  
+(a) and (d) compute `prime_fact x` exactly once.  
+(b) and (c) compute `prime_fact x` multiple times.

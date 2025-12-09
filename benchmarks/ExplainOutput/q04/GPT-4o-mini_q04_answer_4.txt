@@ -1,0 +1,19 @@
+**Correct Answer:** Option 1 and Option 4 compute the function `prime_fact` only once.
+
+**Explanation:**
+
+1. **Option 1:**
+   - It computes `prime_fact x` once and stores it in variable `p`.
+   - Then it checks if `p` is equal to any of the lists in `l` using a recursive helper function `test`.
+   - This ensures that `prime_fact x` is computed just once.
+
+2. **Option 2:**
+   - It computes `prime_fact x` for the first element `y` of the list `l`, potentially re-computing `prime_fact x` for each element in the list which does not satisfy the equality check, thus violating the requirement.
+
+3. **Option 3:**
+   - Similar to Option 2, `prime_fact x` is computed each time `List.exists` checks for equality. The function would compute it once for each call inside `List.exists`, making it potentially multiple computations.
+
+4. **Option 4:**
+   - It also computes `prime_fact x` once, storing it in `p`, and then checks if this single result is in the list using `List.exists`. This results in a single evaluation of `prime_fact`.
+
+Both Option 1 and Option 4 are efficient as they ensure `prime_fact` is called only once.

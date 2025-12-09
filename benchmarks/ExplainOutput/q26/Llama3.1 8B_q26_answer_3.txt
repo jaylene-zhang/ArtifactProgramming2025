@@ -1,0 +1,7 @@
+**Solution**
+```
+(* This will return true *)
+```
+
+**Explanation**
+When `rc1` points to `rc2` and `rc2` points back to `rc1`, we have a cyclic linked list. Both `get_tail rc1` and `get_tail rc2` will return `rc1`, which means they will point to the same location in memory, so their equals `==` comparison will return `true`.

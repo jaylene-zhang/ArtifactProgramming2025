@@ -1,0 +1,3 @@
+Solution: ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+
+Explanation: In the tail-recursive (CPS) version of fold_right, an extra continuation argument is added. The function takes a binary function, a list, an initial accumulator, and a continuation (of type 'b -> 'c) that produces the final result.

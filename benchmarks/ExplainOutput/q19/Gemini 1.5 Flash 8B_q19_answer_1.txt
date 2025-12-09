@@ -1,0 +1,9 @@
+**Solution:** No
+
+**Explanation:**
+
+The provided code is *not* tail-recursive and does not correctly calculate the largest power of 2 that divides `n`.
+
+* **Not Tail-Recursive:**  The `helper` function uses `2 * helper (n / 2)`.  The recursive call is not the last operation of the function.  The multiplication is performed *after* the recursive call returns, meaning the system must keep track of the intermediate values on the call stack which could lead to stack overflow for large numbers.
+
+* **Incorrect Calculation:** The `max_two_factor` function calls `helper 1 n`.  This is extremely likely to cause issues because it should be `helper n` according to the description.  Then the helper function, instead of counting the number of divisions, multiplies by `2` each time it divides by `2`.  This approach does the opposite of what is needed.  The calculation should count the number of times the number is divisible by 2, not multiply by 2.

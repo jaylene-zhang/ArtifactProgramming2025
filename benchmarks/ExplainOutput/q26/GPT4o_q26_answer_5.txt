@@ -1,0 +1,16 @@
+**Solution:** Yes, the expression `get_tail rc1 == get_tail rc2` will return `true`.
+
+**Explanation:**  
+1. Initially:
+   - `rc1` contains `Cons (1, ref Nil)`.
+   - `rc2` contains `Cons (2, rc1)`.
+
+2. After executing `rc1 := !rc2`, the contents of `rc1` now point to the same structure as `rc2`. This creates the cyclic list.
+
+   Now:
+   - Both `rc1` and `rc2` reference the structure: `Cons (2, rc1)`.
+
+3. `get_tail rc1` evaluates to the reference `rc1` because the tail of the list stored in `rc1` is itself (`rc1`).
+4. Similarly, `get_tail rc2` also evaluates to `rc1`, since the tail of `rc2` also points to `rc1`.
+
+Thus, `get_tail rc1` and `get_tail rc2` both point to the same memory location (`rc1`), making them physically equal (`==`), and the result is `true`.

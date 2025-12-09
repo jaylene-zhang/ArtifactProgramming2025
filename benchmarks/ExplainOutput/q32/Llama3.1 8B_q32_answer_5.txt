@@ -1,0 +1,18 @@
+**Solution**
+
+a) type url = string
+type bookmarks = Location of url * bookmarks | Empty
+
+b) type url = string
+type bookmarks = Empty | Location of string * bookmarks
+
+d) type url = string
+type bookmarks = Empty | Location of bookmarks * url
+
+**Explanation**
+
+A recursive data type defines a structure by itself in its own definition. In this case, we want to define a list of bookmarks.
+
+- Option b is incorrect because it defines bookmarks as a pair, not a sequence, and the second element of the pair should be a list of bookmarks, not a string.
+- Option c is incorrect because it does not specify any constructors for the recursion, so it is an incorrect recursive definition.
+- Option a and d are correct because they define a list of bookmarks (cons cells) where the first element is a url (or key) and the second element is the rest of the list (or also a List).

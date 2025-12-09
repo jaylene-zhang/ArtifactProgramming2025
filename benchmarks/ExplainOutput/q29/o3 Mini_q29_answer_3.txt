@@ -1,0 +1,9 @@
+Solution: 
+a) Correct  
+b) Incorrect  
+c) Correct  
+
+Explanation:  
+(a) The function curry (sumSeries f) 0 returns a function of type int → (int → int) → int. Using swap then changes the argument order so that when (fun x→ x+1) is applied, the remaining argument is the upper bound. This results in sumSeries f (0,upper_bound) (fun x→ x+1).  
+(b) Here, sumSeries f 0 is applied to 0 even though sumSeries f expects a tuple (int * int), so the types do not match.  
+(c) swap (sumSeries f) switches the parameters so that later currying fixes the lower bound to 0, yielding a function that takes the upper bound and produces sumSeries f (0,upper_bound) (fun x→ x+1).

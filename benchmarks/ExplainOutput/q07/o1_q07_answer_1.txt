@@ -1,0 +1,30 @@
+Solution:
+
+Theorem 1 (General Statement): For any word w, constant x, and accumulator acc,  
+count w x + acc = count' w x acc.
+
+• Base Case (w = Const y):  
+  - If y = x, then count (Const x) x = 1, so left-hand side (LHS) is 1 + acc, and right-hand side (RHS) = count' (Const x) x acc = 1 + acc.  
+  - If y ≠ x, then count (Const y) x = 0, so LHS = 0 + acc, and RHS = count' (Const y) x acc = acc.  
+  Hence, in both cases LHS = RHS.
+
+• Step Case (w = Op(w1, w2)):  
+  By definition, count (Op (w1, w2)) x = count w1 x + count w2 x, and  
+  count' (Op (w1, w2)) x acc = count' w1 x (count' w2 x acc).  
+  Let IH1 and IH2 be our induction hypotheses for w1 and w2, respectively:  
+    IH1: count w1 x + a = count' w1 x a for all a.  
+    IH2: count w2 x + a = count' w2 x a for all a.  
+  Then,  
+    count w1 x + count w2 x + acc  
+    = count w1 x + (count w2 x + acc)  
+    = count' w1 x (count w2 x + acc)   (by IH1 with a = count w2 x + acc)  
+    = count' w1 x (count' w2 x acc)    (by IH2 with a = acc).  
+  So LHS = RHS, completing the step case.
+
+Theorem 2 (Main Result): For any word w and constant x,  
+count w x = count' w x 0.  
+Proof:  
+Apply Theorem 1 with acc = 0, giving count w x + 0 = count' w x 0. Hence, count w x = count' w x 0.
+
+Explanation:  
+We prove the more general statement (Theorem 1) by structural induction on w. The base case checks a single constant, and the step case splits the word into two subwords. The induction hypotheses let us replace counts in smaller subwords, ensuring both sides match. Theorem 2 then follows simply by setting the accumulator to 0.

@@ -1,0 +1,4 @@
+Solution: 't
+
+Explanation:
+`f` takes a pair of 't values and returns a 't value.  The inner `f(a, b)` and `f(b, a)` both return 't values, making the argument to the outer `f` a pair of 't values.  Thus, the outer `f` returns a 't value.  Therefore, the entire expression has type 't.

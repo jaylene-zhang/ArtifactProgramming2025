@@ -1,0 +1,13 @@
+**Solution**
+
+```ocaml
+val shift : unit -> unit
+```
+
+**Explanation**
+
+The function `shift` takes no arguments (it uses default arguments of the current state of the ref cells) and returns no result (`unit`). Its side effect is to modify the state of the ref cells `point`.
+
+In OCaml, a function that doesn't return a value is of type `unit -> 'a` where 'a is the return type, but in this case there is no return type so it's `unit -> unit`. 
+
+We can see this by looking at the function definition which doesn't return any value and has no output parameters.

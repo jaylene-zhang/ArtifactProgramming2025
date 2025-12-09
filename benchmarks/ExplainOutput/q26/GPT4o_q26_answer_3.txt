@@ -1,0 +1,21 @@
+**Solution:**  
+`get_tail rc1 == get_tail rc2` will return **true**.
+
+---
+
+**Explanation:**  
+1. Initially, `rc1` is defined as `ref (Cons (1, ref Nil))`.
+2. `rc2` is defined as `ref (Cons (2, rc1))`.
+3. Next, we update `rc1` to point to `!rc2`, making it a cyclic structure.
+
+At this point, the cyclic structure is as follows:
+- `rc1` points to `Cons (2, rc1)`, meaning `rc1` refers to itself via `rc2`.
+- `rc2` also points to `Cons (2, rc1)`.
+
+When calling `get_tail rc1`, it resolves as follows:
+- `get_tail rc1` → `match !rc1` → `Cons (_, t)` where `t = rc1`. So, `get_tail rc1` returns `rc1 itself`.
+
+Similarly, `get_tail rc2`:
+- `get_tail rc2` → `match !rc2` → `Cons (_, t)` where `t = rc1`. So, `get_tail rc2` also returns `rc1`.
+
+Now, since both `get_tail rc1` and `get_tail rc2` point to the same memory location `rc1`, the physical equality `==` returns **true**.

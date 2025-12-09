@@ -1,0 +1,7 @@
+**Solution:**
+
+`[]` (the empty list)
+
+**Explanation:**
+
+The `rev_tl` function (presumably a tail-recursive reverse function) typically works by accumulating the reversed elements in the `acc` parameter. To start with an empty reversed list, `acc` should be initialized to the empty list `[]`.

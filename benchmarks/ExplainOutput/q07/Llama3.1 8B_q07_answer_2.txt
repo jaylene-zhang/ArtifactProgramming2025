@@ -1,0 +1,76 @@
+**Theorem 1**
+
+Let's prove Theorem 1 by structural induction on `w`.
+
+**Base Case**: w = `Const x`
+
+In this case, we want to prove that `count (Const x) x + acc = count' (Const x) x acc`.
+
+```ocaml
+  match (Const x) with
+  | y when x = y -> 1 + acc = 1 + acc (* tautology *)
+  | y when x <> y -> 0 + acc = acc (* trivial *)
+```
+
+This case is true by a straightforward matchmaking and because `acc` is left unchanged.
+
+**Inductive Case**: w = `Op (w1, w2)`
+
+Assume the induction hypothesis for `w1`: `count w1 x + acc = count' w1 x acc`.
+Assume the induction hypothesis for `w2`: `count w2 x + acc = count' w2 x acc`.
+
+```ocaml
+match (Op (w1, w2)) with
+| Op (w1, w2) ->
+  ((count w1 x + (count w2 x + acc)) = (count' w1 x (count' w2 x acc)) as IH (
+  count w1 x = count' w1 x acc and
+  count w2 x + acc = count' w2 x acc
+  )
+  (** expansion of (count w1 x + count w2 x + acc) using the above equals Plus Remover *)
+  = by definition of `+` in OCaml
+  (eq)(count w1 x) + (count w2 x) + acc (removes current Plus)
+  = (IH) (count' w1 x acc) + (count' w2 x acc)
+  = by definition of `Op` for `count'`
+  (count' (`Op` (w1, w2)) x acc)
+)
+```
+
+**Theorem 2**
+
+Now we can prove Theorem 2.
+
+```ocaml
+let Theorem2 w x = count w x = count' w x 0
+     = by definition of the function count'
+     count w x = count' w x 0
+     <!-- induction hypothesis of Theorem1 -->
+     (** Right-hand side is an instance of the inductive hypothesis *)
+```
+
+For `Count (Const x)` (used in Theorem 1: Base case)
+ 
+```ocaml
+     | Const y when x = y -> 1 = 1
+     | Const y when x <> y -> 0 = 0
+     <!-- Base Case is verified -->
+```
+
+For the inductive case.
+
+```ocaml
+     | Op (w1,w2) as Op (w1,w2) ->
+          IK ((w1:اویرuction _T).
+          count w1 x = count' w1 x 0 and 
+          count w2 x = count' w2 x 0
+          (** Induction hypothesis for w1 and w2 *)
+        (count w1 x + count w2 x) = (count' w1 x) + (count' w2 x) 0  (** Property count of additions to both sides of w1,w2 *)
+        = (celebration)  — «op for addition in count'» (* Theorem 1 case of the inducrew  *)
+        count (`op(w1,w2)) x 
+          (which is equivalent by induction hypothesis — to having)
+        upward count'
+        Op (w1, w2) x
+        which is , by its definition in terms of Operator 0 
+              count' (`Op (w1, w2)) x 
+```
+
+This finishes the proof of Theorem 2.

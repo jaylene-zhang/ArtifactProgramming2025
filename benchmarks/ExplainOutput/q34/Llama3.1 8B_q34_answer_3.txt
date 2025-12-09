@@ -1,0 +1,13 @@
+Let's break down the statements.
+
+**a) rev1 is faster than rev2 as rev1 has a shorter definition.**
+
+**False**: While the definition of `rev1` is indeed shorter, this does not necessarily imply it's faster. Compilation and runtime performance are influenced by various factors, not just the length of the code.
+
+**b) rev1 is faster than rev2 as the time complexity of (@) depends on its second argument.**
+
+**True**: The `@` operator, also known as the "cons" operator, has a time complexity of O(n), where n is the length of the second list. In `rev1`, this operator is applied to the reversed list `rev xs` (which has n elements) and a list containing a single element `x`. In `rev2`, the `x` is prepended to the accumulator list using `(x :: acc)`. Since the time complexity of `rev1` involves repeatedly applying the O(n) `@` operator, it's not faster than `rev2` due to the extra overhead of this operation.
+
+**c) rev2 is faster than rev1 as go accumulates the reversed list with (::).**
+
+**True**: As mentioned in the explanation for b), the `::` operator has a constant time complexity compared to the O(n) `@` operator. In `rev2`, the `go` function uses `x :: acc` to accumulate the reversed list, which is faster because it has better cache locality and avoids the extra overhead of the `@` operator.

@@ -1,0 +1,27 @@
+Solution for Theorem 1:
+--------------------------------
+Base Case: Let w = Const y.  
+ • If x = y then count (Const y) x + acc = 1 + acc = count' (Const y) x acc.  
+ • Otherwise, count (Const y) x + acc = 0 + acc = acc = count' (Const y) x acc.
+
+Inductive Step: Let w = Op (w1, w2).  
+Induction Hypotheses:  
+ – For any accumulator a, count w1 x + a = count' w1 x a.  
+ – For any accumulator a, count w2 x + a = count' w2 x a.
+
+Proof:  
+ count (Op (w1, w2)) x + acc  
+  = (count w1 x + count w2 x) + acc  
+  = count w1 x + (count w2 x + acc)       by associativity  
+  = count' w1 x (count' w2 x acc)       (by IH on w2, then on w1)  
+  = count' (Op (w1, w2)) x acc         (by definition of count')
+
+Solution for Theorem 2:
+--------------------------------
+By Theorem 1 with accumulator acc = 0, we immediately have  
+ count w x + 0 = count' w x 0,  
+so count w x = count' w x 0.
+
+Explanation:
+--------------------------------
+In the base case, we verify the equality for a constant, handled separately for when the constant matches x or not. In the inductive step (w = Op(w1, w2)), we assume the property holds for w1 and w2 (induction hypotheses) and then combine these results using associativity of addition. Finally, setting acc = 0 gives us the main result.

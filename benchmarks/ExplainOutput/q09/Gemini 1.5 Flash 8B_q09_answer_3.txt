@@ -1,0 +1,16 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+
+let rec f y =
+  let x = y * 2 in
+  x + x;;
+
+let result = f 5;;
+Printf.printf "Result: %d\n" result;;
+```
+
+**Explanation:**
+
+Overshadowing occurs when a variable declared in an inner scope (like a function body, or a `let` block) has the same name as a variable declared in an outer scope. The inner variable effectively "hides" or overshadows the outer one.  In the example, the `x` in the function `f` overshadows the `x` declared globally. Inside `f`, the expression `let x = y * 2 in ...` defines a new, *local* variable `x`.  The global `x` = 10 is inaccessible within `f`. The printf statement will print 50.

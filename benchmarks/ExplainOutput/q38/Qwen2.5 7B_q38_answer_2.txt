@@ -1,0 +1,23 @@
+The correct solution is:
+
+**a) h (f (g (f x)))**
+
+### Explanation:
+Given:
+- \( h: ((\alpha \rightarrow \alpha) \rightarrow \alpha \rightarrow \alpha) \)
+- \( g: ((\alpha \rightarrow \alpha) \rightarrow \alpha \rightarrow \alpha) \)
+
+We need to compose these into a function of type \( (\alpha \rightarrow \alpha) \rightarrow \alpha \rightarrow \alpha \) such that it returns a function that computes:
+\[ \text{fun } f x \rightarrow f (f (f x)) \]
+
+Given the friend's program:
+\[ \text{let compose } h g = \text{fun } f x \rightarrow \]
+
+The correct composition that generates the desired function is:
+\[ h (f (g (f x))) \]
+
+**Why the other options are incorrect:**
+
+- **b) g (f (h (f x)))**: This does not generate the sequence of three function applications required.
+- **c) h (g (f x))**: This applies \( h \) and \( g \) in a way that does not compose them correctly.
+- **d) f (g (h x))**: This does not involve the input \( x \) and hence does not produce the desired three-level function application.

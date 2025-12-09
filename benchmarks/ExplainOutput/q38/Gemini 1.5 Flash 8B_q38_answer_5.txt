@@ -1,0 +1,19 @@
+**Solution:**
+
+a)  `h (f (g (f x)))`
+
+
+**Explanation:**
+
+The given functions `h` and `g` are of the form `(f -> x -> a)`.
+
+The expression `fun f x -> f x` is a function which simply applies `f` to `x`.
+
+The expression `fun f x -> f (f x)` is a function which applies `f` twice to `x`.
+
+We are composing `fun f x -> f x` and `fun f x -> f (f x)`.  The outer function (`fun f x -> f x`) means we are applying the inner function to `f` and `x`.   Because `h` takes a function for its first argument, we need the `g (f x)` part to match the function that is being applied.   Then `h` is applied to this.
+
+Option `a` is the only correct composition.  `b, c, d` do not apply the correct inner functions needed.
+
+
+

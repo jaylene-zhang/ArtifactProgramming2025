@@ -1,0 +1,13 @@
+The most general types to fill in are:
+
+**First Hole:** `('a -> 'a)`  
+**Second Hole:** `'a`
+
+So the complete line of code now reads:
+
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+```
+
+### Explanation:
+The function `repeat` takes a parameter `f` of type `('a -> 'a)` which means that it accepts a function that takes an argument of type `'a` and returns a value of the same type. The body of `repeat` calls `f` with the result of `repeat f`, meaning `repeat` also needs to return a value of type `'a`. Thus, the function type matches the return type, allowing for proper type consistency. In this context, `repeat f` produces a value of type `'a`, which is also the argument type needed for `f`.

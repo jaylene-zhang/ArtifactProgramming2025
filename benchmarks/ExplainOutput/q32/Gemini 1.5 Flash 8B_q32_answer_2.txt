@@ -1,0 +1,9 @@
+**Correct answers:** a, b
+
+**Explanation:**
+
+* **a) and b):** These definitions correctly model a list of URLs.  "Location of url * bookmarks" (or "Location of string * bookmarks") represents a bookmark entry consisting of a URL and a potentially further list of bookmarks. "Empty" signifies an empty list.
+
+* **c):** Incorrect. The `Location` constructor needs a value to hold the URL.  `Location` alone doesn't convey any information; it needs the actual URL.
+
+* **d):** Incorrect. The recursive structure is backwards.  A `Location` should contain a URL and *then* recursively point to another `bookmarks` list. Option d has `bookmarks * url`, which doesn't make sense for a list structure.   It's trying to make a `bookmarks` list out of a list of bookmarks and a URL, which isn't how lists work recursively.

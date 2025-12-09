@@ -1,0 +1,12 @@
+Solution:
+
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)
+```
+
+Explanation:
+
+The function `repeat` takes a function `f` as input and returns a function.  The input function `f` must accept an argument of type `'a` and return a value of type `'a`. The returned function also takes `'a` as input and returns `'a`.  This ensures that the function `repeat` can be applied recursively in a type-safe manner.  Crucially, the type `'a` is used to make it a polymorphic function that works with different types in its applications.  Otherwise, the recursion pattern would lead to type errors as `repeat f` would produce an incorrect type at each recursive step.
+
+
+

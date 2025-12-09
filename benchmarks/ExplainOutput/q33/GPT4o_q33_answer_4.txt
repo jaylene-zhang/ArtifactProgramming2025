@@ -1,0 +1,9 @@
+**Solution: a)** 
+```ocaml
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+```
+
+**Explanation:**
+This implementation captures the main jumps and allows for the flexibility of representing any number of revolutions (e.g., double, triple, or even more). The tuple `(jump_typ * int)` represents the type of jump and the number of revolutions effectively, without being constrained to a fixed set of revolutions like in option b) or the overly complex recursive structure in c).

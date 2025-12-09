@@ -1,0 +1,72 @@
+```ocaml
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make (String)
+
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+
+exception Unsatisfiable_formula
+
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect (f : formula) (acc : Variable_set.t) : Variable_set.t =
+    match f with
+    | Variable v -> Variable_set.add v acc
+    | Conjunction (f1, f2) ->
+        let acc' = collect f1 acc in
+        collect f2 acc'
+    | Disjunction (f1, f2) ->
+        let acc' = collect f1 acc in
+        collect f2 acc'
+    | Negation f' -> collect f' acc
+  in
+  collect formula Variable_set.empty
+
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval' (f : formula) : bool =
+    match f with
+    | Variable v -> (
+        match Variable_map.find_opt v state with
+        | Some b -> b
+        | None -> raise (Unassigned_variable v))
+    | Conjunction (f1, f2) -> eval' f1 && eval' f2
+    | Disjunction (f1, f2) -> eval' f1 || eval' f2
+    | Negation f' -> not (eval' f')
+  in
+  eval' formula
+
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = Variable_set.to_list (collect_variables formula) in
+  let n = List.length variables in
+  let assignment = ref Variable_map.empty in
+
+  let rec solve (index : int) : unit =
+    if index = n then
+      if eval !assignment formula then ()
+      else raise Unsatisfiable_formula
+    else
+      let variable = List.nth variables index in
+      try
+        assignment := Variable_map.add variable true !assignment;
+        solve (index + 1)
+      with Unsatisfiable_formula ->
+        assignment := Variable_map.remove variable !assignment;
+        try
+          assignment := Variable_map.add variable false !assignment;
+          solve (index + 1)
+        with Unsatisfiable_formula ->
+          assignment := Variable_map.remove variable !assignment;
+          raise Unsatisfiable_formula
+  in
+
+  try
+    solve 0;
+    !assignment
+  with Unsatisfiable_formula -> raise Unsatisfiable_formula
+```

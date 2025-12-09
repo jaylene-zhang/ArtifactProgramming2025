@@ -1,0 +1,3 @@
+Solution: No; the proof as stated would not work.
+
+Explanation: The proposition length (rev_tl l []) = length l is too specific. Because rev_tl is defined with an accumulator, you need to prove the more general lemma: for all l and acc, length (rev_tl l acc) = length l + length acc. Specializing acc to [] then gives the desired property.

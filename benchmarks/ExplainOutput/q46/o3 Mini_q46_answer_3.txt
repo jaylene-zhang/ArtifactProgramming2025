@@ -1,0 +1,6 @@
+Solution:
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl
+
+Explanation:
+The head of the output stream is computed by applying f to the first element of the input stream and the initial value (a). The tail recursively uses the updated accumulator (f s.hd a) on the tail of the input stream.

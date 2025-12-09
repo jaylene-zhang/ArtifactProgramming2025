@@ -1,0 +1,17 @@
+**Solution:**
+
+Not all functions in the OCaml `List` library are tail-recursive because tail-recursive implementations using continuations can introduce performance overhead that outweighs the benefits of tail-recursion for all use cases. Simpler, non-tail-recursive implementations often offer better performance for small to medium-sized lists, which are common in many applications.
+
+**Explanation:**
+
+While continuations *can* be used to make any recursive function tail-recursive, it's not always the *best* choice. Here's why:
+
+1.  **Overhead:** Continuations involve creating function closures and passing them around, which can add overhead (memory allocation, function calls) compared to simpler, direct recursion.
+
+2.  **Performance Trade-offs:** Tail-recursion primarily helps prevent stack overflow errors for very deep recursion. For small to medium-sized lists (the common case), the overhead of continuations might exceed the performance gains from tail-recursion (which avoids stack growth that wouldn't have been a problem anyway). OCaml's stack is usually large enough to handle reasonable list sizes.
+
+3.  **Readability and Maintainability:**  Continuations can make code harder to read and understand.  The `List` library aims for clarity and ease of use.
+
+4.  **Immutability and Copying:** Many `List` functions need to create new lists as they process the input. Copying is NOT an in-place operation.
+
+In essence, the OCaml `List` library prioritizes performance in the common case (smaller lists) and readability. Tail-recursion is a worthwhile optimization when stack overflow is a real risk, but not always the optimal choice from a performance perspective for every function in the standard library. Libraries are designed to optimize for a broader range of situations and consider readability. Developers can implement their tail-recursive equivalents if necessary for specific use cases where very large lists are involved.

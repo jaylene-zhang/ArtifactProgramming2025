@@ -1,0 +1,12 @@
+```
+- : float list = [11.0; 21.0; 6.0]
+```
+
+### Explanation:
+1. **`sales_tax` and immutability**: In OCaml, variables like `sales_tax` are immutable bindings. So, the `update_sales_tax ()` function does not modify `sales_tax`. Instead, it returns a value (`sales_tax *. 2.0`), but it does not change the original `sales_tax`.
+   
+2. **`update_price_list` behavior**: The function `add_tax x` uses the immutable `sales_tax` value (1.0 in this case) to compute `1.0 + x`. `update_price_list` applies `add_tax` to each element in `price_list`.
+
+3. **Result**: Since `sales_tax` remains `1.0`, the `update_price_list` will return `[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0] = [11.0; 21.0; 6.0]`.
+
+Thus, the last expression outputs `[11.0; 21.0; 6.0]`.

@@ -1,0 +1,7 @@
+Solution:
+let x = 10 in
+let x = x + 5 in  (* This inner "x" shadows the outer "x" *)
+x * 2
+
+Explanation:
+The inner let binding creates a new variable x (with value 15) that overshadows the outer x (value 10) within its scope. All uses of x in that inner block refer to the shadowing binding, not the original one.

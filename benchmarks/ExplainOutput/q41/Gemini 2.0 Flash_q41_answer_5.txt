@@ -1,0 +1,7 @@
+**Solution:**
+
+`('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c`
+
+**Explanation:**
+
+A tail-recursive `fold_right` needs an accumulator to build the result from right to left.  It applies the function `f` to each element of the list *and* the accumulated result. Finally, the function `g` post processes the accumulated result to give us the final result.

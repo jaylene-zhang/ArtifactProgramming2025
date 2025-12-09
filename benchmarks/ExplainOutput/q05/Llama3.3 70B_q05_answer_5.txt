@@ -1,0 +1,7 @@
+**Resulting Program:**
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+**Explanation:** The inlining process replaces occurrences of `x` with its definition `y + 3`, resulting in the above program. Note that `w` is still defined as `y + 3`, and its usage remains unchanged in the returned function.

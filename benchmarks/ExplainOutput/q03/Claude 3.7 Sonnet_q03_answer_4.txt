@@ -1,0 +1,24 @@
+The final result is: (1, 3, [2; 3; 4], [4; 5; 6])
+
+Binding stack diagram:
+```
+c = ref 0  (initially 0, after first List.map becomes 3)
+l = [3; 2; 1]  (from List.rev [1; 2; 3])
+observe ----> () -> !c
+x = 1
+inc ----> x -> (c := !c+1; x+1)
+ml = [4; 3; 2]  (from List.map inc l)
+inc' ----> y -> c := !c+1; !c+y+x  where {
+    c = ref 0  (local to inc')
+    x = 2  (x+1 = 1+1)
+}
+ml' = [6; 5; 4]  (from List.map inc' l)
+```
+
+Explanation: 
+- `c` starts at 0 and increments 3 times during the first `List.map`
+- `inc` adds 1 to each element in `l` after incrementing `c`
+- `inc'` creates a closure with a local `c` (initially 0) and x=2
+- When mapping `inc'` over `l`, each call increments the local `c` and returns !c+y+x
+- For [3,2,1], inc' returns [1+3+2, 2+2+2, 3+1+2] = [6,5,4]
+- The final tuple combines x, current value of global c, ml, and ml'

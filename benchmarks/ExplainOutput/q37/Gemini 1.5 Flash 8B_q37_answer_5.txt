@@ -1,0 +1,18 @@
+```ocaml
+3, 6
+```
+
+**Explanation of the bug and the test case:**
+
+The function `triangle` is attempting to calculate the sum recursively. However, it adds `n` directly to the result of the recursive call *instead of adding the result to the current sum*. This is not the iterative approach necessary to sum up the chain of numbers.
+
+
+**Correct Implementation (Illustrative):**
+
+```ocaml
+let rec triangle n =
+  if n = 0 then 0
+  else n + triangle (n - 1)
+```
+
+The corrected version  first checks for the base case (n=0) .  This is crucial, because it sets as final value the sum of no numbers (0) and prevents the recursive calls from going into negative numbers.

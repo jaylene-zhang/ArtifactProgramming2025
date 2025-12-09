@@ -1,0 +1,7 @@
+```ocaml
+No
+```
+
+**Explanation:**
+
+The code `(curry integral) f 0` applies `curry` to the function `integral` and then applies the function `f` to the first argument and 0 to the second argument. The crucial issue is that `integral` expects both limits (a,b) as arguments, not just a function and a single limit.  This doesn't capture the integral from 0 to x needed for the antiderivative.  You need to construct a closure (a function that remembers 'x') within your antiderivative.

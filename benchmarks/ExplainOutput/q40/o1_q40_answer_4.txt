@@ -1,0 +1,5 @@
+Solution:  
+Yes, it is tail-recursive.
+
+Explanation:  
+Each branch returns either fc or sc directly or makes the call to zip_tr as its last action. Because there is no work after the recursive call, it is in tail position.

@@ -1,0 +1,12 @@
+**Solution:**
+
+```ocaml
+let x = 10;;
+let x = 20;;
+```
+
+**Explanation:**
+
+Overwriting in OCaml (and many other languages) involves assigning a new value to a variable that has already been declared and bound to a specific name.  In the example, `x` is first bound to 10. Then, the second declaration of `x` assigns the value 20 thereby *overwriting* the previous value of 10.  
+
+Overwriting is distinct from overshadowing.  Overwriting happens within the *same* scope.  Overshadowing, however, happens when a variable with the same name is declared in *a nested* scope, that is in a function or block that exists inside the enclosing scope.  The nested scope now obscures access to the outer variable.  In this case one variable hides the other temporarily within the overshadowing scope, but the outer variable remains unaffected.

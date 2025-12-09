@@ -1,0 +1,7 @@
+Not all List functions in OCaml are tail-recursive for two main reasons:
+
+1. Performance cost: While continuations enable tail-recursion, they often introduce overhead in terms of memory allocation and function call indirection.
+
+2. Readability/maintainability: Continuation-passing style makes code significantly more complex and harder to understand, especially for simpler operations where the non-tail-recursive version is already efficient enough.
+
+For many short lists, non-tail-recursive implementations are actually faster due to less overhead, and OCaml's stack is typically large enough to handle these operations without stack overflow. The standard library prioritizes the most common use case (reasonable-sized lists) over extreme cases, with tail-recursive alternatives (like List.rev_map) available when needed.

@@ -1,0 +1,7 @@
+```ocaml
+(7, 6)
+```
+
+**Explanation:**
+
+The `shift_point` function takes a number `n` as input and calculates the new x and y coordinates by adding `n` to the original coordinates of the `point`. Initially, `point` is defined as `(5, 4)`.  Therefore, `shift_point 1` will return `(5+1, 4+1) = (6, 5)`. This new value is then reassigned to the variable `point`. The next line recalculates `point` to `(6, 5)`. Crucially, `shift_point 2` will now use this updated `point` and calculate  (6 + 2, 5 + 2) = (7, 6).

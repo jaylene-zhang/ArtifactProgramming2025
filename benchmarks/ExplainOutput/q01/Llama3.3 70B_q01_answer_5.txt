@@ -1,0 +1,18 @@
+Here is the solution:
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 'd =
+  match xs, ys with
+  | [], [] -> sc []
+  | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y))::r))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation:
+The function `zippy` takes four parameters: two lists `xs` and `ys` of types `'a list` and `'b list`, a pairing function `pair` of type `'a -> 'b -> 'c`, and a continuation function `sc` of type `'c list -> 'd`. The return type of `zippy` is `'d`. The `zip_plus` function is a specialization of `zippy` where the pairing function is `(+)` and the continuation function checks that the length of the result is the same as the length of `xs`.

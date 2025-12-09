@@ -1,0 +1,9 @@
+**Solution:**
+
+To enhance reasoning, enable optimization, and facilitate parallelism.
+
+**Explanation:**
+
+*   **Reasoning:** Avoiding state makes code easier to reason about because the output of a function depends only on its inputs, not on the program's history. This simplifies debugging and verification.
+*   **Optimization:** Without state, the compiler can freely reorder or eliminate computations without changing the program's meaning.
+*   **Parallelism:** Lack of side effects enables easy parallelization since computations don't interfere with each other's state.

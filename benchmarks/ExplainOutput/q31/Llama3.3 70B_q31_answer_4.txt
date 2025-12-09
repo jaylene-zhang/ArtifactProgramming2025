@@ -1,0 +1,14 @@
+## Solutions
+a) Yes
+b) No
+c) No
+d) Yes
+
+## Explanation
+
+To check if a function only computes `prime_fact` once, we need to ensure that `prime_fact x` is not called multiple times within the function.
+
+- **a)** The `prime_fact x` is computed and stored in `p` before the `List.exists`, so it is only computed once.
+- **b)** The `prime_fact x` is recomputed for each element in the list `l` due to the `fun e -> e = prime_fact x`, so it is computed multiple times.
+- **c)** Similar to b, `prime_fact x` is recomputed in the recursive call `check x ys` for each element in the list, so it is computed multiple times.
+- **d)** Similar to a, `prime_fact x` is computed and stored in `p` before the recursive function `test`, so it is only computed once.

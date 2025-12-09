@@ -1,0 +1,5 @@
+Solution:  
+(a) is the only correct and properly tail-recursive version.
+
+Explanation:  
+A correct tail-recursive fold_right must pass the “fold of the tail” (r) into f as f x r, and then pass that on to cont. Option (a) does exactly that with (fun r -> cont (f x r)). All other options either swap the arguments to f or pass the wrong value to the continuation and thus do not reproduce the usual fold_right behavior.

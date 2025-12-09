@@ -1,0 +1,18 @@
+**Solution:**
+
+1 and 4
+
+**Explanation:**
+
+*   **Option 1:**
+    *   `let check_prime_factors x l = let p = prime_fact x in ...` : This computes `prime_fact x` and binds the result to `p` *once* at the beginning of the function.
+    *   The `test` function then uses this pre-computed value `p` in its recursive calls. Thus, `prime_fact` is only called once.
+
+*   **Option 2:**
+    *   `let check_prime_factors x l = match l with ... y::ys -> y = prime_fact x || check x ys` : This calls `prime_fact x` in *every* iteration of the `match` statement, making it inefficient if the list `l` is long. Thus makes calls to `prime_fact` more than once.
+
+*   **Option 3:**
+    *   `let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l` : Similar to option 2, this calls `prime_fact x` in *every* iteration of `List.exists`, making it inefficient. Thus makes calls to `prime_fact` more than once.
+
+*   **Option 4:**
+    * `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`: This is a partially applied function. It computes `prime_fact x` and binds the result to `p` *once* right away and then applies `List.exists` over the input checking for existance. Thus, `prime_fact` is only called once.

@@ -1,0 +1,7 @@
+The function `f` takes a list with at least five elements and rotates the list such that the first element becomes the last, and the remaining elements are shifted forward. This effectively rotates the list one position to the left.
+
+### Explanation:
+- The function `f` pattern matches on the input list `l`. 
+- If `l` is empty (`[]`), it returns an empty list.
+- If `l` is not empty (`h :: t`), it calls the `rotate` function on the list formed by appending `h` to the end of the tail `t`, effectively creating the list `t @ [h]`.
+- Since `rotate` moves the first element of its argument to the end, the result of `f l` shifts the entire list to the left by one position, with the first element becoming the last.

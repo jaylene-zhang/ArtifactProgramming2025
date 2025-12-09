@@ -1,0 +1,3 @@
+**[]**
+
+We need to initialize acc as an empty list [] so that when we reverse the input! list l, we start appending elements to an empty list, effectively reversing the list.

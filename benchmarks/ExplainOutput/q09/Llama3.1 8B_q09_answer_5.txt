@@ -1,0 +1,22 @@
+**Solution:**
+```ocaml
+let x = 10
+
+let rec foo a =
+  pass a 1
+  pass a 2
+  pass a "hello"
+
+and pass a b =
+  a           (* 1. overshadowing happens here *)
+  match b with
+  | 1 -> "foo1"
+  | 2 -> "foo2"
+  | _ -> "foo default"
+
+let () = foo x
+```
+
+**Explanation:**
+
+Overshadowing occurs when a function or variable hides the original definition from scope. In this example, the function `pass` has a parameter `a` which shadows the global variable `x` from scope. When `foo` calls `pass`, `a` overwrite the value of `x`, and therefore, the value of 10 is not printed.

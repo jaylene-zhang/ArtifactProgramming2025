@@ -1,0 +1,5 @@
+Solution:  
+Only (a) is correct.
+
+Explanation:  
+(a) correctly preserves the right‐to‐left application of f by using (fun r -> cont (f x r)). This ensures that in the end, we get f x₁ (f x₂ (... f xₙ b ...)) just like fold_right. The others either reverse the order of arguments or introduce errors and thus do not match fold_right.

@@ -1,0 +1,26 @@
+### Answer
+
+1. For the type signatures of the original `zip` function:
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+```
+
+2. For the generalized `zipper` function:
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'd -> 'e -> 'e) 
+(l1: 'a list) (l2: 'b list) : 'c list =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (add (comb x y) (zipper comb add xs ys))
+```
+
+### Explanation
+
+1. In the `zip` function, `l1` is a list of type `'a`, `l2` is a list of type `'b`, and the return type is a list of pairs `('a * 'b)` since we are pairing elements from both lists.
+
+2. In the `zipper` function:
+   - `comb` takes an element from `l1` and `l2`, producing a combined value of type `'c`.
+   - `add` takes a combined value and a list, allowing it to construct a new list.
+   - `l1` and `l2` are still lists of types `'a` and `'b` respectively.
+   - The return type is now a list of type `'c`, reflecting the combined values from the two lists.
+   - The recursive call constructs the new list using `add` in combination with `comb`, allowing for generalized pairing and list construction.

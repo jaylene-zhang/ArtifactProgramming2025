@@ -1,0 +1,7 @@
+Solution: Only options (a) and (d) compute prime_fact only once.
+
+Explanation:
+- Option (a): The function computes `prime_fact x` once and binds it to `p`. Then it uses this value in the comparison for each element in the list.
+- Option (b): The computation `prime_fact x` is inside the anonymous function passed to `List.exists`, so it gets recomputed for every element in the list.
+- Option (c): The computation `prime_fact x` appears in the recursive match expression and will be recomputed for each recursive call, which means once per element in the list.
+- Option (d): Similar to (a), it computes `prime_fact x` once before starting the recursion, binding the result to `p`. Then it just uses that pre-computed value in all comparisons.

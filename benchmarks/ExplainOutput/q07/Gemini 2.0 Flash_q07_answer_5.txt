@@ -1,0 +1,31 @@
+## Question 8: Counting Letters
+
+Here's the solution and explanations:
+
+**Base Case:** w = `Const y`
+
+*   `count (Const y) x + acc  = (if x = y then 1 else 0) + acc`
+*   `count' (Const y) x acc = if x = y then 1 + acc else acc`
+
+Therefore, `count (Const y) x + acc = count' (Const y) x acc`.
+
+**Step Case:** w = `Op (w1, w2)`
+
+*   **Induction Hypotheses:**
+    *   `count w1 x + acc = count' w1 x acc`
+    *   `count w2 x + acc = count' w2 x acc`
+
+*   **Proof:**
+
+    `count (Op (w1, w2)) x + acc`
+    `= (count w1 x + count w2 x) + acc` (by definition of `count`)
+    `= count w1 x + (count w2 x + acc)` (by associativity of `+`)
+    `= count w1 x + (count' w2 x acc)` (by IH on w2)
+    `= count' w1 x (count' w2 x acc)` (by IH on w1)
+    `= count' (Op (w1, w2)) x acc` (by definition of `count'`)
+
+**Theorem 2 (Main Result):** For any word `w` and constant `x`, we have `count w x = count' w x 0`.
+
+**Proof:**
+
+By Theorem 1, `count w x + acc = count' w x acc`. Let `acc = 0`.  Then `count w x + 0 = count' w x 0`, which simplifies to `count w x = count' w x 0`.

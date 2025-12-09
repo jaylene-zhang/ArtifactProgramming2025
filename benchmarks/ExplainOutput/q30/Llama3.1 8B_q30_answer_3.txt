@@ -1,0 +1,14 @@
+```ultimate
+let updated_sales_tax = update_sales_tax () ;;
+let () = Map.iter (fun x -> x := failwith "Whatever from failure!") price_list ;;
+update_price_list price_list ;;
+let price_list = update_price_list price_list ;;
+```
+
+Explanation:
+
+The `update_sales_tax` function updates the global `sales_tax` variable to twice its original value. This is because it uses the `*.` coerces the numeric value of `sales_tax` to be of type float and then multiplies it by `2.0`.
+
+However, updating `sales_tax` does not change the value of `price_list`. The expression `[10.0 ; 20.0 ; 5.0]` is evaluated at compile-time and its values are not referenced by mutation.
+
+Therefore, `update_price_list price_list` will still map each value in `price_list` using the `add_tax` function with the original value of `sales_tax` (which is now doubled), not the updated value. Hence, the result is `[2.0 ; 40.0 ; 10.0]

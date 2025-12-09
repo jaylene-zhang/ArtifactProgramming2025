@@ -1,0 +1,13 @@
+**Solution:**
+```
+(5, 4)
+```
+
+**Explanation:**
+1. `point` is initially assigned as `(4, 3)`.
+2. `shift_point n` returns a new tuple where both components of `point` are incremented by `n`.
+3. When `shift_point 2` is called, it increments both components of the `point` tuple by `2`, resulting in `(4+2, 3+2)`, which simplifies to `(6, 5)`.
+
+However, note that the variable `point` is redefined in the last line to the result of `shift_point 1`, which changes `point` to `(5, 4)`. Therefore, `shift_point 2` will use this new value of `point`.
+
+So, `shift_point 2` will correctly return `(5+2, 4+2)`, which is `(7, 6)`.

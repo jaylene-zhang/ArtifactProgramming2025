@@ -1,0 +1,3 @@
+**Solution:** No
+
+**Explanation:** The given function does not handle the case where `n` is 0. The base case only checks if `n` is 1, and the recursive case will cause an infinite recursion or a stack overflow if `n` is 0 or negative, since it keeps subtracting 1 from `n`. Also, the function does not correctly calculate the `n`-th triangle number. It should sum all numbers up to `n`, but it sums all numbers from `n` down to 1.

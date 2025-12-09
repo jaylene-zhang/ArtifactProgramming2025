@@ -1,0 +1,4 @@
+The type of `shift` is: `unit -> unit`.
+
+**Explanation:**
+The `shift` function takes a mutable reference tuple `point`, where both components are of type `int ref`. Inside `shift`, it modifies the values of these references but does not return anything. Hence, it fits the type `unit -> unit`. However, since it does not take any parameters in its current definition, it would be more accurate to describe its type as simply `unit`.

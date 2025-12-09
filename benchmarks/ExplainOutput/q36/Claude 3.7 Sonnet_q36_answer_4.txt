@@ -1,0 +1,10 @@
+Solution: `f` reverses the list.
+
+Explanation: `f l` takes a list `l`, moves the first element `h` to the end to get `t @ [h]`, and then applies `rotate` to this new list, which moves the first element of `t @ [h]` to the end. But when we take the head `h` and append it to the tail `t`, then rotate the result, what we're effectively doing is moving the second element of the original list to the end. So `f` ends up reversing the order of the list elements.
+
+For example, with list [1;2;3;4;5]:
+- `h = 1, t = [2;3;4;5]`
+- `t @ [h] = [2;3;4;5;1]`
+- `rotate(t @ [h]) = [3;4;5;1;2]`
+
+The resulting list has elements in reverse order starting from the third element of the original list.

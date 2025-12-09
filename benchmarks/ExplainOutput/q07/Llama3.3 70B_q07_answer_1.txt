@@ -1,0 +1,29 @@
+**Theorem 1 Proof**
+
+Base Case: w = Const y 
+Proof: 
+- count (Const y) x + acc = (if x = y then 1 else 0) + acc = (if x = y then 1 + acc else acc)
+- count' (Const y) x acc = (if x = y then 1 + acc else acc)
+Therefore, count (Const y) x + acc = count' (Const y) x acc.
+
+Step Case: w = Op (w1, w2) 
+Induction Hypothesis: 
+- count w1 x + acc = count' w1 x acc
+- count w2 x + acc = count' w2 x acc
+Proof: 
+- count (Op (w1, w2)) x + acc = (count w1 x) + (count w2 x) + acc 
+= (count' w1 x 0) + (count w2 x) + acc (by induction hypothesis on w1)
+= (count' w1 x 0) + (count' w2 x 0) + acc - 0 (by induction hypothesis on w2)
+= (count' w1 x 0) + (count' w2 x (count' w1 x 0)) (by adding and subtracting 0, which is equivalent to the inner function call)
+- count' (Op (w1, w2)) x acc = count' w1 x (count' w2 x acc)
+By applying the induction hypothesis, we simplify the two sides to the same expression.
+
+
+**Theorem 2 (Main Result) Proof**
+
+- count w x = count w x + 0
+- By Theorem 1, count w x + 0 = count' w x 0
+Therefore, count w x = count' w x 0. 
+
+Explanation: 
+This problem utilizes structural induction to prove the equivalence of two recursive functions, `count` and `count'`, which are used to count the occurrences of a constant `x` in a word `w` represented as a magma. The proof of Theorem 1 establishes the relationship between `count` and `count'` by considering all possible cases of the magma (base case: `Const y`, and step case: `Op (w1, w2)`). Finally, Theorem 2 applies the result from Theorem 1 to show that `count w x` is equal to `count' w x 0` for any word `w` and constant `x`.

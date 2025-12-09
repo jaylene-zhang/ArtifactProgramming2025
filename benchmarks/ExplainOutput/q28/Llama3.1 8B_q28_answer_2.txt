@@ -1,0 +1,19 @@
+### No, it does not.
+
+```ocaml
+let anti_d f = (curry integral) f 0
+```
+
+This program will compute the integral of f(x) from 0 to 0, that is, the value of the definite integral of f(x) over an interval with zero length, which does not yield the antiderivative. 
+
+### Correct implementation
+Instead, the correct implementation would be:
+
+```
+let anti_d f = fun x -> (curry integral) f (0, x)
+```
+Or equivalently, using local binding:
+
+```ocaml
+let anti_d f x = (curry integral f) (0, x)
+```

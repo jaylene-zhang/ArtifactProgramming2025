@@ -1,0 +1,5 @@
+Solution:  
+No, it evaluates ackermann x once per list element, so it is computed multiple times.  
+
+Explanation:  
+Each recursive branch calls (ackermann x) again. As a result, for every element of the list, ackermann x is recomputed.

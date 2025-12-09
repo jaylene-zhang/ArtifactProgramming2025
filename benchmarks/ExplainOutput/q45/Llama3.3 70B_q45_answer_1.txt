@@ -1,0 +1,36 @@
+### Solutions
+1. `ones`
+2. `pascal_aux ones (psums ones)`
+
+However, to make this work, we first need to define `pascal_aux` and `psums`. We also need to define the `psums` function which calculates the partial sums of a stream.
+
+Here's a more detailed implementation:
+```ocaml
+type 'a stream = Cons of 'a * 'a stream Susp.t
+and 'a Susp.t = Susp of unit -> 'a
+
+let rec ones = Cons (1, Susp (fun () -> ones))
+
+let rec psums s =
+  let rec aux sum = function
+    | Cons (h, tl) -> Cons (h + sum, Susp (fun () -> aux (h + sum) (force tl)))
+  in
+  Cons (0, Susp (fun () -> aux 0 s))
+
+let rec pascal_aux prev curr =
+  Cons (hd curr, Susp (fun () -> pascal_aux curr (psums curr)))
+
+let rec pascal = pascal_aux ones (Cons (1, Susp (fun () -> ones)))
+
+```
+However to simply fill the blanks in the given template with less code given the ones, psums functions are implemented we use 
+
+1. `ones`
+2. `pascal_aux ones (psums ones)` 
+
+### Explanation
+We use `ones` for blank 1 because we start with the stream of ones as the first diagonal.
+
+For blank 2, we call `pascal_aux` with `ones` as the previous diagonal and `psums ones` as the current diagonal, which corresponds to the partial sums of the previous diagonal. The `psums` function calculates the partial sums of a stream. 
+
+The `Susp` function is used to delay the evaluation of the recursive call to `pascal_aux` until the tail of the stream is actually needed. This allows us to define an infinite stream without running out of memory.

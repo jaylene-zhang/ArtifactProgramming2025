@@ -1,0 +1,27 @@
+a) **Incorrect**
+
+Solution:  
+`curry (sumSeries f) 0` applies the first argument `f` and fixes the lower bound `0`. However, applying `swap` afterward tries to invert the order of `(a, b)` and `inc`, which doesn't align with the type signature and expected behavior.
+
+Explanation:  
+The use of `swap` after `curry` generates a type mismatch because `swap` cannot correctly reorder and curry nested function arguments in the way intended.
+
+---
+
+b) **Correct**
+
+Solution:  
+`curry (sumSeries f 0)` properly curried the `sumSeries` function with fixed `f` and lower bound `0`. Then, `swap` correctly reorders the expected arguments `(upper bound, increment)` and properly applies `(fun x -> x + 1)` as the increment function.
+
+Explanation:  
+This implementation aligns with the goal of fixing `0` as the lower bound and setting the increment to `fun x -> x + 1`, leading to a proper `sum_from_zero` implementation.
+
+---
+
+c) **Incorrect**
+
+Solution:  
+`swap (sumSeries f)` implies directly swapping `(a, b)` with `inc` before currying or fixing arguments, which leads to a type error. Applying `curry` and fixing the lower bound `0` afterward also fails to align with the expected curried function structure.
+
+Explanation:  
+The function tries to reorder arguments incorrectly with `swap` too early and doesn't handle the partial application of `(int * int)` and `(int -> int)` as intended.

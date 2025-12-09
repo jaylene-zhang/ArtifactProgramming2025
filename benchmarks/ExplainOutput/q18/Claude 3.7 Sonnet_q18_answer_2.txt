@@ -1,0 +1,7 @@
+The program `shift_point 2` will return `(7, 6)`.
+
+Explanation: 
+- Initially `point` is defined as `(5, 4)`.
+- The `shift_point` function adds `n` to both x and y components of the original `point` value (5, 4).
+- When we call `shift_point 2`, it adds 2 to both components of `(5, 4)`, resulting in `(7, 6)`.
+- Note that even though `point` is redefined later as `shift_point 1` (which would be `(6, 5)`), the function `shift_point` still uses the original definition of `point` which is `(5, 4)` because OCaml binds variables in function definitions at the time of definition, not at call time.

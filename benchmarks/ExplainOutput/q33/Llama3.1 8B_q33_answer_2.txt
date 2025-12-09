@@ -1,0 +1,3 @@
+`b)`
+
+Explanation: In this implementation, each type of jump (Axel, Loop, Lutz, Flip, Salchow) can only perform a `Double` or `Triple` number of revolutions. Option a) allows for any number of revolutions but does not capture the distinction between double and triple jumps. Option c) creates a new type for each jump, which does not accurately represent the "allowed jumps" described in the problem.

@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let foo y =
+let x = y + 3 in
+let w = y + 3 in fun y -> (y + 3) + 2 + y * (y + 3)
+```
+
+**Explanation:**
+
+The original `x` is replaced with `y + 3` in the definition of `w` and in the `fun` body.  A crucial point is that *both uses of `y` in the inner function now refer to the different `y` parameter passed to the outer function `foo`*.  This is critical as the original `x` does not depend on `y`'s value.

@@ -1,0 +1,3 @@
+**('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c**
+
+This type matches the expected output for a tail-recursive version of `fold_right` because it allows for an accumulator function (`'b -> 'c`) to be applied to the result of the fold operation (`'b`), which is produced by the combination of the input function (`'a -> 'b -> 'b`), the list (`'a list`), the initial value (`'b`), and then transformed by the accumulator function (`'b -> 'c`) to produce the final result of type `'c`.

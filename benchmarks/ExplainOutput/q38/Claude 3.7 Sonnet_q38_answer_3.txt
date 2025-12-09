@@ -1,0 +1,17 @@
+Solution: c) h (g (f x))
+
+Explanation:
+Let's examine what happens when we apply `compose h g` to the argument functions:
+- h is `fun f x -> f x` (applies f once)
+- g is `fun f x -> f (f x)` (applies f twice)
+
+When we compose them, we want the resulting function to apply f three times. 
+
+Let's think about what happens when we evaluate `h (g (f x))`:
+- g (f x) applies f twice to x
+- h then applies f once more to that result
+- So in total, f is applied three times to x
+
+This matches the expected behavior of returning a function that computes `fun f x -> f (f (f x))`.
+
+The other options don't correctly compose the functions to achieve this behavior.

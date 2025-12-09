@@ -1,0 +1,3 @@
+Solution: (6, 5)
+
+Explanation: In OCaml, each top-level definition is statically (lexically) scoped. The function shift_point was defined while point was (4, 3), so even though point is subsequently rebound to (5, 4), shift_point still uses the original (4, 3). Hence shift_point 2 yields (6, 5).

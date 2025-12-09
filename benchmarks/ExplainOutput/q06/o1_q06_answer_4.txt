@@ -1,0 +1,7 @@
+Solution:  
+let w = 3 in  
+let y = 2 * (w * 2) in  
+fun x -> w * y * (w * 2)
+
+Explanation:  
+We take every occurrence of x in the expression “let w = 3 in let y = 2*x in fun x -> w*y*x” and replace it with “w * 2.” This inlines x = w * 2 directly in y and in the body of the function.

@@ -1,0 +1,8 @@
+```ocaml
+let rec toInt f = 
+  if f (fun y -> y) = f then 0 
+  else 1 + toInt (fun y -> f f y)
+```
+
+Explanation: 
+The function `toInt` uses recursion to determine how many times the function `f` needs to be applied to produce the identity function (which simply returns its input). It checks if applying `f` to the identity function returns `f` itself, indicating zero applications needed. If not, it counts one application and recursively calls `toInt`, applying `f` to itself again. This continues until it identifies the depth of applications that brings it back to the identity function, effectively counting how many times `f` is applied.

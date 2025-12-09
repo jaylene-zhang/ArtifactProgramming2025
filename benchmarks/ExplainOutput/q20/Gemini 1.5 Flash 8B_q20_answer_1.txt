@@ -1,0 +1,7 @@
+**Solution:**
+
+No
+
+**Explanation:**
+
+The function `triangle` incorrectly calculates the triangle number.  It attempts to sum recursively from `n` down to 1. However, it does not handle the case where `n` is 0 (which should return 0). This is due to a missing base case. Thus this test case will fail.

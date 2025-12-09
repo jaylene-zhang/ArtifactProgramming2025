@@ -1,0 +1,25 @@
+**Test case that will not pass: (10, 55)**
+
+The input `n = 10` should produce the output `55`.
+
+**Bug:**
+
+The problem in the implementation is that the function calculates the sum of numbers up to `n`, but the recursive call `triangle (n-1)` starts from `n-1` and goes down to 1, whereas it should start from `n` and count down to 1.
+
+The correct implementation should be:
+```ocaml
+let rec triangle n =
+    if n = 1 then 1
+    else n + triangle (n - 1)
+```
+The change is from `triangle (n-1)` to `triangle (n - 1)`, adding a minus sign. This will correctly decrement `n` in each recursive call.
+
+However, this recursive function is still inefficient because it has overlapping subproblems and can be optimized using dynamic programming. A more efficient solution would be:
+```ocaml
+let triangle n =
+    let rec loop i acc =
+        if i = 0 then acc
+        else loop (i - 1) (i + acc)
+    in
+    loop n 0
+```

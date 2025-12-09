@@ -1,0 +1,6 @@
+**Solution:**
+```
+error FS0001: The identifier `x` is shadowed in this expression; use the long id `D.e.6.x` to resolve it.
+```
+**Explanation:**
+The variable `x` is redeclared in the last two lines, which causes a shadowing warning in OCaml. This means that `x` takes the value `2 *!r * x` in the last line, not the original `x` value. The `f` function is then called with the new `x` value, increased by `10 *!r`, which is `300`. Therefore, the expression evaluates to `303`. However, OCaml's static semantics catches the attempt to bind an external identifier, raising an error instead.

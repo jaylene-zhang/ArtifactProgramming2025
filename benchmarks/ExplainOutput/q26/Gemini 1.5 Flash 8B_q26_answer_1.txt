@@ -1,0 +1,5 @@
+**Solution:** True
+
+**Explanation:**
+
+The code creates a cyclic list where `rc1` points to `rc2` which in turn points back to `rc1` through `rc1`.  `get_tail rc1` and `get_tail rc2` will both return the same tail in memory.  The `ref` cell is the key; `rc1` and `rc2`  are pointers/references to the same list structure. `==` checks to see if these pointers are the same.

@@ -1,0 +1,26 @@
+**a) let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)**
+
+* **Solution:** No
+
+* **Explanation:** This calculates `prime_fact x` only once, but then it compares the result (`p`) against *every* element in the input list (`l`).  It doesn't stop after finding a match.
+
+
+**b) let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l**
+
+* **Solution:** No
+
+* **Explanation:** This calculates `prime_fact x` *every time* List.exists iterates through the list.  It recomputes the prime factorization for every element in the input list `l`.
+
+
+**c) let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys**
+
+* **Solution:** No
+
+* **Explanation:**  The function is recursive, but a very inefficient recursive approach.  It recomputes `prime_fact x` each time the recursive call is performed.
+
+
+**d) let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l**
+
+* **Solution:** Yes
+
+* **Explanation:** This implementation calculates `prime_fact x` only once, storing the result in `p`.  The recursive function `test` checks if any element in the input list `l` is equal to `p`, immediately returning true if a match is found. It stops searching after a match.

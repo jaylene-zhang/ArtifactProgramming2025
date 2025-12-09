@@ -1,0 +1,17 @@
+**Solution:**
+
+1. `xs : 'a list`
+2. `ys : 'b list`
+3. `pair : 'a * 'b -> 'c`
+4. `sc : 'c list -> 'd`
+5. Return type of `zippy` is: `'d`
+
+---
+
+**Explanation:**
+1. The input `xs` and `ys` are lists, so their types are `'a list` and `'b list`, as they may represent lists of any type.
+2. The function `pair` is applied to tuples `(x, y)` where `x` is of type `'a` (element from `xs`) and `y` is of type `'b` (element from `ys`). Thus, `pair` must have type `'a * 'b -> 'c`.
+3. The `sc` function is a continuation function that takes a list of results produced by `pair`. Its type is `'c list -> 'd` because it maps the list of transformed entries to a result of type `'d`.
+4. Since `zippy` produces the output of `sc`, its overall return type is `'d`.
+
+The program is well-typed and functions correctly.

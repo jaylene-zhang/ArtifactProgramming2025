@@ -1,0 +1,67 @@
+```ocaml
+(*--------------------------------------------------------------*)
+(* Q1 : String to Characters to String                  *)
+(*--------------------------------------------------------------*)
+
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let rec aux i acc =
+    if i < String.length s
+    then aux (i + 1) (String.get s i :: acc)
+    else acc
+  in
+  aux 0 []
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  List.fold_right ( ^ ) l ""
+
+
+(* For Question 2 *)
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+(* Errors. Please use these. *)
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+(* ------------------------------------------------------------------------*)
+(* Q2 : Bank Account *)
+(* ------------------------------------------------------------------------*)
+
+let open_account (pass: password) : bank_account =
+  let balance = ref 0 in
+  let password_ = ref pass in
+  {
+    update_pass = (fun old_pass new_pass ->
+      if old_pass = !password_
+      then password_ := new_pass
+      else raise wrong_pass);
+    retrieve = (fun p amount ->
+      if p = !password_
+      then
+        if amount < 0 then raise negative_amount
+        else if amount > !balance then raise not_enough_balance
+        else (balance := !balance - amount));
+    deposit = (fun p amount ->
+      if p = !password_
+      then
+        if amount < 0 then raise negative_amount
+        else balance := !balance + amount
+      else raise wrong_pass);
+    show_balance = (fun p ->
+      if p = !password_
+      then !balance
+      else raise wrong_pass);
+  }
+;;
+```

@@ -1,0 +1,11 @@
+Solution:
+```ocaml
+let x = 10 in
+let x = x + 1 in
+x
+```
+
+Explanation:
+Overwriting in this context is done by reassigning the same variable (`x`) multiple times. Initially, `x` is set to 10. Then, the line `let x = x + 1 in` reassigns `x` to `11`. As a result, the final value of `x` is 11. 
+
+Overshadowing, in contrast, typically happens when a variable or function with the same name is defined in both a containing and a local scope, and the local definition hides the outer one. Here, no overshadowing occurs because the reassignment does not affect the outer scope but rather reassigns the same variable within its scope.

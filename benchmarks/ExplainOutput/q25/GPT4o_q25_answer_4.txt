@@ -1,0 +1,14 @@
+### Solution:
+```
+'t = 'u, 's = 'u, 'u = 'u.
+```
+
+### Explanation:
+For `f (f (a, b), f (b, a))` to have type `'u`:
+1. `f` is a function of type `('t * 's -> 'u)`.
+2. The arguments `f (a, b)` and `f (b, a)` must have the same type because they are passed as a pair to another `f`. Hence, the return type of `f` (i.e., `'u`) must match both `'t` and `'s`.
+
+Resulting in:
+- `'t = 'u`
+- `'s = 'u`
+- `'u` unchanged.

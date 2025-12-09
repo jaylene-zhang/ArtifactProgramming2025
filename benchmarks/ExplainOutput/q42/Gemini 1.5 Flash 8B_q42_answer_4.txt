@@ -1,0 +1,7 @@
+```ocaml
+[]
+```
+
+**Explanation:**
+
+The `rev_tl` function (presumably a helper function) likely takes a tail of the list (`l`) and an accumulator (`acc`) and recursively builds the reversed list.  To start this process, the accumulator must hold the reversed portion of the list, which initially is an empty list.

@@ -1,0 +1,9 @@
+Here's the solution:
+
+1)  `ones`
+2)  `psums (map (fun str -> str.hd) pascal)`
+
+**Explanation:**
+
+*   `ones`: The first diagonal is the stream of ones.
+*   `psums (map (fun str -> str.hd) pascal)`: To generate the subsequent diagonals, we take the stream of the *heads* of all the existing diagonals (using `map (fun str -> str.hd) pascal`).  Then `psums` calculates the partial sums of this stream which gives us the next diagonal in the Pascal's triangle. `psums` recursively builds up the subsequent diagonal, adding the head of each stream to the total, so that we can produce the (i + 1) diagonal. Then we create a 'Susp' to delay evaluation of the next stream in `pascal` stream.

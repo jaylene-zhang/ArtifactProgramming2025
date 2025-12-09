@@ -1,0 +1,17 @@
+### Solution
+
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in fun y -> x + 2 + y * w
+
+let w = 3 in 
+let y = 2*(w * 2) in 
+fun x -> w * y * x
+```
+
+### Explanation
+
+In the first part of the code, the function `foo w` remains unchanged as the question only asks to inline `w*2` in the second part. 
+
+In the second part, `x` is replaced with `w * 2`, so `let y = 2*x` becomes `let y = 2*(w * 2)`. This substitution is the result of inlining `w*2` and replacing all occurrences of `x`. The `fun x -> w * y * x` part remains unchanged as it doesn't contain any `x` that can be replaced by `w * 2`.

@@ -1,0 +1,22 @@
+Here are the answers:
+
+## a) let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)
+
+This code does not compute prime_fact once for every element in the list. It first computes the prime factorization p of x, and then uses List.exists to check if p is equal to any of the factorizations in the list.
+
+## b) let check_prime_factors x l = List.exists (fun e -> e = prime_fact x) l
+
+This code also does not compute prime_fact once for every element in the list. It computes prime_fact x once on the right-hand side of the equality, which appears to be executed immediately and is memoized by OCaml. During the evaluation of `List.exists`, OCaml will compute `prime_fact x` only once.
+
+## c) let check_prime_factors x l = match l with | [] -> false | y::ys -> y = prime_fact x || check x ys
+
+This code does not compute prime_fact once at all. It first checks whether the list is empty. If it is, it immediately returns false. If not, it checks whether the first element of the list is equal to the prime factorization of x. If they are equal, it returns true. If they are not equal or the first recursion returns true, it continues to check the rest of the list.
+
+## d) let check_prime_factors x l =
+let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+
+This code does not compute prime_fact multiple times for every element in the list. However, it does compute prime_fact x once when computing p. Unfortunately, during recursive call of test l, prime_fact x is recomputed due to lazy evaluation rule applied to the match arms. OCaml does not cache the value of the evaluated expression, hence the recomputation.

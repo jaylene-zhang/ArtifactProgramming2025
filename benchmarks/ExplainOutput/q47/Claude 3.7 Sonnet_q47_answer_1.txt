@@ -1,0 +1,10 @@
+Solution: c)
+
+Explanation: 
+For a tail-recursive implementation that produces the correct output:
+- Option a) is tail-recursive but concatenates in reverse order (last word first)
+- Option b) is tail-recursive but adds a space before the first word
+- Option c) is correct: it reverses the list first, then performs tail-recursive concatenation
+- Option d) is not tail-recursive (it must wait for the recursive call to complete)
+
+Only c) is both tail-recursive and produces the expected output by reversing the list first to handle the concatenation order correctly.

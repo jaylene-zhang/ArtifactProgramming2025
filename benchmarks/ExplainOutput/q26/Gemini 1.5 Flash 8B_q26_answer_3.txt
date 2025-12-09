@@ -1,0 +1,8 @@
+**Solution:**
+
+False
+
+
+**Explanation:**
+
+`rc1` and `rc2` initially refer to different locations in memory.  After `rc1 := !rc2`, both `rc1` and `rc2` now point to the same location. This means `get_tail rc1` and `get_tail rc2` will return the *same* `ref` value, which is the tail of the `rlist`. `==` checks if this is the same object in memory i.e, same memory address.  However,  though the `ref` they point to is the same, the values they hold are *not* necessarily the same objects.   `get_tail rc1` and `get_tail rc2` will return the same *ref* value, but that doesn't mean their *content* which is `t` is the same value.  Thus `==` will return `false` if the objects are physically distinct.

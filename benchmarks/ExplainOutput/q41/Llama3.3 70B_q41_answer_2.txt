@@ -1,0 +1,3 @@
+**Answer:** ('a -> 'b -> 'b) -> 'b -> ('b -> 'c) -> 'a list -> 'c
+
+**Explanation:** In the tail-recursive version of fold_right, the accumulator comes first and the list comes last, allowing for efficient recursive calls. The type of the function reflects this, putting the initial value and transformer functions before the list argument.

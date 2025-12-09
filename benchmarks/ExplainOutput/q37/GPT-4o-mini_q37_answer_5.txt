@@ -1,0 +1,3 @@
+(0, 1)
+
+The bug in the implementation is that it does not handle the base case for `n = 0`. The function should return 0 for `triangle 0`, but instead, it will lead to an infinite recursion since `triangle (-1)` would be called, which is not correctly defined for non-negative integers.

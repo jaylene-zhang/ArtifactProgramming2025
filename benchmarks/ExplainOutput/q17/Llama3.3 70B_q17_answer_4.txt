@@ -1,0 +1,15 @@
+**Yes**, the program computes `ackermann x` at most once for a function call `add_ack x l` in each recursive call, **but not overall**.
+
+Explanation: In the given implementation, `ackermann x` is computed for every recursive call to `add_ack`. Since the list `l` is traversed recursively, `ackermann x` will be computed on each recursive call, resulting in multiple computations of `ackermann x`. To achieve the goal of computing `ackermann x` only once, you would need to compute it before the recursive calls and store the result in a variable. 
+
+Example of how it can be computed only once:
+```ocaml
+let add_ack x l =
+  let ack_x = ackermann x in
+  let rec add_list l = 
+    match l with
+    | [] -> []
+    | y::ys -> (ack_x + y) :: add_list ys
+  in
+  add_list l
+```

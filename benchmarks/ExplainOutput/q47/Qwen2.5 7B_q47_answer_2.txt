@@ -1,0 +1,17 @@
+**Solution: b**
+
+**Explanation:**
+
+The correct implementation is option b. Let's analyze why this is the right choice:
+
+- **b)** `let concat l = let rec aux l s = match l with | [] -> s | x::xs -> aux xs (s ^ " " ^ x) in aux l ""` 
+  - This approach correctly accumulates characters from the end of the list to the beginning using an accumulator `s`. The function `aux` builds the string `s` by prepending each element with a space to the previous result, ensuring that the final string is built in the correct order.
+
+- **a)** `let concat l = let rec aux l s = match l with | [] -> s | x::xs -> aux xs (x ^ " " ^ s) in aux l ""` 
+  - This approach appends to the accumulator `s` from the end, which would result in a reversed string order. Hence, it doesn't meet the requirement.
+
+- **c)** `let concat l = let rec aux l s = match l with | [] -> s | x::xs -> aux xs (x ^ " " ^ s) in aux (reverse l) ""` 
+  - This reverses the list first, then concatenates. While this works, it does an extra unnecessary step of reversing the list, which is not efficient.
+
+- **d)** `let rec concat (l : string list) : string = match l with [] -> "" | x :: xs -> x ^ " " ^ (concat xs)` 
+  - This is an incorrect recursive approach that breaks the tail-recursive nature since concatenation inside the recursive call is not tail-recursive. It also builds the string from the beginning to the end, which results in incorrect order.

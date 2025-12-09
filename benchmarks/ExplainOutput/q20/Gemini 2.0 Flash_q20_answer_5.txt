@@ -1,0 +1,3 @@
+Solution: No.
+
+Explanation: The base case is `n = 1`, but the test input is `n = 0`. The function will recursively call `triangle (-1)`, `triangle (-2)`, ..., leading to a stack overflow. So it does not return 0 to pass the test `triangle 0 == 0`, and the test will fail.

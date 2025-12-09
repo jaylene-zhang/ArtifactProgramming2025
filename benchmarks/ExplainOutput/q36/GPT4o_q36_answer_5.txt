@@ -1,0 +1,5 @@
+Solution:  
+The function `f` reverses lists with at least five elements.
+
+Explanation:  
+The function `f` recursively processes the list. At each step, it moves the head of the list to the end (`t @ [h]`), then calls `rotate` on the resulting list. `rotate` takes the first element of this new list (equivalent to the second element of the original list) and moves it to the end. This process results in a systematic reversal of the list's elements when recursively applied. For lists shorter than five elements, the behavior does not exhibit full reversal due to incomplete recursion.

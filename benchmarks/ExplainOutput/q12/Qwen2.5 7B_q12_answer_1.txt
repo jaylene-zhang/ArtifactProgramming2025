@@ -1,0 +1,47 @@
+### Q4.1
+
+#### Induction Hypothesis:
+**Theorem 1.** For all hands \( h \) and accumulators \( \text{acc} \), \( \text{add\_up} h + \text{acc} = \text{add\_up\_tr} h \, \text{acc} \).
+
+#### Proof:
+
+**Base Case:**
+- When \( h = \text{Empty} \):
+  \[
+  \text{add\_up}(\text{Empty}) + \text{acc} = 0 + \text{acc} = \text{acc}
+  \]
+  \[
+  \text{add\_up\_tr}(\text{Empty}) \, \text{acc} = \text{acc}
+  \]
+  Therefore, \( \text{add\_up}(\text{Empty}) + \text{acc} = \text{add\_up\_tr}(\text{Empty}) \, \text{acc} \).
+
+**Step Case:**
+- Assume \( h = \text{Hand}(c, h') \):
+  \[
+  \text{add\_up}(\text{Hand}(c, h')) + \text{acc} = (\text{add\_up}(h') + 1) + \text{acc} = \text{add\_up}(h') + (1 + \text{acc})
+  \]
+  \[
+  \text{add\_up\_tr}(\text{Hand}(c, h')) \, \text{acc} = \text{add\_up\_tr}(h') (1 + \text{acc})
+  \]
+  By the induction hypothesis, \( \text{add\_up}(h') + \text{acc} = \text{add\_up\_tr}(h') \, \text{acc} \). Thus:
+  \[
+  \text{add\_up}(h') + (1 + \text{acc}) = \text{add\_up\_tr}(h') \, (1 + \text{acc})
+  \]
+  Hence, \( \text{add\_up}(\text{Hand}(c, h')) + \text{acc} = \text{add\_up\_tr}(\text{Hand}(c, h')) \, \text{acc} \).
+
+### Q4.2
+
+#### Proof:
+From **Theorem 1**, we directly substitute \( \text{acc} = 0 \):
+\[
+\text{add\_up} h + 0 = \text{add\_up\_tr} h \, 0
+\]
+Therefore,
+\[
+\text{add\_up} h = \text{add\_up\_tr} h \, 0
+\]
+
+By **Theorem 2**, for all hands \( h \):
+\[
+\text{add\_up} h = \text{add\_up\_tr} h \, 0
+\]

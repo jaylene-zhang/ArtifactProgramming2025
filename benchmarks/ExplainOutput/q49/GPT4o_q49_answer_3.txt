@@ -1,0 +1,10 @@
+Result:  
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation:  
+The variable `y` is substituted with `(f x)` throughout the expression, assuming `y` is globally defined or available in scope. So, `w` becomes `(f x) + x`, and in the function body, `y` is replaced by `(f x)`.

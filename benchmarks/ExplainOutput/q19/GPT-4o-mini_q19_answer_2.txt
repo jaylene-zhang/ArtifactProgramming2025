@@ -1,0 +1,16 @@
+The implementation does not calculate the largest power of two that divides a number correctly and is not tail-recursive.
+
+**Explanation:**  
+1. The `helper` function starts with `n`, but in `max_two_factor`, it incorrectly initializes `n` to `1`. The recursion should start with the original integer `n` to count how many times it can be divided by 2. It should be `helper n` instead of `helper 1 n`.
+2. The recursion in `helper` is not tail-recursive because it uses multiplication (`2 * ...`) after the recursive call. This means that the result of `helper` needs to be multiplied after returning from the recursive call, which prevents it from being tail-recursive.
+3. To fix it, you can use an accumulator to keep track of the current power of two and thus make it tail-recursive:
+
+```ocaml
+let rec helper n acc =
+  if n mod 2 = 1 then acc
+  else helper (n / 2) (2 * acc)
+
+let max_two_factor n = helper n 1
+```
+
+In this corrected version, the `helper` function is now tail-recursive and correctly calculates the largest power of two that divides `n`.

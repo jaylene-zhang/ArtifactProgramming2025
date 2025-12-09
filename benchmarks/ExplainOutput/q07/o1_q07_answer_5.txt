@@ -1,0 +1,26 @@
+Solution (Theorem 1):  
+• Base Case (w = Const y):  
+  count (Const y) x + acc = (if x = y then 1 else 0) + acc  
+                          = if x = y then acc + 1 else acc  
+                          = count’ (Const y) x acc.  
+
+• Step Case (w = Op (w1, w2)):  
+  count (Op (w1, w2)) x + acc  
+  = (count w1 x + count w2 x) + acc  
+  = count w1 x + (count w2 x + acc).  
+  By the induction hypotheses,  
+    count w2 x + acc = count’ w2 x acc,  
+    count w1 x + count’ w2 x acc = count’ w1 x (count’ w2 x acc).  
+  Hence,  
+    count (Op (w1, w2)) x + acc = count’ w1 x (count’ w2 x acc)  
+                                = count’ (Op (w1, w2)) x acc.  
+
+Explanation:  
+We do structural induction. For the base case (Const y), we check whether x matches y. In the inductive step (Op (w1, w2)), we apply the hypothesis to w1 and w2 separately, then combine the results to show the equality.
+
+Solution (Theorem 2):  
+count w x = count’ w x 0  
+follows immediately by taking acc = 0 in Theorem 1.
+
+Explanation:  
+Once we have the general result count w x + acc = count’ w x acc, setting acc = 0 completes the proof that count w x = count’ w x 0.

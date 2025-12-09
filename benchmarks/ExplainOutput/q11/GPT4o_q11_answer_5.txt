@@ -1,0 +1,66 @@
+### Solution
+
+1. **Type for `zip`:**
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+```
+
+**Explanation**: 
+- `l1` and `l2` are lists of type `'a list` and `'b list`, respectively.
+- The output is a list of pairs consisting of elements from `l1` and `l2`, i.e., `('a * 'b) list`.
+
+---
+
+2. **Generalized Type for `zipper`:**
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation**: 
+- `comb`: A function that combines elements from `l1` (`'a`) and `l2` (`'b`) into a result of type `'c`.
+  - Type: `'a -> 'b -> 'c`.
+- `add`: A function that adds an element to an already constructed collection, resulting in type `'d`.
+  - Type: `'c -> 'd -> 'd`.
+- `l1`: A list of type `'a list`.
+- `l2`: A list of type `'b list`.
+- The return value is of type `'d` since we're defining the final structure with `add`.
+
+---
+
+3. **Fill in Missing Expression for `zipper`:**
+
+```ocaml
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation**: 
+- For recursive construction, we:
+  1. Combine `x` (from `l1`) and `y` (from `l2`) using `comb`.
+  2. Call `zipper` recursively on the tails of `l1` and `l2` (`xs` and `ys`).
+  3. Use `add` to add the result of `comb x y` to the recursive result.
+
+---
+
+4. **Defining `zip` and `zip_rev`:**
+
+Using `zipper`, we define:
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+```
+
+- Combines elements as pairs (e.g., `(x, y)`).
+- Constructs the list using the cons operator `::`.
+
+```ocaml
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+(fun s t -> t @ [ (s, List.length t) ])
+```
+
+- Combines elements by concatenating the string representation of `x` with `y`.
+- Constructs the list in reverse order by appending elements with additional metadata (list length).

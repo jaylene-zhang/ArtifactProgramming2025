@@ -1,0 +1,5 @@
+**Case Analysis**
+
+The step case in an inductive proof about a list involves assuming the opposite: the list is empty, i.e., `[]`. We need to prove that the statement is still true when the list is empty. This case often involves simple logical derivation and is used to establish that the statement holds for the base case of an empty list. 
+
+For example, if the statement to be proved is "a list is empty if and only if its length is 0," the step case would prove this statement by elementary logic when the list is empty (`[]`).

@@ -1,0 +1,41 @@
+```ocaml
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Tree Depth *)
+let tree_depth_cps t = 
+  let rec depth_helper t sc =
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) -> depth_helper l (fun left_depth ->
+        depth_helper r (fun right_depth ->
+          sc (1 + max left_depth right_depth)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc (Some tree)
+    | _, Empty -> fc ()
+    | h::t, Tree (l, v, r) ->
+        if h = v then
+          helper t l (fun left_result ->
+            match left_result with
+            | Some _ as result -> sc result
+            | None -> helper t r sc fc)
+        else
+          fc ()
+  in
+  helper ls tree (fun() -> None) (fun() -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  raise NotImplemented
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)
+```

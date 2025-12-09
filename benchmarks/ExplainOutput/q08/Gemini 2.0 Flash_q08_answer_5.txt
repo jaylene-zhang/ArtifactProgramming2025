@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+type cake = Slice of (int * ingredients list) | Cake of cake * cake
+```
+
+**Explanation:**
+
+We want to store calories (an integer) along with the ingredients list for each `Slice`. Thus, we change the type of the `Slice` constructor's argument to a tuple `(int * ingredients list)`, where `int` represents the calories and `ingredients list` remains the list of ingredients.

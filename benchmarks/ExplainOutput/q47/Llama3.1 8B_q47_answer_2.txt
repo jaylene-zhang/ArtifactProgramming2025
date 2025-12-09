@@ -1,0 +1,14 @@
+Solution:
+```ocaml
+let concat l =
+  let rec aux s = function
+    | [] -> s
+    | x::xs -> aux (s ^ " " ^ x) xs
+  in aux "" l
+```
+Explanation:
+
+- Option `a) is not correct because it incorrectly prepends each string with a space.
+- Option `b) is not correct because it incorrectly prepends each string with a space and appends an extra space after every string, besides the first one.
+- Option `c) is not correct because it requires an additional reverse operation, not tail recursion, and again it prepends and appends an extra space.
+- Option `d) is not tail recursive, as the recursive call to `concat xs` is not the last operation in the function.

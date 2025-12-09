@@ -1,0 +1,5 @@
+No, this would not work.
+
+The problem is that the inductive hypothesis would be for `rev_tl l []`, but to prove the inductive case, we'd need to know something about `rev_tl (x::xs) []`. This doesn't directly use the inductive hypothesis about `rev_tl xs []`, because the second argument is not empty in the recursive call of `rev_tl`.
+
+A better approach would be to prove a more general property: `length (rev_tl l acc) = length l + length acc` for any accumulator `acc`. Then the original statement would follow as a special case when `acc = []`.

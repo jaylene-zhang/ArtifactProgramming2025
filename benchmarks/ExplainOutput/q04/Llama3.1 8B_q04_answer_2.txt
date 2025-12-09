@@ -1,0 +1,31 @@
+Here are the solutions to the problem:
+
+1.
+let check_prime_factors x l = let p = prime_fact x in
+let rec test l = match l with
+| [] -> false
+| y::ys -> y = p || test ys
+in test l
+
+Explanation: The function first computes the prime factorization `p` of `x` using the `prime_fact` function. It then recursively checks each element in the list `l` to see if it matches `p`. If `p` is found, the function immediately returns `true`. 
+
+However, if this approach is followed for all special integers numbers then the nlogn list operation effectively becomes n^(logn),  for a number with (logn) number of bits.
+
+2.
+let check_prime_factors x l = match l with
+| [] -> false
+| y::ys -> y = prime_fact x || check_prime_factors x ys
+
+Explanation: This is incorrect, because the check_prime_factors function calls itself for every element in the list, so it doesn't compute the prime_fact function only once.
+
+3.
+let check_prime_factors x l =
+List.exists (fun e -> e = prime_fact x) l
+
+Explanation: This is incorrect because the prime_fact function is called for every element in the list so that the time complexity nlogn list operation becomes n^(logn), for a number with logn number of bits.
+
+4.
+let check_prime_factors x =
+let p = prime_fact x in List.exists (fun e -> e = p) l
+
+Explanation: This option (left out) includes `l` that isn't defined but otherwise gets the job done by only computing the prime factorization of `x` once.

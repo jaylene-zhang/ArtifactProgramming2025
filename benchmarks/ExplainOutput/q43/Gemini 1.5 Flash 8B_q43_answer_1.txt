@@ -1,0 +1,5 @@
+No.
+
+**Explanation:**
+
+The equation `length (rev_tl l []) = length l` is incorrect for a reverse function.  `rev_tl` typically takes a list `l` and an accumulator (often the empty list).  The attempt uses the empty list as the accumulator, which misrepresents the typical recursive structure of the reverse function.  A correct proof would involve induction on the *length* of the input list `l`, not on `rev_tl`'s result.

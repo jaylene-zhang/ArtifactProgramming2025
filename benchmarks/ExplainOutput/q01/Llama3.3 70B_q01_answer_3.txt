@@ -1,0 +1,18 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a -> 'b -> 'c) (sc: 'c list -> 'd): 
+    'd = match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair x y)::r))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation: 
+The types for `xs` and `ys` are `'a list` and `'b list`, where `'a` and `'b` are type variables representing the types of elements in `xs` and `ys`, respectively. The `pair` function takes an `'a` and a `'b` and returns a value of type `'c`. The `sc` function takes a list of type `'c list` and returns a value of type `'d`. 
+
+This code is well-typed, assuming that the types of `x` and `y` support addition in the `zip_plus` function. If `x` and `y` are not numbers, this will result in a type error. If the program was ill-typed, it would be due to a type mismatch between `x` and `y` in the `zip_plus` function.

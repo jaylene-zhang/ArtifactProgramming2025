@@ -1,0 +1,43 @@
+**Solution:** The correct and tail-recursive implementation among the options is **(c)**.
+
+---
+
+### Explanation:
+To determine which implementation correctly mimics the behavior of `fold_right`, we need to analyze the roles of each part:
+- `fold_right f [x1; x2; ...; xn] b` computes `f x1 (f x2 (... (f xn b)))`.
+- In a tail-recursive implementation with continuations, the key is preserving the order of function applications where the `f` function is applied correctly with the same semantics.
+
+#### Analyzing the implementations:
+1. **Option (a)**:
+   ```ocaml
+   aux_folder f xs b (fun r -> cont (f x r))
+   ```
+   Correctly passes the continuation to preserve the computation and correctly applies `f x r`. **This is tail-recursive and correct**.
+
+2. **Option (b)**:
+   ```ocaml
+   aux_folder f xs b (fun r -> f (cont r) x)
+   ```
+   Incorrect. This reverses the order of function application for `x` and `cont r`, which doesn't match the semantics of `fold_right`. 
+
+3. **Option (c)**:
+   ```ocaml
+   aux_folder f xs b (fun r -> f x (cont r))
+   ```
+   Correctly passes the continuation and retains the correct order of arguments. **This is tail-recursive and correct.**
+
+4. **Option (d)**:
+   ```ocaml
+   aux_folder f xs b (fun r -> cont (f r x))
+   ```
+   Incorrect. The order of arguments to `f` is reversed compared to `fold_right` semantics.
+
+5. **Option (e)**:
+   ```ocaml
+   aux_folder xs f b (fun r -> f (cont r) x)
+   ```
+   Incorrect. The order of arguments to `f` is reversed, and the `xs` argument and `f` arguments are swapped.
+
+---
+
+Thus, only **(a)** and **(c)** are correct, but **(c)** correctly implements `fold_right` maintaining the tail-recursive behavior.

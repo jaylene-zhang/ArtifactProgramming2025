@@ -1,0 +1,3 @@
+**('a -> 'a) -> 'a**
+
+Explanation: The function `repeat` takes a function `f` of type `'a -> 'a` and applies it to the result of calling itself with `f`. This creates an infinite recursion. The return type of `repeat` is the same as the return type of `f`, which is `'a`.

@@ -1,0 +1,23 @@
+In Figure Skating, the athletes receive points for their artistry and also for their jumps.
+In official competitions, the allowed jumps are: Axel, Lutz, Flip, Loop, Salchow.
+Each jump has a number of revolutions associated with it.
+For example, a Triple Loop is a Loop jump where the athlete performs three revolutions in the air.
+By performing more rotations, it is possible to obtain better scores: a triple jump is worth more than a double; but today's athletes can go over 3 rotations.
+Without considering further technical details of the sport, we want to create a data type that represents the main jumps in figure skating.
+
+Select the implementation that captures the previous description:
+
+a) type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+
+b) type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type revolutions = Double | Triple
+type jump = jump_typ * revolutions
+
+c) type jump =
+| Axel of jump * int
+| Loop of jump * int
+| Lutz of jump * int
+| Flip of jump * int
+| Salchow of jump * int

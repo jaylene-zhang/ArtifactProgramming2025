@@ -1,0 +1,19 @@
+**Solution: No, the provided program does not compute the antiderivative of `f`.**
+
+**Explanation:**
+
+The provided program:
+
+```ocaml
+let anti_d f = (curry integral) f 0
+```
+
+is incorrect because `(curry integral) f 0` fixes the second argument of the integral function (`a` in the pair `(a, b)`) to 0, but it does not properly compute the integral from `0` to `x` for arbitrary `x`. The result of this expression is essentially fixing `a` to `0` but doesn't handle varying the upper limit of integration as a function of `x`.
+
+To compute the actual antiderivative `F` using `integral`, the correct implementation should involve defining a function of `x` that calculates the integral of `f` from `0` to `x`. For example:
+
+```ocaml
+let anti_d f x = integral f (0, x) dx
+```
+
+This properly uses the provided `integral` function to compute the definite integral from `0` to `x`, which corresponds to the antiderivative of `f`. Without this adjustment, the original program does not achieve the desired result.

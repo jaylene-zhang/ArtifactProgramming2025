@@ -1,0 +1,1 @@
+When proving a statement inductively about lists, what do we need to prove in the step case?

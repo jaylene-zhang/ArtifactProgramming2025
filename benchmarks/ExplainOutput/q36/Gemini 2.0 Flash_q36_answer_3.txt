@@ -1,0 +1,15 @@
+**Solution:**
+
+The function `f` reverses the input list.
+
+**Explanation:**
+
+The function `f` is equivalent to the standard `List.rev` function when the list has at least five elements. Let's trace the key steps:
+
+1.  **Base Case:** If the list is empty, it returns an empty list.
+
+2.  **Recursive Step:**
+    *   It takes the head `h` and tail `t` of the list `l`.
+    *   It calls `rotate` on the list `t @ [h]`.  `t @ [h]` is the same as rotating the list once. It essentially rotates the original list again by calling `rotate`.
+
+Each recursive call effectively "moves" an element from the head to the end while building up the reversed list on each call. The repetition effectively reverses the list.

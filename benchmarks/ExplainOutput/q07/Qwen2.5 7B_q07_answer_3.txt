@@ -1,0 +1,28 @@
+### Proof of Theorem 1
+
+**Base Case:**
+- If \( w = \text{Const} \, x \):
+  - \( \text{count} \, w \, x + \text{acc} = 1 + \text{acc} \)
+  - \( \text{count'} \, w \, x \, \text{acc} = 1 + \text{acc} \)
+  - Therefore, \( \text{count} \, w \, x + \text{acc} = \text{count'} \, w \, x \, \text{acc} \)
+
+**Step Case:**
+- If \( w = \text{Op} \, (w_1, w_2) \):
+  - Induction Hypothesis: Assume for words \( w_1 \) and \( w_2 \) and any accumulator \( \text{acc} \), we have \( \text{count} \, w_1 \, x + \text{acc} = \text{count'} \, w_1 \, x \, \text{acc} \) and \( \text{count} \, w_2 \, x + \text{acc} = \text{count'} \, w_2 \, x \, \text{acc} \).
+
+  - Proof:
+    - \( \text{count} \, w \, x + \text{acc} = \text{count} \, (w_1) \, x + \text{count} \, (w_2) \, x + \text{acc} \)
+    - By Induction Hypothesis: \( \text{count} \, (w_1) \, x + \text{acc} = \text{count'} \, w_1 \, x \, \text{acc} \)
+    - And: \( \text{count} \, (w_2) \, x + \text{acc} = \text{count'} \, w_2 \, x \, \text{acc} \)
+    - Therefore: \( (\text{count'} \, w_1 \, x \, \text{acc}) + (\text{count'} \, w_2 \, x \, \text{acc}) = \text{count'} \, (w_1, w_2) \, x \, \text{acc} \)
+    - Hence: \( \text{count} \, w \, x + \text{acc} = \text{count'} \, w \, x \, \text{acc} \)
+
+### Proof of Theorem 2
+
+Proof:
+- Let \( \text{count} \, w \, x = \text{count'} \, w \, x \, 0 \)
+- By Theorem 1 with \( \text{acc} = 0 \):
+  - \( \text{count} \, w \, x + 0 = \text{count'} \, w \, x \, 0 \)
+  - Therefore, \( \text{count} \, w \, x = \text{count'} \, w \, x \, 0 \)
+
+This completes the proof.

@@ -1,0 +1,3 @@
+Solution: acc should be initialized to [].
+
+Explanation: Since acc is used as an accumulator for the reversed elements, starting with an empty list ensures the reverse is built correctly.

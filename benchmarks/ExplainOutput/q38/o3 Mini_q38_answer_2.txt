@@ -1,0 +1,15 @@
+Answer: (b) and (c).
+
+Explanation:
+The “composed” function must have the form either
+
+  fun f x -> h f (g f x)
+
+or
+
+  fun f x -> g f (h f x).
+
+When h = (fun f x -> f x) and g = (fun f x -> f (f x)), both give
+  f (f (f x)).
+
+Among the four candidates, only (b) and (c) can be regrouped (by currying) into these correct forms; (a) and (d) either have the wrong grouping or are type‐incorrect.

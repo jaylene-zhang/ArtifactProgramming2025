@@ -1,0 +1,14 @@
+**Solution:**
+
+*   `'t = 's`
+*   `'u = 'u` (i.e., no further constraint on 'u)
+
+**Explanation:**
+
+1.  **Inner `f` calls:** `f (a, b)` has type `'u`, and `f (b, a)` also has type `'u`.
+
+2.  **Outer `f` call:**  The outer `f` call takes `(f (a, b), f (b, a))` as input.  Since both `f(a, b)` and `f(b, a)` have type `'u`, the input to the outer `f` is of type `'u * 'u`.  For `f` to accept this, we must unify the argument type of `f` (which is `'t * 's`) with `'u * 'u`. This implies `'t = 'u` and `'s = 'u`.
+
+3. Input into inner f: We had `(a: 't, b: 's)` so now we have `(a: 'u, b: 'u)`. The input to the inner function calls must then satsify this so  the types of a and b must be the same, i.e. `'t = 's`.
+
+4.  **Simplification:** Because `'t = 'u` and `'s = 'u` and because `'t = 's` we can simply state that `'t = 's`. There is no further constraint on `'u` as it can instantiate to any type.

@@ -1,0 +1,7 @@
+1.1 Previously, we have defined the data type cake as follows:
+
+type cake = Slice of ingredients list | Cake of cake * cake
+
+Based on this, revise the data type for cake such that it also stores calories for each slice together with the ingredients list.
+
+type cake = Slice of (** to be filled **) | Cake of cake * cake

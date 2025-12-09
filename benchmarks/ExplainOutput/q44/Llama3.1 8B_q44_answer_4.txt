@@ -1,0 +1,16 @@
+## Step 1: Understand the concept of induction
+To prove a statement inductively about lists, we need to use mathematical induction. This means we need to prove a base case and an inductive step.
+
+## Step 2: Identify the base case
+The base case is typically the smallest possible list, which is the empty list [].
+
+## Step 3: Identify the inductive step
+For the inductive step, we assume that the statement holds for a list of a certain length, say k. Then, we need to show that it also holds for a list of length k + 1.
+
+## Step 4: Determine what needs to be proved for the inductive step
+In the inductive step, we need to prove that the statement holds for a non-empty list of length k + 1, which can be thought of as [hd :: tl] where hd is the head and tl is the tail of the list.
+
+## Step 5: Consider what needs to be proved
+For the non-empty list [hd :: tl] of length k + 1, we need to prove that the statement is true for tl (which has length k) and then add hd at the beginning of the result.
+
+The final answer is: The inductive step is to prove the statement holds for tl and then insert `hd` at the beginning.

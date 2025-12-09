@@ -1,0 +1,124 @@
+(* Q1 *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | h :: t ->
+    match f h with
+    | None -> None
+    | Some x -> (
+      match traverse f t with
+      | None -> None
+      | Some tl -> Some (x :: tl)
+      )
+
+(* Q2.1 *)
+let ap (mx : 'b Maybe.t) (fm : 'a -> 'b Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match mx with
+  | Nothing -> Nothing
+  | Just x ->
+    match fm x with
+    | Nothing -> Nothing
+    | Just f -> Just (f x)
+
+(* Q2.2 *)
+let seq2 (m1 : 'a Maybe.t) (m2 : 'b Maybe.t) : ('a * 'b) Maybe.t =
+  let open Maybe in
+  match m1 with
+  | Nothing -> Nothing
+  | Just x -> (
+    match m2 with
+    | Nothing -> Nothing
+    | Just y -> Just (x, y)
+  )
+
+(* Q2.3 *)
+let seq_predicate2
+    (p1 : 'a1 -> 'a2 Maybe.t)
+    (p2 : 'b1 -> 'b2 Maybe.t)
+    (x : ('a1 * 'b1)) : ('a2 * 'b2) Maybe.t =
+  let open Maybe in
+  match p1 (fst x) with
+  | Nothing -> Nothing
+  | Just y ->
+    match p2 (snd x) with
+    | Nothing -> Nothing
+    | Just z -> Just (y, z)
+
+(* Q2.4 *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  match a with
+  | Nothing -> Nothing
+  | Just x -> Just (f x)
+
+(* Q2.5 *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  match l with
+  | [] -> Just []
+  | h :: t ->
+    match f h with
+    | Nothing -> Nothing
+    | Just x ->
+      match traverse' f t with
+      | Nothing -> Nothing
+      | Just tl -> Just (x :: tl)
+
+(* Q3.1a *)
+let church_to_nat (c : 'a church) : nat =
+  let rec gnf = function
+    | Z -> c
+    | S n -> fun g f -> g (n g f)
+  in
+  gnf id (fun n -> S n) Z
+
+(* Q3.1b *)
+let rec nat_to_church (n : nat) : 'a church =
+  let rec f = function
+    | Z -> (fun x -> x)
+    | S m -> (fun f -> fun g -> f (m f g))
+  in
+  f
+
+(* Q3.2a *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  fun x _ -> copt x (fun () -> None)
+
+(* Q3.2b *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  match m with
+  | Some x ->
+    fun fv fv' -> fv x fv'
+  | None -> fun _ _ -> _
+
+(* Q3.3a *)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  let rec gClosure = function
+    | (fun v -> (fun e -> e) :: l) -> (gClosure (subst_elist v 0 (gClosure e))) :: l
+    | _ -> []
+  and
+    subst_elist n v = function
+    | [] -> []
+    | h :: t -> let f = (function
+                      | Some a -> a
+                      | None -> v
+                    ) in (f h) :: (subst_elist n v t)
+  in
+  gClosure (fun x -> x)
+
+(* Q3.3b *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  match l with
+  | [] -> CList (fun fv fv' -> fv' ())
+  | h :: t -> CList (fun v l -> (CList l) fv fv' -> (CList l) (v fv fv') (fv (Some h)) (fun () -> (CList l) fv fv'))
+
+(* Q4 *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  let rec gfvfv fun fv fv' = fun bfv fv ftv -> gfvfv fun fv (bfv fv ftv)
+  and gclosure = function
+    | CList clist -> CList (gclist clist)
+    and gclist = function
+      | (fun v clist -> bfv fv fv' clist) -> gfvfv fun fv (f ^ " ^ ") clist
+      | _ -> fun fv fv' -> fv fv'
+  in
+  gclosure clist

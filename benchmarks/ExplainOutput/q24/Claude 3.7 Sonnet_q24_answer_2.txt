@@ -1,0 +1,10 @@
+The expression has type 't.
+
+Explanation:
+Let's analyze the type step by step:
+- f has type ('t * 't -> 't)
+- a and b both have type 't
+- f(a, b) has type 't (applying f to a pair of 't values)
+- f(b, a) has type 't (same reason)
+- This means f(f(a, b), f(b, a)) is applying f to two arguments of type 't
+- Therefore the final result has type 't

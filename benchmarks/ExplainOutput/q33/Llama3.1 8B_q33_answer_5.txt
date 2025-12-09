@@ -1,0 +1,13 @@
+The correct solution is:
+
+c) type jump =
+| Axel of int
+| Loop of int
+| Lutz of int
+| Flip of int
+| Salchow of int
+
+Explanation:
+In this implementation, the type `jump` is a sum type that represents both the type of jump (Axel, Loop, etc.) and the number of revolutions. Since the type of jump (Axel, Loop, etc.) is already distinct, there is no need to repeat it as a separate field. The number of revolutions is captured by the `revolutions` argument of each variant.
+
+Type (a) separates the type of jump and number of revolutions into separate fields, but this is redundant since the different types already represent distinct values. Type (b) separates the type of jump and number of revolutions into two sum types, but this creates a lot of redundancy and is harder to maintain.

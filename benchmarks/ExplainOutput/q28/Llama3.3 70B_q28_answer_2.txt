@@ -1,0 +1,9 @@
+**No**
+
+The provided code does not correctly compute the antiderivative of `f`. The antiderivative should be a function that takes an argument `x` and returns the integral of `f` from some constant (in this case, 0) to `x`.
+
+A correct implementation would be:
+```ocaml
+let anti_d f = fun x -> integral f (0.0, x) 0.0
+```
+Explanation: The `curry` function would be used to split the arguments of the `integral` function, but it's not needed in this case because `integral` already takes its arguments in a curried form. The main issue is that the provided code does not take into account the `x` argument, which is necessary to compute the antiderivative. The corrected implementation takes `x` as an argument and uses it to compute the integral from 0 to `x`.

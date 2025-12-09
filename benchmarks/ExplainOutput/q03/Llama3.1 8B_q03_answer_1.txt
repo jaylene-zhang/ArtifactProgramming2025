@@ -1,0 +1,30 @@
+**Final result:**
+The final result is: 
+(2, 3, [4;5;6], [1;2;3])
+
+**Binding stack diagram:**
+
+Let's break down the execution step by step:
+
+1. `let c = ref 0 in` : c = 0
+2. `let l = List.rev [1;2;3] in` : l = [3;2;1]
+3. `let observe () =!c in` : observe = fun () -> c
+4. `let x = 1 in` : x = 1
+5. `let inc x = c:=!c+1 ; x+1 in` : inc = fun x -> c :=!c+1 ; x+1
+6. `let ml = List.map inc l in` :
+	* inc 3 = c := 0+1 ; 3+1 = c := 1 ; 4
+	* inc 2 = c := 1+1 ; 2+1 = c := 2 ; 3
+	* inc 1 = c := 2+1 ; 1+1 = c := 3 ; 2
+	ml = [4;3;2]
+7. `let inc’ = (let c = ref 0 in...)` : Creates a new scope for c, but doesn't affect the outer c
+8. `let x = x + 1 in` : x = 2
+9. `let inc’ = (let c = ref 0 in...)` : Creates a new scope for c, but doesn't affect the outer c
+10. `fun y -> c :=!c+1 ;!c+y+x` : This is a new function, let's call it f
+11. `let ml’ = List.map f l in` :
+	* f 3 = c := 0+1 ; 0+3+2 = c := 1 ; 1+3+2 = 6
+	* f 2 = c := 1+1 ; 1+2+2 = c := 2 ; 2+2+2 = 6
+	* f 1 = c := 2+1 ; 2+1+2 = c := 3 ; 3+1+2 = 6
+	ml' = [6;6;6]
+12. `(x, observe (), ml, ml')` : (2, 3, [4;5;6], [1;2;3])
+
+Note that the inner scope for c in the second `inc'` doesn't affect the outer c, so the final value of c is still 3.

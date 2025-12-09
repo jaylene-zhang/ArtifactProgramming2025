@@ -1,0 +1,21 @@
+**Function `f` Rotates the List Twice**
+
+```ocaml
+let rec f l =
+  match l with
+  | []   -> []
+  | h :: t   -> rotate (t @ [h])
+```
+
+**Step 1: `t @ [h]` creates a new list by appending `h` to the end of `t`.
+**Step 2: `rotate` is called with the new list from step 1, effectively rotating it.**
+**Step 3: Repeat step 1 and 2 for the rotated list, resulting in a new list with one element rotated further.**
+
+Example: `f [1, 2, 3, 4, 5]`:
+
+* First call: `[3, 4, 5] @ [1] = [3, 4, 5, 1]`, rotated to `[4, 5, 1, 3]`
+* Second call: `[5, 1, 3] @ [4] = [5, 1, 3, 4]`, rotated to `[1, 3, 4, 5]`
+
+As you can see, `f` technically "rotates" the list, but since it calls `rotate` twice, the final result is the original list rotated twice.
+
+**In summary, `f` rotates the list twice, effectively reversing the order of elements.**

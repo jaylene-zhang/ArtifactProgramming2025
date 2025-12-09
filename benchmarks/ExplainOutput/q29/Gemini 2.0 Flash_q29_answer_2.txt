@@ -1,0 +1,26 @@
+Here's an analysis of each implementation:
+
+**a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)**
+
+*   **Correct.**
+
+    *   `curry (sumSeries f)` transforms `sumSeries f` (which takes `(int * int) * (int -> int)`) into a function taking an `int` then an `int * int -> int`.
+    *   `curry (sumSeries f) 0` partially applies the lower bound `0`, resulting in a function `int -> (int -> int) -> int` effectively taking `upper_bound` and `incrementer`.
+    *  `swap` swaps the last two arguments so we now have `(int -> int) -> int -> int`. Now it is expecting an incrementer and an upper bound.
+    *`swap (curry (sumSeries f) 0) (fun x -> x + 1)` correctly waits for upper bound.
+
+**b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)**
+
+*   **Incorrect.**
+
+    *   `sumSeries f 0` is type error because sumSeries f needs to have two arguments of type `int * int` and `int -> int`.
+
+**c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0**
+
+*   **Correct.**
+
+    *   `sumSeries f` takes `(int * int) * (int -> int)`.
+    *   `swap` swaps the last two arguments of `sumSeries f` so `swap (sumSeries f)` now takes type `(int -> int) * (int * int)`.
+    *   `swap (sumSeries f) (fun x -> x + 1)` partially applies `inc` and has type `(int * int) -> int`.   Now, it expects `(lower_bound, upper_bound)`.
+    *   `curry (swap (sumSeries f) (fun x -> x + 1))` transforms the function to take `int -> int -> int`. Now it takes `lower_bound` and `upper_bound` separately as input.
+    *   `curry (swap (sumSeries f) (fun x -> x + 1)) 0` fixes the lower bound as zero and takes the upper bound as input.

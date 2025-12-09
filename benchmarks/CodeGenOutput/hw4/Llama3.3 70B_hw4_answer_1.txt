@@ -1,0 +1,58 @@
+```ocaml
+(* Given: *)
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make (String)
+
+type formula =
+  | Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+
+type truth_assignment = bool Variable_map.t
+
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+
+(* 1. Implement the function collect_variables *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable var -> Variable_set.singleton var
+  | Conjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) ->
+      Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* 2. Implement the function eval *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  try
+    match formula with
+    | Variable var ->
+        Variable_map.find var state
+    | Conjunction (f1, f2) -> eval state f1 && eval state f2
+    | Disjunction (f1, f2) -> eval state f1 || eval state f2
+    | Negation f -> not (eval state f)
+  with
+  | Not_found -> raise (Unassigned_variable (Variable_map.keys (Variable_map.empty)))
+
+(* 3. Implement the function find_satisfying_assignment *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = collect_variables formula in
+  let rec search (assignment : truth_assignment) (remaining : Variable_set.t) =
+    if Variable_set.is_empty remaining then
+      if eval assignment formula then assignment
+      else raise Unsatisfiable_formula
+    else
+      let var = Variable_set.min_elt remaining in
+      let new_remaining = Variable_set.remove var remaining in
+      try
+        let assignment_with_var_true = Variable_map.add var true assignment in
+        search assignment_with_var_true new_remaining
+      with
+      | Unsatisfiable_formula ->
+          let assignment_with_var_false = Variable_map.add var false assignment in
+          search assignment_with_var_false new_remaining
+  in
+  search Variable_map.empty variables
+```

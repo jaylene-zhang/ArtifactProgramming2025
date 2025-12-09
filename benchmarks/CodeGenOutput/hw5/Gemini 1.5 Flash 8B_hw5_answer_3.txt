@@ -1,0 +1,99 @@
+```OCaml
+(* Question 1: Tree Depth *)
+
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+let rec tree_depth_cps t k =
+  match t with
+  | Empty -> k 0
+  | Tree (l, _, r) ->
+    tree_depth_cps l (fun d1 ->
+        tree_depth_cps r (fun d2 ->
+            k (1 + max d1 d2)))
+
+
+(* Question 2 : Finding Subtrees *)
+
+
+type 'a option = None | Some of 'a
+
+let rec find_subtree_cps ls tree sc fc =
+  match ls, tree with
+  | [], _ -> sc (Some tree)
+  | _, Empty -> fc ()
+  | p :: rest, Tree (l, v, r) ->
+    if p = v then
+      find_subtree_cps rest tree
+        (fun t -> sc (Some t))
+        fc
+    else
+      find_subtree_cps ls l sc (fun () -> find_subtree_cps ls r sc fc)
+  | _ -> fc ()
+
+
+
+(* Question 3 : Parser *)
+
+(* You'll need the actual types ('token' type, expression type) and grammar definitions
+   to implement the parser, but due to their complexity, here are the placeholders and guidance.  *)
+
+type token =
+| Int of int
+| Plus | Mult | Lparen | Rparen
+
+
+type expr =
+| Const of int
+| Plus of expr * expr
+| Mult of expr * expr
+
+
+let rec parser_cps tokens success failure =
+  (* ... Replace this placeholder with your CPS parser implementation. ... *)
+
+  match tokens with
+	 [] -> failure ()
+	| h :: t ->
+            (match h with
+			Int(n) -> success (Const n)
+            | _ -> failure ())
+
+(* Example (incomplete) rule implementation (for Plus) : Replace with your CPS version*)
+let rec parse_plus tokens success failure =
+  match tokens with
+  | [] -> failure()
+  | _::_ -> failure() (*Placeholder, implement the parsing logic**)
+
+
+(* You'll need other functions parse_mult etc and a main function or helper for the parsing.  *)
+
+
+(*Example showing how to use the parser)*)
+let rec eval exp values =
+   match exp with
+   | Const(n) -> n
+   | Plus(e1,e2) -> eval e1 values + eval e2 values
+   | Mult(e1,e2) -> eval e1 values * eval e2 values
+
+(*Example Usage *)
+(*
+let tokens = [Int 2; Plus; Int 3]
+let result = parser_cps tokens (fun e -> Some e) (fun () -> None)
+let result_value = match result with
+    | None -> None
+    | Some(e) -> Some(eval e [])
+let () = match result_value with
+  | Some(v) -> print_int v
+  | None -> print_string "Parse failure"
+
+
+*)
+
+
+
+
+
+```

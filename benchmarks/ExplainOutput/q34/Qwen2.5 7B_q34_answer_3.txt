@@ -1,0 +1,9 @@
+a) False. The length of the code does not determine the runtime efficiency. Rev1 and rev2 both have the same time complexity.
+
+b) False. The operator (@) (list concatenation) has a time complexity of O(n) where n is the length of the second list. In `rev1`, each recursive call appends to the end, leading to an overall O(n^2) complexity.
+
+c) True. Rev2 uses a reverse accumulation strategy with `::` which builds the reversed list from the end to the start in a single pass (O(n)), making it more efficient than `rev1`.
+
+Explanation:
+- Rev1 uses an append operation in each recursive step, leading to quadratic time complexity.
+- Rev2 builds the reversed list by prepending in each step, which is linear in time complexity.

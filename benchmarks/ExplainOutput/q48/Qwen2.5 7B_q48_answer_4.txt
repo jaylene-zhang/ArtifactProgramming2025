@@ -1,0 +1,11 @@
+Solution:
+Not all functions in the standard List library are tail-recursive.
+
+Explanation:
+While adding tail-recursiveness (using continuations or other techniques) is possible, it's not always done in the standard List library for several reasons:
+1. **Simplicity and Readability**: Tail-recursive versions can be more complex, which might reduce readability without significant performance gains.
+2. **Lazy Evaluation**: Sometimes, non-tail-recursive functions are more efficient with lazy evaluation and operations involving infinite structures.
+3. **Historical Decisions**: OCaml's development history influenced initial choices, and these decisions were maintained for consistency.
+4. **Optimization by the Compiler**: Modern OCaml compilers can optimize some recursive functions to be tail-recursive automatically, making manual optimizations less necessary.
+
+These factors contribute to the choice of non-tail-recursive implementations in the List library.

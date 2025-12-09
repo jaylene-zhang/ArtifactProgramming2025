@@ -1,0 +1,15 @@
+**Solution:**  
+The correct options are:  
+**a)** type url = string  
+   type bookmarks = Location of url * bookmarks | Empty  
+
+**b)** type url = string  
+   type bookmarks = Empty | Location of string * bookmarks  
+
+---
+
+**Explanation:**  
+- **a)** is valid because it defines a recursive data type `bookmarks` where each element can either be `Empty` (representing no more bookmarks) or a `Location` containing a `url` and the rest of the `bookmarks` list recursively.
+- **b)** is valid as it follows a similar logic, where `Empty` represents no more bookmarks, and `Location` associates a `string` (representing the URL) with the rest of the list recursively.
+- **c)** is **invalid** because `Location` is defined without any parameters, and it doesn't allow storing URLs or continuation of the list.
+- **d)** is **invalid** because the recursive structure doesn't make sense here; it incorrectly associates the recursive part `bookmarks` with a `url` in the wrong order.

@@ -1,0 +1,3 @@
+Solution: Yes—it defines anti_d f so that anti_d f x dx = integral f (0, x) dx.
+
+Explanation: Curry transforms integral (after fixing f) into a function that takes 0 as the lower bound and x as the upper limit. Thus, (curry integral) f 0 x equals integral f (0, x), which is exactly the antiderivative of f (with dx supplied later).

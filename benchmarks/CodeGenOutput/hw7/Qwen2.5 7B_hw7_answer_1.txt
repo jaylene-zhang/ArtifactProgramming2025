@@ -1,0 +1,33 @@
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  String.to_list s
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  List.to_string l
+
+(* ------------------------------------------------------------------------*)
+(* Q2 : Bank Account *)
+(* ------------------------------------------------------------------------*)
+
+let open_account (pass: password) : bank_account =
+  let balance = ref 0 in
+  let update_pass old new_pass =
+    if old = pass then
+      pass <- new_pass
+  in
+  let retrieve _pass amount =
+    if amount < 0 then raise negative_amount;
+    if _pass = pass then
+      if !balance < amount then raise not_enough_balance;
+      balance := !balance - amount
+  in
+  let deposit _pass amount =
+    if amount < 0 then raise negative_amount;
+    if _pass = pass then
+      balance := !balance + amount
+  in
+  let show_balance _pass =
+    if _pass = pass then !balance
+  in
+  { update_pass; retrieve; deposit; show_balance }

@@ -1,0 +1,15 @@
+Solution:
+A function is tail-recursive if its recursive call is the last operation in the function, so the result of the recursive call is immediately returned without any further computation. For example:
+
+• Tail-recursive:
+  let rec sum_tail n acc =
+    if n = 0 then acc
+    else sum_tail (n - 1) (acc + n)
+
+• Not tail-recursive:
+  let rec sum n =
+    if n = 0 then 0
+    else n + sum (n - 1)
+
+Explanation:
+In the tail-recursive sum_tail, the function’s final step is making the recursive call, so it doesn’t keep extra frames on the call stack. In contrast, sum adds n after returning from sum (n - 1), so it does more work after the recursive call and is not tail-recursive.

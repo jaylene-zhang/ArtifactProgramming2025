@@ -1,0 +1,3 @@
+rev_tl l [] is the correct initialization.
+
+The accumulator (acc) should start as an empty list because we're building up the reversed list from scratch. As rev_tl processes each element, it adds it to the front of the accumulator, effectively reversing the original list's order. Starting with an empty list ensures we don't include any unwanted elements in the final result.

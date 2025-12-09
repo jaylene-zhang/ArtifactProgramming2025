@@ -1,0 +1,14 @@
+**Example Program:**
+
+```ocaml
+let x = 5 in            (* Global x *)
+let f y = 
+  let x = 10 in       (* Local x, overshadows global x *)
+  x + y               (* This refers to the local x *)
+in
+f 3                   (* Calls f with y = 3 *)
+```
+
+**Explanation:**
+
+In the program, overshadowing occurs when the local variable `x` within the function `f` takes precedence over the global variable `x`. Inside the function, `let x = 10` creates a new binding for `x` that overshadows (or hides) the outer `x`, which is equal to 5. Therefore, within the body of `f`, `x` refers to 10, not the global 5. When `f 3` is called, it computes `10 + 3`, resulting in `13`.

@@ -1,0 +1,8 @@
+In functional languages, state variables are avoided because:
+
+1. Immutable data makes reasoning about code easier - functions with the same inputs always produce the same outputs without side effects.
+2. Referential transparency is preserved - expressions can be replaced with their values without changing program behavior.
+3. Parallel execution becomes safer - without mutable state, concurrent operations don't lead to race conditions.
+4. Function composition is simpler - pure functions compose predictably without hidden interactions through shared state.
+
+State variables introduce side effects that make programs harder to understand, test, and maintain compared to pure functional approaches.

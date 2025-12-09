@@ -1,0 +1,22 @@
+**Theorem 1. For any word w, constant x, and accumulator acc,
+count w x+acc=count’ w x acc.**
+
+**Proof. By structural induction on w.**
+
+- **BaseCase:** w = Const y
+  - `count w x + acc = (if x = y then 1 else 0) + acc`
+  - `count’ w x acc = if x = y then 1 + acc else acc`
+  - If `x = y`, both sides equal `1 + acc`; if `x ≠ y`, both sides equal `acc`.
+
+- **Step Case:** w = Op (w1, w2)
+  - Induction Hypothesis: Assume `count w1 x + a1 = count’ w1 x a1` and `count w2 x + a2 = count’ w2 x a2` for some accumulators `a1` and `a2`.
+  - We need to show: `count (Op (w1, w2)) x + (a1 + a2) = count’ (Op (w1, w2)) x (a1 + a2)`
+  - `count (Op (w1, w2)) x + (a1 + a2) = (count w1 x + a1) + (count w2 x + a2)`
+    - By Ind. Hyp., `= (count’ w1 x a1) + (count’ w2 x a2)`
+    - By definition of `count’`, `= count’ (Op (w1, w2)) x (a1 + a2)`
+
+**Theorem 2 (Main Result). For any word w and constant x, we have
+count w x = count’ w x 0.**
+
+**Proof:**
+By Theorem 1, we know that for any word `w`, constant `x`, and accumulator `acc`, `count w x + acc = count’ w x acc`. Setting `acc` to `0`, we get `count w x + 0 = count’ w x 0`, which simplifies to `count w x = count’ w x 0`.

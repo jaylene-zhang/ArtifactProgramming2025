@@ -1,0 +1,5 @@
+No, this would not work.
+
+The issue is that the induction hypothesis would be on `length (rev_tl l' []) = length l'` for some smaller list l', but when we step through the recursion on `rev_tl (h::t) acc`, we get `rev_tl t (h::acc)`. Notice that the accumulator changes from `[]` to `(h::acc)`, so we can't directly apply the induction hypothesis which specifically assumes an empty accumulator.
+
+A better approach would be to prove a more general property: `length (rev_tl l acc) = length l + length acc` for any accumulator acc. Then, the original claim follows as a special case when acc = [].

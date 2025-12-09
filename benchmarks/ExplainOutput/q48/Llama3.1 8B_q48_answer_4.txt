@@ -1,0 +1,20 @@
+1. The reasoning is not simply a matter of "we can use continuations to achieve tail-recursiveness". While continuations can make a function tail-recursive, they also introduce significant overhead due to the need to create and manage a closure, leading to performance penalties and memory usage.
+
+2. OCaml's designers made a deliberate choice to prioritize ease of use and simplicity over adapting to any advanced techniques. Functions in the standard List library are designed to be clear, efficient, and easy to understand.
+
+3. Persuading non-tail recursion helps compiler writers optimize recursive functions for tail calls, essentially allowing the compiler to reuse the current stack frame, leading to significant performance improvements.
+
+4. OCaml is one of the few languages that supports tail-call optimization on arbitrary functions, which allows the compiler to convert most non-tail recursive functions into tail calls. This has made tail recursion a more viable choice for many use cases in OCaml.
+
+**Example:**
+```ocaml
+(* Tail recursion for a simple recursive function *)
+let rec factorial n =
+  if n = 0 then 1
+  else n * factorial (n - 1)
+
+(* non tail recursion converted to tail call *)
+let rec choosearker_factorial n acc =
+  if n = 0 then acc
+  else choosearker_factorial (n - 1) (n * acc)
+```

@@ -1,0 +1,6 @@
+```
+let toInt f = let rec loop x n = if f x = x then n else loop (f x) (n + 1) in loop (f ()) 0
+```
+
+Explanation:
+The function `toInt` needs to count how many times it can apply the function `f` before it no longer changes the argument. We use a recursive helper function `loop` that applies `f` to its argument `x` and increments the counter `n` until `f x` equals `x`. The initial call uses `f ()` to get the initial value to start the counting from `0`.

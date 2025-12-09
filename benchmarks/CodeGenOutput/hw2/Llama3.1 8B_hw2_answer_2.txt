@@ -1,0 +1,74 @@
+```OCaml
+let rec q1a_nat_of_int (n : int) : nat =
+  let rec q1a_nat_of_int_helper (n : int) (acc : nat) : nat =
+    if n < 0 then Z
+    else
+      let new_acc = S acc in
+      q1a_nat_of_int_helper (n - 1) new_acc in
+  q1a_nat_of_int_helper n Z
+
+let q1b_int_of_nat (n : nat) =
+  let rec q1b_int_of_nat_helper (n : nat) (acc : int) : int =
+    match n with
+    | Z -> acc
+    | _ -> q1b_int_of_nat_helper (S n) (acc + 1) in
+  q1b_int_of_nat_helper n 0
+
+let rec q1c_add (n1 : nat) (n2 : nat) : nat =
+  let rec q1c_add_helper (n1 : nat) (n2 : nat) (acc : nat) : nat =
+    match n1 with
+    | Z -> n2
+    | S n1 -> q1c_add_helper n1 n2 (S acc) in
+  q1c_add_helper n1 n2 Z
+
+let q2a_neg (e : exp) : exp =
+  match e with
+  | Const c -> Const (-. c)
+  | Var -> Const (0.0)
+  | Plus (p1, p2) -> Plus (q2a_neg p1, q2a_neg p2)
+  | Times (p1, p2) -> Times (q2a_neg p1, p2)
+  | Pow (p, i) -> Pow (q2a_neg p, i)
+
+let rec q2b_minus (e1 : exp) (e2 : exp) : exp =
+  match e1 with
+  | Const c1 ->
+     match e2 with
+     | Const c2 -> Const (c1 -. c2)
+     | _ -> Plus (e1, q2a_neg e2)
+  | _ ->
+     match e2 with
+     | Const c2 -> q2a_neg (Plus (e1, Const c2))
+     | _ -> q2a_neg (Plus (e1, q2b_minus e1 e2))
+
+let pow e i =
+  let rec pow_helper (e : exp) (i : int) : exp =
+    match e with
+    | Var -> Var
+    | Const c -> Const (float_of_int (c ^."*" ^ string_of_int i))
+    | Plus (p1, p2) -> Plus (pow_helper p1 i, pow_helper p2 i)
+    | Times (p1, p2) -> Times (pow_helper p1 i, pow_helper p2 i)
+    | Pow (p, _ ) -> Pow (q1b_int_of_nat i, p) in
+  pow_helper e i
+
+let q2c_quot (e1 : exp ) (e2 : exp) : exp =Pow (e1, q2b_int_of_nat (q1b_int_of_nat e2))
+
+let rec eval (a : float) (e : exp) : float =
+  match e with
+  | Const c -> c
+  | Var -> a *. float_of_int 1
+  | Plus (p1, p2) ->
+     eval a p1 +. eval a p2
+  | Times (p1, p2) ->
+     eval a p1 *. eval a p2
+  | Pow (p, i) -> (eval a p) *. (float_of_int i)
+
+let rec diff (e : exp) : exp =
+  match e with
+  | Const c -> Const (0.)
+  | Var -> Const (1.)
+  | Plus (p1, p2) -> Plus (diff p1, diff p2)
+  | Times (p1, p2) -> Plus (Times (diff p1, p2),
+                                Times (p1, diff p2))
+  | Pow (p, i) -> Pow (p, i - 1) *
+                      if i = 1 then Const (1.) else p
+```

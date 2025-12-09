@@ -1,0 +1,29 @@
+Here's the solution with type annotations and explanations:
+
+**Solution:**
+
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd =
+  match xs , ys with
+  | [] , [] -> sc []
+  | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+  | _ , _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+1.  **`xs: 'a list`**, **`ys: 'b list`**:  We want `zippy` to work with lists of any element type. Therefore, we use polymorphic types `'a` and `'b` to represent the element types of `xs` and `ys` respectively.
+
+2.  **`pair: 'a * 'b -> 'c`**: The `pair` argument is a function that takes a pair, where the first element has the same type as elements in `xs` (`'a`) and the second element has the same type as elements in `ys` (`'b`). It then transforms this pair into a value of type `'c`.
+
+3.  **`sc: 'c list -> 'd`**: The `sc` (success continuation) argument is a function that takes a list of `'c` elements (the results of applying `pair` to the elements of `xs` and `ys`) and returns a value of type `'d`. This is the final result of `zippy`.
+
+4. **Return type of `zippy`: `'d`**: The type of final result is determined by `sc` which is of type `'c list -> 'd`.
+
+In summary, the key idea is to recognize the polymorphic nature of `zippy` and the types of its functional arguments in order to correctly annotate it. The `zip_plus` function constrains these types based on its specific usage of `zippy`.

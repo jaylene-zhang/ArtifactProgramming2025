@@ -1,0 +1,5 @@
+a) **False**.  Shorter code doesn't guarantee faster execution.  Time complexity is what matters.
+
+b) **False**.  `@` (append) in OCaml has O(n) time complexity where `n` is the length of the first argument.  The time needed for `@` in `rev1` depends on the *entire length* of the list being reversed, not just the last element.
+
+c) **True**.  `rev2`'s `go` function uses `::` (cons), which has constant time complexity.  Appending to the *front* of a list in `rev2` is therefore more efficient than appending to the *end* (using `@` in `rev1`).

@@ -1,0 +1,17 @@
+```ocaml
+let x = ref 5 in
+x := 10;
+!x  (* Result: 10 *)
+```
+
+Overwriting changes the value stored at a memory location through a reference. The original value (5) is replaced by a new value (10) in the same memory location.
+
+Overshadowing, on the other hand, creates a new binding with the same name in a nested scope:
+
+```ocaml
+let x = 5 in
+let x = 10 in  (* This creates a new binding that shadows the outer x *)
+x  (* Result: 10, but the outer x still exists and still equals 5 *)
+```
+
+In overshadowing, the original value continues to exist but is temporarily inaccessible, while overwriting permanently changes the value at a memory location.

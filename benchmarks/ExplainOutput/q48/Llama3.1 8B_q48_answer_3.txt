@@ -1,0 +1,31 @@
+**Explanation**: 
+
+Functions in the OCaml standard library are not guaranteed to be tail-recursive because the authors of the library did not opt to use continuations for recursion. Continuations are powerful but may lead to runtime overhead, memory management issues, and potential functional correctness pitfalls. Tail recursion only benefits when the compiler can optimize it, preserving the call stack. For general usage, the standard library prioritized more idiomatic, readable code, often sacrificing computational efficiency.
+
+```ocaml
+(* Typical example: fold function in List module *)
+let rec fold l f init =
+  match l with
+  | [] -> init
+  | x :: xs ->
+    (* non-tail recursive call *)
+    f init x (fold xs f init)
+
+(* with tail recursion using continuations *)
+let rec fold_tail l f init =
+  let rec loop acc req =
+    match l with
+    | [] -> req acc
+    | x :: xs -> loop (f acc x) (fun arg -> req arg xs)
+  in
+  loop init (fun acc _ -> acc)
+
+(* Usage example *)
+let sumOfList xs =
+  List.fold xs (fun acc x -> acc + x) 0
+
+let sumOfListTail xs =
+  let sum = List.fold_tail xs (fun acc x -> acc + x) 0 in
+  sum
+```
+In the above snippet, the traditional `fold` is not tail-recursive whereas `fold_tail` is, using continuations to manually propagate the req value to the next call.

@@ -1,0 +1,6 @@
+**Solution**
+```ocaml
+val shift : (int ref * int ref) -> unit
+```
+**Explanation**
+The `shift` function takes a tuple of two references to integers as input and returns no value (`unit`). This is because it modifies the referenced values in place.

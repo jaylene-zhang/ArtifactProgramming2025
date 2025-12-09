@@ -1,0 +1,49 @@
+```ocaml
+let c = ref 0 in
+let l = List.rev [1;2;3] in let observe () = !c in
+let x = 1 in
+let inc x = c:= !c+1 ; x+1 in let ml = List.map inc l in let inc’ = (let c = ref 0 in
+let x = x + 1 in fun y -> c := !c+1 ; !c+y+x) in let ml’ = List.map inc’ l in
+(x,observe () , ml, ml’)
+```
+
+**Solution:**
+
+`(1, 3, [4; 5; 6], [6; 8; 10])`
+
+
+**Explanation using Binding Stack Diagram:**
+
+1. **`let c = ref 0 in ...`**:  `c` is bound to a mutable reference initially holding 0.
+
+2. **`let l = List.rev [1;2;3] in ...`**: `l` is bound to the reversed list `[3; 2; 1]`.
+
+3. **`let observe () = !c in ...`**: `observe` is a function that returns the current value of `c`.
+
+4. **`let x = 1 in ...`**: `x` is bound to 1.
+
+5. **`let inc x = c:= !c+1 ; x+1 in ...`**: `inc` is a function that increments `c` and adds 1 to `x`. Crucial to understand that `c` is *global* and shared between `inc` and other functions unless shadowed by another `let c = ...` in which case it is local.
+
+6. **`let ml = List.map inc l in ...`**: `ml` maps the `inc` function over `l`. This is where the crucial point happens.
+   -First it will call `inc 3`.  `c` is incremented to 1.  `inc 3` returns `4`.
+   -Then it will call `inc 2`.  `c` is incremented to 2. `inc 2` returns `5`.
+  -Then it will call `inc 1`.  `c` is incremented to 3.  `inc 1` returns `6`. Resulting in `ml` = `[4; 5; 6]` .
+
+7. **`let inc’ = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)`:**  `inc’` is a function. NOTICE HERE that the `c = ref 0` creates a *local* `c` in the function `inc’`. This `c` will not alter the global `c`. The inner `c` and `x` are shadowed.
+8. **`let x = x + 1 in`**: The *inner* `x` within inc' gets set to `1 + 1 = 2`
+9. **`fun y -> c := !c+1 ; !c+y+x`**:  `inc' y` increments its local `c`, computes the result, and returns it.
+
+10. **`let ml’ = List.map inc’ l in ...`**: `ml’` maps `inc’` over `l`. Following the logic again:
+   - `inc’ 3`: `c` becomes 1. `1+3+2 = 6`.
+   - `inc’ 2`: `c` becomes 2. `2+2+2 = 6`
+   - `inc’ 1`: `c` becomes 3. `3+1+2 = 6 `
+
+
+11. **`(x,observe () , ml, ml’)`.**  The final values.
+	 - `x` is `1`.
+   - `observe ()` returns the value of the global `c`, which is 3.`
+   - `ml` is `[4; 5; 6]`.
+   - `ml’` is `[6; 8; 10]`
+
+
+Therefore, the final result is `(1, 3, [4; 5; 6], [6; 8; 10])`.

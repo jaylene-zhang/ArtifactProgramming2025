@@ -1,0 +1,9 @@
+Solution:
+A function is tail-recursive if its recursive call is the final action the function performs before returning its result. For example:
+
+let rec factorial_tr n acc =
+  if n <= 1 then acc
+  else factorial_tr (n - 1) (n * acc)
+
+Explanation:
+Because factorial_tr immediately returns the result of its recursive call without doing extra work afterward, OCaml can optimize away additional stack frames, making the recursion more memory efficient.

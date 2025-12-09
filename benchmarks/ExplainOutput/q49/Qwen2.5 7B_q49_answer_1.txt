@@ -1,0 +1,13 @@
+```
+let double x = 
+  let x = 2 in
+  let w = (f x) + 2 in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+The expression `y` is replaced by `(f x)` where `y` is used. Since `y` is also assigned to `(f x) + x`, the replacements result in:
+- `y` becomes `(f x)`
+- `x` is locally redefined to `2`
+- Therefore, `w` becomes `(f x) + 2`
+- The `y` in the final expression is replaced by `(f x)`

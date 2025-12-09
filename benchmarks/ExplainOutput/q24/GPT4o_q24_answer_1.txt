@@ -1,0 +1,8 @@
+**Solution:** The type of the expression is `'t`.
+
+**Explanation:**  
+- `f` has the type `('t * 't -> 't)`, meaning it takes a pair of `'t` and returns a value of type `'t`.  
+- `a` and `b` are both of type `'t`.  
+- `f(a, b)` has type `'t` because `f` takes a pair `(a, b)` of type `('t * 't)` and returns `'t`.  
+- `f(b, a)` also has type `'t` for the same reason.  
+- `f(f(a, b), f(b, a))` involves passing two `'t` values as a pair to `f`, and since the outer `f` also returns `'t`, the final type of the entire expression is `'t`.

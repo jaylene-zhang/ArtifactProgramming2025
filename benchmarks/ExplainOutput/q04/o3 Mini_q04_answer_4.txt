@@ -1,0 +1,3 @@
+Solution: Options 1 and 4.
+
+Explanation: Both 1 and 4 bind the result of prime_fact x to a variable (p) before iterating, so the function is computed only once. In contrast, Options 2 and 3 call prime_fact repeatedly during comparisons.

@@ -1,0 +1,10 @@
+**Solution:**
+
+The function `f` reverses the order of the elements in a list with at least five elements.
+
+**Explanation:**
+
+1. `rotate l` takes the first element, moves it to the end of the list, and leaves the rest unchanged.
+2. The recursive `f` takes the list (`l`), appends the head (`h`) to the tail (`t`) to form a new list, and then calls `rotate` on it.
+3. This process ensures that the head moves to the back repeatedly, progressively reversing the list on each recursive call.
+4. For a list of at least five elements, this process will result in a full reverse of the original list after enough recursive steps.

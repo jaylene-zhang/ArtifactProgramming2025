@@ -1,0 +1,15 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   **Tail Recursion:** A function is tail-recursive if the recursive call is the last operation performed in the function. This allows the compiler to optimize the function call into a loop, preventing stack overflow for large inputs.
+
+*   **Option a):** Not tail-recursive and produces reversed output. The concatenation `x ^ " " ^ s` happens *before* the recursive call, so it is not tail recursive.
+
+*   **Option b):** Also not tail-recursive. The concatenation `s ^ " " ^ x` happens *before* the recursive call, so it is not tail recursive.
+
+*   **Option c):** It is tail-recursive and correct. It first reverses the list using the `reverse` function, and then it uses a tail-recursive `aux` function to traverse the reversed list and build the concatenated string. By reversing the list first, it effectively appends to the accumulator from the *beginning* of the original list, achieving the correct order.
+
+*   **Option d):** This is the most straightforward, recursive (but not tail-recursive) implementation of concat. The concatenation `x ^ " " ^ (concat xs)` happens before the recursive call returns, so it is not tail-recursive. It can lead to stack overflow for long lists.

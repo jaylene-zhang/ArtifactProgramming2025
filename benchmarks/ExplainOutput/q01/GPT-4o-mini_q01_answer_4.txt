@@ -1,0 +1,21 @@
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'c list) : 'c list =
+  match xs, ys with
+  | [], [] -> sc []
+  | x::xs, y::ys -> zippy xs ys pair (fun r -> sc ((pair (x, y) :: r)))
+  | _, _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+  (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+Explanation:
+1. **Types for `xs` and `ys`**: They are both lists, hence `'a list` for `xs` and `'b list` for `ys`, where `'a` and `'b` are type variables representing any types.
+2. **Type for `pair`**: It takes a tuple of type `'a * 'b` and returns type `'c`, so the type is `'a * 'b -> 'c`.
+3. **Type for `sc`**: It takes a list of type `'c list` and returns a list of type `'c list`, so the type is `'c list -> 'c list`.
+4. **Return type of `zippy`**: It should return a list of type `'c list` since it is called with a `sc` function that manipulates this returned list. 
+
+The program is well-typed and consistent within OCaml's type system, so it is not ill-typed.

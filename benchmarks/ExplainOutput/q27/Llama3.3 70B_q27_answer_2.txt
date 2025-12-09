@@ -1,0 +1,3 @@
+**Because they introduce side effects, making code harder to reason about and test.**
+
+Functional languages aim for referential transparency, where functions always produce the same output for a given input, without modifying external state. State variables and imperative programming break this property, making code less predictable, composable, and reusable.

@@ -1,0 +1,3 @@
+Solution: shift : (int ref * int ref) -> unit
+
+Explanation: shift takes a pair of int references, dereferences and increments them, hence its return type is unit.

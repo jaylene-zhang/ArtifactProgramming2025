@@ -1,0 +1,9 @@
+```ocaml
+let toInt f =
+  let rec aux count x =
+    if count = 0 then count
+    else aux (count - 1) (f x)
+  in aux 0 (f (fun x -> x))
+```
+
+Explanation: The function `toInt` utilizes a helper function `aux` that counts how many times `f` can be applied to its argument `x`. The recursive `aux` function decrements a `count` variable until it reaches 0, at which point it returns the count, effectively tracing the number of times `f` is applied. The initial call to `aux` starts with a count of `0` and an application of `f` to `(fun x -> x)` ensures that we begin the counting with `f` applied at least once.

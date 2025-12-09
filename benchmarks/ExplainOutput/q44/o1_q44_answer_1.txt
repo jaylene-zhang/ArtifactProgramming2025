@@ -1,0 +1,5 @@
+Solution:
+You must show that if the statement holds for a list l, then it also holds for any list constructed by adding a new element x in front of l (i.e., x::l).
+
+Explanation:
+In list induction, after proving the base case (usually the empty list), the step case requires assuming the property for a smaller list l and then proving it for the extended list x::l.

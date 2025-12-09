@@ -1,0 +1,7 @@
+Unused variables: r
+
+[Expression is an identifier that escapes the function f.]
+
+Explanation:
+
+The identifier 'r' is assigned to in the first line, but is not used anywhere in the function foo or the function f. Therefore, 'r' is an unused variable.

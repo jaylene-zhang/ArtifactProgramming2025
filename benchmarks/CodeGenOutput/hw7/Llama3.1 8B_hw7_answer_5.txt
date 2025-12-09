@@ -1,0 +1,79 @@
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let rec explode s acc =
+    if String.length s <= 0 then acc
+    else explode (String.sub s 1 (String.length s - 1)) ((String.get s 0) :: acc) in
+  explode s []
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  let rec implode l acc =
+    match l with
+    | [] -> acc
+    | h :: t -> implode t (Char.escaped h ^ acc) in
+  implode l ""
+
+(*------------------------------------------------------------------------*)
+(* Q2 : Bank Account *)
+(*------------------------------------------------------------------------*)
+
+(* Errors *)
+exception Msg of string
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+(* type definitions *)
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+(* function open_account *)
+let open_account (pass : password) : bank_account =
+  { update_pass = fun old new_pass ->
+    if old = pass then update_pass new_pass;
+    else raise wrong_pass
+  ; retrieve = fun pwd intent ->
+    if pwd = pass then
+      if intent >= 0 then
+        let () = balance := balance + intent in
+        ()
+      else
+        raise negative_amount
+    else
+      raise wrong_pass
+  ; deposit = fun pwd intent ->
+    if pwd = pass then
+      if intent >= 0 then
+        let () = balance :=!balance + intent in
+        ()
+      else
+        raise negative_amount
+    else
+      raise wrong_pass
+  ; show_balance = fun pwd ->
+    if pwd = pass then!balance
+    else
+      raise wrong_pass
+  ; private
+  ; balance = ref 0
+  }
+
+(* TODO: Implement the function. *)
+let () =
+  let acc = open_account "123" in
+  acc.deposit "123" 500;
+  acc.deposit "123" (-150);
+  acc.deposit "12" 50;
+  acc.update_pass "123" "234";
+  acc.deposit "123" 50;
+  acc.show_balance "234";
+  acc.deposit "234" 50;
+  acc.show_balance "234";
+  acc.retrieve "234" 100;
+  acc.retrieve "234" 500;
+  acc.show_balance "234";

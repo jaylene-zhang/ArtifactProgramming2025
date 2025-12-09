@@ -1,0 +1,11 @@
+Solution:
+
+```
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | h :: t -> rev_tl t (h :: acc)
+```
+
+Explanation:
+To correctly implement the recursive function `rev_tl`, we need to initialize `acc` as an empty list `[]`. This is because when the list `l` is empty, we want the function to return the accumulated list, which is `acc`. Since `acc` is initially an empty list, it will chain together the elements of the list in reverse order.

@@ -1,0 +1,10 @@
+**Correct implementation(s):**
+
+a) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+
+**Explanation:** 
+The correct implementation is (a). In this implementation, `f` is applied to `x` and the result of the recursive call `r`, and then the continuation `cont` is applied to this result. This ensures that the function `f` is applied from left to right as in `fold_right`. The other options either apply `f` in the wrong order or misplace the arguments. 
+
+To use `aux_folder` as a replacement for `fold_right`, you would call it with the identity function as the continuation, like this: `aux_folder f l b (fun x -> x)`. This will correctly compute the fold right result for `f`, `l`, and `b`.

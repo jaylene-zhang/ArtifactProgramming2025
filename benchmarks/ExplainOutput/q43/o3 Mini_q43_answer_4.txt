@@ -1,0 +1,3 @@
+Solution: No. We must instead prove the more general property that for all accumulators acc, length (rev_tl l acc) = length l + length acc.
+
+Explanation: Induction solely on l fails because, in the inductive step, the accumulator is not always []—we have a call like rev_tl t (h::acc). The original statement isn’t strong enough to handle this case, so a more general induction hypothesis is needed.

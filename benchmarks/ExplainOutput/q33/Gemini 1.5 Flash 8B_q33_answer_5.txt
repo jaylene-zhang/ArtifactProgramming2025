@@ -1,0 +1,8 @@
+**Solution:** a)
+
+**Explanation:**
+
+Option a correctly models the jump as a combination of a jump type (Axel, Loop, etc.) and an integer representing the number of revolutions.  Options b and c are incorrect because:
+
+* **b:** Introduces an unnecessary `revolutions` type with `Double` and `Triple` values. This clumsily over-structures the representation; it's better to represent the number of revolutions directly as an integer.
+* **c:**  This option recursively defines a `jump` type within itself. This doesn't model the idea that a jump is a *type* and a *number*. This leads to a complex structure, and for handling a single jump, it will not be useful.  Instead of using a single data structure, you would have to use a data structure with nested information. This is not the most efficient design for the concept.

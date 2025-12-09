@@ -1,0 +1,20 @@
+**Solution:**
+
+*   `'t` = `'s`
+*   `'u` = `'u` (no further constraint)
+
+**Explanation:**
+
+1.  **Innermost `f` calls:**
+    *   `f (a, b)` has type `'u`.
+    *   `f (b, a)` has type `'u`.
+
+2.  **Outermost `f` call:**
+    *   This call is `f (f (a, b), f (b, a))`.  Since `f (a, b)` and `f (b, a)` both have type `'u`, the outermost `f` call becomes `f (value_of_type_u, value_of_type_u)`. This means we are calling f with two values of type 'u. This is only possible if 't and 's are the same, and both can be unified with 'u. Therefore, we can say `'t` = `'s` = `'u`.
+
+3.  **Type constraints:**
+    *   The type of `f` is `('t * 's -> 'u)`.
+because we call f(a,b) and f(b,a), it must be the case that a and b are of the same type (i.e. 't = 's)
+    *   Since we're then calling `f` with the results of the inner `f` calls, the result type `'u` of the inner calls must be compatible with the input types `'t` and `'s` of the outer call, meaning `'t ='s ='u`.
+
+Therefore, to make the final expression type-check, we need `'t = 's = 'u`. We can also say `'t = 's` and let the result type remain `'u`.

@@ -1,0 +1,5 @@
+```ocaml
+let toInt f = let rec g n x = if f (fun x -> x) x = x then n else g (n+1) (f (g n)) x in g 0
+```
+
+Explanation: The function `toInt` takes in another function `f` and uses a helper function `g` to recursively apply `f` until it no longer changes the input. The number of applications is tracked by the accumulator `n`. The base case is when `f (fun x -> x) x` equals `x`, which means `f` is the identity function and has been "resolved" to a fixed point.

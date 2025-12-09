@@ -1,0 +1,11 @@
+**Does the program compute ackermann x at most once for a function call `add_ack x l`?** No
+
+**Why**: The function `add_ack` is recursive and for each recursive call, it computes `ackermann x`. This means that `ackermann x` is computed for each element in the list `l`, so it is computed `length l` times.
+
+**Corrected version**:
+```ocaml
+let rec add_ack x = function
+  | [] -> []
+  | y::ys -> (fun () -> (ackermann x) + y) :: ys
+```
+However, the `fun` is not executed immediately. It is a closure. This way, `ackermann x` is computed only once and its result is stored in the closure.

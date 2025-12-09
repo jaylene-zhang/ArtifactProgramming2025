@@ -1,0 +1,22 @@
+The function `f` performs a right rotation on the list with each recursive call until the length of the list is less than 5.
+
+**Solution:**
+
+```ocaml
+let rec f l =
+  match l with
+  | []   -> []
+  | h :: t   -> rotate (t @ [h])
+```
+
+**Explanation:**
+
+1. The function `f` takes a list `l` as input.
+2. It matches `l`:
+   - If `l` is empty, it returns an empty list.
+   - If `l` is non-empty, it splits the list into head `h` and tail `t`.
+3. It then computes `t @ [h]`, which is a new list with the first element of `l` (i.e., `h`) appended to the end of `t`.
+4. The rotated list `t @ [h]` is passed to the `rotate` function.
+5. This process continues recursively until the length of the list is less than 5.
+
+Thus, `f` will perform a series of right rotations on the list, each time reducing the length until it is less than 5.

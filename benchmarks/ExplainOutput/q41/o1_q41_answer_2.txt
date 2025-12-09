@@ -1,0 +1,5 @@
+Solution:
+('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+
+Explanation:
+This version of fold_right is made tail recursive by adding a continuation (the ('b -> 'c) -> 'c part) that handles the final result, preventing stack growth in the recursive calls.

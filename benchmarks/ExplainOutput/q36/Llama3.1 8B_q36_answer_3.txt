@@ -1,0 +1,11 @@
+**Function `f` has no effect on the internal structure of the list**
+
+Solution:
+```ocaml
+let rec f l = rotate (t @ [h])
+```
+Explanation:
+
+The function calls `rotate` on a modified copy of the input list, where the first element is prepended to the tail of the list. However, this is equivalent to rotating the original list by one position. Because it calls `rotate` on the rotated list, it essentially calls `rotate` on the rotated list of the rotated list, and so on. This is equivalent to rotating the original list by one position `n-1` times, where `n` is the length of the list.
+
+In other words, `rotate` flips the list at each recursive call. Since the list is flipped `n-1` times, it ends up back to its original state.

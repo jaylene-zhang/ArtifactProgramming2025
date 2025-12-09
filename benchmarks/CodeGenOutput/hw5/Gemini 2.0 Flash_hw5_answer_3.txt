@@ -1,0 +1,118 @@
+```ocaml
+(* Question 1: Tree Depth *)
+
+let rec tree_depth t = match t with
+  | Empty -> 0
+  | Tree (l, _, r) -> 1 + max (tree_depth l) (tree_depth r)
+
+(* TODO: Implement a CPS style tree_depth_cps function.*)
+let tree_depth_cps t =
+  let rec depth_helper t k =
+    match t with
+    | Empty -> k 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun dl ->
+          depth_helper r (fun dr ->
+              k (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+
+(* TODO: Implement a CPS style find_subtree_cont function.*)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls, tree with
+    | [], _ -> sc (Some tree)
+    | _, Empty -> fc ()
+    | h :: t, Tree (l, v, r) ->
+      if v = h then
+        helper t tree sc fc
+      else
+        helper ls l (fun x -> match x with
+            | Some _ -> sc x
+            | None -> helper ls r sc fc) fc
+  in
+  helper ls tree (fun x -> x) (fun () -> None)
+
+
+type token =
+  | Num of int
+  | PlusToken
+  | MinusToken
+  | MultToken
+  | DivToken
+  | OpenParen
+  | CloseParen
+  | Var of string
+
+type expr =
+  | Const of int
+  | VarExpr of string
+  | Plus of expr * expr
+  | Minus of expr * expr
+  | Mult of expr * expr
+  | Div of expr * expr
+
+let rec eval e v =
+  match e with
+  | Const i -> i
+  | VarExpr s -> v s
+  | Plus (e1, e2) -> eval e1 v + eval e2 v
+  | Minus (e1, e2) -> eval e1 v - eval e2 v
+  | Mult (e1, e2) -> eval e1 v * eval e2 v
+  | Div (e1, e2) -> eval e1 v / eval e2 v
+
+
+
+(* Question 3: Arithmetic Experssion Parser *)
+
+(* TODO: Implement a CPS style parser function.*)
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  let rec parse_expr tokens sc fc =
+    parse_term tokens (fun tokens' e ->
+        parse_expr_tail tokens' e sc fc) fc
+  and parse_expr_tail tokens acc sc fc =
+    match tokens with
+    | PlusToken :: rest ->
+      parse_term rest (fun tokens' e ->
+          parse_expr_tail tokens' (Plus (acc, e)) sc fc) fc
+    | MinusToken :: rest ->
+      parse_term rest (fun tokens' e ->
+          parse_expr_tail tokens' (Minus (acc, e)) sc fc) fc
+    | _ -> sc tokens acc
+  and parse_term tokens sc fc =
+    parse_factor tokens (fun tokens' e ->
+        parse_term_tail tokens' e sc fc) fc
+  and parse_term_tail tokens acc sc fc =
+    match tokens with
+    | MultToken :: rest ->
+      parse_factor rest (fun tokens' e ->
+          parse_term_tail tokens' (Mult (acc, e)) sc fc) fc
+    | DivToken :: rest ->
+      parse_factor rest (fun tokens' e ->
+          parse_term_tail tokens' (Div (acc, e)) sc fc) fc
+    | _ -> sc tokens acc
+  and parse_factor tokens sc fc =
+    match tokens with
+    | Num i :: rest -> sc rest (Const i)
+    | Var s :: rest -> sc rest (VarExpr s)
+    | OpenParen :: rest ->
+      parse_expr rest (fun tokens' e ->
+          match tokens' with
+          | CloseParen :: rest' -> sc rest' e
+          | _ -> fc ()) fc
+    | _ -> fc ()
+  in
+  let success tokens expr = Some expr in
+  let failure () = None in
+  match parse_expr t (fun tokens expr -> if tokens = [] then success tokens expr else failure ()) failure with
+  | Some e -> Some e
+  | None -> None
+
+let check_parser t v = match parser_cps t with
+  | None -> None
+  | Some(e) -> Some(eval e v)
+```

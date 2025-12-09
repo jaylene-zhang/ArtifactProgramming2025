@@ -1,0 +1,8 @@
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: When substituting `y` with `(f x)`, we replace all occurrences of `y` in the original expression, resulting in the modified expression above.

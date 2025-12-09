@@ -1,0 +1,3 @@
+Solution: The test case will not pass.
+
+Explanation: Since the implementation only handles the case when n equals 1, calling triangle 0 leads to a recursive call with negative numbers and does not return 0.

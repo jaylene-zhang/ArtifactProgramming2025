@@ -1,0 +1,16 @@
+**Answer:**
+
+a) Computes `prime_fact` once (correct).  
+b) Computes `prime_fact` multiple times (incorrect).  
+c) Computes `prime_fact` multiple times (incorrect).  
+d) Computes `prime_fact` once (correct).  
+
+**Explanation:**
+
+- **a)** The function calculates `prime_fact x` once, stores it in `p`, and then checks if `p` exists in the list, making it efficient.
+  
+- **b)** Here, `prime_fact x` is called inside `List.exists` for each element of the list `l`. If the list has multiple elements, `prime_fact x` will be computed multiple times.
+  
+- **c)** Similar to b), it computes `prime_fact x` each time it is checked against `y` in the list. So again, it will potentially compute it multiple times if there are multiple elements.
+  
+- **d)** This implementation calculates `prime_fact x` once and uses the result in the recursive helper function `test`, thus preserving efficiency.

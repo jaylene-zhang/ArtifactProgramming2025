@@ -1,0 +1,24 @@
+## Original zip function type:
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+## Generalized zipper function:
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+               (l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+The zipper function is a generalization of zip that:
+1. Uses a `comb` function to combine elements from the two lists (instead of always creating pairs)
+2. Uses an `add` function to add elements to the result (instead of always using cons)
+
+From the examples, we can see that `zip` uses `comb` to create pairs and `add` as cons operator, while `zip_rev` combines elements by converting the first to a string and concatenating, then adds elements to the end of the list with additional information.

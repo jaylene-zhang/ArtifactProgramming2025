@@ -1,0 +1,7 @@
+The unused variables in this expression are:
+- The parameter `r` in the outer `let` binding of the function `call`.
+- The parameter `f` in the outer `let` binding of the function `call`.
+
+### Explanation:
+1. The parameter `r` in `let call f r y` is shadowed by `let r = 2 * y` inside the function body and is never used directly.
+2. The `f` parameter in `let call` is also shadowed by `let f = fun x -> f x * y` and the original `f` is never utilized. Only the redefined `f` (inside the body) is used.

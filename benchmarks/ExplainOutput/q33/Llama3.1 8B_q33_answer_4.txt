@@ -1,0 +1,14 @@
+**Solution:**
+```ocaml
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type revolutions = int
+type jump = jump_typ * revolutions
+```
+
+**Explanation:**
+
+This implementation captures the description because:
+
+* `revolutions` is a type that represents the number of revolutions, which allows for any whole number, including numbers greater than 3, as described in the problem.
+* `jump_typ` represents the type of jump, which is a tagged union, and `revolutions` represents the number of revolutions associated with it.
+* The `type jump = jump_typ * revolutions` declaration defines a product type, where each value of type `jump` is a pair of a jump type and a number of revolutions.

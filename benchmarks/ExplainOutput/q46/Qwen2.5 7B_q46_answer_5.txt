@@ -1,0 +1,8 @@
+1) `f s.hd a`
+
+2) `fold f (f s.hd a) s.tl`
+
+Explanation:
+1) The head of the resulting stream `r` is the application of `f` to the head of the input stream `s` and the initial value `a0`. So `f s.hd a`.
+
+2) The tail of the resulting stream `r` is obtained by recursively folding over the tail of the input stream `s`, starting with the value `f s.hd a` as the new initial value. So `fold f (f s.hd a) s.tl`.

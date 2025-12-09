@@ -1,0 +1,6 @@
+**(6, 5)**
+
+Explanation: The `point` variable is reassigned after the `shift_point 1` call, resulting in `point` being `(6, 5)`. When `shift_point 2` is called, it uses this new value of `point` and adds 2 to both components, but this occurs before the `shift_point 2` call is made, the `(6,5)` is the point. So the addition of 2 will be to the original point `(5,4)` prior to the `point` being updated to `(6,5)`. Then `(5 + 2, 4 + 2)` equals `(7,6)`. However, since in the `shift_point 1` call, the original point is `(5, 4)`, it will add 1 to `(5, 4)` resulting in `(6, 5)`, but here it's `(5,4)`, not `(6, 5)` that is being used for the `shift_point 2`. However in the `shift_point 1` call, it does indeed take the `(5,4)` and adds 1 resulting in `(6,5)`. So in `shift_point 2` it's indeed `(6, 5)` that is being utilized here which then becomes `(6 + 2, 5 + 2)` which is `(8, 7)` but we need to calculate it based on `(5, 4)` and that would be `(5 + 2, 4 + 2)`. Nevertheless, considering how ocaml handles bindings the initial binding of point remains `(5, 4)` through the function definition of `shift_point`. So then when we call `shift_point 2` this will result in `(5 + 2, 4 + 2)` which is `(7, 6)`.
+
+
+The first binding of `point` remains the one used within `shift_point`. So `(5, 4)` will be what's used within `shift_point 2`.

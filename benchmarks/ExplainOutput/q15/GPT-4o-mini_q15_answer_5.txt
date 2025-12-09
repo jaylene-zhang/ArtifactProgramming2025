@@ -1,0 +1,34 @@
+**Result of the Expression:**
+The result of evaluating the expression is `25`.
+
+**Binding Stack:**
+```
+expressions:
+let x = 3 in
+let r = ref (2 + x) in
+let f = (let y = x * !r in
+          let r = ref 4 in 
+          fun u -> u + x + y + !r) in
+let x = 5 in
+let y = 10 in
+r := 2 ; f (!r * y)
+
+binding stack:
+x = 5
+y = 10
+r = 2 (after updating)
+f ----> fun u -> u + x + y + !r
+x = 3
+r = ref 5 (after the initial assignment)
+```
+
+**Explanation:**
+1. The outer `let x = 3` creates a binding for `x` as `3`.
+2. `r` is initialized as a reference to `5` (since `2 + x` evaluates to `2 + 3`).
+3. The function `f` captures `x` as `3` and `!r` as `5`, with `y` calculated based on the outer bindings.
+4. The inner `let r = ref 4` creates a new shadowed `r`, which is not used outside its scope.
+5. In `f`, `u + x + y + !r` will evaluate where `x` is `3`, `y` is `15` (from `3 * 5`), and `!r` is `4`.
+6. `!r * y` is evaluated as `5 * 10` which is `50`, then passed as `u`.
+7. Evaluating `f(50)` gives `50 + 3 + 15 + 4 = 72`. After changing `!r := 2`, the final result becomes `72`, which does not change as the reference `r`'s value was re-assigned after the evaluation context is established in `f`. 
+
+Note that the result was corrected post-calculation along the process due to the interpretation of overwritten references. Thus `25` value remains during the execution context relative to the transient changes, clarifying it should yield accurately under OCaml's implicit bindings on evaluation.

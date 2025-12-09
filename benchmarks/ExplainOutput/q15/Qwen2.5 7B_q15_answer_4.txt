@@ -1,0 +1,32 @@
+**Solution:**
+
+The result of evaluating the expression is `53`.
+
+**Binding Stack:**
+
+```
+x = 5
+y = 10
+f ----> (u) -> u + 5 + 15 + 4
+r = 2
+x = 3
+```
+
+**Explanation:**
+
+1. **Initial Binding:**
+   - `x = 3`
+   - `r = ref 5` (since `2 + x` evaluates to `5`)
+   - `y = x * !r` evaluates to `15` (since `3 * 5 = 15`)
+   - `f = (let y = 15 in let r = ref 4 in fun u -> u + x + y + !r)`
+
+2. **After Reset:**
+   - `x = 5`
+   - The function `f` still captures `x = 3` and `y = 15` (at the time of its definition).
+
+3. **Final Computation:**
+   - `r := 2`
+   - The function `f` is called with `!r * y`, which is `2 * 10 = 20`.
+   - `f 20` evaluates to `20 + 5 + 15 + 4 = 44 + 4 = 53`.
+
+Hence, the result is `53`.

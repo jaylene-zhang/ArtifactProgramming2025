@@ -1,0 +1,4 @@
+**Solution: Yes, it is tail-recursive.**
+
+**Explanation:**  
+The function `zip_tr` is tail-recursive because the recursive call to `zip_tr` is the very last operation performed in the function. The function achieves this by using continuations `fc` and `sc` to pass along computations, thereby avoiding additional operations after the recursive call.

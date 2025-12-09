@@ -1,0 +1,392 @@
+(* template for this question *)
+exception NotImplemented
+
+(* Types in MiniCAML *)
+type tp =
+  | Arrow of tp list * tp   (* function type: S1 S2 ... Sn -> T *)
+  | Int
+  | Bool
+
+(* Used for variables, aka "identifiers" *)
+type name = string
+
+(* The primitive operations available in MiniCAML *)
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+
+(* Expressions in MiniCAML *)
+type exp =
+  | I of int                          (* 0 | 1 | 2 | ... *)
+  | B of bool                         (* true | false *)
+  | If of exp * exp * exp             (* if e then e1 else e2 *)
+  | Primop of primop * exp list       (* e1 <op> e2  or <op> e *)
+  | Fn of (name * tp) list * exp      (* fn (x_1: t_1, ..., x_n: t_n) => e *)
+  | Rec of name * tp * exp            (* rec (f: t) => e *)
+  | Let of name * exp * exp           (* let x = e1 in e2 end *)
+  | Apply of exp * (exp list)         (* e (e_1, e_2, ..., e_n) *)
+  | Var of name                       (* x *)
+
+(* Some example programs in MiniCAML. *)
+(* fun (x: int, y: int) => (x * x) + (y * y) *)
+let ex1 : exp =
+  Fn ([("x", Int); ("y", Int)],
+      Primop (Plus,
+              [Primop (Times, [Var "x"; Var "x"]);
+               Primop (Times, [Var "y"; Var "y"])]))
+
+(* fun () => true *)
+let ex2 : exp = Fn ([], B true)
+
+(* let f = (fun (x: int, y: int) => (x * x) + (y * y))
+   in
+   f (3, 4)
+*)
+let ex3 : exp =
+  Let ("f", ex1,
+       Apply (Var "f", [I 3; I 4]))
+
+(* let g = (fun () => true)
+   in
+   g () *)
+let ex4 : exp =
+  Let ("g", ex2,
+       Apply (Var "g", []))
+
+(* let f = (fun (x: int, y: int) => (x * x) + (y * y))
+   in
+   f (3)
+   Note: this expression is syntactically valid, but ill-typed!
+*)
+let ex5 : exp =
+  Let ("f", ex1,
+       Apply (Var "f", [I 3]))
+
+(* let f = (fun (x: int) => (fun (y: int) => (x * x) + (y * y)))
+   in
+   (f (3)) (4)
+*)
+let ex6 : exp =
+  Let ("f",
+       Fn ([("x", Int)],
+           Fn ([("y", Int)],
+               Primop (Plus,
+                       [Primop (Times, [Var "x"; Var "x"]);
+                        Primop (Times, [Var "y"; Var "y"])]))),
+       Apply (Apply (Var "f", [I 3]),
+              [I 4]))
+
+(* let f = (fun (x: int) => (fun (y: int) => (x * x) + (y * y)))
+   in
+   f (3, 4)
+   Note: this expression is syntactically valid, but ill-typed!
+*)
+let ex7 : exp =
+  Let ("f",
+       Fn ([("x", Int)],
+           Fn ([("y", Int)],
+               Primop (Plus,
+                       [Primop (Times, [Var "x"; Var "x"]);
+                        Primop (Times, [Var "y"; Var "y"])]))),
+       Apply (Var "f", [I 3; I 4]))
+
+
+
+(* Deletes every occurence of the elements of xs from l.
+   e.g. delete [w; y] [y; x; y; z; w] = [x; z]
+*)
+let delete (xs : 'a list) (l : 'a list) : 'a list =
+  List.filter (fun x -> not (List.mem x xs)) l
+
+
+(* PART 3: subst *)
+
+(* A substitution [e/x]. This is read as "e for x". *)
+type subst = exp * name
+
+
+(* -------------------------------------------------------------*)
+(* Other helper functions                                       *)
+(* You don't need to look at these to do the assignment, but it *)
+(* would be a good idea to understand them.                     *)
+(* -------------------------------------------------------------*)
+
+(* Generating fresh (new) variable names *)
+type gen_var = {
+  fresh: name -> name; (* generates a fresh name based on a given one. *)
+  reset : unit -> unit (* resets the internal counter for making names. *)
+}
+
+let gen_var : gen_var =
+  let counter = ref 0 in
+  let fresh x = incr counter; x ^ (string_of_int (!counter)) in
+  let reset () = counter := 0 in
+  {fresh; reset}
+
+let freshVar = gen_var.fresh
+let resetCtr = gen_var.reset
+
+(* Converts a type to a string representation. *)
+let rec string_of_tp t = match t with
+  | Arrow (t1s, t2) ->
+      (String.concat ", " (List.map string_of_tp t1s)) ^
+      " -> " ^
+      string_of_tp t2
+  | Int -> "int"
+  | Bool -> "bool"
+
+(* String representations of expressions. Useful for debugging!
+   Note that this expression printer is very primitive, but it should suit
+   your needs most of the time.
+*)
+let nl_sep l = String.concat "\n" l
+
+let bracket str = "(" ^ str ^ ")"
+
+let string_of_op p = match p with
+  | Equals   -> " = "
+  | LessThan -> " < "
+  | Plus     -> " + "
+  | Minus    -> " - "
+  | Times    -> " * "
+  | Negate   -> "-"
+
+let rec string_of_exp indent exp =
+  let new_ind = indent ^ "  " in
+  let string_of_exp' = string_of_exp indent in
+  let string_of_exp'' = string_of_exp new_ind in
+  match exp with
+  | I n ->
+      if n < 0 then bracket (string_of_int n)
+      else string_of_int n
+  | B b -> if b then "True" else "False"
+  | If (p, e1, e2) ->
+      nl_sep
+        ["if " ^ (string_of_exp'' p) ^ " then";
+         new_ind ^ (string_of_exp'' e1);
+         indent ^ "else";
+         new_ind ^ (string_of_exp'' e2)]
+  | Primop (p, el) ->
+      bracket @@
+      if p = Negate then
+        (string_of_op p) ^ (string_of_exp' (List.nth el 0))
+      else
+        (string_of_exp' (List.nth el 0)) ^
+        (string_of_op p) ^
+        (string_of_exp' (List.nth el 1))
+  | Fn (xs, exp) ->
+      let params =
+        String.concat ", "
+          (List.map (fun (x, tp) -> x ^ ": " ^ (string_of_tp tp)) xs)
+      in
+      bracket @@
+      nl_sep
+        ["fun (" ^ params ^ ") =>";
+         new_ind ^ (string_of_exp'' exp)]
+  | Rec (name, tp, exp) ->
+      bracket @@
+      nl_sep
+        ["rec (" ^ name ^ ": " ^ (string_of_tp tp) ^ ") =>";
+         new_ind ^ (string_of_exp'' exp)]
+  | Let (name, e1, e2) ->
+      nl_sep
+        ["let " ^ name ^ " = " ^ (string_of_exp' e1) ^ " in";
+         new_ind ^ (string_of_exp'' e2)]
+  | Apply (e, es) ->
+      let params = bracket (String.concat ", " (List.map string_of_exp' es)) in
+      (string_of_exp' e) ^ " " ^ params
+  | Var name -> name
+
+let print_exp exp = print_string (string_of_exp "" exp)
+
+Note: the prelude for this exercise is quite long. However, we will point you to the useful functions in the prelude when relevant, so you shouldn't try to read it all at once.
+
+Note: you must not use references / assignment (":=") throughout the entire homework.
+
+A DIY programming language: MiniCAML
+
+In this homework, you will implement a programming language called MiniCAML, in OCaml. The goal is to explore concepts such as free variables, substitution, evaluation, type checking, and type inference.
+
+MiniCAML is very similar to the language you have seen in class, and also it is quite similar to OCaml. Compared to the language described in class, MiniCAML adds n-ary function abstraction and application, and recursion. Compared to OCaml, MiniCAML lacks pattern matching, user-defined datatypes, exceptions, and modules.
+
+The grammar of MiniCAML is the following.
+
+Type τ::=   int | bool | τ1 ... τn→τ
+Expression e::= ... | rec (f:τ)⇒e | fun (x1:τ1,...,xn:τn)⇒e ∣ e e1 ... en
+If you are not sure how to read this, please refer to the course notes: chapter 9, section 9.1.
+
+For this assignment, we have extended the syntactic category for expressions with n-ary function abstractions, n-ary function applications, and recursion:
+
+Instead of abstracting over a single variable, as you saw in class, the fun construct in MiniCAML now abstracts over multiple variables at once. This means we can construct functions of multiple variables:
+
+fun (x: int, y: int) => (x * x) + (y * y)
+Unlike in OCaml, these functions are not implicitly curried. They need to be called with exactly the correct number of arguments. This is the same behaviour as in other languages you may be familiar with such as C, Java, or Python.
+
+We can also define functions that take zero arguments:
+
+fun () => true
+This is also behaviour you may recognize from other programming languages.
+
+To reflect that functions can now abstract over any number of arguments at once, the arrow type in our grammar has been modified from what you saw in class. The types of the functions given in the two previous examples would be written as int int→int and → bool, respectively.
+
+Note: you may assume that all the names of the bound variables in a particular function abstraction are unique, e.g. the expression fun (x: int, x: int) => x + x is invalid since x is repeated within a single function abstraction, and we would not test you on this. However, the expression fun (x: int) => fun (x: int) => x + x is perfectly valid, since x is not repeated in a single function abstraction.
+
+Since functions now abstract over multiple variables, we also need a way to apply a function to multiple variables at once. Function application in MiniCAML has thus been extended from what you saw in class:
+
+let f = (fun (x: int, y: int) => (x * x) + (y * y))
+in
+f (3, 4)
+We can also call a function with zero arguments:
+
+let g = (fun () => true)
+in
+g ()
+Unlike in OCaml, there is no implicit partial application of functions. This means that the following expression is ill-typed:
+
+let f = (fun (x: int, y: int) => (x * x) + (y * y))
+in
+f (3)
+If we wanted to be able to apply f to just one argument at a time, we would instead write this:
+
+let f = (fun (x: int) => (fun (y: int) => (x * x) + (y * y)))
+in
+(f (3)) (4)
+Note that in this case, calling f (3, 4) would result in a type error.
+
+Finally, the rec construct allows us to define recursive functions:
+
+rec (fact: int -> int) => fun (n: int) =>
+  if n = 0 then 1 else n * fact (n - 1)
+The rec construct binds a new variable (fact in the above example) which we may then refer to within its body. See also section 9.6.4 in the course notes.
+
+In the prelude, we define the types tp and exp, which correspond to the Type and Expression categories from the grammar.
+
+The prelude also includes a few example programs written in the MiniCAML abstract syntax tree (AST). Take a moment to look at them to see how to the constructors of the AST are used to write programs. We recommend evaluating the examples in the toplevel instead of trying to read the code in the prelude box, since it is quite small.
+
+Finally, the prelude includes a function print_exp: exp -> unit which you can use to print out programs in the MiniCAML AST in a more readable form. The implementation of print_exp is quite basic, so the printed representations are not always perfect, but you will likely find it very helpful for debugging. We recommend you try it out on the example expressions we have provided.
+
+
+Question 1: free_variables
+
+As introduced in the lecture, we would like to collect the set of the free variable names occurring in the expression e in this MiniCAML language setting as well. This algorithm works from the leaves of the expression tree upwards. Every time a variable is encountered, it is considered free. When a binding construct is encountered (e.g. Let) the declared variable is deleted from the set of free variables formed by the union of the recursive calls. Other constructs simply form the union of the sets of free variables from the recursive calls and return it.
+
+Implement, the missing cases in the function free_variables: exp -> name list. As you can see from the cases already implemented, the function recursively traverses the input expression to collect the free variables. The prelude also contains a function delete: 'a list -> 'a list -> 'a list such that delete xs l removes all elements from l that occur in xs.
+
+Keep in mind that, since our language supports n-ary function abstraction, the Fn construct is a binding construct which can introduce multiple variables at once!
+
+
+(* TODO: Implement the missing cases of free_variables. *)
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      raise NotImplemented
+  | Rec (x, _, e) ->
+      raise NotImplemented
+  | Let (x, e1, e2) ->
+      raise NotImplemented
+  | Apply (e, es) -> raise NotImplemented
+
+
+
+Question 2: unused_vars
+
+Something you may have noticed in OCaml is that the compiler warns you when you have unused variables.
+For example, consider the OCaml function fun x -> 5. The variable x is unused, since does not occur free in the body of the function. We would like to support this feature in the MiniCAML interpreter.
+
+Implement, the missing cases in the function unused_vars: exp -> name list.
+As you can see from the cases already implemented, the function recursively traverses the input expression to collect the unused variables. When the function arrives at a binding construct (such as Let) it decides whether the variable being introduced by the construct is unused by checking whether the variable is free in the body of the construct.
+
+(* TODO: Implement the missing cases of unused_vars. *)
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused = unused_vars e1 @ unused_vars e2 in
+      if List.mem x (free_variables e2) then
+        unused
+      else
+        x :: unused
+
+  | Rec (x, _, e) -> raise NotImplemented
+
+  | Fn (xs, e) -> raise NotImplemented
+
+  | Apply (e, es) -> raise NotImplemented
+
+
+
+
+Question 3: subst
+
+Extend the function subst: exp * name -> exp -> exp by implementing, the missing cases.
+
+    The first argument, e.g. (e', x): exp * name, represents the substitution that we would normally write as $[e'//x]$. $x$ is the variable to be replaced, and $e'$ is the expression to replace it with.
+    The second argument, of type exp, is the expression on which to perform the substitution.
+
+In other words, subst (e', x) e = [e'/x] e.
+
+To implement some of the missing cases of subst, you will need the rename: name -> exp -> (name * exp) and rename_all: name list -> exp -> (name list * exp) functions for renaming a single variable in an expression and a list of variables in an expression, respectively.
+The functions rename and rename_all are fully implemented for you in the template, so you should not need to change them.
+
+
+However, to simplify the implementation of the subst function, the fresh name generation strategy used in rename and rename_all naïvely appends a counter to the given base name and increments that counter.
+
+
+(* TODO: Implement the missing cases of subst. *)
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y, e2) =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y, e1', subst s e2)
+
+  | Rec (y, t, e) -> raise NotImplemented
+
+  | Fn (xs, e) -> raise NotImplemented
+
+  | Apply (e, es) -> raise NotImplemented
+
+and rename x e =
+  let x' = freshVar x in
+  (x', subst (Var x', x) e)
+
+and rename_all names exp =
+  List.fold_right
+    (fun name (names, exp) ->
+       let (name', exp') = rename name exp in
+       (name' :: names, exp'))
+    names
+    ([], exp)
+
+(* Applying a list of substitutions to an expression, leftmost first *)
+let subst_list subs exp =
+  List.fold_left (fun exp sub -> subst sub exp) exp subs

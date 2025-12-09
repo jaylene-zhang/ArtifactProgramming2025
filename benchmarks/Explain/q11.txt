@@ -1,0 +1,26 @@
+Question 2: Zip it up!
+Consider the following function zip which when given two lists l1 and l2 returns a list
+where the elements are paired. We assume that we only pair up lists of the same length.
+As a first step, fill in the most general type for l1, l2 and the type of the return value of zip.
+
+let rec zip (l1: ** to be filled **) (l2: ** to be filled **) : (** to be filled **)=
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+
+We now want to generalize this function in two ways:
+• we want to combine elements from l1 and l2 with a function comb
+• we want to replace :: with a more generic function add that adds elements to a given
+list (see examples below).
+
+Fill in the blanks below.
+let rec zipper (comb: ** to be filled **) (add: ** to be filled **)
+(l1: ** to be filled **) (l2: ** to be filled ** ) : (** to be filled **) =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (** to be filled **)
+
+We can now define zip and zip_rev using zipper as follows:
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev= zipper (fun x y -> (string_of_int x) ^ y)
+(fun s t -> t @ [ (s, List.length t) ])

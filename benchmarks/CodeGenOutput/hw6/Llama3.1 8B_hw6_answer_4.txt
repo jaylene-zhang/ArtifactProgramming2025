@@ -1,0 +1,119 @@
+(* Q1: 5 points *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | h :: t -> match f h with
+    | None -> None
+    | Some x -> match traverse f t with
+      | None -> None
+      | Some xs -> Some (x :: xs)
+
+(* TODO: Implement the functions Q2.1 *)
+
+(* Q2.1: 2 points *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  match mx, fm with
+  | Just x, Just f -> Just (f x)
+  | _ -> nothing
+
+(* TODO: Implement the functions Q2.2 *)
+
+(* Q2.2: 2 points *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  match m1, m2 with
+  | Just x1, Just x2 -> Just (x1, x2)
+  | _ -> nothing
+
+(* TODO: Implement the functions Q2.3 *)
+
+(* Q2.3: 3 points *)
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+  fun (x, y) ->
+  match p1 x, p2 y with
+  | Just x1, Just x2 -> Just (x1, x2)
+  | _ -> nothing
+
+(* TODO: Implement the functions Q2.4 *)
+
+(* Q2.4: 3 points *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  match a with
+  | Just x -> Just (f x)
+  | _ -> nothing
+
+(* TODO: Implement the functions Q2.5 *)
+
+(* Q2.5: 10 points *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  match l with
+  | [] -> Just []
+  | h :: t -> match f h with
+    | Just x -> match traverse' f t with
+      | nothing -> nothing
+      | Just xs -> Just (x :: xs)
+    | _ -> nothing
+
+(* Q3: Conversions *)
+
+(* Q3.1a: 2 points *)
+let church_to_nat (c : 'a church) : nat =
+  fun f x -> c x f f
+
+(* Q3.1b: 3 points *)
+let rec nat_to_church (n : nat) : 'a church =
+  match n with
+  | Z -> fun x f -> x
+  | S n -> fun x f -> f (nat_to_church n x f)
+
+(* Q3.2a: 2 points *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  fun k _ -> copt (fun x -> Some x) (fun _ -> None)
+
+(* Q3.2b: 3 points *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  fun k cont -> match m with
+  | Some x -> k x cont
+  | None -> cont ()
+
+(* Q3.3a: 2 points*)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  fun k () -> clist (fun x clist' -> k (x :: clist' (fun _ -> [])) ())
+
+(* Q3.3b: 3 points *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  fun k cont ->
+    match l with
+    | [] -> cont ()
+    | h :: t -> k h (list_to_clist t k cont)
+
+(* Q4: Map for clist (5 points *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  clist (fun x clist' -> CList (map_clist f clist'))
+           (fun() -> CList (fun f cont -> cont (f ())))
+
+
+(* TODO: Implement the function descendant of Q4 that takes 'b option and charlList*)
+let map_clist_option (f : 'a -> 'b option) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  clist (fun x clist' -> CList (map_clist_option f clist'))
+           (fun() -> CList (fun f cont -> cont none))
+
+
+let rec traverse_clist (f : 'a -> 'b option) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  clist (fun x clist' -> CList (traverse_clist f clist'))
+           (fun() -> CList (fun f -> f none))
+
+
+let rec map_clist_option2 (f : ('a -> 'b option) -> ('b, 'r) clist -> ('a, 'r) clist) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  clist (fun x clist' -> f (fun x' -> Some x') (map_clist_option (fun y -> match f (fun x2 -> Some x2) clist' with Some _ as x1 -> Some x1 | None -> None) x))
+           (fun() -> CList (fun f cont -> f none (cont none)))
+
+
+
+(* enumerate does not work with option types, I will leave it for Others , see val ite in  Teaching Assistant Office Hours *)
+let iterate_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  CList (map_clist f clist)
+
+let iterate_clist_option (f : 'a -> 'b option) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  map_clist_option (fun a -> f a) clist

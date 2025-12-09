@@ -1,0 +1,11 @@
+**Solution:**
+
+'t = 's = 'a and 'u = 'b
+
+
+
+**Explanation:**
+
+The expression `f (f (a, b), f (b, a))` requires that the arguments to `f` match its type signature.  Since `f` takes a pair (represented by `a,b`) to a value, we need `f (a, b)` to return a value of type `'a` so that `(f (a,b), f(b,a))` is a pair.  This in turn allows `f` to take this pair and map it to `'b`.
+This allows the expression `f (a, b)` to evaluate to a type `'b`.
+Therefore, 't and 's need to be the same type (`'a`), and 'u needs to be the type of the result of evaluating `f` with that pair, which is `'b`.

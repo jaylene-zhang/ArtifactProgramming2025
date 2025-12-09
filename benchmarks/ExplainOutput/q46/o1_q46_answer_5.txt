@@ -1,0 +1,6 @@
+Solution:  
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:  
+We build the next value in the output stream by applying f to the current element of s (s.hd) and the accumulated value (a). Then we recurse on the tail of the stream (s.tl) with this newly computed value as the new accumulator.

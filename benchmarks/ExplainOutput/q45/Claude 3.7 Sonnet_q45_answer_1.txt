@@ -1,0 +1,9 @@
+Pascal's Triangle - Part A
+
+1) For blank 1 in line 2 we should write:
+ones
+
+2) For blank 2 in line 3 we should write:
+map2 (fun s xs -> psums xs) pascal pascal.tl
+
+The first diagonal in Pascal's triangle is a stream of 1's, which is what we assign as the head. For the tail, we need to generate the next diagonal by taking partial sums of the current diagonal, which means applying psums to each stream in pascal. The map2 function allows us to match each stream in pascal with its transformation function.

@@ -1,0 +1,3 @@
+Solution: (6, 5)
+
+Explanation: shift_point captures the initial binding of point, which is (4, 3). Thus shift_point n calculates (4 + n, 3 + n); therefore, shift_point 2 returns (6, 5).

@@ -1,0 +1,17 @@
+**a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)**
+
+`Incorrect`
+
+The `swap` function is applied after currying, but it was not meant to be used here. This function will swap the arguments, but it is not the desired behavior.
+
+**b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)**
+
+`Correct`
+
+This function correctly applies the `curry` function first, then applies the `swap` function to achieve the desired result. The `0` argument is passed to `sumSeries` as intended.
+
+**c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0**
+
+`Incorrect`
+
+Here, the `swap` function is applied incorrectly. It is meant to be used with the function that requires both arguments, not the partially-applied `sumSeries f`. Also, there is an extra `0` argument that is not needed.

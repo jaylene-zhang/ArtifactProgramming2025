@@ -1,0 +1,22 @@
+**Solution:**
+
+104
+
+
+**Explanation:**
+
+1. `let x = 3 in`: x is bound to 3.
+2. `let r = ref (2 + x) in`: r is bound to a reference cell containing 2 + 3 = 5.
+3. `let f = ... in`:  f is bound to a function.  Crucially, this function *closes over* the environment at this point.  Inside f:
+   - `let y = x * !r in`:  y = 3 * 5 = 15.  (Note that `!r` dereferences and gets the value of 5)
+   - `let r = ref 4 in`:  A *new* `r` is bound inside `f`.  This *shadow* variable does not affect the outer `r`.
+4. `let x = 5 in`:  x is rebound to 5.
+5. `let y = 10 in`: y is bound to 10.
+6. `r := 2;`: This *modifies* the *original* reference cell bound to r from step 2. The value inside the reference cell (r) is now 2.
+7. `f (!r * y)`:  This calls f with argument (!r * y) = (2 * 10) = 20
+   - Inside `f`:
+     - `u` is bound to 20.
+     - `u + x + y + !r` = 20 + 5 + 10 + 2 = 37.  The `x`, `y`, and `!r` inside `f` *use the values from within the function’s scope* (which includes when f was created, not the current values outside).
+
+
+Therefore, the result of the expression is 37.

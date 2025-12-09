@@ -1,0 +1,6 @@
+Solution:
+1) ones  
+2) map psums pascal  
+
+Explanation:
+The first diagonal of Pascal's triangle is the stream "ones". Every next diagonal is the collection of partial sums of the previous diagonal, so the tail of the stream is obtained by mapping "psums" over the entire "pascal" stream.

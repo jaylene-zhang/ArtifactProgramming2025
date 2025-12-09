@@ -1,0 +1,8 @@
+a) False  
+**Explanation:** The length of the function definition doesn't determine the speed of the execution. The performance depends more on the algorithm used. `rev1` uses the `@` operator which creates a new list by concatenating two lists, leading to a higher time complexity than `rev2`.
+
+b) True  
+**Explanation:** The `@` (list concatenation) operator has a time complexity proportional to the length of its first argument. In `rev1`, every recursive call to `rev` concatenates the rest of the list with the last element, leading to the repeated traversal of lists and making it slower. In contrast, `rev2` builds the reversed list in a single pass.
+
+c) True  
+**Explanation:** `rev2` employs tail recursion with an accumulator to build the reversed list, using `::`, which is an O(1) operation. It allows the function to traverse the list once, making it more efficient compared to `rev1`, which processes the list multiple times due to list concatenation.

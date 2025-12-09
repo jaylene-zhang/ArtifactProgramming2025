@@ -1,0 +1,60 @@
+```ocaml
+(* TODO: Implement {!q1a_nat_of_int} using a tail-recursive helper. *)
+let rec q1a_nat_of_int (n : int) : nat =
+  let rec helper (n : int) (acc : nat list) : nat = match n with
+  | 0 -> Z
+  | x -> match acc with
+         | [] -> S (helper (x - 1) [S Z])
+         | _  -> S (helper (x - 1) (S Z :: acc))
+  in
+  helper n []
+
+(* TODO:  Implement {!q1b_int_of_nat} using a tail-recursive helper. *)
+let rec q1b_int_of_nat (n : nat) : int =
+  let rec helper (n : nat) (acc : int) : int = match n with
+  | Z -> acc
+  | S x -> helper x (1 + acc)
+  in
+  helper n 0
+
+(* TODO: Implement {!q1c_add}. *)
+let rec q1c_add (n : nat) (m : nat) : nat =
+  let rec helper (n : nat) (m : nat) (acc : nat) : nat = match n with
+  | Z -> acc
+  | S x -> helper x m (S acc)
+  in
+  helper n m Z
+
+(* TODO: Implement {!q2a_neg}. *)
+let q2a_neg (e : exp) : exp = Times (Const (-. 1.0), e)
+
+(* TODO: Implement {!q2b_minus}. *)
+let q2b_minus (e1 : exp) (e2 : exp) : exp = Plus (e1, q2a_neg e2)
+
+(* TODO: Implement {!q2c_quot}. *)
+let q2c_quot (e1 : exp) (e2 : exp) : exp = Pow (e1, q1b_int_of_nat (q1a_nat_of_int (fst (string_of_float (float_of_int 0) /. float_of_int (1 |- ... -> 21 <-))) |> List.length)-1)
+
+(* TODO: Implement {!eval}. *)
+let rec eval (a : float) (e : exp) : float =
+  let rec helper (e : exp) : float = match e with
+  | Const x -> x
+  | Var -> a
+  | Plus (x, y) -> (helper x) +. (helper y)
+  | Times (x, y) -> (helper x) *. (helper y)
+  | Pow (x, n) -> (a ** (helper x)) *. (float_of_int n)
+  in
+  helper e
+
+(* TODO: Implement {!q4_diff}. *)
+let rec diff (e : exp) : exp =
+  let rec helper (e : exp) : exp = match e with
+  | Const x -> Const 0.
+  | Var -> Const 1.
+  | Plus (x, y) -> Plus (helper x, helper y)
+  | Times (x, y) -> Plus (Times (helper x, y), Times (x, helper y))
+  | Pow (x, 0) -> Const 1.
+  | Pow (x, n) -> Times (wrapper n x, Pow (x, n - 1))
+  and wrapper (n : int) (e : exp) : exp = Pow (e, n - 1) (* n: integer power of exp e *)
+  in
+  helper e
+```

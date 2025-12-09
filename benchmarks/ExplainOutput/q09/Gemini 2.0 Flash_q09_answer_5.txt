@@ -1,0 +1,11 @@
+**Solution:**
+
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x
+```
+
+**Explanation:**
+
+Overshadowing occurs when a new binding (using `let`) introduces a variable with the same name as an existing variable in the current scope. In the example, the inner `let x = x + 1` overshadows the outer `let x = 5`.  Inside the inner `let`'s scope, `x` refers to the new binding (`x + 1`), not the original value of 5. The original `x` of 5 is still accessible when you are outside the scope of the inner `let`.

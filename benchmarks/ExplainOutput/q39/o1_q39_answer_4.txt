@@ -1,0 +1,5 @@
+Solution:  
+f (fun x -> x + 1) 0
+
+Explanation:  
+We treat f as a Church numeral. By passing in the successor function (fun x -> x + 1) and starting at 0, we count how many times f applies the function, thus recovering the integer.

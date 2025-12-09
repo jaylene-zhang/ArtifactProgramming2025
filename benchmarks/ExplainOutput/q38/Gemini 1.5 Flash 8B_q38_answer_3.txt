@@ -1,0 +1,8 @@
+**Solution:**
+
+c) h (g (f x))
+
+
+**Explanation:**
+
+The `compose` function takes two functions `h` and `g` and returns a function that applies `h` to the result of applying `g` to `f` and `x`. The given initial functions are `fun f x -> f x` and `fun f x -> f (f x)`.  This means `h` is `fun f x -> f x` and `g` is `fun f x -> f (f x)`.  When applied to `f` and `x`, the correct composition evaluates to `fun f x -> (fun f x -> f x) ((fun f x -> f (f x)) f x)` which is `h(g(f x))`.  To get the desired `fun f x -> f (f (f x))`, you need to apply `h (g f x)` in that order.  Other alternatives either reverse the order or use the wrong composition steps.

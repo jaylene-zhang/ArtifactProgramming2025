@@ -1,0 +1,10 @@
+Resulting expression after substitution:
+
+```
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation: We substitute `y` with `f x` in the original expression. The `y` appears in two places: `y + x` and the result of applying the lambda function. Thus, in the first place, we replace `y` with `f x`, and in the second place, we also replace `y` with `f x`. Note that the `y` in the lambda function's definition is replaced only once.

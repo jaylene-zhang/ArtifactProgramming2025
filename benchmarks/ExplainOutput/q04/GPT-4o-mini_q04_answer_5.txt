@@ -1,0 +1,15 @@
+The implementations that compute `prime_fact` only once are:
+
+1. **Implementation 1**
+2. **Implementation 3**
+3. **Implementation 4**
+
+### Explanation:
+
+1. **Implementation 1**: This implementation computes `prime_fact x` once, storing it in `p`. The recursive function `test` checks if `p` is equal to any of the lists in `l`.
+
+2. **Implementation 3**: This implementation uses `List.exists` and computes `prime_fact x` within the call. This implementation only checks for equality with the result of `prime_fact` but involves a single evaluation since `List.exists` triggers it only once.
+
+3. **Implementation 4**: This implementation also computes `prime_fact x` once and stores it in `p`, then checks if this value exists in the list using `List.exists`.
+
+**Implementation 2** is incorrect because it computes `prime_fact x` multiple times as it is directly calling it inside the match without storing the result.

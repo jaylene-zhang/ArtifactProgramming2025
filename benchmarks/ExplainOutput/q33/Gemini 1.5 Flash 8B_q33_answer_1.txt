@@ -1,0 +1,6 @@
+a)
+
+
+**Solution:**  `a`
+
+**Explanation:**  Option `a` correctly represents both the jump type (Axel, Loop, etc.) and the number of rotations (using an integer).  Options `b` and `c` are flawed. `b` tries to introduce a `revolutions` type, but `Double` and `Triple` are not useful in this context without adding integers associated with them. `c` creates a recursive structure that isn't necessary and would not appropriately handle different number of revolutions for different types of jumps.

@@ -1,0 +1,25 @@
+Let's find the most general instantiation for the type variables 't, 's, and 'u:
+
+
+f (f (a, b), f (b, a)) 
+
+By applying the definition of f twice, we get
+
+
+f (f (a, b), f (a, b)) 
+
+Now, if f takes two parameters and returns a 'u, we know that both the parameters must be things of kind `'t * 's`.
+So (a, b) is of kind `'t * 's`
+
+Now, we substitute a and b in with those types:
+
+f (`t * `s, `t * `s)
+
+Since we know `t * `s is also a `'t * `s , we know types `t and `s must be the same.
+
+f ( `'t * `s, `'t * `s)
+
+both parameters have the same type when also knowing that 's and 't are the same type,  this tells us that the result of applying f twice is 's * 's , i.e, 'u is 's * 's.
+
+
+Thus the most general instantiation for 't, s, and 'u is:

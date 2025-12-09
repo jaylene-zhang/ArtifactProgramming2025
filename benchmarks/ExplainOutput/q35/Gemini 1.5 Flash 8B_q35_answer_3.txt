@@ -1,0 +1,43 @@
+Solution: 55
+
+Explanation:
+
+1. `let x = 3 in ...`:  `x` is bound to 3.
+2. `let r = ref 1 in ...`: A mutable reference `r` is created and initialized to 1.
+3. `let f = ... in ...`:  A function `f` is defined.
+   - `let y = x * !r in ...`: `y` becomes 3 * 1 = 3.
+   - `let r = ref 5 in ...`: A *new* mutable reference `r` (shadowing the previous one) is created and initialized to 5. Note this `r` is local to the `f` function.
+   - `fun u -> u + x + y + !r`: The function body, containing an inner `r`.
+4. `let x = 2 * !r * x in ...`:
+   - `!r` is 5.
+   - `x` becomes 2 * 5 * 3 = 30. So, `x` is now 30, overshadowing the previous  `x`.
+5. `r := 10 ;`: The outer `r` (the global one) gets updated,  becoming 10.
+6. `f (x * !r)`:  `f` is called with `x * !r` as an argument:
+   - `x * !r = 30 * 10 = 300`
+   - `f` returns (`argument` + 'old' x + `y` + `inner r`) which equals 300 + 30 + 3 + 5 = 338
+
+So, `f` is applied to 300, resulting in 300 + 30 + 3 + 5 = 338.
+
+
+Therefore, the final result is 338.  **Important Note:** The original outer `r` was not used during the evaluation of f(300), only the `r` defined within the `f` function.  The function f has its own `r` (the inner `ref 5` assignment); that's what is accessed in the final evaluation. 
+
+
+**Corrected Answer:**
+
+
+```
+let x = 3 in
+let r = ref 1 in
+let f = (let y = x * !r in
+let r = ref 5 in fun u   -> u + x + y + !r ) in
+let x = 2 * !r * x in
+r := 10 ; f (x * !r)
+```
+
+1. `x` = 3
+2. `r` = ref 1
+3. `f` is a function; inside `f`, a new `r` is created with 5.
+4. `x` is updated to `2 * !r * x = 2 * 5 * 3 = 30`. The *outer* `r` IS still 1 at this moment. 
+5. `r := 10` updates *outer* `r` (the one with starting value 1)  to 10!
+6. `f (x * !r)` is evaluated: `x * !r = 30 * 10 = 300` when function execution.
+7.  `f 300 = 300 + 30 + 3 + 5 = 338` (inside defined `f` scope, `r` in the innermost let becomes 5.

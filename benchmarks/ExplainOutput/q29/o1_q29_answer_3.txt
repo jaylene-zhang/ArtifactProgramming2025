@@ -1,0 +1,6 @@
+Solution:  
+• (a) and (c) are correct.  
+• (b) is incorrect.  
+
+Explanation:  
+(a) and (c) both end up calling sumSeries f (0, b) (fun x -> x + 1) for the upper bound b. In (b), the partial application sumSeries f 0 incorrectly tries to pass 0 where a tuple (0, b) is required.

@@ -1,0 +1,7 @@
+No, the provided program does not correctly compute the antiderivative of `f`.
+
+Explanation: The function `anti_d` is defined as `(curry integral) f 0`, which means it produces a partially applied function `integral f (0, x) dx`, where `x` is the variable that will be passed later. However, the `integral` function is missing the second argument for the bounds. The correct way to use `integral` would be `integral f (0, x) dx`, which could be expressed as `fun x -> integral f (0, x) dx`. Thus, the correct definition of the antiderivative would be:
+
+```ocaml
+let anti_d f = fun x -> integral f (0, x) dx
+```

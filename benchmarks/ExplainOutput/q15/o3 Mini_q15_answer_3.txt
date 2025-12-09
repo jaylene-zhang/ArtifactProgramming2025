@@ -1,0 +1,23 @@
+Solution: 42
+
+Explanation:
+1. Bind x = 3.
+2. Bind r = ref (2 + 3) = ref 5.
+3. Define f with:
+  – y = x * !r = 3 * 5 = 15.
+  – A new local r = ref 4.
+  – f = fun u -> u + (captured x,3) + (captured y,15) + !r (the inner r).
+4. Then, in a new scope, bind x = 5 and y = 10; update the outer r to 2.
+5. Compute the argument: !r * y = 2 * 10 = 20.
+6. Call f 20: 20 + 3 + 15 + 4 = 42.
+
+Binding Stack:
+Final scope:
+ x = 5
+ y = 10
+Outer scope:
+ r = ref 2                (outer r)
+ x = 3
+ f = fun u -> u + 3 + 15 + !r (with inner r = ref 4)
+
+Thus, the evaluated expression yields 42.

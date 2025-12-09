@@ -1,0 +1,3 @@
+The unused variable in the expression is `f`.
+
+Explanation: In the function `foo`, the variable `f` is defined as a function that takes a parameter `x`, but it is never used in the expression. Instead, `f` is immediately invoked with `y` as its argument, and the return value depends only on `x` (which is shadowed by the inner binding) and `y`. The variable `r` is used indirectly but not as part of the returned value, hence it is considered unused in the context of the overall expression's result.

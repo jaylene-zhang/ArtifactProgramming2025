@@ -1,0 +1,10 @@
+Solution: While continuations can make a function tail-recursive, they typically add complexity and potentially overhead that may not be desirable for all functions.
+
+Explanation: Though continuations enable tail recursion, the List library designers chose not to make all functions tail-recursive because:
+1. Continuations add conceptual complexity making code harder to read/maintain
+2. Continuation-passing style can introduce runtime overhead for simpler operations
+3. For smaller lists, the stack overflow risk of non-tail-recursive functions is minimal
+4. Performance characteristics may be worse for some operations when forcing tail recursion
+5. The library aims to balance readability, performance, and safety
+
+The standard library provides tail-recursive alternatives (like List.rev_map) when stack overflow is a concern for large inputs.

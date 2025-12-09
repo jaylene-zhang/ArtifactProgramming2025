@@ -1,0 +1,7 @@
+**Step case**
+
+We need to prove that $$P(hd\;l) \land P(tl\;l) \to P(l)\;$$ for all l where l ≠ [].
+
+**Explanation**
+
+In the step case, we're assuming the basis cases have already been proven (i.e., P[] and P[hd l] for all l), and now we want to prove it for lists of length at least 2, i.e., lists with a head and a tail (hd l, tl l).

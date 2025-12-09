@@ -1,0 +1,6 @@
+**Solution:** The unused variables in the given expression are `y` in the inner `let` binding and the `f` function itself.
+
+**Explanation:**
+- `x` in `let x = 42` is shadowing the parameter `x` of the function `f`, but since the inner `x` is not used anywhere, it is effectively an unused variable.
+- `r` is not used anywhere, but in this context, it is not typically considered unused as it is a local binding that is part of the computation of `f`.
+- `y` in `f y` is passed as an argument to the function `f`, but the function `f` itself does not use `y` inside its body. Therefore, the call `f y` itself does not "use" `y` in a meaningful way for the purpose of determining unused variables.

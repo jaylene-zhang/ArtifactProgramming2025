@@ -1,0 +1,46 @@
+**Solution for first part:**
+
+```OCaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation for first part:**
+
+* `'a list`: Represents lists of any type.  This is the most general type of a list in OCaml. Since `l1` and `l2` are lists of the same type (potentially different types),  we use the same type variable `'a` for both.
+* `('a * 'a) list`: Represents lists of pairs, where each pair contains two elements of type `'a`.  This matches the desired output of paired elements from the input lists.
+
+
+**Solution for second part:**
+
+```OCaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd list -> 'd list)
+(l1: 'a list) (l2: 'b list) : 'c list =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation for second part:**
+
+* `comb: 'a -> 'b -> 'c`:  A function `comb` that takes two arguments of types `'a` and `'b` and returns a result of type `'c`. This is the function used to combine the elements from `l1` and `l2`, which could return a variety of types.
+* `add: 'c -> 'd list -> 'd list`: A function `add` that takes an element of type `'c` and a list of type `'d` and returns a list of type `'d`. This function adds elements to a given list. The function is designed for general use, able to add different types.
+* `l1: 'a list`, `l2: 'b list`:  `l1` and `l2` are lists of types `'a` and `'b`.  The new generalization allows them to have different types.
+* `'c list`:  The result is a list of type `'c`, which is the type returned by `comb` when it combines the corresponding elements from `l1` and `l2`.
+
+
+**Specific example use of `zipper` as used in the question (`zip`):**
+
+
+```OCaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+// ... Example Usage (with integers):
+let l1 = [1; 2; 3]
+let l2 = [4; 5; 6]
+let zipped_list = zip l1 l2;;  // [(1, 4); (2, 5); (3, 6)]
+```
+
+
+This demonstrates how both `comb` and `add` are specialized to produce a list of pairs rather than a general list. Importantly, the use of type variables allows for different types to be used (`x`,`y` could be integers, strings, etc.)  as well as any type which `comb` can return.

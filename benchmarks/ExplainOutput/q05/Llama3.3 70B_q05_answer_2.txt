@@ -1,0 +1,3 @@
+**let foo y = let w = y + 3 in fun y -> (y + 3) + 2 + y * w**
+
+This expression is obtained by replacing occurrences of `x` with `y + 3` in the original program, but not in the definition of `w` because `w` is defined as `x`, which would lead to a recursive substitution.

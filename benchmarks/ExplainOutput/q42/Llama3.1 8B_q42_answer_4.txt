@@ -1,0 +1,15 @@
+### Solution
+
+```ocaml
+let rec rev_tl l acc =
+  match l with
+  | [] -> acc
+  | h :: t -> rev_tl t (h :: acc)
+
+(* Example usage *)
+let () = print_endline (String.concat " " (rev_tl [1; 2; 3] []))
+```
+
+### Explanation
+
+We need to initialize `acc` as an empty list `[]`, because the `rev_tl` function appends elements to `acc` in each recursive call. If `acc` were not empty initially, the added elements would be prepended to the existing contents.

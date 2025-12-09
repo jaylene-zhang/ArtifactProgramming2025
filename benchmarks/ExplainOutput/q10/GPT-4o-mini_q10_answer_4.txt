@@ -1,0 +1,1 @@
+Functions being "first-class values" means that functions in OCaml can be treated like any other value, such as being passed as arguments to other functions, returned from other functions, and assigned to variables. This allows for higher-order functions that can manipulate and combine functions in flexible ways.

@@ -1,0 +1,16 @@
+**No**
+
+The implementation does not calculate the largest power of two that divides a number correctly.
+
+Explanation: 
+- The function `helper` takes one argument, but it's called with two arguments in `max_two_factor`.
+- The function `helper` itself does not correctly count the number of times `n` can be divided by 2 before becoming odd.
+- To be tail-recursive, the last expression in the function should be a recursive call to the function, but the `2 *` operation comes after the recursive call. 
+
+Here is a corrected version:
+```ocaml
+let rec helper n k =
+  if n mod 2 = 1 then k
+  else helper (n / 2) (k + 1)
+let max_two_factor n = helper n 0
+```

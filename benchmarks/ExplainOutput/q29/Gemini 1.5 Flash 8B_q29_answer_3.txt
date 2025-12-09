@@ -1,0 +1,30 @@
+**a)** Incorrect
+
+**b)** Correct
+
+**c)** Incorrect
+
+
+**Explanations:**
+
+**a) Incorrect:**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+This tries to partially apply `sumSeries f` with only one argument (0), but `sumSeries` expects two arguments for the bounds (`a`, `b`). The attempt to create a function to act as a `swap` of the resulting function with `fun x -> x + 1` fails because it does not correctly separate the two components (function and increment).  The curry call isn't sufficient.
+
+**b) Correct:**
+```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+This correctly curries `sumSeries f 0`. This creates a function that now accepts only the upper bound (`b`). Then it correctly passes the increment function (`fun x -> x + 1`) to the `swap` function and then swaps the two arguments to prepare the result.
+
+**c) Incorrect:**
+```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+This attempts to curry the result of swap (`swap (sumSeries f) (fun x -> x + 1)`). Since `sumSeries` expects two arguments for the lower and upper bounds, `swap(sumSeries f)(fun x->x+1)` doesn't have the correct structure. This will not work as intended. `sumSeries` expects two arguments but only one is provided. `swap` is not correctly constructing the parameters to curry.  It also attempts to set the lower bound to 0 after the swap.
+
+
+
+In summary, only option b correctly constructs the necessary function to compute a sum series starting from 0 with increment x+1.  All other attempts produce functions that are structurally incorrect to compute the result.

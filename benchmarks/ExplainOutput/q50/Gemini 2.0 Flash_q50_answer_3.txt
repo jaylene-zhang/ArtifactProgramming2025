@@ -1,0 +1,18 @@
+**Correct Implementations:**
+
+*   **(c)**
+
+**Explanation:**
+
+`fold_right f [x1; x2; ...; xn] b` should be equivalent to `f x1 (f x2 (... (f xn b)...))`.
+
+*   **(c)** correctly implements the tail-recursive `fold_right`. The continuation `cont` accumulates the function applications from right to left. The `aux_folder` calls itself with the rest of the list `xs` and a new continuation `(fun r -> f x (cont r))`. This means that after processing the rest of the list, say resulting in `r`, we'll apply `f x r` and pass the result to what was previously accumulated by `cont`.
+
+Let's trace (c) with `fold_right f [x1; x2] b`:
+
+1.  `aux_folder f [x1; x2] b (fun r -> r)`
+2.  `aux_folder f [x2] b (fun r -> f x1 ((fun r -> r) r))` which simplifies to `(fun r -> f x1 r)`
+3.  `aux_folder f [] b (fun r -> f x2 ((fun r -> f x1 r) r))`which simplifies to -> `(fun r -> f x2 (f x1 r))`
+4.  ` (fun r -> f x2 (f x1 r)) b` results in `f x2 (f x1 b)`, then applied to  `f x1 (f x2 b)` because `fold_right`
+
+*   **(a), (b), (d), (e)** are not correct because they don't maintain the correct order of function application or have other logical errors in building the continuation.  (e) changes the order of parameters in the recursive call i.e. by passing f as a list.

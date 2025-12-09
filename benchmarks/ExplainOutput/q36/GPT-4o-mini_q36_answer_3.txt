@@ -1,0 +1,7 @@
+The function `f l` takes a list `l` with at least five elements and rotates it such that the first element is moved to the end, and then it returns this rotated list.
+
+**Explanation:**
+1. The pattern match checks if `l` is empty. If it is, it returns an empty list.
+2. If `l` has at least one element (denoted by `h :: t`), it takes the head `h` and the tail `t`.
+3. The function then calls `rotate` on the list formed by concatenating the tail `t` with the head `h` placed at the end (`t @ [h]`).
+4. Since `rotate` places the first element of its input at the end, `f l` effectively moves the original head `h` of the list `l` to the end of a new list formed by `t`, effectively rotating `l` one step. Thus, it performs one rotation on `l`, returning the new list as a result.

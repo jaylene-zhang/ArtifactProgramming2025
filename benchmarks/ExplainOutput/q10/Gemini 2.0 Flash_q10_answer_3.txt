@@ -1,0 +1,7 @@
+**Solution:**
+
+Functions can be treated like any other value, such as integers or strings. They can be passed as arguments to other functions, returned as results from functions, and stored in data structures.
+
+**Explanation:**
+
+"First-class" means that functions have the same rights and privileges as any other data type in the language. This enables powerful programming paradigms like higher-order functions and functional composition.

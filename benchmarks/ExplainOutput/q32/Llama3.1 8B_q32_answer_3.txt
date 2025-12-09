@@ -1,0 +1,9 @@
+**Solution**
+a) and b) are correct.
+
+**Explanation**
+Both a) and b) correctly define a recursive data type `bookmarks` to describe a list of URLs. The `Location` variant is used to represent a bookmark with a URL, and the `Empty` variant represents an empty list. The recursive case in b) directly uses the `string` type for the URL, whereas a) uses a type alias `url` for the `string` type.
+
+c) is incorrect because `Location` should be `Location of url`, not just `Location`.
+
+d) is incorrect because it incorrectly swaps the order of the `url` and `bookmarks` types, making it a list of bookmarks rather than a bookmark with a URL.

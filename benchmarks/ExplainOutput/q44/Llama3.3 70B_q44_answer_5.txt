@@ -1,0 +1,3 @@
+**Forall x and xs, P xs -> P (x :: xs)**
+
+In the step case of an inductive proof about lists, we need to prove that if the property (P) holds for a list (xs), then it also holds for the list created by prepending an element (x) to (xs), i.e., (x :: xs).

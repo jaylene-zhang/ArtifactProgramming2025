@@ -1,0 +1,3 @@
+Solution: (7, 6)
+
+Explanation: After re-binding point to the result of shift_point 1, point becomes (5, 4). Hence shift_point 2 will use (5, 4), resulting in (7, 6).

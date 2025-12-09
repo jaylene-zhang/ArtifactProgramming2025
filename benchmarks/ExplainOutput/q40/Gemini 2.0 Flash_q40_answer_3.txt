@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The function `zip_tr` is not tail-recursive because in the `h1::t1, h2::t2` case, after the recursive call `zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2` returns, there's still work to be done: the `fun l -> sc ((h1, h2) :: l)` needs to be applied to the result `l`. This means the recursive call isn't the very last thing that happens.

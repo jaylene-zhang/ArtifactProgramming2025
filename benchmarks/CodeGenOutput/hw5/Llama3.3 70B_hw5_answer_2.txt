@@ -1,0 +1,81 @@
+Here are the answers to the questions:
+
+```ocaml
+(* Question 1: Tree Depth *)
+let tree_depth_cps t = 
+  let rec depth_helper t sc _ = 
+    match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) -> 
+      depth_helper l (fun x -> 
+        depth_helper r (fun y -> sc (1 + max x y)))
+  in
+  depth_helper t (fun x -> x) (fun _ -> 0)
+
+(* Question 2: Finding Subtrees *)
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match ls with
+    | [] -> sc (Some tree)
+    | h :: tl -> 
+      (match tree with
+       | Empty -> fc tree
+       | Tree (l, v, r) -> 
+         if v = h then
+           helper tl l sc fc
+         else
+           helper ls r (fun x -> sc (Some x)) (fun _ -> fc tree))
+  in
+  helper ls tree (fun x -> x) (fun _ -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+type token = TokPlus | TokMinus | TokTimes | TokDiv | TokLParen | TokRParen | TokInt of int
+type expr = Const of int | Plus of expr * expr | Minus of expr * expr | Times of expr * expr | Div of expr * expr
+
+let eval e v = 
+  let rec eval_expr e = 
+    match e with
+    | Const n -> n
+    | Plus (e1, e2) -> eval_expr e1 + eval_expr e2
+    | Minus (e1, e2) -> eval_expr e1 - eval_expr e2
+    | Times (e1, e2) -> eval_expr e1 * eval_expr e2
+    | Div (e1, e2) -> eval_expr e1 / eval_expr e2
+  in
+  eval_expr e
+
+let parser_cps tokens = 
+  let rec expr sc fc = 
+    term (fun e1 -> 
+      match tokens with
+      | TokPlus :: tl -> 
+        expr (fun e2 -> sc (Plus (e1, e2))) fc
+      | TokMinus :: tl -> 
+        expr (fun e2 -> sc (Minus (e1, e2))) fc
+      | _ -> sc e1)
+      (fun _ -> fc tokens)
+
+  and term sc fc = 
+    factor (fun f1 -> 
+      match tokens with
+      | TokTimes :: tl -> 
+        term (fun f2 -> sc (Times (f1, f2))) fc
+      | TokDiv :: tl -> 
+        term (fun f2 -> sc (Div (f1, f2))) fc
+      | _ -> sc f1)
+      (fun _ -> fc tokens)
+
+  and factor sc fc = 
+    match tokens with
+    | TokInt n :: tl -> sc (Const n)
+    | TokLParen :: tl -> 
+      expr (fun e -> 
+        match tokens with
+        | TokRParen :: tl' -> sc e
+        | _ -> fc tokens)
+        (fun _ -> fc tokens)
+    | _ -> fc tokens
+  in
+  expr (fun e -> Some e) (fun _ -> None)
+```

@@ -1,0 +1,78 @@
+(* Question 1: Tree Depth *)
+let tree_depth_cps t = 
+  let rec depth_helper t k =
+    match t with
+    | Empty -> k 0
+    | Tree (l, _, r) -> 
+       depth_helper l (fun ll -> 
+         depth_helper r (fun rr -> 
+           k (1 + max ll rr))))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc =
+    match (ls, tree) with
+    | ([], Tree (Empty, a, Empty)) -> sc (Some Empty)
+    | ([], _) -> fc ()
+    | (h::t, Tree (l, a, r)) when h = a -> 
+       helper t l (fun l' -> 
+         helper t r (fun r' -> 
+           sc (Some (Tree (Tree (l', a, l'), a, r')))))
+    | _ -> 
+       match tree with
+       | Empty -> fc ()
+       | Tree (Empty, a, Empty) 
+       | Tree (Empty, a, r) 
+       | Tree (l, a, Empty) -> 
+          helper ls (Tree (l, a, r)) sc fc
+  in
+  helper ls tree (fun() -> None) (fun() -> None)
+
+(* Question 3: Arithmetic Experssion Parser *)
+let const_cps t sc fc = 
+  match t with 
+  | [Const(c);_::_] -> sc (Const c)
+  | _ -> fc ()
+
+let var_cps t sc fc = 
+  match t with 
+  | [Var(v);_::_] -> sc (Var v)
+  | _ -> fc ()
+
+let un_cps t sc fc = 
+  match t with 
+  | [UOp(op);_::[c]] -> sc (UOp (op, c))
+  | _ -> fc ()
+
+let bin_cps t sc fc = 
+  match t with 
+  | [Op(op);_::[l];_::[r]] -> sc (Bin (op, l, r))
+  | _ -> fc ()
+
+let parser_cps t = 
+  let rec expr_cps t sc fc = 
+    add_cps t (fun e -> sc e)
+           (lambda_cps t (fun e -> sc e)
+                 (un_cps t (fun e -> sc e)
+                       (bin_cps t (fun e -> sc e)
+                             (const_cps t (fun e -> sc e)
+                                   (var_cps t (fun e -> sc e)))))) 
+  and add_cps t sc fc = 
+    match t with 
+    | [Op("+");_::[l];_::[r]] -> expr_cps r (fun e -> expr_cps l (fun l' -> sc (Bin("+",l',e))))
+    | _ -> bin_cps t sc fc
+  and lambda_cps t sc fc = 
+    match t with 
+    | ["lambda";_::_] -> 
+       let t0 = t in 
+       t <- t0;  (* Need to preserve original `t` value *)
+       fun tl ->
+          let arg = List.hd tl in
+          t <- t0;  (* Restore original `t` value *)
+          let body = List.tl tl in
+          expr_cps body (fun e -> sc (Lambda ([arg], e)))
+    | _ -> bin_cps t sc fc
+  in
+  expr_cps t (fun e -> Some e) (fun _ -> None)

@@ -1,0 +1,21 @@
+The result is 84.
+
+Explanation:
+1. First, `x = 3` is bound.
+2. Then, `r` is bound to a reference containing 1.
+3. `f` is defined with a closure that captures:
+   - `x` (which is 3)
+   - `y` (which is `x * !r` = 3 * 1 = 3)
+   - A local `r` that's a reference to 5
+4. `x` is rebound to `2 * !r * x` = 2 * 1 * 3 = 6
+5. `r` is updated to 10
+6. `f` is called with `x * !r` = 6 * 10 = 60
+7. The function returns `u + x + y + !r` = 60 + 3 + 3 + 5 = 71 (using the captured values from the closure)
+
+Actually, I made a mistake. Let me recalculate:
+`u + x + y + !r` = 60 + 3 + 3 + 18 = 84
+
+Wait, that's wrong again. The local `r` in function `f` is bound to 5, so:
+`u + x + y + !r` = 60 + 3 + 3 + 5 = 71
+
+Sorry for the confusion. The result is 71.

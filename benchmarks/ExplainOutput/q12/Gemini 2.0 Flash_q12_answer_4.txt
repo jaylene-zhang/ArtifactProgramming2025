@@ -1,0 +1,42 @@
+Okay, here are the solutions and explanations for the OCaml inductive proof questions.
+
+**Q4.1**
+
+*   **Base Case:** h = Empty
+
+    *   `add_up Empty + acc = 0 + acc = acc`
+    *   `add_up_tr Empty acc = acc`
+    *   Therefore, `add_up Empty + acc = add_up_tr Empty acc`
+
+*   **Step Case:** h = Hand (c, h')
+
+    *   Induction Hypothesis: `add_up h' + acc = add_up_tr h' acc`
+
+    *   Proof:
+
+        *   `add_up (Hand (c, h')) + acc = (add_up h' + 1) + acc = add_up h' + (1 + acc)` (by definition of `add_up` and associativity of addition).
+        *   `add_up_tr (Hand (c, h')) acc = add_up_tr h' (1 + acc)` (by definition of `add_up_tr`).
+        *   By the induction hypothesis, `add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`.
+        *   Therefore, `add_up (Hand (c, h')) + acc = add_up_tr (Hand (c, h')) acc`.
+
+**Q4.2**
+
+*   Proof:
+
+    *   We can prove the main result `add_up h = add_up_tr h 0` by instantiating Theorem 1 with `acc = 0`.
+    *   From Theorem 1, `add_up h + acc = add_up_tr h acc`.
+    *   Substituting `acc = 0`, we get `add_up h + 0 = add_up_tr h 0`.
+    *   Since `add_up h + 0 = add_up h`, we have `add_up h = add_up_tr h 0`.
+    *   Therefore, for all hands `h`, `add_up h = add_up_tr h 0`.
+
+**Explanation**
+
+*   **Inductive Proof Structure:**  The proofs follow the standard structural induction format:
+    1.  **Base Case:** Prove the statement for the simplest possible value(s) of the inductively defined type (`Empty` hand).
+    2.  **Inductive Step:** Assume the statement holds for a smaller value (the `h'` sub-hand) of the inductively defined type (Induction Hypothesis), and then prove that it holds for a larger value constructed using the inductive step of the data type definition (`Hand (c, h')`).
+
+*   **Theorem 1 (Generalization):** The original statement (`add_up h = add_up_tr h 0`) can't be directly proven by induction.  A more general statement (`add_up h + acc = add_up_tr h acc`) that involves an accumulator `acc` *can* be proven inductively. This is a common technique in inductive proofs.
+
+*   **Theorem 2 (Main Result):** Once Theorem 1 is proven, the original statement is easily obtained by simply setting the accumulator, `acc`, to `0`.
+
+*   **Tail Recursion:** This question illustrates the relationship between a standard recursive function (`add_up`) and a tail-recursive equivalent (`add_up_tr`). Tail-recursive functions are important in OCaml (and other functional languages) because they can be optimized by the compiler to run in constant stack space, preventing stack overflows for large inputs.

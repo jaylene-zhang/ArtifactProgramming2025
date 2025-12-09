@@ -1,0 +1,23 @@
+Solution: Option 1
+
+```
+let check_prime_factors x l = 
+  let p = prime_fact x in
+  let rec test l = 
+    match l with 
+    | [] -> false
+    | y::ys -> y = p || test ys 
+  in test l
+```
+
+Explanation: 
+
+- In this solution, `prime_fact x` is computed once and stored in `p`.
+- The function `test` is a recursive helper function used to check if `p` exists in the list `l`.
+- The function `check_prime_factors` is tail-recursive and does not recompute `prime_fact x`, resulting in better performance as the prime factorization is computed only once.
+
+Option 2 is incorrect because `prime_fact x` is recomputed for each element in the list.
+
+Option 3 is incorrect because it recomputes `prime_fact x` for each element, which is inefficient.
+
+Option 4 is incorrect because `check_prime_factors` is defined without an argument list, which is syntactically incorrect.

@@ -1,0 +1,8 @@
+The most general instantiation for the type variables is:
+
+'t = 'u  
+'s = 'u  
+'u = 'u
+
+**Explanation**:  
+To evaluate `f(f(a, b), f(b, a))`, the arguments `f(a, b)` and `f(b, a)` must both have the same type as the first parameter of `f`. Since `f` has type `('t * 's -> 'u)`, its arguments `(a, b)` and `(b, a)` imply `'t * 's`. For the outer `f` to accept `f(a, b)` and `f(b, a)` as arguments, `'u` (output type of the inner `f`) must match `'t` (first component of input type of `f`) and `'s` (second component due to switching arguments). Hence, the most general solution sets all type variables to the same type `'u`.

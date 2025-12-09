@@ -1,0 +1,49 @@
+### Solution to Question 2:
+#### Part 1: Define the type of `zip`
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+#### Explanation:
+- `l1` has type `'a list`, meaning it's a list of elements of some type `'a`.
+- `l2` has type `'b list`, meaning it's a list of elements of potentially a different type `'b`.
+- The return type is `('a * 'b) list`, i.e., a list of pairs where the first element of each pair is of type `'a`, and the second is of type `'b`.
+
+---
+
+#### Part 2: Define the type of `zipper`
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+  (l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+#### Explanation:
+- `comb: 'a -> 'b -> 'c` is a function that takes an element of type `'a` from `l1` and an element of type `'b` from `l2`, producing a result of type `'c`.
+- `add: 'c -> 'd -> 'd` is a function that takes an element of type `'c` and a structure of type `'d` (e.g., a list), producing a new structure of type `'d`.
+- `l1: 'a list` and `l2: 'b list` are as before.
+- The return type is `'d`, which is the result of combining all the pairs.
+
+---
+
+#### Part 3: Function Definitions for `zip` and `zip_rev`
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+
+let zip_rev = zipper
+  (fun x y -> (string_of_int x) ^ y)
+  (fun s t -> t @ [ (s, List.length t) ])
+```
+
+#### Explanation:
+- `zip`:
+  - Uses a `comb` function that creates a pair `(x, y)`.
+  - Uses `add` as standard list construction (`h :: t`), adding an element to the head of a list.
+- `zip_rev`:
+  - Combines `x` and `y` by converting `x` to a string, concatenating it with `y`.
+  - Appends each new element `s` to the end of `t` using `t @ [ (s, List.length t) ]`. Here, `List.length t` tracks the current position in the result list.

@@ -1,0 +1,8 @@
+This implementation is incorrect and is not tail-recursive.
+
+There are several issues:
+1. The function signature for `helper` doesn't match its usage - it's defined with one parameter but called with two.
+2. It's not tail-recursive because the recursive call to `helper` is followed by multiplication with 2.
+3. The algorithm itself is wrong - it should accumulate the power of 2, not multiply by 2 each time.
+
+A correct implementation would keep track of both the current power of 2 and a counter for how many times we've divided by 2.

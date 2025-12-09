@@ -1,0 +1,8 @@
+The standard List library in OCaml doesn't make all functions tail-recursive because:
+
+1. Simplicity and readability - direct recursive implementations are often simpler and more intuitive
+2. Performance trade-offs - CPS (continuation-passing style) introduces overhead that isn't always justified
+3. Stack overflow is rarely an issue for operations on reasonably-sized lists
+4. Backward compatibility concerns with existing code
+
+While it's technically possible to implement all functions in a tail-recursive manner using continuations, the library designers prioritized readability, simplicity, and performance for common use cases. When processing very large lists, OCaml provides alternatives like List.fold_left (which is tail-recursive) or users can implement their own tail-recursive versions.

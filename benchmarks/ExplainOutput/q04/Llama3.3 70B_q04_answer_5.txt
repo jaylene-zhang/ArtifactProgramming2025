@@ -1,0 +1,9 @@
+**Solution:**
+The correct implementations are:
+1. `let check_prime_factors x l = let p = prime_fact x in let rec test l = match l with | [] -> false | y::ys -> y = p || test ys in test l`
+2. `let check_prime_factors x l = let p = prime_fact x in List.exists (fun e -> e = p) l` 
+   or 
+3. `let check_prime_factors x = let p = prime_fact x in List.exists (fun e -> e = p)`
+
+**Explanation:** 
+These three solutions only call `prime_fact x` once. The first and third solutions store the result in a variable `p`, then use `p` for the rest of the function. In the second solution, a variable `p` is explicitly defined to store the result of `prime_fact x` before using `List.exists`. The second option provided in the problem description calls `prime_fact x` multiple times and is therefore not the correct solution.

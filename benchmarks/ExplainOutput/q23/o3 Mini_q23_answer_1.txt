@@ -1,0 +1,3 @@
+Solution: (int ref * int ref) -> unit
+
+Explanation: The shift function takes a tuple where each component is an int reference, and it updates these references. Since the function performs side effects and returns no meaningful value, its return type is unit.

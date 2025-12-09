@@ -1,0 +1,7 @@
+### Solution
+
+No.
+
+### Explanation
+
+In the expression `get_tail rc1`, `!rc1` is evaluated first, which gives `rc2`. Then `get_tail rc2` is evaluated, which gives `rc1`. Because `rc1` and `rc2` are distinct references, they are not equal, even if they both point to the same location in memory. The `==` operator tests physical equality, which is not the case here.

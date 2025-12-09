@@ -1,0 +1,21 @@
+**Solution:**
+
+No, the given program `let anti_d f = (curry integral) f 0` does not compute the antiderivative of `f`.
+
+---
+
+**Explanation:**
+
+1. The function `curry integral` transforms `integral` from a function of type `('a * 'b) -> 'c` into one with type `'a -> 'b -> 'c`. This enables partial application with arguments one at a time, but this is not directly relevant to the computation of the antiderivative.
+   
+2. `(curry integral) f 0` tries to partially apply the `integral` function by binding the first argument to `f` and the starting bound `0`. However, it is incomplete because the second bound and `dx` (step size) are missing.
+
+3. More importantly, the antiderivative `F(x)` for `f(x)` should compute the integral of `f(x)` from `0` to `x`, which requires `x` to be provided as a parameter in the resulting function. The given definition does not allow for `x` as an input to compute the integral dynamically.
+
+To fix this, the correct implementation is:
+
+```ocaml
+let anti_d f = fun x -> integral f (0.0, x) dx
+```
+
+This defines a function `anti_d` which takes an input `x` and computes the integral of `f` from `0` to `x`.

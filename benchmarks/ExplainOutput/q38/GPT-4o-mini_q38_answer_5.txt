@@ -1,0 +1,8 @@
+The correct answers are:
+
+c) h (g (f x))
+
+Explanation:
+The type of `compose` is `((’a -> ’a) -> ’a -> ’a) -> ((’a -> ’a) -> ’a -> ’a) -> ((’a -> ’a) -> ’a -> ’a)`. Given that `h` and `g` are both of the same type, composing them using the `compose` function to yield the desired behavior can be achieved through the application of these functions in the context of a functor. The expression `h (g (f x))` denotes that `g` is first applied to `f x`, followed by `h`, which matches the requirement of nesting function applications correctly to achieve the result `fun f x -> f (f (f x))`.
+
+The other options do not maintain the necessary type consistency or fail to implement the correct levels of function composition to achieve the desired outcome.

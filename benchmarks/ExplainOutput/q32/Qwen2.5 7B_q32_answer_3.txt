@@ -1,0 +1,11 @@
+**Correct Options:**
+
+b) **type url = string**
+   **type bookmarks = Empty | Location of string * bookmarks**
+
+**Explanation:**
+
+- Option b correctly describes a list of URLs where `Empty` represents an empty list and `Location of string * bookmarks` represents a location (URL) paired with the rest of the list of bookmarks.
+- Option a incorrectly uses `*` between `Location` and `bookmarks`, implying a tuple, which is not what we want for a recursive list.
+- Option c does not use the second argument to construct a non-empty list.
+- Option d incorrectly places `bookmarks` after `url`, which disrupts the order and logic for a linked list structure.

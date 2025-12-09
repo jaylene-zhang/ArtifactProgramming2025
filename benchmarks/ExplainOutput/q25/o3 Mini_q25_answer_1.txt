@@ -1,0 +1,3 @@
+Solution: Let 't = 's = 'u = α (an arbitrary type). Then f has type α * α → α.
+
+Explanation: f(a, b) yields a value of type α and f(b, a) also yields a value of type α. Since f expects an argument pair of type (α, α), the types force 't and 's to be equal and its return type 'u to equal α, making the overall expression f (f(a,b), f(b,a)) of type α.

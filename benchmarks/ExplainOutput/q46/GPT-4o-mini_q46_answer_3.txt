@@ -1,0 +1,14 @@
+1) For blank 1 we should write:
+```ocaml
+f (Stream.hd s) a
+```
+
+2) For blank 2 we should write:
+```ocaml
+fold f (f (Stream.hd s) a) (Stream.tl s)
+```
+
+### Explanation:
+1) In blank 1, we are computing the head of the output stream by applying the function `f` to the current head of the input stream (`Stream.hd s`) and the accumulator `a`, which represents the result of folding over all previous elements.
+
+2) In blank 2, we recursively call `fold` with the updated accumulator (the result of applying `f` to the current head and the previous accumulator) and the tail of the input stream (`Stream.tl s`). This way, we continue the folding process for the remainder of the stream.

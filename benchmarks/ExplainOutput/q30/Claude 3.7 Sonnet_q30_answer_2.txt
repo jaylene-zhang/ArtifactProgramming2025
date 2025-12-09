@@ -1,0 +1,11 @@
+[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0] = [11.0; 21.0; 6.0]
+
+The expression `update_price_list price_list` returns [11.0; 21.0; 6.0]. 
+
+Explanation:
+1. `sales_tax` is defined as 1.0
+2. `update_sales_tax ()` computes `sales_tax *. 2.0`, but this calculation isn't stored anywhere since the result isn't assigned back to `sales_tax`
+3. When `update_price_list price_list` is called, it uses `List.map add_tax price_list` where `add_tax` references the original `sales_tax` value (1.0)
+4. So each element in `price_list` has 1.0 added to it, returning [11.0; 21.0; 6.0]
+
+The key insight is that OCaml variables are immutable - calling `update_sales_tax()` computes a new value but doesn't change the original `sales_tax` binding.

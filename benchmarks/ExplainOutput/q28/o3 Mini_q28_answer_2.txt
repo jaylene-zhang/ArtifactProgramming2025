@@ -1,0 +1,3 @@
+Solution: Yes, anti_d f produces a function F such that F x = integral f (0, x) dx.
+
+Explanation: (curry integral) converts integral from taking a tuple into a curried function. Thus, (curry integral) f 0 is a function that takes x and computes integral f (0, x) dx, which is exactly how the antiderivative is defined.

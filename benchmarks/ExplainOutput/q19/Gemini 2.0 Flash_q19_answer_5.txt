@@ -1,0 +1,8 @@
+**Solution:**
+
+Incorrect, not tail-recursive.
+
+**Explanation:**
+
+1.  **Correctness:** The `helper` function aims to find the largest power of 2 that divides `n`. However, it's called initially with `helper 1 n`, which makes little sense (typo most likely). Also, the correct algorithm would be to return `2^k`. Instead the given code will eventually return a value of `2^k` only after `k` recursive calls.
+2.  **Tail-Recursion:** The `helper` function is *not* tail-recursive. The result of the recursive call `helper (n / 2)` is multiplied by 2.  This multiplication happens *after* the recursive call returns, meaning the function has work to do after the recursive call. A tail-recursive function's recursive call must be the very last operation performed.

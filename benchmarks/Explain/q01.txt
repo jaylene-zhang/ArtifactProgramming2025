@@ -1,0 +1,15 @@
+Fill in the most general types in the holes below.
+
+exception Error
+
+let rec zippy (xs: ** to be filled ** ) (ys: ** to be filled ** ) (pair: ** to be filled ** (sc: ** to be filled **):
+    (** to be filled **) = match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+
+If you believe that the program is ill-typed, then indicate briefly why.

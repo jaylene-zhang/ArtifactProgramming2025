@@ -1,0 +1,9 @@
+**Solution:**
+```
+[42.0 ; 40.0 ; 10.0]
+```
+**Explanation:**
+
+When `update_sales_tax` is called, it modifies the `sales_tax` value by multiplying it by 2.0, making it 2.0.
+
+Then, when `update_price_list` is called, it applies the `add_tax` function to each element of `price_list` using `List.map`. Since `add_tax` now adds 2.0 (not 1.0) to each element, the resulting list is `[42.0 ; 40.0 ; 10.0]`.

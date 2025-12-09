@@ -1,0 +1,5 @@
+Solution:
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+
+Explanation:
+Since f is applied to (repeat f), the result of (repeat f) must be of the same type as the argument that f accepts. Thus, f must be of type 'a -> 'a and repeat returns a value of type 'a, giving it the type ('a -> 'a) -> 'a.

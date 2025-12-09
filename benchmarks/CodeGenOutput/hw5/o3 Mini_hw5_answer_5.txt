@@ -1,0 +1,94 @@
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree;;
+
+(* Question 1: Finding Depth of a Tree (CPS style) *)
+let tree_depth_cps t =
+  (* TODO: Implement the function. *)
+  let rec depth_helper t cont =
+    match t with
+    | Empty -> cont 0
+    | Tree (l, _, r) ->
+       depth_helper l (fun dl ->
+       depth_helper r (fun dr ->
+       cont (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees (CPS style) *)
+let find_subtree_cps target tree =
+  (* TODO: Implement the function. *)
+  let rec helper acc t sc fc =
+    match t with
+    | Empty -> if acc = target then sc Empty else fc ()
+    | Tree (l, x, r) ->
+       if acc = target then sc (Tree(l, x, r))
+       else
+         let new_acc = acc @ [x] in
+         helper new_acc l sc (fun () ->
+           helper new_acc r sc fc)
+  in
+  helper [] tree (fun res -> Some res) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser (CPS style) *)
+type token = INT of int | PLUS | TIMES | LPAREN | RPAREN
+
+type expr = Const of int | Plus of expr * expr | Times of expr * expr
+
+let rec eval e _ =
+  (* TODO: Implement the function. *)
+  match e with
+  | Const n -> n
+  | Plus (e1, e2) -> eval e1 0 + eval e2 0
+  | Times (e1, e2) -> eval e1 0 * eval e2 0
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let rec parse_factor toks fc sc =
+  (* TODO: Implement the function. *)
+  match toks with
+  | INT n :: rest -> sc rest (Const n)
+  | LPAREN :: rest ->
+      parse_expr rest fc (fun toks' expr ->
+        match toks' with
+        | RPAREN :: rest' -> sc rest' expr
+        | _ -> fc ())
+  | _ -> fc ()
+
+and parse_term toks fc sc =
+  (* TODO: Implement the function. *)
+  parse_factor toks fc (fun toks' expr ->
+    parse_term_tail toks' expr fc sc)
+
+and parse_term_tail toks left fc sc =
+  (* TODO: Implement the function. *)
+  match toks with
+  | TIMES :: rest ->
+      parse_factor rest fc (fun toks' expr2 ->
+        let new_left = Times (left, expr2) in
+        parse_term_tail toks' new_left fc sc)
+  | _ -> sc toks left
+
+and parse_expr toks fc sc =
+  (* TODO: Implement the function. *)
+  parse_term toks fc (fun toks' expr ->
+    parse_expr_tail toks' expr fc sc)
+
+and parse_expr_tail toks left fc sc =
+  (* TODO: Implement the function. *)
+  match toks with
+  | PLUS :: rest ->
+      parse_term rest fc (fun toks' expr2 ->
+        let new_left = Plus (left, expr2) in
+        parse_expr_tail toks' new_left fc sc)
+  | _ -> sc toks left
+
+let parser_cps toks =
+  (* TODO: Implement the function. *)
+  parse_expr toks (fun () -> None) (fun toks' expr ->
+    match toks' with
+    | [] -> Some expr
+    | _ -> None)
+
+let check_parser t v =
+  match parser_cps t with
+  | None -> None
+  | Some e -> Some (eval e v)

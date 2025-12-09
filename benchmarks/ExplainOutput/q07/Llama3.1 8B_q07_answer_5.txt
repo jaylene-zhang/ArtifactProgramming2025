@@ -1,0 +1,63 @@
+**Solution to Theorem 1**
+
+```
+let rec count w x acc = match w with
+| Const y -> if x = y then 1 + acc else acc
+| Op (w1, w2) -> count w1 x (count w2 x acc)
+```
+
+**Base Case:** w = Const y
+
+```
+count w x acc =
+match w with
+| Const y -> if x = y then 1 + acc else acc
+= if x = y then 1 + acc else acc
+```
+
+Accumulator is not used in the base case, so try removing it.
+
+```
+with one `Const y = if x = y then 1 else 0
+```
+
+
+**Step Case:** w = Op (w1, w2)
+
+```
+count w x acc =
+count (Op (w1, w2)) x acc
+= count w1 x (count w2 x acc)
+```
+
+
+IH: assume count w1 x (count w2 x acc)
+```
+= count w1 x (IH)
+= (count w1 x) + (count w2 x acc)
+```
+
+So, by substituting IH, we can get the proof for the step case.
+```
+= IH + (BH)
+= count w x acc
+```
+
+
+
+**Solution to Theorem 2**
+
+```
+let rec count w x = match w with
+| Const y -> if x = y then 1 else 0
+| Op (w1, w2) -> (count w1 x) + (count w2 x)
+```
+
+Since Theorem 1 is proven, we can directly use it to derive Theorem 2.
+
+Proof: by Theorem 1 with an accumulator value of 0.
+
+```
+count w x = count w x 0
+= count’ w x 0
+```

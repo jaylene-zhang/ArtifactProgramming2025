@@ -1,0 +1,3 @@
+Solution: 71
+
+Explanation: Initially, x is bound to 3 and r to ref 1. In defining f, y is computed as 3 * 1 = 3, and a new r (ref 5) is created, so f becomes fun u -> u + 3 + 3 + !r (with x = 3). Next, a new x is bound as 2 * !r * 3; using the outer r (still 1), we get x = 6. Then the outer r is updated to 10, and f is called with 6 * !r, i.e., 6 * 10 = 60. Evaluating f 60 gives 60 + 3 + 3 + 5 = 71.

@@ -1,0 +1,8 @@
+Solution:
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+
+Explanation:
+Every occurrence of y is replaced by (f x), so y + x becomes (f x) + x, and y in the multiplication becomes (f x).

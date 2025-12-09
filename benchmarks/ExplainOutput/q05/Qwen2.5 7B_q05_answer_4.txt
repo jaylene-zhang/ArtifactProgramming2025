@@ -1,0 +1,7 @@
+```
+let foo y =
+let x = y + 3 in
+let w = x in fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: After inlining `y + 3` to replace `x`, the expression `x + 2` becomes `(y + 3) + 2`. The resulting function then uses this inline definition of `x` to produce the final expression.

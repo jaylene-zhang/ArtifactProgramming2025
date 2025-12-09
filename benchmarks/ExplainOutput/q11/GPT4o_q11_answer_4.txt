@@ -1,0 +1,53 @@
+### Solution Part 1: General type for `zip`
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+```
+
+Explanation:  
+- `l1` is a list of elements of some type `'a`, so its type is `'a list`.
+- `l2` is a list of elements of some other type `'b`, hence its type is `'b list`.
+- The return value is a list of paired elements from `l1` and `l2` where each pair has type `'a * 'b`, so the return type is `('a * 'b) list`.
+
+---
+
+### Solution Part 2: Function `zipper`
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+Explanation:  
+- `comb` is a function that takes an element of type `'a` from `l1` and an element of type `'b` from `l2` and produces a result of type `'c`. Therefore, `comb` has type `'a -> 'b -> 'c`.
+- `add` is a function that takes an element of type `'c` (produced by `comb`) and adds it to a list (or data structure) of type `'d`. Thus, `add` has type `'c -> 'd -> 'd`.
+- `l1` has type `'a list` (a list of elements of type `'a`).
+- `l2` has type `'b list` (a list of elements of type `'b`).
+- The final return type of the function is `'d`, which corresponds to the type of the accumulated result.
+
+The body of the function replaces `::` with the user-provided function `add`, and `(x, y)` is replaced with the result of applying `comb x y`.
+
+---
+
+### Solution Part 3: Definitions of `zip` and `zip_rev`
+
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+
+let zip_rev = zipper (fun x y -> string_of_int x ^ y)
+(fun s t -> t @ [(s, List.length t)])
+```
+
+Explanation:  
+- For `zip`:
+  - `comb` is `(fun x y -> (x, y))`, which simply pairs elements from the two lists.
+  - `add` is `(fun h t -> h :: t)`, which prepends the combined element `h` to the result `t` (standard list construction).
+
+- For `zip_rev`:
+  - `comb` is `(fun x y -> string_of_int x ^ y)`, which concatenates the string representation of an integer (`x`) with a string (`y`).
+  - `add` is `(fun s t -> t @ [(s, List.length t)])`, which appends the string `s` along with the length of the resulting list to the end (`@`) of the list.

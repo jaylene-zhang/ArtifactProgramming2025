@@ -1,0 +1,7 @@
+**Solution: No, this would not work.**
+
+**Explanation**: The given statement uses `rev_tl l []`, which involves an **auxiliary argument** (`[]`) that represents the accumulator in a tail-recursive reverse function. Induction directly on `l` for this form will not work because the property you’re trying to prove depends on how the accumulator interacts with the function. Instead, you need a **stronger induction hypothesis** to account for the role of the accumulator, such as:
+
+`length (rev_tl l acc) = length l + length acc`
+
+With this stronger hypothesis, you can proceed with a proper induction proof.

@@ -1,0 +1,27 @@
+Identify those implementation(s) that provide a correct, tail-recursive implementation
+for the function fold_right.
+
+i.e. we we can pass to aux_foldr the same function
+f and same list l and simply need to initialize the continuation appropriately such
+that calling aux_foldr will compute the same result as fold_right f l b.
+
+
+a) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+
+b) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f (cont r) x)
+
+c) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))
+
+d) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f r x))
+
+e) let rec aux_folder f l b cont = match l with
+    | [] -> cont b
+    | x :: xs -> aux_folder xs f b (fun r -> f (cont r) x)

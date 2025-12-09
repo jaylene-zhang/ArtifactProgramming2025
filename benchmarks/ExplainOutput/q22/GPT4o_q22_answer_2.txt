@@ -1,0 +1,5 @@
+**Solution:** `f` and the first `r` are unused variables.
+
+**Explanation:** 
+- The outer `f` is shadowed by the `let f` definition inside the function, so the outer `f` is unused.
+- The original `r` from the function's parameter is shadowed by `let r = 2 * y`, so the parameter `r` is also unused.

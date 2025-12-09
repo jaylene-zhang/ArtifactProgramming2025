@@ -1,0 +1,13 @@
+**Correct implementations:**
+a) let rec aux_folder f l b cont = match l with 
+    | [] -> cont b
+    | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+
+**Explanation:**
+This implementation is correct because it applies the function f to the current element x and the result of the recursive call (r) in the correct order, and passes the result to the continuation cont. This is a tail-recursive implementation of fold_right because the recursive call to aux_folder is the last operation in the function. 
+
+The others are incorrect because:
+- b) Applies the continuation to the result of the recursive call before applying the function f.
+- c) Applies the function f to the current element and the result of the continuation, rather than the result of the recursive call.
+- d) Applies the function f to the result of the recursive call and the current element in the wrong order.
+- e) Incorrectly swaps the order of the arguments f and xs, and also applies the continuation to the result of the recursive call before applying the function f.

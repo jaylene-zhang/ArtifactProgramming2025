@@ -1,0 +1,5 @@
+Solution:  
+Not all List functions use tail-recursive implementations because rewriting them (e.g., via continuations or list reversal) can introduce extra overhead and complexity, often negating the benefits of tail recursion.
+
+Explanation:  
+While tail recursion helps avoid stack overflows, using continuation-passing style or reversing the list repeatedly can degrade performance or make the code more complex. The standard library prioritizes clearer and more efficient implementations in normal usage over universal tail recursion.

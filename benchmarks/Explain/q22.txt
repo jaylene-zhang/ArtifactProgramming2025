@@ -1,0 +1,6 @@
+What are the unused variables in the following expression:
+
+let call f r y =
+  let r = 2 * y in
+  let f = fun x -> f x * y in
+    f r

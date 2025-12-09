@@ -1,0 +1,58 @@
+### Solution for the first part
+The most general type for `l1`, `l2`, and the return type of `zip`:
+
+```ocaml
+let rec zip (l1: 'a list) (l2: 'b list) : ('a * 'b) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+```
+
+#### Explanation:
+1. `l1` is a list containing elements of type `'a`, so its type is `'a list`.
+2. `l2` is a list containing elements of type `'b`, so its type is `'b list`.
+3. The function outputs a list of pairs where the first element in each pair comes from `l1` (type `'a`) and the second element comes from `l2` (type `'b`). Thus, the return type is `('a * 'b) list`.
+
+---
+
+### Solution for the generalized version
+The general form of `zipper`'s type:
+
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd -> 'd)
+(l1: 'a list) (l2: 'b list) : 'd =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+#### Explanation:
+1. `comb` is a function that takes one element from `l1` (type `'a`) and one element from `l2` (type `'b`) and returns a value of type `'c`. Its type is `'a -> 'b -> 'c`.
+2. `add` is a function that takes an element of type `'c` and adds it to a list of type `'d`. Its type is `'c -> 'd -> 'd`.
+3. `l1` is a list of elements of type `'a`, so its type is `'a list`.
+4. `l2` is a list of elements of type `'b`, so its type is `'b list`.
+5. The return type depends on the accumulator type `'d`, as `add` determines how results are accumulated.
+
+#### The `zipper` function structure:
+- Base case: Return `[]`, which matches the "empty list" case.
+- Recursive case: Use the `comb` function to combine `x` and `y` into a single value, and then use `add` to add the result to the accumulator (`zipper comb add xs ys`).
+
+---
+
+### Definitions of `zip` and `zip_rev`
+#### `zip`
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+```
+
+1. Combines two elements (`x` and `y`) into a pair `(x, y)` using `(fun x y -> (x, y))`.
+2. Uses `(fun h t -> h :: t)` to add the pair to the resulting list (standard `::` operator).
+
+#### `zip_rev`
+```ocaml
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+  (fun s t -> t @ [(s, List.length t)])
+```
+
+1. Combines two elements (`x` as integer, `y` as string) into a concatenated string using `(fun x y -> (string_of_int x) ^ y)`.
+2. Uses `(fun s t -> t @ [(s, List.length t)])` to append the result `s` along with the current list length to the accumulator result (`t`).

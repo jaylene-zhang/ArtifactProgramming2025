@@ -1,0 +1,13 @@
+The result of evaluating the expression is `37`.
+
+**Explanation:** 
+1. Initially, `x` is `3` and `r` is a reference initialized to `1`.
+2. The function `f` is defined where `y` is calculated as `x * !r`, which is `3 * 1`, resulting in `y = 3`. A new reference `r` is created and initialized to `5` within the function body, but this is local to `f`.
+3. When defining the second `x`, it is evaluated after the definition of `f`, so `!r` is `1` at that moment. Thus, the new `x` becomes `2 * 1 * 3 = 6`.
+4. The assignment `r := 10` changes the value of the `r` in the outer scope to `10`, while the `r` in `f` still refers to `5`.
+5. Calling `f (x * !r)` evaluates as `f (6 * 10)` or `f (60)`.
+6. Inside `f`, `u` is `60`, so the return value becomes `u + x + y + !r = 60 + 3 + 3 + 5 = 71`. 
+
+Thus, the final result is `71`. 
+
+(Note: After re-evaluating the explanation, I realized there was a miscalculation in the explanation of `result`. The correct final result is `71`.)

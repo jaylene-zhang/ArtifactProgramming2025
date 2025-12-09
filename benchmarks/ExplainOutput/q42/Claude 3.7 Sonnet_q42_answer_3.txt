@@ -1,0 +1,3 @@
+To initialize `acc` for `rev_tl l acc`, it should be the empty list `[]`.
+
+This is because `rev_tl` typically accumulates the reversed elements in `acc`. When we start the recursion, `acc` should be empty so that we only get the elements from the original list in reversed order. If we initialized `acc` with some elements, those would appear at the end of our final result.

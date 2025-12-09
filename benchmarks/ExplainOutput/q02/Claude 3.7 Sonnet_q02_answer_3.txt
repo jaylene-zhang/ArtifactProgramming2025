@@ -1,0 +1,5 @@
+```ocaml
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+```
+
+This definition is ill-typed because it causes infinite recursion at compile time. The type system can't assign a finite type to `repeat f`. When `f` is applied to `repeat f`, the result would have the same type as `repeat f` itself, creating a circular type dependency that OCaml's type system cannot resolve. This is essentially trying to define an infinite type, which is not allowed in OCaml.

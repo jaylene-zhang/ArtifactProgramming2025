@@ -1,0 +1,1 @@
+Functions can be passed as arguments to other functions, and returned as values from functions.  This allows for highly flexible and composable code.

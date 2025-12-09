@@ -1,0 +1,7 @@
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: We replaced `x` with its definition `y + 3` in the specified occurrences, but we also updated the `let w = x` line to `let w = y + 3` since `x` is defined as `y + 3`. This keeps the semantics of the program consistent after inlining.

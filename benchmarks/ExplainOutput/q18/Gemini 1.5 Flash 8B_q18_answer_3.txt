@@ -1,0 +1,7 @@
+```
+(7, 6)
+```
+
+**Explanation:**
+
+The `point` tuple is initially (5, 4).  `shift_point 1` calculates a new point by adding 1 to both components. This results in (6, 5).  Crucially, the *original* `point` is updated.  `shift_point 2` now uses the modified `point` (6, 5), adding 2 to each component, resulting in (7,6).

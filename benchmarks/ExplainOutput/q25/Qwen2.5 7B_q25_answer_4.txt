@@ -1,0 +1,18 @@
+**Solution:**
+```
+'t = 's = 's and 'u = 'u
+```
+
+**Explanation:**
+Given the function `f: ('t * 's -> 'u)`, we need to ensure that `f (f (a, b), f (b, a))` has type `u`.
+
+1. Since `a : 't` and `b : 's`, the first call `f (a, b)` must have type `'u`, which is consistent with `f`'s type.
+2. The second call `f (b, a)` must also have type `'u`.
+3. For `f (f (a, b), f (b, a))` to have type `'u`, the type of the arguments to the outer `f` must match the type expected by `f`.
+
+The most general type instantiation that works for both `f (a, b)` and `f (b, a)` and ensures the outer call's type is `'u` is:
+
+- `'t = 's` (since `a` and `b` are of the same type in both calls).
+- `'u = 'u` (no change needed for the return type).
+
+Thus, the most general type instantiation is `'t = 's` and `u` remains as `u`.

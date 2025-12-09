@@ -1,0 +1,3 @@
+Solution: Yes. It produces a function anti_d f such that for any x, anti_d f x equals integral f (0, x) dx.
+
+Explanation: Curry transforms integral (which takes a pair as its second argument) into a function that first takes f and then the lower limit 0. Thus anti_d f becomes a function mapping x to integral f (0, x) dx, exactly the antiderivative of f computed from 0 to x.

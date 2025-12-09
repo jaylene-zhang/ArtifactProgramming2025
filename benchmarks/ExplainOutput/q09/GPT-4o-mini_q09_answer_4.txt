@@ -1,0 +1,9 @@
+```ocaml
+let x = 10
+
+let f () =
+  let x = 20 in
+  x + 5
+```
+
+In this example, overshadowing occurs when the inner `let x = 20` within the function `f` creates a new binding for `x` that hides the outer binding of `x` which is `10`. When `f` is called, it references the inner `x`, resulting in `25`. The outer `x` is not affected and remains `10` outside the function. This illustrates how the scope of a variable can be limited, allowing inner definitions to overshadow or shadow outer ones.

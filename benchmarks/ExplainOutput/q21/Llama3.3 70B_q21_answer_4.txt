@@ -1,0 +1,3 @@
+**Unused variable: r**
+
+Explanation: The variable `r` is assigned a value `2 * y`, but it is never used in the rest of the expression. The variable `x` in the outer scope is also shadowed by the local `x` in the inner function `f`.

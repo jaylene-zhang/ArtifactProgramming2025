@@ -1,0 +1,10 @@
+**Function Implementation:**
+```ocaml
+let rec f l =
+  match l with
+  | []   -> []
+  | h :: t   -> rotate (t @ [h])
+```
+
+**Explanation:**
+This function shifts the first element of the list to the second-to-last position. It achieves this by moving the first element to the end of the list (using `t @ [h]`) and then rotating the list, effectively moving the first element of the new list (which is now the second element of the original list) to the end and shifting the rest, including the original first element, one position to the left. This process repeats recursively.

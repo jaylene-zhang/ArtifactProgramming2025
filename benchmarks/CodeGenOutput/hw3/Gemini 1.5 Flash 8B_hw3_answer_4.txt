@@ -1,0 +1,37 @@
+```OCaml
+(* Question 1a: Church numeral to integer *)
+(* TODO: Implement to_int
+   Although the input n is of type int church, please do not be confused. This is due to typechecking reasons, and for
+   your purposes, you could pretend n is of type 'b church just like in the other problems.
+*)
+let to_int (n : int church) : int =
+  n 0 succ
+
+(* Question 1b: Add two church numerals *)
+(* TODO: Implement add)
+let add (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 z (fun x -> n2 x s)
+
+(* Question 1c: Multiply two church numerals *)
+(* TODO: Implement mult)
+let mult (n1 : 'b church) (n2 : 'b church) : 'b church =
+  fun z s -> n1 (n2 z s) s
+
+
+(* Question 2a: Sum a list of church numerals *)
+(* TODO: implement sum *)
+
+let sum (l : 'b church list) : 'b church =
+  List.fold_left (fun acc n -> add acc n) (fun z s -> z) l
+
+(* Question 2b: Compute the length of a list as a church numeral *)
+(* TODO: implement length *)
+
+let rec length (l : 'a list) : int church =
+  let rec aux (l : 'a list) (acc : int) : int church =
+    match l with
+    | [] -> succ church (fun x -> x) acc
+    | _ :: tl -> aux tl (acc + 1)
+  in
+  aux l 0
+```

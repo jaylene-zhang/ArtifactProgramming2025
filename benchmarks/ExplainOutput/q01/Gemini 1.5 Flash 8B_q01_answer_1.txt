@@ -1,0 +1,38 @@
+```ocaml
+exception Error
+
+let rec zippy (xs:'a list) (ys:'b list) (pair:'c * 'd -> 'e) (sc:'f list -> 'g) : 'g =
+    (** 'g= 'f list **)
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+* **`zippy (xs:'a list) (ys:'b list) (pair:'c * 'd -> 'e) (sc:'f list -> 'g)`:**
+    * `xs` and `ys` can be lists of any type (`'a` and `'b`).
+    * `pair` takes a pair of any types (`'c * 'd`) and returns a result of a generic type `'e`.
+    * `sc` takes a list of any type (`'f list`) and returns a result of a generic type `'g`. This is crucial for handling the accumulating list in the recursive function correctly. This also determines the type of the function's return value.
+
+
+* **`zippy ... : 'g`**
+   The type `'g` is inferred by tracking how values are accumulated and returned throughout the function.
+
+* **`let zip_plus xs ys = ...`**: 
+    The types of `xs` and `ys` are fixed to be of the same type needed by the type signature.  This aligns with the use of the addition function in `(fun (x, y) -> x + y)`. Since `xs` and `ys` are given as inputs, their values must be of a type that the `pair` function can use.
+
+
+* **Correctness:** The solution correctly handles recursion and accumulation and is type-safe. The added type annotation `'f list` is necessary to correctly track the accumulator
+
+
+**Why the original attempt was likely ill-typed (without the annotations):**
+
+Without explicit type annotations, the compiler would struggle to infer the correct types for the various parameters and return values. OCaml's type inference is sophisticated, but not perfect—and often requires help from explicit types like in this case.  The original code lacked sufficient information for the compiler to deduce an unambiguous type.
+
+

@@ -1,0 +1,46 @@
+**Theorem 1. For any word w, constant x, and accumulator acc, count w x+acc=count’ w x acc.**
+
+**Proof.**
+
+* **BaseCase:** w = Const y
+
+   **count w x + acc = (if x = y then 1 else 0) + acc**
+   **count’ w x acc = if x = y then 1 + acc else acc**
+
+   These expressions are equal due to the if-then-else statement.
+
+* **Step Case:** w = Op(w1, w2)
+
+
+   **Induction Hypothesis:** count w1 x + acc1 = count’ w1 x acc1 and count w2 x + acc2 = count’ w2 x acc2.
+
+
+   **Proof:**
+   
+   **count w x + acc = (count w1 x) + (count w2 x) + acc
+   = (count’ w1 x (count’ w2 x acc))
+   = count’ w1 x (count’ w2 x acc)
+   = count’ w x acc**
+
+The step case holds by the induction hypothesis.
+
+**Theorem 2 (Main Result). For any word w and constant x, we have count w x = count’ w x 0.**
+
+**Proof.**
+
+We apply Theorem 1 with acc = 0. 
+
+**count w x + 0 = count’ w x 0**  
+This simplifies to:
+**count w x = count’ w x 0**
+
+
+**Explanation:**
+
+The proof uses structural induction, which is a powerful technique for proving properties about recursively defined data structures.
+
+* **Base Case:** The proof starts by checking the simplest case, where the word `w` is just a constant (`Const y`). It directly shows that the `count` and `count'` functions produce the same result.
+
+* **Step Case:** The step case handles the more general case where `w` is an operation (`Op(w1, w2)`).  The key is the induction hypothesis, which assumes that the property (count = count') holds for the sub-words `w1` and `w2`. This allows the proof to leverage the recursive structure of the functions by reducing the problem to smaller subproblems. 
+
+* **Theorem 2:**  Theorem 2 directly follows from Theorem 1 by substituting `acc` with `0`, explicitly demonstrating that the original `count` and `count'` functions result in the same value, when the accumulator initializes to 0.  This is the essential result the problem was asking for.

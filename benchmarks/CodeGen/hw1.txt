@@ -1,0 +1,56 @@
+Q1. The following function has been implemented incorrectly in the provided template.
+
+let distance (x1, y1) (x2, y2) = 
+  (y2-y1) + (x2- x1) 
+
+
+distance : (int * int) -> (int * int) -> int which calculates the Manhattan distance between two points represented as tuples of integers. This is the distance one would travel by walking on a grid such as the streets of Manhattan, not the straight-line, Euclidean distance.
+Before proceeding to fix the implementation, it is a good idea to understand what the algorithm should do. This algorithm calculates a distance. Distances have the following properties:
+
+distance a a = 0 the distance from a point to itself is always zero
+distance a b >= 0 distances are always non-negative
+distance a b = distance b a distances are symmetric
+
+
+correct the various syntax, type and logical errors contained in both functions' implementations.
+
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let distance (x1, y1) (x2, y2) =
+  (y2-y1) + (x2- x1)
+
+
+
+Q2. The binomial coefficient B(n, k) is the coefficient that appears on the x^k term in the expansion of the binomial power (1 + x)^n. It can be calculated using the factorial function: B(n, k) = n! / (k! (n - k)!).
+
+Implement the function binomial : int -> int -> int such that binomial n k computes B(n, k) using factorials.
+
+Implement the helper function factorial : int -> int yourself as an inner helper function. You do not need to make the implementation of factorial tail-recursive.
+
+
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let binomial n k =
+  raise NotImplemented
+
+
+Q3. The Lucas numbers form an integer sequence similar to the Fibonacci sequence. They are defined by the following (recursive) equations:
+
+L(0) = 2
+L(1) = 1
+L(n) = L(n-1) + L(n-2)
+Implement the function lucas : int -> int such that lucas n calculates L(n). Your implementation must be tail-recursive.
+Hint: use an inner helper function with additional parameters to carry forward the values for L(n-1) and L(n-2).
+
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+let rec lucas_helper params =
+  raise NotImplemented
+
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n =
+  raise NotImplemented
+
+

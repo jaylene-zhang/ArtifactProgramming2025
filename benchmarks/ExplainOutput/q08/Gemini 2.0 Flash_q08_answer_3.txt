@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+type cake = Slice of (int * ingredients list) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The question asks to add calorie information to each slice. Since calories are a numerical value, we can represent them with `int`.  We pair the `int`representing the calories with the existing `ingredients list` using a tuple: `(int * ingredients list)`. This tuple then replaces the original `ingredients list` in the `Slice` constructor.

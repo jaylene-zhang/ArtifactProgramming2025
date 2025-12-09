@@ -1,0 +1,3 @@
+`(7, 6)`
+
+Explanation: When we apply `shift_point 2`, it adds 2 to both components of the current value of `point`. The current value of `point` is `(6, 5)` after `let point = shift_point 1` (which added 1 to the original point `(5, 4)`). So `shift_point 2` returns `(6+1, 5+1)` which is `(7, 6)`.

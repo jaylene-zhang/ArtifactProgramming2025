@@ -1,0 +1,7 @@
+**Solution:**
+
+`x`
+
+**Explanation:**
+
+The variable `x` is the parameter for the inner function `f` and is never used within the function's body. The outer `f` is shadowed by the inner `f`.

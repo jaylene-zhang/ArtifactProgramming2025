@@ -1,0 +1,5 @@
+No.
+
+**Explanation:**
+
+The function calls `zip_tr` recursively, and the recursive call is not the very last operation performed.  The crucial part is the `fun l -> sc ((h1, h2) :: l)` which is followed by the recursive call; the result of this nested function is not used as immediate input to the recursive call. This means the continuation `sc` is not the last operation executed. Therefore, standard tail call optimization cannot be applied.

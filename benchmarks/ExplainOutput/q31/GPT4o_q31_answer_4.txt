@@ -1,0 +1,50 @@
+### Solutions and Explanations:
+
+#### a)
+```ocaml
+let check_prime_factors x =
+  let p = prime_fact x in 
+  List.exists (fun e -> e = p)
+```
+**Answer:** **No**, this does not compute prime_fact only once.
+
+**Explanation:** While storing `p = prime_fact x` is fine, there's no `l` passed as an argument to `List.exists`, so the function can't function correctly as intended and will fail to compile. 
+
+---
+
+#### b)
+```ocaml
+let check_prime_factors x l =
+  List.exists (fun e -> e = prime_fact x) l
+```
+**Answer:** **No**, this computes `prime_fact x` multiple times.
+
+**Explanation:** `prime_fact x` is called within the `fun e -> e = prime_fact x` function for each element of the list `l`. This leads to redundant computation for every element, which is not efficient.
+
+---
+
+#### c)
+```ocaml
+let check_prime_factors x l = match l with
+  | [] -> false
+  | y::ys -> y = prime_fact x || check_prime_factors x ys
+```
+**Answer:** **No**, this computes `prime_fact x` multiple times.
+
+**Explanation:** The call to `prime_fact x` is repeated for each recursive step in the match because `prime_fact x` is directly evaluated in the comparison `y = prime_fact x`.
+
+---
+
+#### d)
+```ocaml
+let check_prime_factors x l =
+  let p = prime_fact x in
+  let rec test l = match l with
+    | [] -> false
+    | y::ys -> y = p || test ys
+  in 
+  test l
+```
+**Answer:** **Yes**, this computes `prime_fact` only once.
+
+**Explanation:** The result of `prime_fact x` is stored in `p` before the recursive function `test` is called. Every comparison uses the stored value `p` and avoids recomputing `prime_fact x`.

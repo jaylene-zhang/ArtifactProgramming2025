@@ -1,0 +1,29 @@
+Let's evaluate each implementation step by step.
+
+---
+
+**a)** `let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)`
+
+**Solution**: Incorrect.
+
+**Explanation**: In this implementation, `curry` is applied to `sumSeries f`, and the result—the curried function—is partially applied with `0` as the lower bound. But `swap` is applied incorrectly because swapping occurs between `0` (the fixed bound) and `(fun x -> x + 1)` rather than between the upper bound and the increment function.
+
+---
+
+**b)** `let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)`
+
+**Solution**: Incorrect.
+
+**Explanation**: The function `sumSeries f 0` partially applies `sumSeries` with `f` and `0`, which reduces the structure of arguments expected by `curry`. As a result, the type signature does not match what is expected when `curry` is applied, leading to a type error.
+
+---
+
+**c)** `let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0`
+
+**Solution**: Correct.
+
+**Explanation**: Here, `swap` is applied to `sumSeries f` and `(fun x -> x + 1)`, rearranging their expected argument order so the upper bound can be applied later. Then, `curry` is used to convert this partially swapped function into a curried form. Finally, `0` is fixed as the lower bound to produce the desired `sum_from_zero` function.
+
+--- 
+
+**Final Answer**: Only **c** is a correct implementation of `sum_from_zero`.

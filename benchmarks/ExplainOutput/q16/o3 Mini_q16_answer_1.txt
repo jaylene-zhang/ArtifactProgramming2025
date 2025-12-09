@@ -1,0 +1,3 @@
+Solution: (6, 5)
+
+Explanation: shift_point was defined when point was (4, 3), so it always uses that value. Thus, shift_point 2 computes (4 + 2, 3 + 2) = (6, 5).

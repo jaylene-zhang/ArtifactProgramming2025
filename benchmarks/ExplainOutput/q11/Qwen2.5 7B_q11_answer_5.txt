@@ -1,0 +1,38 @@
+### Solution
+
+#### Part 1: General Type for `zip`
+```ocaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> (x, y) :: zip xs ys
+```
+
+**Explanation:**
+- `'a list` is used for both `l1` and `l2` to specify that they are lists of the same type `'a`.
+- The return type is `('a * 'a) list`, where each element is a pair of values from the input lists.
+
+#### Part 2: Generalized `zipper` Function
+```ocaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'd list -> 'c -> 'd list) (l1: 'a list) (l2: 'a list) : 'd list =
+  match l1, l2 with
+  | [], [] -> []
+  | x::xs, y::ys -> comb x y :: add (xs @ ys) []
+```
+
+**Explanation:**
+- `comb: 'a -> 'b -> 'c` is a function that takes two arguments of types `'a` and `'b` and returns a value of type `'c`.
+- `add: 'd list -> 'c -> 'd list` is a function that takes a list of type `'d list` and an element of type `'c` and returns a list of type `'d list`.
+- The return type is ` 'd list`, where each element is transformed using `comb`.
+
+#### Part 3: Defining `zip` and `zip_rev` Using `zipper`
+```ocaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y)
+                      (fun s t -> t @ [ (s, List.length t) ])
+```
+
+**Explanation:**
+- `zip` uses the default `comb` and `add` functions provided by `zipper` to pair elements from two lists.
+- `zip_rev` uses a custom `comb` function that concatenates a string representation of an integer with a string, and a custom `add` function that appends a pair to a list with the second element being the length of the resulting list.

@@ -1,0 +1,8 @@
+The correct tail-recursive implementation for the function fold_right is:
+
+**a)**
+
+### Explanation:
+In option (a), the function `aux_folder` correctly accumulates the result using continuations in a tail-recursive manner. It matches the empty list case and uses the continuation `cont` to apply the function `f` to the head element `x` and the recursive result `r`. This ensures that the computation can continue without growing the call stack.
+
+Options (b), (c), (d), and (e) are not tail-recursive because they either do not maintain the correct order of evaluation for `f` or incorrectly apply the continuation, potentially creating a non-tail-recursive structure with respect to the accumulated results.

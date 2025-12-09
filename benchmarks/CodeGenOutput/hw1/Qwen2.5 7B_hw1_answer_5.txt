@@ -1,0 +1,34 @@
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let distance (x1, y1) (x2, y2) =
+  (y2 - y1) + (x2 - x1)
+  (*
+  Correct implementation using absolute values for Manhattan distance:
+  *)
+  abs (y2 - y1) + abs (x2 - x1)
+
+
+(* TODO: Correct this implementation so that it compiles and returns
+         the correct answers.
+*)
+let rec factorial n =
+  if n = 0 then 1 else n * factorial (n - 1)
+
+let binomial n k =
+  let rec binomial_helper n k acc =
+    if k = 0 then acc
+    else binomial_helper (n - 1) (k - 1) (acc * (n - k + 1) / k)
+  in
+  binomial_helper n k 1
+
+
+(* TODO: Implement a tail-recursive helper lucas_helper. *)
+let rec lucas_helper n prev prevPrev acc1 acc2 =
+  if n = 0 then prevPrev
+  else if n = 1 then prev
+  else lucas_helper (n - 1) (prev + prevPrev) prev (acc1 + acc2) (acc1 + acc2 + prev)
+
+(* TODO: Implement lucas that calls the previous function. *)
+let lucas n =
+  lucas_helper n 2 1 1 1

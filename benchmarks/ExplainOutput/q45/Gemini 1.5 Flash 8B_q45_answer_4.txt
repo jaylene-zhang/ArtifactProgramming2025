@@ -1,0 +1,10 @@
+1) `ones`
+
+2) `map (fun x -> psums x) (tl pascal)`
+
+
+**Explanation:**
+
+1. **Blank 1:** The first diagonal of Pascal's Triangle is the stream of ones, represented by the `ones` stream.
+
+2. **Blank 2:**  The next diagonal is formed by taking the partial sums of the previous diagonal. The `tl pascal` is the tail (rest) of the Pascal triangle, meaning the subsequent diagonals.  We need to apply the `psums` function to each of these diagonals in the tail to compute the partial sums for each diagonal, which becomes the next diagonal in the sequence itself. The `map` function is used to apply `psums` to each diagonal element (which is also a stream) in `tl pascal` to compute the next diagonal.

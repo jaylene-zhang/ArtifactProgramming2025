@@ -1,0 +1,74 @@
+```ocaml
+(* Question 1: Tree Depth *)
+
+let tree_depth_cps t =
+  let rec depth_helper t sc = match t with
+    | Empty -> sc 0
+    | Tree (l, _, r) ->
+      depth_helper l (fun dl ->
+        depth_helper r (fun dr ->
+          sc (1 + max dl dr)))
+  in
+  depth_helper t (fun x -> x)
+
+(* Question 2: Finding Subtrees *)
+
+let find_subtree_cps ls tree =
+  let rec helper ls tree sc fc = match (ls, tree) with
+    | ([], t) -> sc (Some t)
+    | (x::xs, Tree (l, v, r)) ->
+      if x = v then helper xs l sc (fun () -> helper xs r sc fc)
+      else fc ()
+    | _ -> fc ()
+  in
+  helper ls tree (fun res -> res) (fun () -> None)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+type token = Const of int | Plus | Times | LParen | RParen
+type expr = Const of int | Plus of expr * expr | Times of expr * expr
+
+type ('r, 'a) parser_LN = token list -> (unit -> 'r) -> (token list -> 'a -> 'r) -> 'r
+
+let parser_cps t =
+  let rec parse_expr tokens sc fc =
+    parse_term tokens
+      (fun tokens_left term1 ->
+        match tokens_left with
+        | Plus :: rest ->
+          parse_expr rest
+            (fun tokens_left term2 ->
+              sc tokens_left (Plus(term1, term2)))
+            fc
+        | _ -> sc tokens_left term1)
+      fc
+
+  and parse_term tokens sc fc =
+    parse_factor tokens
+      (fun tokens_left factor1 ->
+        match tokens_left with
+        | Times :: rest ->
+          parse_term rest
+            (fun tokens_left factor2 ->
+              sc tokens_left (Times(factor1, factor2)))
+            fc
+        | _ -> sc tokens_left factor1)
+      fc
+
+  and parse_factor tokens sc fc =
+    match tokens with
+    | Const n :: rest -> sc rest (Const n)
+    | LParen :: rest ->
+      parse_expr rest
+        (fun tokens_left expr ->
+          match tokens_left with
+          | RParen :: rest -> sc rest expr
+          | _ -> fc ())
+        fc
+    | _ -> fc ()
+  in
+
+  let init_sc _ expr = Some(expr) in
+  let init_fc _ = None in
+  parse_expr t init_sc init_fc
+```

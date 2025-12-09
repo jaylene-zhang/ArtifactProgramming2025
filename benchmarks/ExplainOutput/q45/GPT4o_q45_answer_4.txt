@@ -1,0 +1,15 @@
+1) For blank 1 in line 2 we should write:
+```ocaml
+ones
+```
+
+2) For blank 2 in line 3 we should write:
+```ocaml
+map psums pascal
+```
+
+**Explanation:**
+
+1) The first diagonal in Pascal's Triangle is the stream of `1`s, which is represented by `ones`.
+
+2) Each subsequent diagonal is computed by taking the partial sums (`psums`) of the previous diagonal. We use `map` to apply `psums` to each stream (diagonal) in `pascal`. The recursive call makes the entire stream structure self-referential.

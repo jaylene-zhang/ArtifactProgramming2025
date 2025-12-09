@@ -1,0 +1,7 @@
+**Solution:**
+
+`r` (declared within the `let r = 2 * y in` block) and `f` (declared within the `let f = ... in` block)
+
+**Explanation:**
+
+The inner `let r = ... in` rebinds the variable `r`.  The function `f` is also reassigned to a new function and no longer refers to the function parameter `f`.  These are not the original parameters, so they are unused in the final call to the reassigned `f`.

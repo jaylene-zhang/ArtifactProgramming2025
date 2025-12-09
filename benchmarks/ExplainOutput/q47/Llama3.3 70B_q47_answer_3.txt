@@ -1,0 +1,9 @@
+**b) let concat l =**
+**let rec aux l s = match l with**
+**  | [] -> s**
+**  | x::xs -> aux xs (s ^ " " ^ x)**
+**in aux l ""**
+
+Explanation: This function is a correct, tail-recursive implementation of `concat` because it only traverses the input list once and the recursive call is the last operation. The space is added before each new string `x`, but this is correct because `s` is the accumulator string that contains all previously processed strings. This way, the resulting string has spaces between all elements. 
+
+Note that option **a** is incorrect because the space is added after each string, resulting in a trailing space at the end. Option **c** is also incorrect because it uses the `reverse` function, which traverses the list twice. Option **d** is not tail-recursive because the recursive call is not the last operation.

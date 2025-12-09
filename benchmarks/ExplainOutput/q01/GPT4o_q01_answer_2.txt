@@ -1,0 +1,35 @@
+### Solution:
+```ocaml
+exception Error
+
+let rec zippy 
+  (xs: 'a list) 
+  (ys: 'b list) 
+  (pair: 'a * 'b -> 'c) 
+  (sc: 'c list -> 'd): 'd =
+    match xs, ys with
+    | [], [] -> sc []
+    | x::xs', y::ys' -> zippy xs' ys' pair (fun r -> sc ((pair (x, y))::r))
+    | _, _ -> raise Error
+
+let zip_plus xs ys =
+  zippy xs ys (function (x, y) -> x + y)
+    (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+### Explanation:
+1. **`xs` and `ys`**: 
+   - `xs: 'a list` and `ys: 'b list` because `zippy` operates on two lists, and elements in `xs` and `ys` can be of distinct types `'a` and `'b`.
+   
+2. **`pair`**:
+   - `pair: 'a * 'b -> 'c` because it takes a tuple (an element from each list) and produces an element of type `'c`.
+
+3. **`sc`**:
+   - `sc: 'c list -> 'd` because it's a function invoked with a list of type `'c` (the type resulting from `pair`) and produces some resultant output `'d`.
+
+4. **Return type of `zippy`**:
+   - `'d` because it ultimately produces the return value of the provided `sc` function.
+
+5. **Reasoning for `zip_plus`**:
+   - It calls `zippy` with `pair = (function (x, y) -> x + y)`, meaning it operates on int lists (`'a = int`, `'b = int`, `'c = int`), so the lists in this use case must contain integers.
+   - `sc` is defined such that the result of the recursive processing is validated against the input list lengths and ensures type consistency. If types or lengths mismatched, `raise Error` is called.

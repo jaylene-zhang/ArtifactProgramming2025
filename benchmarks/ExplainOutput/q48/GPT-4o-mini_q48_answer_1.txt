@@ -1,0 +1,5 @@
+Functions in the standard List library of OCaml are not all tail-recursive primarily for reasons of clarity, simplicity, and usability. Many functions are designed to operate on lists in a natural way that reflects their mathematical definitions or common usage patterns, which can lead to the use of non-tail-recursive implementations.
+
+Using continuations can indeed allow for tail recursion, but it often complicates the code, making it less readable and harder to understand. Since OCaml prioritizes expressiveness and maintainability, many standard library functions favor clarity over strict tail recursion, especially since the amortized costs of recursive calls in practice are often manageable for list processing tasks. 
+
+Additionally, certain operations inherently require more than one recursive call, making them challenging to convert into tail-recursive forms without losing their conceptual integrity.

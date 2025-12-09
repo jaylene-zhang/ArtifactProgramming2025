@@ -1,0 +1,10 @@
+Solution:
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+Explanation:
+When inlining y with (f x), I replaced all free occurrences of y in the expression with (f x). There are two occurrences of y: one in the definition of w and another in the body of the function. The variable x in (f x) refers to the original parameter x of double, not the locally redefined x = 2, because the substitution preserves the variable bindings from the original context.

@@ -1,0 +1,18 @@
+let distance (x1, y1) (x2, y2) =
+  abs (x2 - x1) + abs (y2 - y1)
+
+let binomial n k =
+  let rec factorial x =
+    if x <= 1 then 1 else x * factorial (x - 1)
+  in
+  factorial n / (factorial k * factorial (n - k))
+
+let rec lucas_helper i n p c =
+  if i = n then c
+  else lucas_helper (i + 1) n c (p + c)
+
+let lucas n =
+  match n with
+  | 0 -> 2
+  | 1 -> 1
+  | _ -> lucas_helper 1 n 2 1

@@ -1,0 +1,12 @@
+Let's determine the types for the function `repeat`.
+
+Solution:
+```ocaml
+let rec repeat (f : ('a -> 'a)) : ('a -> 'a) = f (repeat f)
+```
+
+Explanation:
+- The function `f` is expected to take an argument of some type `'a` and return a value of the same type `'a`. Therefore, `f` is of type `('a -> 'a)`.
+- The `repeat` function itself takes a function `f` of type `('a -> 'a)` and returns a function of the same type `('a -> 'a)`. This suggests that the result of `repeat` is a function that, when applied to itself, returns a function of the same type.
+
+The program is well-typed with these types.

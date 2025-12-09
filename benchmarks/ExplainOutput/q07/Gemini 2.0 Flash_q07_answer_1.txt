@@ -1,0 +1,38 @@
+### Solution:
+
+• Base Case: w = `Const y`.
+
+Then, `count (Const y) x + acc` = `(if x = y then 1 else 0) + acc`.
+
+Also, `count' (Const y) x acc` = `if x = y then 1 + acc else acc`.
+
+Thus, `count (Const y) x + acc` = `count' (Const y) x acc`.
+
+• Step Case: w = `Op (w1, w2)`.
+
+Induction Hypothesis:
+`count w1 x + acc = count' w1 x acc` and `count w2 x + acc = count' w2 x acc`.
+
+Proof:
+
+`count (Op (w1, w2)) x + acc` = `count w1 x + count w2 x + acc`.
+
+`count' (Op (w1, w2)) x acc` = `count' w1 x (count' w2 x acc)`.
+
+We want to show `count w1 x + count w2 x + acc = count' w1 x (count' w2 x acc)`.
+
+Using the induction hypothesis on `w2`: `count w2 x + acc = count' w2 x acc`.
+
+Thus, we can rewrite the right-hand side of our goal as `count' w1 x (count w2 x + acc)`.
+
+Applying the induction hypothesis on `w1` gives `count w1 x + (count w2 x + acc)`.
+
+So, `count' w1 x (count' w2 x acc) = count w1 x + count w2 x + acc` which is equal to `count (Op (w1, w2)) x + acc`, completing the inductive step.
+
+Theorem 2 (Main Result). For any word w and constant x, `count w x = count' w x 0`.
+
+Proof:
+By Theorem 1, `count w x + acc = count' w x acc`. Let `acc = 0`. Then, `count w x + 0 = count' w x 0`, so `count w x = count' w x 0`.
+### Explanation:
+
+The solution provides a proof by structural induction that `count w x = count' w x 0`. The proof consists of a base case where w is `Const y`, and a step case where w is `Op (w1, w2)`. The theorem to be proved is strengthened into a more general statement so it can be proved by induction. The induction hypothesis is then correctly set up and the proof of the inductive step correctly uses the induction hypothesis. Finally, the main result is obtained as a corollary of the theorem that was proved by induction.

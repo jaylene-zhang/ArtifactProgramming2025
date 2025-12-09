@@ -1,0 +1,3 @@
+**(5, 4)**
+
+Explanation: The `shift_point` function uses a global `point` variable which is initially set to `(4, 3)`. However, before `shift_point 2` is executed, `point` is reassigned to the result of `shift_point 1`, which is `(5, 4)`. Therefore, when `shift_point 2` is called, it returns `(5+2, 4+2)` which equals **(5, 4)**.

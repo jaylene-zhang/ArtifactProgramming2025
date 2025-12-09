@@ -1,0 +1,15 @@
+## Solutions
+
+* a) **Yes**
+* b) **No**
+* c) **No**
+* d) **Yes**
+
+## Explanation
+
+The solutions can be determined by analyzing how many times `prime_fact x` is called.
+
+* a) `prime_fact x` is called once, before the `List.exists` function is applied, so the function only computes `prime_fact` once.
+* b) `prime_fact x` is called every time the anonymous function inside `List.exists` is applied, which is once for each element of the list. This means `prime_fact` can be called multiple times.
+* c) `prime_fact x` is called once for each recursive call of `check`, which is once for each element of the list. This means `prime_fact` can be called multiple times.
+* d) `prime_fact x` is called once and stored in `p`, which is then used in the recursive function `test`, so the function only computes `prime_fact` once.

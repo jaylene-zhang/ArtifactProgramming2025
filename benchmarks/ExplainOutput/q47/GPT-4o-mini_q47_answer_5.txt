@@ -1,0 +1,11 @@
+The correct answer is **b)**. 
+
+Explanation: 
+
+Option b is a tail-recursive implementation because the recursive call to `aux` is the last operation performed in the function. The accumulator `s` builds up the result string by appending each string from the list prefixed by a space. This way, the list is traversed just once. 
+
+Option a is not tail-recursive because the string concatenation (`^`) after the recursive call makes it non-tail recursive, which leads to stack overflows for large lists.
+
+Option c would correctly use tail recursion but requires reversing the list before processing, which doesn't adhere to the requirement of traversing the input list once.
+
+Option d is not tail-recursive and will accumulate calls on the stack, making it inefficient for long lists.

@@ -1,0 +1,10 @@
+**Solution:**
+```ocaml
+let double x = 
+  let x = 2 in
+  let w = (f x) + x in
+  fun f -> (f w) * (f x)
+```
+
+**Explanation:**
+We substitute `y` by `(f x)` as directed. `y` is referenced twice in the `let` body—once when defining `w` and once in the returned function. Each occurrence is replaced with `(f x)`. After the substitution, `w` becomes `(f x) + x`, and `y` in `(f w) * y` is replaced with `(f x)`.

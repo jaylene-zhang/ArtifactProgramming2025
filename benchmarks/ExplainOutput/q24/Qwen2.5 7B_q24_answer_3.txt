@@ -1,0 +1,9 @@
+The expression has the type `'t`.
+
+### Solution:
+1. `f(a, b)` has the type `'t` because `f` is a function of type `('t * 't -> 't)` and `a` and `b` are of type `'t`.
+2. `f(b, a)` also has the type `'t` for the same reason.
+3. Therefore, `f (f (a, b), f (b, a))` has the type `'t` because the first argument `f (a, b)` is of type `'t` and the second argument `f (b, a)` is also of type `'t`, and `f` takes two `'t` arguments and returns a `'t`.
+
+### Explanation:
+The function `f` is applied to two values of type `'t` each time. The type of `f` ensures that the resulting value is always of the same type `'t`. Thus, the final expression is also of the type `'t`.

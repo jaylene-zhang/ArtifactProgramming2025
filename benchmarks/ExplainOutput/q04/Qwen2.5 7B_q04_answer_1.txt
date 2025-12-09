@@ -1,0 +1,7 @@
+Solution: 1, 3, 4
+
+Explanation:
+- **Solution 1**: Computation of `prime_fact x` happens once and is used in the recursion.
+- **Solution 3**: Computation of `prime_fact x` happens once and `List.exists` checks if `prime_fact x` exists in the list.
+- **Solution 4**: Computation of `prime_fact x` happens once and `List.exists` checks if the result exists in the list.
+- **Solution 2**: Re-computes `prime_fact x` for each element in the list, which violates the requirement of computing `prime_fact x` only once.

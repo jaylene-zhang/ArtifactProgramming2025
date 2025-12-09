@@ -1,0 +1,3 @@
+To reverse a list `l` using `rev_tl l acc`, you should initialize `acc` to an empty list, `[]`. 
+
+Explanation: The `rev_tl` function typically uses an accumulator to build the reversed list. Starting with an empty accumulator allows the function to append elements from the list `l` as it processes them, resulting in a complete reversed list by the end of the function call.

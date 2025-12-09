@@ -1,0 +1,71 @@
+**Solution:**
+
+`(1, 3, [4; 3; 2], [7; 8; 9])`
+
+**Explanation:**
+
+Let's trace the execution using a binding stack and reasoning:
+
+1.  `let c = ref 0`:  Creates a mutable reference `c` initialized to 0. `c` lives in the global scope.
+
+2.  `let l = List.rev [1;2;3]`:  Reverses the list to `l = [3; 2; 1]`.
+
+3.  `let observe () = !c`: Creates a function `observe` that returns the current value of the global `c`.
+
+4.  `let x = 1`: Creates a variable `x` with value 1 in the global scope.
+
+5.  `let inc x = c:= !c+1 ; x+1`: Defines a function `inc`. It increments the global `c` and returns `x + 1`.
+
+6.  `let ml = List.map inc l`: Applies the `inc` function to each element of the list `l`.
+    *   `inc 3`: `c := !c + 1` (c becomes 1), returns 4.
+    *   `inc 2`: `c := !c + 1` (c becomes 2), returns 3.
+    *   `inc 1`: `c := !c + 1` (c becomes 3), returns 2.
+    So, `ml = [4; 3; 2]`.
+
+7.  `let inc' = (let c = ref 0 in let x = x + 1 in fun y -> c := !c+1 ; !c+y+x)`: Defines the function `inc'`.
+    *   `let c = ref 0`: Creates a *new*, *local* `c` reference, initialized to 0. This is different from the global `c`.
+    *   `let x = x + 1`: In this context `x` refers to the global `x` which is 1. So `x` in `inc'`'s closure becomes `1+1` which is `2`.
+    *   `fun y -> c := !c+1 ; !c+y+x`:  A lambda function is created.  It's important to observe how `c` and `x` are captured. `c` is the *local* `c` ref, and `x` is also the local `x` bound to `2`.
+
+8.  `let ml' = List.map inc' l`: Applies `inc'` to each element of `l = [3; 2; 1]`.
+    *   `inc' 3`: `c := !c + 1` (local c = 1), returns `1 + 3 + 2 = 6`
+    *   `inc' 2`: `c := !c + 1` (local c = 2), returns `2 + 2 + 2 = 6`
+    *   `inc' 1`: `c := !c + 1` (local c = 3), returns `3 + 1 + 2 = 6`
+
+    *It seems like there is a mistake in the original answer, it should return `[6;6;6]` not `[7;8;9]`.*
+
+    So originally I had `ml' = [7; 8; 9]`, let me recompute with explanation.
+
+    *   `inc' 3`: `c := !c + 1` (local c = 1), returns `1 + 3 + 2 = 6`
+    *   `inc' 2`: `c := !c + 1` (local c = 2), returns `2 + 2 + 2 = 6`
+    *   `inc' 1`: `c := !c + 1` (local c = 3), returns `3 + 1 + 2 = 6`
+
+    *So `ml' = [6; 6; 6]`*.
+
+9.  `(x,observe () , ml, ml')`:  Returns a tuple.
+    *   `x` is the global `x = 1`
+    *   `observe ()` is `!c` where `c` is the *global* `c`, which is 3.
+    *   `ml` is `[4; 3; 2]`
+    *   `ml'` is `[6; 6; 6]`
+
+Therefore, the final result is `(1, 3, [4; 3; 2], [6; 6; 6])`.
+
+**Binding Stack Diagram:**
+
+```
+Global:
+c = ref 3
+l = [3; 2; 1]
+observe ----> () -> !c
+x = 1
+inc ----> x -> (c := !c+1 ; x+1)
+ml = [4; 3; 2]
+inc' ----> y -> (c := !c+1 ; !c+y+x)  where c = ref 0 (local), x = 2 (local)
+ml' = [6; 6; 6]
+
+Inside inc' during map (example for the first call inc' 3):
+c = ref 1 (local)
+x = 2 (local)
+y = 3
+```
+FINAL ANSWER: (1, 3, [4; 3; 2], [6; 6; 6])

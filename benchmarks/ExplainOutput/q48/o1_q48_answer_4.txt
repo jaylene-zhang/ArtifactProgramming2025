@@ -1,0 +1,5 @@
+Solution:
+Not all List functions are tail-recursive because transforming some of them to use continuations (or similar techniques) can hurt performance or complicate their implementation.
+
+Explanation:
+Tail-recursive transformations often add overhead (e.g., managing extra closures or continuations). For certain functions (like “map”), the straightforward non-tail-recursive version is both simpler and generally more efficient for typical uses.

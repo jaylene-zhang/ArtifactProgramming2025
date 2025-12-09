@@ -1,0 +1,7 @@
+**Solution:**
+
+`'a * 'b ref * 'c ref -> unit`
+
+**Explanation:**
+
+The `shift` function takes a tuple as input, where the first element is arbitrary, but the second element is a tuple of two references (mutable variables). It modifies the values referenced by these references, and returns `unit` .This is because assignment in OCaml (using `:=`) has type `unit`.

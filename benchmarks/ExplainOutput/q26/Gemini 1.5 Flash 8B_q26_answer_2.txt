@@ -1,0 +1,5 @@
+Solution: Yes
+
+Explanation:
+
+The code creates a circular list.  `rc1` and `rc2` both point to the same `rlist`. Therefore `get_tail rc1` and `get_tail rc2` both eventually point to the same memory location. The `==` operator checks for the same memory address.

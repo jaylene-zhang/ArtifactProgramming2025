@@ -1,0 +1,3 @@
+Solution: Functions in the standard List library of OCaml are not all tail-recursive because tail-recursive implementations often require additional transformations, such as using accumulators or continuations, which can make the code less intuitive and harder to read. 
+
+Explanation: OCaml prioritizes simplicity and readability in its standard library; non-tail-recursive implementations (e.g., `List.map` or `List.fold_right`) follow a more direct and natural recursive style. While tail-recursion avoids stack overflow for very large lists, these simpler forms suffice for most practical use cases, and users can implement optimized versions when needed. Thus, a balance between usability and performance is struck in the standard library.

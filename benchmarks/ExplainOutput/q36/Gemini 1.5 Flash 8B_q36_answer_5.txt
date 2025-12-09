@@ -1,0 +1,8 @@
+**Solution:**
+
+The function `f` rotates the list `l` twice.
+
+
+**Explanation:**
+
+The `rotate` function moves the head of the list to the tail.  `f` takes a list, rotates (t@[h]), then applies rotate again.  This effectively rotates the list by two positions.  For a list with 5 or more elements, this doesn't lead to any special or different behavior beyond this double rotation.

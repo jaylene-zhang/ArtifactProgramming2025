@@ -1,0 +1,3 @@
+Unused variables: r
+
+The variable `r` is declared with the expression `2 * y` but is never used in the body of the function `foo`. While `x` appears to be shadowed in the inner scope of function `f`, the shadowing version is actually used (in `x * y`), so it's not considered unused.

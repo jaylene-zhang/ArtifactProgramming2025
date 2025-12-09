@@ -1,0 +1,4 @@
+(3, 6)
+
+**Explanation:**
+The bug in the implementation lies in the base case. The function should return `n + (n-1)` when `n > 1`, but instead, it incorrectly returns `n + triangle(n-1)`. This means it doesn't correctly add all the numbers from 1 to `n`. For `n = 3`, the correct triangle number is 6 (1 + 2 + 3), but the function returns 7 because it calculates `3 + 3 + 2 + 1 + 1 = 7` incorrectly.

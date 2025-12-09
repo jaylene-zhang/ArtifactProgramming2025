@@ -1,0 +1,10 @@
+**Overwriting Example:**
+```ocaml
+let x = 5
+let x = x + 1
+let () = print_int x
+```
+In the code above, the `x` variable is overwritten with a new value `x + 1`.
+
+**Explanation:**
+Overwriting refers to the act of redefining a previously declared variable or function with a new value, effectively discarding the original value. In contrast to overshadowing, where a variable or function with the same name is redeclared in a different scope, overwriting occurs within the same scope. In the example above, the original value of `x` (5) is lost, and the new value (`x + 1 = 6`) is used. Overshadowing would occur if `x` were redeclared within a nested scope, such as a function or let expression.

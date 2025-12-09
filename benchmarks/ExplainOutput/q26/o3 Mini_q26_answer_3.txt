@@ -1,0 +1,3 @@
+Solution: true
+
+Explanation: Both get_tail rc1 and get_tail rc2 return the same reference (rc1) when evaluated, so their physical addresses match.

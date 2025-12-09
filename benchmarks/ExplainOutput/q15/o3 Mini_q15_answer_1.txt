@@ -1,0 +1,33 @@
+Solution: 42
+
+Explanation:  
+1. Initial environment: x = 3  
+   r = ref (2 + 3) = ref 5  
+
+2. Defining f:  
+   Inside f’s definition, with x = 3 and !r = 5, we bind:  
+   y = 3 * 5 = 15  
+   Then a new r is defined: r = ref 4  
+   f is defined as: fun u -> u + x + y + !r  
+   (Closure captures x = 3, y = 15, and inner r = ref 4)
+
+3. After f’s definition, outer environment is updated:  
+   x = 5, y = 10 (shadowing previous x and not affecting f's x)  
+   Meanwhile, outer r remains ref 5
+
+4. Next, r := 2 changes the outer r to ref 2.  
+   The argument for f is computed as: !r * y = 2 * 10 = 20
+
+5. Calling f 20 uses the captured bindings:  
+   20 + 3 + 15 + ! (inner r = ref 4) = 20 + 3 + 15 + 4 = 42
+
+Binding Stack at f’s creation (from innermost to outermost):  
+  inner r = ref 4  
+  y = 15  
+  x = 3  
+Outer environment during f’s call:  
+  x = 5  
+  y = 10  
+  r (outer) = ref 2
+
+Thus, the final result is 42.

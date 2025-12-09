@@ -1,0 +1,32 @@
+# Solution to Question 8
+
+Theorem 1. For any word w, constant x, and accumulator acc,
+count w x + acc = count' w x acc.
+
+Proof. By structural induction on w.
+
+* Base Case: w = Const y
+  count (Const y) x + acc = (if x = y then 1 else 0) + acc
+                          = if x = y then 1 + acc else acc
+                          = count' (Const y) x acc
+
+* Step Case: w = Op(w1, w2)
+  
+  Induction Hypotheses:
+  1. count w1 x + a = count' w1 x a for any accumulator a
+  2. count w2 x + a = count' w2 x a for any accumulator a
+  
+  Proof:
+  count (Op(w1, w2)) x + acc = (count w1 x + count w2 x) + acc
+                              = count w1 x + (count w2 x + acc)
+                              = count w1 x + count' w2 x acc   (by IH 2)
+                              = count' w1 x (count' w2 x acc)  (by IH 1)
+                              = count' (Op(w1, w2)) x acc
+
+Theorem 2 (Main Result). For any word w and constant x, we have
+count w x = count' w x 0.
+
+Proof:
+By Theorem 1, setting acc = 0, we get:
+count w x + 0 = count' w x 0
+Therefore, count w x = count' w x 0.

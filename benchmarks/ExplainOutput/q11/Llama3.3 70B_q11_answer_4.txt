@@ -1,0 +1,22 @@
+### Solution
+```ocaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'c list -> 'c list)
+              (l1: 'a list) (l2: 'b list) : 'c list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+### Explanation
+- For the `zip` function, we assume both input lists `l1` and `l2` are of the same type `'a list` and the return type is a list of pairs `('a * 'a) list`.
+- For the `zipper` function, we generalize:
+  - `comb`: a function that combines elements from `l1` and `l2` with type `'a -> 'b -> 'c`.
+  - `add`: a function that adds elements to a list with type `'c -> 'c list -> 'c list`.
+  - `l1` and `l2`: lists of types `'a list` and `'b list`.
+  - The return type is a list of combined elements `'c list`.
+- In the `zipper` function, we use `add (comb x y) (zipper comb add xs ys)` to recursively combine elements from `l1` and `l2` and then add the result to the rest of the combined list.

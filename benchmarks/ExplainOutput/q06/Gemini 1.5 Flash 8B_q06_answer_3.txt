@@ -1,0 +1,9 @@
+**Solution:**
+
+```ocaml
+let foo w = fun y -> (w * 2) + 2 + y * (w * 2)
+```
+
+**Explanation:**
+
+The original code defines `foo` as taking `w` as input, calculating `x = w * 2`, redefining `w` as `x`, and then returning a function that takes `y`, computes `x + 2 + y * w`.  Inlining `w * 2` means substituting every occurrence of `x` with `w * 2` and then simplifying the expression.  The variable `x` no longer exists in the final calculation as it has been replaced with its definition. The resulting code eliminates any references to `x`, and has only `w` as an input and parameters.

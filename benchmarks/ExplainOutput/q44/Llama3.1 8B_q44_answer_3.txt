@@ -1,0 +1,7 @@
+**Solution**
+
+`true`
+
+**Explanation**
+
+When proving a statement inductively about lists, we need to prove the base case (the empty list) and the inductive step (the non-empty list). In the step case, we need to assume the statement holds for a list of some length `n`, and then prove it holds for a list of length `n+1`.

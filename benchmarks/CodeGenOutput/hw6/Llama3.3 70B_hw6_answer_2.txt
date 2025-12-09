@@ -1,0 +1,105 @@
+Here is the solution in OCaml:
+
+```ocaml
+(* Q1 *)
+let rec traverse (f : 'a -> 'b option) (l : 'a list) : 'b list option =
+  match l with
+  | [] -> Some []
+  | h :: t ->
+    match f h with
+    | None -> None
+    | Some x -> (
+        match traverse f t with
+        | None -> None
+        | Some xs -> Some (x :: xs))
+
+(* Q2.1 *)
+let ap (mx : 'a Maybe.t) (fm : ('a -> 'b) Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  bind fm (fun f -> bind mx (fun x -> return (f x)))
+
+(* Q2.2 *)
+let seq2 (m1 : 'a1 Maybe.t) (m2 : 'a2 Maybe.t) : ('a1 * 'a2) Maybe.t =
+  let open Maybe in
+  bind m1 (fun x1 -> bind m2 (fun x2 -> return (x1, x2)))
+
+(* Q2.3 *)
+let seq_predicate2
+    (p1 : 'a1 -> 'b1 Maybe.t)
+    (p2 : 'a2 -> 'b2 Maybe.t) : ('a1 * 'a2) -> ('b1 * 'b2) Maybe.t =
+  fun (x1, x2) ->
+  let open Maybe in
+  bind (p1 x1) (fun y1 -> bind (p2 x2) (fun y2 -> return (y1, y2)))
+
+(* Q2.4 *)
+let map (f : 'a -> 'b) (a : 'a Maybe.t) : 'b Maybe.t =
+  let open Maybe in
+  bind a (fun x -> return (f x))
+
+(* Q2.5 *)
+let rec traverse' (f : 'a -> 'b Maybe.t) (l : 'a list) : 'b list Maybe.t =
+  let open Maybe in
+  match l with
+  | [] -> return []
+  | h :: t ->
+    bind (f h) (fun x -> bind (traverse' f t) (fun xs -> return (x :: xs)))
+
+(* Q3.1a *)
+let church_to_nat (c : 'a church) : nat =
+  c Z (fun x -> S x)
+
+(* Q3.1b *)
+let rec nat_to_church (n : nat) : 'a church =
+  match n with
+  | Z -> fun _ f -> f
+  | S m -> fun x f -> f (nat_to_church m x f)
+
+(* Q3.2a *)
+let coption_to_option (copt : ('a, 'r) coption) : 'a option =
+  copt (fun x -> Some x) (fun () -> None)
+
+(* Q3.2b *)
+let option_to_coption (m : 'a option) : ('a, 'r) coption =
+  match m with
+  | Some x -> fun f _ -> f x
+  | None -> fun _ g -> g ()
+
+(* Q3.3a *)
+let rec clist_to_list ((CList clist) : ('a, 'r) clist) : 'a list =
+  clist
+    (fun h tl -> h :: clist_to_list tl)
+    (fun () -> [])
+
+(* Q3.3b *)
+let rec list_to_clist (l : 'a list) : ('a, 'r) clist =
+  match l with
+  | [] -> CList (fun _ g -> g ())
+  | h :: t ->
+    CList (fun f g -> f h (list_to_clist t))
+
+(* Q4 *)
+let rec map_clist (f : 'a -> 'b) (clist : ('a, 'r) clist) : ('b, 'r) clist =
+  match clist with
+  | CList clist ->
+    CList (fun f_g ->
+        clist
+          (fun h tl ->
+            f_g (f h) (map_clist f tl))
+          (fun () -> f_g ()))
+
+let () =
+  let _ = traverse (fun x -> Some x) [ 1; 2; 3 ] in
+  let _ = ap (Maybe.return (fun x -> x + 1)) (Maybe.return 5) in
+  let _ = seq2 (Maybe.return 5) (Maybe.return 10) in
+  let _ = seq_predicate2 (fun x -> Maybe.return x) (fun x -> Maybe.return x) (5, 10) in
+  let _ = map (fun x -> x + 1) (Maybe.return 5) in
+  let _ = traverse' (fun x -> Maybe.return x) [ 1; 2; 3 ] in
+  let _ = church_to_nat (fun z s -> s (s z)) in
+  let _ = nat_to_church 5 in
+  let _ = coption_to_option (fun f _ -> f 5) in
+  let _ = option_to_coption (Some 5) in
+  let _ = clist_to_list (CList (fun f _ -> f 5 (CList (fun _ g -> g ())))) in
+  let _ = list_to_clist [ 1; 2; 3 ] in
+  let _ = map_clist (fun x -> x + 1) (CList (fun f _ -> f 5 (CList (fun _ g -> g ())))) in
+  ()
+```

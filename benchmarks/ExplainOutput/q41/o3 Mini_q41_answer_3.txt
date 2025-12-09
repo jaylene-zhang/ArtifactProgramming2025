@@ -1,0 +1,3 @@
+Solution: ('a -> 'b -> 'b) -> 'a list -> 'b -> ('b -> 'c) -> 'c
+
+Explanation: The tail-recursive version of fold_right uses an extra continuation argument to defer applying functions until completion. Its parameters are a function of type ('a -> 'b -> 'b), a list of type 'a list, an initial value of type 'b, and a continuation of type ('b -> 'c) that ultimately produces the result.

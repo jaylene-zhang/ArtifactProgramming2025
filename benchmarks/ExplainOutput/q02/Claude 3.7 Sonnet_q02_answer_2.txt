@@ -1,0 +1,5 @@
+Solution:
+The program is ill-typed.
+
+Explanation:
+This recursive function creates an infinite type. If we try to infer the type, we would need a type 'a where 'a = 'a -> 'b, which is impossible in OCaml's type system. The function attempts to pass itself as an argument to f, which creates a circular type dependency that cannot be resolved. OCaml's type system doesn't support this kind of recursive type definition.

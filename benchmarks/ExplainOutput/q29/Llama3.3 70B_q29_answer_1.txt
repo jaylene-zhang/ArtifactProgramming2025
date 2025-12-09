@@ -1,0 +1,19 @@
+**The correct implementation is:**
+```ocaml
+let sum_from_zero f = curry (sumSeries f) 0 (fun x -> x + 1)
+```
+
+**Explanation:** 
+The `sumSeries` function takes three arguments: a function `f`, a lower and upper bound pair, and an increment function. We want to create a function `sum_from_zero` that fixes the lower bound to 0 and uses `fun x -> x + 1` as the increment function.
+
+The original `sum_from_zero` should be implemented using `curry`, which transforms a function taking a pair into a curried function. We apply `curry` to `sumSeries f`, then apply the lower bound 0 and the increment function `fun x -> x + 1` to get the desired function.
+
+The given options are incorrect:
+
+a) This option uses `swap` incorrectly and would change the order of the arguments to `sumSeries`.
+
+b) This option applies the lower bound incorrectly.
+
+c) This option also uses `swap` and `curry` in an incorrect way.
+
+Note that the original solution does not involve `swap`, only `curry`.

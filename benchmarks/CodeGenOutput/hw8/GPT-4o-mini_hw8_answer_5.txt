@@ -1,0 +1,46 @@
+```ocaml
+type 'a stream = 
+  { head : 'a (** The first element in the stream. *)
+  ; tail : unit -> 'a stream  (** The rest of the stream, not yet computed. *)
+  }
+
+(* TODO: Q1a *)
+let rec take (n : int) (s : 'a stream) : 'a list =
+  raise NotImplemented
+
+(* TODO: Q1b *)
+let rec drop (n : int) (s : 'a stream) : 'a stream =
+  raise NotImplemented
+
+(** [unfold f seed] constructs a stream by generating elements using [f] and
+    an initialy [seed]. *)
+let rec unfold (f : 'a -> 'b * 'a) (seed : 'a) : 'b stream =
+  let (x, seed') = f seed in
+  { head = x
+  ; tail = fun () -> unfold f seed'
+  }
+
+(* TODO: Q2a *)
+let zeroes : int stream =
+  raise NotImplemented
+
+(* TODO: Q2b *)
+let natural_numbers : int stream =
+  raise NotImplemented
+
+(* TODO: Q2c *)
+let even_numbers : int stream =
+  raise NotImplemented
+
+(* TODO: Q3 *)
+let map2 (f : 'a -> 'b -> 'c) (s1 : 'a stream) (s2 : 'b stream) : 'c stream =
+  raise NotImplemented
+
+(* TODO: Q4a *)
+let fibonacci : int stream =
+  raise NotImplemented
+
+(* TODO: Q4b *)
+let lucas : int stream =
+  raise NotImplemented
+```

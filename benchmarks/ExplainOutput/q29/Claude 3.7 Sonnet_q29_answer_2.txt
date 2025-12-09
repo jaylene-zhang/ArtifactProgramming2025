@@ -1,0 +1,23 @@
+Let me analyze each implementation of sum_from_zero:
+
+a) let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+
+This is correct. Here's why:
+- curry (sumSeries f) has type: int -> int -> (int -> int) -> int
+- curry (sumSeries f) 0 has type: int -> (int -> int) -> int
+- swap (curry (sumSeries f) 0) has type: (int -> int) -> int -> int
+- swap (curry (sumSeries f) 0) (fun x -> x + 1) has type: int -> int
+This correctly returns a function waiting for the upper bound.
+
+b) let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+
+This is incorrect. The expression (sumSeries f 0) is wrong because sumSeries expects a pair (a,b) as its second argument, not just a single integer.
+
+c) let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+
+This is incorrect. The types don't align properly:
+- swap (sumSeries f) has type: (int -> int) -> (int * int) -> int
+- swap (sumSeries f) (fun x -> x + 1) has type: (int * int) -> int
+- curry applied to this would expect a pair, not a single integer 0
+
+Therefore, only option (a) is correct.

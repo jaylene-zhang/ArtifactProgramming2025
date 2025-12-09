@@ -1,0 +1,34 @@
+**Q4.1**
+
+### Solution
+```
+Theorem 1. For all hands h and accumulators acc, add_up h + acc = add_up_tr h acc.
+
+Base Case:
+h = Empty
+add_up h + acc = 0 + acc = acc
+add_up_tr h acc = add_up_tr Empty acc = acc
+
+Step Case:
+h = Hand (c, h')
+IH: add_up h' + acc = add_up_tr h' acc
+add_up h + acc = add_up (Hand (c, h')) + acc
+             = add_up h' + 1 + acc
+             = add_up_tr h' acc + 1 + acc
+             = add_up_tr (Hand (c, h')) acc
+```
+
+### Explanation
+The induction hypothesis (IH) is: for all hands h' and accumulators acc, add_up h' + acc = add_up_tr h' acc. In the base case, we show that the theorem holds for the empty hand. In the step case, we assume the theorem holds for a hand h' and show that it also holds for a hand h = Hand (c, h').
+
+**Q4.2**
+
+### Solution
+```
+Theorem 2. For all hands h, add_up h = add_up_tr h 0.
+
+Proof. By Theorem 1, add_up h + 0 = add_up_tr h 0. Therefore, add_up h = add_up_tr h 0.
+```
+
+### Explanation
+We use Theorem 1 to conclude that add_up h + 0 = add_up_tr h 0. Since adding 0 does not change the value, we can conclude that add_up h = add_up_tr h 0.

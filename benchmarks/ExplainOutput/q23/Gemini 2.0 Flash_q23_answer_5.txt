@@ -1,0 +1,6 @@
+**Solution:**
+`val shift : (int ref * int ref) -> unit`
+
+**Explanation:**
+
+The function `shift` takes a tuple where both elements are `int ref` (mutable integer references). It modifies the *contents* of these references, hence the `unit` return type, signifying a side effect.

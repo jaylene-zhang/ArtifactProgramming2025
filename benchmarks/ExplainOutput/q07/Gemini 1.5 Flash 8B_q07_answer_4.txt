@@ -1,0 +1,24 @@
+**Theorem 1. For any word w, constant x, and accumulator acc, count w x+acc=count’ w x acc.**
+
+**Proof.**
+
+* **BaseCase:** w = Const y. Then `count (Const y) x + acc = if x = y then 1 + acc else acc`, and `count' (Const y) x acc = if x = y then 1 + acc else acc`. Thus, the base case holds.
+
+* **Step Case:** w = Op(w1, w2).  Induction hypothesis:  `count w1 x + acc = count' w1 x acc` and `count w2 x + acc = count' w2 x acc`.
+
+   Proof:
+
+   ```
+   count (Op (w1, w2)) x + acc
+   = (count w1 x) + (count w2 x) + acc
+   = (count' w1 x acc) + (count' w2 x acc)  // Applying the induction hypothesis
+   = count' (Op (w1, w2)) x acc 
+   ```
+   This completes the step case and the proof by induction for Theorem 1.
+
+
+**Theorem 2 (Main Result). For any word w and constant x, we have count w x = count’ w x 0.**
+
+**Proof.**
+
+By Theorem 1, we have `count w x + 0 = count' w x 0`.  Therefore, `count w x = count' w x 0`.  This completes the proof by using Theorem 1 with acc = 0.

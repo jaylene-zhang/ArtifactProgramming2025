@@ -1,0 +1,12 @@
+Solution:
+Overwriting example:
+ let x = ref 42 in
+ x := 99; 
+ !x
+Overshadowing example:
+ let x = 42 in
+ let x = x + 1 in
+ x
+
+Explanation:
+In the overwriting example, the mutable reference x is updated to a new value (99) using the assignment operator (:=); the change affects the same memory location. In contrast, overshadowing creates a new, inner binding for the name x that hides the outer x without modifying it.

@@ -1,0 +1,41 @@
+Let's first implement `sum_from_zero` correctly and then evaluate the given options:
+
+### Correct Implementation:
+
+```ocaml
+let rec sumSeries f (a, b) inc = 
+  if a > b then 
+    0
+  else 
+    f a + sumSeries f (inc a, b) inc
+
+let sum_from_zero f = 
+  sumSeries f (0, fun x -> x + 1)
+```
+
+### Evaluation of Options:
+
+a) ```ocaml
+let sum_from_zero f = swap (curry (sumSeries f) 0) (fun x -> x + 1)
+```
+
+- Explanation: `curry (sumSeries f) 0` returns a function expecting the upper bound and increment. However, swapping this function with `(fun x -> x + 1)` will not work as it expects arguments in a specific order, and we lose the ability to pass the correct parameters.
+- **Incorrect**
+
+b) ```ocaml
+let sum_from_zero f = swap (curry (sumSeries f 0)) (fun x -> x + 1)
+```
+
+- Explanation: `sumSeries f 0` is incorrect because it expects `(a, b)` as its first argument. `curry (sumSeries f 0)` will also not function correctly as `0` is not a proper argument list for the function.
+- **Incorrect**
+
+c) ```ocaml
+let sum_from_zero f = curry (swap (sumSeries f) (fun x -> x + 1)) 0
+```
+
+- Explanation: This approach attempts to use `swap` and `curry` incorrectly. `swap (sumSeries f) (fun x -> x + 1)` and then applying `curry` to the result with `0` is not logically correct and won't match the required function signature.
+- **Incorrect**
+
+### Conclusion:
+
+None of the given programs are correct implementations of `sum_from_zero` based on the provided specifications and function signatures.

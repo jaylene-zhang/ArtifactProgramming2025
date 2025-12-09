@@ -1,0 +1,16 @@
+```ocaml
+let rec toInt f =
+  let rec aux n x =
+    match f x with
+    | x' -> if x' == x then n else aux (n + 1) x'
+  in
+  aux 0
+```
+
+**Explanation:**
+
+The solution uses a recursive helper function `aux` to track the number of applications.  `aux` takes the current count `n` and the input value `x`. It applies the function `f` to `x`. If the result is the same as the initial input `x`, it means no more applications occurred, so the current count `n` is returned.  If the result is different, it recursively calls itself, incrementing the count and using the new result as the input.  The outer `toInt` function simply initializes the count to 0 and calls the helper function.
+
+**Alternative (and arguably more elegant) solution if you can define create:**
+
+If you have a `create` function, which is not defined here given the prompt, you could potentially use it via pattern matching, although this becomes rather indirect without a `create` definition.  The general structure isn't substantially changed so would have the same recursive nature inside a pattern match in this case but this is dependent on having a create function.

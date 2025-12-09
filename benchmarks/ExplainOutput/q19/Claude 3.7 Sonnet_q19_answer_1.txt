@@ -1,0 +1,5 @@
+This implementation is incorrect and not tail-recursive.
+
+The function `helper` takes only one argument `n` but is called with two arguments in `max_two_factor`. The code won't compile as written. Additionally, `helper` is not tail-recursive because it performs multiplication after the recursive call returns. In a tail-recursive function, the recursive call must be the last operation.
+
+The logic is also flawed. The function returns `1` if `n` is odd, which doesn't represent the largest power of two that divides `n`. It should be keeping track of how many times we can divide by 2.

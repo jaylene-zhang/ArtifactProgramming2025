@@ -1,0 +1,10 @@
+The type of `shift` is:
+
+```ocaml
+shift : (int ref * int ref) -> unit
+```
+
+### Explanation:
+1. `shift` takes a parameter `point` which is a tuple `(x, y)`. Both `x` and `y` are references of type `int ref`.
+2. The function modifies the referred values of `x` and `y` by incrementing them using the `:=` operator, which has the `unit` return type.
+3. Hence, the input type is `(int ref * int ref)`, and the return type is `unit`.

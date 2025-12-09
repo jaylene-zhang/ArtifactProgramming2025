@@ -1,0 +1,15 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The provided code `let anti_d f = (curry integral) f 0` does *not* correctly compute the antiderivative.
+
+Here's why:
+
+1.  **Partial Application and Expected Type:** `(curry integral)` has type `(float -> float) -> float -> (float * float) -> float`. When you apply `f` to this, you get something with type `float -> (float * float) -> float`. Applying `0` then results in something of type `(float * float) -> float`. This result is a function that still expects a tuple `(a, b)` as to compute the integral between a and b. However, we want to obtain a function of one variable `x` representing `F(x)`.
+
+2.  **Missing `x` argument:** To compute the antiderivative F(x), the integral should be computed from 0 to x where x is a function argument. The above code does not have a mechanism to take this `x` argument.
+
+Therefore, the function returned by `anti_d f` does not fulfill the contract of taking x as an argument and returning F(x).

@@ -1,0 +1,15 @@
+The resulting program after inlining `w * 2` and replacing occurrences of `x` would be:
+
+```ocaml
+let foo w =
+  let x = w * 2 in
+  let w = x in
+  let y = 2 * (w * 2) in 
+  fun x -> (w * 2) * y * x
+```
+
+### Explanation:
+1. The original program defines `x` as `w * 2`.
+2. We want to replace every occurrence of `x` in the expression `let y = 2 * x in fun x -> w * y * x` with `w * 2`.
+3. Therefore, `y` becomes `2 * (w * 2)` and `x` in the final function body becomes `w * 2`.
+4. Hence the final function is constructed with the updated `y` and `x`.

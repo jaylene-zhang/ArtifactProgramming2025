@@ -1,0 +1,3 @@
+Solution: For a list l = [h; a; b; c; …], f returns [b; c; …; h; a].
+
+Explanation: f first forms (t @ [h]) which gives [a; b; c; …; h], then rotate moves the first element (a) to the end, resulting in [b; c; …; h; a]. This effectively rotates the list left by two positions.

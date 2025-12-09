@@ -1,0 +1,6 @@
+Solution:
+• f has type 'a -> 'a  
+• repeat has type ('a -> 'a) -> 'a  
+
+Explanation (concise):  
+Because repeat f is passed as the argument to f and is also the result of calling repeat f, f’s input and output types must coincide. Unifying these forces f : 'a -> 'a and repeat : ('a -> 'a) -> 'a. The definition is well-typed (though non-terminating).

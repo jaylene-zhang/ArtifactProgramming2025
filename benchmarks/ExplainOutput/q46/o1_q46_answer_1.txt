@@ -1,0 +1,6 @@
+Solution:  
+1) f s.hd a  
+2) fold f (f s.hd a) s.tl  
+
+Explanation:  
+We compute the next folded element as f s.hd a, and then recursively fold the tail using that new value as the accumulator for the next step.

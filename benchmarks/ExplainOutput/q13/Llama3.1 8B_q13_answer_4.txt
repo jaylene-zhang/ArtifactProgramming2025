@@ -1,0 +1,28 @@
+Let's consider an example in OCaml.
+```ocaml
+(* Initial letting *)
+let my_list = [1; 2; 3]
+
+(* Overwriting the list *)
+let my_list = [4; 5; 6]
+
+(* My_list now returns [4; 5; 6] instead of [1; 2; 3]
+```
+In contrast, overshadowing is when a local variable with the same name is redeclared without closing the previous scope. This does not change the value of the outer variable.
+```ocaml
+(* Letting *)
+let my_list = [1; 2; 3]
+
+(* Local, overshadowing *)
+let my_list = apply = [4; 5; 6]
+
+(* my_list does not return [4; 5; 6]
+```
+Upon exiting the let-expression defining the local variable `my_list`, the outer `my_list` still has its original value `[1; 2; 3]`.
+
+Overwriting changes the value of a top-level variable, whereas overshadowing does not.In essence, overwriting is when we change the actual value in a particular scope, whereas overshadowing is when we hide a binding name with a new, but not actually changing the original variable.
+
+To explain, let's think about this analogy: say you're trying to borrow a bike from your friend. If you're holding the bike on your hands and at home someone tells you "you can go borrow a new bike," you will now only be able to see the new bike right under your nose as it limits your view (sort of like an example of overshadowing - you can't still see the first bike hanging in your garage because you already allowed the second bike from your friend to temporarily cover your view of the first one).
+
+But when you ease your grip on the bike that was at your friend's, the view of that bike is restored, but at this point that might or might not match the new one that your friend gave you. So now you have two
+choices - either keep the first one and disallow your friend to leave, or it you prefer the new bike then take it and ignore the first bike standing around for the simple reason that the new bike now has your view and absolute attention. When we have the old bike idling in dorm at the edge and one of the choices either create a grip-distance between you and that perhaps enhanced one or let the real holder of bike the garage of your home ((or from an box-storing), you won compete again to come back(nonreleased equivalent for python, suggesting-band!)

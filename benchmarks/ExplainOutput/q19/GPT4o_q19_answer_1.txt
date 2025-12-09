@@ -1,0 +1,31 @@
+**Solution:**
+
+The implementation provided does **not correctly calculate** the largest power of two that divides a number. Additionally, it is **not tail-recursive**.
+
+---
+
+**Explanation:**
+
+1. **Correctness Issue**:
+   - The function `helper n` checks whether `n mod 2 = 1`, and if so, returns `1`. Otherwise, it multiplies the result of `helper (n / 2)` by `2`. While this recursively calculates powers of two, the base case and logic do not consistently ensure the result is the largest power of two that evenly divides `n` (e.g., it fails with inputs like `n = 0` or `n = 1`).
+   - The function `max_two_factor n = helper 1 n` is invalid because `helper` is defined to take only one argument, but you're attempting to pass two arguments to it.
+
+2. **Tail-Recursion Issue**:
+   - The function `helper` is **not tail-recursive** because the recursive call `helper (n / 2)` is nested inside the multiplication operation `2 * helper (n / 2)`. This implies that the current function call cannot complete until the recursive call returns, making the function stack grow.
+
+---
+
+**Correct Implementation (Tail-Recursive):**
+```ocaml
+let max_two_factor n =
+  let rec helper acc n =
+    if n mod 2 = 1 then acc
+    else helper (2 * acc) (n / 2)
+  in
+  helper 1 n
+```
+
+**Explanation of Correct Implementation**:
+- The `helper` function uses an accumulator `acc` to store the largest power of two found so far.
+- If `n mod 2 = 1` (base case), it returns the accumulated result.
+- Otherwise, it multiplies the accumulator by `2` and continues dividing `n` by `2`, ensuring a tail-recursive structure. This avoids growing the function stack unnecessarily.

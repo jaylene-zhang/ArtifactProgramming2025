@@ -1,0 +1,7 @@
+1) For blank 1 in line 2 we should write: `1`
+
+2) For blank 2 in line 3 we should write: `map psums pascal`
+
+**Explanation:**
+- The first diagonal of Pascal's Triangle starts with a single one, hence for blank 1 we use `1`.
+- For blank 2, we generate the next diagonal by mapping the `psums` function over the current Pascal's Triangle stream (`pascal`). The `psums` function computes the partial sums, which gives us the next diagonal in the triangle based on the current one.

@@ -1,0 +1,13 @@
+1) For blank 1 in line 2 we should write:
+```ocaml
+ones
+```
+
+2) For blank 2 in line 3 we should write:
+```ocaml
+psums pascal
+```
+
+**Explanation:**
+- **Blank 1:** The first diagonal in Pascal's triangle is a stream of ones, so `ones` is the appropriate value.
+- **Blank 2:** The next diagonal in the triangle is formed by taking the partial sums (prefix sums) of the previous diagonal. The function `psums` takes a stream and produces a new stream where each element is the sum of all previous elements in the input stream plus the current element. Therefore, `psums pascal` will generate the next diagonal in Pascal's triangle.

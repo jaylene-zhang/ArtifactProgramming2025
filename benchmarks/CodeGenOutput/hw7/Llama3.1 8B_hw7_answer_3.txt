@@ -1,0 +1,55 @@
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  let rec explode i acc =
+    if i < 0 then acc
+    else explode (i - 1) (Char.escaped (String.get s i) :: acc)
+  in
+  explode ((String.length s) - 1) []
+
+(* 1.2 Turn a list of characters into a string. *)
+let:string_implode (l : char list) : string =
+  let rec implode n acc =
+    match l with
+    | [] -> acc
+    | c :: rest -> implode (n + 1) ((char_of_int) (n) ^ (Char.escaped c) :: acc)
+  in
+  implode 0 [] 
+
+(* Q2 *)
+
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+(* Errors. Please use these. *)
+let negative_amount Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+(* Implement the function to create a bank account*)
+let open_account (pass: password) : bank_account =
+  let balance = 0 in
+  {
+    update_pass = (fun old_password new_password ->
+      if String.equal old_password pass then sign (Msg "Password updated successfully") (fun () -> pass <- new_password));
+    retrieve    = (fun password money ->
+      if String.equal password pass then
+        match (money, balance) with
+        | (_, n) when n < 0 -> raise (Msg "Money amount below 0");
+        | (n, _) when n > balance -> raise (Msg "Insufficient balance");
+        | _ -> (balance <- balance - n; sign (Msg "Money retrieved successfully") (fun () -> ())));
+    deposit     = (fun password money ->
+      if String.equal password pass then
+        (match (money, balance) with
+         | (_, n) when n < 0 -> raise (Msg "Money amount below 0");
+         | _ -> sign (Msg "Money deposited successfully") (fun () -> (balance <- balance + n)));
+        ());
+    show_balance = (fun _ -> balance));
+  }

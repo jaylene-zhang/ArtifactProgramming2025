@@ -1,0 +1,12 @@
+No. 
+
+The function `anti_d` does not correctly compute the antiderivative of `f`. 
+
+The type of `curry integral` is `('a -> float) -> float -> float -> float`, where the second argument is the lower bound, the third is the upper bound, and the fourth (implicit) is `dx`. So `(curry integral) f 0` gives a function that computes the integral of `f` from `0` to some upper bound, but it's missing the `dx` parameter needed for numerical integration.
+
+Additionally, for a proper antiderivative calculation, we need to be able to compute the integral from 0 to x for any x, but this function has fixed the lower bound without providing a way to specify the upper bound.
+
+A correct implementation would be:
+```ocaml
+let anti_d f dx = fun x -> (curry integral) f 0 x dx
+```

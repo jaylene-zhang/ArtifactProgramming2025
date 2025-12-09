@@ -1,0 +1,22 @@
+Solution (Theorem 1):  
+IH (Induction Hypothesis): For all h and acc, add_up h + acc = add_up_tr h acc.
+
+• Base Case (h = Empty):  
+  add_up Empty + acc = 0 + acc = acc = add_up_tr Empty acc.  
+
+• Step Case (h = Hand(c, h')):  
+  add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc = (add_up h' + acc) + 1.  
+  By IH on h', add_up h' + acc = add_up_tr h' acc, hence (add_up_tr h' acc) + 1 = add_up_tr h' (acc+1).  
+  By definition, add_up_tr (Hand(c, h')) acc = add_up_tr h' (acc+1).  
+  Therefore, add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc.  
+
+Explanation:  
+We prove add_up h + acc = add_up_tr h acc by structural induction on h. The base case is straightforward. In the step case, we use the induction hypothesis on the smaller hand h' and then apply the definitions to complete the proof.
+
+--------------------------------------------------------------------------------
+
+Solution (Theorem 2):  
+add_up h = add_up_tr h 0  
+
+Explanation:  
+This follows immediately from Theorem 1 by choosing acc = 0, giving add_up h + 0 = add_up_tr h 0.

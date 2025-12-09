@@ -1,0 +1,44 @@
+**Solution 1: Basic `zip` function**
+
+```OCaml
+let rec zip (l1:'a list) (l2:'b list) : ('a * 'b) list =
+match l1 , l2 with
+| [] , [] -> []
+| x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation 1:**
+
+* **`l1:'a list`**: `l1` is a list of elements of type 'a.  This is a *parametric* type, allowing `l1` to hold lists of any type.
+* **`l2:'b list`**: Analogous to `l1`, `l2` is a list of elements of type 'b.
+* **`('a * 'b) list`**: The result is a list of pairs, where the first element of each pair is from `l1` (type `'a`) and the second is from `l2` (type `'b`).
+
+
+**Solution 2: Generalized `zipper` function**
+
+```OCaml
+let rec zipper (comb:'a -> 'b -> 'c) (add:'c -> 'd list -> 'd list)
+(l1:'a list) (l2:'b list) : 'd list =
+match l1, l2 with
+| [] , [] -> []
+| x::xs , y::ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+**Explanation 2:**
+
+* **`comb:'a -> 'b -> 'c`**:  `comb` is a function that takes an element of type `'a` and an element of type `'b` and returns a combined result of type `'c`. This is *parametric polymorphism* – `comb` can combine elements of various types.
+* **`add:'c -> 'd list -> 'd list`**: `add` is the function that takes the result of the `comb` function and the rest of the list built by `zipper`. This is crucial for creating the final output list in a way that allows different combining strategies.
+* **`l1:'a list`, `l2:'b list`**:  Same as before.
+* **`'d list`**:  The result is a list of type `'d`. `'d` is not determined directly by the given data, but the function `add` allows for flexibility in how elements are accumulated.
+
+
+
+**Example Usage (matching the provided examples):**
+
+
+```OCaml
+let zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)
+let zip_rev = zipper (fun x y -> (string_of_int x) ^ y) (fun s t -> t @ [ (s, List.length t) ])
+```
+
+The examples effectively demonstrate building specialized combiner `zipper` instances, showing the power of the parametric type approach.   The first examples uses a pair as the result type, and the second concatenates strings, building a reverse zipped list with lengths.

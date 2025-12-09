@@ -1,0 +1,6 @@
+**Solution: a)**
+
+**Explanation:**  
+- Option a) best represents the description of the allowed jumps in figure skating because it allows associating any number of revolutions (as an `int`) with a jump type (e.g., `Axel`, `Loop`, etc.).
+- Option b) only accounts for double or triple revolutions, which restricts future flexibility as athletes can go beyond three rotations.
+- Option c) is unnecessarily complex and recursive, which the problem does not require.

@@ -1,0 +1,19 @@
+### Example of Overwriting
+```ocaml
+let x = 5
+let x = x * 2
+```
+### Explanation
+Overwriting occurs when a new binding for a variable shadows the previous one with the same name in the same scope. It is different from overshadowing, which happens when a variable is bound in a nested scope with the same name as a variable in the outer scope. In overwriting, the original variable is no longer accessible after the new binding is introduced, whereas in overshadowing, the original variable can still be accessed from the outer scope. 
+
+However, note that OCaml does not actually support variable overwriting in the classical sense, as the second `let` statement above is using the previous value of `x` to calculate its own value. The original `x` is still accessible via a `let` binding in a nested scope, which can be demonstrated as follows:
+```ocaml
+let x = 5
+let f () =
+  let x = x * 2 in
+  x
+let () =
+  let x = 10 in
+  Printf.printf "%d %d\n" x (f ())
+```
+This code will print `10 10`, showing that the original `x` is not actually overwritten.

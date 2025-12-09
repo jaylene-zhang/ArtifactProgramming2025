@@ -1,0 +1,7 @@
+Solution:
+let foo y =
+  let w = y + 3 in
+  fun y' -> (y + 3) + 2 + y' * w
+
+Explanation:
+We inline x (which is defined as y + 3) in both let w = x and in the function’s body (x + 2), and we rename the lambda parameter to y' to avoid capturing the outer y.

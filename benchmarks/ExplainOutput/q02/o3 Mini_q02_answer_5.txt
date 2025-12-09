@@ -1,0 +1,5 @@
+Solution:
+let rec repeat (f : 'a -> 'a) : 'a = f (repeat f)
+
+Explanation:
+The recursive call repeat f is passed as an argument to f, so the argument of f must match its output type. Thus, f must be of type 'a -> 'a, making repeat’s type ('a -> 'a) -> 'a.

@@ -1,0 +1,12 @@
+No, the provided program does not correctly compute the antiderivative of f.
+
+The expression `(curry integral) f 0` is incorrect because `integral` requires two arguments (a tuple for the limits and `dx`), but it is only provided with one argument (f). It should specify both limits (0 to x) correctly for all x within the context of the antiderivative calculation.
+
+Correct Implementation:
+```ocaml
+let anti_d f = fun x -> integral f (0, x) dx
+```
+
+Explanation:
+- The function `anti_d` takes a function `f` and returns another function that computes the value of the integral of `f(x)` from 0 to `x`.
+- It creates a function that takes `x` and correctly uses `integral` with the limits (0, x). Thus it provides the required format to compute the antiderivative of `f`.

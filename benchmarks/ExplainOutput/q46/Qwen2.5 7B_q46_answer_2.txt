@@ -1,0 +1,9 @@
+1) `f a (hd s)`
+
+2) `fold f (f a (hd s)) (tl s)`
+
+**Explanation:**
+
+1. The `hd` of the output stream is the result of applying the function `f` to the first element of the input stream `s` and the initial value `a`. Thus, we write `f a (hd s)`.
+
+2. The `tl` lambda function should create a new stream whose head is the result of folding `f` over the remaining elements of `s`. This is achieved by calling `fold f (f a (hd s)) (tl s)`, where `(f a (hd s))` is the cumulative result so far and `tl s` is the rest of the stream.

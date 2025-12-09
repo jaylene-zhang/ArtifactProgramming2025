@@ -1,0 +1,46 @@
+## Solution
+
+### a)
+```ocaml
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (x ^ " " ^ s)
+  in aux l ""
+```
+
+### b)
+```ocaml
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (s ^ " " ^ x)
+  in aux l ""
+```
+
+### c)
+```ocaml
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (x ^ " " ^ s)
+  in aux (reverse l) ""
+```
+
+### d)
+```ocaml
+let rec concat (l : string list) : string =
+  match l with
+  | [] -> ""
+  | x :: xs -> x ^ " " ^ (concat xs)
+```
+
+## Explanation
+
+To implement a tail-recursive function that only traverses the input list once, we need to ensure that the recursive call is made as the last operation in the function.
+
+Options a) and b) correctly implement a tail-recursive function. Both functions build the sentence by prepending the current string to the sentence `s`, which is the accumulator. This ensures that the recursive call is made as the last operation.
+
+Option c) is incorrect because it reverses the list before traversing it, which requires additional memory and is not tail-recursive.
+
+Option d) is incorrect because it builds the sentence by concatenating strings in the wrong order. The recursive call is made before the concatenation operation, which is not tail-recursive.

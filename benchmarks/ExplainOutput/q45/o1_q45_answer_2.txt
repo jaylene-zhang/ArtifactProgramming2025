@@ -1,0 +1,6 @@
+Solution:
+1) ones
+2) map psums pascal
+
+Explanation:
+The first diagonal is the stream of 1s (ones). Each subsequent diagonal is obtained by applying psums to the previous diagonal. Hence, we define the tail of pascal by mapping psums over pascal itself.

@@ -1,0 +1,10 @@
+Answer: (b) is the correct, tail-recursive implementation of concat that traverses the input list only once.
+
+Explanation:
+Option (a) concatenates each new element at the beginning of the accumulator string (x ^ " " ^ s), which will give the final result in reverse order.
+
+Option (b) correctly adds each new element at the end of the accumulator string (s ^ " " ^ x), building the result in the correct order.
+
+Option (c) uses reverse (which requires another traversal of the list) and would produce correct output but doesn't satisfy the "traverse the input list once" requirement.
+
+Option (d) is a recursive implementation but not tail-recursive (it needs to process the concatenation operation after the recursive call returns).

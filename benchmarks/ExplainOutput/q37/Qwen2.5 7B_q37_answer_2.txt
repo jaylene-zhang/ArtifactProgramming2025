@@ -1,0 +1,15 @@
+(3, 6)
+
+Explanation: The input `3` corresponds to the 3rd triangle number, which should be `1 + 2 + 3 = 6`. However, the function incorrectly returns `7`. The bug is in the base case, where the function returns `1` instead of `0` when `n = 1`. This causes the function to miss adding the initial `1` to the sum.
+
+To fix, change the base case to:
+
+```ocaml
+if n = 1 then 1
+```
+
+to:
+
+```ocaml
+if n = 1 then 0
+```

@@ -1,0 +1,203 @@
+```ocaml
+(* Question 1: Tree Depth *)
+
+
+let rec depth_helper t continuation = 
+  let depth_l = match t with 
+    | Empty -> continuation 0
+    | Tree (_, _, l) -> depth_helper l (fun k -> depth_helper t (fun k -> k (k + 1)))
+  in
+  depth_l
+
+let rec tree_depth t = 
+  match t with 
+  | Empty -> 0
+  | Tree(_, _, _) -> depth_helper t (fun i -> i)
+
+
+(* Question 2: Finding Subtrees *)
+
+
+type 'a option = None | Some of 'a
+
+let rec match_trees t prefix sc fc =
+  match t with 
+  | Empty ->
+    begin 
+      sc (); 
+      succ None
+    end
+  | Tree(l, node, r) ->
+    begin
+      (match_trees l (prefix @ [node]) sc (fun () -> match_trees r (prefix @ [node]) sc fc))
+    end
+
+(* Force CPS *)
+let rec helper ls tree sc fc =
+  match_trees ls [tree] sc fc
+
+(* SLPJ-glue 2--2 1 )
+let find_subtree_cps ls tree = 
+  helper ls tree (fun () -> None) (fun e -> Some e)
+
+(* Question 3: Arithmetic Expression Parser *)
+
+
+type token = Number of int | Variable of string | 
+	ParenOpen | ParenClose | Plus | Minus | Times | Div 
+
+type expr =
+	Const of int
+  |Var of string
+  |BinOp of expr * string * expr
+
+let rec parse_plusilliary_cps tsp token_list sc fc =
+  begin 
+    match tsp with 
+    | Number x :: ts -> parse_exp_cps ts token_list sc fc
+    | _ -> fc None 
+  end 
+
+let rec parse_exp_cps tsp token_list sc fc  = 
+  begin 
+    match tsp with 
+    | Number x :: ts -> sc (Some (Const x))
+    | _ ->
+      begin
+        match tsp with 
+        | Minus::ts' -> 
+          begin 
+            (fun c_cons c_cons -> parse_unary_func_cps ts' token_list (fun exprs_success -> parse_plusilliary_cps ts' token_list sc (fun results -> c_cons(Var("-",exprs_success))))
+            (fun results -> c_consumer='')
+          end
+        | _ -> 
+         (fun c_newsc_oldfc -> parse_factor_cps    tsp token_list sc_old_fc
+          fc_oldres)
+      ) 
+  end 
+
+let rec parse_factor_cps tsp token_list sc fc =
+  begin 
+    match tsp with 
+    | ParenOpen :: ts -> parse_func_cps ts token_list sc fc
+    | _  -> parse_var_cps tsp token_list sc fc
+  end
+
+let rec parse_func_cps tsp token_list sc fc =
+  begin 
+    match tsp with 
+    | ParenClose:: ts -> parse_exp_cps ts token_list sc fc 
+    | _ -> fc None
+  end
+
+let rec parse_unary_func_cps tsp token_list sc fc = 
+ let (parse_unary_operator ts parsed) = 
+  match tsp with 
+  | ParenOpen::ts_paren-> 
+   begin  
+    match ts_paren with
+    | Minus :: paren_seq -> begin
+       (fun c_fc ts_paren -> parse_exp_cps ts_paren token_list sc fc) 
+      (fun () ->   suspend sc (Var ("-"^(parsed)))
+   end
+    | _ -> fc None ()) 
+    | _ -> fc None 
+   end
+  | _ -> fc None
+ in paren_sensor (fun parsed parser __ -> match tsp with
+     | _::_ -> return fc_Nil
+     | _ -> match 
+        (match pcs token_list (fun numbers 될 (Consts parsed))
+	 sc =
+(* TODO: parser_cps for the work. *)
+let parser_cps t token_list =
+  match t with 
+  | Number(x) ->
+    begin 
+    match token_list with 
+    | Number(x') :: ts -> begin
+      match x with
+      | _ when x = x' -> start parse_exp_cps ts (token_list) sc (fun e -> Some e)
+      | _ -> fc None
+    end
+    | _ -> fc None
+    end
+  | Variable(s) ->
+    begin
+      match token_list with 
+      | Variable(p) :: _ when p = s -> 
+        start parse_factor_cps (token_list) sc fc
+      | _ -> fc None
+    end
+  | Plus|
+  | Minus|
+  | Plus | 
+  ParenOpen | Paren_close ->    match tsp with Minus --ασάalist environﾄ(* TODO: Implement a CPS style parser function:*)
+let rec parser_cps t token_list =
+  let rec parse_plusilliary tsp token_list sc fc =
+    match tsp with 
+    | Number x :: ts -> parse_exp_cps ts token_list sc fc
+    | _ -> fc None 
+  in
+  let rec parse_exp tsp token_list sc fc = 
+    match tsp with 
+    | Number x :: ts -> sc (Some (Const x))
+    | _ ->
+      match tsp with 
+      | Minus::ts' -> 
+        parse_unary_func_cps ts' token_list (fun exprs -> parse_plusilliary ts' token_list sc fc) fc
+      | _ -> 
+        parse_factor_tps tsp token_list sc fc 
+  and parse_factor tsp token_list sc fc =
+    match tsp with 
+    | ParenOpen :: ts -> parse_func_cps ts token_list sc fc
+    | _  -> parse_var_cps tsp token_list sc fc
+  and parse_func tsp token_list sc fc =
+    match tsp with 
+    | ParenClose::ts -> parse_exp_cps ts token_list sc fc 
+    | _ -> fc None
+  and parse_unary_func tsp token_list sc fc = 
+    let (parse_unary_operator ts parsed) = 
+      match tsp with 
+      | ParenOpen::ts_paren-> 
+        begin  
+          match ts_paren with
+          | Minus :: paren_seq -> 
+            parse_exp_cps ts_paren token_list sc fc
+          | _ -> fc None 
+        end
+      | _ -> fc None 
+    in 
+    (parse_unary_operator (token_list @ tsp) (match tsp with 
+      | _::_ -> None
+      | _ -> Some (Var ("-"^(parsed)))) 
+    )
+  and parse_var tsp token_list sc fc =
+    begin match tsp with 
+    | Variable(s) :: _ -> start parse_factor_cps  (token_list) sc (fun () -> None)
+    | _ -> fc None
+    end
+  in
+  match t with 
+  | Number(x) ->
+    begin 
+      match token_list with 
+      | Number(x') :: ts -> 
+        parse_exp tsp ts sc fc
+      | _ -> fc None
+    end
+  | Variable(s) ->
+    begin
+      match token_list with 
+      | Variable(p) :: _ when p = s -> 
+        parse_factor tsp token_list sc 
+      | _ -> fc None
+    end
+  | Plus| 
+  | Partition  Closed -> 
+    begin
+      match token_list with 
+      | eppa completed -> 
+        parse_factor tsp token_list sc 
+      | _  - > fc None
+    end

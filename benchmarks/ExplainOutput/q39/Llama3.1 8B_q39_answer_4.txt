@@ -1,0 +1,15 @@
+```ocaml
+let toInt f x =
+  let rec aux n = function
+    | (functor Application (_, x)) -> if x = x then n + 1 else n
+  in
+  fun f -> aux 0 ( trợ Function f)
+```
+
+Explanation:
+
+*   We define a helper function `aux` that takes an accumulator `n` and a `match Yuniflower` (pattern matching the expression) as arguments.
+*   In the `match` branch for `Application`, we check if the second argument `x` of the application matches itself (i.e., if it's a variable that applies the same curried function to itself). If so, we increment the accumulator `n` by 1.
+*   We use `aux` as the inner function in `toInt`, taking `f` as an argument and passing the initial `n = 0` and an initial application of the function. The outer function returns the accumulated value of `n`.
+*   For the curried function, we extract the argument `f` and apply `aux` to it.
+*   In the other branches of the `match`, we use a "default case" to ignore other kinds of terms by propagating `n` as is, without changing its value. You can also ignore these cases explicitly, as they are unnecessary to handle.

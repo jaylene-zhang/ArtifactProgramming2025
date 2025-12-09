@@ -1,0 +1,5 @@
+Solution:  
+No, the code calls ackermann x for each element of the list.  
+
+Explanation:  
+Because (ackermann x) appears inside the recursive call, it gets computed anew for every y::ys in the list.

@@ -1,0 +1,7 @@
+The correct answer is **b)**.
+
+Explanation: 
+- Option (b) uses an accumulator `s` that builds the resulting string by prepending the current string after the previously accumulated strings, preserving the order since each new string is added to the end (after the accumulated ones). This is tail-recursive because it avoids additional operations after the recursive call.
+- Option (a) concatenates strings in reverse order due to pre-appending `x`, leading to an incorrect final structure.
+- Option (c) uses `reverse`, which traverses the list twice – once to reverse and again to concatenate, violating the requirement of a single traversal.
+- Option (d) is not tail-recursive as it has additional operations after the recursive call, accumulating results on the call stack.

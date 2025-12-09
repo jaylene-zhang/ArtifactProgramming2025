@@ -1,0 +1,11 @@
+**Solution**: The given program computes `ackermann x` multiple times.
+
+**Explanation**: In the provided implementation, the function `ackermann x` is called **every time** the expression `(ackermann x) + y` is evaluated, which happens for each element `y` in the list. Hence, if there are `n` items in the list, `ackermann x` will be computed `n` times, making the program inefficient for very expensive computations like `ackermann`. A better approach would store the value of `ackermann x` in a variable and reuse it throughout the recursion. Below is a revised version of the function:
+
+```ocaml
+let add_ack x l =
+  let ack_x = ackermann x in
+  List.map (fun y -> ack_x + y) l
+```
+
+This version computes `ackermann x` only once and reuses its result for every element in the list.

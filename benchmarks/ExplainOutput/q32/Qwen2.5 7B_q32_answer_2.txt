@@ -1,0 +1,16 @@
+**Correct Options:**
+
+b) type url = string  
+type bookmarks = Empty | Location of string * bookmarks
+
+**Explanation:**
+
+- **Option b)** correctly defines a recursive list where `Empty` represents an empty list of bookmarks, and `Location of string * bookmarks` defines a bookmark as a tuple containing a URL (string) and a list of bookmarks (which can be empty or have more bookmarks).
+
+- **Option a)** tries to define bookmarks as a pair of location and bookmarks, but it does not recursively build the list, and the location is incorrectly typed as `url * bookmarks` instead of `string * bookmarks`.
+
+- **Option c)** does not define the recursive nature of the list as it only includes an `Empty` case and a non-recursive `Location` case.
+
+- **Option d)** incorrectly nests the recursive part inside the `Location` constructor, which would not form a correct list structure.
+
+Thus, the correct definition for the `bookmarks` data type is provided in **option b)**.

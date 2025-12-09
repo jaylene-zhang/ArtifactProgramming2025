@@ -1,0 +1,23 @@
+The correct answer is **b**.
+
+**Solution:**
+
+```ocaml
+let concat l =
+  let rec aux l s = match l with
+    | [] -> s
+    | x::xs -> aux xs (s ^ " " ^ x)
+  in aux l ""
+```
+
+**Explanation:**
+
+* **Option a:**  Appends the space to the *beginning* of the current string, reversing the order in the list. This will not produce the correct output and is not tail-recursive.
+
+* **Option b:** Appends the space to the *end* of the current string, building the result by traversing in the intended order. This is a correct and tail recursive solution.
+
+* **Option c:** Reverses the input list, introducing an extra traversal step. This will correctly join the strings but requires an extra function call to reverse the list, which increases the overhead.
+
+* **Option d:** While tail-recursive *in principle*, the function `concat xs`  is *not* evaluated until all the subcalls are exhausted (due to the way OCaml handles recursive functions). Therefore, this function is *not* tail-recursive in practice.  
+
+Option b correctly builds the string from left-to-right in a tail-recursive fashion.  This is the best way to produce the desired output.

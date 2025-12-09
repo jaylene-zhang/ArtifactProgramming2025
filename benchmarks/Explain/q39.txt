@@ -1,0 +1,12 @@
+Fill in the blank.
+
+We now want to implement a function toInt that takes in a function f:’a -> ’a&nbsp;and an argument x:’a and tests how many times the function f is applied to x. It essentially does the reverse of create and should behave as follows:
+toInt (fun f x -> x) returns 0
+toInt (fun f x -> f x) returns 1
+toInt (fun f x -> f(f(x))) returns 2
+...
+In general, toInt (create n) should evaluate to n.
+
+let toInt f = (*to be filled*)
+
+What should we write for the blank?

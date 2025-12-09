@@ -1,0 +1,11 @@
+[10.0 + 1.0; 20.0 + 1.0; 5.0 + 1.0] = [11.0; 21.0; 6.0]
+
+The expression `update_price_list price_list` returns [11.0; 21.0; 6.0]. 
+
+This is because:
+
+1. `sales_tax` is defined as 1.0 and remains 1.0 throughout the program.
+2. `add_tax` adds the value of `sales_tax` to its argument x.
+3. `update_price_list` maps the `add_tax` function over `price_list`.
+4. Although `update_sales_tax()` is called before `update_price_list`, it doesn't modify the value of `sales_tax` because it only computes `sales_tax * 2.0` without reassigning the result back to `sales_tax`.
+5. So `add_tax` still uses the original `sales_tax` value of 1.0.

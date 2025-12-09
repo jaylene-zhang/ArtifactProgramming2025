@@ -1,0 +1,9 @@
+### Solution
+
+1. `ones`
+2. `pascal |> psums`
+
+### Explanation
+
+1. The first diagonal of Pascal's triangle is a stream of ones, which is represented by `ones`.
+2. The next diagonal in the Pascal triangle is the partial sums of the previous diagonal, which can be calculated using the `psums` function. This function is applied to the entire stream `pascal`, effectively calculating the partial sums for each diagonal, and it is called recursively to generate the next diagonal.

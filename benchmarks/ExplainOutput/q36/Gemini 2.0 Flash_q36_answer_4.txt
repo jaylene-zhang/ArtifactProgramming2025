@@ -1,0 +1,11 @@
+**Solution:**
+
+The function `f` reverses the order of elements in lists with at least five elements.
+
+**Explanation:**
+
+The function `f` effectively applies the `rotate` function to a rotated version of the list in each recursive step. For a list `l = [a; b; c; d; e; ...]`, the execution unfolds as follows:
+
+1.  `f [a; b; c; d; e; ...]` becomes `rotate ([b; c; d; e; ...] @ [a])` which simplifies to `rotate [b; c; d; e; ...; a]`. The `rotate` results in `[c; d; e; ...; a; b]`.
+2. The function then recursively calls `f [c; d; e; ...; a; b]`.
+3. This repeats until only the last 2 elements are remaining at the end of the list which effectively reverses the elements as rotate is applied repeatedly.

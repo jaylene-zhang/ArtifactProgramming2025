@@ -1,0 +1,10 @@
+**Solution:**
+
+```ocaml
+let rec repeat (f : ('a -> 'a) -> 'a) : 'a = f (repeat f)
+```
+
+**Explanation:**
+
+*   `f` must be a function that takes an argument and returns a value. The argument that `f` takes must be `repeat f`. Therefore, `f` must take a function of the same type `f` returns, which itself takes an `f` and so on. This can be expressed as `('a -> 'a) -> 'a`.
+*   The result type of `repeat` is simply the return type of `f`, which is `'a`.

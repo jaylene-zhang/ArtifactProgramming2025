@@ -1,0 +1,9 @@
+```ocaml
+let toInt f =
+  let counter = ref 0 in
+  let inc_counter _ = counter := !counter + 1; () in
+  f (fun _ -> inc_counter (); ()) 0;
+  !counter
+```
+
+Explanation: This function works by creating a counter that tracks how many times a function is applied. When we call `f` with a function that increases the counter each time it's called and a dummy value `0`, the counter will be incremented exactly the number of times the function is applied. We then return the final counter value, which gives us the desired result.

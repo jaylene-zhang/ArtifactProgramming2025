@@ -1,0 +1,14 @@
+**Solution**: No, the program **does not** compute `ackermann x` at most once for a function call to `add_ack x l`. It computes `ackermann x` every time it evaluates the expression `(ackermann x) + y` in the recursive function.
+
+**Explanation**:  
+In the provided implementation, the function `ackermann x` is directly called within the pattern matching block of `add_ack`. Specifically, it is called on every recursive step for each element in the list `l`. This means that `ackermann x` will be computed **repeatedly** for every element of the list, which is inefficient, especially since `ackermann` is an expensive function.
+
+To optimize, we can compute `ackermann x` once, store its result in a local variable, and then use that value in subsequent computations. Here's an optimized version:
+
+```ocaml
+let add_ack x l =
+  let ack_value = ackermann x in  (* Compute ackermann x just once *)
+  List.map (fun y -> ack_value + y) l
+```
+
+Now, `ackermann x` is computed only once and stored in `ack_value`, ensuring no repeated computations.

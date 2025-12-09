@@ -1,0 +1,11 @@
+**Solution:** a)
+```ocaml
+type revolutions = int
+type jump_typ = Axel | Loop | Lutz | Flip | Salchow
+type jump = jump_typ * revolutions
+```
+
+**Explanation:**  
+Option (a) best fits the description. This implementation uses a `jump_typ` to denote the type of jump and allows specifying the number of revolutions as an `int`, which supports any number of rotations athletes may perform today. This is flexible and concise, capturing the relationship between jump type and revolutions.  
+Option (b) restricts revolutions to `Double` or `Triple`, which does not accommodate more rotations.  
+Option (c) is overly complex and does not match the described structure as it introduces recursive constructors unnecessarily.

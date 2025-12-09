@@ -1,0 +1,21 @@
+**Solution:**
+
+```ocaml
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'r list -> 'd): 'd list =
+    match xs, ys with
+    | [] , [] -> sc []
+    | x::xs , y::ys -> zippy xs ys (fun (x, y) -> pair (x, y)) (fun r -> sc ((pair (x, y)::r))
+    | _ , _ -> raise Error
+
+let zip_plus xs ys =
+    zippy xs ys (function (x, y) -> x + y)
+    (fun (x: int list -> x: int list)
+```
+
+**Explanation:**
+
+* The type of `zippy` is inferred as `('a -> 'b -> 'c -> 'd -> 'd) -> 'a list -> 'b list -> 'c -> 'd list`, but to make it more readable, we can write the type annotations explicitly. Since the arguments to `sc` are a list, and `pair` takes two arguments and returns one, it seems likely that `sc` will produce a single element that we then repeat. The same reasoning applies to `pair`. It's better to assume 'r' is 'c list', so that Way we can infer the output type correctly as a list. In the body, we rearrange the fourth line to make it more consistent.
+
+Since the outputs of the arms should have consistent types, our representation seems likely to be correct.
+
+However, the last 'function' keyword is a function returning a function, so `zip_plus's zippy` should return a function.

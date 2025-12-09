@@ -1,0 +1,41 @@
+Here are the solutions:
+
+a)  
+```ocaml
+let rec aux_folder f l b cont = match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder f xs b (fun r -> cont (f x r))
+```
+Explanation: In order to obtain a correct tail-recursive version, `f x r` should be passed to `cont` instead of `cont (f x r)` in the recursive call. 
+
+b) x
+```ocaml
+let rec aux_folder f l b cont = match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder f xs b (fun r -> f (cont r) x)
+```
+Explanation: `cont r` should be passed to `f` instead of `cont (f r x)`.
+
+c)  
+```ocaml
+let rec aux_folder f l b cont = match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder f xs b (fun r -> f x (cont r))
+```
+Explanation: Again, `cont r` should be passed to `f` instead of `(cont r)`.
+
+d) x
+```ocaml
+let rec aux_folder f l b cont = match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder f xs b (fun r -> cont (f r x))
+```
+Explanation: `f r x` should be passed to `cont` instead of `(cont (f r x))`.
+
+e) z
+```ocaml
+let rec aux_folder f l b cont = match l with
+  | [] -> cont b
+  | x :: xs -> aux_folder xs f b (fun r -> f (cont r) x)
+```
+Explanation: We are actually flipping the order of `f` and `x` on purpose, however here it was a mistake, we need `f` on the right, x on the left, and not reverted.

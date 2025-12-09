@@ -1,0 +1,5 @@
+```ocaml
+'a -> 'a -> 'u
+```
+
+Explanation: For `f (f (a, b), f (b, a))` to have type `'u`, both `f (a, b)` and `f (b, a)` must have the same type as the second argument of `f`. This implies that `f` must map two types `'t` and `'s` to `'u` in such a way that it can accept any `('t * 's)` as input and produce a `'u`. The most general instantiation that satisfies this without further constraints is when `a` and `b` have the same type, making `f (a, b)` and `f (b, a)` both have type `'u`. Therefore, the types simplify to `'t -> 's -> 'u`, and given that `a` and `b` are of the same type, it effectively becomes `'a -> 'a -> 'u`.

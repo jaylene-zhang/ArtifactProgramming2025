@@ -1,0 +1,9 @@
+```ocaml
+type ingredients = string list
+type calories = int
+type cake = Slice of (ingredients list * calories) | Cake of cake * cake
+```
+
+**Explanation:**
+
+The original `ingredients` type is reused.  A new `calories` type is introduced (integers represent calories).  The `Slice` constructor now takes a tuple of `ingredients list * calories`.  This neatly combines both pieces of information.

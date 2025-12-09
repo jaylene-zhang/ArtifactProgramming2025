@@ -1,0 +1,15 @@
+**Correct Answer:** b
+
+**Explanation:**
+
+Option b is the correct tail-recursive implementation.  Let's analyze the other options:
+
+* **a) (Incorrect):**  The crucial error is in the string concatenation.  `aux xs (x ^ " " ^ s)` reverses the order of elements, creating a reversed output (e.g., "great feel i").
+
+* **b) (Correct):** This is the correct implementation. The output will be built correctly using a `s ^ " " ^ x`.
+
+* **c) (Incorrect):** This reverses the input list first.  Reversal introduces unnecessary computation and doesn't meet the requirement of traversing the input list only once.
+
+* **d) (Incorrect):** It's recursive, but not tail-recursive.  A call to `concat xs` occurs inside an expression, preventing the compiler from optimizing the recursion directly.  Each recursive call builds on the previous result, which means the stack depth grows potentially unbounded in the size of the list. This isn't a tail-recursive solution.
+
+Tail recursion is desired for efficiency because it avoids stack overflow issues with very long lists by allowing the compiler to optimize the recursion into a loop.

@@ -1,0 +1,9 @@
+Pascal's Triangle - Part A
+
+1) For blank 1 in line 2 we should write:
+ones
+
+2) For blank 2 in line 3 we should write:
+map psums pascal
+
+The solution builds Pascal's triangle diagonals recursively. The head of the stream is the first diagonal, which is the stream of ones. For subsequent diagonals, we apply the psums function (which computes partial sums) to the current diagonal using map, creating the next diagonal. This recursive definition generates all diagonals of Pascal's triangle.

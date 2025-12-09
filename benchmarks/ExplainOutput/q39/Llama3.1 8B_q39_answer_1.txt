@@ -1,0 +1,8 @@
+Solution:
+```haskell
+let rec toInt f x =
+  if (f x) == x then 0
+  else 1 + toInt f (f x)
+```
+Explanation:
+We use the principle of recursion. The function `toInt` takes in a function `f` and an argument `x` and evaluates to 1 + `toInt f (f x)`. If `f x` equals `x`, it breaks out of the recursion and returns 0 (because the function `f` is not applied at all). Otherwise, it recursively calls `toInt` with the input of `f x` and appends 1. This will keep adding 1 successively until the function `f` doesn't change the input anymore, which corresponds to the number of times the function `f` is applied.

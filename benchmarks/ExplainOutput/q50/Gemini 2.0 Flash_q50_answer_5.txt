@@ -1,0 +1,16 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   `fold_right f [x1; x2; ...; xn] b` is defined as `f x1 (f x2 (... (f xn b)...))`.
+*   Tail recursion requires the recursive call to be the last operation performed. We use a continuation to accumulate the operations to be done after reaching the base case of the list .
+*   Option (c) correctly builds up the function calls in the continuation `(fun r -> f x (cont r))`, ensuring that the evaluation order matches the definition of `fold_right`. `cont r` evaluates the right part folded elements (i.e., `f x2 (... (f xn b)...)`), and then `f x ...` prepends the element `x` (i.e., `f x1 (f x2 (... (f xn b)...))`).
+
+Other options are incorrect because:
+
+*   (a) `(fun r -> cont (f x r))`: it is folding in `f x r` but the `r` parameter is on the right. We would expect `f x (cont r)`
+*   (b) `(fun r -> f (cont r) x)`:  Again, it is folding in `f (cont r) x` but the `x` parameter is on the right. We would expect `f x (cont r)` and we should apply `f` with the result of the continuation call and then the element `x`.
+*   (d) `(fun r -> cont (f r x))`: Similar to (a), folding incorrectly
+*   (e) `aux_folder xs f b (fun r -> f (cont r) x)`: Swapping arguments `f` and `xs` makes the function signature not type check. Even if we assume that this is a typo, it makes the result not match.

@@ -1,0 +1,5 @@
+solution
+ `'a list -> 'b -> 'b -> 'c`
+
+Explanation:
+In a left-to-right [fold_right], `f` is evaluated with the `hd` of the input list, then the `tl` of the list, and so on. Therefore, to handle the list and the accumulator, the function takes on the form `'a list -> 'b -> 'b -> 'c`. Here, the first `'b` represents `acc`, the second `'b` is the accumulation result, and `c` is the result after folding over the input list.

@@ -1,0 +1,10 @@
+**Correct Implementation(s):**
+
+d)
+
+
+**Explanation:**
+
+Option d correctly implements tail recursion for `fold_right`.  The key is that the recursive call `aux_folder f xs b`  passes the continuation `cont` to operate on the accumulated result `r` *before* applying `f` to it and the current element `x`. This avoids the intermediate result. This is the standard way to implement a tail recursive fold right.
+
+The other options incorrectly structure the application of `f` and `cont` in the recursive call; this leads to non-tail recursive calls, a stack overflow is possible with a large list.

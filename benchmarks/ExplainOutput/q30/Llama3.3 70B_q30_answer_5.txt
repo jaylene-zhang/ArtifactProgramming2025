@@ -1,0 +1,3 @@
+**[11.0; 21.0; 6.0]**
+
+Explanation: The `update_sales_tax` function updates the sales tax by doubling its current value, but this change is not reflected in the `add_tax` function because it uses the original `sales_tax` value at the time of its definition. The `update_price_list` function applies the `add_tax` function to each price in the list, so it will return the prices with the original `sales_tax` of 1.0 added to them, resulting in `[11.0; 21.0; 6.0]`.

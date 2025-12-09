@@ -1,0 +1,23 @@
+**Solution:**
+
+```ocaml
+let toInt f = 
+  let rec helper n = 
+    if f (fun x -> x) (Obj.magic ()) == Obj.magic () then n else helper (n + 1)
+  in
+  helper 0
+```
+
+**Explanation:**
+
+The solution uses a recursive helper function to determine how many times `f` applies a function to its argument. `Obj.magic` is used to bypass type checking and allow for a generic approach.
+
+1.  **`helper n`**: This inner function recursively tries applying `f` a certain number of times (indicated by `n`).
+
+2.  **`if f (fun x -> x) (Obj.magic ()) == Obj.magic () then n`**:  This is the core of the logic.
+
+    *   `f (fun x -> x)`: It calls *f* with the identity function. This simulates applying the original (potentially repeated) function *n* times in how the previous function `create` was constructed.  Since OCaml is statically typed, we need to do a type cast using `Obj.magic ()` to type check.
+    *   `== Obj.magic ()`: The condition checks if applying `f` with the identity function results in the original `x` i.e. 0 application. If the result is the same after applying the identity function, it means that `f` represents *n* applications of a function, and the function returns `n`.
+    *   `else helper (n + 1)`: If the identity applied to `f` is not `x`, it means the function *f* applies another function, so the `helper` increments counter `n` and recursively calls function `helper` again.
+
+3.  **`helper 0`**: The function starts by trying to represent the input function *f* as *0* applications of another function.

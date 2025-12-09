@@ -1,0 +1,3 @@
+Unused Variables: `r` (parameter)
+
+The parameter `r` in the function declaration is unused in the function body. Instead, a new local variable also named `r` is defined in the first line of the function body, shadowing the parameter. The original parameter `r` is never used in the computation.

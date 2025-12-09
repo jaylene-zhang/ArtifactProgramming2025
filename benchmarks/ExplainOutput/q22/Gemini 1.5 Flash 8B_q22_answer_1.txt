@@ -1,0 +1,7 @@
+**Solution:**
+
+`r`
+
+**Explanation:**
+
+The variable `r` is shadowed by the inner `let r = 2 * y` declaration.  The outer `r` is never used, since a new `r` is bound within the inner `let` block.  `f` is also shadowed, but that's confusing because it redefines the *function* it was referencing, not just a variable.

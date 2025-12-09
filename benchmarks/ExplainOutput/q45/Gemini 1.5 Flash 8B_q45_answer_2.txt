@@ -1,0 +1,9 @@
+1) `ones`
+
+2) `map (fun x -> psums x) (pascal)`
+
+**Explanation:**
+
+1. **Blank 1:** The first diagonal of Pascal's Triangle consists of only 1s. This is represented by the `ones` stream.
+
+2. **Blank 2:**  The `i+1`-th diagonal is calculated by cumulatively summing (using `psums`) the elements of the `i`-th diagonal.  The `map` function applies the `psums` function to each element of the `pascal` stream, recursively generating the next diagonal. This creates a suspended computation (hence the `Susp` construct), allowing the stream to be evaluated lazily.

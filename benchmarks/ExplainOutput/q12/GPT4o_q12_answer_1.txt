@@ -1,0 +1,52 @@
+### Solution for Q4.1:
+
+Theorem 1: For all hands `h` and accumulators `acc`,  
+`add_up h + acc = add_up_tr h acc`.
+
+Proof: By structural induction on `h`.
+
+#### Base Case:
+`h = Empty`.  
+`add_up Empty + acc = 0 + acc = acc`.  
+`add_up_tr Empty acc = acc`.  
+Thus, the base case holds: `add_up h + acc = add_up_tr h acc`.
+
+#### Induction Hypothesis:
+Assume that for a hand `h'`, the following holds:  
+`add_up h' + acc = add_up_tr h' acc`.
+
+#### Step Case:
+`h = Hand(c, h')` (where `c` is a card and `h'` is the rest of the hand).  
+We need to prove:  
+`add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc`.
+
+- Left-hand side:  
+`add_up (Hand(c, h')) + acc = (add_up h' + 1) + acc`.
+
+- Right-hand side:  
+`add_up_tr (Hand(c, h')) acc = add_up_tr h' (1 + acc)`.
+
+By the induction hypothesis:  
+`add_up h' + (1 + acc) = add_up_tr h' (1 + acc)`.
+
+Thus, `add_up (Hand(c, h')) + acc = add_up_tr (Hand(c, h')) acc`.
+
+By structural induction, the theorem holds.
+
+---
+
+### Solution for Q4.2:
+
+Theorem 2: For all hands `h`,  
+`add_up h = add_up_tr h 0`.
+
+Proof: Let `acc = 0`. From Theorem 1,  
+`add_up h + acc = add_up_tr h acc`.
+
+Substituting `acc = 0`:  
+`add_up h + 0 = add_up_tr h 0`.  
+
+Thus,  
+`add_up h = add_up_tr h 0`.  
+
+Therefore, by applying Theorem 1, Theorem 2 has been proven.

@@ -1,0 +1,10 @@
+```ocaml
+let toInt f =
+  let rec aux n x =
+    if n = 0 then 0
+    else 1 + aux (n-1) (f x)
+  in aux 1000 (fun x -> x)
+```
+
+Explanation:
+We implement `toInt` by defining a recursive helper function `aux` that takes a count `n` and an argument `x`. The function checks if `n` is 0, in which case it returns 0. Otherwise, it applies the function `f` to `x`, counts that application (by returning 1 + the result of `aux` with `n-1`), and continues until `n` reaches 0. The value of 1000 is arbitrary to ensure we don't run indefinitely; it represents a cap on how many times we will apply `f`. In a real implementation, we'd analyze the structure of `f` to determine how many applications were done.

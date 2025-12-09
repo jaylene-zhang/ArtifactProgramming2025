@@ -1,0 +1,8 @@
+a) **Correct**  
+b) **Incorrect**  
+c) **Incorrect**  
+
+**Explanation:**  
+- **a)** This implementation correctly uses `swap` to switch the function call's arguments, applying the `curry` on `sumSeries f` after fixing the lower bound to 0, which is as intended.  
+- **b)** This is incorrect because `curry` should be applied after fixing the lower bound to 0. Here, `sumSeries f 0` does not form a function waiting for `int -> int`, and thus it cannot be swapped. 
+- **c)** This is incorrect because the `swap` should not happen before currying with a fixed lower bound. The order of operations does not correctly yield a function waiting for the upper bound as required.

@@ -1,0 +1,27 @@
+No, the given program does not correctly compute the antiderivative of f.
+
+**Solution:**
+
+```ocaml
+let anti_d f = curry (fun a b -> integral f (a, b) dx) 0
+```
+
+**Explanation:**
+
+The provided program `let anti_d f = (curry integral) f 0` doesn't work because it passes 0 to the `curry` function and then applies `integral` with `f`, but it misses the integration step.
+
+The correct approach is to use `curry` to create a function that takes an `a` and computes the integral of `f` from `0` to `a`. The curry function is used to wrap the integral function along with the lower bound (0) to form a function that only requires the upper bound `a` as an input. 
+
+Hence, the correct form is:
+
+```ocaml
+let anti_d f = curry (fun a -> integral f (0, a) dx) 0
+```
+
+But since we're only passing 0 and not `dx` and `a` as arguments, the actual part that does the integral calculation should be:
+
+```ocaml
+let anti_d f = curry (fun a -> integral f (0, a)) 0
+```
+
+This forms a function that integrates `f` from `0` to `a`.

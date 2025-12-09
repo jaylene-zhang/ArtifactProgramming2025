@@ -1,0 +1,23 @@
+**Solution**
+```ocaml
+exception Error
+
+let rec zippy (xs: 'a list) (ys: 'b list) (pair: 'a * 'b -> 'c) (sc: 'c list -> 'd): 'd list =
+    match xs, ys with
+    | [] , [] -> sc []
+    | x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r))
+    | _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (fun (x, y) -> x + y) (fun r -> if List.length xs = List.length r then r else raise Error)
+```
+**Explanation**
+The types are:
+- `'a list` (a generic list of type `'a`)
+- `'b list`: another list of type `'b`
+- `'a * 'b -> 'c`: a function that takes a pair of type ``a`and `'b` and returns a value of type `'c`
+- `'c list -> 'd`: a function that takes a list of type `'c` and returns a value of type `'d`
+- `zippy` must return a list of type `'d`.
+These are all possible combinations of types for this program.  
+
+This solution assumes that the type of the elements in `xs` and `ys` can be different, hence the use of `'a` and `'b` as the type variables.

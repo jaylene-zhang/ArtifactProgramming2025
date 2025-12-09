@@ -1,0 +1,17 @@
+### Solution
+
+```ocaml
+type revolutions = int
+type jump_typ = 
+  | Axel
+  | Loop
+  | Lutz
+  | Flip
+  | Salchow
+type jump = 
+  jump_typ * revolutions
+```
+
+### Explanation
+
+The solution uses a sum type for `jump_typ` to encode the allowed jumps, and a separate type `revolutions` to represent the number of rotations. The `jump` type is then defined as a product type of `jump_typ` and `revolutions`, which captures the idea of a jump with a specific type and a number of rotations. This implementation is concise and easy to understand, and it allows for the addition of new jump types and revolution values in the future.

@@ -1,0 +1,13 @@
+The correct solution is:
+
+c) h (g (f x))
+
+**Explanation:**
+To compose the two functions `h` and `g` such that we are effectively applying the function `f` multiple times, we can think of `h` as applying the inner function to the outer function iteratively. 
+
+- `g` takes `f` as its first argument and applies it to the initial value `x`.
+- `h` then takes the result of `g` and applies `f` one more time to that result.
+
+When set up this way, if `g` applies `f` once and returns the result, and `h` takes that result and applies `f` again, the composition leads to an overall function of type `((’a ->’a) -> ’a -> ’a)` that applies `f` three times in total to `x`. 
+
+In contrast, the other options do not accurately sequentially build up to the desired function composition.

@@ -1,0 +1,7 @@
+```ocaml
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation: Inlining substitutes the expression `y + 3` for each occurrence of `x` in the subsequent code. In this case, `x` appears in two places: in `let w = x` and in `x + 2 + y * w`. After inlining, `let w = x` becomes `let w = y + 3` and `x + 2 + y * w` becomes `(y + 3) + 2 + y * w`.

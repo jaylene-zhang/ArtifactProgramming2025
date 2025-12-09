@@ -1,0 +1,10 @@
+**Solution:**
+
+c)
+
+**Explanation:**
+
+*   **a) Incorrect:** Concatenates in reverse order and is not tail-recursive because of the order of operations in `x ^ " " ^ s`. It has to compute `x ^ " " ` before calling `aux`.
+*   **b) Incorrect:** Concatenates in the correct order but includes an unnecessary leading space.
+*   **c) Correct:** This is a correct, tail-recursive solution. It first reverses the list so that the concatenation order is correct. Because `aux` is tail recursive: the recursive call to aux is the last operation performed.
+*   **d) Incorrect:** Not tail-recursive. The recursive call `concat xs` results have to be concatenated with `x ^ " " `, meaning concat xs have to return before `x ^ " " ^ concat xs` can be computed.

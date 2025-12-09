@@ -1,0 +1,66 @@
+```ocaml
+module Variable_set = Set.Make (String)
+module Variable_map = Map.Make(String)
+
+(* TODO: Implement the function. *)
+let collect_variables (formula : formula) : Variable_set.t =
+  let rec collect (f : formula) : Variable_set.t =
+    match f with
+    | Variable v -> Variable_set.singleton v
+    | Conjunction (f1, f2) ->
+      Variable_set.union (collect f1) (collect f2)
+    | Disjunction (f1, f2) ->
+      Variable_set.union (collect f1) (collect f2)
+    | Negation f -> collect f
+  in
+  collect formula
+
+(* TODO: Implement the function. *)
+let eval (state : truth_assignment) (formula : formula) : bool =
+  let rec eval (f : formula) : bool =
+    match f with
+    | Variable v ->
+      try
+        Variable_map.find v state
+      with
+      Not_found -> raise (Unassigned_variable v)
+    | Conjunction (f1, f2) ->
+      (eval f1) && (eval f2)
+    | Disjunction (f1, f2) ->
+      (eval f1) || (eval f2)
+    | Negation f ->
+      not (eval f)
+  in
+  eval formula
+
+(* TODO: Implement the function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let rec helper (formula : formula) (state : Variable_map.t)  =
+    try
+      if eval state formula then state
+      else
+        let variables = collect_variables formula in
+        List.fold_left (fun acc (var) ->
+          try
+            Variable_map.remove var acc
+          with
+          Not_found -> acc)
+          state (Variable_set.elements variables)
+        |> fun acc ->
+          let truth_value = Syntactically false in
+          if truth_value then
+            try
+              Variable_map.add var truth_value acc
+            with
+            Not_found -> Variable_map.singleton var truth_value
+          else
+            try
+              Variable_map.remove var acc
+            with
+            Not_found -> acc
+        end
+    with
+    _ -> raise Unsatisfiable_formula
+  in
+  helper formula Variable_map.empty
+```

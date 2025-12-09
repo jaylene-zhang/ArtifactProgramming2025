@@ -1,0 +1,5 @@
+a) False. The length of the definition does not determine the performance of the function. The operations used and algorithm complexity are what matter.
+
+b) False. This statement is incorrect because the time complexity of (@) actually depends on the length of its first argument, not the second. Additionally, rev1 is less efficient than rev2 since it uses list concatenation which is O(n) in each recursive call, making rev1 O(n²) overall.
+
+c) True. rev2 is indeed faster than rev1 because it uses an accumulator pattern with cons (::), which is O(1), resulting in an overall O(n) time complexity. In contrast, rev1 has O(n²) time complexity due to repeated list concatenation operations.

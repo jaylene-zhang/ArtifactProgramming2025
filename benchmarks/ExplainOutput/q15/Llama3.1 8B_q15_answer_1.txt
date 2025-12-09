@@ -1,0 +1,96 @@
+**Evaluation Result**
+
+The final result of the expression is: 15
+
+**Binding Stack**
+
+Here is the step-by-step evaluation with binding stack:
+
+1. Initially:
+```ocaml
+expressions:
+let x = 3;;
+let r = ref (2 + x);;
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r);;
+let x = 5;;
+let y = 10;;
+r := 2 ;;
+f (!r * y)
+```
+
+Binding Stack:
+- `x = 3`
+- `r = ref (2 + 3)` (binding delayed evaluation)
+- `f(...)`
+
+2. Evaluate `r = ref (2 + x)`
+```ocaml
+expressions:
+let x = 3;;
+let r = ref (2 + 3);;
+let f = (let y = x * !r in
+let r = ref 4 in fun u -> u + x + y + !r);;
+let x = 5;;
+let y = 10;;
+r := 2 ;;
+f (!r * y)
+```
+Binding Stack:
+- `r = ref 5`
+- `x = 3`
+- `f(...`
+
+3. Evaluate `let r = ref 4`
+```ocaml
+expressions:
+let x = 3;;
+let r = ref 5;;
+let f = (let y = x * !(ref 5) in
+let r = ref 4 in fun u -> u + x + y + !r);;
+let x = 5;;
+let y = 10;;
+r := 2 ;;
+f (!r * y)
+```
+Binding Stack:
+- `r = ref 5`
+- `x = 3`
+- `r = ref 4` (binding shadows outer `r`)
+- `f(...`
+
+4. Evaluate `let y = x * !r`
+```ocaml
+expressions:
+let x = 3;;
+let r = ref 5;;
+let f = (fun u -> u + 3 + (3 * 5) + 4);;
+let x = 5;;
+let y = 10;;
+r := 2 ;;
+f (!r * y)
+```
+Binding Stack:
+- `r = ref 5`
+- `x = 3`
+- `r = ref 4` (binding shadows outer `r`)
+- `f(...)`
+
+5. Evaluate `f (!r * y)`
+```ocaml
+expressions:
+let x = 3;;
+let r = ref 5;;
+let f = (fun u -> u + 3 + 15 + 2);;
+let x = 5;;
+let y = 10;;
+r := 2 ;;
+24
+```
+Binding Stack:
+(None, expression finishes)
+
+6. Evaluate `24`
+```ocaml
+final expression: 15
+```

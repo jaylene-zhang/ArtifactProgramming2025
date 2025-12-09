@@ -1,0 +1,8 @@
+Here is the revised data type for cake:
+
+```ocaml
+type calories = int
+type cake = Slice of int * ingredients list | Cake of cake * cake
+```
+
+Explanation: We added a new type `calories` for storing the number of calories in each slice. We revised the `cake` data type to include an additional `int` value representing the calories for each slice of cake, in addition to the list of ingredients.

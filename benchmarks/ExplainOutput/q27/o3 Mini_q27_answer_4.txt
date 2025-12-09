@@ -1,0 +1,3 @@
+Solution: They avoid mutable state because it breaks referential transparency and introduces side effects, making code harder to reason about.
+
+Explanation: By favoring immutability, functional languages ensure that functions always yield the same output for given inputs, which simplifies debugging, testing, and enables safe parallel execution.

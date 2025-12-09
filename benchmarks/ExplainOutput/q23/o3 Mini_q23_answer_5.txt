@@ -1,0 +1,3 @@
+Solution: shift : (int ref * int ref) -> unit
+
+Explanation: The shift function takes a tuple of int references, extracts each reference, increments the integer they hold, and performs side effects. Since these operations return unit, its overall type is (int ref * int ref) -> unit.

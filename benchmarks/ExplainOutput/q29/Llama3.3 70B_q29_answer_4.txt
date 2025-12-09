@@ -1,0 +1,23 @@
+### Solution
+a) No, b) No, c) No, the correct solution is: 
+### Correct Solution
+```ocaml
+let sum_from_zero f = curry (swap sumSeries) 0 (fun x -> x + 1) f
+```
+However, this is still not a good implementation because the argument order is not clear. A cleaner implementation would be:
+### Cleaner Solution
+```ocaml
+let sum_from_zero f b = sumSeries f (0, b) (fun x -> x + 1)
+```
+### Explanation
+The function sum_from_zero should take a function f and return a new function waiting for the upper bound b to compute the sum series. 
+
+The original solutions do not correctly implement this behavior.
+
+- a) This solution is attempting to curry the sumSeries function with the lower bound set to 0 and the increment function set to `fun x -> x + 1`, then swap the order of the resulting function's arguments. However, this will not work because the curried function will still be waiting for the function f, and the argument order will be incorrect.
+
+- b) This solution is also attempting to curry the sumSeries function, but it is not correctly handling the function f.
+
+- c) This solution is attempting to curry the sumSeries function after swapping its argument order, but it is still not correctly handling the function f.
+
+The correct solution should fix the lower bound to 0 and use `fun x -> x + 1` to increment in each step, while still taking the function f and the upper bound b as arguments. The cleaner solution achieves this by directly calling sumSeries with the fixed lower bound and increment function, and waiting for the upper bound b as an argument.

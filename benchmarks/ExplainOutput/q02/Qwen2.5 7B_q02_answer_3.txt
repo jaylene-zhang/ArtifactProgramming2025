@@ -1,0 +1,11 @@
+The type is `let rec repeat (f : 'a -> 'a) : 'a -> 'a = f (repeat f)`
+
+Explanation:
+- `f` is a function that takes an argument of type `'a` and returns a value of type `'a`. This is the most general form of a function that could be passed as `f`.
+- `repeat f` applies the function `f` to the result of `repeat f`, which means `repeat` must return a function that takes an argument. Since `f` returns the same type as it takes, the most general return type for `repeat` is also `'a -> 'a`.
+
+Thus, the types fill in as:
+- The parameter `f` type: `'a -> 'a`
+- The return type of `repeat`: `'a -> 'a`
+
+The program is well-typed with these types.

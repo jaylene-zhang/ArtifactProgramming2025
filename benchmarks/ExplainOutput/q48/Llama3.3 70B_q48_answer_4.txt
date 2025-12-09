@@ -1,0 +1,3 @@
+**They are mostly tail-recursive.**
+ 
+The standard List library in OCaml does contain many tail-recursive functions. Although not all functions are tail-recursive, most of them are, particularly those that involve iterating over the list (e.g., `List.iter`, `List.fold_left`, `List.fold_right`). Those that are not tail-recursive typically involve recursive calls that aren't in tail position, such as functions with multiple recursive calls. Using continuations can always achieve tail-recursion, but in some cases, the code becomes less readable or OCaml's optimizer may not be able to optimize the stack usage for non-tail-recursive calls as effectively.

@@ -1,0 +1,7 @@
+**Solution:**
+
+No.
+
+**Explanation:**
+
+The `anti_d` function attempts to create the antiderivative by partially applying `integral`. However, it fixes the lower bound of integration to `0` while it needs to fix only `f`. The result is a function expecting a float and then a float, while it needs to take a float representing the upper bound of the integration, which can be done by using `fun x -> integral f (0., x) dx`

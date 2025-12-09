@@ -1,0 +1,18 @@
+Pascal's Triangle - Part A
+We want to generate all diagonals in the Pascal triangle, starting with the stream of ones as a first diagonal.
+The i + 1 diagonal in the triangle corresponds to the partial sums of the stream described by the i-th diagonal.
+You can assume that ones describes a stream of 1s.
+
+
+Fill in the blank in the template for generating all diagonals in the pascal triangle below.
+Hint: Use map and psums.
+
+let rec pascal =
+    { hd = (**blank 1**);
+      tl = Susp (fun () -> (**blank 2**) )
+    }
+
+
+1) For blank 1 in line 2 we should write:
+
+2) For blank 2 in line 3 we should write:

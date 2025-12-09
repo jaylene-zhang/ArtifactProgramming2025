@@ -1,0 +1,5 @@
+**Answer**
+Functions are first-class values because they can be assigned to variables, passed as arguments to other functions, returned as output from functions, and stored in data structures.
+
+**Explanation**
+In programming languages that support first-class functions, functions can be treated like any other data type; they can be manipulated and combined in various ways, which is the core idea of first-class functions. This allows for more flexibility and extensibility in programming.

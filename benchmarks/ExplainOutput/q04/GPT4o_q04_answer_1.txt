@@ -1,0 +1,11 @@
+Solution: Implementations **1** and **4** compute the `prime_fact` function only once.
+
+Explanation:
+
+1. In **Implementation 1**, the function `prime_fact x` is computed once and bound to `p` using `let p = prime_fact x`. The recursive function `test` uses this precomputed `p` for comparison, avoiding recomputation of `prime_fact`.
+
+2. In **Implementation 2**, `prime_fact x` is recomputed at every recursive call of `check x ys`, making it inefficient.
+
+3. In **Implementation 3**, `prime_fact x` is computed inside the anonymous function passed to `List.exists`. This results in repeated evaluations of `prime_fact x` for each element of the list `l`.
+
+4. In **Implementation 4**, `prime_fact x` is computed once and bound to `p` using `let p = prime_fact x`. The `List.exists` function uses the precomputed `p` for comparison, ensuring `prime_fact` is not recomputed.

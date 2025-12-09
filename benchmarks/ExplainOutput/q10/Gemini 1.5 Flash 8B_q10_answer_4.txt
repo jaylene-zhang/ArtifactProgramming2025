@@ -1,0 +1,1 @@
+Functions in OCaml can be passed as arguments to other functions, and returned as values from functions.  This allows for higher-order functions and flexible program construction.

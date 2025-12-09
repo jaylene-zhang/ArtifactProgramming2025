@@ -1,0 +1,20 @@
+The possible definitions for the recursive data type `bookmarks` to describe a list of URLs are:
+
+a) `type url = string`  
+`type bookmarks = Location of url * bookmarks | Empty`
+
+b) `type url = string`  
+`type bookmarks = Empty | Location of string * bookmarks`
+
+d) `type url = string`  
+`type bookmarks = Empty | Location of bookmarks * url`
+
+**Explanation:**
+
+- **Option a** defines a `bookmarks` type using a constructor `Location` that pairs a `url` with another `bookmarks`, which recursively allows for multiple bookmarks, and includes an `Empty` case for termination.
+
+- **Option b** is valid as it also defines `bookmarks` using an `Empty` case and `Location`, with `Location` storing `string` (URL in this context) and linking to the rest of the `bookmarks`.
+
+- **Option d** is also correct, as it defines `bookmarks` with a recursive link, where `Location` points to a `bookmarks` and contains a `url`, allowing similar recursive structure.
+
+- **Option c** is incorrect because `Location` must include at least a type parameter (such as `url` or something similar) to hold the actual value of a bookmark; its definition lacks this detail.

@@ -1,0 +1,28 @@
+**Solution**: The result of evaluating the expression is **72**.
+
+**Explanation**:
+1. `let x = 3`: `x` is bound to `3`.
+2. `let r = ref 1`: `r` is a reference initialized to `1`, so `!r = 1`.
+3. 
+   - `let y = x * !r`: `y = 3 * 1 = 3`.
+   - `let r = ref 5`: A new reference `r` is created and initialized to `5`.
+   - `fun u -> u + x + y + !r`: Defines a function `f` where:
+     - `x` is the outer `x = 3`,
+     - `y = 3`,
+     - `r` is bound to the inner `ref 5`.
+
+4. `let x = 2 * !r * x`: The outer `r` reference holds `10` (after mutation), so:
+   - `x = 2 * 10 * 3 = 6`.
+5. `r := 10`: The outer reference `r` is updated to `10`.
+
+6. `f (x * !r)`: Calls `f` with:
+   - `x = 6`, `!r = 10`.
+   - The argument to `f` is `6 * 10 = 60`.
+
+7. Inside `f`:
+   - `u = 60`,
+   - `x = 3`, `y = 3`,
+   - `!r` refers to the inner reference initialized to `5`.
+
+   Substitute into `u + x + y + !r`:
+   - `60 + 3 + 3 + 5 = 72`.

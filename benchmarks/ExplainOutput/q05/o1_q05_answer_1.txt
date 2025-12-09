@@ -1,0 +1,7 @@
+Solution:
+let foo y =
+  let w = y + 3 in
+  fun y -> (y + 3) + 2 + y * w
+
+Explanation:
+We replaced x with (y + 3) in the body and then introduced w = y + 3, leaving the rest unchanged.

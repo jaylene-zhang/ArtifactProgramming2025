@@ -1,0 +1,13 @@
+The correct options are:
+
+a) type url = string  
+type bookmarks = Location of url * bookmarks | Empty
+
+b) type url = string  
+type bookmarks = Empty | Location of string * bookmarks
+
+Explanation:  
+- Option a describes a bookmarks list where each 'Location' holds a URL and a reference to another bookmarks list, and 'Empty' signifies the end of the list, which is a standard way to represent a recursive structure.
+- Option b also represents bookmarks similarly but defines 'Location' explicitly with a string to hold the URL. 'Empty' again signifies the end of the list.
+- Option c is incorrect because 'Location' is not defined properly as it lacks any associated data. It should include some form of content, either a URL or a structure that can express a location.
+- Option d is incorrect because it defines a structure that is not standard for a list, as it puts bookmarks first in 'Location', while typically a Location references a URL followed by another bookmarks list.

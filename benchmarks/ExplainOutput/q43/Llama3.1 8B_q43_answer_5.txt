@@ -1,0 +1,15 @@
+**No**
+
+```ocaml
+let rec rev_tl = function
+  | [] -> []
+  | x :: xs -> rev_tl xs @ [x]
+(*... other code... *)
+
+assert (length (rev_tl [1; 2; 3; 4; 5]) = 5);
+```
+**However**, ocaml reports: `Assert failed` due to evaluating to: `5!= 5`
+
+**Explanation**
+
+The problem is that when proving by structural induction, we need to break down the recursive call and fill in the missing pieces. Here, `rev_tl` splits a list into an initial tail `xs` and the last element `x`, but our base case `[]` doesn't coincide with the tail `xs`. Our code assumes `rev_tl` resets the reversed tail to `[x]`, which is incorrect.

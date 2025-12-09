@@ -1,0 +1,3 @@
+Solution: Some List functions in OCaml are not tail-recursive by default.
+
+Explanation: Although continuations can be used to create tail-recursive versions of functions, not all functions in the List library are implemented this way for simplicity and performance reasons. Tail recursion adds overhead due to the extra manageability of continuations and can be less efficient in some cases. OCaml optimizes function calls for certain cases, but it's a trade-off that developers must consider.

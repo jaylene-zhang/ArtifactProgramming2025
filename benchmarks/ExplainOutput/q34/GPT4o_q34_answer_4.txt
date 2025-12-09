@@ -1,0 +1,12 @@
+a) **False**  
+The length of the definition does not determine the runtime performance of the function. Performance depends on the computational complexity. rev1 performs repeatedly expensive operations while rev2 does not.
+
+---
+
+b) **False**  
+The time complexity of the `(@)` operator depends on the length of its *first* argument, not the second. However, rev1 is slower because it uses `(@)` in each recursive call, which makes the overall complexity O(n^2), unlike rev2 which has O(n) complexity.
+
+---
+
+c) **True**  
+rev2 is faster than rev1 because `go` accumulates using `(::)`, which is a constant-time operation. rev2 reverses the list efficiently in linear O(n) time. This avoids the repeated costly operations of `(@)` used in rev1.

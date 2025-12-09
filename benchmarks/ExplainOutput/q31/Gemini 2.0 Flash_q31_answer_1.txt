@@ -1,0 +1,25 @@
+Here's an analysis of each implementation:
+
+*   **a) let check\_prime\_factors x = let p = prime\_fact x in List.exists (fun e -> e = p)**
+
+    **Solution:** Yes.
+
+    **Explanation:** `prime_fact x` is computed once and its result is bound to `p`. `List.exists` then reuses the value of `p` for each comparison.
+
+*   **b) let check\_prime\_factors x l = List.exists (fun e -> e = prime\_fact x) l**
+
+    **Solution:** No.
+
+    **Explanation:** `prime_fact x` is computed every time the anonymous function `fun e -> e = prime_fact x` is applied within `List.exists`. So, it's computed once *for each element* of the list `l`.
+
+*   **c) let check\_prime\_factors x l = match l with | \[\] -> false | y::ys -> y = prime\_fact x || check x ys**
+
+    **Solution:** No.
+
+    **Explanation:** This is a recursive implementation similar to `List.exists`. `prime_fact x` is evaluated in each recursive call where the list is non-empty.  `check` is not defined so I assume that there is a typo. It should either be called `check_prime_factors` or is the function name given to us.
+
+*   **d) let check\_prime\_factors x l = let p = prime\_fact x in let rec test l = match l with | \[\] -> false | y::ys -> y = p || test ys in test l**
+
+    **Solution:** Yes.
+
+    **Explanation:** `prime_fact x` is computed once and its result is bound to `p`. The recursive function `test` then reuses the value of `p` for each comparison.

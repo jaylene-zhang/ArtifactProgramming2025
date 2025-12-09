@@ -1,0 +1,15 @@
+The resulting program after inlining \( w * 2 \) and replacing all occurrences of \( x \) with \( w * 2 \) would be:
+
+```ocaml
+let foo w =
+  let w = w * 2 in
+  let y = 2 * (w * 2) in
+  fun x -> w * y * x
+```
+
+**Explanation:**
+1. We replace the expression defining \( x \) with its equivalent \( w * 2 \).
+2. The line `let x = w * 2 in` becomes irrelevant since we substitute \( x \) with \( w * 2 \) wherever it appears.
+3. The line `let y = 2 * x` transforms to `let y = 2 * (w * 2)`.
+4. In the final lambda function, \( x \) remains unchanged because it's the parameter of the function. Thus, the body remains `w * y * x`, where \( y \) has already been replaced.
+5. Adjust all instances accordingly to maintain correct scoping and references.

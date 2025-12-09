@@ -1,0 +1,3 @@
+Answer: Efficiency and readability considerations outweigh the benefits of making all List functions tail-recursive.
+
+Explanation: While continuations can indeed make any recursive function tail-recursive, there are tradeoffs. Continuation-passing style introduces overhead in both execution time and memory usage for simple operations. For frequently used functions that process small lists, the non-tail-recursive version is often faster and more readable. Additionally, continuation-based implementations are typically harder to understand and maintain. The OCaml standard library thus uses tail-recursion where it matters most (for functions likely to be used on very large lists) and prioritizes simplicity and efficiency elsewhere.

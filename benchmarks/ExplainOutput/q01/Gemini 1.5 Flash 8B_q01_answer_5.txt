@@ -1,0 +1,38 @@
+```ocaml
+exception Error
+
+let rec zippy (xs:'a list) (ys:'b list) (pair:'a * 'b -> 'c) (sc:'c list -> 'd) : 'd =
+    match xs , ys with
+| [] , [] -> sc []
+| x::xs , y::ys -> zippy xs ys pair (fun r -> sc ((pair (x,y)::r)))
+| _ , _ -> raise Error
+
+let zip_plus xs ys =
+zippy xs ys (function (x, y) -> x + y)
+(fun r -> if List.length xs = List.length r then r else raise Error)
+```
+
+**Explanation:**
+
+* **`xs:'a list`**: `xs` is a list of values of type `'a`.  The type variable `'a` can be any type.
+* **`ys:'b list`**: `ys` is a list of values of type `'b`.  The type variable `'b` can be any type, potentially different from `'a`.
+* **`pair:'a * 'b -> 'c`**: The function `pair` takes a tuple of type `'a * 'b` (a pair of an `'a` and a `'b`) and returns a value of type `'c`.  This is crucial for allowing the accumulating list to be correct.
+* **`sc:'c list -> 'd`**: The function `sc` takes a list of values of type `'c` and returns a value of type `'d`. This is the accumulator function.
+
+
+The crucial point here is that the accumulator function `sc` must be able to handle the accumulating result of `pair`, which depends on the type of `pair`.
+
+The `zip_plus` function works correctly because the `pair` function ( `function (x, y) -> x + y` ) has the type `int * int -> int`, which fits with the `'a`, `'b`, and `'c` types. Also the `(fun r -> if List.length xs = List.length r then r else raise Error)` function knows the length of list `r`.
+
+
+
+**Why the program is well-typed (in this specific case):**
+
+The specific example of `zip_plus` uses integer addition, ensuring the type constraints align. The function `zippy` is now correctly typed to account for any possible addition, and the accumulator function now has a type that matches the return type of the addition.
+
+
+**Important Note:**  The code as rewritten _is_ well typed under the assumption that `xs` and `ys` are lists of the appropriate types,  and the `pair` function is correctly defined to work with those types.
+
+
+```ocaml
+```

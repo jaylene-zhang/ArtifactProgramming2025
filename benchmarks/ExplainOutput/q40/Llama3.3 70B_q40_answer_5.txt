@@ -1,0 +1,2 @@
+**No**
+The function is not tail-recursive. The recursive call `zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2` is not the last call because it builds a new function with `fun l -> sc ((h1, h2) :: l)` and applies it, making the current call not the last one in the sequence of calls.

@@ -1,0 +1,10 @@
+```
+3, 6
+```
+
+**Explanation of the Bug and Test Case:**
+
+The function is attempting to calculate the sum using a recursive approach.  However, it's incorrectly calculating  `n + triangle (n-1)`.  The correct formula for the nth triangle number is the sum of numbers from 1 to n, which is `n * (n + 1) / 2`. The provided code calculates *incorrectly* the result.
+
+
+The test case `3, 6` demonstrates the failure.  `triangle 3` should return `6` (1 + 2 + 3), but the given function will return `3 + triangle(2) = 3 + (2 + triangle(1)) = 3 + (2 + 1) = 6`. This test shows the function produces the expected output on the correct input (in this case it does work for 3), but wouldn't work for other inputs. To see a faulty result, you need to investigate inputs where the error isn't masked by the recursion. A better test would be to verify for a non-simple example.  For example with 5.  triangle(5) should yield 15.  But the provided function will return `5 + triangle(4)` which in turn is `5 + 4 + triangle(3) = 5 + 4 + (3 + triangle(2) = 5 + 4 + 3 + (2 + triangle(1) = 5 + 4 + 3 + 2 + 1 = 15`.  The issue lies in the incorrect implementation in the calculation rather than the method. Thus, this example helps demonstrate the faulty calculation that the input and output pair show.

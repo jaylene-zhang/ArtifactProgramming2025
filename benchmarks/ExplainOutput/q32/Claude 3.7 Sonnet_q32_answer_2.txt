@@ -1,0 +1,9 @@
+a) and d) are correct solutions.
+
+a) This defines a recursive data type for bookmarks where each bookmark contains a URL (represented as a string) and a reference to the rest of the bookmarks. The Empty constructor represents the end of the list.
+
+b) This is incorrect because it uses string directly instead of the defined url type in the Location constructor.
+
+d) This is also correct, just with a different order of fields in the Location constructor (bookmarks first, then url).
+
+c) This is incorrect because the Location constructor doesn't contain any data about the URL or the rest of the bookmarks.

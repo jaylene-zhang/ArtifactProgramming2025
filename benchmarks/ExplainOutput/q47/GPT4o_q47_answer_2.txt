@@ -1,0 +1,13 @@
+**Solution:**  
+The correct implementation is **a)**.
+
+---
+
+**Explanation:**  
+a) The function `aux` is tail-recursive because the recursive call `aux xs (x ^ " " ^ s)` is the last operation performed in the function. It concatenates the current string `x` to the accumulator `s` (with a trailing space) as it traverses the list. At the end, the accumulated string is returned.
+
+b) Although tail-recursive, this is not correct because `(s ^ " " ^ x)` appends the current string `x` at the end, producing the reverse of the desired order.
+
+c) This reverses the input list before processing, which adds an extra traversal and negates the "traversing the list once" requirement.
+
+d) This implementation is not tail-recursive because it involves a deferred operation (`x ^ " " ^ concat xs`), creating a new stack frame for each recursive call.

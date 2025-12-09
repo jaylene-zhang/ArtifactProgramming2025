@@ -1,0 +1,48 @@
+(* Q1 : String to Characters to String *)
+(* 1.1 Turn a string into a list of characters. *)
+let string_explode (s : string) : char list =
+  (* TODO: Implement the function. *)
+  let n = String.length s in
+  tabulate n (fun i -> String.get s i)
+
+(* 1.2 Turn a list of characters into a string. *)
+let string_implode (l : char list) : string =
+  (* TODO: Implement the function. *)
+  List.fold_right (fun c acc -> (Char.escaped c) ^ acc) l ""
+
+(* Q2 : Bank Account *)
+exception Msg of string
+
+type password = string
+
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve    : password -> int -> unit;
+  deposit     : password -> int -> unit;
+  show_balance : password -> int;
+}
+
+let negative_amount = Msg "Money amount below 0"
+let wrong_pass = Msg "Wrong password"
+let not_enough_balance = Msg "Insufficient balance"
+
+let open_account (pass: password) : bank_account =
+  (* TODO: Implement the function. *)
+  let stored_pass = ref pass in
+  let balance = ref 0 in
+  let update_pass old_pass new_pass =
+    if old_pass <> !stored_pass then raise wrong_pass
+    else stored_pass := new_pass in
+  let deposit provided amount =
+    if provided <> !stored_pass then raise wrong_pass
+    else if amount < 0 then raise negative_amount
+    else balance := !balance + amount in
+  let retrieve provided amount =
+    if provided <> !stored_pass then raise wrong_pass
+    else if amount < 0 then raise negative_amount
+    else if amount > !balance then raise not_enough_balance
+    else balance := !balance - amount in
+  let show_balance provided =
+    if provided <> !stored_pass then raise wrong_pass
+    else !balance in
+  { update_pass; deposit; retrieve; show_balance }

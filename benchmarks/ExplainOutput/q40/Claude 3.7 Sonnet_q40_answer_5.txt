@@ -1,0 +1,3 @@
+Yes, this function is tail-recursive.
+
+The function `zip_tr` is tail-recursive because all recursive calls to `zip_tr` are in tail position. In the last recursive case, the call `zip_tr fc (fun l -> sc ((h1, h2) :: l)) t1 t2` is the final operation performed by the function. No additional computation is done after the recursive call returns. This ensures that the compiler can optimize the recursion into a loop, avoiding stack growth for large inputs.

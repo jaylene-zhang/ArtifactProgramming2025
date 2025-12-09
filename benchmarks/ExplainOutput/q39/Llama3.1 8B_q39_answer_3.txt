@@ -1,0 +1,11 @@
+Solution:
+```ocaml
+let toInt f =
+  let rec count n =
+    if n = 0 then 0
+    else (fun x -> x) >>= f >>= count (n - 1)
+  in
+  count
+```
+Explanation:
+We define a helper function `count` that takes an integer `n` as argument. If `n` is 0, `count` returns 0. Otherwise, it applies the identity function `(fun x -> x)` to the result of applying `f` to the result of recursively calling `count` with `n-1`. This effectively applies `f` `n` times, and the `>>=` operator composes these applications.

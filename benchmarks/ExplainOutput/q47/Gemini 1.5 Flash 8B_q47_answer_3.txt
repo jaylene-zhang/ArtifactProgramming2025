@@ -1,0 +1,21 @@
+The correct answer is **b**.
+
+**Solution:**
+
+```ocaml
+let concat l =
+let rec aux l s = match l with
+  | [] -> s
+  | x::xs -> aux xs (s ^ " " ^ x)
+in aux l ""
+```
+
+**Explanation:**
+
+* **b** is correct because it builds the string from left to right.  Each recursive call appends the next string to the end of the accumulator string, which is the correct construction sequence when working with a list of strings from left to right.
+
+* **a** is incorrect; it is almost the same as b, except that it is appending elements to the *beginning* of the accumulator, thus reversing the desired order of the strings.
+
+* **c** is incorrect; `reverse` introduces an extra traversal step, making the overall algorithm not tail-recursive (and not singly-traversing).
+
+* **d** is also incorrect. While it's a recursive implementation, it is not tail recursive.  The recursive call `concat xs` is not in a tail position, meaning the result of the recursive call is not the final answer.  This doesn't allow for tail optimization.

@@ -1,0 +1,5 @@
+**(5, 4)**
+
+**Explanation:**
+
+The original `point` is (4, 3). The first `shift_point 1` redefines `point` to (4 + 1, 3 + 1) = (5, 4). `shift_point 2` then uses the *original* definitions of `component_x` and `component_y` and applies them to global variable `point`, which is now (5,4), to calculate (5+2, 4+2) = (5, 4). Note that the value of 'point' within the function definition of `shift_point` is shadowed by the global `point`.

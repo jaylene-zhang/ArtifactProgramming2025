@@ -1,0 +1,113 @@
+**Solution to the Question:**
+
+Result: `57`
+
+**Explanation with binding stack:**
+
+Let's evaluate step-by-step and keep track of the **binding stack**:
+
+---
+
+### 1. Initial Binding: `x = 3`
+```ocaml
+let x = 3
+```
+**Binding stack:**
+```
+x = 3
+```
+
+### 2. Create `r`
+```ocaml
+let r = ref (2 + x)
+```
+- `x = 3` → `2 + x = 5`
+- `r = ref 5`
+
+**Binding stack:**
+```
+r -> 5
+x = 3
+```
+
+### 3. Define `f`
+```ocaml
+let f = (let y = x * !r in
+         let r = ref 4 in 
+         fun u -> u + x + y + !r)
+```
+- `!r = 5` (value from outer `r`), so `y = x * !r = 3 * 5 = 15`
+- Inside the function `f`, there is a **new `r`** (`let r = ref 4`), which is local to `f`.
+
+`f` is now:
+```ocaml
+fun u -> u + x + y + !r
+```
+  - Uses **outer `x = 3`**
+  - Uses **outer `y = 15`**
+  - Uses **local `r = ref 4`** in the body of `f`.
+
+**Binding stack:**
+```
+f --> fun u -> u + x + y + !r (with x = 3, y = 15, local r = ref 4 in f)
+r -> 5
+x = 3
+```
+
+### 4. Redefine `x` and `y`
+```ocaml
+let x = 5
+let y = 10
+```
+- These **shadow** the previous `x` and `y`.
+
+**Binding stack:**
+```
+y = 10
+x = 5
+f --> fun u -> u + x + y + !r (with x = 3, y = 15, local r = ref 4 in f)
+r -> 5
+x = 3
+```
+
+### 5. Update `r`
+```ocaml
+r := 2
+```
+- Updates the **outer mutable `r`** to `2`.
+
+**Binding stack:**
+```
+y = 10
+x = 5
+f --> fun u -> u + x + y + !r (with x = 3, y = 15, local r = ref 4 in f)
+r -> 2
+x = 3
+```
+
+### 6. Evaluate `f (!r * y)`
+```ocaml
+f (!r * y)
+```
+- `!r = 2`, `y = 10`, so `!r * y = 2 * 10 = 20`.
+- We call `f 20`.
+
+### 7. Inside `f`
+`f` is:
+```ocaml
+fun u -> u + x + y + !r
+```
+- `u = 20` (argument passed).
+- `x = 3` (outer `x` captured by `f`).
+- `y = 15` (outer `y` captured by `f`).
+- `!r = 4` (local `r` inside `f`).
+
+Result:
+```ocaml
+u + x + y + !r = 20 + 3 + 15 + 4 = 57
+```
+
+---
+
+### Final Answer:
+The result of evaluating the expression is `57`.

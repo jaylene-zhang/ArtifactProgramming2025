@@ -1,0 +1,3 @@
+Solution: Options 1 and 4.
+
+Explanation: Both options 1 and 4 bind the result of prime_fact x to a variable (p) before inspecting the list, so prime_fact is computed only once. In contrast, options 2 and 3 call prime_fact in the recursive function or lambda, causing it to be recomputed for each element.

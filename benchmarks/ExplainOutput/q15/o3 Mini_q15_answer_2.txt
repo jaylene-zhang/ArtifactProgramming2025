@@ -1,0 +1,18 @@
+Solution: 42
+
+Explanation:
+1. Outer binding: x = 3; r = ref (2 + 3) → r = ref 5.
+2. Define f via:
+  a. y = x * !r = 3 * 5 = 15.
+  b. Inner binding: r = ref 4.
+  c. f becomes fun u -> u + x + y + !r, with closure {x = 3, y = 15, inner r = ref 4}.
+3. New bindings: x = 5 and y = 10; then update outer r: r := 2.
+4. Compute argument: !r * y = 2 * 10 = 20.
+5. Call f 20: returns 20 + 3 + 15 + 4 = 42.
+
+Binding Stack:
+• Outer: x = 3, r (outer) = ref (initially 5, then updated to 2)  
+• f = closure { x = 3, y = 15, inner r = ref 4 }  
+• Inner scope: x = 5, y = 10
+
+Thus, the evaluation yields 42.

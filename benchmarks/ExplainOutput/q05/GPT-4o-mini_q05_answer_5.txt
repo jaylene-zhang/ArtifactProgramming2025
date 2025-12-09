@@ -1,0 +1,12 @@
+The resulting program after inlining `y + 3` in place of `x` would be:
+
+```ocaml
+let foo y =
+let w = (y + 3) in fun y -> (y + 3) + 2 + y * w
+```
+
+Explanation:
+1. The original definition is `let x = y + 3 in`, which means `x` is defined as `y + 3`.
+2. When we inline `x`, we replace its occurrences in the scope where it is defined.
+3. The line `let w = x in` becomes `let w = (y + 3) in`, as `x` is replaced with `y + 3`.
+4. In the function part `fun y -> x + 2 + y * w`, `x` is replaced with `y + 3`, resulting in the final function body being `(y + 3) + 2 + y * w`.

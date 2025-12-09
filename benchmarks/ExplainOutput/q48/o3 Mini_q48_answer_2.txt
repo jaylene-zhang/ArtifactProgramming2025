@@ -1,0 +1,3 @@
+Solution: They’re written in a straightforward recursive style for clarity and efficiency in typical use—even though tail recursion via continuations is possible, it would add complexity and overhead unnecessarily.
+
+Explanation: While continuations can make functions tail-recursive, using them can complicate the code and slow performance due to extra allocations. Since most list operations are used on reasonably sized lists and some (like fold_right) inherently follow a non-tail-recursive pattern, the simpler recursive versions were chosen.

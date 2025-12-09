@@ -1,0 +1,4 @@
+Solution: Yes
+
+Explanation:
+After the code execution, `rc1` and `rc2` both point to the same cyclic list.  `get_tail rc1` and `get_tail rc2` both return the same reference, `rc1`, which points to the second node in the cycle.  Since they are the same reference (physical equality), it will return true.

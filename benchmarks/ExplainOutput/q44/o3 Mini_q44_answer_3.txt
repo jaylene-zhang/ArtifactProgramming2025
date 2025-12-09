@@ -1,0 +1,3 @@
+Solution: Assume that P(xs) holds for an arbitrary list xs (inductive hypothesis) and then prove that P(x :: xs) holds for any element x.
+
+Explanation: In the inductive step, you need to show that extending the list by any element preserves the property, moving from xs to x :: xs using the induction hypothesis.

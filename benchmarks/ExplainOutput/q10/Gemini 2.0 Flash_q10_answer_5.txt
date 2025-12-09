@@ -1,0 +1,7 @@
+**Solution:**
+
+Functions can be treated like any other value (e.g., integers, strings). They can be passed as arguments to other functions, returned as results from functions, and stored in data structures.
+
+**Explanation:**
+
+"First-class" means a value has full privileges.  Functions in OCaml aren't special cases; you can manipulate them just like any other data. This enables powerful programming paradigms like higher-order functions and functional composition.

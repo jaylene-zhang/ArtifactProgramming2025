@@ -1,0 +1,11 @@
+**Solution:**
+
+`true`
+
+**Explanation:**
+
+1.  `rc1` initially points to `Cons (1, ref Nil)`.
+2.  `rc2` points to `Cons (2, rc1)`.
+3.  `rc1 := !rc2` makes `rc1` point to the same memory location as `rc2`.
+
+Therefore, both `rc1` and `rc2` now point to the same `Cons` cell (the one containing 2). `get_tail rc1` and `get_tail rc2` will both access the tail of this shared `Cons` cell, which is `rc1`. Since they return the content of the same memory location (the ref cell originally created as `rc1`), the `==` operator will return `true`.

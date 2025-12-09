@@ -1,0 +1,3 @@
+`[11. ; 21. ; 6.]`
+
+The `update_sales_tax` function multiplies the current sales tax by 2.0, but does not update the `sales_tax` variable. The `update_price_list` function uses the original value of `sales_tax` (1.0) to calculate the updated prices, resulting in adding 1.0 to each price in the list.

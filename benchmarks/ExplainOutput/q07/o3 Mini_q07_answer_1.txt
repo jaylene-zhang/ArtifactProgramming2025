@@ -1,0 +1,23 @@
+Solution:
+• Base Case: Let w = Const y.  
+ We need to show: count (Const y) x + acc = count' (Const y) x acc.  
+ By definition, count (Const y) x = if x = y then 1 else 0.  
+ Thus, count (Const y) x + acc = if x = y then 1 + acc else acc, which equals count' (Const y) x acc by definition.
+
+• Step Case: Let w = Op (w₁, w₂).  
+ Induction Hypotheses:  
+  (1) For any accumulator a, count w₁ x + a = count' w₁ x a.  
+  (2) For any accumulator a, count w₂ x + a = count' w₂ x a.  
+
+ We need to show: count (Op (w₁, w₂)) x + acc = count' (Op (w₁, w₂)) x acc.  
+ Proof:  
+  count (Op (w₁, w₂)) x = count w₁ x + count w₂ x, so  
+  count (Op (w₁, w₂)) x + acc = count w₁ x + (count w₂ x + acc).  
+  By (2), count w₂ x + acc = count' w₂ x acc, hence equals count w₁ x + count' w₂ x acc.  
+  By (1) (using a = count' w₂ x acc), we have count w₁ x + count' w₂ x acc = count' w₁ x (count' w₂ x acc) = count' (Op (w₁, w₂)) x acc.
+
+Theorem 2 (Main Result):  
+By setting acc = 0 in Theorem 1, we obtain count w x = count' w x 0.
+
+Explanation:
+We proved the general statement by structural induction on the word w. In the base case for constants, the definitions of count and count' directly yield the same result. In the step case for Op, we used the induction hypotheses for both subwords to show that combining the counts preserves the equality when adding the accumulator. Finally, setting acc = 0 brings us to the stated equality in Theorem 2.

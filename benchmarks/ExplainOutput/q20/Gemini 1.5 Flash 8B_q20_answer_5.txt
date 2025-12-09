@@ -1,0 +1,7 @@
+**Solution:**
+
+No
+
+**Explanation:**
+
+The function `triangle` calculates the sum recursively.  However, in the base case `n=0`, the function is not handled.  It will recurse indefinitely, hence failing  the test.

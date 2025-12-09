@@ -1,0 +1,10 @@
+```ocaml
+(6, 5)
+```
+
+### Explanation:
+1. Initially, `point` is defined as `(5, 4)`.
+2. The function `shift_point n` takes an integer `n` and returns a tuple by adding `n` to the component values of `point`.
+3. When `shift_point 1` is called, it returns `(6, 5)` because `5 + 1 = 6` and `4 + 1 = 5`.
+4. The line `let point = shift_point 1` reassigns the value of `point` to `(6, 5)`.
+5. When `shift_point 2` is called, it now uses the new `point` value `(6, 5)`. Therefore, it returns `(6 + 2, 5 + 2) = (8, 7)`.

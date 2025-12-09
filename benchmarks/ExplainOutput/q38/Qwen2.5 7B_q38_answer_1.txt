@@ -1,0 +1,14 @@
+Solution: a, c
+
+Explanation:
+The correct solutions are a) `h (f (g (f x)))` and c) `h (g (f x))`.
+
+The goal is to create a new function that applies `h` to `g (f x)`. The first composition applies `g` to `f x`, and the result is then passed to `h`.
+
+Option a) `h (f (g (f x)))` is incorrect because it applies `g` to `f x` and then passes the result through `f` again before applying `h`.
+
+Option b) `g (f (h (f x)))` is incorrect because it applies `h` to `f x` and then passes the result through `f` and `g`.
+
+Option d) `f (g (h x))` is incorrect because it applies `h` to `x` and then passes the result through `g` and `f`.
+
+Only options a) and c) correctly apply `g` to `f x` and then pass the result to `h`.

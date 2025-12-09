@@ -1,0 +1,3 @@
+Solution: Initialize `acc` as `[]`.
+
+Explanation: The `rev_tl` function is a recursive function that reverses a list. It works by continuously appending the tail of the list to the accumulator `acc`. Starting `acc` as `[]` (an empty list) ensures that everything collected along the recursion gets accumulated correctly until the end, when `rev_tl` will return the fully reversed list.

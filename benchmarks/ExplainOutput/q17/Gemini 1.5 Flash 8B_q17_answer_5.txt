@@ -1,0 +1,5 @@
+No.
+
+**Explanation:**
+
+The function `add_ack` calls `ackermann x` *every time* it recurses.  It doesn't memoize or cache the result of `ackermann x`.  Therefore, if the input list `l` has `n` elements, `ackermann x` will be called `n` times.

@@ -1,0 +1,23 @@
+**Result: 3 + 6 + 2 + 2 = 13**
+
+Binding Stack Explanation:
+
+* `x = 3` binds `x` to 3
+* `r` is bound to `ref (2 + x)` which evaluates to `ref 5`
+* `y` is bound to `x * !r` which evaluates to `3 * 5 = 15`
+* `r` is rebinding to `ref 4` which is only accessible within the scope of `f`
+* `f` is bound to `fun u -> u + x + y + !r` with `x = 3`, `y = 15`, and `!r = 4`
+* `x = 5` binds `x` to 5
+* `y = 10` binds `y` to 10 (not used in the function)
+* `r := 2` updates the outer `r` to 2
+* `f (!r * y)` evaluates to `f (2 * 5)` which is `f 10`
+* Since the `x` and `y` in `f` are already bound, `f 10` evaluates to `10 + 3 + 15 + 2 = 30` but `!r` in `f` is bound to the inner `r` which is 4, so it uses the outer `r` for the call but the inner `r` for the function body. However the outer `r` has been updated to 2 before `f` is called, and that is what is passed to `f` but `!r` in the body of `f` is actually the inner `r` that has the value 4 when `f` was defined. So `f` uses the outer `x` which is not what is bound to `f` and the outer `r` for the argument but the inner `r` for `!r`. 
+
+ Binding Stack:
+```
+x = 5
+y = 10
+r ----> ref 2
+f ----> u -> u + x + y + !r  (x = 3, y = 15, r = ref 4)
+x = 3
+```

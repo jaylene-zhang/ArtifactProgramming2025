@@ -1,0 +1,11 @@
+**Solution**
+
+```ocaml
+let add_ack x l = 
+  let ackermann_value = ackermann x in
+  List.map ((+) ackermann_value) l
+```
+
+**Explanation**
+
+In the given implementation, the function `add_ack x l` calls `ackermann x` recursively for each element in the list `l`. This means that `ackermann x` is not recomputed, but thanks to the lazy semantics in OCaml, `ackermann x` might eventually be recalculated each time it is needed during the folding of `add_ack x l`. To avoid this, we use the `List.map` function which applies a pure function to each element in a list, effectively defining a "once" memoization for the computation of `ackermann x`.

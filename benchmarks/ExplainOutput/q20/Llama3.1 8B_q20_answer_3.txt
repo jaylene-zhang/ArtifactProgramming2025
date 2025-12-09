@@ -1,0 +1,13 @@
+## Step 1: Understand the problem
+The provided OCaml function `triangle n` is attempting to calculate the n-th triangle number, which is the sum of the integers from 1 to n. However, the function seems to be incorrectly implemented.
+
+
+## Step 2: Analyze the buggy function
+The recursive `triangle n` function checks if `n` is 1 and if so, returns 1. However, for any `n > 1`, it incorrectly returns the sum of `n` and the result of `triangle (n - 1)` instead of calculating the actual triangular number recursively.
+
+
+## Step 3: Determine if the test would pass
+The testcase `triangle 0 == 0` should fail because the buggy function calculates the triangular number for `n = 0` as `0 + triangle (-1)`, which would recursively result in an incorrect value.
+
+
+The final answer is: $\boxed{false}$

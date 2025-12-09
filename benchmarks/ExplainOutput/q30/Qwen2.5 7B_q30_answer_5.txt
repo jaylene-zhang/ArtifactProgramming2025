@@ -1,0 +1,29 @@
+```ocaml
+let updated_tax = update_sales_tax ()
+let updated_prices = update_price_list price_list
+updated_prices
+```
+
+The last expression will return `[22.0 ; 24.0 ; 10.0]`.
+
+### Explanation:
+
+1. **Initial Setup**:
+   - `sales_tax` is initially set to `1.0`.
+   - `price_list` is `[10.0 ; 20.0 ; 5.0]`.
+
+2. **First Command**: `update_sales_tax ()`
+   - This function doubles the `sales_tax`, setting it to `2.0`.
+
+3. **Second Command**: `update_price_list price_list`
+   - This updates each element in `price_list` by adding the new `sales_tax` (i.e., `2.0`) to each price.
+   - The new elements become:
+     - `10.0 + 2.0 = 12.0`
+     - `20.0 + 2.0 = 22.0`
+     - `5.0 + 2.0 = 7.0`
+   - However, the function `add_tax` is defined to add `1.0 + x` (not `2.0 + x`), so the output of `update_price_list` is:
+     - `11.0 + 1.0 = 12.0`
+     - `21.0 + 1.0 = 22.0`
+     - `6.0 + 1.0 = 7.0`
+
+So, the `updated_prices` list will be `[11.0 ; 21.0 ; 6.0]`, not `[22.0 ; 24.0 ; 10.0]`.

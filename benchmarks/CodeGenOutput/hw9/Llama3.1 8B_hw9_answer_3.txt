@@ -1,0 +1,118 @@
+Here are the completed functions:
+
+```ocaml
+(* TODO: Implement the missing cases of free_variables. *)
+let rec free_variables : exp -> name list =
+  (* Taking unions of lists.
+     If the lists are in fact sets (all elements are unique),
+     then the result will also be a set.
+  *)
+  let union l1 l2 = delete l2 l1 @ l2 in
+  let union_fvs es =
+    List.fold_left (fun acc exp -> union acc (free_variables exp)) [] es
+  in
+  function
+  | Var y -> [y]
+  | I _ | B _ -> []
+  | If(e, e1, e2) -> union_fvs [e; e1; e2]
+  | Primop (_, args) -> union_fvs args
+  | Fn (xs, e) ->
+      let inner_fvs = List.fold_left (fun acc (x, tp) -> union acc (free_variables e)) [] xs in
+      union_fvs @[Var x | x <- xs] @ inner_fvs
+  | Rec (x, _, e) ->
+      let new_xs = List.map (fun (x, tp) -> (x, tp)) xs in
+      let xs = x :: new_xs in
+      let inner_fvs = free_variables e in
+      List.fold_left (fun acc x -> union acc (free_variables e)) (union_fvs (List.map (fun (x, _) -> Var x) xs)) inner_fvs
+  | Let (x, e1, e2) ->
+      union_fvs [e1; e2] @
+      if List.mem x (free_variables e2) then
+        raise (Failure ("Free variable " ^ x ^ " is captured in the Let binding"))
+      else
+        [x]
+  | Apply (e, es) -> union_fvs (e :: es)
+
+(* TODO: Implement the missing cases of unused_vars. *)
+let rec unused_vars =
+  function
+  | Var _ | I _ | B _ -> []
+  | If (e, e1, e2) -> unused_vars e @ unused_vars e1 @ unused_vars e2
+  | Primop (_, args) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] args
+  | Let (x, e1, e2) ->
+      let unused = unused_vars e1 @ unused_vars e2 in
+      if List.mem x (free_variables e2) then
+        unused
+      else
+        if List.mem x (free_variables e1) then
+          x :: unused
+        else
+          unused
+  | Rec (x, _, e) ->
+      let unused = unused_vars e in
+      if List.mem x (free_variables e) then
+        unused
+      else
+        x :: unused
+  | Fn (xs, e) ->
+      let unused =
+        match List.partition (fun (x, _) -> List.mem x (free_variables e)) xs with
+        | ([], _) -> []
+        | (ys, _) -> List.map (fun (x, _) -> x) ys
+      in
+      unused
+  | Apply (e, es) ->
+      List.fold_left (fun acc exp -> acc @ unused_vars exp) [] (e :: es)
+
+(* TODO: Implement the missing cases of subst. *)
+let rec subst ((e', x) as s) exp =
+  match exp with
+  | Var y ->
+      if x = y then e'
+      else Var y
+  | I n -> I n
+  | B b -> B b
+  | Primop (po, args) -> Primop (po, List.map (subst s) args)
+  | If (e, e1, e2) ->
+      If (subst s e, subst s e1, subst s e2)
+  | Let (y, e1, e2) ->
+      let e1' = subst s e1 in
+      if y = x then
+        Let (y, e1', e2)
+      else
+        let (y', e2') =
+          if List.mem y (free_variables e') then
+            rename y e2
+          else
+            (y, e2)
+        in
+        Let (y', e1', subst s e2')
+  | Rec (y, t, e) ->
+      let new_y = freshVar y in
+      let (new_y, e') = subst s e in
+      Rec (new_y, t, e')
+  | Fn (xs, e) ->
+      let new_xs = List.map (fun (x, tp) -> (x, tp)) xs in
+      let inner_subst = (e', x) in
+      let (new_xs, e') =
+        List.fold_left
+          (fun (acc_x, acc_e) (x, _) ->
+             match rename x e with
+             | (new_x, new_e) -> ((x :: acc_x, new_e) :: acc_e))
+          ([], e)
+          new_xs
+      in
+      let new_param_names =
+        match List.partition (fun (x, tp) -> List.mem x (free_variables e)) new_xs with
+        | ([], _) -> []
+        | (_, ys) -> ys
+      in
+      let inner_subst_list = List.map (fun (x, _) -> (e', x)) new_param_names in
+      let new_xs = List.map (fun (x, tp) -> (freshVar x, tp)) new_param_names in
+      let e'' = if x = e' then e else e' in
+      let new_e = subst_list ((x, e'') :: inner_subst_list) e' in
+      Fn (new_xs, new_e)
+  | Apply (e, es) ->
+      let new_es = List.map (subst s) es in
+      Apply (subst s e, new_es)
+```

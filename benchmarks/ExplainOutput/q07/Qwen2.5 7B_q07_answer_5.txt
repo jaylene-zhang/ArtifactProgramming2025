@@ -1,0 +1,17 @@
+Proof of Theorem 1:
+- BaseCase: \( w = \text{Const } y \)
+  - If \( x = y \), then \( \text{count } w x + \text{acc} = 1 + \text{acc} \).
+  - \( \text{count' } w x \text{ acc} = 1 + \text{acc} \).
+  - Hence, \( \text{count w x + acc} = \text{count' w x acc} \).
+
+- Step Case: \( w = \text{Op } (w1, w2) \)
+  - Induction Hypothesis: \( \text{count } w1 x + \text{acc1} = \text{count' } w1 x \text{ acc1} \) and \( \text{count } w2 x + \text{acc2} = \text{count' } w2 x \text{ acc2} \).
+  - Proof: \( \text{count } \text{Op } (w1, w2) x + \text{acc} = \text{count } w1 x + \text{count } w2 x + \text{acc} \).
+  - By Induction Hypothesis: \( \text{count' } w1 x \text{ acc1} + \text{count' } w2 x \text{ acc2} = \text{count' } (w1, w2) x (acc1 + acc2) \).
+  - Therefore, \( \text{count w x + acc} = \text{count' w x acc} \).
+
+Proof of Theorem 2:
+- Applying Theorem 1 with \( \text{acc} = 0 \):
+  - For any word \( w \) and constant \( x \):
+    \( \text{count w x + 0} = \text{count' w x 0} \).
+  - Thus, \( \text{count w x} = \text{count' w x 0} \).

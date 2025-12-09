@@ -1,0 +1,39 @@
+**Solution for the first part (zip):**
+
+```OCaml
+let rec zip (l1: 'a list) (l2: 'a list) : ('a * 'a) list =
+  match l1 , l2 with
+  | [] , [] -> []
+  | x::xs , y::ys -> (x,y):: zip xs ys
+```
+
+**Explanation:**
+
+* `'a list` is a list of values of any type 'a.
+* `('a * 'a) list` is a list of pairs of values of type 'a. This is the result of pairing elements from lists of the same type 'a.
+
+
+**Solution for the generalized function (zipper):**
+
+```OCaml
+let rec zipper (comb: 'a -> 'b -> 'c) (add: 'c -> 'd list -> 'd list)
+               (l1: 'a list) (l2: 'b list) : 'd list =
+  match l1, l2 with
+  | [] , [] -> []
+  | x :: xs, y :: ys -> add (comb x y) (zipper comb add xs ys)
+```
+
+
+**Explanation:**
+
+* `comb: 'a -> 'b -> 'c` : This is a function that combines an element of type 'a and an element of type 'b and returns a result of type 'c.  This parameter is crucial to making the function generic.
+* `add: 'c -> 'd list -> 'd list`: This is a function that appends a value of type 'c to a list of type 'd list.   Again, critical for flexibility. Note the use of a different type variable for the list.
+* `l1: 'a list`, `l2: 'b list` :  Allows separate types for the input lists.  Essential for generality.
+* `'d list`: The result type is now a list of type 'd, allowing different output types.
+
+
+**Explanation for the example applications:**
+
+* `zip = zipper (fun x y -> (x, y)) (fun h t -> h :: t)`  correctly instantiates comb and add with the standard pairing and concatenation operations, resulting in a pairing of the lists and appending pairs to the result.
+
+* `zip_rev= zipper (fun x y -> (string_of_int x) ^ y) (fun s t -> t @ [ (s, List.length t) ])`: This defines a function that combines integers with strings (via `string_of_int`) and appends a pair consisting of the combined string and the length. This demonstrates the power of genericity, as you can have quite different operations on the elements combined by `comb`, and different accumulator functions.

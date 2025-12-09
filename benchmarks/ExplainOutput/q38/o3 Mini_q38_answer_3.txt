@@ -1,0 +1,9 @@
+Solution: One acceptable answer is
+
+  let compose h g = fun f x -> h f (g f x)
+
+It is also equivalent to
+
+  let compose h g = fun f x -> g f (h f x)
+
+Explanation: With h = (fun f x -> f x) and g = (fun f x -> f (f x)), note that h f is just f and g f is the function that applies f twice. Thus, h f (g f x) = f (g f x) = f (f (f x)) and similarly g f (h f x) = g f (f x) = f (f (f x)). Both forms yield the Church numeral 3.

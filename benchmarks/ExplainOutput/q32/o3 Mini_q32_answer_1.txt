@@ -1,0 +1,3 @@
+Solution: a) and b)
+
+Explanation: Both (a) and (b) define a recursive type where a nonempty list is built from a url (or string, since url = string) paired with the rest of the list. Option (c) is invalid because the constructor takes no argument, and (d) reverses the order of the components.

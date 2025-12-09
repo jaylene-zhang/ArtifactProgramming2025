@@ -1,0 +1,13 @@
+## Step 1: Understand the concept of inductive proof for lists in OCaml
+To prove a statement inductively about lists, we work through two steps: the base case and the step case. The base case proves the statement for the simplest form of a list, usually an empty list.
+
+## Step 2: Identify the step case
+The step case involves proving that if the statement holds for the list's tail (which is the list minus the first element), then it also holds for the list itself.
+
+## Step 3: Formulate the step case
+In the step case, we assume the statement P([hd tl]) is true, where hd is the head of the list and tl is the tail, and we need to show that P(lst) is true for some list lst that includes the element hd in its structure.
+
+## Step 4: Explain the necessity of the step case
+The step case fills in the gap between the base case and the general case, proving that if P is true for any smaller list (as defined by the base case), then it must hold for a list one step up from the base case.
+
+The final answer is: $\boxed{We need to prove P([hd tl] true) → P(lst) true.}$

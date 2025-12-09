@@ -1,0 +1,5 @@
+No, the program does not compute `ackermann x` at most once for a function call `add_ack x l`.
+
+Explanation:
+- The function `add_ack` is applied at each element of the list `l`, and `ackermann x` is recomputed in each recursive call.
+- Therefore, `ackermann x` is computed multiple times, not just once, as it is called in each recursive step.

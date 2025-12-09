@@ -1,0 +1,5 @@
+```ocaml
+('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+```
+
+Explanation: The tail-recursive version of `fold_right` would have a similar type to the original `fold_right`, but it would accumulate the result in a helper function, typically using an accumulator which has the same type as the final result of `fold_right`. The type for the tail-recursive version would still essentially be the same, just configured differently. The core types `'a`, `'b`, and the function `( 'a -> 'b -> 'b )` remain unchanged because the accumulation and folding processes are fundamentally the same.

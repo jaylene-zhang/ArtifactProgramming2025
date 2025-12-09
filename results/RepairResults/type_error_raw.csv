@@ -1,0 +1,2601 @@
+Filename,Grade,Error Type,Message
+hw9_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw9/solution.ml"", line 18, characters 2-4:
+This expression has type unit but an expression was expected of type
+         exp * string list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+val delete : 'a list -> 'a list -> 'a list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw9_buggy_code_36.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw9/solution.ml"", line 143, characters 17-22:
+This expression has type string but an expression was expected of type
+         exp * name
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+val delete : 'a list -> 'a list -> 'a list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw9_buggy_code_8.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw9/solution.ml"", line 70, characters 57-59:
+This variant expression is expected to have type unit
+       The constructor [] does not belong to type unit
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+val delete : 'a list -> 'a list -> 'a list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw9_buggy_code_37.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw9/solution.ml"", line 147, characters 16-18:
+This expression has type (name * tp) list
+       but an expression was expected of type
+         ('a * 'b) list -> (name * 'b) list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+val delete : 'a list -> 'a list -> 'a list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw9_buggy_code_2.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw9/solution.ml"", line 98, characters 57-60:
+This expression has type exp but an expression was expected of type
+         name = string
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+val delete : 'a list -> 'a list -> 'a list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw7_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw7/solution.ml"", line 14, characters 33-34:
+This expression has type string list
+       but an expression was expected of type string
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val tabulate : (int -> 'a) -> int -> 'a list = <fun>
+exception Msg of string
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve : password -> int -> unit;
+  deposit : password -> int -> unit;
+  show_balance : password -> int;
+}
+val negative_amount : exn = Msg ""Money amount below 0""
+val wrong_pass : exn = Msg ""Wrong password""
+val not_enough_balance : exn = Msg ""Insufficient balance"""
+hw7_buggy_code_18.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw7/solution.ml"", line 27, characters 18-27:
+This expression has type password = string
+       but an expression was expected of type 'a ref
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val tabulate : (int -> 'a) -> int -> 'a list = <fun>
+exception Msg of string
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve : password -> int -> unit;
+  deposit : password -> int -> unit;
+  show_balance : password -> int;
+}
+val negative_amount : exn = Msg ""Money amount below 0""
+val wrong_pass : exn = Msg ""Wrong password""
+val not_enough_balance : exn = Msg ""Insufficient balance"""
+hw7_buggy_code_38.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw7/solution.ml"", line 8, characters 67-70:
+This expression has type char but an expression was expected of type
+         'a list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val tabulate : (int -> 'a) -> int -> 'a list = <fun>
+exception Msg of string
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve : password -> int -> unit;
+  deposit : password -> int -> unit;
+  show_balance : password -> int;
+}
+val negative_amount : exn = Msg ""Money amount below 0""
+val wrong_pass : exn = Msg ""Wrong password""
+val not_enough_balance : exn = Msg ""Insufficient balance"""
+hw7_buggy_code_7.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw7/solution.ml"", line 11, characters 38-54:
+This expression has type string but an expression was expected of type
+         string list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val tabulate : (int -> 'a) -> int -> 'a list = <fun>
+exception Msg of string
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve : password -> int -> unit;
+  deposit : password -> int -> unit;
+  show_balance : password -> int;
+}
+val negative_amount : exn = Msg ""Money amount below 0""
+val wrong_pass : exn = Msg ""Wrong password""
+val not_enough_balance : exn = Msg ""Insufficient balance"""
+hw7_buggy_code_29.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw7/solution.ml"", line 12, characters 17-27:
+This expression has type ('a -> 'b) -> 'a list -> 'b list
+       but an expression was expected of type
+         ('a -> 'b) -> 'a list -> 'a -> 'b
+       Type 'b list is not compatible with type 'a -> 'b 
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val tabulate : (int -> 'a) -> int -> 'a list = <fun>
+exception Msg of string
+type password = string
+type bank_account = {
+  update_pass : password -> password -> unit;
+  retrieve : password -> int -> unit;
+  deposit : password -> int -> unit;
+  show_balance : password -> int;
+}
+val negative_amount : exn = Msg ""Money amount below 0""
+val wrong_pass : exn = Msg ""Wrong password""
+val not_enough_balance : exn = Msg ""Insufficient balance"""
+hw1_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw1/solution.ml"", line 63, characters 4-35:
+This expression has type int but an expression was expected of type
+         unit
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>"
+hw1_buggy_code_6.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw1/solution.ml"", line 13, characters 2-47:
+This expression has type bool but an expression was expected of type
+         ((int * int) * (int * int)) * int
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>"
+hw1_buggy_code_4.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw1/solution.ml"", line 5, characters 2-15:
+This expression has type (int * int) * (int * int)
+       This is not a function; it cannot be applied.
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>"
+hw1_buggy_code_30.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw1/solution.ml"", line 67, characters 16-21:
+This expression has type int but an expression was expected of type
+         int -> int -> 'a
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>"
+hw1_buggy_code_25.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw1/solution.ml"", line 12, characters 7-48:
+This expression has type int but an expression was expected of type
+         float
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>"
+hw6_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw6/solution.ml"", line 44, characters 10-28:
+This expression has type 'a Maybe.t
+       but an expression was expected of type ('a -> 'b) -> 'c Maybe.t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+module Maybe :
+  sig
+    type 'a t
+    val return : 'a -> 'a t
+    val nothing : 'a t
+    val bind : 'a t -> ('a -> 'b t) -> 'b t
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+    val pp :
+      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+    val to_string : ('a -> string) -> 'a t -> string
+  end
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist =
+    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
+val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
+val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>"
+hw6_buggy_code_9.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw6/solution.ml"", line 10, characters 21-23:
+This variant expression is expected to have type 'b list option
+       The constructor :: does not belong to type option
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+module Maybe :
+  sig
+    type 'a t
+    val return : 'a -> 'a t
+    val nothing : 'a t
+    val bind : 'a t -> ('a -> 'b t) -> 'b t
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+    val pp :
+      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+    val to_string : ('a -> string) -> 'a t -> string
+  end
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist =
+    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
+val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
+val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>"
+hw6_buggy_code_16.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw6/solution.ml"", line 75, characters 55-56:
+This expression has type 'a church = 'a -> ('a -> 'a) -> 'a
+       but an expression was expected of type 'a
+       The type variable 'a occurs inside 'a -> ('a -> 'a) -> 'a
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+module Maybe :
+  sig
+    type 'a t
+    val return : 'a -> 'a t
+    val nothing : 'a t
+    val bind : 'a t -> ('a -> 'b t) -> 'b t
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+    val pp :
+      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+    val to_string : ('a -> string) -> 'a t -> string
+  end
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist =
+    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
+val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
+val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>"
+hw6_buggy_code_22.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw6/solution.ml"", line 32, characters 13-15:
+This expression has type 'a1 -> 'b1 Maybe.t
+       but an expression was expected of type 'a Maybe.t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+module Maybe :
+  sig
+    type 'a t
+    val return : 'a -> 'a t
+    val nothing : 'a t
+    val bind : 'a t -> ('a -> 'b t) -> 'b t
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+    val pp :
+      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+    val to_string : ('a -> string) -> 'a t -> string
+  end
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist =
+    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
+val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
+val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>"
+hw6_buggy_code_32.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw6/solution.ml"", line 45, characters 2-10:
+This expression has type 'b1 Maybe.t
+       but an expression was expected of type
+         ('a2 -> 'b2 Maybe.t) * 'a2 -> ('b1 * 'b2) Maybe.t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+module Maybe :
+  sig
+    type 'a t
+    val return : 'a -> 'a t
+    val nothing : 'a t
+    val bind : 'a t -> ('a -> 'b t) -> 'b t
+    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
+    val pp :
+      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
+    val to_string : ('a -> string) -> 'a t -> string
+  end
+type nat = Z | S of nat
+type 'a church = 'a -> ('a -> 'a) -> 'a
+type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
+type ('a, 'r) clist =
+    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
+val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
+val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
+val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>"
+hw8_buggy_code_23.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw8/solution.ml"", line 3, characters 10-21:
+This expression has type 'a stream
+       but an expression was expected of type 'a
+       The type variable 'a occurs inside 'a stream
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type 'a stream = { head : 'a; tail : unit -> 'a stream; }
+val unfold : ('a -> 'b * 'a) -> 'a -> 'b stream = <fun>
+val map : ('a -> 'b) -> 'a stream -> 'b stream = <fun>
+val find : ('a -> bool) -> 'a stream -> 'a * 'a stream = <fun>
+val filter : ('a -> bool) -> 'a stream -> 'a stream = <fun>
+val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
+val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw8_buggy_code_27.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw8/solution.ml"", line 12, characters 48-54:
+This expression has type 'a but an expression was expected of type
+         'a list
+       The type variable 'a occurs inside 'a list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type 'a stream = { head : 'a; tail : unit -> 'a stream; }
+val unfold : ('a -> 'b * 'a) -> 'a -> 'b stream = <fun>
+val map : ('a -> 'b) -> 'a stream -> 'b stream = <fun>
+val find : ('a -> bool) -> 'a stream -> 'a * 'a stream = <fun>
+val filter : ('a -> bool) -> 'a stream -> 'a stream = <fun>
+val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
+val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw8_buggy_code_3.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw8/solution.ml"", line 27, characters 8-10:
+This expression has type ('a * 'b) stream
+       but an expression was expected of type 'a stream
+       The type variable 'a occurs inside 'a * 'b
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type 'a stream = { head : 'a; tail : unit -> 'a stream; }
+val unfold : ('a -> 'b * 'a) -> 'a -> 'b stream = <fun>
+val map : ('a -> 'b) -> 'a stream -> 'b stream = <fun>
+val find : ('a -> bool) -> 'a stream -> 'a * 'a stream = <fun>
+val filter : ('a -> bool) -> 'a stream -> 'a stream = <fun>
+val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
+val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw8_buggy_code_19.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw8/solution.ml"", line 10, characters 39-118:
+This expression has type 'a -> 'b
+       but an expression was expected of type 'c stream
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type 'a stream = { head : 'a; tail : unit -> 'a stream; }
+val unfold : ('a -> 'b * 'a) -> 'a -> 'b stream = <fun>
+val map : ('a -> 'b) -> 'a stream -> 'b stream = <fun>
+val find : ('a -> bool) -> 'a stream -> 'a * 'a stream = <fun>
+val filter : ('a -> bool) -> 'a stream -> 'a stream = <fun>
+val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
+val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw8_buggy_code_2.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw8/solution.ml"", line 24, characters 51-58:
+This expression has type 'a * 'b
+       but an expression was expected of type 'a
+       The type variable 'a occurs inside 'a * 'b
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type 'a stream = { head : 'a; tail : unit -> 'a stream; }
+val unfold : ('a -> 'b * 'a) -> 'a -> 'b stream = <fun>
+val map : ('a -> 'b) -> 'a stream -> 'b stream = <fun>
+val find : ('a -> bool) -> 'a stream -> 'a * 'a stream = <fun>
+val filter : ('a -> bool) -> 'a stream -> 'a stream = <fun>
+val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
+val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>"
+hw10_buggy_code_36.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw10/solution.ml"", line 67, characters 31-33:
+This variant expression is expected to have type exp
+       The constructor :: does not belong to type exp
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+type runtime_error =
+    Free_variable of name
+  | Bad_primop_args
+  | If_non_true_false
+  | Arity_mismatch
+  | Apply_non_fn
+exception Stuck of runtime_error
+val eval_op : primop -> exp list -> exp option = <fun>
+type context = (name * tp) list
+val empty : 'a list = []
+val lookup : name -> context -> tp = <fun>
+val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
+val extend_list : context -> (name * tp) list -> context = <fun>
+type type_error =
+    Free_variable of name
+  | Apply_non_arrow of tp
+  | Arity_mismatch
+  | Type_mismatch of tp * tp
+exception TypeError of type_error
+val type_mismatch : tp -> tp -> 'a = <fun>
+val primopType : primop -> tp list * tp = <fun>
+type utp =
+    UArrow of utp * utp
+  | UCross of utp list
+  | UInt
+  | UBool
+  | UTVar of string
+module UTVarMap :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
+exception UnifError of unif_error
+val unif_error : unif_error -> 'a = <fun>
+val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
+val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
+val print_utp : utp -> unit = <fun>
+val print_type_substitution : utp UTVarMap.t -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>
+val delete : 'a list -> 'a list -> 'a list = <fun>
+val free_variables : exp -> name list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val subst : exp * name -> exp -> exp = <fun>
+val rename : name -> exp -> name * exp = <fun>
+val rename_all : name list -> exp -> name list * exp = <fun>
+val subst_list : (exp * name) list -> exp -> exp = <fun>"
+hw10_buggy_code_3.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw10/solution.ml"", line 10, characters 2-47:
+This expression has type exp but an expression was expected of type
+         exp * exp
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+type runtime_error =
+    Free_variable of name
+  | Bad_primop_args
+  | If_non_true_false
+  | Arity_mismatch
+  | Apply_non_fn
+exception Stuck of runtime_error
+val eval_op : primop -> exp list -> exp option = <fun>
+type context = (name * tp) list
+val empty : 'a list = []
+val lookup : name -> context -> tp = <fun>
+val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
+val extend_list : context -> (name * tp) list -> context = <fun>
+type type_error =
+    Free_variable of name
+  | Apply_non_arrow of tp
+  | Arity_mismatch
+  | Type_mismatch of tp * tp
+exception TypeError of type_error
+val type_mismatch : tp -> tp -> 'a = <fun>
+val primopType : primop -> tp list * tp = <fun>
+type utp =
+    UArrow of utp * utp
+  | UCross of utp list
+  | UInt
+  | UBool
+  | UTVar of string
+module UTVarMap :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
+exception UnifError of unif_error
+val unif_error : unif_error -> 'a = <fun>
+val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
+val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
+val print_utp : utp -> unit = <fun>
+val print_type_substitution : utp UTVarMap.t -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>
+val delete : 'a list -> 'a list -> 'a list = <fun>
+val free_variables : exp -> name list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val subst : exp * name -> exp -> exp = <fun>
+val rename : name -> exp -> name * exp = <fun>
+val rename_all : name list -> exp -> name list * exp = <fun>
+val subst_list : (exp * name) list -> exp -> exp = <fun>"
+hw10_buggy_code_38.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw10/solution.ml"", line 157, characters 21-22:
+This expression has type exp but an expression was expected of type
+         context = (name * tp) list
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+type runtime_error =
+    Free_variable of name
+  | Bad_primop_args
+  | If_non_true_false
+  | Arity_mismatch
+  | Apply_non_fn
+exception Stuck of runtime_error
+val eval_op : primop -> exp list -> exp option = <fun>
+type context = (name * tp) list
+val empty : 'a list = []
+val lookup : name -> context -> tp = <fun>
+val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
+val extend_list : context -> (name * tp) list -> context = <fun>
+type type_error =
+    Free_variable of name
+  | Apply_non_arrow of tp
+  | Arity_mismatch
+  | Type_mismatch of tp * tp
+exception TypeError of type_error
+val type_mismatch : tp -> tp -> 'a = <fun>
+val primopType : primop -> tp list * tp = <fun>
+type utp =
+    UArrow of utp * utp
+  | UCross of utp list
+  | UInt
+  | UBool
+  | UTVar of string
+module UTVarMap :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
+exception UnifError of unif_error
+val unif_error : unif_error -> 'a = <fun>
+val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
+val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
+val print_utp : utp -> unit = <fun>
+val print_type_substitution : utp UTVarMap.t -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>
+val delete : 'a list -> 'a list -> 'a list = <fun>
+val free_variables : exp -> name list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val subst : exp * name -> exp -> exp = <fun>
+val rename : name -> exp -> name * exp = <fun>
+val rename_all : name list -> exp -> name list * exp = <fun>
+val subst_list : (exp * name) list -> exp -> exp = <fun>"
+hw10_buggy_code_39.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw10/solution.ml"", line 4, characters 127-130:
+This expression has type string but an expression was expected of type
+         exp
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+type runtime_error =
+    Free_variable of name
+  | Bad_primop_args
+  | If_non_true_false
+  | Arity_mismatch
+  | Apply_non_fn
+exception Stuck of runtime_error
+val eval_op : primop -> exp list -> exp option = <fun>
+type context = (name * tp) list
+val empty : 'a list = []
+val lookup : name -> context -> tp = <fun>
+val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
+val extend_list : context -> (name * tp) list -> context = <fun>
+type type_error =
+    Free_variable of name
+  | Apply_non_arrow of tp
+  | Arity_mismatch
+  | Type_mismatch of tp * tp
+exception TypeError of type_error
+val type_mismatch : tp -> tp -> 'a = <fun>
+val primopType : primop -> tp list * tp = <fun>
+type utp =
+    UArrow of utp * utp
+  | UCross of utp list
+  | UInt
+  | UBool
+  | UTVar of string
+module UTVarMap :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
+exception UnifError of unif_error
+val unif_error : unif_error -> 'a = <fun>
+val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
+val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
+val print_utp : utp -> unit = <fun>
+val print_type_substitution : utp UTVarMap.t -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>
+val delete : 'a list -> 'a list -> 'a list = <fun>
+val free_variables : exp -> name list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val subst : exp * name -> exp -> exp = <fun>
+val rename : name -> exp -> name * exp = <fun>
+val rename_all : name list -> exp -> name list * exp = <fun>
+val subst_list : (exp * name) list -> exp -> exp = <fun>"
+hw10_buggy_code_1.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw10/solution.ml"", line 57, characters 3-115:
+This expression has type 'a * 'b * 'c
+       but an expression was expected of type (string * tp) list * exp
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+type tp = Arrow of tp list * tp | Int | Bool
+type name = string
+type primop = Equals | LessThan | Plus | Minus | Times | Negate
+type exp =
+    I of int
+  | B of bool
+  | If of exp * exp * exp
+  | Primop of primop * exp list
+  | Fn of (name * tp) list * exp
+  | Rec of name * tp * exp
+  | Let of name * exp * exp
+  | Apply of exp * exp list
+  | Var of name
+val ex1 : exp =
+  Fn ([(""x"", Int); (""y"", Int)],
+   Primop (Plus,
+    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
+val ex2 : exp = Fn ([], B true)
+val ex3 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3; I 4]))
+val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
+val ex5 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int); (""y"", Int)],
+    Primop (Plus,
+     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
+   Apply (Var ""f"", [I 3]))
+val ex6 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Apply (Var ""f"", [I 3]), [I 4]))
+val ex7 : exp =
+  Let (""f"",
+   Fn ([(""x"", Int)],
+    Fn ([(""y"", Int)],
+     Primop (Plus,
+      [Primop (Times, [Var ""x""; Var ""x""]);
+       Primop (Times, [Var ""y""; Var ""y""])]))),
+   Apply (Var ""f"", [I 3; I 4]))
+type runtime_error =
+    Free_variable of name
+  | Bad_primop_args
+  | If_non_true_false
+  | Arity_mismatch
+  | Apply_non_fn
+exception Stuck of runtime_error
+val eval_op : primop -> exp list -> exp option = <fun>
+type context = (name * tp) list
+val empty : 'a list = []
+val lookup : name -> context -> tp = <fun>
+val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
+val extend_list : context -> (name * tp) list -> context = <fun>
+type type_error =
+    Free_variable of name
+  | Apply_non_arrow of tp
+  | Arity_mismatch
+  | Type_mismatch of tp * tp
+exception TypeError of type_error
+val type_mismatch : tp -> tp -> 'a = <fun>
+val primopType : primop -> tp list * tp = <fun>
+type utp =
+    UArrow of utp * utp
+  | UCross of utp list
+  | UInt
+  | UBool
+  | UTVar of string
+module UTVarMap :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
+exception UnifError of unif_error
+val unif_error : unif_error -> 'a = <fun>
+val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
+val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
+val print_utp : utp -> unit = <fun>
+val print_type_substitution : utp UTVarMap.t -> unit = <fun>
+val string_of_tp : tp -> string = <fun>
+val nl_sep : string list -> string = <fun>
+val bracket : string -> string = <fun>
+val string_of_op : primop -> string = <fun>
+val string_of_exp : string -> exp -> name = <fun>
+val print_exp : exp -> unit = <fun>
+val ( := ) : 'a -> 'b -> 'c = <fun>
+val ignore : 'a -> 'b = <fun>
+val delete : 'a list -> 'a list -> 'a list = <fun>
+val free_variables : exp -> name list = <fun>
+type subst = exp * name
+type gen_var = { fresh : name -> name; reset : unit -> unit; }
+val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
+val freshVar : name -> name = <fun>
+val resetCtr : unit -> unit = <fun>
+val subst : exp * name -> exp -> exp = <fun>
+val rename : name -> exp -> name * exp = <fun>
+val rename_all : name list -> exp -> name list * exp = <fun>
+val subst_list : (exp * name) list -> exp -> exp = <fun>"
+hw3_buggy_code_9.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw3/solution.ml"", line 40, characters 39-43:
+This expression has type 'b church = 'b -> ('b -> 'b) -> 'b
+       but an expression was expected of type 'b
+       The type variable 'b occurs inside 'b -> ('b -> 'b) -> 'b
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>
+type 'b church = 'b -> ('b -> 'b) -> 'b
+val zero : 'b church = <fun>
+val one : 'b church = <fun>"
+hw3_buggy_code_16.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw3/solution.ml"", line 74, characters 21-22:
+This expression has type 'b church list
+       but an expression was expected of type
+         'a church = 'a -> ('a -> 'a) -> 'a
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>
+type 'b church = 'b -> ('b -> 'b) -> 'b
+val zero : 'b church = <fun>
+val one : 'b church = <fun>"
+hw3_buggy_code_32.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw3/solution.ml"", line 51, characters 67-83:
+This expression has type ('b church -> 'b church) -> 'b church
+       but an expression was expected of type 'b
+       The type variable 'b occurs inside
+       ('b church -> 'b church) -> 'b church
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>
+type 'b church = 'b -> ('b -> 'b) -> 'b
+val zero : 'b church = <fun>
+val one : 'b church = <fun>"
+hw3_buggy_code_17.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw3/solution.ml"", line 34, characters 9-10:
+This expression has type int church = int -> (int -> int) -> int
+       but an expression was expected of type 'a * 'b
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>
+type 'b church = 'b -> ('b -> 'b) -> 'b
+val zero : 'b church = <fun>
+val one : 'b church = <fun>"
+hw3_buggy_code_33.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw3/solution.ml"", line 40, characters 11-46:
+This expression has type 'b but an expression was expected of type
+         ('b -> 'b) -> 'b
+       The type variable 'b occurs inside ('b -> 'b) -> 'b
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+val domain : unit -> 'a = <fun>
+type 'b church = 'b -> ('b -> 'b) -> 'b
+val zero : 'b church = <fun>
+val one : 'b church = <fun>"
+hw4_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw4/solution.ml"", line 64, characters 29-33:
+This variant expression is expected to have type
+         truth_assignment option
+       The constructor true does not belong to type option
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+type formula =
+    Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+module Variable_set :
+  sig
+    type elt = String.t
+    type t = Set.Make(String).t
+    val empty : t
+    val is_empty : t -> bool
+    val mem : elt -> t -> bool
+    val add : elt -> t -> t
+    val singleton : elt -> t
+    val remove : elt -> t -> t
+    val union : t -> t -> t
+    val inter : t -> t -> t
+    val diff : t -> t -> t
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val subset : t -> t -> bool
+    val iter : (elt -> unit) -> t -> unit
+    val map : (elt -> elt) -> t -> t
+    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
+    val for_all : (elt -> bool) -> t -> bool
+    val exists : (elt -> bool) -> t -> bool
+    val filter : (elt -> bool) -> t -> t
+    val partition : (elt -> bool) -> t -> t * t
+    val cardinal : t -> int
+    val elements : t -> elt list
+    val min_elt : t -> elt
+    val min_elt_opt : t -> elt option
+    val max_elt : t -> elt
+    val max_elt_opt : t -> elt option
+    val choose : t -> elt
+    val choose_opt : t -> elt option
+    val split : elt -> t -> t * bool * t
+    val find : elt -> t -> elt
+    val find_opt : elt -> t -> elt option
+    val find_first : (elt -> bool) -> t -> elt
+    val find_first_opt : (elt -> bool) -> t -> elt option
+    val find_last : (elt -> bool) -> t -> elt
+    val find_last_opt : (elt -> bool) -> t -> elt option
+    val of_list : elt list -> t
+  end
+module Variable_map :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
+val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
+  <fun>
+type truth_assignment = bool Variable_map.t
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+module IStream :
+  sig
+    type t
+    val of_string : string -> t
+    val uncons : t -> (char * t) option
+    val take_while : (char -> bool) -> t -> string * t
+  end
+module Parser :
+  sig
+    val is_alpha : char -> bool
+    val is_digit : char -> bool
+    val is_alphanum : char -> bool
+    val is_whitespace : char -> bool
+    type 'a parser = IStream.t -> 'a option * IStream.t
+    val run : 'a parser -> string -> 'a option
+    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
+    val return : 'a -> 'a parser
+    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
+    val ( *> ) : 'a parser -> 'b parser -> 'b parser
+    val ( <* ) : 'a parser -> 'b parser -> 'a parser
+    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
+    val eof : unit parser
+    val satisfy : (char -> bool) -> char parser
+    val exact : char -> char parser
+    val satisfy_many : (char -> bool) -> string parser
+    val many : 'a parser -> 'a list parser
+    val some : 'a parser -> 'a list parser
+    val lexeme : 'a parser -> 'a parser
+    val tok : char -> char parser
+    val identifier : string parser
+  end
+module List :
+  sig
+    val length : 'a list -> int
+    val compare_lengths : 'a list -> 'b list -> int
+    val compare_length_with : 'a list -> int -> int
+    val cons : 'a -> 'a list -> 'a list
+    val hd : 'a list -> 'a
+    val tl : 'a list -> 'a list
+    val nth : 'a list -> int -> 'a
+    val nth_opt : 'a list -> int -> 'a option
+    val rev : 'a list -> 'a list
+    val append : 'a list -> 'a list -> 'a list
+    val rev_append : 'a list -> 'a list -> 'a list
+    val concat : 'a list list -> 'a list
+    val flatten : 'a list list -> 'a list
+    val iter : ('a -> unit) -> 'a list -> unit
+    val iteri : (int -> 'a -> unit) -> 'a list -> unit
+    val map : ('a -> 'b) -> 'a list -> 'b list
+    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+    val rev_map : ('a -> 'b) -> 'a list -> 'b list
+    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
+    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+    val fold_right2 :
+      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+    val for_all : ('a -> bool) -> 'a list -> bool
+    val exists : ('a -> bool) -> 'a list -> bool
+    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val mem : 'a -> 'a list -> bool
+    val memq : 'a -> 'a list -> bool
+    val find : ('a -> bool) -> 'a list -> 'a
+    val find_opt : ('a -> bool) -> 'a list -> 'a option
+    val filter : ('a -> bool) -> 'a list -> 'a list
+    val find_all : ('a -> bool) -> 'a list -> 'a list
+    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+    val assoc : 'a -> ('a * 'b) list -> 'b
+    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+    val assq : 'a -> ('a * 'b) list -> 'b
+    val assq_opt : 'a -> ('a * 'b) list -> 'b option
+    val mem_assoc : 'a -> ('a * 'b) list -> bool
+    val mem_assq : 'a -> ('a * 'b) list -> bool
+    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val split : ('a * 'b) list -> 'a list * 'b list
+    val combine : 'a list -> 'b list -> ('a * 'b) list
+    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+    val split_last : 'a -> 'a list -> 'a list * 'a
+  end
+module rec Formula_parser : sig val formula : formula Parser.parser end
+exception Formula_parsing_error
+val parse_formula : string -> formula = <fun>"
+hw4_buggy_code_22.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw4/solution.ml"", line 110, characters 5-46:
+This expression has type bool -> truth_assignment
+       but an expression was expected of type
+         truth_assignment = bool Map.Make(String).t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+type formula =
+    Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+module Variable_set :
+  sig
+    type elt = String.t
+    type t = Set.Make(String).t
+    val empty : t
+    val is_empty : t -> bool
+    val mem : elt -> t -> bool
+    val add : elt -> t -> t
+    val singleton : elt -> t
+    val remove : elt -> t -> t
+    val union : t -> t -> t
+    val inter : t -> t -> t
+    val diff : t -> t -> t
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val subset : t -> t -> bool
+    val iter : (elt -> unit) -> t -> unit
+    val map : (elt -> elt) -> t -> t
+    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
+    val for_all : (elt -> bool) -> t -> bool
+    val exists : (elt -> bool) -> t -> bool
+    val filter : (elt -> bool) -> t -> t
+    val partition : (elt -> bool) -> t -> t * t
+    val cardinal : t -> int
+    val elements : t -> elt list
+    val min_elt : t -> elt
+    val min_elt_opt : t -> elt option
+    val max_elt : t -> elt
+    val max_elt_opt : t -> elt option
+    val choose : t -> elt
+    val choose_opt : t -> elt option
+    val split : elt -> t -> t * bool * t
+    val find : elt -> t -> elt
+    val find_opt : elt -> t -> elt option
+    val find_first : (elt -> bool) -> t -> elt
+    val find_first_opt : (elt -> bool) -> t -> elt option
+    val find_last : (elt -> bool) -> t -> elt
+    val find_last_opt : (elt -> bool) -> t -> elt option
+    val of_list : elt list -> t
+  end
+module Variable_map :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
+val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
+  <fun>
+type truth_assignment = bool Variable_map.t
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+module IStream :
+  sig
+    type t
+    val of_string : string -> t
+    val uncons : t -> (char * t) option
+    val take_while : (char -> bool) -> t -> string * t
+  end
+module Parser :
+  sig
+    val is_alpha : char -> bool
+    val is_digit : char -> bool
+    val is_alphanum : char -> bool
+    val is_whitespace : char -> bool
+    type 'a parser = IStream.t -> 'a option * IStream.t
+    val run : 'a parser -> string -> 'a option
+    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
+    val return : 'a -> 'a parser
+    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
+    val ( *> ) : 'a parser -> 'b parser -> 'b parser
+    val ( <* ) : 'a parser -> 'b parser -> 'a parser
+    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
+    val eof : unit parser
+    val satisfy : (char -> bool) -> char parser
+    val exact : char -> char parser
+    val satisfy_many : (char -> bool) -> string parser
+    val many : 'a parser -> 'a list parser
+    val some : 'a parser -> 'a list parser
+    val lexeme : 'a parser -> 'a parser
+    val tok : char -> char parser
+    val identifier : string parser
+  end
+module List :
+  sig
+    val length : 'a list -> int
+    val compare_lengths : 'a list -> 'b list -> int
+    val compare_length_with : 'a list -> int -> int
+    val cons : 'a -> 'a list -> 'a list
+    val hd : 'a list -> 'a
+    val tl : 'a list -> 'a list
+    val nth : 'a list -> int -> 'a
+    val nth_opt : 'a list -> int -> 'a option
+    val rev : 'a list -> 'a list
+    val append : 'a list -> 'a list -> 'a list
+    val rev_append : 'a list -> 'a list -> 'a list
+    val concat : 'a list list -> 'a list
+    val flatten : 'a list list -> 'a list
+    val iter : ('a -> unit) -> 'a list -> unit
+    val iteri : (int -> 'a -> unit) -> 'a list -> unit
+    val map : ('a -> 'b) -> 'a list -> 'b list
+    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+    val rev_map : ('a -> 'b) -> 'a list -> 'b list
+    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
+    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+    val fold_right2 :
+      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+    val for_all : ('a -> bool) -> 'a list -> bool
+    val exists : ('a -> bool) -> 'a list -> bool
+    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val mem : 'a -> 'a list -> bool
+    val memq : 'a -> 'a list -> bool
+    val find : ('a -> bool) -> 'a list -> 'a
+    val find_opt : ('a -> bool) -> 'a list -> 'a option
+    val filter : ('a -> bool) -> 'a list -> 'a list
+    val find_all : ('a -> bool) -> 'a list -> 'a list
+    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+    val assoc : 'a -> ('a * 'b) list -> 'b
+    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+    val assq : 'a -> ('a * 'b) list -> 'b
+    val assq_opt : 'a -> ('a * 'b) list -> 'b option
+    val mem_assoc : 'a -> ('a * 'b) list -> bool
+    val mem_assq : 'a -> ('a * 'b) list -> bool
+    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val split : ('a * 'b) list -> 'a list * 'b list
+    val combine : 'a list -> 'b list -> ('a * 'b) list
+    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+    val split_last : 'a -> 'a list -> 'a list * 'a
+  end
+module rec Formula_parser : sig val formula : formula Parser.parser end
+exception Formula_parsing_error
+val parse_formula : string -> formula = <fun>"
+hw4_buggy_code_17.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw4/solution.ml"", line 102, characters 78-79:
+This expression has type Variable_map.key = string
+       but an expression was expected of type Variable_map.key * bool
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+type formula =
+    Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+module Variable_set :
+  sig
+    type elt = String.t
+    type t = Set.Make(String).t
+    val empty : t
+    val is_empty : t -> bool
+    val mem : elt -> t -> bool
+    val add : elt -> t -> t
+    val singleton : elt -> t
+    val remove : elt -> t -> t
+    val union : t -> t -> t
+    val inter : t -> t -> t
+    val diff : t -> t -> t
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val subset : t -> t -> bool
+    val iter : (elt -> unit) -> t -> unit
+    val map : (elt -> elt) -> t -> t
+    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
+    val for_all : (elt -> bool) -> t -> bool
+    val exists : (elt -> bool) -> t -> bool
+    val filter : (elt -> bool) -> t -> t
+    val partition : (elt -> bool) -> t -> t * t
+    val cardinal : t -> int
+    val elements : t -> elt list
+    val min_elt : t -> elt
+    val min_elt_opt : t -> elt option
+    val max_elt : t -> elt
+    val max_elt_opt : t -> elt option
+    val choose : t -> elt
+    val choose_opt : t -> elt option
+    val split : elt -> t -> t * bool * t
+    val find : elt -> t -> elt
+    val find_opt : elt -> t -> elt option
+    val find_first : (elt -> bool) -> t -> elt
+    val find_first_opt : (elt -> bool) -> t -> elt option
+    val find_last : (elt -> bool) -> t -> elt
+    val find_last_opt : (elt -> bool) -> t -> elt option
+    val of_list : elt list -> t
+  end
+module Variable_map :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
+val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
+  <fun>
+type truth_assignment = bool Variable_map.t
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+module IStream :
+  sig
+    type t
+    val of_string : string -> t
+    val uncons : t -> (char * t) option
+    val take_while : (char -> bool) -> t -> string * t
+  end
+module Parser :
+  sig
+    val is_alpha : char -> bool
+    val is_digit : char -> bool
+    val is_alphanum : char -> bool
+    val is_whitespace : char -> bool
+    type 'a parser = IStream.t -> 'a option * IStream.t
+    val run : 'a parser -> string -> 'a option
+    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
+    val return : 'a -> 'a parser
+    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
+    val ( *> ) : 'a parser -> 'b parser -> 'b parser
+    val ( <* ) : 'a parser -> 'b parser -> 'a parser
+    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
+    val eof : unit parser
+    val satisfy : (char -> bool) -> char parser
+    val exact : char -> char parser
+    val satisfy_many : (char -> bool) -> string parser
+    val many : 'a parser -> 'a list parser
+    val some : 'a parser -> 'a list parser
+    val lexeme : 'a parser -> 'a parser
+    val tok : char -> char parser
+    val identifier : string parser
+  end
+module List :
+  sig
+    val length : 'a list -> int
+    val compare_lengths : 'a list -> 'b list -> int
+    val compare_length_with : 'a list -> int -> int
+    val cons : 'a -> 'a list -> 'a list
+    val hd : 'a list -> 'a
+    val tl : 'a list -> 'a list
+    val nth : 'a list -> int -> 'a
+    val nth_opt : 'a list -> int -> 'a option
+    val rev : 'a list -> 'a list
+    val append : 'a list -> 'a list -> 'a list
+    val rev_append : 'a list -> 'a list -> 'a list
+    val concat : 'a list list -> 'a list
+    val flatten : 'a list list -> 'a list
+    val iter : ('a -> unit) -> 'a list -> unit
+    val iteri : (int -> 'a -> unit) -> 'a list -> unit
+    val map : ('a -> 'b) -> 'a list -> 'b list
+    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+    val rev_map : ('a -> 'b) -> 'a list -> 'b list
+    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
+    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+    val fold_right2 :
+      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+    val for_all : ('a -> bool) -> 'a list -> bool
+    val exists : ('a -> bool) -> 'a list -> bool
+    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val mem : 'a -> 'a list -> bool
+    val memq : 'a -> 'a list -> bool
+    val find : ('a -> bool) -> 'a list -> 'a
+    val find_opt : ('a -> bool) -> 'a list -> 'a option
+    val filter : ('a -> bool) -> 'a list -> 'a list
+    val find_all : ('a -> bool) -> 'a list -> 'a list
+    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+    val assoc : 'a -> ('a * 'b) list -> 'b
+    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+    val assq : 'a -> ('a * 'b) list -> 'b
+    val assq_opt : 'a -> ('a * 'b) list -> 'b option
+    val mem_assoc : 'a -> ('a * 'b) list -> bool
+    val mem_assq : 'a -> ('a * 'b) list -> bool
+    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val split : ('a * 'b) list -> 'a list * 'b list
+    val combine : 'a list -> 'b list -> ('a * 'b) list
+    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+    val split_last : 'a -> 'a list -> 'a list * 'a
+  end
+module rec Formula_parser : sig val formula : formula Parser.parser end
+exception Formula_parsing_error
+val parse_formula : string -> formula = <fun>"
+hw4_buggy_code_23.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw4/solution.ml"", line 42, characters 44-48:
+This expression has type bool but an expression was expected of type
+         Variable_set.t = Set.Make(String).t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+type formula =
+    Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+module Variable_set :
+  sig
+    type elt = String.t
+    type t = Set.Make(String).t
+    val empty : t
+    val is_empty : t -> bool
+    val mem : elt -> t -> bool
+    val add : elt -> t -> t
+    val singleton : elt -> t
+    val remove : elt -> t -> t
+    val union : t -> t -> t
+    val inter : t -> t -> t
+    val diff : t -> t -> t
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val subset : t -> t -> bool
+    val iter : (elt -> unit) -> t -> unit
+    val map : (elt -> elt) -> t -> t
+    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
+    val for_all : (elt -> bool) -> t -> bool
+    val exists : (elt -> bool) -> t -> bool
+    val filter : (elt -> bool) -> t -> t
+    val partition : (elt -> bool) -> t -> t * t
+    val cardinal : t -> int
+    val elements : t -> elt list
+    val min_elt : t -> elt
+    val min_elt_opt : t -> elt option
+    val max_elt : t -> elt
+    val max_elt_opt : t -> elt option
+    val choose : t -> elt
+    val choose_opt : t -> elt option
+    val split : elt -> t -> t * bool * t
+    val find : elt -> t -> elt
+    val find_opt : elt -> t -> elt option
+    val find_first : (elt -> bool) -> t -> elt
+    val find_first_opt : (elt -> bool) -> t -> elt option
+    val find_last : (elt -> bool) -> t -> elt
+    val find_last_opt : (elt -> bool) -> t -> elt option
+    val of_list : elt list -> t
+  end
+module Variable_map :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
+val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
+  <fun>
+type truth_assignment = bool Variable_map.t
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+module IStream :
+  sig
+    type t
+    val of_string : string -> t
+    val uncons : t -> (char * t) option
+    val take_while : (char -> bool) -> t -> string * t
+  end
+module Parser :
+  sig
+    val is_alpha : char -> bool
+    val is_digit : char -> bool
+    val is_alphanum : char -> bool
+    val is_whitespace : char -> bool
+    type 'a parser = IStream.t -> 'a option * IStream.t
+    val run : 'a parser -> string -> 'a option
+    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
+    val return : 'a -> 'a parser
+    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
+    val ( *> ) : 'a parser -> 'b parser -> 'b parser
+    val ( <* ) : 'a parser -> 'b parser -> 'a parser
+    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
+    val eof : unit parser
+    val satisfy : (char -> bool) -> char parser
+    val exact : char -> char parser
+    val satisfy_many : (char -> bool) -> string parser
+    val many : 'a parser -> 'a list parser
+    val some : 'a parser -> 'a list parser
+    val lexeme : 'a parser -> 'a parser
+    val tok : char -> char parser
+    val identifier : string parser
+  end
+module List :
+  sig
+    val length : 'a list -> int
+    val compare_lengths : 'a list -> 'b list -> int
+    val compare_length_with : 'a list -> int -> int
+    val cons : 'a -> 'a list -> 'a list
+    val hd : 'a list -> 'a
+    val tl : 'a list -> 'a list
+    val nth : 'a list -> int -> 'a
+    val nth_opt : 'a list -> int -> 'a option
+    val rev : 'a list -> 'a list
+    val append : 'a list -> 'a list -> 'a list
+    val rev_append : 'a list -> 'a list -> 'a list
+    val concat : 'a list list -> 'a list
+    val flatten : 'a list list -> 'a list
+    val iter : ('a -> unit) -> 'a list -> unit
+    val iteri : (int -> 'a -> unit) -> 'a list -> unit
+    val map : ('a -> 'b) -> 'a list -> 'b list
+    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+    val rev_map : ('a -> 'b) -> 'a list -> 'b list
+    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
+    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+    val fold_right2 :
+      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+    val for_all : ('a -> bool) -> 'a list -> bool
+    val exists : ('a -> bool) -> 'a list -> bool
+    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val mem : 'a -> 'a list -> bool
+    val memq : 'a -> 'a list -> bool
+    val find : ('a -> bool) -> 'a list -> 'a
+    val find_opt : ('a -> bool) -> 'a list -> 'a option
+    val filter : ('a -> bool) -> 'a list -> 'a list
+    val find_all : ('a -> bool) -> 'a list -> 'a list
+    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+    val assoc : 'a -> ('a * 'b) list -> 'b
+    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+    val assq : 'a -> ('a * 'b) list -> 'b
+    val assq_opt : 'a -> ('a * 'b) list -> 'b option
+    val mem_assoc : 'a -> ('a * 'b) list -> bool
+    val mem_assq : 'a -> ('a * 'b) list -> bool
+    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val split : ('a * 'b) list -> 'a list * 'b list
+    val combine : 'a list -> 'b list -> ('a * 'b) list
+    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+    val split_last : 'a -> 'a list -> 'a list * 'a
+  end
+module rec Formula_parser : sig val formula : formula Parser.parser end
+exception Formula_parsing_error
+val parse_formula : string -> formula = <fun>"
+hw4_buggy_code_18.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw4/solution.ml"", line 69, characters 3-49:
+This expression has type bool option
+       but an expression was expected of type
+         truth_assignment = bool Map.Make(String).t
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+type formula =
+    Variable of string
+  | Conjunction of formula * formula
+  | Disjunction of formula * formula
+  | Negation of formula
+module Variable_set :
+  sig
+    type elt = String.t
+    type t = Set.Make(String).t
+    val empty : t
+    val is_empty : t -> bool
+    val mem : elt -> t -> bool
+    val add : elt -> t -> t
+    val singleton : elt -> t
+    val remove : elt -> t -> t
+    val union : t -> t -> t
+    val inter : t -> t -> t
+    val diff : t -> t -> t
+    val compare : t -> t -> int
+    val equal : t -> t -> bool
+    val subset : t -> t -> bool
+    val iter : (elt -> unit) -> t -> unit
+    val map : (elt -> elt) -> t -> t
+    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
+    val for_all : (elt -> bool) -> t -> bool
+    val exists : (elt -> bool) -> t -> bool
+    val filter : (elt -> bool) -> t -> t
+    val partition : (elt -> bool) -> t -> t * t
+    val cardinal : t -> int
+    val elements : t -> elt list
+    val min_elt : t -> elt
+    val min_elt_opt : t -> elt option
+    val max_elt : t -> elt
+    val max_elt_opt : t -> elt option
+    val choose : t -> elt
+    val choose_opt : t -> elt option
+    val split : elt -> t -> t * bool * t
+    val find : elt -> t -> elt
+    val find_opt : elt -> t -> elt option
+    val find_first : (elt -> bool) -> t -> elt
+    val find_first_opt : (elt -> bool) -> t -> elt option
+    val find_last : (elt -> bool) -> t -> elt
+    val find_last_opt : (elt -> bool) -> t -> elt option
+    val of_list : elt list -> t
+  end
+module Variable_map :
+  sig
+    type key = String.t
+    type 'a t = 'a Map.Make(String).t
+    val empty : 'a t
+    val is_empty : 'a t -> bool
+    val mem : key -> 'a t -> bool
+    val add : key -> 'a -> 'a t -> 'a t
+    val singleton : key -> 'a -> 'a t
+    val remove : key -> 'a t -> 'a t
+    val merge :
+      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
+    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
+    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
+    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
+    val iter : (key -> 'a -> unit) -> 'a t -> unit
+    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
+    val for_all : (key -> 'a -> bool) -> 'a t -> bool
+    val exists : (key -> 'a -> bool) -> 'a t -> bool
+    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
+    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
+    val cardinal : 'a t -> int
+    val bindings : 'a t -> (key * 'a) list
+    val min_binding : 'a t -> key * 'a
+    val min_binding_opt : 'a t -> (key * 'a) option
+    val max_binding : 'a t -> key * 'a
+    val max_binding_opt : 'a t -> (key * 'a) option
+    val choose : 'a t -> key * 'a
+    val choose_opt : 'a t -> (key * 'a) option
+    val split : key -> 'a t -> 'a t * 'a option * 'a t
+    val find : key -> 'a t -> 'a
+    val find_opt : key -> 'a t -> 'a option
+    val find_first : (key -> bool) -> 'a t -> key * 'a
+    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val find_last : (key -> bool) -> 'a t -> key * 'a
+    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
+    val map : ('a -> 'b) -> 'a t -> 'b t
+    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
+  end
+val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
+val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
+  <fun>
+type truth_assignment = bool Variable_map.t
+exception Unassigned_variable of string
+exception Unsatisfiable_formula
+module IStream :
+  sig
+    type t
+    val of_string : string -> t
+    val uncons : t -> (char * t) option
+    val take_while : (char -> bool) -> t -> string * t
+  end
+module Parser :
+  sig
+    val is_alpha : char -> bool
+    val is_digit : char -> bool
+    val is_alphanum : char -> bool
+    val is_whitespace : char -> bool
+    type 'a parser = IStream.t -> 'a option * IStream.t
+    val run : 'a parser -> string -> 'a option
+    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
+    val return : 'a -> 'a parser
+    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
+    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
+    val ( *> ) : 'a parser -> 'b parser -> 'b parser
+    val ( <* ) : 'a parser -> 'b parser -> 'a parser
+    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
+    val eof : unit parser
+    val satisfy : (char -> bool) -> char parser
+    val exact : char -> char parser
+    val satisfy_many : (char -> bool) -> string parser
+    val many : 'a parser -> 'a list parser
+    val some : 'a parser -> 'a list parser
+    val lexeme : 'a parser -> 'a parser
+    val tok : char -> char parser
+    val identifier : string parser
+  end
+module List :
+  sig
+    val length : 'a list -> int
+    val compare_lengths : 'a list -> 'b list -> int
+    val compare_length_with : 'a list -> int -> int
+    val cons : 'a -> 'a list -> 'a list
+    val hd : 'a list -> 'a
+    val tl : 'a list -> 'a list
+    val nth : 'a list -> int -> 'a
+    val nth_opt : 'a list -> int -> 'a option
+    val rev : 'a list -> 'a list
+    val append : 'a list -> 'a list -> 'a list
+    val rev_append : 'a list -> 'a list -> 'a list
+    val concat : 'a list list -> 'a list
+    val flatten : 'a list list -> 'a list
+    val iter : ('a -> unit) -> 'a list -> unit
+    val iteri : (int -> 'a -> unit) -> 'a list -> unit
+    val map : ('a -> 'b) -> 'a list -> 'b list
+    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
+    val rev_map : ('a -> 'b) -> 'a list -> 'b list
+    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
+    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
+    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
+    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
+    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
+    val fold_right2 :
+      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
+    val for_all : ('a -> bool) -> 'a list -> bool
+    val exists : ('a -> bool) -> 'a list -> bool
+    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
+    val mem : 'a -> 'a list -> bool
+    val memq : 'a -> 'a list -> bool
+    val find : ('a -> bool) -> 'a list -> 'a
+    val find_opt : ('a -> bool) -> 'a list -> 'a option
+    val filter : ('a -> bool) -> 'a list -> 'a list
+    val find_all : ('a -> bool) -> 'a list -> 'a list
+    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
+    val assoc : 'a -> ('a * 'b) list -> 'b
+    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
+    val assq : 'a -> ('a * 'b) list -> 'b
+    val assq_opt : 'a -> ('a * 'b) list -> 'b option
+    val mem_assoc : 'a -> ('a * 'b) list -> bool
+    val mem_assq : 'a -> ('a * 'b) list -> bool
+    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
+    val split : ('a * 'b) list -> 'a list * 'b list
+    val combine : 'a list -> 'b list -> ('a * 'b) list
+    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
+    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
+    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
+    val split_last : 'a -> 'a list -> 'a list * 'a
+  end
+module rec Formula_parser : sig val formula : formula Parser.parser end
+exception Formula_parsing_error
+val parse_formula : string -> formula = <fun>"
+hw5_buggy_code_22.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw5/solution.ml"", line 86, characters 38-40:
+This expression has type token list -> exp -> exp
+       but an expression was expected of type exp -> token list -> exp
+       Type token list is not compatible with type exp 
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+exception NotFound
+val domain : unit -> 'a = <fun>
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * exp
+val tree_depth : 'a tree -> int = <fun>
+val eval : exp -> float -> float = <fun>"
+hw5_buggy_code_17.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw5/solution.ml"", line 49, characters 33-34:
+This expression has type 'a tree
+       but an expression was expected of type 'a
+       The type variable 'a occurs inside 'a tree
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+exception NotFound
+val domain : unit -> 'a = <fun>
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * exp
+val tree_depth : 'a tree -> int = <fun>
+val eval : exp -> float -> float = <fun>"
+hw5_buggy_code_23.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw5/solution.ml"", line 73, characters 16-17:
+This expression has type int but an expression was expected of type
+         int tree
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+exception NotFound
+val domain : unit -> 'a = <fun>
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * exp
+val tree_depth : 'a tree -> int = <fun>
+val eval : exp -> float -> float = <fun>"
+hw5_buggy_code_8.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw5/solution.ml"", line 80, characters 16-40:
+This expression has type token list -> 'r
+       but an expression was expected of type 'r
+       The type variable 'r occurs inside token list -> 'r
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+exception NotFound
+val domain : unit -> 'a = <fun>
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * exp
+val tree_depth : 'a tree -> int = <fun>
+val eval : exp -> float -> float = <fun>"
+hw5_buggy_code_37.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw5/solution.ml"", line 171, characters 15-21:
+This expression has type exp but an expression was expected of type
+         token list -> 'r
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception NotImplemented
+exception NotFound
+val domain : unit -> 'a = <fun>
+type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
+type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * exp
+val tree_depth : 'a tree -> int = <fun>
+val eval : exp -> float -> float = <fun>"
+hw2_buggy_code_12.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw2/solution.ml"", line 104, characters 30-32:
+This expression has type float but an expression was expected of type
+         exp
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+exception Invalid_test_case
+type nat = Z | S of nat
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int"
+hw2_buggy_code_37.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw2/solution.ml"", line 78, characters 4-5:
+This expression has type int but an expression was expected of type
+         float
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+exception Invalid_test_case
+type nat = Z | S of nat
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int"
+hw2_buggy_code_18.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw2/solution.ml"", line 91, characters 27-37:
+This expression has type float but an expression was expected of type
+         int
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+exception Invalid_test_case
+type nat = Z | S of nat
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int"
+hw2_buggy_code_3.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw2/solution.ml"", line 115, characters 18-26:
+This expression has type exp but an expression was expected of type
+         int
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+exception Invalid_test_case
+type nat = Z | S of nat
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int"
+hw2_buggy_code_38.ml,0,Type Error,"File ""/Users/jaylene/Desktop/LLM_Eval/F2022/exercises/hw2/solution.ml"", line 119, characters 37-38:
+This expression has type int but an expression was expected of type
+         float
+
+grader outcomes:
+val print_html : 'a -> 'b = <fun>
+exception Not_implemented
+exception Invalid_test_case
+type nat = Z | S of nat
+type exp =
+    Const of float
+  | Var
+  | Plus of exp * exp
+  | Times of exp * exp
+  | Pow of exp * int"

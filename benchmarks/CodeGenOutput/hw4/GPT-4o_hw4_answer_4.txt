@@ -1,0 +1,49 @@
+```ocaml
+(* TODO: Implement the function. *)
+let rec collect_variables (formula : formula) : Variable_set.t =
+  match formula with
+  | Variable v -> Variable_set.singleton v
+  | Conjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Disjunction (f1, f2) -> Variable_set.union (collect_variables f1) (collect_variables f2)
+  | Negation f -> collect_variables f
+
+(* TODO: Implement the function. *)
+let rec eval (state : truth_assignment) (formula : formula) : bool =
+  match formula with
+  | Variable v -> (match Variable_map.find_opt v state with
+                   | Some value -> value
+                   | None -> raise (Unassigned_variable v))
+  | Conjunction (f1, f2) -> (eval state f1) && (eval state f2)
+  | Disjunction (f1, f2) -> (eval state f1) || (eval state f2)
+  | Negation f -> not (eval state f)
+
+(* TODO: Implement the function. *)
+let find_satisfying_assignment (formula : formula) : truth_assignment =
+  let variables = Variable_set.elements (collect_variables formula) in
+
+  let rec try_assignments = function
+    | [] -> raise Unsatisfiable_formula
+    | (assignments :: rest) ->
+      let assignment_map = 
+        List.fold_left 
+          (fun acc (var, value) -> Variable_map.add var value acc)
+          Variable_map.empty assignments
+      in
+      try
+        if eval assignment_map formula then assignment_map
+        else try_assignments rest
+      with Unassigned_variable _ -> try_assignments rest
+  in
+
+  let rec generate_assignments vars =
+    match vars with
+    | [] -> [[]]
+    | v :: vs ->
+      let rest_assignments = generate_assignments vs in
+      List.fold_left (fun acc assignment ->
+        (v, true) :: assignment :: ((v, false) :: assignment :: acc)) [] rest_assignments
+  in
+
+  let all_assignments = generate_assignments variables in
+  try_assignments all_assignments
+```

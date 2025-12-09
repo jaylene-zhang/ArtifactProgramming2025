@@ -1,0 +1,3 @@
+type cake = Slice of (ingredients list * int) | Cake of cake * cake
+
+I've added an int to the Slice constructor to store calories alongside the ingredients list. The tuple (ingredients list * int) keeps both the list of ingredients and the calorie count together for each slice.

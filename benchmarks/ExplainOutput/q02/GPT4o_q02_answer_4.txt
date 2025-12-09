@@ -1,0 +1,4 @@
+The program is ill-typed.
+
+**Explanation:**
+The function `repeat` is recursively defined such that `f` is applied to `repeat f`. For this to type-check, the type of `f` must match the input of itself (`repeat f`), which would require `f` to have a type like `'a -> 'a`. However, due to recursion, the type argument to `repeat` would need to expand infinitely (`'a -> ('a -> ('a -> ...))`), creating a cyclic or infinite type, which is not allowed in OCaml's type system. Therefore, the program is ill-typed.

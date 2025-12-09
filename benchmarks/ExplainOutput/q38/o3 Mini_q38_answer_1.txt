@@ -1,0 +1,7 @@
+Solution: 
+let compose h g = fun f x -> h f (g f x) 
+  or equivalently 
+let compose h g = fun f x -> g f (h f x)
+
+Explanation:
+With h = (fun f x -> f x) and g = (fun f x -> f (f x)), notice that h f (g f x) computes f ((g f) x) = f (f (f x)) and likewise g f (h f x) computes f (f ((h f) x)) = f (f (f x)). Thus both forms give the desired result. In the given choices these correspond to (a) and (b).

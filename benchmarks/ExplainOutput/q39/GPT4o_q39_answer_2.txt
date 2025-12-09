@@ -1,0 +1,6 @@
+```ocaml
+let toInt f = f (fun x -> x + 1) 0
+```
+
+**Explanation:**  
+The function `toInt f` applies `f` to detect how many times the function `f` was applied. Here, we supply `f` with the accumulator function `(fun x -> x + 1)` and an initial value `0`. Each application of `f` increments the value by 1, thereby allowing us to count how many times `f` was applied.

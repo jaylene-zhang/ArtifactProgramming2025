@@ -1,0 +1,2 @@
+Solution: Functions are first-class values because they can be passed as arguments, returned from other functions, and stored in data structures just like any other data type.  
+Explanation: This lets you build higher-order functions and enables flexible, modular programming by treating functions as manipulable entities.

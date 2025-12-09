@@ -1,0 +1,17 @@
+**Solution:**
+
+```ocaml
+let x = 5 in
+let x = x + 1 in
+x
+```
+
+**Explanation:**
+
+Overshadowing (also known as shadowing or name masking) occurs when a new variable is declared with the same name as an existing variable within the same scope, making the original variable inaccessible in that scope.
+
+In the example:
+
+1.  `let x = 5 in` declares a variable `x` with the value 5.
+2.  `let x = x + 1 in` declares a *new* variable `x` within the scope of the outer `x`.  This new `x` is initialized with the *value* of the outer `x` (which is 5) plus 1. So the new `x` becomes 6. The original `x` with value 5 is now shadowed.
+3.  `x` evaluates to 6, as the last declared `x` is the one currently in scope.

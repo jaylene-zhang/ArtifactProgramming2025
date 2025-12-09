@@ -1,0 +1,59 @@
+### Solution:
+1. First, evaluate the initial bindings:
+   ```ocaml
+   let x = 3 in
+   let r = ref (2 + x) in
+   let f = (let y = x * !r in
+            let r = ref 4 in
+            fun u -> u + x + y + !r) in
+   ```
+
+2. Evaluate `!r` in `y = x * !r`:
+   - `!r` is `2 + x` which is `5` (`2 + 3`).
+   - So, `y` is `3 * 5` which is `15`.
+
+3. The inner `r` is reassigned to `ref 4`, so the outer `r` remains unchanged.
+
+4. The `f` function is defined as:
+   ```ocaml
+   fun u -> u + x + y + !r
+   ```
+   Which expands to:
+   ```ocaml
+   fun u -> u + 3 + 15 + 5
+   ```
+   Simplifying, it becomes:
+   ```ocaml
+   fun u -> u + 23
+   ```
+
+5. Now, evaluate:
+   ```ocaml
+   let x = 5 in
+   let y = 10 in
+   r := 2 ; f (!r * y)
+   ```
+
+6. `r := 2` reassigns `r` to `ref 2`.
+
+7. `!r * y` is `2 * 10` which is `20`.
+
+8. Finally, evaluating `f 20` using the function `fun u -> u + 23`:
+   - `f 20` becomes `20 + 23`, which is `43`.
+
+### Binding Stack:
+```
+expressions:
+let x = 5;;
+let y = 10;;
+r := 2;;
+f 20
+
+binding stack:
+x = 5
+y = 10
+r = ref 2
+f ----> (u -> u + 23)
+```
+
+The result of evaluating the expression is `43`.
