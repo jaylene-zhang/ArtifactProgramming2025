@@ -80,14 +80,15 @@ Files used: `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plo
 2. Navigate to the analysis scripts folder:
 ```bash
 cd scripts/analysis\ and\ plot/
+```
 
 
 3. Run the analysis script:
 ```bash
 python analyze_CodeGen.py --input ../../results/CodeGenResults/final_grades.csv --output ../../results/CodeGenResults/CodeGen_summary.csv
+```
 
 4. Open results/CodeGenResults/final_results.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
-
 
 ### Claim 2: LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation
 
@@ -99,6 +100,7 @@ Files used: results/RepairResults/syntax_error_percentages.csv, type_error_perce
 1. Navigate to results:
 ```bash
 cd results/RepairResults/
+```
 
 2. Open the CSV files to inspect success percentages for each model.
 
@@ -114,6 +116,7 @@ Files used: results/ExplainResults/Explain_percentages.csv, scripts/figures/LLM_
 1. Navigate to Explain results:
 ```bash
 cd results/ExplainResults/
+```
 
 2. Open Explain_percentages.csv to inspect model correctness by concept/difficulty.
 
