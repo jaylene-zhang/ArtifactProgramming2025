@@ -12,7 +12,7 @@
 
 ### Overview
 This artifact contains:
-- Benchmarks:
+- Benchmarks(with their corresponding output files from LLMs):
   - `benchmarks/CodeGen/` (homework-style OCaml problems)
   - `benchmarks/Repair/` (OCaml programs with errors)
   - `benchmarks/Explain/` (conceptual questions)
@@ -68,7 +68,6 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 ### Claim 1: Top LLMs achieve above 70% correctness on λCodeGen
 Paper Section: Sec 3.1, Table 4  
-Files used: `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py`
 
 **Steps:**
 1. Open a terminal and activate your Python environment:
@@ -82,18 +81,17 @@ Files used: `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plo
 cd scripts/analysis\ and\ plot/
 ```
 
-
 3. Run the analysis script:
 ```bash
-python analyze_CodeGen.py --input ../../results/CodeGenResults/final_grades.csv --output ../../results/CodeGenResults/CodeGen_summary.csv
+python analyze_CodeGen.py 
 ```
+No command-line arguments are required; just run the script as-is. The script also contains the preprocessing of raw data and have been commented out for inspectation purpose.
 
-4. Open results/CodeGenResults/final_results.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
+4. Open results/CodeGenResults/code_gen.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
 
 ### Claim 2: LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation
 
 Paper Section: Sec 3.2, Tables 5–7
-Files used: results/RepairResults/syntax_error_percentages.csv, type_error_percentages.csv, logical_error_percentages.csv, scripts/figures/LLM_Weighted.pdf
 
 **Steps:**
 
@@ -104,11 +102,22 @@ cd results/RepairResults/
 
 2. Open the CSV files to inspect success percentages for each model.
 
-3. Open scripts/figures/LLM_Weighted.pdf to view a summary figure. Reviewers should see roughly 5% higher performance on syntax/type errors compared to logical errors.
+3. To reproduce Figure 5:
+
+**Script:** `scripts/plot_weighted_grade.py`  
+**Input:** `../../results/CodeGenResults/final_grades.csv` (hardcoded in script)  
+**Output:** `../../scripts/figures/codegen_histogram.pdf`  
+
+**Run:**
+```bash
+cd scripts/analysis\ and\ plot/
+python plot_weighted_grade.py
+```
+This figure reproduces the visualization shown in the paper (Figure 5). No command-line arguments are required; just run the script as-is.
 
 ### Claim 3: Models struggle more with abstract concepts requiring theoretical implementation
 
-Paper Section: Sec 3.3, Table 9
+Paper Section: Sec 3.5, Figure 6
 Files used: results/ExplainResults/Explain_percentages.csv, scripts/figures/LLM_Weighted.pdf
 
 **Steps:**
@@ -120,4 +129,15 @@ cd results/ExplainResults/
 
 2. Open Explain_percentages.csv to inspect model correctness by concept/difficulty.
 
-3. View scripts/figures/LLM_Weighted.pdf for visualizations. Reviewers should observe lower performance on abstract questions compared to basic tasks.
+3. To reproduce Figure 6:
+
+**Script:** `scripts/plot_histogram_by_difficulty.py`  
+**Input:**  `statistics by difficulty level, generated using analyze_CodeGen.py (hardcoded in script)` 
+**Output:** `../../scripts/figures/codegen_histogram.pdf`  
+
+**Run:**
+```bash
+cd scripts/analysis\ and\ plot/
+python plot_histogram_by_difficulty.py
+```
+This figure reproduces the visualization shown in the paper (Figure 6). No command-line arguments are required; just run the script as-is. 
