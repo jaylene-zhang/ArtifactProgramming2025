@@ -1,4 +1,4 @@
-# Artifact for: <Paper Title>
+# Artifact for: Evaluating LLMs in the Context of Functional Programming: A Comprehensive Study
 
 **Artifact URL:** (https://github.com/jaylene-zhang/ArtifactProgramming2025)
 **Artifact hash (sha256 or commit):** <sha256 hash or git commit>
