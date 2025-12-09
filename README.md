@@ -21,7 +21,7 @@ This artifact contains:
   - `scripts/analysis and plot/` (postprocessing, computing percentages, plotting)
   - `scripts/grader_wrapper.py` (wraps LearnOCaml grader; requires LearnOCaml)
 - Results:
-  - `results/` (processed results used in the paper)
+  - `results/` (both raw and processed results used in the paper)
 - Figures:
   - `scripts/figures/` (example PDF outputs)
 
@@ -29,11 +29,11 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 **Quick usage:**
 - Inspect `benchmarks/` to see all problems/questions.
-- Review `results/` for raw and processed CSVs that support the paper tables and figures.
-- Run scripts in `scripts/analysis and plot/` to reproduce figures from processed CSVs.
+- Review `results/` for raw and processed CSVs that support the paper tables and figures. 
+- Run scripts in `scripts/analysis and plot/` to reproduce figures from processed CSVs. 
 - Inspect `scripts/grader_wrapper.py` to see how grader outputs were parsed.
 
-> The key “kick-the-tyres” step is simply running analysis/plot scripts on `results/` files, which should execute in under 30 minutes on a modern laptop.
+> Due to the way the performance was computed, scripts used to produce the tables could take more than 30 minutes. The key “kick-the-tyres” step is simply running analysis/plot scripts on `results/` files, which should execute in under 30 minutes on a modern laptop.
 
 ---
 
@@ -44,7 +44,7 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 | Claim | Evidence in Artifact | Paper Section |
 |-------|-------------------|---------------|
 | LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
-| All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And performace widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9 |
+| All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And model performance gap widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9, Sec 3.5, Figure 6 |
 | Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
 
 > Evidence includes processed CSVs, raw grader outputs, and plotting/analysis scripts used to generate figures and tables.
@@ -77,13 +77,13 @@ Paper Section: Sec 3.2, Tables 5–7
 cd results/RepairResults/
 ```
 
-2. Open the CSV files to inspect success percentages for each model.
+2. Open the CSV files (percentages) to inspect success percentages for each model.
 
 3. To reproduce Figure 5:
 
 **Script:** `scripts/plot_weighted_grade.py`  
 **Input:** `../../results/CodeGenResults/final_grades.csv` (hardcoded in script)  
-**Output:** `../../scripts/figures/codegen_histogram.pdf`  
+**Output:** `../../scripts/figures/LLM_weighted.pdf`  
 
 **Run:**
 ```bash
@@ -95,7 +95,7 @@ This figure reproduces the visualization shown in the paper (Figure 5). No comma
 ### Claim 2: Models struggle more with abstract concepts requiring theoretical implementation
 
 Paper Section: Sec 3.5, Figure 6
-Files used: results/ExplainResults/Explain_percentages.csv, scripts/figures/LLM_Weighted.pdf
+Files used: results/ExplainResults/Explain_percentages.csv, scripts/figures/mastery_by_level.pdf
 
 **Steps:**
 
@@ -139,7 +139,7 @@ cd scripts/analysis\ and\ plot/
 ```bash
 python analyze_CodeGen.py 
 ```
-No command-line arguments are required; just run the script as-is. The script also contains the preprocessing of raw data and have been commented out for inspectation purpose.
+No command-line arguments are required; just run the script as-is. The script also contains the preprocessing of raw data and have been commented out for inspection purpose.
 
 4. Open results/CodeGenResults/code_gen.csv to inspect correctness percentages. These values correspond to Table 4 in the paper.
 
