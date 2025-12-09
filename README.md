@@ -1,8 +1,8 @@
 # Artifact for: <Paper Title>
 
-**Artifact URL:** <link to your hosted repo or zip>
+**Artifact URL:** (https://github.com/jaylene-zhang/ArtifactProgramming2025)
 **Artifact hash (sha256 or commit):** <sha256 hash or git commit>
-**Paper URL (most recent version):** <link to latest paper PDF>
+**Paper URL (most recent version):** (https://drive.google.com/file/d/1KTtE4VbsOOSnbPdf3uv9VcE-MCTB3clI/view?usp=sharing)
 
 ---
 
@@ -39,11 +39,25 @@ Because LearnOCaml is complex and LLM outputs are non-deterministic, **the full 
 
 ### Supported Claims
 
-| Claim | Description | Evidence in Artifact | Paper Section |
+| Claim | Evidence in Artifact | Paper Section |
 |-------|------------|-------------------|---------------|
-| Top LLMs achieve above 75% correctness on λCodeGen | Quantitative results for CodeGen problems | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 2 |
-| LLMs can fix syntax/type errors | Quantitative success rates for λRepair | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/analysis and plot/analyze_Repair.py` | Sec 4.4, Figures 3–5 |
-| LLMs answer conceptual questions effectively | Quantitative percentages for λExplain | `results/ExplainResults/Explain_percentages.csv`, `scripts/analysis and plot/analyze_Explain.py` | Sec 4.3, Table 3 |
+| Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
+| LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
+| All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And performace widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9 |
 
 > Evidence includes processed CSVs, raw grader outputs, and plotting/analysis scripts used to generate figures and tables.
 
+### Unsupported Claims
+
+| Claim | Reason Not Supported in Artifact |
+|-------|--------------------------------|
+| Exact replication of LLM outputs | Non-deterministic API responses; models may have updated since experiments |
+| Full end-to-end grading | Requires LearnOCaml grader environment, which cannot be packaged in this artifact |
+
+### Additional Notes
+
+- **LearnOCaml dependency:** The grader wrappers depend on LearnOCaml. Link:https://github.com/ocaml-sf/learn-ocaml/tree/master. Sample grader logs are included in `results/` for inspection.  
+- **LLM API calls:** Scripts in `scripts/API calls/` include placeholder API keys. Keys are not provided.  
+- **Data privacy:** Student submissions in λRepair were anonymized. Processed outputs and example logs are provided in the artifact.
+
+---
