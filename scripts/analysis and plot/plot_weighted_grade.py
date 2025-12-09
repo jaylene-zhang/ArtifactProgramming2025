@@ -4,8 +4,12 @@ import os
 
 # Define file paths
 # csv_folder = "tasks"
-csv_files = ["code_gen/code_gen.csv", "code_fixing/logical_error.csv","code_fixing/syntax_error.csv",
-             "code_fixing/type_error.csv", "answer_generation/answer_gen_percentages.csv"]
+csv_files = ["../results/CodeGenResults/code_gen.csv", 
+"../results/ReapirResults/logical_error_percnetages.csv",
+"../results/ReapirResults/syntax_error_percentages.csv",
+             "../results/ReapirResults/type_error_percentages.csv", 
+"../results/ExplainResults/Explain_percentages.csv"]
+
 task_names = ["code generation", "logical error repair", "syntax error repair", "type error repair", "conceptual explanation"]
 # Collect scores per model per task
 # task_scores[i] = dict of model → weighted_score
@@ -101,6 +105,6 @@ ax.grid(axis='y', linestyle='--', alpha=0.5)
 ax.legend()
 plt.tight_layout()
 # plt.show()
-plt.savefig("/Users/apple/Desktop/Programming2025/Programming2025_drafts/figures/LLM_Weighted.pdf")
+plt.savefig("../figures/LLM_Weighted_copy.pdf")
 
 

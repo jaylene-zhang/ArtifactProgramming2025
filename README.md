@@ -12,7 +12,7 @@
 
 ### Overview
 This artifact contains:
-- Benchmarks(with their corresponding output files from LLMs):
+- Benchmarks(with their corresponding metadata and output files from LLMs):
   - `benchmarks/CodeGen/` (homework-style OCaml problems)
   - `benchmarks/Repair/` (OCaml programs with errors)
   - `benchmarks/Explain/` (conceptual questions)

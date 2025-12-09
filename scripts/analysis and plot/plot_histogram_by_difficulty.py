@@ -7,7 +7,7 @@ import seaborn as sns
 sns.set_style("whitegrid")
 
 # Load stats (already computed)
-stats = pd.read_csv("mastery_proficient_rate_by_difficulty.csv")
+stats = pd.read_csv("../Results/ExplainResults/mastery_proficient_rate_by_difficulty_Explain.csv")
 
 # Filter relevant difficulties and remove model 'o1'
 filtered = stats[stats['difficulty'].isin([1, 2, 3])]
@@ -80,5 +80,5 @@ ax2.set_xticks(x)
 ax2.set_xticklabels(models, rotation=45, ha='center', fontsize=fontsizes)
 
 plt.tight_layout()
-plt.savefig("/Users/apple/Desktop/Programming2025/Programming2025_drafts/figures/mastery_proficient_by_level.pdf", dpi=300)
+plt.savefig("../figures/mastery_proficient_by_level_copy.pdf", dpi=300)
 plt.show()
