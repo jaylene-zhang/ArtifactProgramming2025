@@ -1,3 +1,12 @@
+"""
+INSPECTION-ONLY SCRIPT
+
+This script reflects the original experimental pipeline.
+It depends on intermediate CSV files that are not redistributed
+ and is provided for transparency only.
+
+"""
+
 import os
 import csv
 import re
