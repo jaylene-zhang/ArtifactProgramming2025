@@ -1,3 +1,9 @@
+"""
+NOTE: Some intermediate CSVs used in the original pipeline are not included.
+These scripts run on processed CSVs provided in results/, producing the figures in the paper.
+"""
+
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
@@ -7,7 +13,7 @@ import seaborn as sns
 sns.set_style("whitegrid")
 
 # Load stats (already computed)
-stats = pd.read_csv("../Results/ExplainResults/mastery_proficient_rate_by_difficulty_Explain.csv")
+stats = pd.read_csv("../../results/ExplainResults/mastery_rate_by_difficulty_Explain.csv")
 
 # Filter relevant difficulties and remove model 'o1'
 filtered = stats[stats['difficulty'].isin([1, 2, 3])]
@@ -80,5 +86,5 @@ ax2.set_xticks(x)
 ax2.set_xticklabels(models, rotation=45, ha='center', fontsize=fontsizes)
 
 plt.tight_layout()
-plt.savefig("../figures/mastery_proficient_by_level_copy.pdf", dpi=300)
-plt.show()
+plt.savefig("../figures/mastery_by_level_copy.pdf", dpi=300)
+# plt.show()

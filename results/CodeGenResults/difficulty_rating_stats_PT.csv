@@ -1,4 +1,4 @@
-model,q3_q4_mastery_rate
+model,mastery_rate
 Claude-3.7-Sonnet,0.43
 GPT-4o,0.27
 GPT-4o-mini,0.07

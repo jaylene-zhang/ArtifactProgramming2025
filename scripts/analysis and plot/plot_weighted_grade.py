@@ -1,14 +1,20 @@
+"""
+NOTE: Some intermediate CSVs used in the original pipeline are not included.
+These scripts run on processed CSVs provided in results/, producing the figures in the paper.
+"""
+
+
 import csv
 import matplotlib.pyplot as plt
 import os
 
 # Define file paths
 # csv_folder = "tasks"
-csv_files = ["../results/CodeGenResults/code_gen.csv", 
-"../results/ReapirResults/logical_error_percnetages.csv",
-"../results/ReapirResults/syntax_error_percentages.csv",
-             "../results/ReapirResults/type_error_percentages.csv", 
-"../results/ExplainResults/Explain_percentages.csv"]
+csv_files = ["CodeGenResults/code_gen_percentages.csv",
+"RepairResults/logical_error_percentages.csv",
+"RepairResults/syntax_error_percentages.csv",
+             "RepairResults/type_error_percentages.csv",
+"ExplainResults/Explain_percentages.csv"]
 
 task_names = ["code generation", "logical error repair", "syntax error repair", "type error repair", "conceptual explanation"]
 # Collect scores per model per task
@@ -17,7 +23,7 @@ task_scores = []
 
 for filename in csv_files:
     model_to_score = {}
-    with open(os.path.join("/Users/apple/PycharmProjects/EvalLLMs", filename), newline='') as f:
+    with open(os.path.join("../../results", filename), newline='') as f:
         reader = csv.DictReader(f)
         for row in reader:
             model = row["Model"].strip()

@@ -1,15 +1,3 @@
-"""
-NOTE:
-This script originally included preprocessing stages that depended on
-external graders and intermediate CSVs not redistributed in this artifact.
-
-For artifact evaluation, only the final aggregation step computing
-correctness percentages from processed CSVs is enabled.
-
-Key results used in the paper are available in:
-results/CodeGenResults/
-
-"""
 import os
 import csv
 import re
@@ -355,19 +343,19 @@ if __name__ == "__main__":
 ##################################################################################################
 # starts from here
     '''compute ratings'''
+    # add_rating_column("hw_results.csv", "grades_from_solution_report.csv", "grades_from_report_rating.csv")
     #
     #
     # '''compute final stats'''
-    compute_rating_percentages("../../results/CodeGenResults/raw_results.csv", "../../results/CodeGenResults/CodeGen_percentages_copy.csv", 265)
+    compute_rating_percentages("grades_from_report_rating.csv", "CodeGen_percentages.csv", 265)
     # print("----------------------------\n\n")
 
 
-    # count by difficulty
+    # count by diff
     # count_model_q3_q4_mastery_rate(
     #     results_csv="./grades_from_report_rating.csv",
-    #     output_csv="difficulty_rating_stats_AP.csv"
+    #     output_csv="difficulty_rating_stats.csv"
     # )
-
 
     # count_model_q1_q2_mastery_rate(
     #     results_csv="./grades_from_report_rating.csv",

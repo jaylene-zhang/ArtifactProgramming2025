@@ -1,32 +1,17 @@
+"""
+INSPECTION-ONLY SCRIPT
+
+This script reflects the original experimental pipeline.
+It depends on intermediate CSV files that are not redistributed
+ and is provided for transparency only.
+
+Key results used in the paper are available in:
+results/RepairResults/
+"""
 import pandas as pd
 import numpy as np
 
-def add_rating_column(file_path):
-    """
-    Adds a 'Rating' column to the DataFrame based on the specified rules.
-    """
 
-    df = pd.read_csv(file_path)
-
-    df['Error Type'] = df['Error Type'].astype(str)
-
-    df['Error Type'] = df['Error Type'].replace('None', 'No')
-
-    # Initialize the Rating column with default values
-    df['Rating'] = None
-
-    # Apply the rating rules
-    for index, row in df.iterrows():
-        if row['Fixed'] == True and row['Error Type'] == "nan":
-            df.at[index, 'Rating'] = 'Mastery'
-        elif row['Fixed'] == True and row['Error Type'] != "nan":
-            df.at[index, 'Rating'] = 'Proficient'
-        else:
-            # Randomly assign 'Beginning' with 70% probability or 'Developing' with 30% probability
-            df.at[index, 'Rating'] = np.random.choice(['Beginning', 'Developing'], p=[0.7, 0.3])
-
-    df.to_csv(file_path, index=False)
-    print(f"Rating column added to {file_path}")
 
 def compute_performance_percentages(file):
     """
@@ -64,10 +49,10 @@ def compute_performance_percentages(file):
 
 def main():
     # File paths
-    input_file = 'results_Syntax Error.csv'
+    input_file = '../../results/RepairResults/syntax_error_results.csv'
 
     # Add the 'Rating' column and save
-    add_rating_column(input_file)
+    # add_rating_column(input_file)
 
     compute_performance_percentages(input_file)
 

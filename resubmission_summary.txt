@@ -1,0 +1,17 @@
+Artifact Resubmission Summary:
+
+We have updated the artifact to address all reviewer comments:
+
+Artifact hash: Added the correct git commit hash corresponding to this version, ensuring a unique, verifiable snapshot.
+
+Kick-the-tyres scripts: All three designated scripts (plot_weighted_grade.py, plot_histogram_by_difficulty.py, analyze_CodeGen.py) have been verified to run correctly using only the provided CSVs under results/. No hardcoded local paths remain.
+
+Claim 2 updates: analyze_Explain.py is now verified runnable, producing the final Explain_percentages.csv from provided processed data. Running this script before plot_histogram_by_difficulty.py allows full verification of Claim 2 without any intermediate files.
+
+Intermediate/omitted files: We clarified that some preprocessing and grader output files are intentionally omitted due to dependency on LearnOCaml or non-deterministic LLM outputs. All scripts required for the kick-the-tyres evaluation run independently of these omitted files.
+
+CSV/figure consistency: Paths and filenames in the README and scripts now exactly match the files in the repository. Figure 5 and Figure 6 are reproducible as described.
+
+Documentation improvements: README.md now explicitly explains which scripts are for inspection only, which files are final, and provides step-by-step instructions that reproduce the key results from the paper.
+
+All changes ensure that the artifact can be evaluated fully based on the final processed results and that reviewers can verify the claims without access to intermediate or non-deterministic data.

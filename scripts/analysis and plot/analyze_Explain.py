@@ -1,8 +1,10 @@
+
+
 import pandas as pd
 
 # Load the CSV file into a DataFrame
 # input_file = 'conceptual_results.csv'  # Replace with your actual file name
-input_file = 'exam_results.csv'
+input_file = '../../results/ExplainResults/Explain_raw.csv'
 df = pd.read_csv(input_file)
 
 # Define the classification function
@@ -41,7 +43,7 @@ performance_percentages.reset_index(inplace=True)
 performance_percentages.columns = ["Model", "Mastery %", "Proficient %", "Developing %", "Beginning %", "Non-gradable %"]
 
 # Save the results to a new CSV file
-output_file = 'answer_gen_percentages.csv'
+output_file = '../../results/ExplainResults/Explain_percentages_copy.csv'
 performance_percentages.to_csv(output_file, index=False)
 
 print(f"Model performance percentages saved to {output_file}")
