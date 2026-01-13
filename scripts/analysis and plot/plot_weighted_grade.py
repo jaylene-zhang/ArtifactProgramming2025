@@ -10,7 +10,7 @@ import os
 
 # Define file paths
 # csv_folder = "tasks"
-csv_files = ["CodeGenResults/code_gen_percentages.csv",
+csv_files = ["CodeGenResults/CodeGen_percentages.csv",
 "RepairResults/logical_error_percentages.csv",
 "RepairResults/syntax_error_percentages.csv",
              "RepairResults/type_error_percentages.csv",
