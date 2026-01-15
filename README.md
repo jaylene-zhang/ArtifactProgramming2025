@@ -2,7 +2,7 @@
 
 **Artifact URL:** (https://github.com/jaylene-zhang/ArtifactProgramming2025)
 
-**Artifact hash:** b792e78db2a5988042c581d7677ad6518069d3e5
+**Artifact hash:** e01addfcdc3b53a4cad6abd176797d75fc13176d
 
 **Paper URL (most recent version):** (https://drive.google.com/file/d/1KTtE4VbsOOSnbPdf3uv9VcE-MCTB3clI/view?usp=sharing)
 
@@ -54,11 +54,11 @@ To support artifact evaluation, we include all final computed percentages used t
 
 ### Supported Claims
 
-| Claim | Evidence in Artifact | Paper Section |
-|-------|-------------------|---------------|
-| LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
-| All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And model performance gap widens here.| `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9, Sec 3.5, Figure 6 |
-| Top LLMs achieve above 70% correctness on λCodeGen | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
+| Claim                                                                                                                                                     | Evidence in Artifact | Paper Section |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------|---------------|
+| LLMs perform around 5% better on syntax/type errors than on logical errors or full code generation                                                        | `results/RepairResults/syntax_error_percentages.csv`, `type_error_percentages.csv`, `logical_error_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.2, Table 5-7 |
+| All models struggle more with abstract concepts requiring theoretical implementation than basic programming tasks. And model performance gap widens here. | `results/ExplainResults/Explain_percentages.csv`, `scripts/figures/LLM_weighted.pdf` | Sec 3.3, Table 9, Sec 3.5, Figure 6 |
+| Top LLMs can achieve above (or about) 70% correctness on λCodeGen                                                                                         | `results/CodeGenResults/final_grades.csv`, `scripts/analysis and plot/analyze_CodeGen.py` | Sec 3.1, Table 4 |
 
 > Evidence includes processed CSVs, raw grader outputs, and plotting/analysis scripts used to generate figures and tables.
 
@@ -74,7 +74,6 @@ To support artifact evaluation, we include all final computed percentages used t
 - **LearnOCaml dependency:** The grader wrappers depend on LearnOCaml. Link:https://github.com/ocaml-sf/learn-ocaml/tree/master. Sample grader logs are included in `results/` for inspection. 
 - **LLM API calls:** Scripts in `scripts/API calls/` include placeholder API keys. Keys are not provided.  
 - **Data privacy:** Student submissions in λRepair were anonymized. Processed outputs and example logs are provided in the artifact.
-- **Updated internal analyses**: Some raw results used in internal analyses have been updated since the paper submission. The processed CSVs provided (results/CodeGenResults/code_gen.csv etc.) contain the values used to generate the tables and figures in the paper. Running analyze_CodeGen.py or other scripts may produce slightly different intermediate outputs; reviewers should rely on the provided final CSVs for verification.
 - **o1 data**: ignore any o1 data in the artifact since this model has been removed from the evaluation in the paper.
 ---
 
@@ -102,11 +101,17 @@ Metadata for λCodeGen can be found in `benchmarks/CodeGen/CodeGen_meta.csv`
 
 3. To reproduce Figure 5:
 
-**Script:** `scripts/plot_weighted_grade.py`  
-**Input:** `../../results/CodeGenResults/CodeGen_percentages.csv`, `../../results/RepairResults/xx_percentages.csv`,`../../results/ExplainResults/Explain_percentages.csv`
-**Output:** `../../scripts/figures/LLM_weighted.pdf`  
+Open a terminal and activate your Python environment:
+   ```bash
+   python3 -m venv venv && source venv/bin/activate
+   pip install -r requirements.txt
+   ```
+Navigate to the `scripts/analysis\ and\ plot/` folder and run:
 
-**Run:**
+**Script:** `plot_weighted_grade.py`  
+**Input:** `../../results/CodeGenResults/CodeGen_percentages.csv`, `../../results/RepairResults/xx_percentages.csv`,`../../results/ExplainResults/Explain_percentages.csv`
+**Output:** `scripts/figures/LLM_weighted.pdf`  
+
 ```bash
 cd scripts/analysis\ and\ plot/
 python plot_weighted_grade.py
@@ -119,20 +124,30 @@ Paper Section: Sec 3.3, Table 9; Sec 3.5, Figure 6
 
 **Steps:**
 
-1. Navigate to Explain results:
+1. Produce `Explain_perpentages_Artifact.csv`
+
+Navigate to Explain results:
 ```bash
 cd scripts/analysis\ and\ plot/
 python analyze_Explain.py
 ```
+Running this script produces a CSV file at
+`results/ExplainResults/Explain_percentages_Artifact.csv`.
 
-2. Open `results/Explain/Explain_percentages.csv` to inspect model correctness,which reports correctness percentages corresponding to Table 9.
-Metadata for λExplain can be found in `benchmarks/Explain/lambdaExplain_meta.csv`
+To inspect the values reported in the paper, open
+`results/ExplainResults/Explain_percentages_Paper.csv`, which contains the performance percentages corresponding to Table 9.
 
-3. To reproduce Figure 6:
+Minor discrepancies between these two CSV files are expected. They arise because some λExplain responses were re-graded manually after the paper submission.
+These changes affect individual percentages but do not alter the overall performance trends, and the results consistently support the claim that most models struggle on λExplain tasks and that performance gaps widen for more abstract questions.
 
-**Script:** `scripts/plot_histogram_by_difficulty.py`  
-**Input:**  `statistics of λExplain and λCodeGen by difficulty level, i.e. CodeGenResults/difficulty_rating_stats_x.csv and ExplainResults/mastery_rate_by_difficulty_Explain.csv` 
-**Output:** `../../scripts/figures/mastery_by_level.pdf`  
+2. To reproduce Figure 6:
+
+**Script:** `scripts/analysis\ and\ plot/plot_histogram_by_difficulty.py`  
+**Input:**  statistics of λExplain and λCodeGen by difficulty level
+
+`CodeGenResults/difficulty_rating_stats_x.csv` and `ExplainResults/mastery_rate_by_difficulty_Explain.csv` 
+
+**Output:** `scripts/figures/mastery_by_level.pdf`  
 
 **Run:**
 ```bash
@@ -159,10 +174,17 @@ cd scripts/analysis\ and\ plot/
 ```
 
 3. Run the analysis script:
+   (Note: The script includes functions from the original preprocessing pipeline, which are commented out. The executed portion computes final correctness percentages exclusively from processed CSVs in `results/CodeGenResults/`.
+)
+4. 
 ```bash
 python analyze_CodeGen.py 
 ```
-The script includes functions from the original preprocessing pipeline, which are commented out. The executed portion computes final correctness percentages exclusively from processed CSVs in `results/CodeGenResults/`.
 
-4. Open `results/CodeGenResults/CodeGen_percentages.csv` to inspect correctness percentages. These values correspond to Table 4 in the paper.
+The script produces a CSV file at `results/CodeGenResults/CodeGen_percentages_Artifact.csv`.
 
+To inspect the values reported in the paper, open `results/CodeGenResults/CodeGen_percentages_Paper.csv`, which contains the performance percentages corresponding to Table 4.
+
+Same as in the `Explain_percentages`, minor discrepancies between these two CSV files are expected due to refined manual grading performed after paper submission. 
+In particular, for GPT-4o-mini, some model outputs that are syntactically valid but incomplete are now consistently classified as Non-gradable, leading to a redistribution across grading categories.
+This update does not affect any supported claim in the paper, as GPT-4o-mini is not among the top-performing models used to justify the reported ~70% Mastery rate on λCodeGen. The overall trends and conclusions remain unchanged.

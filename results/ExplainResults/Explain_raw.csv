@@ -34,11 +34,6 @@ final_q1_1,1,Llama3.3 70B,2,Mastery,
 final_q1_1,1,Llama3.3 70B,3,Mastery,
 final_q1_1,1,Llama3.3 70B,4,Mastery,
 final_q1_1,1,Llama3.3 70B,5,Mastery,
-final_q1_1,1,o1,1,Mastery,
-final_q1_1,1,o1,2,Mastery,
-final_q1_1,1,o1,3,Mastery,
-final_q1_1,1,o1,4,Mastery,
-final_q1_1,1,o1,5,Mastery,
 final_q1_1,1,o3-mini,1,Mastery,
 final_q1_1,1,o3-mini,2,Mastery,
 final_q1_1,1,o3-mini,3,Mastery,
@@ -84,11 +79,6 @@ final_q1_2,2,Llama3.3 70B,2,Mastery,
 final_q1_2,2,Llama3.3 70B,3,Mastery,
 final_q1_2,2,Llama3.3 70B,4,Proficient,
 final_q1_2,2,Llama3.3 70B,5,Mastery,
-final_q1_2,2,o1,1,Mastery,
-final_q1_2,2,o1,2,Mastery,
-final_q1_2,2,o1,3,Mastery,
-final_q1_2,2,o1,4,Mastery,
-final_q1_2,2,o1,5,Mastery,
 final_q1_2,2,o3-mini,1,Mastery,
 final_q1_2,2,o3-mini,2,Mastery,
 final_q1_2,2,o3-mini,3,Mastery,
@@ -134,11 +124,6 @@ final_q2,3,Llama3.3 70B,2,Beginning,
 final_q2,3,Llama3.3 70B,3,Beginning,
 final_q2,3,Llama3.3 70B,4,Beginning,
 final_q2,3,Llama3.3 70B,5,Beginning,
-final_q2,3,o1,1,Mastery,
-final_q2,3,o1,2,Mastery,
-final_q2,3,o1,3,Mastery,
-final_q2,3,o1,4,Mastery,
-final_q2,3,o1,5,Mastery,
 final_q2,3,o3-mini,1,Mastery,
 final_q2,3,o3-mini,2,Mastery,
 final_q2,3,o3-mini,3,Mastery,
@@ -184,11 +169,6 @@ final_q3,4,Llama3.3 70B,2,Mastery,
 final_q3,4,Llama3.3 70B,3,Mastery,
 final_q3,4,Llama3.3 70B,4,Mastery,
 final_q3,4,Llama3.3 70B,5,Mastery,
-final_q3,4,o1,1,Beginning,
-final_q3,4,o1,2,Beginning,
-final_q3,4,o1,3,Beginning,
-final_q3,4,o1,4,Beginning,
-final_q3,4,o1,5,Beginning,
 final_q3,4,o3-mini,1,Mastery,
 final_q3,4,o3-mini,2,Mastery,
 final_q3,4,o3-mini,3,Mastery,
@@ -234,11 +214,6 @@ final_q4_1,5,Llama3.3 70B,2,Developing,
 final_q4_1,5,Llama3.3 70B,3,Developing,
 final_q4_1,5,Llama3.3 70B,4,Developing,
 final_q4_1,5,Llama3.3 70B,5,Developing,
-final_q4_1,5,o1,1,Developing,
-final_q4_1,5,o1,2,Developing,
-final_q4_1,5,o1,3,Developing,
-final_q4_1,5,o1,4,Developing,
-final_q4_1,5,o1,5,Developing,
 final_q4_1,5,o3-mini,1,Mastery,
 final_q4_1,5,o3-mini,2,Mastery,
 final_q4_1,5,o3-mini,3,Mastery,
@@ -284,11 +259,6 @@ final_q4_2,6,Llama3.3 70B,2,Mastery,
 final_q4_2,6,Llama3.3 70B,3,Mastery,
 final_q4_2,6,Llama3.3 70B,4,Mastery,
 final_q4_2,6,Llama3.3 70B,5,Mastery,
-final_q4_2,6,o1,1,Developing,
-final_q4_2,6,o1,2,Proficient,
-final_q4_2,6,o1,3,Developing,
-final_q4_2,6,o1,4,Developing,
-final_q4_2,6,o1,5,Mastery,
 final_q4_2,6,o3-mini,1,Mastery,
 final_q4_2,6,o3-mini,2,Mastery,
 final_q4_2,6,o3-mini,3,Mastery,
@@ -334,11 +304,6 @@ final_q8,7,Llama3.3 70B,2,Developing,
 final_q8,7,Llama3.3 70B,3,Developing,
 final_q8,7,Llama3.3 70B,4,Developing,
 final_q8,7,Llama3.3 70B,5,Developing,
-final_q8,7,o1,1,Proficient,
-final_q8,7,o1,2,Developing,
-final_q8,7,o1,3,Developing,
-final_q8,7,o1,4,Developing,
-final_q8,7,o1,5,Developing,
 final_q8,7,o3-mini,1,Developing,
 final_q8,7,o3-mini,2,Proficient,
 final_q8,7,o3-mini,3,Proficient,
@@ -384,11 +349,6 @@ mt1_q1_1,8,Llama3.3 70B,2,Beginning,
 mt1_q1_1,8,Llama3.3 70B,3,Beginning,
 mt1_q1_1,8,Llama3.3 70B,4,Beginning,
 mt1_q1_1,8,Llama3.3 70B,5,Beginning,
-mt1_q1_1,8,o1,1,Beginning,
-mt1_q1_1,8,o1,2,Beginning,
-mt1_q1_1,8,o1,3,Beginning,
-mt1_q1_1,8,o1,4,Beginning,
-mt1_q1_1,8,o1,5,Beginning,
 mt1_q1_1,8,o3-mini,1,Mastery,
 mt1_q1_1,8,o3-mini,2,Mastery,
 mt1_q1_1,8,o3-mini,3,Mastery,
@@ -434,11 +394,6 @@ mt1_q1_2,9,Llama3.3 70B,2,Beginning,
 mt1_q1_2,9,Llama3.3 70B,3,Beginning,
 mt1_q1_2,9,Llama3.3 70B,4,Beginning,
 mt1_q1_2,9,Llama3.3 70B,5,Beginning,
-mt1_q1_2,9,o1,1,Beginning,
-mt1_q1_2,9,o1,2,Beginning,
-mt1_q1_2,9,o1,3,Beginning,
-mt1_q1_2,9,o1,4,Beginning,
-mt1_q1_2,9,o1,5,Beginning,
 mt1_q1_2,9,o3-mini,1,Developing,
 mt1_q1_2,9,o3-mini,2,Proficient,
 mt1_q1_2,9,o3-mini,3,Proficient,
@@ -484,11 +439,6 @@ mt1_q1_3,10,Llama3.3 70B,2,Mastery,
 mt1_q1_3,10,Llama3.3 70B,3,Mastery,
 mt1_q1_3,10,Llama3.3 70B,4,Mastery,
 mt1_q1_3,10,Llama3.3 70B,5,Mastery,
-mt1_q1_3,10,o1,1,Beginning,
-mt1_q1_3,10,o1,2,Beginning,
-mt1_q1_3,10,o1,3,Beginning,
-mt1_q1_3,10,o1,4,Beginning,
-mt1_q1_3,10,o1,5,Beginning,
 mt1_q1_3,10,o3-mini,1,Mastery,
 mt1_q1_3,10,o3-mini,2,Mastery,
 mt1_q1_3,10,o3-mini,3,Mastery,
@@ -534,11 +484,6 @@ mt1_q2,11,Llama3.3 70B,2,Proficient,
 mt1_q2,11,Llama3.3 70B,3,Developing,
 mt1_q2,11,Llama3.3 70B,4,Developing,
 mt1_q2,11,Llama3.3 70B,5,Proficient,
-mt1_q2,11,o1,1,Proficient,
-mt1_q2,11,o1,2,Proficient,
-mt1_q2,11,o1,3,Proficient,
-mt1_q2,11,o1,4,Proficient,
-mt1_q2,11,o1,5,Proficient,
 mt1_q2,11,o3-mini,1,Proficient,
 mt1_q2,11,o3-mini,2,Mastery,
 mt1_q2,11,o3-mini,3,Proficient,
@@ -584,11 +529,6 @@ mt1_q4,12,Llama3.3 70B,2,Proficient,
 mt1_q4,12,Llama3.3 70B,3,Developing,
 mt1_q4,12,Llama3.3 70B,4,Developing,
 mt1_q4,12,Llama3.3 70B,5,Developing,
-mt1_q4,12,o1,1,Proficient,
-mt1_q4,12,o1,2,Developing,
-mt1_q4,12,o1,3,Developing,
-mt1_q4,12,o1,4,Developing,
-mt1_q4,12,o1,5,Developing,
 mt1_q4,12,o3-mini,1,Developing,
 mt1_q4,12,o3-mini,2,Proficient,
 mt1_q4,12,o3-mini,3,Proficient,
@@ -634,11 +574,6 @@ mt2_q1_1,13,Llama3.3 70B,2,Beginning,
 mt2_q1_1,13,Llama3.3 70B,3,Developing,
 mt2_q1_1,13,Llama3.3 70B,4,Developing,
 mt2_q1_1,13,Llama3.3 70B,5,Developing,
-mt2_q1_1,13,o1,1,Proficient,
-mt2_q1_1,13,o1,2,Proficient,
-mt2_q1_1,13,o1,3,Proficient,
-mt2_q1_1,13,o1,4,Proficient,
-mt2_q1_1,13,o1,5,Proficient,
 mt2_q1_1,13,o3-mini,1,Proficient,
 mt2_q1_1,13,o3-mini,2,Proficient,
 mt2_q1_1,13,o3-mini,3,Proficient,
@@ -684,11 +619,6 @@ mt2_q1_2,14,Llama3.3 70B,2,Mastery,
 mt2_q1_2,14,Llama3.3 70B,3,Mastery,
 mt2_q1_2,14,Llama3.3 70B,4,Mastery,
 mt2_q1_2,14,Llama3.3 70B,5,Mastery,
-mt2_q1_2,14,o1,1,Mastery,
-mt2_q1_2,14,o1,2,Mastery,
-mt2_q1_2,14,o1,3,Mastery,
-mt2_q1_2,14,o1,4,Mastery,
-mt2_q1_2,14,o1,5,Mastery,
 mt2_q1_2,14,o3-mini,1,Mastery,
 mt2_q1_2,14,o3-mini,2,Mastery,
 mt2_q1_2,14,o3-mini,3,Mastery,
@@ -734,11 +664,6 @@ mt2_q2,15,Llama3.3 70B,2,Beginning,
 mt2_q2,15,Llama3.3 70B,3,Beginning,
 mt2_q2,15,Llama3.3 70B,4,Beginning,
 mt2_q2,15,Llama3.3 70B,5,Mastery,
-mt2_q2,15,o1,1,Mastery,
-mt2_q2,15,o1,2,Mastery,
-mt2_q2,15,o1,3,Mastery,
-mt2_q2,15,o1,4,Mastery,
-mt2_q2,15,o1,5,Mastery,
 mt2_q2,15,o3-mini,1,Mastery,
 mt2_q2,15,o3-mini,2,Mastery,
 mt2_q2,15,o3-mini,3,Mastery,
@@ -780,11 +705,6 @@ library,16,Llama3.3 70B,2,Beginning
 library,16,Llama3.3 70B,3,Beginning
 library,16,Llama3.3 70B,4,Beginning
 library,16,Llama3.3 70B,5,Beginning
-library,16,o1,1,Developing
-library,16,o1,2,Developing
-library,16,o1,3,Mastery
-library,16,o1,4,Mastery
-library,16,o1,5,Mastery
 library,16,o3-mini,1,Mastery
 library,16,o3-mini,2,Mastery
 library,16,o3-mini,3,Mastery
@@ -830,11 +750,6 @@ library,17,Llama3.3 70B,2,Mastery
 library,17,Llama3.3 70B,3,Mastery
 library,17,Llama3.3 70B,4,Mastery
 library,17,Llama3.3 70B,5,Mastery
-library,17,o1,1,Mastery
-library,17,o1,2,Mastery
-library,17,o1,3,Mastery
-library,17,o1,4,Mastery
-library,17,o1,5,Mastery
 library,17,o3-mini,1,Mastery
 library,17,o3-mini,2,Mastery
 library,17,o3-mini,3,Mastery
@@ -880,11 +795,6 @@ library,18,Llama3.3 70B,2,Mastery
 library,18,Llama3.3 70B,3,Developing
 library,18,Llama3.3 70B,4,Mastery
 library,18,Llama3.3 70B,5,Developing
-library,18,o1,1,
-library,18,o1,2,
-library,18,o1,3,
-library,18,o1,4,
-library,18,o1,5,
 library,18,o3-mini,1,Mastery
 library,18,o3-mini,2,Mastery
 library,18,o3-mini,3,Mastery
@@ -930,11 +840,6 @@ library,19,Llama3.3 70B,2,Developing
 library,19,Llama3.3 70B,3,Developing
 library,19,Llama3.3 70B,4,Developing
 library,19,Llama3.3 70B,5,Developing
-library,19,o1,1,
-library,19,o1,2,
-library,19,o1,3,
-library,19,o1,4,
-library,19,o1,5,
 library,19,o3-mini,1,Mastery
 library,19,o3-mini,2,Mastery
 library,19,o3-mini,3,Mastery
@@ -980,11 +885,6 @@ library,20,Llama3.3 70B,2,Proficient
 library,20,Llama3.3 70B,3,Mastery
 library,20,Llama3.3 70B,4,Mastery
 library,20,Llama3.3 70B,5,Mastery
-library,20,o1,1,
-library,20,o1,2,
-library,20,o1,3,
-library,20,o1,4,
-library,20,o1,5,
 library,20,o3-mini,1,Proficient
 library,20,o3-mini,2,Mastery
 library,20,o3-mini,3,Mastery
@@ -1030,11 +930,6 @@ library,21,Llama3.3 70B,2,Developing
 library,21,Llama3.3 70B,3,Developing
 library,21,Llama3.3 70B,4,Developing
 library,21,Llama3.3 70B,5,Developing
-library,21,o1,1,
-library,21,o1,2,
-library,21,o1,3,
-library,21,o1,4,
-library,21,o1,5,
 library,21,o3-mini,1,Mastery
 library,21,o3-mini,2,Mastery
 library,21,o3-mini,3,Mastery
@@ -1080,11 +975,6 @@ library,22,Llama3.3 70B,2,Non-gradable
 library,22,Llama3.3 70B,3,Non-gradable
 library,22,Llama3.3 70B,4,Developing
 library,22,Llama3.3 70B,5,Beginning
-library,22,o1,1,
-library,22,o1,2,
-library,22,o1,3,
-library,22,o1,4,
-library,22,o1,5,
 library,22,o3-mini,1,Mastery
 library,22,o3-mini,2,Mastery
 library,22,o3-mini,3,Mastery
@@ -1130,11 +1020,6 @@ library,23,Llama3.3 70B,2,Non-gradable
 library,23,Llama3.3 70B,3,Non-gradable
 library,23,Llama3.3 70B,4,Non-gradable
 library,23,Llama3.3 70B,5,Non-gradable
-library,23,o1,1,
-library,23,o1,2,
-library,23,o1,3,
-library,23,o1,4,
-library,23,o1,5,
 library,23,o3-mini,1,Mastery
 library,23,o3-mini,2,Mastery
 library,23,o3-mini,3,Mastery
@@ -1180,11 +1065,6 @@ library,24,Llama3.3 70B,2,Mastery
 library,24,Llama3.3 70B,3,Mastery
 library,24,Llama3.3 70B,4,Mastery
 library,24,Llama3.3 70B,5,Mastery
-library,24,o1,1,
-library,24,o1,2,
-library,24,o1,3,
-library,24,o1,4,
-library,24,o1,5,
 library,24,o3-mini,1,Mastery
 library,24,o3-mini,2,Mastery
 library,24,o3-mini,3,Mastery
@@ -1230,11 +1110,6 @@ library,25,Llama3.3 70B,2,Mastery
 library,25,Llama3.3 70B,3,Mastery
 library,25,Llama3.3 70B,4,Mastery
 library,25,Llama3.3 70B,5,Mastery
-library,25,o1,1,
-library,25,o1,2,
-library,25,o1,3,
-library,25,o1,4,
-library,25,o1,5,
 library,25,o3-mini,1,Mastery
 library,25,o3-mini,2,Mastery
 library,25,o3-mini,3,Mastery

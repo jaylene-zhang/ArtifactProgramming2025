@@ -86,5 +86,6 @@ ax2.set_xticks(x)
 ax2.set_xticklabels(models, rotation=45, ha='center', fontsize=fontsizes)
 
 plt.tight_layout()
-plt.savefig("../figures/mastery_by_level_copy.pdf", dpi=300)
+plt.savefig("../figures/mastery_by_level.pdf", dpi=300)
+print("figures saved to ../figures/mastery_by_level.pdf")
 # plt.show()

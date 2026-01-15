@@ -356,7 +356,7 @@ if __name__ == "__main__":
     #
     #
     # '''compute final stats'''
-    compute_rating_percentages("grades_from_report_rating.csv", "CodeGen_percentages.csv", 265)
+    compute_rating_percentages("grades_from_report_rating.csv", "CodeGen_percentages_Paper.csv", 265)
     # print("----------------------------\n\n")
 
 

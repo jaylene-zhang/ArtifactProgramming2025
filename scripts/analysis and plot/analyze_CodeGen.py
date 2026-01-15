@@ -358,7 +358,7 @@ if __name__ == "__main__":
     #
     #
     # '''compute final stats'''
-    compute_rating_percentages("../../results/CodeGenResults/raw_results.csv", "../../results/CodeGenResults/CodeGen_percentages_copy.csv", 265)
+    compute_rating_percentages("../../results/CodeGenResults/raw_results.csv", "../../results/CodeGenResults/CodeGen_percentages_Artifact.csv", 265)
     # print("----------------------------\n\n")
 
 

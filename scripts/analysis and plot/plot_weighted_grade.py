@@ -10,11 +10,11 @@ import os
 
 # Define file paths
 # csv_folder = "tasks"
-csv_files = ["CodeGenResults/CodeGen_percentages.csv",
+csv_files = ["CodeGenResults/CodeGen_percentages_Paper.csv",
 "RepairResults/logical_error_percentages.csv",
 "RepairResults/syntax_error_percentages.csv",
              "RepairResults/type_error_percentages.csv",
-"ExplainResults/Explain_percentages.csv"]
+"ExplainResults/Explain_percentages_Paper.csv"]
 
 task_names = ["code generation", "logical error repair", "syntax error repair", "type error repair", "conceptual explanation"]
 # Collect scores per model per task
@@ -111,6 +111,7 @@ ax.grid(axis='y', linestyle='--', alpha=0.5)
 ax.legend()
 plt.tight_layout()
 # plt.show()
-plt.savefig("../figures/LLM_Weighted_copy.pdf")
+plt.savefig("../figures/LLM_Weighted.pdf")
+print("figure saved to ../figures/LLM_Weighted.pdf")
 
 

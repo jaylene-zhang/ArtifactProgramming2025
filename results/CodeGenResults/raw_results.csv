@@ -34,7 +34,6 @@ val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
 GPT-4o,hw3,q1a,5,None,,Mastery
 o3-Mini,hw3,q1a,5,None,,Mastery
-o1,hw3,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1a,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 5, characters 0-2:
 Comment not terminated
 
@@ -58,7 +57,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
 GPT-4o,hw3,q1a,5,None,,Mastery
-o1,hw3,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1a,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 5, characters 0-2:
 Comment not terminated
 
@@ -159,7 +157,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1a,5,None,,Mastery
 Claude-3.7-Sonnet,hw3,q1a,5,None,,Mastery
 Qwen2.5-7B,hw3,q1a,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 4-20:
 This expression should not be a function, the expected type is
@@ -183,10 +180,8 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1a,5,None,,Mastery
 GPT-4o,hw3,q1a,5,None,,Mastery
 o3-Mini,hw3,q1a,5,None,,Mastery
-o1,hw3,q1a,5,None,,Mastery
 Llama3.3-70B,hw3,q1b,5,None,,Mastery
 GPT-4o-mini,hw3,q1b,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 20-28:
 This expression has type 'a -> 'b
@@ -261,7 +256,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1b,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 5, characters 0-2:
 Comment not terminated
 
@@ -284,7 +278,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
 Claude-3.7-Sonnet,hw3,q1b,5,None,,Mastery
-o1,hw3,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1b,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 5, characters 0-2:
 Comment not terminated
 
@@ -320,7 +313,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
 o3-Mini,hw3,q1b,5,None,,Mastery
-o1,hw3,q1b,5,None,,Mastery
 o3-Mini,hw3,q1b,5,None,,Mastery
 GPT-4o,hw3,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1b,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 4, characters 0-2:
@@ -333,7 +325,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1b,5,None,,Mastery
 GPT-4o,hw3,q1b,5,None,,Mastery
 Qwen2.5-7B,hw3,q1b,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 5-7:
 This expression has type 'b church = 'b -> ('b -> 'b) -> 'b
@@ -358,7 +349,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1b,5,None,,Mastery
 GPT-4o,hw3,q1b,5,None,,Mastery
 Qwen2.5-7B,hw3,q1b,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 5-7:
 This expression has type 'b church = 'b -> ('b -> 'b) -> 'b
@@ -463,7 +453,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1c,5,None,,Mastery
 Gemini-2.0-Flash,hw3,q1c,1,None,,Non-gradable
 GPT-4o,hw3,q1c,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 18-26:
 This expression has type 'b but an expression was expected of type
@@ -490,7 +479,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1c,1,None,,Non-gradable
 Gemini-2.0-Flash,hw3,q1c,0,Syntax Error,"File ""./F2022/exercises/hw3/solution.ml"", line 4, characters 23-24:
 Syntax error
 
@@ -504,18 +492,6 @@ val one : 'b church = <fun>",Non-gradable
 GPT-4o,hw3,q1c,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 18-26:
 This expression has type 'b but an expression was expected of type
          'b -> 'b
-       The type variable 'b occurs inside 'b -> 'b
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1c,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 22-23:
-This expression has type 'b -> 'b
-       but an expression was expected of type 'b
        The type variable 'b occurs inside 'b -> 'b
 
 grader outcomes:
@@ -641,7 +617,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q1c,5,None,,Mastery
 o3-Mini,hw3,q1c,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 3, characters 22-23:
 This expression has type 'b -> 'b
        but an expression was expected of type 'b
@@ -678,7 +653,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
 Gemini-2.0-Flash,hw3,q1c,1,None,,Non-gradable
-o1,hw3,q1c,5,None,,Mastery
 Qwen2.5-7B,hw3,q1c,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 9-11:
 This expression has type 'b church = 'b -> ('b -> 'b) -> 'b
        but an expression was expected of type 'b
@@ -719,16 +693,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
 Gemini-2.0-Flash,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
-o1,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
 Unbound value add
 
 grader outcomes:
@@ -788,16 +752,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
-o1,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 GPT-4o,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
 Unbound value add
 
@@ -838,16 +792,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 o3-Mini,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 3, characters 17-20:
 Unbound value add
 
@@ -1031,16 +975,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
-o1,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 Gemini-2.0-Flash,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
 Unbound value add
 
@@ -1101,16 +1035,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
-o1,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 17-20:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Developing
 Gemini-2.0-Flash,hw3,q2a,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
 Unbound value add
 
@@ -1265,16 +1189,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
-o1,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 Qwen2.5-7B,hw3,q2b,0,Type Error,"File ""./F2022/exercises/hw3/solution.ml"", line 5, characters 2-30:
 This expression has type 'b -> 'b
        but an expression was expected of type
@@ -1328,16 +1242,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
-o1,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 Qwen2.5-7B,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 34-37:
 Unbound value add
 
@@ -1379,16 +1283,6 @@ type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Beginning
 Gemini-2.0-Flash,hw3,q2b,7,None,,Mastery
-o1,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 Llama3.1-8B,hw3,q2b,0,None,"File ""./F2022/exercises/hw3/solution.ml"", line 3, characters 33-34:
 Unbound constructor S
 
@@ -1471,16 +1365,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Developing
-o1,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Beginning
 Gemini-2.0-Flash,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
 Unbound value add
 
@@ -1541,16 +1425,6 @@ val domain : unit -> 'a = <fun>
 type 'b church = 'b -> ('b -> 'b) -> 'b
 val zero : 'b church = <fun>
 val one : 'b church = <fun>",Non-gradable
-o1,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 2, characters 31-34:
-Unbound value add
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>
-type 'b church = 'b -> ('b -> 'b) -> 'b
-val zero : 'b church = <fun>
-val one : 'b church = <fun>",Developing
 Gemini-2.0-Flash,hw3,q2b,7,None,,Mastery
 o3-Mini,hw3,q2b,0,Unbound value,"File ""./F2022/exercises/hw3/solution.ml"", line 3, characters 31-34:
 Unbound value add
@@ -1650,7 +1524,6 @@ Llama3.3-70B,hw1,q1,8,None,,Mastery
 GPT-4o-mini,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q1,8,None,,Mastery
 Qwen2.5-7B,hw1,q1,8,None,,Mastery
-o1,hw1,q1,8,None,,Mastery
 Llama3.3-70B,hw1,q1,8,None,,Mastery
 Qwen2.5-7B,hw1,q1,0,None,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 14-23:
 This expression has type int
@@ -1670,19 +1543,15 @@ val domain : unit -> 'a = <fun>",Non-gradable
 Llama3.3-70B,hw1,q1,8,None,,Mastery
 GPT-4o-mini,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q1,8,None,,Mastery
-o1,hw1,q1,8,None,,Mastery
 Llama3.3-70B,hw1,q1,8,None,,Mastery
 GPT-4o-mini,hw1,q1,8,None,,Mastery
-o1,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q1,8,None,,Mastery
 Qwen2.5-7B,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q1,8,None,,Mastery
-o1,hw1,q1,8,None,,Mastery
 GPT-4o-mini,hw1,q1,8,None,,Mastery
 Qwen2.5-7B,hw1,q1,8,None,,Mastery
 Llama3.3-70B,hw1,q1,8,None,,Mastery
 GPT-4o-mini,hw1,q1,8,None,,Mastery
-o1,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q1,8,None,,Mastery
 Claude-3.7-Sonnet,hw1,q1,8,None,,Mastery
 Gemini-2.0-Flash,hw1,q1,8,None,,Mastery
@@ -1697,7 +1566,6 @@ Gemini-2.0-Flash,hw1,q1,8,None,,Mastery
 Claude-3.7-Sonnet,hw1,q1,8,None,,Mastery
 Gemini-2.0-Flash,hw1,q1,8,None,,Mastery
 o3-Mini,hw1,q2,8,None,,Mastery
-o1,hw1,q2,8,None,,Mastery
 GPT-4o-mini,hw1,q2,8,None,,Mastery
 Llama3.3-70B,hw1,q2,8,None,,Mastery
 Qwen2.5-7B,hw1,q2,0,Syntax Error,"File ""./F2022/exercises/hw1/solution.ml"", line 8, characters 61-63:
@@ -1717,7 +1585,6 @@ val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
 o3-Mini,hw1,q2,8,None,,Mastery
-o1,hw1,q2,8,None,,Mastery
 GPT-4o-mini,hw1,q2,8,None,,Mastery
 Llama3.3-70B,hw1,q2,8,None,,Mastery
 Gemini-2.0-Flash,hw1,q2,8,None,,Mastery
@@ -1801,7 +1668,6 @@ exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
 Gemini-2.0-Flash,hw1,q2,8,None,,Mastery
 Claude-3.7-Sonnet,hw1,q2,8,None,,Mastery
-o1,hw1,q2,8,None,,Mastery
 o3-Mini,hw1,q2,8,None,,Mastery
 GPT-4o-mini,hw1,q2,8,None,,Mastery
 Llama3.3-70B,hw1,q2,8,None,,Mastery
@@ -1815,8 +1681,6 @@ grader outcomes:
 val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Developing
-o1,hw1,q2,8,None,,Mastery
-o1,hw1,q2,8,None,,Mastery
 o3-Mini,hw1,q2,8,None,,Mastery
 GPT-4o-mini,hw1,q2,8,None,,Mastery
 Llama3.3-70B,hw1,q2,8,None,,Mastery
@@ -1907,20 +1771,6 @@ grader outcomes:
 val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
-o1,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 5, characters 9-21:
-Unbound value lucas_helper
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>",Beginning
-o1,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
-Unbound value lucas_helper
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>",Beginning
 Qwen2.5-7B,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
 Unbound value lucas_helper
 
@@ -1970,13 +1820,6 @@ grader outcomes:
 val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
-o1,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
-Unbound value lucas_helper
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>",Beginning
 GPT-4o-mini,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
 Unbound value lucas_helper
 
@@ -1985,13 +1828,6 @@ val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
 Llama3.3-70B,hw1,q3,0,None,,Non-gradable
-o1,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
-Unbound value lucas_helper
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>",Beginning
 o3-Mini,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
 Unbound value lucas_helper
 
@@ -2029,13 +1865,6 @@ val print_html : 'a -> 'b = <fun>
 exception NotImplemented
 val domain : unit -> 'a = <fun>",Beginning
 Llama3.3-70B,hw1,q3,0,None,,Non-gradable
-o1,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
-Unbound value lucas_helper
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-val domain : unit -> 'a = <fun>",Developing
 o3-Mini,hw1,q3,0,Unbound value,"File ""./F2022/exercises/hw1/solution.ml"", line 2, characters 2-14:
 Unbound value lucas_helper
 
@@ -2273,24 +2102,19 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
-o1,hw9,q1,15,None,,Mastery
 o3-Mini,hw9,q1,15,None,,Mastery
 GPT-4o-mini,hw9,q1,15,None,,Mastery
 Llama3.3-70B,hw9,q1,15,None,,Mastery
 Llama3.3-70B,hw9,q1,15,None,,Mastery
-o1,hw9,q1,15,None,,Mastery
 o3-Mini,hw9,q1,15,None,,Mastery
 GPT-4o-mini,hw9,q1,9,None,,Non-gradable
 Llama3.3-70B,hw9,q1,15,None,,Mastery
 o3-Mini,hw9,q1,15,None,,Mastery
-o1,hw9,q1,15,None,,Mastery
 GPT-4o-mini,hw9,q1,9,None,,Non-gradable
 Llama3.3-70B,hw9,q1,15,None,,Mastery
-o1,hw9,q1,15,None,,Mastery
 o3-Mini,hw9,q1,15,None,,Mastery
 GPT-4o-mini,hw9,q1,14,None,,Proficient
 o3-Mini,hw9,q1,15,None,,Mastery
-o1,hw9,q1,15,None,,Mastery
 GPT-4o-mini,hw9,q1,15,None,,Mastery
 Llama3.3-70B,hw9,q1,15,None,,Mastery
 Gemini-2.0-Flash,hw9,q1,15,None,,Mastery
@@ -2436,72 +2260,6 @@ val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
 GPT-4o-mini,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
 Unbound value free_variables
 
 grader outcomes:
@@ -2831,72 +2589,6 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Developing
 o3-Mini,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
 Unbound value free_variables
 
@@ -4745,139 +4437,7 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Developing
-o1,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
 GPT-4o-mini,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Developing
-o1,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
 Unbound value free_variables
 
 grader outcomes:
@@ -5142,72 +4702,6 @@ val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Developing
 o3-Mini,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q2,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 9, characters 21-35:
 Unbound value free_variables
 
 grader outcomes:
@@ -5999,72 +5493,6 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 16, characters 23-37:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Developing
 o3-Mini,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
 Unbound value free_variables
 
@@ -6395,72 +5823,6 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
 Qwen2.5-7B,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
 Unbound value free_variables
 
@@ -6593,72 +5955,6 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Developing
-o1,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
 o3-Mini,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
 Unbound value free_variables
 
@@ -6924,72 +6220,6 @@ val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
 o3-Mini,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
 Unbound value free_variables
 
 grader outcomes:
@@ -7386,72 +6616,6 @@ val string_of_op : primop -> string = <fun>
 val string_of_exp : string -> exp -> name = <fun>
 val print_exp : exp -> unit = <fun>
 val ignore : 'a -> 'b = <fun>",Developing
-o1,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 16, characters 25-39:
-Unbound value free_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-val delete : 'a list -> 'a list -> 'a list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ignore : 'a -> 'b = <fun>",Beginning
 Llama3.3-70B,hw9,q3,0,Unbound value,"File ""./F2022/exercises/hw9/solution.ml"", line 17, characters 25-39:
 Unbound value free_variables
 
@@ -8461,7 +7625,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Beginning
-o1,hw5,q1,6,None,,Mastery
 Qwen2.5-7B,hw5,q1,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 1, characters 23-35:
 Unbound value depth_helper
 
@@ -8483,7 +7646,6 @@ val eval : exp -> float -> float = <fun>",Beginning
 o3-Mini,hw5,q1,6,None,,Mastery
 GPT-4o-mini,hw5,q1,6,None,,Mastery
 Llama3.3-70B,hw5,q1,6,None,,Mastery
-o1,hw5,q1,6,None,,Mastery
 o3-Mini,hw5,q1,6,None,,Mastery
 GPT-4o-mini,hw5,q1,6,None,,Mastery
 Llama3.3-70B,hw5,q1,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 7, characters 10-79:
@@ -8618,7 +7780,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Beginning
-o1,hw5,q1,6,None,,Mastery
 o3-Mini,hw5,q1,6,None,,Mastery
 Qwen2.5-7B,hw5,q1,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 2, characters 2-14:
 Unbound value depth_helper
@@ -8639,11 +7800,9 @@ type exp =
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Beginning
 o3-Mini,hw5,q1,6,None,,Mastery
-o1,hw5,q1,6,None,,Mastery
 GPT-4o-mini,hw5,q1,6,None,,Mastery
 Llama3.3-70B,hw5,q1,0,None,,Non-gradable
 o3-Mini,hw5,q1,6,None,,Mastery
-o1,hw5,q1,6,None,,Mastery
 GPT-4o-mini,hw5,q1,6,None,,Mastery
 Llama3.3-70B,hw5,q1,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 7, characters 8-50:
 This expression has type 'a -> 'b
@@ -8824,7 +7983,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Non-gradable
-o1,hw5,q2,6,None,,Mastery
 o3-Mini,hw5,q2,6,None,,Mastery
 Llama3.3-70B,hw5,q2,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 10, characters 33-35:
 This variant pattern is expected to have type 'a list
@@ -8864,7 +8022,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Non-gradable
-o1,hw5,q2,0,None,,Non-gradable
 o3-Mini,hw5,q2,6,None,,Mastery
 Qwen2.5-7B,hw5,q2,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 5, characters 48-49:
 This expression has type 'a tree
@@ -9001,12 +8158,9 @@ type exp =
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Non-gradable
 o3-Mini,hw5,q2,6,None,,Mastery
-o1,hw5,q2,0,None,,Non-gradable
 Llama3.3-70B,hw5,q2,6,None,,Mastery
 GPT-4o-mini,hw5,q2,0,None,,Non-gradable
 o3-Mini,hw5,q2,6,None,,Mastery
-o1,hw5,q2,6,None,,Mastery
-o1,hw5,q2,0,None,,Non-gradable
 Qwen2.5-7B,hw5,q2,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 3, characters 4-21:
 Unbound value find_subtree_cont
 
@@ -9108,42 +8262,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Developing
-o1,hw5,q3,0,None,"File ""./F2022/exercises/hw5/solution.ml"", line 12, characters 8-12:
-Unbound constructor STAR
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-exception NotFound
-val domain : unit -> 'a = <fun>
-type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
-type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * exp
-val tree_depth : 'a tree -> int = <fun>
-val eval : exp -> float -> float = <fun>",Non-gradable
-o1,hw5,q3,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 2, characters 2-12:
-Unbound value parse_expr
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-exception NotFound
-val domain : unit -> 'a = <fun>
-type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
-type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * exp
-val tree_depth : 'a tree -> int = <fun>
-val eval : exp -> float -> float = <fun>",Beginning
 o3-Mini,hw5,q3,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 3, characters 2-12:
 Unbound value parse_expr
 
@@ -9182,24 +8300,6 @@ type exp =
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Non-gradable
 GPT-4o-mini,hw5,q3,0,None,,Non-gradable
-o1,hw5,q3,0,None,"File ""./F2022/exercises/hw5/solution.ml"", line 4, characters 6-9:
-Unbound constructor INT
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-exception NotFound
-val domain : unit -> 'a = <fun>
-type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
-type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * exp
-val tree_depth : 'a tree -> int = <fun>
-val eval : exp -> float -> float = <fun>",Non-gradable
 o3-Mini,hw5,q3,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 2, characters 2-9:
 Unbound value parse_E
 
@@ -9739,25 +8839,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Beginning
-o1,hw5,q3,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 22, characters 6-11:
-This variant pattern is expected to have type token
-       The constructor MINUS does not belong to type token
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-exception NotFound
-val domain : unit -> 'a = <fun>
-type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
-type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * exp
-val tree_depth : 'a tree -> int = <fun>
-val eval : exp -> float -> float = <fun>",Non-gradable
 Llama3.3-70B,hw5,q3,0,Syntax Error,"File ""./F2022/exercises/hw5/solution.ml"", line 13, characters 4-5:
 Syntax error
 
@@ -9796,25 +8877,6 @@ type exp =
   | Pow of exp * exp
 val tree_depth : 'a tree -> int = <fun>
 val eval : exp -> float -> float = <fun>",Beginning
-o1,hw5,q3,0,Type Error,"File ""./F2022/exercises/hw5/solution.ml"", line 22, characters 7-10:
-This variant pattern is expected to have type token
-       The constructor NUM does not belong to type token
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-exception NotFound
-val domain : unit -> 'a = <fun>
-type 'a tree = Empty | Tree of 'a tree * 'a * 'a tree
-type token = LPAREN | RPAREN | FLOAT of float | TIMES | POW | VAR | PLUS
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * exp
-val tree_depth : 'a tree -> int = <fun>
-val eval : exp -> float -> float = <fun>",Non-gradable
 Llama3.3-70B,hw5,q3,0,Unbound value,"File ""./F2022/exercises/hw5/solution.ml"", line 3, characters 20-29:
 Unbound value parse_exp
 
@@ -9938,7 +9000,6 @@ val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Beginning
 o3-Mini,hw7,q1,11,None,,Mastery
-o1,hw7,q1,11,None,,Mastery
 Llama3.3-70B,hw7,q1,11,None,,Mastery
 GPT-4o-mini,hw7,q1,11,None,,Mastery
 o3-Mini,hw7,q1,11,None,,Mastery
@@ -9960,7 +9021,6 @@ type bank_account = {
 val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Beginning
-o1,hw7,q1,11,None,,Mastery
 Llama3.3-70B,hw7,q1,11,None,,Mastery
 GPT-4o-mini,hw7,q1,11,None,,Mastery
 Qwen2.5-7B,hw7,q1,0,Unbound value,"File ""./F2022/exercises/hw7/solution.ml"", line 2, characters 2-16:
@@ -9984,17 +9044,14 @@ val not_enough_balance : exn = Msg ""Insufficient balance""",Beginning
 Llama3.3-70B,hw7,q1,11,None,,Mastery
 Qwen2.5-7B,hw7,q1,11,None,,Mastery
 GPT-4o-mini,hw7,q1,11,None,,Mastery
-o1,hw7,q1,11,None,,Mastery
 o3-Mini,hw7,q1,11,None,,Mastery
 Llama3.3-70B,hw7,q1,11,None,,Mastery
 GPT-4o-mini,hw7,q1,5,None,,Non-gradable
-o1,hw7,q1,11,None,,Mastery
 o3-Mini,hw7,q1,11,None,,Mastery
 Llama3.3-70B,hw7,q1,11,None,,Mastery
 GPT-4o-mini,hw7,q1,3,None,,Non-gradable
 Qwen2.5-7B,hw7,q1,5,None,,Non-gradable
 o3-Mini,hw7,q1,11,None,,Mastery
-o1,hw7,q1,11,None,,Mastery
 GPT-4o,hw7,q1,11,None,,Mastery
 Gemini-2.0-Flash,hw7,q1,11,None,,Mastery
 Llama3.1-8B,hw7,q1,0,Syntax Error,"File ""./F2022/exercises/hw7/solution.ml"", line 9, characters 3-4:
@@ -10100,7 +9157,6 @@ val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Non-gradable
 o3-Mini,hw7,q2,13,None,,Mastery
-o1,hw7,q2,13,None,,Mastery
 GPT-4o-mini,hw7,q2,0,Type Error,"File ""./F2022/exercises/hw7/solution.ml"", line 9, characters 6-10:
 This expression has type password = string
        but an expression was expected of type 'a ref
@@ -10122,7 +9178,6 @@ val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Non-gradable
 Llama3.3-70B,hw7,q2,13,None,,Mastery
 o3-Mini,hw7,q2,13,None,,Mastery
-o1,hw7,q2,13,None,,Mastery
 Qwen2.5-7B,hw7,q2,0,None,"File ""./F2022/exercises/hw7/solution.ml"", line 3, characters 25-41:
 The value pass is not an instance variable
 
@@ -10252,7 +9307,6 @@ type bank_account = {
 val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Non-gradable
-o1,hw7,q2,13,None,,Mastery
 GPT-4o-mini,hw7,q2,0,Type Error,"File ""./F2022/exercises/hw7/solution.ml"", line 9, characters 6-10:
 This expression has type password = string
        but an expression was expected of type 'a ref
@@ -10273,7 +9327,6 @@ val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Non-gradable
 Llama3.3-70B,hw7,q2,13,None,,Mastery
-o1,hw7,q2,13,None,,Mastery
 o3-Mini,hw7,q2,13,None,,Mastery
 GPT-4o-mini,hw7,q2,0,Type Error,"File ""./F2022/exercises/hw7/solution.ml"", line 9, characters 6-10:
 This expression has type password = string
@@ -10295,7 +9348,6 @@ val negative_amount : exn = Msg ""Money amount below 0""
 val wrong_pass : exn = Msg ""Wrong password""
 val not_enough_balance : exn = Msg ""Insufficient balance""",Non-gradable
 Llama3.3-70B,hw7,q2,13,None,,Mastery
-o1,hw7,q2,13,None,,Mastery
 o3-Mini,hw7,q2,13,None,,Mastery
 GPT-4o-mini,hw7,q2,0,None,"File ""./F2022/exercises/hw7/solution.ml"", line 8, characters 30-46:
 The value pass is not an instance variable
@@ -10359,7 +9411,6 @@ GPT-4o,hw2,q1a,4,None,,Mastery
 Llama3.1-8B,hw2,q1a,0,None,,Non-gradable
 Qwen2.5-7B,hw2,q1a,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1a,4,None,,Mastery
-o1,hw2,q1a,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1a,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1a,4,None,,Mastery
 Qwen2.5-7B,hw2,q1a,4,None,,Mastery
@@ -10370,7 +9421,6 @@ GPT-4o,hw2,q1a,4,None,,Mastery
 Llama3.1-8B,hw2,q1a,4,None,,Mastery
 Qwen2.5-7B,hw2,q1a,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1a,4,None,,Mastery
-o1,hw2,q1a,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1a,4,None,,Mastery
 o3-Mini,hw2,q1a,4,None,,Mastery
 GPT-4o,hw2,q1a,4,None,,Mastery
@@ -10391,9 +9441,7 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Beginning
 Gemini-2.0-Flash,hw2,q1a,4,None,,Mastery
-o1,hw2,q1a,4,None,,Mastery
 GPT-4o,hw2,q1a,4,None,,Mastery
-o1,hw2,q1a,4,None,,Mastery
 o3-Mini,hw2,q1a,4,None,,Mastery
 Llama3.1-8B,hw2,q1a,4,None,,Mastery
 o3-Mini,hw2,q1a,4,None,,Mastery
@@ -10402,7 +9450,6 @@ Qwen2.5-7B,hw2,q1a,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1a,4,None,,Mastery
 Llama3.1-8B,hw2,q1a,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1a,4,None,,Mastery
-o1,hw2,q1a,4,None,,Mastery
 GPT-4o-mini,hw2,q1a,4,None,,Mastery
 Gemini-1.5-Flash-8B,hw2,q1a,4,None,,Mastery
 Llama3.3-70B,hw2,q1a,4,None,,Mastery
@@ -10423,7 +9470,6 @@ type exp =
   | Pow of exp * int",Beginning
 GPT-4o-mini,hw2,q1a,4,None,,Mastery
 o3-Mini,hw2,q1b,4,None,,Mastery
-o1,hw2,q1b,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1b,4,None,,Mastery
 Llama3.1-8B,hw2,q1b,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1b,4,None,,Mastery
@@ -10434,7 +9480,6 @@ Gemini-2.0-Flash,hw2,q1b,4,None,,Mastery
 o3-Mini,hw2,q1b,4,None,,Mastery
 Qwen2.5-7B,hw2,q1b,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1b,4,None,,Mastery
-o1,hw2,q1b,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1b,4,None,,Mastery
 Llama3.1-8B,hw2,q1b,0,None,,Non-gradable
 Claude-3.7-Sonnet,hw2,q1b,4,None,,Mastery
@@ -10482,7 +9527,6 @@ Gemini-1.5-Flash-8B,hw2,q1b,4,None,,Mastery
 Llama3.3-70B,hw2,q1b,4,None,,Mastery
 GPT-4o-mini,hw2,q1b,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1b,4,None,,Mastery
-o1,hw2,q1b,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1b,4,None,,Mastery
 Qwen2.5-7B,hw2,q1b,4,None,,Mastery
 Llama3.1-8B,hw2,q1b,4,None,,Mastery
@@ -10490,10 +9534,8 @@ GPT-4o,hw2,q1b,4,None,,Mastery
 o3-Mini,hw2,q1b,4,None,,Mastery
 Llama3.1-8B,hw2,q1b,4,None,,Mastery
 o3-Mini,hw2,q1b,4,None,,Mastery
-o1,hw2,q1b,4,None,,Mastery
 GPT-4o,hw2,q1b,4,None,,Mastery
 Gemini-2.0-Flash,hw2,q1b,4,None,,Mastery
-o1,hw2,q1b,4,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1b,4,None,,Mastery
 Qwen2.5-7B,hw2,q1b,4,None,,Mastery
 Llama3.1-8B,hw2,q1b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 6, characters 2-23:
@@ -10547,25 +9589,21 @@ type exp =
   | Pow of exp * int",Non-gradable
 Claude-3.7-Sonnet,hw2,q1c,8,None,,Mastery
 GPT-4o,hw2,q1c,8,None,,Mastery
-o1,hw2,q1c,8,None,,Mastery
 Gemini-2.0-Flash,hw2,q1c,8,None,,Mastery
 GPT-4o,hw2,q1c,8,None,,Mastery
 o3-Mini,hw2,q1c,8,None,,Mastery
-o1,hw2,q1c,8,None,,Mastery
 Llama3.1-8B,hw2,q1c,0,None,,Non-gradable
 o3-Mini,hw2,q1c,8,None,,Mastery
 Llama3.1-8B,hw2,q1c,0,None,,Non-gradable
 Qwen2.5-7B,hw2,q1c,0,None,,Non-gradable
 Claude-3.7-Sonnet,hw2,q1c,8,None,,Mastery
 GPT-4o,hw2,q1c,8,None,,Mastery
-o1,hw2,q1c,8,None,,Mastery
 Gemini-2.0-Flash,hw2,q1c,8,None,,Mastery
 Qwen2.5-7B,hw2,q1c,8,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1c,8,None,,Mastery
 Llama3.1-8B,hw2,q1c,0,None,,Non-gradable
 GPT-4o,hw2,q1c,8,None,,Mastery
 Gemini-2.0-Flash,hw2,q1c,8,None,,Mastery
-o1,hw2,q1c,8,None,,Mastery
 Claude-3.7-Sonnet,hw2,q1c,8,None,,Mastery
 Qwen2.5-7B,hw2,q1c,8,None,,Mastery
 o3-Mini,hw2,q1c,8,None,,Mastery
@@ -10591,7 +9629,6 @@ Llama3.1-8B,hw2,q1c,0,None,,Non-gradable
 GPT-4o,hw2,q1c,8,None,,Mastery
 o3-Mini,hw2,q1c,8,None,,Mastery
 Gemini-2.0-Flash,hw2,q1c,8,None,,Mastery
-o1,hw2,q1c,8,None,,Mastery
 GPT-4o-mini,hw2,q1c,8,None,,Mastery
 Llama3.3-70B,hw2,q1c,8,None,,Mastery
 Gemini-1.5-Flash-8B,hw2,q1c,0,None,"File ""./F2022/exercises/hw2/solution.ml"", line 8, characters 0-2:
@@ -10634,7 +9671,6 @@ Gemini-1.5-Flash-8B,hw2,q2a,1,None,,Mastery
 Llama3.3-70B,hw2,q2a,1,None,,Mastery
 GPT-4o-mini,hw2,q2a,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2a,1,None,,Mastery
-o1,hw2,q2a,1,None,,Mastery
 Qwen2.5-7B,hw2,q2a,0,Type Error,"File ""./F2022/exercises/hw2/solution.ml"", line 3, characters 23-24:
 This expression has type float but an expression was expected of type
          int
@@ -10654,12 +9690,10 @@ Claude-3.7-Sonnet,hw2,q2a,1,None,,Mastery
 Llama3.1-8B,hw2,q2a,0,None,,Non-gradable
 GPT-4o,hw2,q2a,1,None,,Mastery
 o3-Mini,hw2,q2a,1,None,,Mastery
-o1,hw2,q2a,1,None,,Mastery
 GPT-4o,hw2,q2a,1,None,,Mastery
 o3-Mini,hw2,q2a,1,None,,Mastery
 Llama3.1-8B,hw2,q2a,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2a,1,None,,Mastery
-o1,hw2,q2a,1,None,,Mastery
 Qwen2.5-7B,hw2,q2a,0,Type Error,"File ""./F2022/exercises/hw2/solution.ml"", line 3, characters 23-24:
 This expression has type float but an expression was expected of type
          int
@@ -10678,7 +9712,6 @@ type exp =
 Claude-3.7-Sonnet,hw2,q2a,1,None,,Mastery
 Llama3.1-8B,hw2,q2a,0,None,,Non-gradable
 GPT-4o,hw2,q2a,1,None,,Mastery
-o1,hw2,q2a,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2a,1,None,,Mastery
 Llama3.1-8B,hw2,q2a,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 5, characters 27-34:
 Unbound value q2a_neg
@@ -10730,7 +9763,6 @@ type exp =
 o3-Mini,hw2,q2a,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2a,1,None,,Mastery
 o3-Mini,hw2,q2a,1,None,,Mastery
-o1,hw2,q2a,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2a,1,None,,Mastery
 Llama3.1-8B,hw2,q2a,1,None,,Mastery
 Qwen2.5-7B,hw2,q2a,0,Syntax Error,"File ""./F2022/exercises/hw2/solution.ml"", line 6, characters 63-64:
@@ -10828,20 +9860,6 @@ type exp =
   | Plus of exp * exp
   | Times of exp * exp
   | Pow of exp * int",Beginning
-o1,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
-Unbound value q2a_neg
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-exception Invalid_test_case
-type nat = Z | S of nat
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * int",Beginning
 Llama3.1-8B,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 1, characters 54-61:
 Unbound value q2a_neg
 
@@ -10871,20 +9889,6 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Beginning
 GPT-4o,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
-Unbound value q2a_neg
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-exception Invalid_test_case
-type nat = Z | S of nat
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * int",Beginning
-o1,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
 Unbound value q2a_neg
 
 grader outcomes:
@@ -10971,20 +9975,6 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Non-gradable
 Gemini-2.0-Flash,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 1, characters 54-61:
-Unbound value q2a_neg
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-exception Invalid_test_case
-type nat = Z | S of nat
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * int",Beginning
-o1,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
 Unbound value q2a_neg
 
 grader outcomes:
@@ -11264,20 +10254,6 @@ type exp =
   | Plus of exp * exp
   | Times of exp * exp
   | Pow of exp * int",Developing
-o1,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
-Unbound value q2a_neg
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-exception Invalid_test_case
-type nat = Z | S of nat
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * int",Developing
 Gemini-2.0-Flash,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 1, characters 54-61:
 Unbound value q2a_neg
 
@@ -11432,20 +10408,6 @@ type exp =
   | Plus of exp * exp
   | Times of exp * exp
   | Pow of exp * int",Developing
-o1,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 12-19:
-Unbound value q2a_neg
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-exception Invalid_test_case
-type nat = Z | S of nat
-type exp =
-    Const of float
-  | Var
-  | Plus of exp * exp
-  | Times of exp * exp
-  | Pow of exp * int",Beginning
 Gemini-2.0-Flash,hw2,q2b,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 1, characters 54-61:
 Unbound value q2a_neg
 
@@ -11470,7 +10432,6 @@ Llama3.3-70B,hw2,q2c,1,None,,Mastery
 GPT-4o-mini,hw2,q2c,1,None,,Mastery
 Gemini-1.5-Flash-8B,hw2,q2c,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2c,1,None,,Mastery
-o1,hw2,q2c,1,None,,Mastery
 GPT-4o,hw2,q2c,1,None,,Mastery
 Qwen2.5-7B,hw2,q2c,0,Unbound value,"File ""./F2022/exercises/hw2/solution.ml"", line 2, characters 18-25:
 Unbound value q2a_neg
@@ -11520,7 +10481,6 @@ type exp =
 Gemini-2.0-Flash,hw2,q2c,1,None,,Mastery
 o3-Mini,hw2,q2c,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2c,1,None,,Mastery
-o1,hw2,q2c,1,None,,Mastery
 o3-Mini,hw2,q2c,1,None,,Mastery
 GPT-4o,hw2,q2c,1,None,,Mastery
 Qwen2.5-7B,hw2,q2c,0,Syntax Error,"File ""./F2022/exercises/hw2/solution.ml"", line 3, characters 11-12:
@@ -11552,7 +10512,6 @@ type exp =
   | Plus of exp * exp
   | Times of exp * exp
   | Pow of exp * int",Non-gradable
-o1,hw2,q2c,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2c,1,None,,Mastery
 GPT-4o,hw2,q2c,1,None,,Mastery
 Llama3.1-8B,hw2,q2c,0,Syntax Error,"File ""./F2022/exercises/hw2/solution.ml"", line 5, characters 22-23:
@@ -11584,7 +10543,6 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Beginning
 Claude-3.7-Sonnet,hw2,q2c,1,None,,Mastery
-o1,hw2,q2c,1,None,,Mastery
 o3-Mini,hw2,q2c,1,None,,Mastery
 GPT-4o,hw2,q2c,1,None,,Mastery
 o3-Mini,hw2,q2c,1,None,,Mastery
@@ -11602,7 +10560,6 @@ type exp =
   | Plus of exp * exp
   | Times of exp * exp
   | Pow of exp * int",Non-gradable
-o1,hw2,q2c,1,None,,Mastery
 Gemini-2.0-Flash,hw2,q2c,1,None,,Mastery
 GPT-4o,hw2,q2c,1,None,,Mastery
 Llama3.1-8B,hw2,q2c,0,Type Error,"File ""./F2022/exercises/hw2/solution.ml"", line 6, characters 42-43:
@@ -11629,16 +10586,13 @@ Llama3.3-70B,hw2,q2c,1,None,,Mastery
 Gemini-1.5-Flash-8B,hw2,q2c,1,None,,Mastery
 GPT-4o-mini,hw2,q2c,1,None,,Mastery
 o3-Mini,hw2,q3,8,None,,Mastery
-o1,hw2,q3,8,None,,Mastery
 Llama3.3-70B,hw2,q3,8,None,,Mastery
 GPT-4o-mini,hw2,q3,8,None,,Mastery
-o1,hw2,q3,8,None,,Mastery
 Qwen2.5-7B,hw2,q3,8,None,,Mastery
 o3-Mini,hw2,q3,8,None,,Mastery
 Qwen2.5-7B,hw2,q3,8,None,,Mastery
 GPT-4o-mini,hw2,q3,8,None,,Mastery
 o3-Mini,hw2,q3,8,None,,Mastery
-o1,hw2,q3,8,None,,Mastery
 Llama3.3-70B,hw2,q3,8,None,,Mastery
 GPT-4o-mini,hw2,q3,8,None,,Mastery
 Claude-3.7-Sonnet,hw2,q3,8,None,,Mastery
@@ -11695,7 +10649,6 @@ Claude-3.7-Sonnet,hw2,q3,8,None,,Mastery
 Gemini-2.0-Flash,hw2,q3,8,None,,Mastery
 Gemini-1.5-Flash-8B,hw2,q3,8,None,,Mastery
 Llama3.1-8B,hw2,q3,4,None,,Non-gradable
-o1,hw2,q3,8,None,,Mastery
 o3-Mini,hw2,q3,8,None,,Mastery
 Qwen2.5-7B,hw2,q3,8,None,,Mastery
 Llama3.3-70B,hw2,q3,8,None,,Mastery
@@ -11703,11 +10656,9 @@ GPT-4o-mini,hw2,q3,8,None,,Mastery
 Qwen2.5-7B,hw2,q3,8,None,,Mastery
 Llama3.3-70B,hw2,q3,8,None,,Mastery
 Qwen2.5-7B,hw2,q3,8,None,,Mastery
-o1,hw2,q3,8,None,,Mastery
 o3-Mini,hw2,q3,8,None,,Mastery
 Llama3.3-70B,hw2,q3,8,None,,Mastery
 GPT-4o-mini,hw2,q3,8,None,,Mastery
-o1,hw2,q4,5,None,,Non-gradable
 o3-Mini,hw2,q4,10,None,,Mastery
 Llama3.3-70B,hw2,q4,5,None,,Non-gradable
 GPT-4o-mini,hw2,q4,10,None,,Mastery
@@ -11740,7 +10691,6 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Non-gradable
 Llama3.3-70B,hw2,q4,5,None,,Non-gradable
-o1,hw2,q4,10,None,,Mastery
 Qwen2.5-7B,hw2,q4,0,Syntax Error,"File ""./F2022/exercises/hw2/solution.ml"", line 9, characters 22-26:
 Syntax error
 
@@ -11827,7 +10777,6 @@ Gemini-1.5-Flash-8B,hw2,q4,5,None,,Non-gradable
 Claude-3.7-Sonnet,hw2,q4,8,None,,Proficient
 Gemini-2.0-Flash,hw2,q4,10,None,,Mastery
 o3-Mini,hw2,q4,8,None,,Proficient
-o1,hw2,q4,10,None,,Mastery
 Llama3.3-70B,hw2,q4,4,None,,Non-gradable
 GPT-4o-mini,hw2,q4,10,None,,Mastery
 Qwen2.5-7B,hw2,q4,0,Type Error,"File ""./F2022/exercises/hw2/solution.ml"", line 3, characters 21-22:
@@ -11846,11 +10795,9 @@ type exp =
   | Times of exp * exp
   | Pow of exp * int",Non-gradable
 GPT-4o-mini,hw2,q4,10,None,,Mastery
-o1,hw2,q4,10,None,,Mastery
 o3-Mini,hw2,q4,8,None,,Proficient
 Qwen2.5-7B,hw2,q4,4,None,,Non-gradable
 o3-Mini,hw2,q4,8,None,,Proficient
-o1,hw2,q4,10,None,,Mastery
 Llama3.3-70B,hw2,q4,5,None,,Non-gradable
 GPT-4o-mini,hw2,q4,10,None,,Mastery
 Gemini-1.5-Flash-8B,hw10,q1,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 49, characters 29-39:
@@ -13170,7 +12117,6 @@ val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 o3-Mini,hw10,q1,16,None,,Mastery
-o1,hw10,q1,15,None,,Proficient
 Gemini-2.0-Flash,hw10,q1,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 97, characters 45-47:
 Syntax error: operator expected.
 
@@ -14195,7 +13141,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q1,15,None,,Proficient
 Gemini-2.0-Flash,hw10,q1,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 38, characters 30-34:
 This variant expression is expected to have type tp
        The constructor Unit does not belong to type tp
@@ -14780,7 +13725,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q1,16,None,,Mastery
 Claude-3.7-Sonnet,hw10,q1,16,None,,Mastery
 Llama3.1-8B,hw10,q1,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 41, characters 0-4:
 Syntax error
@@ -15368,7 +14312,6 @@ val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 o3-Mini,hw10,q1,16,None,,Mastery
-o1,hw10,q1,15,None,,Proficient
 GPT-4o,hw10,q1,16,None,,Mastery
 Gemini-2.0-Flash,hw10,q1,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 50, characters 27-31:
 This expression has type (exp * (name * tp)) list
@@ -15517,7 +14460,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q1,15,None,,Proficient
 Claude-3.7-Sonnet,hw10,q1,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 37, characters 28-34:
 This variant expression is expected to have type tp
        The constructor TArrow does not belong to type tp
@@ -16977,7 +15919,6 @@ val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw10,q2,46,None,,Mastery
-o1,hw10,q2,46,None,,Mastery
 Gemini-2.0-Flash,hw10,q2,28,None,,Non-gradable
 Claude-3.7-Sonnet,hw10,q2,46,None,,Mastery
 o3-Mini,hw10,q2,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 27, characters 62-64:
@@ -17562,7 +16503,6 @@ val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Developing
 Claude-3.7-Sonnet,hw10,q2,46,None,,Mastery
-o1,hw10,q2,46,None,,Mastery
 o3-Mini,hw10,q2,46,None,,Mastery
 GPT-4o-mini,hw10,q2,0,None,"File ""./F2022/exercises/hw10/solution.ml"", line 30, characters 4-14:
 The constructor Rec expects 3 argument(s),
@@ -20041,7 +18981,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q2,46,None,,Mastery
 GPT-4o,hw10,q2,0,Unbound value,"File ""./F2022/exercises/hw10/solution.ml"", line 13, characters 6-11:
 Unbound value check
 
@@ -20187,7 +19126,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Beginning
-o1,hw10,q2,46,None,,Mastery
 o3-Mini,hw10,q2,46,None,,Mastery
 Llama3.1-8B,hw10,q2,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 31, characters 37-39:
 Syntax error: ')' expected
@@ -20777,7 +19715,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q2,46,None,,Mastery
 GPT-4o-mini,hw10,q3,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 38, characters 52-53:
 Syntax error: operator expected.
 
@@ -21509,152 +20446,6 @@ val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 GPT-4o-mini,hw10,q3,0,Syntax Error,"File ""./F2022/exercises/hw10/solution.ml"", line 36, characters 52-53:
 Syntax error: operator expected.
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-type runtime_error =
-    Free_variable of name
-  | Bad_primop_args
-  | If_non_true_false
-  | Arity_mismatch
-  | Apply_non_fn
-exception Stuck of runtime_error
-val eval_op : primop -> exp list -> exp option = <fun>
-type context = (name * tp) list
-val empty : 'a list = []
-val lookup : name -> context -> tp = <fun>
-val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
-val extend_list : context -> (name * tp) list -> context = <fun>
-type type_error =
-    Free_variable of name
-  | Apply_non_arrow of tp
-  | Arity_mismatch
-  | Type_mismatch of tp * tp
-exception TypeError of type_error
-val type_mismatch : tp -> tp -> 'a = <fun>
-val primopType : primop -> tp list * tp = <fun>
-type utp =
-    UArrow of utp * utp
-  | UCross of utp list
-  | UInt
-  | UBool
-  | UTVar of string
-module UTVarMap :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
-exception UnifError of unif_error
-val unif_error : unif_error -> 'a = <fun>
-val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
-val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
-val print_utp : utp -> unit = <fun>
-val print_type_substitution : utp UTVarMap.t -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ( := ) : 'a -> 'b -> 'c = <fun>
-val ignore : 'a -> 'b = <fun>
-val delete : 'a list -> 'a list -> 'a list = <fun>
-val free_variables : exp -> name list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val subst : exp * name -> exp -> exp = <fun>
-val rename : name -> exp -> name * exp = <fun>
-val rename_all : name list -> exp -> name list * exp = <fun>
-val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 31, characters 33-45:
-This variant expression is expected to have type unif_error
-       The constructor UnifCircular does not belong to type unif_error
 
 grader outcomes:
 val print_html : 'a -> 'b = <fun>
@@ -22673,151 +21464,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q3,0,Unbound value,"File ""./F2022/exercises/hw10/solution.ml"", line 9, characters 33-44:
-Unbound value apply_subst
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-type runtime_error =
-    Free_variable of name
-  | Bad_primop_args
-  | If_non_true_false
-  | Arity_mismatch
-  | Apply_non_fn
-exception Stuck of runtime_error
-val eval_op : primop -> exp list -> exp option = <fun>
-type context = (name * tp) list
-val empty : 'a list = []
-val lookup : name -> context -> tp = <fun>
-val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
-val extend_list : context -> (name * tp) list -> context = <fun>
-type type_error =
-    Free_variable of name
-  | Apply_non_arrow of tp
-  | Arity_mismatch
-  | Type_mismatch of tp * tp
-exception TypeError of type_error
-val type_mismatch : tp -> tp -> 'a = <fun>
-val primopType : primop -> tp list * tp = <fun>
-type utp =
-    UArrow of utp * utp
-  | UCross of utp list
-  | UInt
-  | UBool
-  | UTVar of string
-module UTVarMap :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
-exception UnifError of unif_error
-val unif_error : unif_error -> 'a = <fun>
-val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
-val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
-val print_utp : utp -> unit = <fun>
-val print_type_substitution : utp UTVarMap.t -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ( := ) : 'a -> 'b -> 'c = <fun>
-val ignore : 'a -> 'b = <fun>
-val delete : 'a list -> 'a list -> 'a list = <fun>
-val free_variables : exp -> name list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val subst : exp * name -> exp -> exp = <fun>
-val rename : name -> exp -> name * exp = <fun>
-val rename_all : name list -> exp -> name list * exp = <fun>
-val subst_list : (exp * name) list -> exp -> exp = <fun>",Developing
 o3-Mini,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 32, characters 33-43:
 This variant expression is expected to have type unif_error
        The constructor UnifOccurs does not belong to type unif_error
@@ -23109,152 +21755,6 @@ val subst : exp * name -> exp -> exp = <fun>
 val rename : name -> exp -> name * exp = <fun>
 val rename_all : name list -> exp -> name list * exp = <fun>
 val subst_list : (exp * name) list -> exp -> exp = <fun>",Beginning
-o1,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 39, characters 33-48:
-This variant expression is expected to have type unif_error
-       The constructor UnifCircularity does not belong to type unif_error
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-type runtime_error =
-    Free_variable of name
-  | Bad_primop_args
-  | If_non_true_false
-  | Arity_mismatch
-  | Apply_non_fn
-exception Stuck of runtime_error
-val eval_op : primop -> exp list -> exp option = <fun>
-type context = (name * tp) list
-val empty : 'a list = []
-val lookup : name -> context -> tp = <fun>
-val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
-val extend_list : context -> (name * tp) list -> context = <fun>
-type type_error =
-    Free_variable of name
-  | Apply_non_arrow of tp
-  | Arity_mismatch
-  | Type_mismatch of tp * tp
-exception TypeError of type_error
-val type_mismatch : tp -> tp -> 'a = <fun>
-val primopType : primop -> tp list * tp = <fun>
-type utp =
-    UArrow of utp * utp
-  | UCross of utp list
-  | UInt
-  | UBool
-  | UTVar of string
-module UTVarMap :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
-exception UnifError of unif_error
-val unif_error : unif_error -> 'a = <fun>
-val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
-val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
-val print_utp : utp -> unit = <fun>
-val print_type_substitution : utp UTVarMap.t -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ( := ) : 'a -> 'b -> 'c = <fun>
-val ignore : 'a -> 'b = <fun>
-val delete : 'a list -> 'a list -> 'a list = <fun>
-val free_variables : exp -> name list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val subst : exp * name -> exp -> exp = <fun>
-val rename : name -> exp -> name * exp = <fun>
-val rename_all : name list -> exp -> name list * exp = <fun>
-val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 Gemini-2.0-Flash,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 18, characters 23-36:
 This variant expression is expected to have type unif_error
        The constructor ArityMismatch does not belong to type unif_error
@@ -23986,152 +22486,6 @@ val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 Gemini-2.0-Flash,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 40, characters 18-28:
 This variant expression is expected to have type unif_error
        The constructor UnifCyclic does not belong to type unif_error
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-type runtime_error =
-    Free_variable of name
-  | Bad_primop_args
-  | If_non_true_false
-  | Arity_mismatch
-  | Apply_non_fn
-exception Stuck of runtime_error
-val eval_op : primop -> exp list -> exp option = <fun>
-type context = (name * tp) list
-val empty : 'a list = []
-val lookup : name -> context -> tp = <fun>
-val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
-val extend_list : context -> (name * tp) list -> context = <fun>
-type type_error =
-    Free_variable of name
-  | Apply_non_arrow of tp
-  | Arity_mismatch
-  | Type_mismatch of tp * tp
-exception TypeError of type_error
-val type_mismatch : tp -> tp -> 'a = <fun>
-val primopType : primop -> tp list * tp = <fun>
-type utp =
-    UArrow of utp * utp
-  | UCross of utp list
-  | UInt
-  | UBool
-  | UTVar of string
-module UTVarMap :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
-exception UnifError of unif_error
-val unif_error : unif_error -> 'a = <fun>
-val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
-val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
-val print_utp : utp -> unit = <fun>
-val print_type_substitution : utp UTVarMap.t -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ( := ) : 'a -> 'b -> 'c = <fun>
-val ignore : 'a -> 'b = <fun>
-val delete : 'a list -> 'a list -> 'a list = <fun>
-val free_variables : exp -> name list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val subst : exp * name -> exp -> exp = <fun>
-val rename : name -> exp -> name * exp = <fun>
-val rename_all : name list -> exp -> name list * exp = <fun>
-val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 41, characters 33-43:
-This variant expression is expected to have type unif_error
-       The constructor OccurCheck does not belong to type unif_error
 
 grader outcomes:
 val print_html : 'a -> 'b = <fun>
@@ -25735,152 +24089,6 @@ val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
 Gemini-2.0-Flash,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 40, characters 18-28:
 This variant expression is expected to have type unif_error
        The constructor UnifOccurs does not belong to type unif_error
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-type tp = Arrow of tp list * tp | Int | Bool
-type name = string
-type primop = Equals | LessThan | Plus | Minus | Times | Negate
-type exp =
-    I of int
-  | B of bool
-  | If of exp * exp * exp
-  | Primop of primop * exp list
-  | Fn of (name * tp) list * exp
-  | Rec of name * tp * exp
-  | Let of name * exp * exp
-  | Apply of exp * exp list
-  | Var of name
-val ex1 : exp =
-  Fn ([(""x"", Int); (""y"", Int)],
-   Primop (Plus,
-    [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])]))
-val ex2 : exp = Fn ([], B true)
-val ex3 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3; I 4]))
-val ex4 : exp = Let (""g"", Fn ([], B true), Apply (Var ""g"", []))
-val ex5 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int); (""y"", Int)],
-    Primop (Plus,
-     [Primop (Times, [Var ""x""; Var ""x""]); Primop (Times, [Var ""y""; Var ""y""])])),
-   Apply (Var ""f"", [I 3]))
-val ex6 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Apply (Var ""f"", [I 3]), [I 4]))
-val ex7 : exp =
-  Let (""f"",
-   Fn ([(""x"", Int)],
-    Fn ([(""y"", Int)],
-     Primop (Plus,
-      [Primop (Times, [Var ""x""; Var ""x""]);
-       Primop (Times, [Var ""y""; Var ""y""])]))),
-   Apply (Var ""f"", [I 3; I 4]))
-type runtime_error =
-    Free_variable of name
-  | Bad_primop_args
-  | If_non_true_false
-  | Arity_mismatch
-  | Apply_non_fn
-exception Stuck of runtime_error
-val eval_op : primop -> exp list -> exp option = <fun>
-type context = (name * tp) list
-val empty : 'a list = []
-val lookup : name -> context -> tp = <fun>
-val extend : ('a * 'b) list -> 'a * 'b -> ('a * 'b) list = <fun>
-val extend_list : context -> (name * tp) list -> context = <fun>
-type type_error =
-    Free_variable of name
-  | Apply_non_arrow of tp
-  | Arity_mismatch
-  | Type_mismatch of tp * tp
-exception TypeError of type_error
-val type_mismatch : tp -> tp -> 'a = <fun>
-val primopType : primop -> tp list * tp = <fun>
-type utp =
-    UArrow of utp * utp
-  | UCross of utp list
-  | UInt
-  | UBool
-  | UTVar of string
-module UTVarMap :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-type unif_error = UnifOccursCheckFails | UnifMismatch of utp * utp
-exception UnifError of unif_error
-val unif_error : unif_error -> 'a = <fun>
-val string_of_utp : utp UTVarMap.t -> utp -> string = <fun>
-val string_of_type_substitution : utp UTVarMap.t -> string = <fun>
-val print_utp : utp -> unit = <fun>
-val print_type_substitution : utp UTVarMap.t -> unit = <fun>
-val string_of_tp : tp -> string = <fun>
-val nl_sep : string list -> string = <fun>
-val bracket : string -> string = <fun>
-val string_of_op : primop -> string = <fun>
-val string_of_exp : string -> exp -> name = <fun>
-val print_exp : exp -> unit = <fun>
-val ( := ) : 'a -> 'b -> 'c = <fun>
-val ignore : 'a -> 'b = <fun>
-val delete : 'a list -> 'a list -> 'a list = <fun>
-val free_variables : exp -> name list = <fun>
-type subst = exp * name
-type gen_var = { fresh : name -> name; reset : unit -> unit; }
-val gen_var : gen_var = {fresh = <fun>; reset = <fun>}
-val freshVar : name -> name = <fun>
-val resetCtr : unit -> unit = <fun>
-val subst : exp * name -> exp -> exp = <fun>
-val rename : name -> exp -> name * exp = <fun>
-val rename_all : name list -> exp -> name list * exp = <fun>
-val subst_list : (exp * name) list -> exp -> exp = <fun>",Non-gradable
-o1,hw10,q3,0,Type Error,"File ""./F2022/exercises/hw10/solution.ml"", line 37, characters 35-47:
-This variant expression is expected to have type unif_error
-       The constructor UnifCircular does not belong to type unif_error
 
 grader outcomes:
 val print_html : 'a -> 'b = <fun>
@@ -27944,30 +26152,25 @@ Llama3.3-70B,hw8,q1a,5,None,,Mastery
 o3-Mini,hw8,q1a,5,None,,Mastery
 Llama3.1-8B,hw8,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1a,5,None,,Mastery
-o1,hw8,q1a,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1a,5,None,,Mastery
 Qwen2.5-7B,hw8,q1a,5,None,,Mastery
 Llama3.1-8B,hw8,q1a,5,None,,Mastery
 GPT-4o,hw8,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1a,5,None,,Mastery
-o1,hw8,q1a,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1a,5,None,,Mastery
 Qwen2.5-7B,hw8,q1a,5,None,,Mastery
 Llama3.1-8B,hw8,q1a,5,None,,Mastery
 GPT-4o,hw8,q1a,5,None,,Mastery
 o3-Mini,hw8,q1a,5,None,,Mastery
-o1,hw8,q1a,5,None,,Mastery
 GPT-4o,hw8,q1a,5,None,,Mastery
 o3-Mini,hw8,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1a,5,None,,Mastery
 o3-Mini,hw8,q1a,5,None,,Mastery
-o1,hw8,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1a,5,None,,Mastery
 Llama3.1-8B,hw8,q1a,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1a,5,None,,Mastery
 Qwen2.5-7B,hw8,q1a,5,None,,Mastery
 GPT-4o,hw8,q1a,5,None,,Mastery
-o1,hw8,q1a,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1a,5,None,,Mastery
 Llama3.1-8B,hw8,q1a,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1a,5,None,,Mastery
@@ -27986,20 +26189,17 @@ Llama3.3-70B,hw8,q1a,5,None,,Mastery
 GPT-4o-mini,hw8,q1a,0,None,,Non-gradable
 Gemini-1.5-Flash-8B,hw8,q1a,5,None,,Mastery
 GPT-4o,hw8,q1b,5,None,,Mastery
-o1,hw8,q1b,5,None,,Mastery
 o3-Mini,hw8,q1b,5,None,,Mastery
 GPT-4o,hw8,q1b,5,None,,Mastery
 Qwen2.5-7B,hw8,q1b,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1b,5,None,,Mastery
 Llama3.1-8B,hw8,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1b,5,None,,Mastery
-o1,hw8,q1b,5,None,,Mastery
 GPT-4o,hw8,q1b,5,None,,Mastery
 Qwen2.5-7B,hw8,q1b,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1b,5,None,,Mastery
 Llama3.1-8B,hw8,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1b,0,None,,Non-gradable
-o1,hw8,q1b,5,None,,Mastery
 Llama3.1-8B,hw8,q1b,5,None,,Mastery
 o3-Mini,hw8,q1b,5,None,,Mastery
 Gemini-1.5-Flash-8B,hw8,q1b,5,None,,Mastery
@@ -28039,13 +26239,11 @@ GPT-4o,hw8,q1b,5,None,,Mastery
 Llama3.1-8B,hw8,q1b,5,None,,Mastery
 Qwen2.5-7B,hw8,q1b,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1b,5,None,,Mastery
-o1,hw8,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1b,5,None,,Mastery
 GPT-4o,hw8,q1b,5,None,,Mastery
 Llama3.1-8B,hw8,q1b,5,None,,Mastery
 Qwen2.5-7B,hw8,q1b,5,None,,Mastery
 Claude-3.7-Sonnet,hw8,q1b,5,None,,Mastery
-o1,hw8,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1b,5,None,,Mastery
 o3-Mini,hw8,q1b,5,None,,Mastery
 Gemini-2.0-Flash,hw8,q1b,0,None,,Non-gradable
@@ -28093,7 +26291,6 @@ val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
 val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw8,q2a,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2a,2,None,,Mastery
 o3-Mini,hw8,q2a,2,None,,Mastery
 GPT-4o,hw8,q2a,2,None,,Mastery
@@ -28114,7 +26311,6 @@ val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
 val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw8,q2a,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2a,2,None,,Mastery
 Qwen2.5-7B,hw8,q2a,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 22-28:
 Unbound value zeroes
@@ -28168,7 +26364,6 @@ val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
 Gemini-2.0-Flash,hw8,q2a,2,None,,Mastery
-o1,hw8,q2a,2,None,,Mastery
 GPT-4o,hw8,q2a,2,None,,Mastery
 Claude-3.7-Sonnet,hw8,q2a,2,None,,Mastery
 Qwen2.5-7B,hw8,q2a,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 21-27:
@@ -28203,9 +26398,7 @@ val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
 Gemini-2.0-Flash,hw8,q2a,2,None,,Mastery
-o1,hw8,q2a,2,None,,Mastery
 GPT-4o,hw8,q2a,2,None,,Mastery
-o1,hw8,q2a,2,None,,Mastery
 o3-Mini,hw8,q2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw8,q2a,2,None,,Mastery
 Llama3.3-70B,hw8,q2a,2,None,,Mastery
@@ -28244,14 +26437,12 @@ val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
 val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
-o1,hw8,q2b,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2b,2,None,,Mastery
 Llama3.1-8B,hw8,q2b,2,None,,Mastery
 Qwen2.5-7B,hw8,q2b,0,None,,Non-gradable
 Claude-3.7-Sonnet,hw8,q2b,2,None,,Mastery
 GPT-4o,hw8,q2b,2,None,,Mastery
 o3-Mini,hw8,q2b,2,None,,Mastery
-o1,hw8,q2b,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2b,2,None,,Mastery
 Llama3.1-8B,hw8,q2b,2,None,,Mastery
 Qwen2.5-7B,hw8,q2b,0,None,,Non-gradable
@@ -28303,16 +26494,13 @@ Called from unknown location",Non-gradable
 Gemini-1.5-Flash-8B,hw8,q2b,2,None,,Mastery
 Llama3.3-70B,hw8,q2b,2,None,,Mastery
 o3-Mini,hw8,q2b,2,None,,Mastery
-o1,hw8,q2b,2,None,,Mastery
 GPT-4o,hw8,q2b,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2b,2,None,,Mastery
-o1,hw8,q2b,2,None,,Mastery
 Qwen2.5-7B,hw8,q2b,2,None,,Mastery
 Claude-3.7-Sonnet,hw8,q2b,2,None,,Mastery
 Llama3.1-8B,hw8,q2b,2,None,,Mastery
 GPT-4o,hw8,q2b,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2b,2,None,,Mastery
-o1,hw8,q2b,2,None,,Mastery
 Qwen2.5-7B,hw8,q2b,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 2, characters 41-56:
 Unbound value natural_numbers
 
@@ -28417,7 +26605,6 @@ val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Developing
 GPT-4o,hw8,q2c,2,None,,Mastery
-o1,hw8,q2c,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2c,2,None,,Mastery
 Llama3.1-8B,hw8,q2c,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 35-50:
 Unbound value natural_numbers
@@ -28437,11 +26624,9 @@ val ignore : 'a -> 'b = <fun>",Beginning
 Claude-3.7-Sonnet,hw8,q2c,2,None,,Mastery
 Qwen2.5-7B,hw8,q2c,0,None,,Non-gradable
 GPT-4o,hw8,q2c,2,None,,Mastery
-o1,hw8,q2c,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2c,2,None,,Mastery
 GPT-4o,hw8,q2c,2,None,,Mastery
 o3-Mini,hw8,q2c,2,None,,Mastery
-o1,hw8,q2c,2,None,,Mastery
 o3-Mini,hw8,q2c,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2c,2,None,,Mastery
 Claude-3.7-Sonnet,hw8,q2c,2,None,,Mastery
@@ -28450,13 +26635,11 @@ Llama3.1-8B,hw8,q2c,2,None,,Mastery
 GPT-4o,hw8,q2c,2,None,,Mastery
 o3-Mini,hw8,q2c,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2c,2,None,,Mastery
-o1,hw8,q2c,2,None,,Mastery
 Claude-3.7-Sonnet,hw8,q2c,2,None,,Mastery
 Qwen2.5-7B,hw8,q2c,2,None,,Mastery
 Llama3.1-8B,hw8,q2c,2,None,,Mastery
 GPT-4o,hw8,q2c,2,None,,Mastery
 Gemini-2.0-Flash,hw8,q2c,2,None,,Mastery
-o1,hw8,q2c,2,None,,Mastery
 Qwen2.5-7B,hw8,q2c,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 82-94:
 Unbound value even_numbers
 
@@ -28526,7 +26709,6 @@ Gemini-2.0-Flash,hw8,q3,10,None,,Mastery
 Llama3.3-70B,hw8,q3,10,None,,Mastery
 GPT-4o-mini,hw8,q3,0,None,,Non-gradable
 o3-Mini,hw8,q3,10,None,,Mastery
-o1,hw8,q3,10,None,,Mastery
 GPT-4o-mini,hw8,q3,10,None,,Mastery
 Qwen2.5-7B,hw8,q3,0,Syntax Error,"File ""./F2022/exercises/hw8/solution.ml"", line 4, characters 40-41:
 Syntax error: operator expected.
@@ -28543,23 +26725,19 @@ val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
 val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
-o1,hw8,q3,10,None,,Mastery
 Qwen2.5-7B,hw8,q3,10,None,,Mastery
 o3-Mini,hw8,q3,10,None,,Mastery
 Llama3.3-70B,hw8,q3,10,None,,Mastery
 GPT-4o-mini,hw8,q3,0,None,,Non-gradable
 o3-Mini,hw8,q3,10,None,,Mastery
-o1,hw8,q3,10,None,,Mastery
 Llama3.3-70B,hw8,q3,10,None,,Mastery
 GPT-4o-mini,hw8,q3,10,None,,Mastery
-o1,hw8,q3,10,None,,Mastery
 o3-Mini,hw8,q3,10,None,,Mastery
 Qwen2.5-7B,hw8,q3,10,None,,Mastery
 Llama3.3-70B,hw8,q3,10,None,,Mastery
 Qwen2.5-7B,hw8,q3,10,None,,Mastery
 Llama3.3-70B,hw8,q3,10,None,,Mastery
 GPT-4o-mini,hw8,q3,0,None,,Non-gradable
-o1,hw8,q3,10,None,,Mastery
 o3-Mini,hw8,q3,10,None,,Mastery
 Qwen2.5-7B,hw8,q3,10,None,,Mastery
 Llama3.1-8B,hw8,q3,10,None,,Mastery
@@ -28598,7 +26776,6 @@ Llama3.3-70B,hw8,q4a,7,None,,Mastery
 Gemini-1.5-Flash-8B,hw8,q4a,7,None,,Mastery
 Gemini-1.5-Flash-8B,hw8,q4a,7,None,,Mastery
 GPT-4o-mini,hw8,q4a,7,None,,Mastery
-o1,hw8,q4a,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4a,7,None,,Mastery
 GPT-4o,hw8,q4a,7,None,,Mastery
 Llama3.1-8B,hw8,q4a,0,None,,Non-gradable
@@ -28638,7 +26815,6 @@ val ignore : 'a -> 'b = <fun>",Beginning
 Claude-3.7-Sonnet,hw8,q4a,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4a,7,None,,Mastery
 o3-Mini,hw8,q4a,7,None,,Mastery
-o1,hw8,q4a,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4a,7,None,,Mastery
 o3-Mini,hw8,q4a,7,None,,Mastery
 GPT-4o,hw8,q4a,7,None,,Mastery
@@ -28646,7 +26822,6 @@ Llama3.1-8B,hw8,q4a,7,None,,Mastery
 Claude-3.7-Sonnet,hw8,q4a,7,None,,Mastery
 Qwen2.5-7B,hw8,q4a,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4a,7,None,,Mastery
-o1,hw8,q4a,7,None,,Mastery
 GPT-4o,hw8,q4a,7,None,,Mastery
 Claude-3.7-Sonnet,hw8,q4a,7,None,,Mastery
 Qwen2.5-7B,hw8,q4a,7,None,,Mastery
@@ -28667,7 +26842,6 @@ val zip : 'a stream -> 'b stream -> ('a * 'b) stream = <fun>
 val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
-o1,hw8,q4a,7,None,,Mastery
 o3-Mini,hw8,q4a,7,None,,Mastery
 GPT-4o,hw8,q4a,7,None,,Mastery
 o3-Mini,hw8,q4a,7,None,,Mastery
@@ -28687,7 +26861,6 @@ val int_stream_not_implemented : int stream = {head = 0; tail = <fun>}
 val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Beginning
 Gemini-2.0-Flash,hw8,q4a,7,None,,Mastery
-o1,hw8,q4a,7,None,,Mastery
 GPT-4o,hw8,q4a,7,None,,Mastery
 Claude-3.7-Sonnet,hw8,q4a,7,None,,Mastery
 Qwen2.5-7B,hw8,q4a,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 14-23:
@@ -28745,7 +26918,6 @@ Qwen2.5-7B,hw8,q4b,0,None,,Non-gradable
 Claude-3.7-Sonnet,hw8,q4b,7,None,,Mastery
 GPT-4o,hw8,q4b,7,None,,Mastery
 o3-Mini,hw8,q4b,7,None,,Mastery
-o1,hw8,q4b,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4b,7,None,,Mastery
 o3-Mini,hw8,q4b,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4b,7,None,,Mastery
@@ -28785,7 +26957,6 @@ val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw8,q4b,7,None,,Mastery
 GPT-4o,hw8,q4b,7,None,,Mastery
-o1,hw8,q4b,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4b,7,None,,Mastery
 Gemini-1.5-Flash-8B,hw8,q4b,7,None,,Mastery
 GPT-4o-mini,hw8,q4b,7,None,,Mastery
@@ -28863,7 +27034,6 @@ val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
 GPT-4o,hw8,q4b,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4b,7,None,,Mastery
-o1,hw8,q4b,7,None,,Mastery
 Llama3.1-8B,hw8,q4b,0,Unbound value,"File ""./F2022/exercises/hw8/solution.ml"", line 4, characters 6-12:
 Unbound value zeroes
 
@@ -28882,7 +27052,6 @@ val ignore : 'a -> 'b = <fun>",Beginning
 o3-Mini,hw8,q4b,7,None,,Mastery
 GPT-4o,hw8,q4b,7,None,,Mastery
 o3-Mini,hw8,q4b,7,None,,Mastery
-o1,hw8,q4b,7,None,,Mastery
 Qwen2.5-7B,hw8,q4b,7,None,,Mastery
 Claude-3.7-Sonnet,hw8,q4b,7,None,,Mastery
 Llama3.1-8B,hw8,q4b,0,Type Error,"File ""./F2022/exercises/hw8/solution.ml"", line 3, characters 24-48:
@@ -28904,7 +27073,6 @@ val ( := ) : 'a -> 'b -> 'c = <fun>
 val ignore : 'a -> 'b = <fun>",Non-gradable
 GPT-4o,hw8,q4b,7,None,,Mastery
 Gemini-2.0-Flash,hw8,q4b,7,None,,Mastery
-o1,hw8,q4b,7,None,,Mastery
 Qwen2.5-7B,hw4,q1,0,None,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 18-19:
 Illegal character (\155)
 
@@ -29283,7 +27451,6 @@ exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
 Llama3.3-70B,hw4,q1,5,None,,Mastery
 o3-Mini,hw4,q1,5,None,,Mastery
-o1,hw4,q1,5,None,,Mastery
 GPT-4o-mini,hw4,q1,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 5, characters 26-43:
 Unbound value collect_variables
 
@@ -29475,7 +27642,6 @@ val parse_formula : string -> formula = <fun>",Beginning
 Llama3.3-70B,hw4,q1,5,None,,Mastery
 o3-Mini,hw4,q1,5,None,,Mastery
 Qwen2.5-7B,hw4,q1,5,None,,Mastery
-o1,hw4,q1,5,None,,Mastery
 Llama3.3-70B,hw4,q1,5,None,,Mastery
 Qwen2.5-7B,hw4,q1,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 4, characters 48-65:
 Unbound value collect_variables
@@ -30255,11 +28421,9 @@ module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
 Llama3.3-70B,hw4,q1,5,None,,Mastery
-o1,hw4,q1,5,None,,Mastery
 o3-Mini,hw4,q1,5,None,,Mastery
 GPT-4o-mini,hw4,q1,0,None,,Non-gradable
 Llama3.3-70B,hw4,q1,5,None,,Mastery
-o1,hw4,q1,5,None,,Mastery
 o3-Mini,hw4,q1,5,None,,Mastery
 Qwen2.5-7B,hw4,q1,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 4, characters 48-65:
 Unbound value collect_variables
@@ -30450,7 +28614,6 @@ module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
 o3-Mini,hw4,q1,5,None,,Mastery
-o1,hw4,q1,5,None,,Mastery
 GPT-4o,hw4,q2,10,None,,Mastery
 Gemini-1.5-Flash-8B,hw4,q2,10,None,,Mastery
 Llama3.1-8B,hw4,q2,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 7, characters 29-33:
@@ -31593,7 +29756,6 @@ module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Non-gradable
 o3-Mini,hw4,q2,10,None,,Mastery
-o1,hw4,q2,10,None,,Mastery
 Llama3.3-70B,hw4,q2,0,None,"File ""./F2022/exercises/hw4/solution.ml"", line 1, characters 18-32:
 The type constructor Variable_map.t expects 1 argument(s),
        but is here applied to 0 argument(s)
@@ -31972,7 +30134,6 @@ module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Developing
 o3-Mini,hw4,q2,10,None,,Mastery
-o1,hw4,q2,10,None,,Mastery
 Llama3.3-70B,hw4,q2,10,None,,Mastery
 GPT-4o-mini,hw4,q2,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 7, characters 29-33:
 Unbound value eval
@@ -32353,12 +30514,9 @@ module List :
 module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Non-gradable
-o1,hw4,q2,10,None,,Mastery
-o1,hw4,q2,10,None,,Mastery
 o3-Mini,hw4,q2,10,None,,Mastery
 Llama3.3-70B,hw4,q2,10,None,,Mastery
 GPT-4o-mini,hw4,q2,0,None,,Non-gradable
-o1,hw4,q2,10,None,,Mastery
 o3-Mini,hw4,q2,10,None,,Mastery
 Llama3.3-70B,hw4,q2,10,None,,Mastery
 GPT-4o-mini,hw4,q2,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 6, characters 29-33:
@@ -33692,194 +31850,6 @@ module List :
 module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
-o1,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
-Unbound value collect_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-type formula =
-    Variable of string
-  | Conjunction of formula * formula
-  | Disjunction of formula * formula
-  | Negation of formula
-module Variable_set :
-  sig
-    type elt = String.t
-    type t = Set.Make(String).t
-    val empty : t
-    val is_empty : t -> bool
-    val mem : elt -> t -> bool
-    val add : elt -> t -> t
-    val singleton : elt -> t
-    val remove : elt -> t -> t
-    val union : t -> t -> t
-    val inter : t -> t -> t
-    val diff : t -> t -> t
-    val compare : t -> t -> int
-    val equal : t -> t -> bool
-    val subset : t -> t -> bool
-    val iter : (elt -> unit) -> t -> unit
-    val map : (elt -> elt) -> t -> t
-    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
-    val for_all : (elt -> bool) -> t -> bool
-    val exists : (elt -> bool) -> t -> bool
-    val filter : (elt -> bool) -> t -> t
-    val partition : (elt -> bool) -> t -> t * t
-    val cardinal : t -> int
-    val elements : t -> elt list
-    val min_elt : t -> elt
-    val min_elt_opt : t -> elt option
-    val max_elt : t -> elt
-    val max_elt_opt : t -> elt option
-    val choose : t -> elt
-    val choose_opt : t -> elt option
-    val split : elt -> t -> t * bool * t
-    val find : elt -> t -> elt
-    val find_opt : elt -> t -> elt option
-    val find_first : (elt -> bool) -> t -> elt
-    val find_first_opt : (elt -> bool) -> t -> elt option
-    val find_last : (elt -> bool) -> t -> elt
-    val find_last_opt : (elt -> bool) -> t -> elt option
-    val of_list : elt list -> t
-  end
-module Variable_map :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
-val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
-  <fun>
-type truth_assignment = bool Variable_map.t
-exception Unassigned_variable of string
-exception Unsatisfiable_formula
-module IStream :
-  sig
-    type t
-    val of_string : string -> t
-    val uncons : t -> (char * t) option
-    val take_while : (char -> bool) -> t -> string * t
-  end
-module Parser :
-  sig
-    val is_alpha : char -> bool
-    val is_digit : char -> bool
-    val is_alphanum : char -> bool
-    val is_whitespace : char -> bool
-    type 'a parser = IStream.t -> 'a option * IStream.t
-    val run : 'a parser -> string -> 'a option
-    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
-    val return : 'a -> 'a parser
-    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
-    val ( *> ) : 'a parser -> 'b parser -> 'b parser
-    val ( <* ) : 'a parser -> 'b parser -> 'a parser
-    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
-    val eof : unit parser
-    val satisfy : (char -> bool) -> char parser
-    val exact : char -> char parser
-    val satisfy_many : (char -> bool) -> string parser
-    val many : 'a parser -> 'a list parser
-    val some : 'a parser -> 'a list parser
-    val lexeme : 'a parser -> 'a parser
-    val tok : char -> char parser
-    val identifier : string parser
-  end
-module List :
-  sig
-    val length : 'a list -> int
-    val compare_lengths : 'a list -> 'b list -> int
-    val compare_length_with : 'a list -> int -> int
-    val cons : 'a -> 'a list -> 'a list
-    val hd : 'a list -> 'a
-    val tl : 'a list -> 'a list
-    val nth : 'a list -> int -> 'a
-    val nth_opt : 'a list -> int -> 'a option
-    val rev : 'a list -> 'a list
-    val append : 'a list -> 'a list -> 'a list
-    val rev_append : 'a list -> 'a list -> 'a list
-    val concat : 'a list list -> 'a list
-    val flatten : 'a list list -> 'a list
-    val iter : ('a -> unit) -> 'a list -> unit
-    val iteri : (int -> 'a -> unit) -> 'a list -> unit
-    val map : ('a -> 'b) -> 'a list -> 'b list
-    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
-    val rev_map : ('a -> 'b) -> 'a list -> 'b list
-    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
-    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
-    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
-    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
-    val fold_right2 :
-      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
-    val for_all : ('a -> bool) -> 'a list -> bool
-    val exists : ('a -> bool) -> 'a list -> bool
-    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val mem : 'a -> 'a list -> bool
-    val memq : 'a -> 'a list -> bool
-    val find : ('a -> bool) -> 'a list -> 'a
-    val find_opt : ('a -> bool) -> 'a list -> 'a option
-    val filter : ('a -> bool) -> 'a list -> 'a list
-    val find_all : ('a -> bool) -> 'a list -> 'a list
-    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
-    val assoc : 'a -> ('a * 'b) list -> 'b
-    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-    val assq : 'a -> ('a * 'b) list -> 'b
-    val assq_opt : 'a -> ('a * 'b) list -> 'b option
-    val mem_assoc : 'a -> ('a * 'b) list -> bool
-    val mem_assq : 'a -> ('a * 'b) list -> bool
-    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val split : ('a * 'b) list -> 'a list * 'b list
-    val combine : 'a list -> 'b list -> ('a * 'b) list
-    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
-    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
-    val split_last : 'a -> 'a list -> 'a list * 'a
-  end
-module rec Formula_parser : sig val formula : formula Parser.parser end
-exception Formula_parsing_error
-val parse_formula : string -> formula = <fun>",Beginning
 Llama3.3-70B,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 13-30:
 Unbound value collect_variables
 
@@ -34070,382 +32040,6 @@ exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
 GPT-4o-mini,hw4,q3,0,None,,Non-gradable
 o3-Mini,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
-Unbound value collect_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-type formula =
-    Variable of string
-  | Conjunction of formula * formula
-  | Disjunction of formula * formula
-  | Negation of formula
-module Variable_set :
-  sig
-    type elt = String.t
-    type t = Set.Make(String).t
-    val empty : t
-    val is_empty : t -> bool
-    val mem : elt -> t -> bool
-    val add : elt -> t -> t
-    val singleton : elt -> t
-    val remove : elt -> t -> t
-    val union : t -> t -> t
-    val inter : t -> t -> t
-    val diff : t -> t -> t
-    val compare : t -> t -> int
-    val equal : t -> t -> bool
-    val subset : t -> t -> bool
-    val iter : (elt -> unit) -> t -> unit
-    val map : (elt -> elt) -> t -> t
-    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
-    val for_all : (elt -> bool) -> t -> bool
-    val exists : (elt -> bool) -> t -> bool
-    val filter : (elt -> bool) -> t -> t
-    val partition : (elt -> bool) -> t -> t * t
-    val cardinal : t -> int
-    val elements : t -> elt list
-    val min_elt : t -> elt
-    val min_elt_opt : t -> elt option
-    val max_elt : t -> elt
-    val max_elt_opt : t -> elt option
-    val choose : t -> elt
-    val choose_opt : t -> elt option
-    val split : elt -> t -> t * bool * t
-    val find : elt -> t -> elt
-    val find_opt : elt -> t -> elt option
-    val find_first : (elt -> bool) -> t -> elt
-    val find_first_opt : (elt -> bool) -> t -> elt option
-    val find_last : (elt -> bool) -> t -> elt
-    val find_last_opt : (elt -> bool) -> t -> elt option
-    val of_list : elt list -> t
-  end
-module Variable_map :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
-val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
-  <fun>
-type truth_assignment = bool Variable_map.t
-exception Unassigned_variable of string
-exception Unsatisfiable_formula
-module IStream :
-  sig
-    type t
-    val of_string : string -> t
-    val uncons : t -> (char * t) option
-    val take_while : (char -> bool) -> t -> string * t
-  end
-module Parser :
-  sig
-    val is_alpha : char -> bool
-    val is_digit : char -> bool
-    val is_alphanum : char -> bool
-    val is_whitespace : char -> bool
-    type 'a parser = IStream.t -> 'a option * IStream.t
-    val run : 'a parser -> string -> 'a option
-    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
-    val return : 'a -> 'a parser
-    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
-    val ( *> ) : 'a parser -> 'b parser -> 'b parser
-    val ( <* ) : 'a parser -> 'b parser -> 'a parser
-    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
-    val eof : unit parser
-    val satisfy : (char -> bool) -> char parser
-    val exact : char -> char parser
-    val satisfy_many : (char -> bool) -> string parser
-    val many : 'a parser -> 'a list parser
-    val some : 'a parser -> 'a list parser
-    val lexeme : 'a parser -> 'a parser
-    val tok : char -> char parser
-    val identifier : string parser
-  end
-module List :
-  sig
-    val length : 'a list -> int
-    val compare_lengths : 'a list -> 'b list -> int
-    val compare_length_with : 'a list -> int -> int
-    val cons : 'a -> 'a list -> 'a list
-    val hd : 'a list -> 'a
-    val tl : 'a list -> 'a list
-    val nth : 'a list -> int -> 'a
-    val nth_opt : 'a list -> int -> 'a option
-    val rev : 'a list -> 'a list
-    val append : 'a list -> 'a list -> 'a list
-    val rev_append : 'a list -> 'a list -> 'a list
-    val concat : 'a list list -> 'a list
-    val flatten : 'a list list -> 'a list
-    val iter : ('a -> unit) -> 'a list -> unit
-    val iteri : (int -> 'a -> unit) -> 'a list -> unit
-    val map : ('a -> 'b) -> 'a list -> 'b list
-    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
-    val rev_map : ('a -> 'b) -> 'a list -> 'b list
-    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
-    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
-    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
-    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
-    val fold_right2 :
-      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
-    val for_all : ('a -> bool) -> 'a list -> bool
-    val exists : ('a -> bool) -> 'a list -> bool
-    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val mem : 'a -> 'a list -> bool
-    val memq : 'a -> 'a list -> bool
-    val find : ('a -> bool) -> 'a list -> 'a
-    val find_opt : ('a -> bool) -> 'a list -> 'a option
-    val filter : ('a -> bool) -> 'a list -> 'a list
-    val find_all : ('a -> bool) -> 'a list -> 'a list
-    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
-    val assoc : 'a -> ('a * 'b) list -> 'b
-    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-    val assq : 'a -> ('a * 'b) list -> 'b
-    val assq_opt : 'a -> ('a * 'b) list -> 'b option
-    val mem_assoc : 'a -> ('a * 'b) list -> bool
-    val mem_assq : 'a -> ('a * 'b) list -> bool
-    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val split : ('a * 'b) list -> 'a list * 'b list
-    val combine : 'a list -> 'b list -> ('a * 'b) list
-    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
-    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
-    val split_last : 'a -> 'a list -> 'a list * 'a
-  end
-module rec Formula_parser : sig val formula : formula Parser.parser end
-exception Formula_parsing_error
-val parse_formula : string -> formula = <fun>",Beginning
-o1,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
-Unbound value collect_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-type formula =
-    Variable of string
-  | Conjunction of formula * formula
-  | Disjunction of formula * formula
-  | Negation of formula
-module Variable_set :
-  sig
-    type elt = String.t
-    type t = Set.Make(String).t
-    val empty : t
-    val is_empty : t -> bool
-    val mem : elt -> t -> bool
-    val add : elt -> t -> t
-    val singleton : elt -> t
-    val remove : elt -> t -> t
-    val union : t -> t -> t
-    val inter : t -> t -> t
-    val diff : t -> t -> t
-    val compare : t -> t -> int
-    val equal : t -> t -> bool
-    val subset : t -> t -> bool
-    val iter : (elt -> unit) -> t -> unit
-    val map : (elt -> elt) -> t -> t
-    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
-    val for_all : (elt -> bool) -> t -> bool
-    val exists : (elt -> bool) -> t -> bool
-    val filter : (elt -> bool) -> t -> t
-    val partition : (elt -> bool) -> t -> t * t
-    val cardinal : t -> int
-    val elements : t -> elt list
-    val min_elt : t -> elt
-    val min_elt_opt : t -> elt option
-    val max_elt : t -> elt
-    val max_elt_opt : t -> elt option
-    val choose : t -> elt
-    val choose_opt : t -> elt option
-    val split : elt -> t -> t * bool * t
-    val find : elt -> t -> elt
-    val find_opt : elt -> t -> elt option
-    val find_first : (elt -> bool) -> t -> elt
-    val find_first_opt : (elt -> bool) -> t -> elt option
-    val find_last : (elt -> bool) -> t -> elt
-    val find_last_opt : (elt -> bool) -> t -> elt option
-    val of_list : elt list -> t
-  end
-module Variable_map :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
-val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
-  <fun>
-type truth_assignment = bool Variable_map.t
-exception Unassigned_variable of string
-exception Unsatisfiable_formula
-module IStream :
-  sig
-    type t
-    val of_string : string -> t
-    val uncons : t -> (char * t) option
-    val take_while : (char -> bool) -> t -> string * t
-  end
-module Parser :
-  sig
-    val is_alpha : char -> bool
-    val is_digit : char -> bool
-    val is_alphanum : char -> bool
-    val is_whitespace : char -> bool
-    type 'a parser = IStream.t -> 'a option * IStream.t
-    val run : 'a parser -> string -> 'a option
-    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
-    val return : 'a -> 'a parser
-    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
-    val ( *> ) : 'a parser -> 'b parser -> 'b parser
-    val ( <* ) : 'a parser -> 'b parser -> 'a parser
-    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
-    val eof : unit parser
-    val satisfy : (char -> bool) -> char parser
-    val exact : char -> char parser
-    val satisfy_many : (char -> bool) -> string parser
-    val many : 'a parser -> 'a list parser
-    val some : 'a parser -> 'a list parser
-    val lexeme : 'a parser -> 'a parser
-    val tok : char -> char parser
-    val identifier : string parser
-  end
-module List :
-  sig
-    val length : 'a list -> int
-    val compare_lengths : 'a list -> 'b list -> int
-    val compare_length_with : 'a list -> int -> int
-    val cons : 'a -> 'a list -> 'a list
-    val hd : 'a list -> 'a
-    val tl : 'a list -> 'a list
-    val nth : 'a list -> int -> 'a
-    val nth_opt : 'a list -> int -> 'a option
-    val rev : 'a list -> 'a list
-    val append : 'a list -> 'a list -> 'a list
-    val rev_append : 'a list -> 'a list -> 'a list
-    val concat : 'a list list -> 'a list
-    val flatten : 'a list list -> 'a list
-    val iter : ('a -> unit) -> 'a list -> unit
-    val iteri : (int -> 'a -> unit) -> 'a list -> unit
-    val map : ('a -> 'b) -> 'a list -> 'b list
-    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
-    val rev_map : ('a -> 'b) -> 'a list -> 'b list
-    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
-    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
-    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
-    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
-    val fold_right2 :
-      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
-    val for_all : ('a -> bool) -> 'a list -> bool
-    val exists : ('a -> bool) -> 'a list -> bool
-    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val mem : 'a -> 'a list -> bool
-    val memq : 'a -> 'a list -> bool
-    val find : ('a -> bool) -> 'a list -> 'a
-    val find_opt : ('a -> bool) -> 'a list -> 'a option
-    val filter : ('a -> bool) -> 'a list -> 'a list
-    val find_all : ('a -> bool) -> 'a list -> 'a list
-    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
-    val assoc : 'a -> ('a * 'b) list -> 'b
-    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-    val assq : 'a -> ('a * 'b) list -> 'b
-    val assq_opt : 'a -> ('a * 'b) list -> 'b option
-    val mem_assoc : 'a -> ('a * 'b) list -> bool
-    val mem_assq : 'a -> ('a * 'b) list -> bool
-    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val split : ('a * 'b) list -> 'a list * 'b list
-    val combine : 'a list -> 'b list -> ('a * 'b) list
-    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
-    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
-    val split_last : 'a -> 'a list -> 'a list * 'a
-  end
-module rec Formula_parser : sig val formula : formula Parser.parser end
-exception Formula_parsing_error
-val parse_formula : string -> formula = <fun>",Developing
-o1,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 41-58:
 Unbound value collect_variables
 
 grader outcomes:
@@ -40279,194 +37873,6 @@ module List :
 module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
-o1,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
-Unbound value collect_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-type formula =
-    Variable of string
-  | Conjunction of formula * formula
-  | Disjunction of formula * formula
-  | Negation of formula
-module Variable_set :
-  sig
-    type elt = String.t
-    type t = Set.Make(String).t
-    val empty : t
-    val is_empty : t -> bool
-    val mem : elt -> t -> bool
-    val add : elt -> t -> t
-    val singleton : elt -> t
-    val remove : elt -> t -> t
-    val union : t -> t -> t
-    val inter : t -> t -> t
-    val diff : t -> t -> t
-    val compare : t -> t -> int
-    val equal : t -> t -> bool
-    val subset : t -> t -> bool
-    val iter : (elt -> unit) -> t -> unit
-    val map : (elt -> elt) -> t -> t
-    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
-    val for_all : (elt -> bool) -> t -> bool
-    val exists : (elt -> bool) -> t -> bool
-    val filter : (elt -> bool) -> t -> t
-    val partition : (elt -> bool) -> t -> t * t
-    val cardinal : t -> int
-    val elements : t -> elt list
-    val min_elt : t -> elt
-    val min_elt_opt : t -> elt option
-    val max_elt : t -> elt
-    val max_elt_opt : t -> elt option
-    val choose : t -> elt
-    val choose_opt : t -> elt option
-    val split : elt -> t -> t * bool * t
-    val find : elt -> t -> elt
-    val find_opt : elt -> t -> elt option
-    val find_first : (elt -> bool) -> t -> elt
-    val find_first_opt : (elt -> bool) -> t -> elt option
-    val find_last : (elt -> bool) -> t -> elt
-    val find_last_opt : (elt -> bool) -> t -> elt option
-    val of_list : elt list -> t
-  end
-module Variable_map :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
-val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
-  <fun>
-type truth_assignment = bool Variable_map.t
-exception Unassigned_variable of string
-exception Unsatisfiable_formula
-module IStream :
-  sig
-    type t
-    val of_string : string -> t
-    val uncons : t -> (char * t) option
-    val take_while : (char -> bool) -> t -> string * t
-  end
-module Parser :
-  sig
-    val is_alpha : char -> bool
-    val is_digit : char -> bool
-    val is_alphanum : char -> bool
-    val is_whitespace : char -> bool
-    type 'a parser = IStream.t -> 'a option * IStream.t
-    val run : 'a parser -> string -> 'a option
-    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
-    val return : 'a -> 'a parser
-    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
-    val ( *> ) : 'a parser -> 'b parser -> 'b parser
-    val ( <* ) : 'a parser -> 'b parser -> 'a parser
-    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
-    val eof : unit parser
-    val satisfy : (char -> bool) -> char parser
-    val exact : char -> char parser
-    val satisfy_many : (char -> bool) -> string parser
-    val many : 'a parser -> 'a list parser
-    val some : 'a parser -> 'a list parser
-    val lexeme : 'a parser -> 'a parser
-    val tok : char -> char parser
-    val identifier : string parser
-  end
-module List :
-  sig
-    val length : 'a list -> int
-    val compare_lengths : 'a list -> 'b list -> int
-    val compare_length_with : 'a list -> int -> int
-    val cons : 'a -> 'a list -> 'a list
-    val hd : 'a list -> 'a
-    val tl : 'a list -> 'a list
-    val nth : 'a list -> int -> 'a
-    val nth_opt : 'a list -> int -> 'a option
-    val rev : 'a list -> 'a list
-    val append : 'a list -> 'a list -> 'a list
-    val rev_append : 'a list -> 'a list -> 'a list
-    val concat : 'a list list -> 'a list
-    val flatten : 'a list list -> 'a list
-    val iter : ('a -> unit) -> 'a list -> unit
-    val iteri : (int -> 'a -> unit) -> 'a list -> unit
-    val map : ('a -> 'b) -> 'a list -> 'b list
-    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
-    val rev_map : ('a -> 'b) -> 'a list -> 'b list
-    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
-    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
-    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
-    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
-    val fold_right2 :
-      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
-    val for_all : ('a -> bool) -> 'a list -> bool
-    val exists : ('a -> bool) -> 'a list -> bool
-    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val mem : 'a -> 'a list -> bool
-    val memq : 'a -> 'a list -> bool
-    val find : ('a -> bool) -> 'a list -> 'a
-    val find_opt : ('a -> bool) -> 'a list -> 'a option
-    val filter : ('a -> bool) -> 'a list -> 'a list
-    val find_all : ('a -> bool) -> 'a list -> 'a list
-    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
-    val assoc : 'a -> ('a * 'b) list -> 'b
-    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-    val assq : 'a -> ('a * 'b) list -> 'b
-    val assq_opt : 'a -> ('a * 'b) list -> 'b option
-    val mem_assoc : 'a -> ('a * 'b) list -> bool
-    val mem_assq : 'a -> ('a * 'b) list -> bool
-    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val split : ('a * 'b) list -> 'a list * 'b list
-    val combine : 'a list -> 'b list -> ('a * 'b) list
-    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
-    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
-    val split_last : 'a -> 'a list -> 'a list * 'a
-  end
-module rec Formula_parser : sig val formula : formula Parser.parser end
-exception Formula_parsing_error
-val parse_formula : string -> formula = <fun>",Beginning
 o3-Mini,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 16-33:
 Unbound value collect_variables
 
@@ -41032,194 +38438,6 @@ module List :
 module rec Formula_parser : sig val formula : formula Parser.parser end
 exception Formula_parsing_error
 val parse_formula : string -> formula = <fun>",Beginning
-o1,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
-Unbound value collect_variables
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception Not_implemented
-type formula =
-    Variable of string
-  | Conjunction of formula * formula
-  | Disjunction of formula * formula
-  | Negation of formula
-module Variable_set :
-  sig
-    type elt = String.t
-    type t = Set.Make(String).t
-    val empty : t
-    val is_empty : t -> bool
-    val mem : elt -> t -> bool
-    val add : elt -> t -> t
-    val singleton : elt -> t
-    val remove : elt -> t -> t
-    val union : t -> t -> t
-    val inter : t -> t -> t
-    val diff : t -> t -> t
-    val compare : t -> t -> int
-    val equal : t -> t -> bool
-    val subset : t -> t -> bool
-    val iter : (elt -> unit) -> t -> unit
-    val map : (elt -> elt) -> t -> t
-    val fold : (elt -> 'a -> 'a) -> t -> 'a -> 'a
-    val for_all : (elt -> bool) -> t -> bool
-    val exists : (elt -> bool) -> t -> bool
-    val filter : (elt -> bool) -> t -> t
-    val partition : (elt -> bool) -> t -> t * t
-    val cardinal : t -> int
-    val elements : t -> elt list
-    val min_elt : t -> elt
-    val min_elt_opt : t -> elt option
-    val max_elt : t -> elt
-    val max_elt_opt : t -> elt option
-    val choose : t -> elt
-    val choose_opt : t -> elt option
-    val split : elt -> t -> t * bool * t
-    val find : elt -> t -> elt
-    val find_opt : elt -> t -> elt option
-    val find_first : (elt -> bool) -> t -> elt
-    val find_first_opt : (elt -> bool) -> t -> elt option
-    val find_last : (elt -> bool) -> t -> elt
-    val find_last_opt : (elt -> bool) -> t -> elt option
-    val of_list : elt list -> t
-  end
-module Variable_map :
-  sig
-    type key = String.t
-    type 'a t = 'a Map.Make(String).t
-    val empty : 'a t
-    val is_empty : 'a t -> bool
-    val mem : key -> 'a t -> bool
-    val add : key -> 'a -> 'a t -> 'a t
-    val singleton : key -> 'a -> 'a t
-    val remove : key -> 'a t -> 'a t
-    val merge :
-      (key -> 'a option -> 'b option -> 'c option) -> 'a t -> 'b t -> 'c t
-    val union : (key -> 'a -> 'a -> 'a option) -> 'a t -> 'a t -> 'a t
-    val compare : ('a -> 'a -> int) -> 'a t -> 'a t -> int
-    val equal : ('a -> 'a -> bool) -> 'a t -> 'a t -> bool
-    val iter : (key -> 'a -> unit) -> 'a t -> unit
-    val fold : (key -> 'a -> 'b -> 'b) -> 'a t -> 'b -> 'b
-    val for_all : (key -> 'a -> bool) -> 'a t -> bool
-    val exists : (key -> 'a -> bool) -> 'a t -> bool
-    val filter : (key -> 'a -> bool) -> 'a t -> 'a t
-    val partition : (key -> 'a -> bool) -> 'a t -> 'a t * 'a t
-    val cardinal : 'a t -> int
-    val bindings : 'a t -> (key * 'a) list
-    val min_binding : 'a t -> key * 'a
-    val min_binding_opt : 'a t -> (key * 'a) option
-    val max_binding : 'a t -> key * 'a
-    val max_binding_opt : 'a t -> (key * 'a) option
-    val choose : 'a t -> key * 'a
-    val choose_opt : 'a t -> (key * 'a) option
-    val split : key -> 'a t -> 'a t * 'a option * 'a t
-    val find : key -> 'a t -> 'a
-    val find_opt : key -> 'a t -> 'a option
-    val find_first : (key -> bool) -> 'a t -> key * 'a
-    val find_first_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val find_last : (key -> bool) -> 'a t -> key * 'a
-    val find_last_opt : (key -> bool) -> 'a t -> (key * 'a) option
-    val map : ('a -> 'b) -> 'a t -> 'b t
-    val mapi : (key -> 'a -> 'b) -> 'a t -> 'b t
-  end
-val variable_set_to_list : Variable_set.t -> Variable_set.elt list = <fun>
-val variable_map_to_list : 'a Variable_map.t -> (Variable_map.key * 'a) list =
-  <fun>
-type truth_assignment = bool Variable_map.t
-exception Unassigned_variable of string
-exception Unsatisfiable_formula
-module IStream :
-  sig
-    type t
-    val of_string : string -> t
-    val uncons : t -> (char * t) option
-    val take_while : (char -> bool) -> t -> string * t
-  end
-module Parser :
-  sig
-    val is_alpha : char -> bool
-    val is_digit : char -> bool
-    val is_alphanum : char -> bool
-    val is_whitespace : char -> bool
-    type 'a parser = IStream.t -> 'a option * IStream.t
-    val run : 'a parser -> string -> 'a option
-    val ( <$> ) : ('a -> 'b) -> 'a parser -> 'b parser
-    val return : 'a -> 'a parser
-    val bind : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( >>= ) : 'a parser -> ('a -> 'b parser) -> 'b parser
-    val ( $> ) : 'a parser -> ('a -> 'b) -> 'b parser
-    val ( *> ) : 'a parser -> 'b parser -> 'b parser
-    val ( <* ) : 'a parser -> 'b parser -> 'a parser
-    val ( <|> ) : 'a parser -> 'a parser -> 'a parser
-    val eof : unit parser
-    val satisfy : (char -> bool) -> char parser
-    val exact : char -> char parser
-    val satisfy_many : (char -> bool) -> string parser
-    val many : 'a parser -> 'a list parser
-    val some : 'a parser -> 'a list parser
-    val lexeme : 'a parser -> 'a parser
-    val tok : char -> char parser
-    val identifier : string parser
-  end
-module List :
-  sig
-    val length : 'a list -> int
-    val compare_lengths : 'a list -> 'b list -> int
-    val compare_length_with : 'a list -> int -> int
-    val cons : 'a -> 'a list -> 'a list
-    val hd : 'a list -> 'a
-    val tl : 'a list -> 'a list
-    val nth : 'a list -> int -> 'a
-    val nth_opt : 'a list -> int -> 'a option
-    val rev : 'a list -> 'a list
-    val append : 'a list -> 'a list -> 'a list
-    val rev_append : 'a list -> 'a list -> 'a list
-    val concat : 'a list list -> 'a list
-    val flatten : 'a list list -> 'a list
-    val iter : ('a -> unit) -> 'a list -> unit
-    val iteri : (int -> 'a -> unit) -> 'a list -> unit
-    val map : ('a -> 'b) -> 'a list -> 'b list
-    val mapi : (int -> 'a -> 'b) -> 'a list -> 'b list
-    val rev_map : ('a -> 'b) -> 'a list -> 'b list
-    val fold_left : ('a -> 'b -> 'a) -> 'a -> 'b list -> 'a
-    val fold_right : ('a -> 'b -> 'b) -> 'a list -> 'b -> 'b
-    val iter2 : ('a -> 'b -> unit) -> 'a list -> 'b list -> unit
-    val map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val rev_map2 : ('a -> 'b -> 'c) -> 'a list -> 'b list -> 'c list
-    val fold_left2 : ('a -> 'b -> 'c -> 'a) -> 'a -> 'b list -> 'c list -> 'a
-    val fold_right2 :
-      ('a -> 'b -> 'c -> 'c) -> 'a list -> 'b list -> 'c -> 'c
-    val for_all : ('a -> bool) -> 'a list -> bool
-    val exists : ('a -> bool) -> 'a list -> bool
-    val for_all2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val exists2 : ('a -> 'b -> bool) -> 'a list -> 'b list -> bool
-    val mem : 'a -> 'a list -> bool
-    val memq : 'a -> 'a list -> bool
-    val find : ('a -> bool) -> 'a list -> 'a
-    val find_opt : ('a -> bool) -> 'a list -> 'a option
-    val filter : ('a -> bool) -> 'a list -> 'a list
-    val find_all : ('a -> bool) -> 'a list -> 'a list
-    val partition : ('a -> bool) -> 'a list -> 'a list * 'a list
-    val assoc : 'a -> ('a * 'b) list -> 'b
-    val assoc_opt : 'a -> ('a * 'b) list -> 'b option
-    val assq : 'a -> ('a * 'b) list -> 'b
-    val assq_opt : 'a -> ('a * 'b) list -> 'b option
-    val mem_assoc : 'a -> ('a * 'b) list -> bool
-    val mem_assq : 'a -> ('a * 'b) list -> bool
-    val remove_assoc : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val remove_assq : 'a -> ('a * 'b) list -> ('a * 'b) list
-    val split : ('a * 'b) list -> 'a list * 'b list
-    val combine : 'a list -> 'b list -> ('a * 'b) list
-    val sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val stable_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val fast_sort : ('a -> 'a -> int) -> 'a list -> 'a list
-    val sort_uniq : ('a -> 'a -> int) -> 'a list -> 'a list
-    val merge : ('a -> 'a -> int) -> 'a list -> 'a list -> 'a list
-    val split_last : 'a -> 'a list -> 'a list * 'a
-  end
-module rec Formula_parser : sig val formula : formula Parser.parser end
-exception Formula_parsing_error
-val parse_formula : string -> formula = <fun>",Developing
 o3-Mini,hw4,q3,0,Unbound value,"File ""./F2022/exercises/hw4/solution.ml"", line 2, characters 36-53:
 Unbound value collect_variables
 
@@ -42157,12 +39375,10 @@ Llama3.3-70B,hw6,q1,10,None,,Proficient
 Qwen2.5-7B,hw6,q1,10,None,,Proficient
 Llama3.3-70B,hw6,q1,10,None,,Proficient
 GPT-4o-mini,hw6,q1,0,None,,Non-gradable
-o1,hw6,q1,10,None,,Proficient
 Qwen2.5-7B,hw6,q1,10,None,,Proficient
 o3-Mini,hw6,q1,10,None,,Proficient
 Llama3.3-70B,hw6,q1,10,None,,Proficient
 GPT-4o-mini,hw6,q1,0,None,,Non-gradable
-o1,hw6,q1,10,None,,Proficient
 o3-Mini,hw6,q1,10,None,,Proficient
 Qwen2.5-7B,hw6,q1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 10-14:
 Unbound constructor Just
@@ -42189,7 +39405,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q1,10,None,,Proficient
 o3-Mini,hw6,q1,10,None,,Proficient
 Qwen2.5-7B,hw6,q1,0,Unbound value,"File ""./F2022/exercises/hw6/solution.ml"", line 5, characters 10-13:
 Unbound value >>=
@@ -42220,11 +39435,9 @@ val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Beginning
 Llama3.3-70B,hw6,q1,10,None,,Proficient
 GPT-4o-mini,hw6,q1,0,None,,Non-gradable
 o3-Mini,hw6,q1,10,None,,Proficient
-o1,hw6,q1,10,None,,Proficient
 Llama3.3-70B,hw6,q1,10,None,,Proficient
 GPT-4o-mini,hw6,q1,0,None,,Non-gradable
 o3-Mini,hw6,q1,10,None,,Proficient
-o1,hw6,q1,10,None,,Proficient
 GPT-4o-mini,hw6,q1,0,None,,Non-gradable
 Qwen2.5-7B,hw6,q1,0,Unbound value,"File ""./F2022/exercises/hw6/solution.ml"", line 6, characters 21-24:
 Unbound value >>=
@@ -42362,7 +39575,6 @@ val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q1,10,None,,Proficient
 Gemini-2.0-Flash,hw6,q1,10,None,,Proficient
 GPT-4o,hw6,q2.1,0,None,,Non-gradable
-o1,hw6,q2.1,2,None,,Mastery
 Llama3.1-8B,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 4-8:
 Unbound constructor Just
 
@@ -42389,31 +39601,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.1,0,None,,Non-gradable
-o1,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Llama3.1-8B,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
 Unbound constructor Just
 
@@ -42441,31 +39628,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.1,0,None,,Non-gradable
 GPT-4o,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 5, characters 4-11:
-Unbound constructor Nothing
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-11:
 Unbound constructor Nothing
 
 grader outcomes:
@@ -42910,31 +40072,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.1,0,None,,Non-gradable
 Llama3.1-8B,hw6,q2.1,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
 Unbound constructor Just
@@ -42961,7 +40098,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.1,2,None,,Mastery
 GPT-4o,hw6,q2.1,0,None,,Non-gradable
 Gemini-1.5-Flash-8B,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
 Unbound constructor Just
@@ -43197,31 +40333,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-11:
-Unbound constructor Nothing
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q2.2,2,None,,Mastery
 Llama3.1-8B,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-11:
 Unbound constructor Nothing
@@ -43249,31 +40360,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.2,2,None,,Mastery
-o1,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Llama3.1-8B,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 4-8:
 Unbound constructor Just
 
@@ -43300,37 +40386,10 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.2,2,None,,Mastery
-o1,hw6,q2.2,2,None,,Mastery
 GPT-4o,hw6,q2.2,2,None,,Mastery
 GPT-4o,hw6,q2.2,2,None,,Mastery
-o1,hw6,q2.2,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.2,2,None,,Mastery
 Llama3.1-8B,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.2,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
 Unbound constructor Just
 
 grader outcomes:
@@ -43569,31 +40628,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.3,3,None,,Mastery
-o1,hw6,q2.3,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 7, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Llama3.1-8B,hw6,q2.3,0,Syntax Error,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 6-10:
 Syntax error: ')' expected
 File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 2-3:
@@ -43622,7 +40656,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.3,3,None,,Mastery
-o1,hw6,q2.3,3,None,,Mastery
 GPT-4o,hw6,q2.3,3,None,,Mastery
 Gemini-2.0-Flash,hw6,q2.3,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 7, characters 4-8:
 Unbound constructor Just
@@ -44016,7 +41049,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q2.3,3,None,,Mastery
-o1,hw6,q2.3,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.3,3,None,,Mastery
 Llama3.1-8B,hw6,q2.3,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 6, characters 4-8:
 Unbound constructor Just
@@ -44043,7 +41075,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.3,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.3,3,None,,Mastery
 Llama3.1-8B,hw6,q2.3,0,Unbound value,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 18-20:
 Unbound value ap
@@ -44071,7 +41102,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Beginning
 GPT-4o,hw6,q2.3,3,None,,Mastery
-o1,hw6,q2.3,3,None,,Mastery
 Llama3.1-8B,hw6,q2.3,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 7, characters 4-11:
 Unbound constructor Nothing
 
@@ -44152,31 +41182,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-11:
-Unbound constructor Nothing
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q2.4,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.4,3,None,,Mastery
 Llama3.1-8B,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 4-8:
@@ -44204,32 +41209,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.4,3,None,,Mastery
 GPT-4o,hw6,q2.4,3,None,,Mastery
 Gemini-2.0-Flash,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 15-19:
 Unbound constructor Just
@@ -44625,31 +41604,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.4,3,None,,Mastery
-o1,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Llama3.1-8B,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 4-11:
 Unbound constructor Nothing
 
@@ -44676,31 +41630,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.4,3,None,,Mastery
-o1,hw6,q2.4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 4-8:
-Unbound constructor Just
-
-grader outcomes:
-val print_html : 'a -> 'b = <fun>
-exception NotImplemented
-module Maybe :
-  sig
-    type 'a t
-    val return : 'a -> 'a t
-    val nothing : 'a t
-    val bind : 'a t -> ('a -> 'b t) -> 'b t
-    val ( >>= ) : 'a t -> ('a -> 'b t) -> 'b t
-    val pp :
-      (Format.formatter -> 'a -> unit) -> Format.formatter -> 'a t -> unit
-    val to_string : ('a -> string) -> 'a t -> string
-  end
-type nat = Z | S of nat
-type 'a church = 'a -> ('a -> 'a) -> 'a
-type ('a, 'r) coption = ('a -> 'r) -> (unit -> 'r) -> 'r
-type ('a, 'r) clist =
-    CList of (('a -> ('a, 'r) clist -> 'r) -> (unit -> 'r) -> 'r)
-val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
-val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
-val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q2.4,3,None,,Mastery
 Gemini-2.0-Flash,hw6,q2.5,10,None,,Mastery
 o3-Mini,hw6,q2.5,10,None,,Mastery
@@ -44814,7 +41743,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 o3-Mini,hw6,q2.5,10,None,,Mastery
 GPT-4o,hw6,q2.5,10,None,,Mastery
-o1,hw6,q2.5,10,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.5,10,None,,Mastery
 Llama3.1-8B,hw6,q2.5,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 10-14:
 Unbound constructor Just
@@ -44841,7 +41769,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q2.5,10,None,,Mastery
 Claude-3.7-Sonnet,hw6,q2.5,10,None,,Mastery
 Llama3.1-8B,hw6,q2.5,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 10-17:
 This expression has type 'a option
@@ -44871,8 +41798,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q2.5,10,None,,Mastery
 GPT-4o,hw6,q2.5,10,None,,Mastery
-o1,hw6,q2.5,10,None,,Mastery
-o1,hw6,q2.5,10,None,,Mastery
 Llama3.1-8B,hw6,q2.5,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 10-14:
 Unbound constructor Just
 
@@ -44900,7 +41825,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q2.5,10,None,,Mastery
 GPT-4o,hw6,q2.5,10,None,,Mastery
-o1,hw6,q2.5,10,None,,Mastery
 Llama3.1-8B,hw6,q2.5,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 10-14:
 Unbound constructor Just
 
@@ -45258,7 +42182,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Beginning
-o1,hw6,q3.1a,2,None,,Mastery
 GPT-4o,hw6,q3.1a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 6-7:
 The constructor S expects 1 argument(s),
@@ -45312,7 +42235,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.1a,2,None,,Mastery
 GPT-4o,hw6,q3.1a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.1a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 16-19:
@@ -45341,7 +42263,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.1a,2,None,,Mastery
 GPT-4o,hw6,q3.1a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.1a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 6-7:
@@ -45422,7 +42343,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.1a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1a,2,None,,Mastery
 GPT-4o,hw6,q3.1a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.1a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 2-31:
@@ -45451,7 +42371,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.1a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 6-7:
 The constructor S expects 1 argument(s),
        but is applied here to 0 argument(s)
@@ -45541,7 +42460,6 @@ Llama3.3-70B,hw6,q3.1a,2,None,,Mastery
 Gemini-2.0-Flash,hw6,q3.1a,2,None,,Mastery
 Llama3.1-8B,hw6,q3.1a,1,None,,Non-gradable
 GPT-4o,hw6,q3.1b,3,None,,Mastery
-o1,hw6,q3.1b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.1b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 6, characters 5-23:
 This expression has type 'a -> 'a
        but an expression was expected of type
@@ -45572,11 +42490,9 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q3.1b,3,None,,Mastery
 GPT-4o,hw6,q3.1b,3,None,,Mastery
-o1,hw6,q3.1b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.1b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1b,3,None,,Mastery
 GPT-4o,hw6,q3.1b,3,None,,Mastery
-o1,hw6,q3.1b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.1b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 21-22:
 This expression has type 'a -> 'a
        but an expression was expected of type 'a
@@ -45840,11 +42756,9 @@ o3-Mini,hw6,q3.1b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.1b,3,None,,Mastery
 GPT-4o,hw6,q3.1b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1b,3,None,,Mastery
-o1,hw6,q3.1b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.1b,3,None,,Mastery
 GPT-4o,hw6,q3.1b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.1b,3,None,,Mastery
-o1,hw6,q3.1b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.1b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 22-23:
 This expression has type 'a -> 'a
        but an expression was expected of type 'a
@@ -45890,7 +42804,6 @@ Claude-3.7-Sonnet,hw6,q3.2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2a,2,None,,Mastery
 GPT-4o,hw6,q3.2a,2,None,,Mastery
-o1,hw6,q3.2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.2a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 7-13:
 The constructor Some expects 1 argument(s),
@@ -45920,14 +42833,12 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q3.2a,2,None,,Mastery
 GPT-4o,hw6,q3.2a,2,None,,Mastery
-o1,hw6,q3.2a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2a,2,None,,Mastery
 GPT-4o,hw6,q3.2a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2a,2,None,,Mastery
-o1,hw6,q3.2a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.2a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 7-13:
 The constructor Some expects 1 argument(s),
        but is applied here to 0 argument(s)
@@ -45956,10 +42867,8 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q3.2a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2a,2,None,,Mastery
-o1,hw6,q3.2a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.2a,2,None,,Mastery
 GPT-4o,hw6,q3.2a,2,None,,Mastery
-o1,hw6,q3.2a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2a,2,None,,Mastery
 Llama3.3-70B,hw6,q3.2a,2,None,,Mastery
 Llama3.1-8B,hw6,q3.2a,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 2-51:
@@ -46052,7 +42961,6 @@ Gemini-2.0-Flash,hw6,q3.2a,2,None,,Mastery
 GPT-4o-mini,hw6,q3.2a,0,None,,Non-gradable
 Gemini-1.5-Flash-8B,hw6,q3.2b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.2b,3,None,,Mastery
-o1,hw6,q3.2b,3,None,,Mastery
 GPT-4o,hw6,q3.2b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.2b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 2-3:
@@ -46082,7 +42990,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Gemini-1.5-Flash-8B,hw6,q3.2b,3,None,,Mastery
-o1,hw6,q3.2b,3,None,,Mastery
 GPT-4o,hw6,q3.2b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2b,3,None,,Mastery
@@ -46240,7 +43147,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Llama3.3-70B,hw6,q3.2b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2b,3,None,,Mastery
-o1,hw6,q3.2b,3,None,,Mastery
 GPT-4o,hw6,q3.2b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.2b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 23-26:
 This expression has type 'r but an expression was expected of type
@@ -46269,7 +43175,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.2b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2b,3,None,,Mastery
 GPT-4o,hw6,q3.2b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.2b,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 4-10:
@@ -46298,7 +43203,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.2b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.2b,3,None,,Mastery
 GPT-4o,hw6,q3.2b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.2b,3,None,,Mastery
@@ -46413,7 +43317,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Gemini-2.0-Flash,hw6,q3.3a,2,None,,Mastery
-o1,hw6,q3.3a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.3a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 26-28:
 This expression has type ('a, 'a list) clist
        but an expression was expected of type 'a list
@@ -46495,7 +43398,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q3.3a,2,None,,Mastery
-o1,hw6,q3.3a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.3a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 34-38:
 This expression has type ('a, 'a list) clist
        but an expression was expected of type 'a list
@@ -46550,7 +43452,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o,hw6,q3.3a,2,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.3a,2,None,,Mastery
-o1,hw6,q3.3a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.3a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 26-28:
 This expression has type ('a, 'a list) clist
        but an expression was expected of type 'a list
@@ -46579,7 +43480,6 @@ val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 Claude-3.7-Sonnet,hw6,q3.3a,2,None,,Mastery
 GPT-4o,hw6,q3.3a,2,None,,Mastery
-o1,hw6,q3.3a,2,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.3a,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 25-26:
 This expression has type ('a, 'a list) clist
        but an expression was expected of type 'a list
@@ -46659,7 +43559,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3a,2,None,,Mastery
 Qwen2.5-7B,hw6,q3.3a,0,Syntax Error,"File ""./F2022/exercises/hw6/solution.ml"", line 2, characters 14-15:
 Syntax error
 
@@ -46880,7 +43779,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.3b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.3b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 28-32:
 This expression has type (unit, 'r) clist -> 'r
@@ -46964,7 +43862,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3b,3,None,,Mastery
 Gemini-2.0-Flash,hw6,q3.3b,3,None,,Mastery
 Llama3.1-8B,hw6,q3.3b,0,Syntax Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 37-39:
 Syntax error: ')' expected
@@ -47218,7 +44115,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3b,3,None,,Mastery
 Gemini-1.5-Flash-8B,hw6,q3.3b,0,None,,Non-gradable
 Qwen2.5-7B,hw6,q3.3b,0,None,,Non-gradable
 GPT-4o,hw6,q3.3b,3,None,,Mastery
@@ -47248,7 +44144,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3b,3,None,,Mastery
 GPT-4o,hw6,q3.3b,3,None,,Mastery
 Claude-3.7-Sonnet,hw6,q3.3b,3,None,,Mastery
 Qwen2.5-7B,hw6,q3.3b,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 31-77:
@@ -47277,7 +44172,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q3.3b,3,None,,Mastery
 Llama3.1-8B,hw6,q4,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 1, characters 58-144:
 This expression has type 'a -> 'b -> 'c
        but an expression was expected of type ('d, 'e) clist
@@ -47442,7 +44336,6 @@ val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 GPT-4o-mini,hw6,q4,0,None,,Non-gradable
 Llama3.3-70B,hw6,q4,5,None,,Mastery
 o3-Mini,hw6,q4,5,None,,Mastery
-o1,hw6,q4,5,None,,Mastery
 GPT-4o-mini,hw6,q4,0,None,,Non-gradable
 Llama3.3-70B,hw6,q4,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 6-11:
 This expression has type ('a, 'r) clist
@@ -47498,7 +44391,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q4,5,None,,Mastery
 Llama3.3-70B,hw6,q4,0,Syntax Error,"File ""./F2022/exercises/hw6/solution.ml"", line 4, characters 19-25:
 Syntax error: operator expected.
 
@@ -47604,7 +44496,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q4,5,None,,Mastery
 o3-Mini,hw6,q4,5,None,,Mastery
 GPT-4o-mini,hw6,q4,0,None,,Non-gradable
 Llama3.3-70B,hw6,q4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 5, characters 10-12:
@@ -47633,7 +44524,6 @@ type ('a, 'r) clist =
 val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
-o1,hw6,q4,5,None,,Mastery
 o3-Mini,hw6,q4,5,None,,Mastery
 Qwen2.5-7B,hw6,q4,0,None,"File ""./F2022/exercises/hw6/solution.ml"", line 6, characters 18-52:
 This expression should not be a function, the expected type is
@@ -47662,7 +44552,6 @@ val map_option : ('a -> 'b) -> 'a option -> 'b option = <fun>
 val map_coption : ('a -> 'b) -> ('a, 'r) coption -> ('b, 'r) coption = <fun>
 val map_list : ('a -> 'b) -> 'a list -> 'b list = <fun>",Non-gradable
 o3-Mini,hw6,q4,5,None,,Mastery
-o1,hw6,q4,5,None,,Mastery
 Llama3.1-8B,hw6,q4,0,Type Error,"File ""./F2022/exercises/hw6/solution.ml"", line 3, characters 48-51:
 This expression has type 'a -> 'b
        but an expression was expected of type 'b

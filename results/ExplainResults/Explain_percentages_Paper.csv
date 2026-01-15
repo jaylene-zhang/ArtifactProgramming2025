@@ -1,0 +1,10 @@
+Model,Mastery %,Proficient %,Developing %,Beginning %,Non-gradable %
+o3-mini,80.0,15.2,4.8,0.0,0.0
+Claude 3.7 Sonnet,60.0,18.4,22.8,0.4,0.4
+GPT-4o,58.4,13.6,23.2,4.8,0.0
+Gemini 2.0 Flash,44.4,10.8,21.6,15.2,8.0
+GPT-4o-mini,48.8,9.2,20.4,20.0,1.6
+Llama3.3 70B,42.8,2.4,28.4,12.4,14.0
+Gemini 1.5 Flash 8B,36.8,16.8,30.4,13.6,2.4
+Qwen2.5 7B,34.8,21.6,22.4,17.6,3.6
+Llama3.1 8B,16.8,9.6,12.4,49.2,12.0
