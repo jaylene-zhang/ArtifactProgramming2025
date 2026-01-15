@@ -2,7 +2,7 @@
 
 **Artifact URL:** (https://github.com/jaylene-zhang/ArtifactProgramming2025)
 
-**Artifact hash:** e01addfcdc3b53a4cad6abd176797d75fc13176d
+**Artifact hash:** 1a76bd8e8d5ffd81ff046927f38d4c749e1ffd6c
 
 **Paper URL (most recent version):** (https://drive.google.com/file/d/1KTtE4VbsOOSnbPdf3uv9VcE-MCTB3clI/view?usp=sharing)
 
