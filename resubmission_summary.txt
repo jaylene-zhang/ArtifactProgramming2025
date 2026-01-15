@@ -1,4 +1,4 @@
-Artifact Resubmission Summary:
+Artifact Resubmission Summary 1:
 
 We have updated the artifact to address all reviewer comments:
 
@@ -15,3 +15,23 @@ CSV/figure consistency: Paths and filenames in the README and scripts now exactl
 Documentation improvements: README.md now explicitly explains which scripts are for inspection only, which files are final, and provides step-by-step instructions that reproduce the key results from the paper.
 
 All changes ensure that the artifact can be evaluated fully based on the final processed results and that reviewers can verify the claims without access to intermediate or non-deterministic data.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Artifact Resubmission Summary 2:
+
+We have updated the artifact to address all reviewer comments:
+
+1) Scripts do not run out-of-the-box
+
+We have fixed the typo in scripts and missing fields (like "weight") to make sure "analyze_CodeGen.py" , "plot_weighted_grade.py", and "analyze_Explain.py" are runnable.
+
+2) README instructions do not match reality
+
+To clarify result provenance, we now explicitly distinguish files used in the paper from those produced by the artifact by appending *_Paper.csv and *_Artifact.csv where applicable.
+We also removed outdated or misleading filenames (e.g., “copy”) and ensured that all referenced figures and CSVs are generated at the documented locations.
+
+3) Small numeric discrepancies vs paper table
+
+We added explicit notes under Claim 2 and Claim 3 explaining that small numerical differences are expected due to refined manual grading and minor benchmark adjustments performed after paper submission.
+These updates do not affect the supported claims or the reported trends, and the artifact results remain consistent with the paper’s conclusions.
