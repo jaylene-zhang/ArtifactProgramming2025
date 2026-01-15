@@ -2,7 +2,7 @@
 
 **Artifact URL:** (https://github.com/jaylene-zhang/ArtifactProgramming2025)
 
-**Artifact hash:** 1a76bd8e8d5ffd81ff046927f38d4c749e1ffd6c
+**Artifact hash:** ad31d8ae64d82b833459209d5915299b86ce9dcc
 
 **Paper URL (most recent version):** (https://drive.google.com/file/d/1KTtE4VbsOOSnbPdf3uv9VcE-MCTB3clI/view?usp=sharing)
 
@@ -40,7 +40,7 @@ To support artifact evaluation, we include all final computed percentages used t
 | Script                                                                                        | Purpose                                                                       |
 |-----------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
 | `scripts/analysis and plot/plot_weighted_grade.py`                                            | Reproduces weighted correctness plots from processed CSVs                     |
-| `scripts/analysis and plot/plot_histogram_by_difficulty.py`                                   | Reproduces performance-by-difficulty plots                                    |
+| `scripts/analysis and plot/plot_mastery_by_level.py`                                   | Reproduces performance-by-difficulty plots                                    |
 | `scripts/analysis and plot/analyze_CodeGen.py`,`scripts/analysis and plot/analyze_Explain.py` | Computes final correctness percentages from processed CodeGen/Explain results |
 
 
@@ -124,7 +124,7 @@ Paper Section: Sec 3.3, Table 9; Sec 3.5, Figure 6
 
 **Steps:**
 
-1. Produce `Explain_perpentages_Artifact.csv`
+1. Produce `Explain_percentages_Artifact.csv`
 
 Navigate to Explain results:
 ```bash
@@ -142,7 +142,7 @@ These changes affect individual percentages but do not alter the overall perform
 
 2. To reproduce Figure 6:
 
-**Script:** `scripts/analysis\ and\ plot/plot_histogram_by_difficulty.py`  
+**Script:** `scripts/analysis\ and\ plot/plot_mastery_by_level.py`  
 **Input:**  statistics of λExplain and λCodeGen by difficulty level
 
 `CodeGenResults/difficulty_rating_stats_x.csv` and `ExplainResults/mastery_rate_by_difficulty_Explain.csv` 
@@ -152,7 +152,7 @@ These changes affect individual percentages but do not alter the overall perform
 **Run:**
 ```bash
 cd scripts/analysis\ and\ plot/
-python plot_histogram_by_difficulty.py
+python plot_mastery_by_level.py
 ```
 This figure reproduces the visualization shown in the paper (Figure 6). No command-line arguments are required; just run the script as-is. 
 
@@ -174,9 +174,10 @@ cd scripts/analysis\ and\ plot/
 ```
 
 3. Run the analysis script:
-   (Note: The script includes functions from the original preprocessing pipeline, which are commented out. The executed portion computes final correctness percentages exclusively from processed CSVs in `results/CodeGenResults/`.
+   
+(Note: The script includes functions from the original preprocessing pipeline, which are commented out. The executed portion computes final correctness percentages exclusively from processed CSVs in `results/CodeGenResults/raw_results`.
 )
-4. 
+
 ```bash
 python analyze_CodeGen.py 
 ```
