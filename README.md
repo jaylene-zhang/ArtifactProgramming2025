@@ -4,7 +4,7 @@
 
 **Artifact hash:** ad31d8ae64d82b833459209d5915299b86ce9dcc
 
-**Paper URL (most recent version):** (https://drive.google.com/file/d/1KTtE4VbsOOSnbPdf3uv9VcE-MCTB3clI/view?usp=sharing)
+**Paper URL (most recent version):** (https://arxiv.org/pdf/2603.05646v1)
 
 ---
 
